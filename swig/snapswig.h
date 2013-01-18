@@ -32,6 +32,27 @@ public:
   bool IsNbrNId(const int& NId) const { return NI.IsOutNId(NId) || NI.IsInNId(NId); }
 };
 
+/// Edge iterator. Only forward iteration (operator++) is supported.
+class TNGraphEdgeI {
+private:
+  TNGraph::TEdgeI EI;
+public:
+  TNGraphEdgeI() : EI() { }
+  TNGraphEdgeI(const TNGraph::TEdgeI& EdgeI) : EI(EdgeI) { }
+  TNGraphEdgeI& operator = (const TNGraph::TEdgeI& EdgeI) { EI = EdgeI; return *this; }
+  /// Increment iterator.
+  TNGraphEdgeI& operator++ (int) { EI++; return *this; }
+  TNGraphEdgeI& Next() { EI++; return *this; }
+  bool operator < (const TNGraphEdgeI& EdgeI) const { return EI < EdgeI.EI; }
+  bool operator == (const TNGraphEdgeI& EdgeI) const { return EI == EdgeI.EI; }
+  /// Gets edge ID. Always returns -1 since only edges in multigraphs have explicit IDs.
+  int GetId() const { return EI.GetId(); }
+  /// Gets the source of an edge. Since the graph is undirected this is the node with smaller ID of the edge endpoints.
+  int GetSrcNId() const { return EI.GetSrcNId(); }
+  /// Gets destination of an edge. Since the graph is undirected this is the node with greater ID of the edge endpoints.
+  int GetDstNId() const { return EI.GetDstNId(); }
+};
+
 class TUNGraphNodeI {
 private:
   TUNGraph::TNodeI NI;

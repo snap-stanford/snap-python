@@ -51,6 +51,12 @@
         TNGraphNodeI EndNI() {
                 return TNGraphNodeI($self->EndNI());
         }
+        TNGraphEdgeI BegEI() {
+                return TNGraphEdgeI($self->BegEI());
+        }
+        TNGraphEdgeI EndEI() {
+                return TNGraphEdgeI($self->EndEI());
+        }
 };
 
 %extend TUNGraph {
