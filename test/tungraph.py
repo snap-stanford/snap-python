@@ -80,7 +80,6 @@ def ManipulateNodesEdges():
         NCount, ECount1, ECount2)
 
     # assignment
-    Graph1 = Snap.TUNGraph()
     Graph1 = Graph;
     PrintGStats("ManipulateNodesEdges:Graph3",Graph1)
 
