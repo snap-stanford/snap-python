@@ -74,6 +74,7 @@
         }
 };
 
+
 %template(PNGraph) TPt< TNGraph >;
 %template(LoadEdgeList_PNGraph) TSnap::LoadEdgeList<PNGraph>;
 %template(PrintGraphStatTable_PNGraph) PrintGraphStatTable<PNGraph>;
