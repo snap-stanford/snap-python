@@ -3,6 +3,10 @@
 # C extensions
 *.so
 
+# Swig files
+*.cxx
+swig/snap.py
+
 # Packages
 *.egg
 *.egg-info
