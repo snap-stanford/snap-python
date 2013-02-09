@@ -24,7 +24,11 @@
 
 %ignore TFInOut;
 %ignore TFRnd;
+%ignore TFile::Copy;
 %ignore TFile::GetLastAccessTm;
+%ignore TFile::GetLastWriteTm;
+%ignore TFile::GetCreateTm;
+%ignore TFile::GetSize;
 
 %ignore TNGraph::GetEI(int const&) const;
 %ignore TBPGraph::HasFlag(const TGraphFlag& Flag) const;
