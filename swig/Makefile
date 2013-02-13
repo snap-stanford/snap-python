@@ -2,7 +2,7 @@
 # Makefile for SWIG processing of SNAP
 #
 
-GITDIR = ../../snap
+GITDIR = ../../snap-sw
 include $(GITDIR)/Makefile.config
 
 SNAPDIR = $(GITDIR)/$(SNAP)
@@ -23,7 +23,7 @@ all: python
 
 python: Snap.o snap.i
 	swig -python -c++ -O -D_CMPWARN -I$(SNAPDIR) -I$(GLIBDIR) snap.i
-	g++ $(CXXFLAGS) -c snap_wrap.cxx -I/usr/include/python2.6
+	g++ $(CXXFLAGS) -c snap_wrap.cxx -I/usr/include/python2.6 -I$(SNAPDIR) -I$(GLIBDIR)
 	g++ $(CXXFLAGS) snap_wrap.o Snap.o -lrt -o _snap.so
 
 Snap.o: 

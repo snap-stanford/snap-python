@@ -2,6 +2,7 @@
 %module snap
 %{
 #include "Snap.h"
+#include "snapsw.h"
 #include "printgraph.h"
 #include "snapswig.h"
 %}
@@ -34,11 +35,16 @@
 
 //%ignore TNGraphNodeI::TNGNodeI;
 
+%ignore TVec<TVec<TInt, int>, int>::Add;
+
 %include "bd.h"
 %include "dt.h"
+%include "ds.h"
 %include "fl.h"
 %include "graph.h"
 %include "gio.h"
+
+%include "snapsw.h"
 %include "printgraph.h"
 %include "snapswig.h"
 
@@ -74,6 +80,14 @@
         }
 };
 
+%extend TVec {
+        TSizeTy Add(int Val) {
+                return $self->Add(TInt(Val));
+        }
+};
+
+%template(TIntV) TVec< TInt, int >;
+%template(TIntIntVV) TVec< TVec< TInt, int > , int >;
 
 %template(PNGraph) TPt< TNGraph >;
 %template(LoadEdgeList_PNGraph) TSnap::LoadEdgeList<PNGraph>;
