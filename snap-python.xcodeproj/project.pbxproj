@@ -1,0 +1,280 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXFileReference section */
+		847482E016CD863500AF3EF4 /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
+		847482E216CD863500AF3EF4 /* bench.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = bench.py; sourceTree = "<group>"; };
+		847482E316CD863500AF3EF4 /* load.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = load.py; sourceTree = "<group>"; };
+		847482E416CD863500AF3EF4 /* tnodei.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = tnodei.py; sourceTree = "<group>"; };
+		847482E516CD863500AF3EF4 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
+		8474830716CD86B300AF3EF4 /* _snap.so */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = _snap.so; sourceTree = "<group>"; };
+		8474830816CD86B300AF3EF4 /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
+		8474830916CD86B300AF3EF4 /* printgraph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = printgraph.h; sourceTree = "<group>"; };
+		8474830A16CD86B300AF3EF4 /* Snap.i */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c.preprocessed; path = Snap.i; sourceTree = "<group>"; };
+		8474830B16CD86B300AF3EF4 /* Snap.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = Snap.o; sourceTree = "<group>"; };
+		8474830C16CD86B300AF3EF4 /* snap.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = snap.py; sourceTree = "<group>"; };
+		8474830D16CD86B300AF3EF4 /* snap.pyc */ = {isa = PBXFileReference; lastKnownFileType = file; path = snap.pyc; sourceTree = "<group>"; };
+		8474830E16CD86B300AF3EF4 /* snap_wrap.cxx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = snap_wrap.cxx; sourceTree = "<group>"; };
+		8474830F16CD86B300AF3EF4 /* snap_wrap.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = snap_wrap.o; sourceTree = "<group>"; };
+		8474831016CD86B300AF3EF4 /* snapswig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = snapswig.h; sourceTree = "<group>"; };
+		8474831316CD86C000AF3EF4 /* p2p-Gnutella08.txt.gz */ = {isa = PBXFileReference; lastKnownFileType = archive.gzip; path = "p2p-Gnutella08.txt.gz"; sourceTree = "<group>"; };
+		8474831416CD86C000AF3EF4 /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
+		8474831516CD86C000AF3EF4 /* memtest.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = memtest.py; sourceTree = "<group>"; };
+		8474831616CD86C000AF3EF4 /* p2p-Gnutella08.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "p2p-Gnutella08.html"; sourceTree = "<group>"; };
+		8474831716CD86C000AF3EF4 /* p2p-Gnutella08.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "p2p-Gnutella08.txt"; sourceTree = "<group>"; };
+		8474831816CD86C000AF3EF4 /* printstat.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = printstat.py; sourceTree = "<group>"; };
+		8474831916CD86C000AF3EF4 /* test.graph */ = {isa = PBXFileReference; lastKnownFileType = file; path = test.graph; sourceTree = "<group>"; };
+		8474831A16CD86C000AF3EF4 /* tungraph.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = tungraph.py; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		847482A916CD85D200AF3EF4 = {
+			isa = PBXGroup;
+			children = (
+				847482E016CD863500AF3EF4 /* Makefile */,
+				847482E116CD863500AF3EF4 /* python */,
+				847482E516CD863500AF3EF4 /* README.md */,
+				8474830616CD86B300AF3EF4 /* swig */,
+				8474831116CD86C000AF3EF4 /* test */,
+			);
+			sourceTree = "<group>";
+		};
+		847482E116CD863500AF3EF4 /* python */ = {
+			isa = PBXGroup;
+			children = (
+				847482E216CD863500AF3EF4 /* bench.py */,
+				847482E316CD863500AF3EF4 /* load.py */,
+				847482E416CD863500AF3EF4 /* tnodei.py */,
+			);
+			path = python;
+			sourceTree = "<group>";
+		};
+		8474830616CD86B300AF3EF4 /* swig */ = {
+			isa = PBXGroup;
+			children = (
+				8474830716CD86B300AF3EF4 /* _snap.so */,
+				8474830816CD86B300AF3EF4 /* Makefile */,
+				8474830916CD86B300AF3EF4 /* printgraph.h */,
+				8474830A16CD86B300AF3EF4 /* Snap.i */,
+				8474830B16CD86B300AF3EF4 /* Snap.o */,
+				8474830C16CD86B300AF3EF4 /* snap.py */,
+				8474830D16CD86B300AF3EF4 /* snap.pyc */,
+				8474830E16CD86B300AF3EF4 /* snap_wrap.cxx */,
+				8474830F16CD86B300AF3EF4 /* snap_wrap.o */,
+				8474831016CD86B300AF3EF4 /* snapswig.h */,
+			);
+			path = swig;
+			sourceTree = "<group>";
+		};
+		8474831116CD86C000AF3EF4 /* test */ = {
+			isa = PBXGroup;
+			children = (
+				8474831216CD86C000AF3EF4 /* data */,
+				8474831416CD86C000AF3EF4 /* Makefile */,
+				8474831516CD86C000AF3EF4 /* memtest.py */,
+				8474831616CD86C000AF3EF4 /* p2p-Gnutella08.html */,
+				8474831716CD86C000AF3EF4 /* p2p-Gnutella08.txt */,
+				8474831816CD86C000AF3EF4 /* printstat.py */,
+				8474831916CD86C000AF3EF4 /* test.graph */,
+				8474831A16CD86C000AF3EF4 /* tungraph.py */,
+			);
+			path = test;
+			sourceTree = SOURCE_ROOT;
+		};
+		8474831216CD86C000AF3EF4 /* data */ = {
+			isa = PBXGroup;
+			children = (
+				8474831316CD86C000AF3EF4 /* p2p-Gnutella08.txt.gz */,
+			);
+			path = data;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXLegacyTarget section */
+		847482B016CD85D200AF3EF4 /* snap-python */ = {
+			isa = PBXLegacyTarget;
+			buildArgumentsString = "$(ACTION)";
+			buildConfigurationList = 847482B316CD85D200AF3EF4 /* Build configuration list for PBXLegacyTarget "snap-python" */;
+			buildPhases = (
+			);
+			buildToolPath = /usr/bin/make;
+			buildWorkingDirectory = "/Users/sheridan/GoogleDrive/snap_proj/snap-python/swig";
+			dependencies = (
+			);
+			name = "snap-python";
+			passBuildSettingsInEnvironment = 1;
+			productName = "snap-python";
+		};
+		847482B916CD862A00AF3EF4 /* docs */ = {
+			isa = PBXLegacyTarget;
+			buildArgumentsString = "$(ACTION)";
+			buildConfigurationList = 847482BC16CD862A00AF3EF4 /* Build configuration list for PBXLegacyTarget "docs" */;
+			buildPhases = (
+			);
+			buildToolPath = /usr/bin/make;
+			dependencies = (
+			);
+			name = docs;
+			passBuildSettingsInEnvironment = 1;
+			productName = docs;
+		};
+/* End PBXLegacyTarget section */
+
+/* Begin PBXProject section */
+		847482AB16CD85D200AF3EF4 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0450;
+				ORGANIZATIONNAME = infolab;
+			};
+			buildConfigurationList = 847482AE16CD85D200AF3EF4 /* Build configuration list for PBXProject "snap-python" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 847482A916CD85D200AF3EF4;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				847482B016CD85D200AF3EF4 /* snap-python */,
+				847482B916CD862A00AF3EF4 /* docs */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin XCBuildConfiguration section */
+		847482B116CD85D200AF3EF4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		847482B216CD85D200AF3EF4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		847482B416CD85D200AF3EF4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEBUGGING_SYMBOLS = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		847482B516CD85D200AF3EF4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		847482BA16CD862A00AF3EF4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEBUGGING_SYMBOLS = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		847482BB16CD862A00AF3EF4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		847482AE16CD85D200AF3EF4 /* Build configuration list for PBXProject "snap-python" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				847482B116CD85D200AF3EF4 /* Debug */,
+				847482B216CD85D200AF3EF4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		847482B316CD85D200AF3EF4 /* Build configuration list for PBXLegacyTarget "snap-python" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				847482B416CD85D200AF3EF4 /* Debug */,
+				847482B516CD85D200AF3EF4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		847482BC16CD862A00AF3EF4 /* Build configuration list for PBXLegacyTarget "docs" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				847482BA16CD862A00AF3EF4 /* Debug */,
+				847482BB16CD862A00AF3EF4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 847482AB16CD85D200AF3EF4 /* Project object */;
+}
