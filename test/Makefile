@@ -4,6 +4,8 @@
 
 all: tungraph epinions memory
 
+getstats: getstats.py
+
 epinions: p2p-Gnutella08.txt
 	python printstat.py p2p-Gnutella08.txt epinions
 

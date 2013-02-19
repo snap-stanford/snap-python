@@ -2,8 +2,11 @@
 %module snap
 %{
 #include "Snap.h"
+
 #include "printgraph.h"
 #include "snapswig.h"
+
+#include "getassessment.h"
 %}
 
 %ignore TOnExeStop;
@@ -43,8 +46,10 @@
 %include "fl.h"
 %include "graph.h"
 %include "gio.h"
+
 %include "printgraph.h"
 %include "snapswig.h"
+%include "getassessment.h"
 
 // TODO can BegNI() be renamed?
 
@@ -80,5 +85,6 @@
 
 %template(PNGraph) TPt< TNGraph >;
 %template(LoadEdgeList_PNGraph) TSnap::LoadEdgeList<PNGraph>;
-%template(PrintGraphStatTable_PNGraph) PrintGraphStatTable<PNGraph>;
+%template(PrintGraphStatTable_PNGraph) PrintGraphStatTable2<PNGraph>;
+%template(GetStats_PNGraph) TSnap::GetStats<PNGraph>;
 

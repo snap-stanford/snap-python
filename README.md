@@ -11,7 +11,7 @@ swig-1.3.12 and later support OS-X/Darwin. Simply download the Unix sources, con
 
 1. Download the Unix source from swig.org/download.html.
 
-2. Moving to the terminal I then extracted the files from the tarball and move to the root directory of the SWIG install:
+2. Moving to the terminal, extract the files from the tarball and move to the root directory of the SWIG install:
 
 		cd /Developer/SWIG
 		tar -xf swig-2.0.4.tar.gz
