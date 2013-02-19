@@ -2,8 +2,11 @@
 %module snap
 %{
 #include "Snap.h"
+
 #include "printgraph.h"
 #include "snapswig.h"
+
+#include "getassessment.h"
 %}
 
 %ignore TOnExeStop;
@@ -24,7 +27,11 @@
 
 %ignore TFInOut;
 %ignore TFRnd;
+%ignore TFile::Copy;
 %ignore TFile::GetLastAccessTm;
+%ignore TFile::GetLastWriteTm;
+%ignore TFile::GetCreateTm;
+%ignore TFile::GetSize;
 
 %ignore TNGraph::GetEI(int const&) const;
 %ignore TBPGraph::HasFlag(const TGraphFlag& Flag) const;
@@ -39,8 +46,10 @@
 %include "fl.h"
 %include "graph.h"
 %include "gio.h"
+
 %include "printgraph.h"
 %include "snapswig.h"
+%include "getassessment.h"
 
 // TODO can BegNI() be renamed?
 
@@ -77,5 +86,6 @@
 
 %template(PNGraph) TPt< TNGraph >;
 %template(LoadEdgeList_PNGraph) TSnap::LoadEdgeList<PNGraph>;
-%template(PrintGraphStatTable_PNGraph) PrintGraphStatTable<PNGraph>;
+%template(PrintGraphStatTable_PNGraph) PrintGraphStatTable2<PNGraph>;
+%template(GetStats_PNGraph) TSnap::GetStats<PNGraph>;
 
