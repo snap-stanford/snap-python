@@ -2,15 +2,30 @@
 
 // Graph type for random generation
 typedef enum {
-  
   SmallWorld, /* Generates an Erdos-Renyi random graph. */
   BiPart,     /* Bipartitite graph type. */
   PowerLaw,   /* Power law graph. */
   PrefAttach, /* Scale-free graph using preferential model. */
-  RMat,       /* R-mat */
+  RMat,       /* R-MAT */
                
 } GraphType;
-               
+
+const char* const GraphAbbr[] = {
+  "sw", /* Generates an Erdos-Renyi random graph. */
+  "bi",   /* Bipartitite graph type. */
+  "pow",   /* Power law graph. */
+  "pref", /* Scale-free graph using preferential model. */
+  "rmat",       /* R-MAT */
+};
+
+const char* const GraphDesc[] = {
+  "Small World", /* Generates an Erdos-Renyi random graph. */
+  "Bipartite",   /* Bipartitite graph type. */
+  "Power Law",   /* Power law graph. */
+  "Preferential Attach", /* Scale-free graph using preferential model. */
+  "R-MAT",       /* R-MAT */
+};
+
 typedef enum {
   Info,     /* graph info */
   PlotDD,   /* degree distribution */
@@ -23,7 +38,7 @@ typedef enum {
   PlotSVec  /* left and right singular vector */
 } PlotType;
 
-const char* const PlotAbb[] = {
+const char* const PlotAbbr[] = {
   "info", /* basic graph info (e.g. iteration, triads) */
   "DD",   /* degree distribution */
   "CDD",  /* cumulative degree */
@@ -54,9 +69,10 @@ namespace TSnap {
   template<class PGraph>
   void RunCalculations(const PGraph& Graph, PlotType PType) {
     
-    TStr OutFNm = PlotAbb[PType], Desc = PlotDesc[PType];
+    TStr OutFNm = PlotAbbr[PType], Desc = PlotDesc[PType];
     const int SingularVals = Graph->GetNodes()/2 > 200 ? 200 :
-    Graph->GetNodes()/2;
+                             Graph->GetNodes()/2;
+    printf("Calculating '%s'", PlotDesc[PType]);
     switch (PType) {
       case Info:
         PrintInfo(Graph, Desc, OutFNm, 0); // Not fast option
@@ -87,6 +103,7 @@ namespace TSnap {
       case PlotClustCoef:
         PlotClustCf(Graph, OutFNm, Desc);
         break;
+        
       case PlotSVal:
         PlotSngValRank(ConvertGraph<PNGraph>(Graph, true), SingularVals,
                        OutFNm, Desc);
@@ -98,51 +115,67 @@ namespace TSnap {
     }
   }
   
-  template<class PGraph>
   double GetStats(int NNodes, int NEdges, PlotType PType, GraphType RType) {
     
     TExeTm ExeTm;
     printf("Timing '%s': Time: %s\n", PlotDesc[PType], TExeTm::GetCurTm());
     
     int StartTime = clock();
-    PGraph G;
+    
+    PNGraph GN;
+    PUNGraph GUn;
     
     switch (RType) {
       case SmallWorld:
         printf("Generating random graph for %d nodes, %d edges\n",
                NNodes, NEdges);
-        G = GenRndGnm<PGraph>(NNodes, NEdges);
+        GN = GenRndGnm<PNGraph>(NNodes, NEdges);
+        RunCalculations(GN, PType);
         break;
         
+      case BiPart:
+        break;
+        
+      case PowerLaw:
+        break;
+
       case PrefAttach:
-        printf("Generating preferential attachment graph for %d nodes, %d edges\n",
-               NNodes, 5);
-        G = GenPrefAttach(NNodes, 5);
+        printf("Generating preferential attachment graph for %d nodes, %d edges\n", NNodes, 5);
+        GUn = GenPrefAttach(NNodes, 5);
+        RunCalculations(GUn, PType);
         break;
         
       case RMat:
         printf("Generating R-MAT for %d nodes, %d edges\n",
                NNodes, NEdges);
-        G = GenRMat(NNodes, NEdges, 0.40, 0.25, 0.2);
+        GN = GenRMat(NNodes, NEdges, 0.40, 0.25, 0.2);
+        RunCalculations(GN, PType);
         break;
         
       default:
         break;
     }
     
-    RunCalculations(G, PType);
     double Elapsed = double(clock() - StartTime) / double(CLOCKS_PER_SEC);
-    printf("\nrun time: %s (%s)\n", ExeTm.GetTmStr(), TSecTm::GetCurTm().GetTmStr().CStr());
-    printf("Elapsed = %.3f\n", Elapsed);
+//    printf("\nrun time: %s (%s)\n", ExeTm.GetTmStr(), TSecTm::GetCurTm().GetTmStr().CStr());
+//    printf("Elapsed = %.3f\n", Elapsed);
     return Elapsed;
   }
   
-  const char * GetDesc(PlotType PType) {
+  const char * GetAttributeDesc(PlotType PType) {
     return PlotDesc[PType];
   }
   
-  const char * GetAbbrev(PlotType PType) {
-    return PlotAbb[PType];
+  const char * GetAttributeAbbr(PlotType PType) {
+    return PlotAbbr[PType];
   }
-  
+
+  const char * GetGraphDesc(GraphType GType) {
+    return GraphDesc[GType];
+  }
+
+  const char * GetGraphAbbr(GraphType GType) {
+    return GraphAbbr[GType];
+  }
+
 };
