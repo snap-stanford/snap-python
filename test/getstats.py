@@ -108,7 +108,7 @@ if __name__ == '__main__':
 
   for n in range(NUM_ITERATIONS):
 
-#    calc_stats()
+    calc_stats()
     # Update plots every 5 iterations
     if (n+1) % 2 == 0:
       print "Iteration %d of %d:" % (n+1, NUM_ITERATIONS)
