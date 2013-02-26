@@ -41,3 +41,8 @@ nosetests.xml
 #test/results*
 
 swig-2.0.9/
+
+test/*.eps
+test/*.plt
+test/*.tab
+test/info

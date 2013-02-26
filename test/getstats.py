@@ -12,7 +12,7 @@ MAX_NODES_EXPONENT = 4
 NUM_ITERATIONS = 4
 PLOT_TYPES = Snap.PlotMx  # Max of 7
 GRAPH_TYPES = (0, 3, 4)
-HOSTNAME = gethostname()
+HOSTNAME = gethostname().split('.')[0]
 #GRAPH_TYPES = 5
 
 RESULTS_DIR = "results-%s" % HOSTNAME
@@ -54,6 +54,8 @@ def calc_stats():
 def plot_stats():
   
   from numpy import sort,array,ones,linalg,column_stack,loadtxt
+  import matplotlib
+  matplotlib.use('Agg')
   from pylab import plot,show,xlabel,ylabel,savefig,title,figure,legend
 
 #  xi = arange(0,9)
@@ -88,7 +90,7 @@ def plot_stats():
       legend()
       xlabel('Num Nodes')
       ylabel('time (2.6 GHz)')
-      title('%s run time (%s)' % Snap.GetAttributeDesc(type) % HOSTNAME)
+      title('%s run time (%s)' % (Snap.GetAttributeDesc(type), HOSTNAME))
       
     pname = '%s/plot_%s.png' % (RESULTS_DIR, Snap.GetAttributeAbbr(type))
     print "Saving figure %s" % pname

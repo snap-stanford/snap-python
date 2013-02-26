@@ -26,7 +26,7 @@ endif
 all: python
 
 python: Snap.o snap.i
-	swig -python -c++ -w302,317,325,362,383,384,389,401,503,508,509 -O -D_CMPWARN -I$(SNAPDIR) -I$(GLIBDIR) snap.i
+	swig -python -c++ -w302,312,317,325,362,383,384,389,401,503,508,509 -O -D_CMPWARN -I$(SNAPDIR) -I$(GLIBDIR) snap.i
 	g++ $(CXXFLAGS) -c snap_wrap.cxx $(SWIGFILES) -I$(SNAPDIR) -I$(GLIBDIR) -I/usr/include/python2.6 -I/usr/include/python2.7
 	g++ $(LDFLAGS) $(CXXFLAGS) snap_wrap.o Snap.o -o _snap.so
 

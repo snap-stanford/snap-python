@@ -2,7 +2,7 @@
 #	Makefile for running 
 #
 
-all: tungraph epinions memory
+#all: tungraph epinions memory
 
 getstats: 
 	python getstats.py
