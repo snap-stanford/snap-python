@@ -84,12 +84,11 @@ def plot_stats():
       # Plot the line
       line = w[0]*X[:,0] + w[1]*X[:,1] + w[2] # get regression line
       plot(X[:,0], Y,'o', label=Snap.GetGraphDesc(g))
-      plot(X[:,0], line, label="%s-fit (%s)" %
-                               (Snap.GetGraphDesc(g), HOSTNAME))
+      plot(X[:,0], line, label="%s-fit" % Snap.GetGraphDesc(g))
       legend()
       xlabel('Num Nodes')
       ylabel('time (2.6 GHz)')
-      title('%s run time' % Snap.GetAttributeDesc(type))
+      title('%s run time (%s)' % Snap.GetAttributeDesc(type) % HOSTNAME)
       
     pname = '%s/plot_%s.png' % (RESULTS_DIR, Snap.GetAttributeAbbr(type))
     print "Saving figure %s" % pname
