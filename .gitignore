@@ -38,6 +38,6 @@ nosetests.xml
 .project
 .pydevproject
 
-test/results*
+#test/results*
 
 swig-2.0.9/

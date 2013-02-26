@@ -7,7 +7,7 @@ typedef enum {
   PowerLaw,   /* Power law graph. */
   PrefAttach, /* Scale-free graph using preferential model. */
   RMat,       /* R-MAT */
-               
+  GraphMx
 } GraphType;
 
 const char* const GraphAbbr[] = {
@@ -35,7 +35,8 @@ typedef enum {
   PlotScc,  /* distribution of strongly connected components */
   PlotClustCoef,  /* clustering coefficient */
   PlotSVal, /* singular values */
-  PlotSVec  /* left and right singular vector */
+  PlotSVec,  /* left and right singular vector */
+  PlotMx
 } PlotType;
 
 const char* const PlotAbbr[] = {
@@ -72,7 +73,7 @@ namespace TSnap {
     TStr OutFNm = PlotAbbr[PType], Desc = PlotDesc[PType];
     const int SingularVals = Graph->GetNodes()/2 > 200 ? 200 :
                              Graph->GetNodes()/2;
-    printf("Calculating '%s'", PlotDesc[PType]);
+    printf("Calculating '%s'\n", PlotDesc[PType]);
     switch (PType) {
       case Info:
         PrintInfo(Graph, Desc, OutFNm, 0); // Not fast option
@@ -111,6 +112,9 @@ namespace TSnap {
         
       case PlotSVec:
         PlotSngVec(ConvertGraph<PNGraph>(Graph, true), OutFNm, Desc);
+        break;
+        
+      default:
         break;
     }
   }

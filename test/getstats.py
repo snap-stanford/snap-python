@@ -1,20 +1,22 @@
 import os
 import sys
+import time
+from socket import gethostname
 
 sys.path.append("../swig")
 
 import snap as Snap
 
-import time
-RESULTS_DIR = "results"
-#RESULTS_DIR = "results-%s" % time.strftime("%m-%d-%H%M.%S")
-
 MIN_NODES_EXPONENT = 1
 MAX_NODES_EXPONENT = 4
-NUM_ITERATIONS = 10
-PLOT_TYPES = 2
+NUM_ITERATIONS = 4
+PLOT_TYPES = Snap.PlotMx  # Max of 7
 GRAPH_TYPES = (0, 3, 4)
+HOSTNAME = gethostname()
 #GRAPH_TYPES = 5
+
+RESULTS_DIR = "results-%s" % HOSTNAME
+#RESULTS_DIR = "results-%s" % time.strftime("%m-%d-%H%M.%S")
 
 def calc_stats():
   
@@ -73,17 +75,17 @@ def plot_stats():
   #    print "Y = ", Y, "X = ", X
       # Add column of 1's for intercept
       X = column_stack([X, ones(len(X))])
-      
+
+      # Fit using least-squares
       w = linalg.lstsq(X,Y)[0] # obtaining the parameters
       print "N = %d" % len(X)
       print "coefficients = ", w
       
-      # plotting the line
-
+      # Plot the line
       line = w[0]*X[:,0] + w[1]*X[:,1] + w[2] # get regression line
-#      print "line = ", line
       plot(X[:,0], Y,'o', label=Snap.GetGraphDesc(g))
-      plot(X[:,0], line, label="%s-fit" % Snap.GetGraphDesc(g))
+      plot(X[:,0], line, label="%s-fit (%s)" %
+                               (Snap.GetGraphDesc(g), HOSTNAME))
       legend()
       xlabel('Num Nodes')
       ylabel('time (2.6 GHz)')
