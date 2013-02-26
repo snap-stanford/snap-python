@@ -1,0 +1,14 @@
+graph info: Directed
+  Nodes:                    1000000
+  Edges:                    2000000
+  Zero Deg Nodes:           18352
+  Zero InDeg Nodes:         135540
+  Zero OutDeg Nodes:        134880
+  NonZero In-Out Deg Nodes: 747932
+  Unique directed edges:    2000000
+  Unique undirected edges:  2000000
+  Self Edges:               0
+  BiDir Edges:              0
+  Closed triangles          13
+  Open triangles            7995588
+  Frac. of closed triads    0.000002
