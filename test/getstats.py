@@ -75,7 +75,7 @@ def plot_stats():
     xlabel('Num Nodes')
     ylabel('time (2.6 GHz)')
     title('%s Runtime' % Snap.GetDesc(type))
-    savefig('%s/plot_%s.eps' % (RESULTS_DIR, Snap.GetAbbrev(type)))
+    savefig('%s/plot_%s.png' % (RESULTS_DIR, Snap.GetAbbrev(type)))
     
     #  show()
     coeff_file = open('%s/coeff.txt' % RESULTS_DIR, 'w+')
