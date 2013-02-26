@@ -1,5 +1,16 @@
 #include "Snap.h"
 
+// Graph type for random generation
+typedef enum {
+  
+  SmallWorld, /* Generates an Erdos-Renyi random graph. */
+  BiPart,     /* Bipartitite graph type. */
+  PowerLaw,   /* Power law graph. */
+  PrefAttach, /* Scale-free graph using preferential model. */
+  RMat,       /* R-mat */
+               
+} GraphType;
+               
 typedef enum {
   Info,     /* graph info */
   PlotDD,   /* degree distribution */
@@ -36,21 +47,21 @@ const char* const PlotDesc[] = {
 };
 
 namespace TSnap {
-
+  
   typedef TVec<TInt, int> TIntV;
   typedef TVec<TIntV, int> TIntIntVV;
   
   template<class PGraph>
-  void RunCaculations(const PGraph& Graph, PlotType PType) {
-  
+  void RunCalculations(const PGraph& Graph, PlotType PType) {
+    
     TStr OutFNm = PlotAbb[PType], Desc = PlotDesc[PType];
     const int SingularVals = Graph->GetNodes()/2 > 200 ? 200 :
-                             Graph->GetNodes()/2;
+    Graph->GetNodes()/2;
     switch (PType) {
       case Info:
         PrintInfo(Graph, Desc, OutFNm, 0); // Not fast option
         break;
-
+        
       case PlotDD:
         PlotOutDegDistr(Graph, OutFNm, Desc, false, false);
         PlotInDegDistr(Graph, OutFNm, Desc, false, false);
@@ -77,7 +88,8 @@ namespace TSnap {
         PlotClustCf(Graph, OutFNm, Desc);
         break;
       case PlotSVal:
-        PlotSngValRank(ConvertGraph<PNGraph>(Graph, true), SingularVals, OutFNm, Desc);
+        PlotSngValRank(ConvertGraph<PNGraph>(Graph, true), SingularVals,
+                       OutFNm, Desc);
         break;
         
       case PlotSVec:
@@ -85,18 +97,40 @@ namespace TSnap {
         break;
     }
   }
-
+  
   template<class PGraph>
-  double GetStats(int NNodes, int NEdges, PlotType PType) {
+  double GetStats(int NNodes, int NEdges, PlotType PType, GraphType RType) {
     
     TExeTm ExeTm;
     printf("Timing '%s': Time: %s\n", PlotDesc[PType], TExeTm::GetCurTm());
-
-    int StartTime = clock();
-    PGraph G = GenRndGnm<PGraph>(NNodes, NEdges);
-//    PNGraph GenRMat(const int& Nodes, const int& Edges, const double& A, const double& B, const double& C, TRnd& Rnd) {
     
-    RunCaculations(G, PType);
+    int StartTime = clock();
+    PGraph G;
+    
+    switch (RType) {
+      case SmallWorld:
+        printf("Generating random graph for %d nodes, %d edges\n",
+               NNodes, NEdges);
+        G = GenRndGnm<PGraph>(NNodes, NEdges);
+        break;
+        
+      case PrefAttach:
+        printf("Generating preferential attachment graph for %d nodes, %d edges\n",
+               NNodes, 5);
+        G = GenPrefAttach(NNodes, 5);
+        break;
+        
+      case RMat:
+        printf("Generating R-MAT for %d nodes, %d edges\n",
+               NNodes, NEdges);
+        G = GenRMat(NNodes, NEdges, 0.40, 0.25, 0.2);
+        break;
+        
+      default:
+        break;
+    }
+    
+    RunCalculations(G, PType);
     double Elapsed = double(clock() - StartTime) / double(CLOCKS_PER_SEC);
     printf("\nrun time: %s (%s)\n", ExeTm.GetTmStr(), TSecTm::GetCurTm().GetTmStr().CStr());
     printf("Elapsed = %.3f\n", Elapsed);
@@ -106,9 +140,9 @@ namespace TSnap {
   const char * GetDesc(PlotType PType) {
     return PlotDesc[PType];
   }
-
+  
   const char * GetAbbrev(PlotType PType) {
     return PlotAbb[PType];
   }
-
+  
 };

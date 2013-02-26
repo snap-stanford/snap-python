@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		841E00C516DC449900B86980 /* getassessment.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 849766F416D32A8B00EE1E91 /* getassessment.cpp */; };
 		848800B916D20FB200C789B8 /* acquis.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8488FEB716D20FB200C789B8 /* acquis.cpp */; };
 		848800BA16D20FB200C789B8 /* adox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8488FEB916D20FB200C789B8 /* adox.cpp */; };
 		848800BB16D20FB200C789B8 /* aest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8488FEBB16D20FB200C789B8 /* aest.cpp */; };
@@ -257,7 +258,7 @@
 		8474830C16CD86B300AF3EF4 /* snap.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = snap.py; sourceTree = "<group>"; };
 		8474831016CD86B300AF3EF4 /* snapswig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = snapswig.h; sourceTree = "<group>"; };
 		8474831316CD86C000AF3EF4 /* p2p-Gnutella08.txt.gz */ = {isa = PBXFileReference; lastKnownFileType = archive.gzip; path = "p2p-Gnutella08.txt.gz"; sourceTree = "<group>"; };
-		8474831416CD86C000AF3EF4 /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
+		8474831416CD86C000AF3EF4 /* Makefile */ = {isa = PBXFileReference; explicitFileType = sourcecode.make; fileEncoding = 4; path = Makefile; sourceTree = "<group>"; };
 		8474831516CD86C000AF3EF4 /* memtest.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = memtest.py; sourceTree = "<group>"; };
 		8474831616CD86C000AF3EF4 /* p2p-Gnutella08.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "p2p-Gnutella08.html"; sourceTree = "<group>"; };
 		8474831716CD86C000AF3EF4 /* p2p-Gnutella08.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "p2p-Gnutella08.txt"; sourceTree = "<group>"; };
@@ -1094,15 +1095,7 @@
 		8488FFFD16D20FB200C789B8 /* json.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = json.cpp; sourceTree = "<group>"; };
 		8488FFFE16D20FB200C789B8 /* json.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = json.h; sourceTree = "<group>"; };
 		8488FFFF16D20FB200C789B8 /* linalg.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = linalg.cpp; sourceTree = "<group>"; };
-		8497669E16D3284B00EE1E91 /* swig-docs-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "swig-docs-Info.plist"; sourceTree = "<group>"; };
-		849766A016D3284B00EE1E91 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		849766A216D3284B00EE1E91 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		849766A416D3284B00EE1E91 /* swig-docs-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "swig-docs-Prefix.pch"; sourceTree = "<group>"; };
-		849766A616D3284B00EE1E91 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
-		849766A816D3284B00EE1E91 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		849766A916D3284B00EE1E91 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		849766AC16D3284B00EE1E91 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
-		849766F416D32A8B00EE1E91 /* getassessment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = getassessment.h; sourceTree = "<group>"; };
+		849766F416D32A8B00EE1E91 /* getassessment.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = getassessment.cpp; sourceTree = "<group>"; };
 		849766F716D34B6D00EE1E91 /* getstats.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = getstats.py; sourceTree = "<group>"; };
 		8497672B16D4133000EE1E91 /* analysis.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = analysis.py; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -1133,7 +1126,6 @@
 				8488002616D20FB200C789B8 /* snap-adv */,
 				8488004016D20FB200C789B8 /* snap-core */,
 				848801BA16D2D7CD00C789B8 /* examples */,
-				8497669C16D3284B00EE1E91 /* swig-docs */,
 				8488FEAC16D20F8400C789B8 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -1156,7 +1148,7 @@
 				8474830C16CD86B300AF3EF4 /* snap.py */,
 				8474831016CD86B300AF3EF4 /* snapswig.h */,
 				8474830916CD86B300AF3EF4 /* printgraph.h */,
-				849766F416D32A8B00EE1E91 /* getassessment.h */,
+				849766F416D32A8B00EE1E91 /* getassessment.cpp */,
 			);
 			path = swig;
 			sourceTree = "<group>";
@@ -2447,29 +2439,6 @@
 			path = doc;
 			sourceTree = "<group>";
 		};
-		8497669C16D3284B00EE1E91 /* swig-docs */ = {
-			isa = PBXGroup;
-			children = (
-				849766A816D3284B00EE1E91 /* AppDelegate.h */,
-				849766A916D3284B00EE1E91 /* AppDelegate.m */,
-				849766AB16D3284B00EE1E91 /* MainMenu.xib */,
-				8497669D16D3284B00EE1E91 /* Supporting Files */,
-			);
-			path = "swig-docs";
-			sourceTree = "<group>";
-		};
-		8497669D16D3284B00EE1E91 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				8497669E16D3284B00EE1E91 /* swig-docs-Info.plist */,
-				8497669F16D3284B00EE1E91 /* InfoPlist.strings */,
-				849766A216D3284B00EE1E91 /* main.m */,
-				849766A416D3284B00EE1E91 /* swig-docs-Prefix.pch */,
-				849766A516D3284B00EE1E91 /* Credits.rtf */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXLegacyTarget section */
@@ -2783,37 +2752,11 @@
 				8488018C16D20FB300C789B8 /* util.cpp in Sources */,
 				8488019616D20FF300C789B8 /* snapswig.h in Sources */,
 				8488019416D20FF300C789B8 /* printgraph.h in Sources */,
+				841E00C516DC449900B86980 /* getassessment.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		8497669F16D3284B00EE1E91 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				849766A016D3284B00EE1E91 /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		849766A516D3284B00EE1E91 /* Credits.rtf */ = {
-			isa = PBXVariantGroup;
-			children = (
-				849766A616D3284B00EE1E91 /* en */,
-			);
-			name = Credits.rtf;
-			sourceTree = "<group>";
-		};
-		849766AB16D3284B00EE1E91 /* MainMenu.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				849766AC16D3284B00EE1E91 /* en */,
-			);
-			name = MainMenu.xib;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		847482B116CD85D200AF3EF4 /* Debug */ = {

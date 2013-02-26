@@ -1,0 +1,14 @@
+basic graph info (e.g. iteration, triads): Directed
+  Nodes:                    85
+  Edges:                    247
+  Zero Deg Nodes:           0
+  Zero InDeg Nodes:         2
+  Zero OutDeg Nodes:        2
+  NonZero In-Out Deg Nodes: 81
+  Unique directed edges:    247
+  Unique undirected edges:  241
+  Self Edges:               0
+  BiDir Edges:              12
+  Closed triangles          32
+  Open triangles            1216
+  Frac. of closed triads    0.025641
