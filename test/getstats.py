@@ -10,7 +10,7 @@ import snap as Snap
 MIN_NODES_EXPONENT = 1
 MAX_NODES_EXPONENT = 4
 NUM_ITERATIONS = 4
-PLOT_TYPES = Snap.PlotMx  # Max of 7
+PLOT_TYPES = range(6)  # Max of 8
 GRAPH_TYPES = (0, 3, 4)
 HOSTNAME = gethostname().split('.')[0]
 #GRAPH_TYPES = 5
@@ -35,7 +35,7 @@ def calc_stats():
         print "NNodes=%.2e, %.2e" % (NNodes, NEdges)
         
         # Repeat for all graph types
-        for j in range(PLOT_TYPES):
+        for j in PLOT_TYPES:
           t = Snap.GetStats(NNodes, NEdges, j, g)
           f = open('%s/%s-%s.txt' % (RESULTS_DIR, Snap.GetGraphAbbr(g),
                                      Snap.GetAttributeAbbr(j)), 'a+')
@@ -61,7 +61,7 @@ def plot_stats():
 #  xi = arange(0,9)
 #  A = array([ xi, ones(9)])
 
-  for type in range(PLOT_TYPES):
+  for type in PLOT_TYPES:
     figure()
     
     for g in GRAPH_TYPES:

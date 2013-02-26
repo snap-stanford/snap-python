@@ -52,7 +52,7 @@ const char* const PlotAbbr[] = {
 };
 
 const char* const PlotDesc[] = {
-  "basic graph info (e.g. iteration, triads)",
+  "basic graph info (e.g. node/edge iteration, triads)",
   "cumulative degree",
   "hop plot (diameter)",
   "distribution of weakly connected components",
