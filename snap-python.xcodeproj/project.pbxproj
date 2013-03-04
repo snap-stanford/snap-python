@@ -225,16 +225,6 @@
 		8488019616D20FF300C789B8 /* snapswig.h in Sources */ = {isa = PBXBuildFile; fileRef = 8474831016CD86B300AF3EF4 /* snapswig.h */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		841E018916DC90CD00B86980 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 841E015E16DC90CC00B86980 /* snap-test.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 849666DC163BC32500A299D8;
-			remoteInfo = docs;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXCopyFilesBuildPhase section */
 		8488FEA916D20F8400C789B8 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
@@ -393,9 +383,7 @@
 		841E015916DC90CC00B86980 /* test_ungraph_Twopi_col.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test_ungraph_Twopi_col.png; sourceTree = "<group>"; };
 		841E015A16DC90CC00B86980 /* test_ungraph_Twopi_col.ps */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test_ungraph_Twopi_col.ps; sourceTree = "<group>"; };
 		841E015B16DC90CC00B86980 /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
-		841E015C16DC90CC00B86980 /* run-all-tests */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "run-all-tests"; sourceTree = "<group>"; };
 		841E015D16DC90CC00B86980 /* run-all-tests.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "run-all-tests.cpp"; sourceTree = "<group>"; };
-		841E015E16DC90CC00B86980 /* snap-test.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = "snap-test.xcodeproj"; sourceTree = "<group>"; };
 		841E016116DC90CC00B86980 /* test-alg.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "test-alg.cpp"; sourceTree = "<group>"; };
 		841E016216DC90CC00B86980 /* test-bfsdfs.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "test-bfsdfs.cpp"; sourceTree = "<group>"; };
 		841E016316DC90CC00B86980 /* test-cncom.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "test-cncom.cpp"; sourceTree = "<group>"; };
@@ -403,7 +391,6 @@
 		841E016516DC90CC00B86980 /* test-ggen.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "test-ggen.cpp"; sourceTree = "<group>"; };
 		841E016616DC90CC00B86980 /* test-gio.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "test-gio.cpp"; sourceTree = "<group>"; };
 		841E016716DC90CC00B86980 /* test-gviz.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "test-gviz.cpp"; sourceTree = "<group>"; };
-		841E016816DC90CC00B86980 /* test-gviz.cpp.orig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "test-gviz.cpp.orig"; sourceTree = "<group>"; };
 		841E016916DC90CC00B86980 /* test-helper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "test-helper.cpp"; sourceTree = "<group>"; };
 		841E016A16DC90CC00B86980 /* test-helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "test-helper.h"; sourceTree = "<group>"; };
 		841E016B16DC90CC00B86980 /* test-subgraph.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "test-subgraph.cpp"; sourceTree = "<group>"; };
@@ -417,15 +404,6 @@
 		841E017316DC90CC00B86980 /* test-TStrPool.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "test-TStrPool.cpp"; sourceTree = "<group>"; };
 		841E017416DC90CC00B86980 /* test-TSysTm.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "test-TSysTm.cpp"; sourceTree = "<group>"; };
 		841E017516DC90CC00B86980 /* test-TUNGraph.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "test-TUNGraph.cpp"; sourceTree = "<group>"; };
-		841E017616DC90CC00B86980 /* test.graph.dat */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test.graph.dat; sourceTree = "<group>"; };
-		841E017716DC90CC00B86980 /* test.hashint.dat */ = {isa = PBXFileReference; lastKnownFileType = file; path = test.hashint.dat; sourceTree = "<group>"; };
-		841E017816DC90CC00B86980 /* test.hashstr.dat */ = {isa = PBXFileReference; lastKnownFileType = file; path = test.hashstr.dat; sourceTree = "<group>"; };
-		841E017916DC90CC00B86980 /* test.net.dat */ = {isa = PBXFileReference; lastKnownFileType = file; path = test.net.dat; sourceTree = "<group>"; };
-		841E017A16DC90CC00B86980 /* test.paj.dat */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test.paj.dat; sourceTree = "<group>"; };
-		841E017B16DC90CC00B86980 /* test.pool.dat */ = {isa = PBXFileReference; lastKnownFileType = file; path = test.pool.dat; sourceTree = "<group>"; };
-		841E017C16DC90CC00B86980 /* test.xml.dat */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test.xml.dat; sourceTree = "<group>"; };
-		841E017D16DC90CC00B86980 /* test1.dot.dat */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test1.dot.dat; sourceTree = "<group>"; };
-		841E017E16DC90CC00B86980 /* test2.dot.dat */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test2.dot.dat; sourceTree = "<group>"; };
 		841E018E16DC910800B86980 /* sample_bfsdfs_ngraph.dot */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = sample_bfsdfs_ngraph.dot; sourceTree = "<group>"; };
 		841E018F16DC910800B86980 /* sample_bfsdfs_ngraph.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sample_bfsdfs_ngraph.png; sourceTree = "<group>"; };
 		841E019016DC910800B86980 /* sample_bfsdfs_unpower.dot */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = sample_bfsdfs_unpower.dot; sourceTree = "<group>"; };
@@ -537,8 +515,6 @@
 		8474831316CD86C000AF3EF4 /* p2p-Gnutella08.txt.gz */ = {isa = PBXFileReference; lastKnownFileType = archive.gzip; path = "p2p-Gnutella08.txt.gz"; sourceTree = "<group>"; };
 		8474831416CD86C000AF3EF4 /* Makefile */ = {isa = PBXFileReference; explicitFileType = sourcecode.make; fileEncoding = 4; path = Makefile; sourceTree = "<group>"; };
 		8474831516CD86C000AF3EF4 /* memtest.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = memtest.py; sourceTree = "<group>"; };
-		8474831616CD86C000AF3EF4 /* p2p-Gnutella08.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "p2p-Gnutella08.html"; sourceTree = "<group>"; };
-		8474831716CD86C000AF3EF4 /* p2p-Gnutella08.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "p2p-Gnutella08.txt"; sourceTree = "<group>"; };
 		8474831816CD86C000AF3EF4 /* printstat.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = printstat.py; sourceTree = "<group>"; };
 		8474831A16CD86C000AF3EF4 /* tungraph.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = tungraph.py; sourceTree = "<group>"; };
 		8481DDEA16E2E83F00124EF3 /* checkgraph.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = checkgraph.py; sourceTree = "<group>"; };
@@ -1333,7 +1309,6 @@
 		8488FFFF16D20FB200C789B8 /* linalg.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = linalg.cpp; sourceTree = "<group>"; };
 		849766F416D32A8B00EE1E91 /* getassessment.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = getassessment.cpp; sourceTree = "<group>"; };
 		849766F716D34B6D00EE1E91 /* getstats.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = getstats.py; sourceTree = "<group>"; };
-		8497672B16D4133000EE1E91 /* analysis.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = analysis.py; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1355,9 +1330,7 @@
 				841E00D016DC90CC00B86980 /* cncom */,
 				841E00D716DC90CC00B86980 /* graphviz */,
 				841E015B16DC90CC00B86980 /* Makefile */,
-				841E015C16DC90CC00B86980 /* run-all-tests */,
 				841E015D16DC90CC00B86980 /* run-all-tests.cpp */,
-				841E015E16DC90CC00B86980 /* snap-test.xcodeproj */,
 				841E016116DC90CC00B86980 /* test-alg.cpp */,
 				841E016216DC90CC00B86980 /* test-bfsdfs.cpp */,
 				841E016316DC90CC00B86980 /* test-cncom.cpp */,
@@ -1365,7 +1338,6 @@
 				841E016516DC90CC00B86980 /* test-ggen.cpp */,
 				841E016616DC90CC00B86980 /* test-gio.cpp */,
 				841E016716DC90CC00B86980 /* test-gviz.cpp */,
-				841E016816DC90CC00B86980 /* test-gviz.cpp.orig */,
 				841E016916DC90CC00B86980 /* test-helper.cpp */,
 				841E016A16DC90CC00B86980 /* test-helper.h */,
 				841E016B16DC90CC00B86980 /* test-subgraph.cpp */,
@@ -1379,15 +1351,6 @@
 				841E017316DC90CC00B86980 /* test-TStrPool.cpp */,
 				841E017416DC90CC00B86980 /* test-TSysTm.cpp */,
 				841E017516DC90CC00B86980 /* test-TUNGraph.cpp */,
-				841E017616DC90CC00B86980 /* test.graph.dat */,
-				841E017716DC90CC00B86980 /* test.hashint.dat */,
-				841E017816DC90CC00B86980 /* test.hashstr.dat */,
-				841E017916DC90CC00B86980 /* test.net.dat */,
-				841E017A16DC90CC00B86980 /* test.paj.dat */,
-				841E017B16DC90CC00B86980 /* test.pool.dat */,
-				841E017C16DC90CC00B86980 /* test.xml.dat */,
-				841E017D16DC90CC00B86980 /* test1.dot.dat */,
-				841E017E16DC90CC00B86980 /* test2.dot.dat */,
 			);
 			name = test;
 			path = ../snap/test;
@@ -1558,14 +1521,6 @@
 			path = graphviz;
 			sourceTree = "<group>";
 		};
-		841E015F16DC90CC00B86980 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				841E018A16DC90CD00B86980 /* docs */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		841E018B16DC90EF00B86980 /* snap */ = {
 			isa = PBXGroup;
 			children = (
@@ -1731,7 +1686,6 @@
 				847482E416CD863500AF3EF4 /* tnodei.py */,
 				849766F716D34B6D00EE1E91 /* getstats.py */,
 				8481DDEA16E2E83F00124EF3 /* checkgraph.py */,
-				8497672B16D4133000EE1E91 /* analysis.py */,
 				848801D816D2D7CD00C789B8 /* as20graph.txt */,
 			);
 			path = python;
@@ -1756,8 +1710,6 @@
 				8474831216CD86C000AF3EF4 /* data */,
 				8474831416CD86C000AF3EF4 /* Makefile */,
 				8474831516CD86C000AF3EF4 /* memtest.py */,
-				8474831616CD86C000AF3EF4 /* p2p-Gnutella08.html */,
-				8474831716CD86C000AF3EF4 /* p2p-Gnutella08.txt */,
 				8474831816CD86C000AF3EF4 /* printstat.py */,
 				8474831A16CD86C000AF3EF4 /* tungraph.py */,
 			);
@@ -2997,12 +2949,6 @@
 			mainGroup = 847482A916CD85D200AF3EF4;
 			productRefGroup = 8488FEAC16D20F8400C789B8 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = 841E015F16DC90CC00B86980 /* Products */;
-					ProjectRef = 841E015E16DC90CC00B86980 /* snap-test.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				847482B016CD85D200AF3EF4 /* snap-python */,
@@ -3011,16 +2957,6 @@
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		841E018A16DC90CD00B86980 /* docs */ = {
-			isa = PBXReferenceProxy;
-			fileType = "compiled.mach-o.executable";
-			path = docs;
-			remoteRef = 841E018916DC90CD00B86980 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXSourcesBuildPhase section */
 		8488FEA716D20F8400C789B8 /* Sources */ = {
