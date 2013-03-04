@@ -48,8 +48,7 @@ def calc_stats():
   print "-"*75
 
 # run tests on infolab machines
-# get processor speed (and memory)
-# sysctl -a | grep hw.cpufrequency
+# run simple calibration program, then provide estimate
 
 def plot_stats():
   
@@ -57,9 +56,6 @@ def plot_stats():
   import matplotlib
   matplotlib.use('Agg')
   from pylab import plot,show,xlabel,ylabel,savefig,title,figure,legend
-
-#  xi = arange(0,9)
-#  A = array([ xi, ones(9)])
 
   for type in PLOT_TYPES:
     figure()
@@ -74,7 +70,6 @@ def plot_stats():
       Y = A[:,-1]     # Last column
       X = A[:,:-1]    # Columns 0-(n-1)
       
-  #    print "Y = ", Y, "X = ", X
       # Add column of 1's for intercept
       X = column_stack([X, ones(len(X))])
 
@@ -91,15 +86,18 @@ def plot_stats():
       xlabel('Num Nodes')
       ylabel('time (2.6 GHz)')
       title('%s run time (%s)' % (Snap.GetAttributeDesc(type), HOSTNAME))
-      
+    
+    #end for loop - graph type
+  
     pname = '%s/plot_%s.png' % (RESULTS_DIR, Snap.GetAttributeAbbr(type))
     print "Saving figure %s" % pname
   
-  #end for - graph type
     savefig(pname)
 
     coeff_file = open('%s/coeff.txt' % RESULTS_DIR, 'w+')
     coeff_file.write('%d %.4f %.4f %.4f\n' % (type, w[0], w[1], w[2]))
+
+  #end for loop - plot type
 
 if __name__ == '__main__':
   
