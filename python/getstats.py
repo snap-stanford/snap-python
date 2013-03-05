@@ -1,51 +1,29 @@
 import os
 import sys
 import time
+from random import randrange, choice
 from socket import gethostname
-import os, platform, subprocess, re
 
 sys.path.append("../swig")
 
 import snap as Snap
 
-MIN_NODES_EXPONENT = 1
-MAX_NODES_EXPONENT = 5
-NUM_ITERATIONS = 10
-PLOT_TYPES = [1]   # Max of 8
+MIN_NODES_EXPONENT = 2
+MAX_NODES_EXPONENT = 4
+NUM_ITERATIONS = 5
+PROPERTY_TYPES = [1]   # Max of 8
 GRAPH_TYPES = [4]    # Just RMAT for now
+DEGREE_TYPES = [0, 1]
+
 HOSTNAME = gethostname().split('.')[0]
 AVG_DEG = 3
+AVG_DEGREE_RANGE = range(2, 10)
 #GRAPH_TYPES = 5
 
 RESULTS_DIR = "results-%s" % HOSTNAME
 #RESULTS_DIR = "results-%s" % time.strftime("%m-%d-%H%M.%S")
 
-#def get_processor_name():
-#  
-#  os_string = sys.platform
-#  
-#  if 'win' in os_string:
-#    return platform.processor()
-#  elif 'darwin' in os_string:
-#    import os
-#    os.environ['PATH'] = os.environ['PATH'] + os.pathsep + '/usr/sbin'
-#    command = "sysctl -n machdep.cpu.brand_string"
-#    brand = subprocess.check_output(command).strip()
-#    command = "sysctl -n hw.cpufrequency"
-#    speed = float(subprocess.check_output(command).strip()) / 10**9
-#    return "%s %.2f" % (brand, speed)
-#  elif 'linux' in os_string:
-#    command = "cat /proc/cpuinfo"
-#    all_info = subprocess.check_output(command, shell=True).strip()
-#    for line in allInfo.split("\n"):
-#      if "model name" in line:
-#        return re.sub( ".*model name.*:", "", line,1)
-#  else:
-#    return "unknown"
-
 def calc_stats():
-  
-  from random import randrange
   
   for g in GRAPH_TYPES:
     
@@ -53,169 +31,176 @@ def calc_stats():
         
         # Random number of nodes of degree i
         NNodes = randrange(10**e,10**(e+1))
-        
-        # Random number of edges (from 1-3x nodes)
-#        NEdges = randrange(NNodes, NNodes*3)
-        NEdges = NNodes*AVG_DEG
       
-        print "NNodes=%.2e, %.2e" % (NNodes, NEdges)
+        for avg in DEGREE_TYPES:
         
-        # Repeat for all graph types
-        for j in PLOT_TYPES:
-          t = Snap.GetStats(NNodes, NEdges, j, g)
-          f = open('%s/%s-%s.txt' % (RESULTS_DIR, Snap.GetGraphAbbr(g),
-                                     Snap.GetAttributeAbbr(j)), 'a+')
-          f.write("%d %d %.5f\n" % (NNodes, NEdges, t))
-    
+          if avg:
+            # Use average degree
+            NEdges = NNodes*AVG_DEG
+          
+          else:
+            # Random number of edges (from 1-3x nodes)
+            NEdges = NNodes * choice(AVG_DEGREE_RANGE)
+
+          fname = "%s%s" % (Snap.GetGraphAbbr(g), 'deg%d' % AVG_DEG if avg else '')
+
+          print "NNodes=%.2e, %.2e" % (NNodes, NEdges)
+          
+          # Repeat for all graph types
+          for j in PROPERTY_TYPES:
+            t = Snap.GetStats(NNodes, NEdges, j, g)
+            f = open('%s/%s_%s.txt' % (RESULTS_DIR, fname,
+                                       Snap.GetAttributeAbbr(j)), 'a+')
+            f.write("%d %d %.5f\n" % (NNodes, NEdges, t))
+  
     # For each characteristic:
     # Write out test data to same file (linear fit using matlab?)
     # NNodes NEdges Time
     
   print "-"*75
 
-# run tests on infolab machines
-# run simple calibration program, then provide estimate
-
 import matplotlib
 matplotlib.use('Agg')
 
-from pylab import plot,loglog,show,xlabel,ylabel,savefig,title,figure,legend,grid
-from numpy import sort,array,ones,linalg,column_stack,loadtxt
+from pylab import *
+from numpy import sort,array,ones,linalg,column_stack,loadtxt,savetxt
 from scipy import *
-from scipy import optimize
+from scipy.optimize import leastsq
+from scipy import linalg
 
+import pdb
   
 ##########
 # Fitting the data -- Least Squares Method
 ##########
-def poly_fit(Xdata, Ydata, label):
+def plot_fit(Xdata, Ydata, labelstr, fit_type):
   
-  X = Xdata
+  print "Fitting %s" % labelstr
+  X1 = Xdata[:,0]  # Nodes
+  X2 = Xdata[:,1]  # Edges
   Y = Ydata
 
-  # define our (line) fitting function
-  fitfunc = lambda p, x: p[0] + p[1] * x
+  if fit_type == "poly":
+    # define our (line) fitting function
+    fitfunc = lambda p, x1, x2: (p[0] + p[1] * x1 + p[2] * x2)
+    pinit = [1.0 for i in range(3)]
+  
+  if fit_type == "exp":
+    # define our (line) fitting function
+    Y = log(Y)
+    fitfunc = lambda p, x1, x2: (p[0] + p[1] * x1 + p[3] * x2)
+    pinit = [1.0 for i in range(5)]
+                                 
+  if fit_type == "log":
+    # define our (line) fitting function
+    fitfunc = lambda p, x1, x2: (p[0] + p[1] * log10(x1) + p[2] * log10(x2))
+    pinit = [1.0 for i in range(3)]
+
   #  errfunc = lambda p, x, y, err: (y - fitfunc(p, x)) / err
-  errfunc = lambda p, x, y: (y - fitfunc(p, x))
+  errfunc = lambda p, y, x1, x2: (y - fitfunc(p, x1, x2))
 
-  pinit = [1.0, 1.0]
   pfinal,covar,infodict,mesg,ier = \
-      optimize.leastsq(errfunc, pinit, args=(X, Y), full_output=1)
+      leastsq(errfunc, pinit, args=(Y, X1, X2), full_output=1)
   
   print "pfinal = ", pfinal
-  print "covar: \n", covar
-  
+#  print "covar: \n", covar
+#  print "infodict['fvec']: ", infodict['fvec']
+
   ss_err=(infodict['fvec']**2).sum()
-  ss_tot=((Y-X.mean())**2).sum()
+  ss_tot=((Y-Y.mean())**2).sum()
   rsquared=1-(ss_err/ss_tot)
-  print "Poly: rsquared = ", rsquared
-  
-  index = pfinal[1]
-  amp = 10.0**pfinal[0]
-  
-  indexErr = sqrt( covar[0][0] )
-  ampErr = sqrt( covar[1][1] ) * amp
-  plot(X, Y, 'o', label=label)
-  
-  grid(True)
-  Y_fit = fitfunc(pfinal,X)
-  plot(X, Y_fit, '-', label=("%s-poly" % label))
+  print "%s: rsquared = %.3f" % (fit_type, rsquared)
 
-def powerlaw_fit(Xdata, Ydata, label):
-# Power-law fitting is best done by first converting
-# to a linear equation and then fitting to a straight line.
-#
-#  y = a * x^b
-#  log(y) = log(a) + b*log(x)
-#
+  labelstr = "%s (r2=%.3f)" % (fit_type, rsquared)  
+  plot(X1, errfunc(pfinal, Y, X1, X2), '.', label=labelstr)
 
-#  X = log10(Xdata)
-  X = Xdata
-#  Y = log10(Ydata)
-  Y = Ydata
-#  logyerr = yerr / ydata
-
-  # define our (line) fitting function
-  fitfunc = lambda p, x: p[0] + p[1] * x
-#  errfunc = lambda p, x, y, err: (y - fitfunc(p, x)) / err
-  errfunc = lambda p, x, y: (y - fitfunc(p, x))
-
-  pinit = [1.0, -1.0]
-  pfinal,covar,infodict,mesg,ier = optimize.leastsq( \
-                    errfunc, pinit, args=(X, Y), full_output=1)
-
-  print "pfinal = ", pfinal
-  print "covar = ", covar
-  
-  ss_err=(infodict['fvec']**2).sum()
-  ss_tot=((Y-X.mean())**2).sum()
-  rsquared=1-(ss_err/ss_tot)
-  print "rsquared = ", rsquared
-
-  index = pfinal[1]
-  amp = 10.0**pfinal[0]
-
-  indexErr = sqrt( covar[0][0] )
-  ampErr = sqrt( covar[1][1] ) * amp
-  loglog(X, Y, 'o', label=label)
-  
-  grid(True)
-  Y_fit = fitfunc(pfinal,X)
-  plot(Xdata, Y_fit, '-', label=("%s-power" % label))
+#  index = pfinal[1]
+#  amp = 10.0**pfinal[0]
+#  
+#  indexErr = sqrt( covar[0][0] )
+#  ampErr = sqrt( covar[1][1] ) * amp
+#  plot(X, Y, 'o', label=label)
+#  
+#  Y_fit = fitfunc(pfinal,X)
+#  plot(X, fitfunc(pfinal, X1, X2), '-', label=("%s-poly fit" % label))
+#  plot(X, Y_fit, '-', label=("%s" % label))
+#  plot(X, fitfunc(pfinal, X1, X2), '-', label=("%s-poly fit" % label))
 
 #def func(x, a, b, c):
 #  return a * numpy.exp(-b * x) + c
 
 def plot_stats():
   
-  for type in PLOT_TYPES:
+  for type in PROPERTY_TYPES:
     
-    figure()
     for g in GRAPH_TYPES:
     
-      fname = '%s/%s-%s.txt' % (RESULTS_DIR, Snap.GetGraphAbbr(g),
-                                Snap.GetAttributeAbbr(type))
-      print "Plotting '%s'" % fname
-      A = loadtxt(fname)
-      A = sort(A,0)
-      Y = A[:,-1]     # Last column
-      X = A[:,:-1]    # Columns 0-(n-1)
+      for avg in DEGREE_TYPES:
+        fname = '%s/%s%s_%s.txt' % (RESULTS_DIR, Snap.GetGraphAbbr(g),
+                                    'deg%d' % AVG_DEG if avg else '',
+                                    Snap.GetAttributeAbbr(type))
+        
+        A = loadtxt(fname)
+        A = sort(A,0)
+        Y = A[:,-1]     # Last column
+        X = A[:,:-1]    # Columns 0-(n-1)
+  #      savetxt(fname+'_sorted.txt', A)
       
-      # Add column of 1's for intercept
-      X = column_stack([X, ones(len(X))])
+        if avg:
 
-      # Fit using least-squares
-#      logX = log10(X)
-#      logY = log10(Y)
-#      w = linalg.lstsq(logX,logY)[0] # obtaining the parameters
-#      print "N = %d" % len(X)
-#      print "coefficients = ", w
-#      # Plot the least-squares line
-#      Y_fit = w[0]*logX[:,0] + w[1]*logX[:,1] + w[2] # get regression line
-      
-      # Fit using Levenburg-Marquardt algorithm through leastsq
-#      p0 = scipy.array([1,1,1])
-#      coeffs, matcov = curve_fit(func, X[:,0], Y, p0)
-#      Y_fit = func(x, coeffs[0], coeffs[1], coeffs[2])
+          figure()
+          loglog(X[:,0], Y,'o', label=Snap.GetGraphDesc(g))
+          legend(loc='lower right')
+          xlabel('Num Nodes (d_avg = %.1f)' % AVG_DEG)
+          ylabel('time')
+          title('%s runtime (avg degree = %d)' % (Snap.GetGraphDesc(g), AVG_DEG))
+          pname = '%s/plot_%s.png' % (RESULTS_DIR, Snap.GetAttributeAbbr(type))
+          print "Saving figure %s" % pname
+          savefig(pname)
 
-#      powerlaw_fit(X[:,0], Y, "%s-fit" % Snap.GetGraphDesc(g))
-      poly_fit(X[:,0], Y, "%s" % Snap.GetGraphDesc(g))
+        else:
+          # Random average degree
+          
+          # Plot 3d
+          import mpl_toolkits.mplot3d.axes3d as p3
+          fig3d = figure()
+          ax = fig3d.add_subplot(111, projection='3d')
+          Nodes = X[:,0]
+          Edges = X[:,1]
+          ax.scatter(Nodes,Edges,Y)
+          ax.set_xlabel('# of nodes', fontsize=9)
+          ax.set_ylabel('# of edges', fontsize=9)
+          ax.set_zlabel('Run time %s' % Snap.GetAttributeAbbr(type), fontsize=9)
+          ax.auto_scale_xyz([0, max(Nodes)], [0, max(Edges)], [0, max(Y)])
+          pname = '%s/plot3d%s_%s.png' % (RESULTS_DIR, 'deg%d' % AVG_DEG if avg else '',
+                                          Snap.GetAttributeAbbr(type))
+          print "Saving figure %s" % pname
+          fig3d.savefig(pname)
 
-      
-#      loglog(X[:,0], Y,'o', label=Snap.GetGraphDesc(g))
-#      loglog(X[:,0], Y_fit, label="%s-fit" % Snap.GetGraphDesc(g))
-      legend(loc='lower right')
-      xlabel('Num Nodes (d_avg = %.1f)' % AVG_DEG)
-      ylabel('time')
-      
-      title('%s run time (%s)' % (Snap.GetAttributeDesc(type), HOSTNAME))
+          # Plot residuals with multiple fitting types
+          figure()
+          plot_fit(X, Y, "%s" % Snap.GetGraphDesc(g), 'poly')
+          plot_fit(X, Y, "%s" % Snap.GetGraphDesc(g), 'exp')
+          plot_fit(X, Y, "%s" % Snap.GetGraphDesc(g), 'log')
+          
+          title('%s Residuals' % Snap.GetAttributeDesc(type))
+          xscale('log')
+          grid(True)
+          xlabel('Num Nodes')
+          ylabel('Residuals')
+          legend()
+          pname = '%s/residuals%s_%s.png' % (RESULTS_DIR,'deg%d' % AVG_DEG if avg else '',
+                                             Snap.GetAttributeAbbr(type))
+          print "Saving figure %s" % pname
+          savefig(pname)
+
+
 
     #end for loop - graph type
   
-    pname = '%s/plot_%s.png' % (RESULTS_DIR, Snap.GetAttributeAbbr(type))
-    print "Saving figure %s" % pname
-  
-    savefig(pname)
+#    pname = '%s/plot_%s.png' % (RESULTS_DIR, Snap.GetAttributeAbbr(type))
+#    print "Saving figure %s" % pname
+#    savefig(pname)
 
 #    coeff_file = open('%s/coeff.txt' % RESULTS_DIR, 'w+')
 #    coeff_file.write('%d %.4f %.4f %.4f\n' % (type, w[0], w[1], w[2]))
@@ -232,7 +217,7 @@ if __name__ == '__main__':
 #    calc_stats()
 #    
 #    # Update plots every 5 iterations
-#    if (n+1) % 2 == 0:
+#    if (n+1) % 5 == 0:
 #      print "Iteration %d of %d:" % (n+1, NUM_ITERATIONS)
 #      plot_stats()
 
