@@ -37,6 +37,7 @@ typedef enum {
   PlotClustCoef,  /* clustering coefficient */
   PlotSVal, /* singular values */
   PlotSVec,  /* left and right singular vector */
+  BFS,      /* BFS Subset. */
   PlotMx
 } PlotType;
 
@@ -51,19 +52,24 @@ const char* const PlotAbbr[] = {
   "ClustCoef",  /* clustering coefficient */
   "SVal", /* singular values */
   "SVec",  /* left and right singular vector */
+  "BFS",  /* BFS Subset. */
 };
 
 const char* const PlotDesc[] = {
   "node/edge iteration",
   "triads",
+  "dgree distribution",
   "cumulative degree",
   "hop plot (diameter)",
   "distribution of weakly connected components",
   "distribution of strongly connected components",
   "clustering coefficient",
   "singular values",
-  "left and right singular vector"  ,
+  "left and right singular vector",
+  "Breadth First Search (subset)", 
 };
+
+#define NUM_NODES_BFS   10
 
 using namespace TSnap;
 
@@ -102,7 +108,16 @@ void RunClustCf(const PGraph& Graph) {
   int64 ClosedTriads, OpenTriads;
   const double CCF = GetClustCf(Graph, DegToCCfV, ClosedTriads, OpenTriads);
   #pragma unused(CCF)
+}
+
+template <class PGraph>
+void RunBFS(const PGraph& Graph) {
   
+  // Get BFS tree
+  for (int i=0; i < NUM_NODES_BFS; i++) {
+    int StartNId = Graph->GetRndNId();
+    GetBfsTree(Graph, StartNId, true, true);
+  }
 }
 
 template<class PGraph>
@@ -111,7 +126,7 @@ void RunCalculations(const PGraph& Graph, PlotType PType) {
   TStr OutFNm = PlotAbbr[PType], Desc = PlotDesc[PType];
   const int SingularVals = Graph->GetNodes()/2 > 200 ? 200 :
                            Graph->GetNodes()/2;
-  printf("Calculating '%s'\n", PlotDesc[PType]);
+//  printf("Calculating '%s'\n", PlotDesc[PType]);
   switch (PType) {
     case Iteration:
 //      PrintInfo(Graph, Desc, OutFNm, 0); // Not fast option
@@ -158,6 +173,11 @@ void RunCalculations(const PGraph& Graph, PlotType PType) {
       PlotSngVec(ConvertGraph<PNGraph>(Graph, true), OutFNm, Desc);
       break;
       
+    case BFS:
+      //      PlotClustCf(Graph, OutFNm, Desc);
+      RunBFS(Graph);
+      break;
+
     default:
       break;
   }
@@ -166,7 +186,7 @@ void RunCalculations(const PGraph& Graph, PlotType PType) {
 double GetStats(int NNodes, int NEdges, PlotType PType, GraphType RType) {
   
   TExeTm ExeTm;
-  printf("Timing '%s'\n", PlotDesc[PType]);
+//  printf("Timing '%s'\n", PlotDesc[PType]);
   
   int StartTime = clock();
   
@@ -175,8 +195,8 @@ double GetStats(int NNodes, int NEdges, PlotType PType, GraphType RType) {
   
   switch (RType) {
     case SmallWorld:
-      printf("Generating random graph for %d nodes, %d edges\n",
-             NNodes, NEdges);
+//      printf("Generating random graph for %d nodes, %d edges\n",
+//             NNodes, NEdges);
       GN = GenRndGnm<PNGraph>(NNodes, NEdges);
       RunCalculations(GN, PType);
       break;
@@ -188,14 +208,14 @@ double GetStats(int NNodes, int NEdges, PlotType PType, GraphType RType) {
       break;
 
     case PrefAttach:
-      printf("Generating preferential attachment graph for %d nodes, %d edges\n", NNodes, 5);
+//      printf("Generating preferential attachment graph for %d nodes, %d edges\n", NNodes, 5);
       GUn = GenPrefAttach(NNodes, 5);
       RunCalculations(GUn, PType);
       break;
       
     case RMat:
-      printf("Generating R-MAT for %d nodes, %d edges\n",
-             NNodes, NEdges);
+//      printf("Generating R-MAT for %d nodes, %d edges\n",
+//             NNodes, NEdges);
       GN = GenRMat(NNodes, NEdges, 0.40, 0.25, 0.2);
       RunCalculations(GN, PType);
       break;

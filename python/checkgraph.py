@@ -29,7 +29,6 @@ if __name__ == '__main__':
     good = Snap.PercentDegree_PNGraph(G, degree)
     print "Percent with at least degree %d: %.3f" % (good, degree)
 
-
   print "Percent in Max Weakly Conn Comp: %.3f" % \
     Snap.PercentMxWcc_PNGraph(G)
 
