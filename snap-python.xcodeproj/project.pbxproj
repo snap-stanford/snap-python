@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		841E00C516DC449900B86980 /* getassessment.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 849766F416D32A8B00EE1E91 /* getassessment.cpp */; };
+		8456FCEA16E2E28D00ECCD5F /* goodgraph.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8456FCE916E2E28D00ECCD5F /* goodgraph.cpp */; };
 		848800B916D20FB200C789B8 /* acquis.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8488FEB716D20FB200C789B8 /* acquis.cpp */; };
 		848800BA16D20FB200C789B8 /* adox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8488FEB916D20FB200C789B8 /* adox.cpp */; };
 		848800BB16D20FB200C789B8 /* aest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8488FEBB16D20FB200C789B8 /* aest.cpp */; };
@@ -224,23 +225,6 @@
 		8488019616D20FF300C789B8 /* snapswig.h in Sources */ = {isa = PBXBuildFile; fileRef = 8474831016CD86B300AF3EF4 /* snapswig.h */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		841E018916DC90CD00B86980 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 841E015E16DC90CC00B86980 /* snap-test.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 849666DC163BC32500A299D8;
-			remoteInfo = docs;
-		};
-		8488035B16D2D7CE00C789B8 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 8488032916D2D7CE00C789B8 /* snap-examples.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 848A722A16D1A36700E6F7D3;
-			remoteInfo = docs;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXCopyFilesBuildPhase section */
 		8488FEA916D20F8400C789B8 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
@@ -399,9 +383,7 @@
 		841E015916DC90CC00B86980 /* test_ungraph_Twopi_col.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test_ungraph_Twopi_col.png; sourceTree = "<group>"; };
 		841E015A16DC90CC00B86980 /* test_ungraph_Twopi_col.ps */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test_ungraph_Twopi_col.ps; sourceTree = "<group>"; };
 		841E015B16DC90CC00B86980 /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
-		841E015C16DC90CC00B86980 /* run-all-tests */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "run-all-tests"; sourceTree = "<group>"; };
 		841E015D16DC90CC00B86980 /* run-all-tests.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "run-all-tests.cpp"; sourceTree = "<group>"; };
-		841E015E16DC90CC00B86980 /* snap-test.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = "snap-test.xcodeproj"; sourceTree = "<group>"; };
 		841E016116DC90CC00B86980 /* test-alg.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "test-alg.cpp"; sourceTree = "<group>"; };
 		841E016216DC90CC00B86980 /* test-bfsdfs.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "test-bfsdfs.cpp"; sourceTree = "<group>"; };
 		841E016316DC90CC00B86980 /* test-cncom.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "test-cncom.cpp"; sourceTree = "<group>"; };
@@ -409,7 +391,6 @@
 		841E016516DC90CC00B86980 /* test-ggen.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "test-ggen.cpp"; sourceTree = "<group>"; };
 		841E016616DC90CC00B86980 /* test-gio.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "test-gio.cpp"; sourceTree = "<group>"; };
 		841E016716DC90CC00B86980 /* test-gviz.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "test-gviz.cpp"; sourceTree = "<group>"; };
-		841E016816DC90CC00B86980 /* test-gviz.cpp.orig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "test-gviz.cpp.orig"; sourceTree = "<group>"; };
 		841E016916DC90CC00B86980 /* test-helper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "test-helper.cpp"; sourceTree = "<group>"; };
 		841E016A16DC90CC00B86980 /* test-helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "test-helper.h"; sourceTree = "<group>"; };
 		841E016B16DC90CC00B86980 /* test-subgraph.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "test-subgraph.cpp"; sourceTree = "<group>"; };
@@ -423,15 +404,6 @@
 		841E017316DC90CC00B86980 /* test-TStrPool.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "test-TStrPool.cpp"; sourceTree = "<group>"; };
 		841E017416DC90CC00B86980 /* test-TSysTm.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "test-TSysTm.cpp"; sourceTree = "<group>"; };
 		841E017516DC90CC00B86980 /* test-TUNGraph.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "test-TUNGraph.cpp"; sourceTree = "<group>"; };
-		841E017616DC90CC00B86980 /* test.graph.dat */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test.graph.dat; sourceTree = "<group>"; };
-		841E017716DC90CC00B86980 /* test.hashint.dat */ = {isa = PBXFileReference; lastKnownFileType = file; path = test.hashint.dat; sourceTree = "<group>"; };
-		841E017816DC90CC00B86980 /* test.hashstr.dat */ = {isa = PBXFileReference; lastKnownFileType = file; path = test.hashstr.dat; sourceTree = "<group>"; };
-		841E017916DC90CC00B86980 /* test.net.dat */ = {isa = PBXFileReference; lastKnownFileType = file; path = test.net.dat; sourceTree = "<group>"; };
-		841E017A16DC90CC00B86980 /* test.paj.dat */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test.paj.dat; sourceTree = "<group>"; };
-		841E017B16DC90CC00B86980 /* test.pool.dat */ = {isa = PBXFileReference; lastKnownFileType = file; path = test.pool.dat; sourceTree = "<group>"; };
-		841E017C16DC90CC00B86980 /* test.xml.dat */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test.xml.dat; sourceTree = "<group>"; };
-		841E017D16DC90CC00B86980 /* test1.dot.dat */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test1.dot.dat; sourceTree = "<group>"; };
-		841E017E16DC90CC00B86980 /* test2.dot.dat */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test2.dot.dat; sourceTree = "<group>"; };
 		841E018E16DC910800B86980 /* sample_bfsdfs_ngraph.dot */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = sample_bfsdfs_ngraph.dot; sourceTree = "<group>"; };
 		841E018F16DC910800B86980 /* sample_bfsdfs_ngraph.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sample_bfsdfs_ngraph.png; sourceTree = "<group>"; };
 		841E019016DC910800B86980 /* sample_bfsdfs_unpower.dot */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = sample_bfsdfs_unpower.dot; sourceTree = "<group>"; };
@@ -530,7 +502,7 @@
 		841E01EF16DC910800B86980 /* demo_ungraph_Twopi_col.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = demo_ungraph_Twopi_col.png; sourceTree = "<group>"; };
 		841E01F016DC910800B86980 /* demo_ungraph_Twopi_col.ps */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = demo_ungraph_Twopi_col.ps; sourceTree = "<group>"; };
 		841E01F116DC910800B86980 /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
-		841E01F216DC910800B86980 /* tutorials.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = tutorials.xcodeproj; sourceTree = "<group>"; };
+		8456FCE916E2E28D00ECCD5F /* goodgraph.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = goodgraph.cpp; sourceTree = "<group>"; };
 		847482E016CD863500AF3EF4 /* Makefile */ = {isa = PBXFileReference; explicitFileType = sourcecode.make; fileEncoding = 4; path = Makefile; sourceTree = "<group>"; };
 		847482E216CD863500AF3EF4 /* bench.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = bench.py; sourceTree = "<group>"; };
 		847482E316CD863500AF3EF4 /* load.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = load.py; sourceTree = "<group>"; };
@@ -539,15 +511,13 @@
 		8474830816CD86B300AF3EF4 /* Makefile */ = {isa = PBXFileReference; explicitFileType = sourcecode.make; fileEncoding = 4; path = Makefile; sourceTree = "<group>"; };
 		8474830916CD86B300AF3EF4 /* printgraph.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; path = printgraph.h; sourceTree = "<group>"; };
 		8474830A16CD86B300AF3EF4 /* snap.i */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c.preprocessed; path = snap.i; sourceTree = "<group>"; };
-		8474830C16CD86B300AF3EF4 /* snap.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = snap.py; sourceTree = "<group>"; };
 		8474831016CD86B300AF3EF4 /* snapswig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = snapswig.h; sourceTree = "<group>"; };
 		8474831316CD86C000AF3EF4 /* p2p-Gnutella08.txt.gz */ = {isa = PBXFileReference; lastKnownFileType = archive.gzip; path = "p2p-Gnutella08.txt.gz"; sourceTree = "<group>"; };
 		8474831416CD86C000AF3EF4 /* Makefile */ = {isa = PBXFileReference; explicitFileType = sourcecode.make; fileEncoding = 4; path = Makefile; sourceTree = "<group>"; };
 		8474831516CD86C000AF3EF4 /* memtest.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = memtest.py; sourceTree = "<group>"; };
-		8474831616CD86C000AF3EF4 /* p2p-Gnutella08.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "p2p-Gnutella08.html"; sourceTree = "<group>"; };
-		8474831716CD86C000AF3EF4 /* p2p-Gnutella08.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "p2p-Gnutella08.txt"; sourceTree = "<group>"; };
 		8474831816CD86C000AF3EF4 /* printstat.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = printstat.py; sourceTree = "<group>"; };
 		8474831A16CD86C000AF3EF4 /* tungraph.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = tungraph.py; sourceTree = "<group>"; };
+		8481DDEA16E2E83F00124EF3 /* checkgraph.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = checkgraph.py; sourceTree = "<group>"; };
 		8488000016D20FB200C789B8 /* linalg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = linalg.h; sourceTree = "<group>"; };
 		8488000116D20FB200C789B8 /* lx.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lx.cpp; sourceTree = "<group>"; };
 		8488000216D20FB200C789B8 /* lx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lx.h; sourceTree = "<group>"; };
@@ -616,8 +586,6 @@
 		8488004416D20FB200C789B8 /* anf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = anf.h; sourceTree = "<group>"; };
 		8488004516D20FB200C789B8 /* bfsdfs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bfsdfs.h; sourceTree = "<group>"; };
 		8488004616D20FB200C789B8 /* bignet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bignet.h; sourceTree = "<group>"; };
-		8488006916D20FB200C789B8 /* ccf.RndGraph.plt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ccf.RndGraph.plt; sourceTree = "<group>"; };
-		8488006A16D20FB200C789B8 /* ccf.RndGraph.tab */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ccf.RndGraph.tab; sourceTree = "<group>"; };
 		8488006B16D20FB200C789B8 /* centr.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = centr.cpp; sourceTree = "<group>"; };
 		8488006C16D20FB200C789B8 /* centr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = centr.h; sourceTree = "<group>"; };
 		8488006D16D20FB200C789B8 /* cmty.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = cmty.cpp; sourceTree = "<group>"; };
@@ -655,17 +623,9 @@
 		8488008E16D20FB200C789B8 /* gsvd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gsvd.h; sourceTree = "<group>"; };
 		8488008F16D20FB200C789B8 /* gviz.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = gviz.cpp; sourceTree = "<group>"; };
 		8488009016D20FB200C789B8 /* gviz.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gviz.h; sourceTree = "<group>"; };
-		8488009116D20FB200C789B8 /* hop.RndGraph.plt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = hop.RndGraph.plt; sourceTree = "<group>"; };
-		8488009216D20FB200C789B8 /* hop.RndGraph.tab */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = hop.RndGraph.tab; sourceTree = "<group>"; };
-		8488009316D20FB200C789B8 /* inDeg.RndGraph.plt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = inDeg.RndGraph.plt; sourceTree = "<group>"; };
-		8488009416D20FB200C789B8 /* inDeg.RndGraph.tab */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = inDeg.RndGraph.tab; sourceTree = "<group>"; };
 		8488009516D20FB200C789B8 /* kcore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = kcore.h; sourceTree = "<group>"; };
 		8488009616D20FB200C789B8 /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
 		8488009716D20FB200C789B8 /* network.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = network.h; sourceTree = "<group>"; };
-		8488009816D20FB200C789B8 /* outDeg.RndGraph.plt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = outDeg.RndGraph.plt; sourceTree = "<group>"; };
-		8488009916D20FB200C789B8 /* outDeg.RndGraph.tab */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = outDeg.RndGraph.tab; sourceTree = "<group>"; };
-		8488009A16D20FB200C789B8 /* scc.RndGraph.plt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = scc.RndGraph.plt; sourceTree = "<group>"; };
-		8488009B16D20FB200C789B8 /* scc.RndGraph.tab */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = scc.RndGraph.tab; sourceTree = "<group>"; };
 		848800A016D20FB200C789B8 /* Snap.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Snap.cpp; sourceTree = "<group>"; };
 		848800A116D20FB200C789B8 /* Snap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Snap.h; sourceTree = "<group>"; };
 		848800A216D20FB200C789B8 /* Snap.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = Snap.o; sourceTree = "<group>"; };
@@ -674,23 +634,13 @@
 		848800A516D20FB200C789B8 /* stdafx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stdafx.h; sourceTree = "<group>"; };
 		848800A616D20FB200C789B8 /* subgraph.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = subgraph.cpp; sourceTree = "<group>"; };
 		848800A716D20FB200C789B8 /* subgraph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = subgraph.h; sourceTree = "<group>"; };
-		848800A816D20FB200C789B8 /* sval.RndGraph.plt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = sval.RndGraph.plt; sourceTree = "<group>"; };
-		848800A916D20FB200C789B8 /* sval.RndGraph.tab */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = sval.RndGraph.tab; sourceTree = "<group>"; };
-		848800AA16D20FB200C789B8 /* svec.RndGraph.plt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = svec.RndGraph.plt; sourceTree = "<group>"; };
-		848800AB16D20FB200C789B8 /* svec.RndGraph.tab */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = svec.RndGraph.tab; sourceTree = "<group>"; };
 		848800AC16D20FB200C789B8 /* testSnap */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = testSnap; sourceTree = "<group>"; };
 		848800AD16D20FB200C789B8 /* testSnap.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = testSnap.cpp; sourceTree = "<group>"; };
 		848800AE16D20FB200C789B8 /* timenet.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = timenet.cpp; sourceTree = "<group>"; };
 		848800AF16D20FB200C789B8 /* timenet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = timenet.h; sourceTree = "<group>"; };
 		848800B016D20FB200C789B8 /* triad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = triad.h; sourceTree = "<group>"; };
-		848800B116D20FB200C789B8 /* triad.RndGraph.plt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = triad.RndGraph.plt; sourceTree = "<group>"; };
-		848800B216D20FB200C789B8 /* triad.RndGraph.tab */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = triad.RndGraph.tab; sourceTree = "<group>"; };
 		848800B316D20FB200C789B8 /* util.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = util.cpp; sourceTree = "<group>"; };
 		848800B416D20FB200C789B8 /* util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = util.h; sourceTree = "<group>"; };
-		848800B516D20FB200C789B8 /* wcc.RndGraph.plt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = wcc.RndGraph.plt; sourceTree = "<group>"; };
-		848800B616D20FB200C789B8 /* wcc.RndGraph.tab */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = wcc.RndGraph.tab; sourceTree = "<group>"; };
-		848800B716D20FB200C789B8 /* wccHop.RndGraph.plt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = wccHop.RndGraph.plt; sourceTree = "<group>"; };
-		848800B816D20FB200C789B8 /* wccHop.RndGraph.tab */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = wccHop.RndGraph.tab; sourceTree = "<group>"; };
 		848801BC16D2D7CD00C789B8 /* agmfit.vcxproj */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = agmfit.vcxproj; sourceTree = "<group>"; };
 		848801BD16D2D7CD00C789B8 /* agmfitmain */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = agmfitmain; sourceTree = "<group>"; };
 		848801BE16D2D7CD00C789B8 /* agmfitmain.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = agmfitmain.cpp; sourceTree = "<group>"; };
@@ -717,7 +667,7 @@
 		848801D516D2D7CD00C789B8 /* stdafx.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = stdafx.cpp; sourceTree = "<group>"; };
 		848801D616D2D7CD00C789B8 /* stdafx.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = stdafx.h; sourceTree = "<group>"; };
 		848801D716D2D7CD00C789B8 /* targetver.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = targetver.h; sourceTree = "<group>"; };
-		848801D816D2D7CD00C789B8 /* as20graph.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = as20graph.txt; sourceTree = "<group>"; };
+		848801D816D2D7CD00C789B8 /* as20graph.txt */ = {isa = PBXFileReference; lastKnownFileType = text; name = as20graph.txt; path = ../../snap/examples/as20graph.txt; sourceTree = "<group>"; };
 		848801DA16D2D7CD00C789B8 /* bigclam */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = bigclam; sourceTree = "<group>"; };
 		848801DB16D2D7CD00C789B8 /* bigclam.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = bigclam.1; sourceTree = "<group>"; };
 		848801DC16D2D7CD00C789B8 /* bigclam.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = bigclam.cpp; sourceTree = "<group>"; };
@@ -1018,11 +968,6 @@
 		8488032316D2D7CE00C789B8 /* stdafx.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = stdafx.h; sourceTree = "<group>"; };
 		8488032416D2D7CE00C789B8 /* targetver.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = targetver.h; sourceTree = "<group>"; };
 		8488032516D2D7CE00C789B8 /* README */ = {isa = PBXFileReference; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
-		8488032716D2D7CE00C789B8 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
-		8488032816D2D7CE00C789B8 /* snap_examples.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = snap_examples.1; sourceTree = "<group>"; };
-		8488032916D2D7CE00C789B8 /* snap-examples.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = "snap-examples.xcodeproj"; sourceTree = "<group>"; };
-		8488032C16D2D7CE00C789B8 /* SnapExamples-VS08.sln */ = {isa = PBXFileReference; lastKnownFileType = text; path = "SnapExamples-VS08.sln"; sourceTree = "<group>"; };
-		8488032D16D2D7CE00C789B8 /* SnapExamples-VS10.sln */ = {isa = PBXFileReference; lastKnownFileType = text; path = "SnapExamples-VS10.sln"; sourceTree = "<group>"; };
 		8488032F16D2D7CE00C789B8 /* Makefile */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
 		8488033016D2D7CE00C789B8 /* Makefile.ex */ = {isa = PBXFileReference; lastKnownFileType = text; path = Makefile.ex; sourceTree = "<group>"; };
 		8488033116D2D7CE00C789B8 /* ReadMe.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = ReadMe.txt; sourceTree = "<group>"; };
@@ -1034,23 +979,6 @@
 		8488033716D2D7CE00C789B8 /* testgraph.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; path = testgraph.dSYM; sourceTree = "<group>"; };
 		8488033816D2D7CE00C789B8 /* testgraph.vcproj */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = testgraph.vcproj; sourceTree = "<group>"; };
 		8488033916D2D7CE00C789B8 /* testgraph.vcxproj */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = testgraph.vcxproj; sourceTree = "<group>"; };
-		8488FC7616D1F39800C789B8 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
-		8488FC7716D1F39800C789B8 /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
-		8488FC7916D1F39800C789B8 /* bench.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = bench.py; sourceTree = "<group>"; };
-		8488FC7A16D1F39800C789B8 /* load.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = load.py; sourceTree = "<group>"; };
-		8488FC7B16D1F39800C789B8 /* tnodei.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = tnodei.py; sourceTree = "<group>"; };
-		8488FC7C16D1F39800C789B8 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
-		8488FC7E16D1F39800C789B8 /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
-		8488FC7F16D1F39800C789B8 /* printgraph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = printgraph.h; sourceTree = "<group>"; };
-		8488FC8016D1F39800C789B8 /* snap.i */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c.preprocessed; path = snap.i; sourceTree = "<group>"; };
-		8488FC8116D1F39800C789B8 /* snapsw.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = snapsw.h; sourceTree = "<group>"; };
-		8488FC8216D1F39800C789B8 /* snapswig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = snapswig.h; sourceTree = "<group>"; };
-		8488FC8516D1F39800C789B8 /* p2p-Gnutella08.txt.gz */ = {isa = PBXFileReference; lastKnownFileType = archive.gzip; path = "p2p-Gnutella08.txt.gz"; sourceTree = "<group>"; };
-		8488FC8616D1F39800C789B8 /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
-		8488FC8716D1F39800C789B8 /* memtest.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = memtest.py; sourceTree = "<group>"; };
-		8488FC8816D1F39800C789B8 /* printstat.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = printstat.py; sourceTree = "<group>"; };
-		8488FC8916D1F39800C789B8 /* tungraph.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = tungraph.py; sourceTree = "<group>"; };
-		8488FC8A16D1F39800C789B8 /* vec.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = vec.py; sourceTree = "<group>"; };
 		8488FEAB16D20F8400C789B8 /* docs */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = docs; sourceTree = BUILT_PRODUCTS_DIR; };
 		8488FEB716D20FB200C789B8 /* acquis.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = acquis.cpp; sourceTree = "<group>"; };
 		8488FEB816D20FB200C789B8 /* acquis.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = acquis.h; sourceTree = "<group>"; };
@@ -1381,7 +1309,6 @@
 		8488FFFF16D20FB200C789B8 /* linalg.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = linalg.cpp; sourceTree = "<group>"; };
 		849766F416D32A8B00EE1E91 /* getassessment.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = getassessment.cpp; sourceTree = "<group>"; };
 		849766F716D34B6D00EE1E91 /* getstats.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = getstats.py; sourceTree = "<group>"; };
-		8497672B16D4133000EE1E91 /* analysis.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = analysis.py; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1403,9 +1330,7 @@
 				841E00D016DC90CC00B86980 /* cncom */,
 				841E00D716DC90CC00B86980 /* graphviz */,
 				841E015B16DC90CC00B86980 /* Makefile */,
-				841E015C16DC90CC00B86980 /* run-all-tests */,
 				841E015D16DC90CC00B86980 /* run-all-tests.cpp */,
-				841E015E16DC90CC00B86980 /* snap-test.xcodeproj */,
 				841E016116DC90CC00B86980 /* test-alg.cpp */,
 				841E016216DC90CC00B86980 /* test-bfsdfs.cpp */,
 				841E016316DC90CC00B86980 /* test-cncom.cpp */,
@@ -1413,7 +1338,6 @@
 				841E016516DC90CC00B86980 /* test-ggen.cpp */,
 				841E016616DC90CC00B86980 /* test-gio.cpp */,
 				841E016716DC90CC00B86980 /* test-gviz.cpp */,
-				841E016816DC90CC00B86980 /* test-gviz.cpp.orig */,
 				841E016916DC90CC00B86980 /* test-helper.cpp */,
 				841E016A16DC90CC00B86980 /* test-helper.h */,
 				841E016B16DC90CC00B86980 /* test-subgraph.cpp */,
@@ -1427,15 +1351,6 @@
 				841E017316DC90CC00B86980 /* test-TStrPool.cpp */,
 				841E017416DC90CC00B86980 /* test-TSysTm.cpp */,
 				841E017516DC90CC00B86980 /* test-TUNGraph.cpp */,
-				841E017616DC90CC00B86980 /* test.graph.dat */,
-				841E017716DC90CC00B86980 /* test.hashint.dat */,
-				841E017816DC90CC00B86980 /* test.hashstr.dat */,
-				841E017916DC90CC00B86980 /* test.net.dat */,
-				841E017A16DC90CC00B86980 /* test.paj.dat */,
-				841E017B16DC90CC00B86980 /* test.pool.dat */,
-				841E017C16DC90CC00B86980 /* test.xml.dat */,
-				841E017D16DC90CC00B86980 /* test1.dot.dat */,
-				841E017E16DC90CC00B86980 /* test2.dot.dat */,
 			);
 			name = test;
 			path = ../snap/test;
@@ -1606,14 +1521,6 @@
 			path = graphviz;
 			sourceTree = "<group>";
 		};
-		841E015F16DC90CC00B86980 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				841E018A16DC90CD00B86980 /* docs */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		841E018B16DC90EF00B86980 /* snap */ = {
 			isa = PBXGroup;
 			children = (
@@ -1659,7 +1566,6 @@
 				841E01AF16DC910800B86980 /* demo-TUNGraph.dSYM */,
 				841E01B016DC910800B86980 /* graphviz */,
 				841E01F116DC910800B86980 /* Makefile */,
-				841E01F216DC910800B86980 /* tutorials.xcodeproj */,
 			);
 			name = tutorials;
 			path = ../snap/tutorials;
@@ -1758,21 +1664,14 @@
 			path = graphviz;
 			sourceTree = "<group>";
 		};
-		841E01F316DC910800B86980 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		847482A916CD85D200AF3EF4 = {
 			isa = PBXGroup;
 			children = (
 				847482E016CD863500AF3EF4 /* Makefile */,
-				847482E116CD863500AF3EF4 /* python */,
 				847482E516CD863500AF3EF4 /* README.md */,
+				847482E116CD863500AF3EF4 /* python */,
 				8474830616CD86B300AF3EF4 /* swig */,
-				8488FC7416D1F39800C789B8 /* roks */,
+				8474831116CD86C000AF3EF4 /* test */,
 				841E018B16DC90EF00B86980 /* snap */,
 				841E018C16DC910800B86980 /* tutorials */,
 				8488FEAC16D20F8400C789B8 /* Products */,
@@ -1785,6 +1684,9 @@
 				847482E216CD863500AF3EF4 /* bench.py */,
 				847482E316CD863500AF3EF4 /* load.py */,
 				847482E416CD863500AF3EF4 /* tnodei.py */,
+				849766F716D34B6D00EE1E91 /* getstats.py */,
+				8481DDEA16E2E83F00124EF3 /* checkgraph.py */,
+				848801D816D2D7CD00C789B8 /* as20graph.txt */,
 			);
 			path = python;
 			sourceTree = "<group>";
@@ -1794,11 +1696,10 @@
 			children = (
 				8474830816CD86B300AF3EF4 /* Makefile */,
 				8474830A16CD86B300AF3EF4 /* snap.i */,
-				8474831116CD86C000AF3EF4 /* test */,
-				8474830C16CD86B300AF3EF4 /* snap.py */,
 				8474831016CD86B300AF3EF4 /* snapswig.h */,
 				8474830916CD86B300AF3EF4 /* printgraph.h */,
 				849766F416D32A8B00EE1E91 /* getassessment.cpp */,
+				8456FCE916E2E28D00ECCD5F /* goodgraph.cpp */,
 			);
 			path = swig;
 			sourceTree = "<group>";
@@ -1808,13 +1709,9 @@
 			children = (
 				8474831216CD86C000AF3EF4 /* data */,
 				8474831416CD86C000AF3EF4 /* Makefile */,
-				849766F716D34B6D00EE1E91 /* getstats.py */,
 				8474831516CD86C000AF3EF4 /* memtest.py */,
-				8474831616CD86C000AF3EF4 /* p2p-Gnutella08.html */,
-				8474831716CD86C000AF3EF4 /* p2p-Gnutella08.txt */,
 				8474831816CD86C000AF3EF4 /* printstat.py */,
 				8474831A16CD86C000AF3EF4 /* tungraph.py */,
-				8497672B16D4133000EE1E91 /* analysis.py */,
 			);
 			path = test;
 			sourceTree = SOURCE_ROOT;
@@ -1876,8 +1773,6 @@
 				8488004416D20FB200C789B8 /* anf.h */,
 				8488004516D20FB200C789B8 /* bfsdfs.h */,
 				8488004616D20FB200C789B8 /* bignet.h */,
-				8488006916D20FB200C789B8 /* ccf.RndGraph.plt */,
-				8488006A16D20FB200C789B8 /* ccf.RndGraph.tab */,
 				8488006B16D20FB200C789B8 /* centr.cpp */,
 				8488006C16D20FB200C789B8 /* centr.h */,
 				8488006D16D20FB200C789B8 /* cmty.cpp */,
@@ -1904,17 +1799,9 @@
 				8488008E16D20FB200C789B8 /* gsvd.h */,
 				8488008F16D20FB200C789B8 /* gviz.cpp */,
 				8488009016D20FB200C789B8 /* gviz.h */,
-				8488009116D20FB200C789B8 /* hop.RndGraph.plt */,
-				8488009216D20FB200C789B8 /* hop.RndGraph.tab */,
-				8488009316D20FB200C789B8 /* inDeg.RndGraph.plt */,
-				8488009416D20FB200C789B8 /* inDeg.RndGraph.tab */,
 				8488009516D20FB200C789B8 /* kcore.h */,
 				8488009616D20FB200C789B8 /* Makefile */,
 				8488009716D20FB200C789B8 /* network.h */,
-				8488009816D20FB200C789B8 /* outDeg.RndGraph.plt */,
-				8488009916D20FB200C789B8 /* outDeg.RndGraph.tab */,
-				8488009A16D20FB200C789B8 /* scc.RndGraph.plt */,
-				8488009B16D20FB200C789B8 /* scc.RndGraph.tab */,
 				848800A016D20FB200C789B8 /* Snap.cpp */,
 				848800A116D20FB200C789B8 /* Snap.h */,
 				848800A216D20FB200C789B8 /* Snap.o */,
@@ -1923,23 +1810,13 @@
 				848800A516D20FB200C789B8 /* stdafx.h */,
 				848800A616D20FB200C789B8 /* subgraph.cpp */,
 				848800A716D20FB200C789B8 /* subgraph.h */,
-				848800A816D20FB200C789B8 /* sval.RndGraph.plt */,
-				848800A916D20FB200C789B8 /* sval.RndGraph.tab */,
-				848800AA16D20FB200C789B8 /* svec.RndGraph.plt */,
-				848800AB16D20FB200C789B8 /* svec.RndGraph.tab */,
 				848800AC16D20FB200C789B8 /* testSnap */,
 				848800AD16D20FB200C789B8 /* testSnap.cpp */,
 				848800AE16D20FB200C789B8 /* timenet.cpp */,
 				848800AF16D20FB200C789B8 /* timenet.h */,
 				848800B016D20FB200C789B8 /* triad.h */,
-				848800B116D20FB200C789B8 /* triad.RndGraph.plt */,
-				848800B216D20FB200C789B8 /* triad.RndGraph.tab */,
 				848800B316D20FB200C789B8 /* util.cpp */,
 				848800B416D20FB200C789B8 /* util.h */,
-				848800B516D20FB200C789B8 /* wcc.RndGraph.plt */,
-				848800B616D20FB200C789B8 /* wcc.RndGraph.tab */,
-				848800B716D20FB200C789B8 /* wccHop.RndGraph.plt */,
-				848800B816D20FB200C789B8 /* wccHop.RndGraph.tab */,
 			);
 			name = "snap-core";
 			path = "../snap/snap-core";
@@ -1967,10 +1844,10 @@
 		848801BA16D2D7CD00C789B8 /* examples */ = {
 			isa = PBXGroup;
 			children = (
+				8488032516D2D7CE00C789B8 /* README */,
 				848801BB16D2D7CD00C789B8 /* agmfit */,
 				848801C916D2D7CD00C789B8 /* agmfit-cmd */,
 				848801CA16D2D7CD00C789B8 /* agmgen */,
-				848801D816D2D7CD00C789B8 /* as20graph.txt */,
 				848801D916D2D7CD00C789B8 /* bigclam */,
 				848801E516D2D7CD00C789B8 /* bigclam-cmd */,
 				848801E816D2D7CD00C789B8 /* build */,
@@ -2000,11 +1877,6 @@
 				848802FE16D2D7CE00C789B8 /* netevol */,
 				8488030A16D2D7CE00C789B8 /* netinf */,
 				8488031916D2D7CE00C789B8 /* netstat */,
-				8488032516D2D7CE00C789B8 /* README */,
-				8488032616D2D7CE00C789B8 /* snap-examples */,
-				8488032916D2D7CE00C789B8 /* snap-examples.xcodeproj */,
-				8488032C16D2D7CE00C789B8 /* SnapExamples-VS08.sln */,
-				8488032D16D2D7CE00C789B8 /* SnapExamples-VS10.sln */,
 				8488032E16D2D7CE00C789B8 /* testgraph */,
 			);
 			name = examples;
@@ -2592,23 +2464,6 @@
 			path = netstat;
 			sourceTree = "<group>";
 		};
-		8488032616D2D7CE00C789B8 /* snap-examples */ = {
-			isa = PBXGroup;
-			children = (
-				8488032716D2D7CE00C789B8 /* main.cpp */,
-				8488032816D2D7CE00C789B8 /* snap_examples.1 */,
-			);
-			path = "snap-examples";
-			sourceTree = "<group>";
-		};
-		8488032A16D2D7CE00C789B8 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				8488035C16D2D7CE00C789B8 /* docs */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		8488032E16D2D7CE00C789B8 /* testgraph */ = {
 			isa = PBXGroup;
 			children = (
@@ -2625,71 +2480,6 @@
 				8488033916D2D7CE00C789B8 /* testgraph.vcxproj */,
 			);
 			path = testgraph;
-			sourceTree = "<group>";
-		};
-		8488FC7416D1F39800C789B8 /* roks */ = {
-			isa = PBXGroup;
-			children = (
-				8488FC7516D1F39800C789B8 /* snap-python */,
-			);
-			name = roks;
-			path = ../roks;
-			sourceTree = "<group>";
-		};
-		8488FC7516D1F39800C789B8 /* snap-python */ = {
-			isa = PBXGroup;
-			children = (
-				8488FC7616D1F39800C789B8 /* .gitignore */,
-				8488FC7716D1F39800C789B8 /* Makefile */,
-				8488FC7816D1F39800C789B8 /* python */,
-				8488FC7C16D1F39800C789B8 /* README.md */,
-				8488FC7D16D1F39800C789B8 /* swig */,
-				8488FC8316D1F39800C789B8 /* test */,
-			);
-			path = "snap-python";
-			sourceTree = "<group>";
-		};
-		8488FC7816D1F39800C789B8 /* python */ = {
-			isa = PBXGroup;
-			children = (
-				8488FC7916D1F39800C789B8 /* bench.py */,
-				8488FC7A16D1F39800C789B8 /* load.py */,
-				8488FC7B16D1F39800C789B8 /* tnodei.py */,
-			);
-			path = python;
-			sourceTree = "<group>";
-		};
-		8488FC7D16D1F39800C789B8 /* swig */ = {
-			isa = PBXGroup;
-			children = (
-				8488FC7E16D1F39800C789B8 /* Makefile */,
-				8488FC7F16D1F39800C789B8 /* printgraph.h */,
-				8488FC8016D1F39800C789B8 /* snap.i */,
-				8488FC8116D1F39800C789B8 /* snapsw.h */,
-				8488FC8216D1F39800C789B8 /* snapswig.h */,
-			);
-			path = swig;
-			sourceTree = "<group>";
-		};
-		8488FC8316D1F39800C789B8 /* test */ = {
-			isa = PBXGroup;
-			children = (
-				8488FC8416D1F39800C789B8 /* data */,
-				8488FC8616D1F39800C789B8 /* Makefile */,
-				8488FC8716D1F39800C789B8 /* memtest.py */,
-				8488FC8816D1F39800C789B8 /* printstat.py */,
-				8488FC8916D1F39800C789B8 /* tungraph.py */,
-				8488FC8A16D1F39800C789B8 /* vec.py */,
-			);
-			path = test;
-			sourceTree = "<group>";
-		};
-		8488FC8416D1F39800C789B8 /* data */ = {
-			isa = PBXGroup;
-			children = (
-				8488FC8516D1F39800C789B8 /* p2p-Gnutella08.txt.gz */,
-			);
-			path = data;
 			sourceTree = "<group>";
 		};
 		8488FEAC16D20F8400C789B8 /* Products */ = {
@@ -3159,20 +2949,6 @@
 			mainGroup = 847482A916CD85D200AF3EF4;
 			productRefGroup = 8488FEAC16D20F8400C789B8 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = 8488032A16D2D7CE00C789B8 /* Products */;
-					ProjectRef = 8488032916D2D7CE00C789B8 /* snap-examples.xcodeproj */;
-				},
-				{
-					ProductGroup = 841E015F16DC90CC00B86980 /* Products */;
-					ProjectRef = 841E015E16DC90CC00B86980 /* snap-test.xcodeproj */;
-				},
-				{
-					ProductGroup = 841E01F316DC910800B86980 /* Products */;
-					ProjectRef = 841E01F216DC910800B86980 /* tutorials.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				847482B016CD85D200AF3EF4 /* snap-python */,
@@ -3181,23 +2957,6 @@
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		841E018A16DC90CD00B86980 /* docs */ = {
-			isa = PBXReferenceProxy;
-			fileType = "compiled.mach-o.executable";
-			path = docs;
-			remoteRef = 841E018916DC90CD00B86980 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		8488035C16D2D7CE00C789B8 /* docs */ = {
-			isa = PBXReferenceProxy;
-			fileType = "compiled.mach-o.executable";
-			path = docs;
-			remoteRef = 8488035B16D2D7CE00C789B8 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXSourcesBuildPhase section */
 		8488FEA716D20F8400C789B8 /* Sources */ = {
@@ -3418,6 +3177,7 @@
 				8488019616D20FF300C789B8 /* snapswig.h in Sources */,
 				8488019416D20FF300C789B8 /* printgraph.h in Sources */,
 				841E00C516DC449900B86980 /* getassessment.cpp in Sources */,
+				8456FCEA16E2E28D00ECCD5F /* goodgraph.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
