@@ -6,7 +6,9 @@
 #include "printgraph.h"
 #include "snapswig.h"
 
+#include "goodgraph.cpp"
 #include "getassessment.cpp"
+
 %}
 
 %ignore TOnExeStop;
@@ -49,7 +51,9 @@
 
 %include "printgraph.h"
 %include "snapswig.h"
-%include "getassessment.cpp"    // For code-completion in Xcode
+
+%include "goodgraph.cpp"
+%include "getassessment.cpp"
 
 // TODO can BegNI() be renamed?
 
@@ -87,5 +91,9 @@
 %template(PNGraph) TPt< TNGraph >;
 %template(LoadEdgeList_PNGraph) TSnap::LoadEdgeList<PNGraph>;
 %template(PrintGraphStatTable_PNGraph) PrintGraphStatTable<PNGraph>;
+%template(PercentDegree_PNGraph) PercentDegree<PNGraph>;
+%template(PercentMxWcc_PNGraph) PercentMxWcc<PNGraph>;
+%template(PercentMxScc_PNGraph) PercentMxScc<PNGraph>;
+
 //%template(GetStats_PNGraph) TSnap::GetStats<PNGraph>;
 
