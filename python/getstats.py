@@ -65,7 +65,6 @@ def calc_stats():
     
   print "-"*75
 
-
 # --------------- Plotting ---------------
 import matplotlib
 matplotlib.use('Agg')
@@ -75,8 +74,6 @@ from numpy import sort,array,ones,linalg,column_stack,loadtxt,savetxt
 from scipy import *
 from scipy.optimize import leastsq
 from scipy import linalg
-
-import pdb
   
 def plot_2d(property):
   
