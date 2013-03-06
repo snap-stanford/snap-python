@@ -3,6 +3,7 @@ import sys
 import time
 from random import randrange, choice
 from socket import gethostname
+import argparse
 
 sys.path.append("../swig")
 
@@ -10,18 +11,17 @@ import snap as Snap
 
 MIN_NODES_EXPONENT = 2
 MAX_NODES_EXPONENT = 4
-NUM_ITERATIONS = 10
+NUM_ITERATIONS = 1
 PROPERTY_TYPES = [1, 10]  # 1=Triads, 10=BFS
 GRAPH_TYPES = [0, 3, 4] # Small World, Pref, R-MAT
 DEGREE_TYPES = [0, 1]
 
-HOSTNAME = gethostname().split('.')[0]
 AVG_DEG = 3
 AVG_DEGREE_RANGE = range(2, 10)
-#GRAPH_TYPES = 5
 
-RESULTS_DIR = "results-%s" % HOSTNAME
-#RESULTS_DIR = "results-%s" % time.strftime("%m-%d-%H%M.%S")
+results_dir = '.'
+hostname = ''
+verbose = False
 
 def calc_stats():
   
@@ -48,12 +48,12 @@ def calc_stats():
           # Repeat for all graph types
           for j in PROPERTY_TYPES:
             t = Snap.GetStats(NNodes, NEdges, j, g)
-            f = open('%s/%s_%s.txt' % (RESULTS_DIR, Snap.GetAttributeAbbr(j),
+            f = open('%s/%s_%s.txt' % (results_dir, Snap.GetAttributeAbbr(j),
                                        fname),
                      'a+')
             f.write("%d %d %.5f\n" % (NNodes, NEdges, t))
 
-            f_all = open('%s/%s_all.txt' % (RESULTS_DIR,
+            f_all = open('%s/%s_all.txt' % (results_dir,
                                             Snap.GetAttributeAbbr(j)),
                          'a+')
             f_all.write("%d %d %.5f\n" % (NNodes, NEdges, t))
@@ -83,7 +83,7 @@ def plot_2d(property):
   figure()
   for g in GRAPH_TYPES:
     
-    fname = '%s/%s_%sdeg%d.txt' % (RESULTS_DIR, Snap.GetAttributeAbbr(property),
+    fname = '%s/%s_%sdeg%d.txt' % (results_dir, Snap.GetAttributeAbbr(property),
                                    Snap.GetGraphAbbr(g), AVG_DEG)
     A = loadtxt(fname)
     A = sort(A,0)
@@ -96,7 +96,7 @@ def plot_2d(property):
     xlabel('Num Nodes (d_avg = %.1f)' % AVG_DEG)
     ylabel('time')
     title('%s runtime (avg degree = %d)' % (Snap.GetAttributeDesc(property), AVG_DEG))
-    pname = '%s/plot2d_%s.png' % (RESULTS_DIR, Snap.GetAttributeAbbr(property))
+    pname = '%s/plot2d_%s.png' % (results_dir, Snap.GetAttributeAbbr(property))
     print "Saving figure %s" % pname
     savefig(pname)
 
@@ -108,9 +108,13 @@ def plot_3d(property):
   ax = fig3d.add_subplot(111, projection='3d')
   
   for g in GRAPH_TYPES:
-    fname = '%s/%s_%s.txt' % (RESULTS_DIR, Snap.GetAttributeAbbr(property),
+    fname = '%s/%s_%s.txt' % (results_dir, Snap.GetAttributeAbbr(property),
                               Snap.GetGraphAbbr(g))
     
+    if not os.path.exists(fname):
+      print "No such file: %s" % fname
+      return
+  
     A = loadtxt(fname)
     A = sort(A,0)
     Y = A[:,-1]     # Last column
@@ -138,7 +142,7 @@ def plot_3d(property):
 #  ax.set_zscale('log')
 #  ax.auto_scale_xyz([0, max(Nodes)], [0, max(Edges)], [0, max(Y)])
 #  ax.title("%s run time" % Snap.GetAttributeAbbr(property))
-  pname = '%s/plot3d_%s.png' % (RESULTS_DIR, Snap.GetAttributeAbbr(property))
+  pname = '%s/plot3d_%s.png' % (results_dir, Snap.GetAttributeAbbr(property))
   print "Saving figure %s" % pname
 
   fig3d.savefig(pname)
@@ -198,10 +202,10 @@ def plot_residuals(property):
     
     if g == -1:
       # All graphs
-      fname = '%s/%s_all.txt' % (RESULTS_DIR, Snap.GetAttributeAbbr(property))
+      fname = '%s/%s_all.txt' % (results_dir, Snap.GetAttributeAbbr(property))
 
     else:
-      fname = '%s/%s_%s.txt' % (RESULTS_DIR, Snap.GetAttributeAbbr(property),
+      fname = '%s/%s_%s.txt' % (results_dir, Snap.GetAttributeAbbr(property),
                                 Snap.GetGraphAbbr(g))
     
     A = loadtxt(fname)
@@ -224,7 +228,7 @@ def plot_residuals(property):
     print "Fitting %s for %s" % (Snap.GetAttributeDesc(property), desc)
 
     f = open('%s/coeff_%s.txt' %
-             (RESULTS_DIR, Snap.GetAttributeDesc(property)), 'a+')
+             (results_dir, Snap.GetAttributeAbbr(property)), 'a+')
 
     for model in ['poly', 'exp', 'log']:
       # Plot residuals with multiple fitting types
@@ -246,7 +250,7 @@ def plot_residuals(property):
     xlabel('Number of Nodes')
     ylabel('Residual')
     legend()
-    pname = '%s/residuals_%s_%s.png' % (RESULTS_DIR,
+    pname = '%s/residuals_%s_%s.png' % (results_dir,
                                         Snap.GetAttributeAbbr(property),
                                         desc)
     print "Saving figure %s" % pname
@@ -268,21 +272,34 @@ def plot_stats():
 
   #end for loop - plot type
 
-if __name__ == '__main__':
+def main():
+  parser = argparse.ArgumentParser()
+  parser.add_argument("-v", "--verbose", default=False,
+                    action="store_true", dest="verbose",
+                    help="increase output verbosity")
+  parser.add_argument("-n", "--num_iterations", type=int,
+                    default=NUM_ITERATIONS, help="number of iterations")
+  parser.add_argument("-p", "--plot", action="store_true", help="plot stats")
+  parser.add_argument("-r", "--run", action="store_true", help="run stats")
+  parser.add_argument("results_dir", help="directory to save/store data")
+  args = parser.parse_args()
   
-  if not os.path.exists(RESULTS_DIR):
-    os.makedirs(RESULTS_DIR)
-  
-  for n in range(NUM_ITERATIONS):
+  global results_dir, verbose
+  results_dir = args.results_dir
+  verbose = args.verbose
+  print "Results dir: %s" % results_dir
 
-    calc_stats()
+  if args.run:
+    for n in range(args.num_iterations):
+      if verbose:
+        print "Iteration: %d of %d" % (n+1, args.num_iterations)
+      calc_stats()
     
-    # Update plots every 5 iterations
-    if (n+1) % 5 == 0:
-      print "Iteration %d of %d:" % (n+1, NUM_ITERATIONS)
-      plot_stats()
+  if args.plot:
+    
+    plot_stats()
 
-  plot_stats()
-
+if __name__ == "__main__":
+  main()
 
 
