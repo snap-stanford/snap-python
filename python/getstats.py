@@ -9,7 +9,7 @@ sys.path.append("../swig")
 
 import snap as Snap
 
-min_nodes_exponent = 2
+min_nodes_exponent = 1
 max_nodes_exponent = 4
 NUM_ITERATIONS = 1
 PROPERTY_TYPES = [1, 10]  # 1=Triads, 10=BFS
