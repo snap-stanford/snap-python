@@ -9,8 +9,8 @@ sys.path.append("../swig")
 
 import snap as Snap
 
-MIN_NODES_EXPONENT = 2
-MAX_NODES_EXPONENT = 4
+min_nodes_exponent = 2
+max_nodes_exponent = 4
 NUM_ITERATIONS = 1
 PROPERTY_TYPES = [1, 10]  # 1=Triads, 10=BFS
 GRAPH_TYPES = [0, 3, 4] # Small World, Pref, R-MAT
@@ -28,7 +28,7 @@ def calc_stats():
   
   for g in GRAPH_TYPES:
     
-    for e in range(MIN_NODES_EXPONENT,MAX_NODES_EXPONENT+1):
+    for e in range(min_nodes_exponent,max_nodes_exponent+1):
         
         # Random number of nodes of degree i
         NNodes = randrange(10**e,10**(e+1))
@@ -43,20 +43,22 @@ def calc_stats():
             # Random number of edges (from 1-3x nodes)
             NEdges = NNodes * choice(AVG_DEGREE_RANGE)
       
-          print "NNodes=%.2e, %.2e" % (NNodes, NEdges)
+          print "%s graph: NNodes=%.2e, %.2e" % \
+                (Snap.GetGraphDesc(g), NNodes, NEdges)
       
           fname = "%s%s" % (Snap.GetGraphAbbr(g), 'deg%d' % AVG_DEG if avg else '')
           # Repeat for all graph types
           for j in PROPERTY_TYPES:
+            print "Calculating %s..." % Snap.GetAttributeDesc(j)
             t = Snap.GetStats(NNodes, NEdges, j, g)
             f = open('%s/%s_%s.txt' % (results_dir, Snap.GetAttributeAbbr(j),
                                        fname),
-                     'a+')
+                     'a')
             f.write("%d %d %.5f\n" % (NNodes, NEdges, t))
 
             f_all = open('%s/%s_all.txt' % (results_dir,
                                             Snap.GetAttributeAbbr(j)),
-                         'a+')
+                         'a')
             f_all.write("%d %d %.5f\n" % (NNodes, NEdges, t))
   
     # For each characteristic:
@@ -131,8 +133,8 @@ def plot_3d(property):
                 fontsize=9)
   ax.legend()
 
-#  ax.set_xlim3d([0, 10**MAX_NODES_EXPONENT])
-#  ax.set_ylim3d([0, 10**MAX_NODES_EXPONENT*AVG_DEGREE_RANGE[1]])
+#  ax.set_xlim3d([0, 10**max_nodes_exponent])
+#  ax.set_ylim3d([0, 10**max_nodes_exponent*AVG_DEGREE_RANGE[1]])
 #  ax.set_zlim3d([0, max(Y)])
 #  ax.set_xscale('log')
 #  ax.w_xaxis.set_scale('log')
@@ -288,6 +290,8 @@ def main():
   parser.add_argument("-v", "--verbose", default=False,
                     action="store_true", dest="verbose",
                     help="increase output verbosity")
+  parser.add_argument("-m", "--max_nodes_exponent", type=int,
+                    default=max_nodes_exponent, help="max nodes exponent (4->10^4")
   parser.add_argument("-n", "--num_iterations", type=int,
                     default=NUM_ITERATIONS, help="number of iterations")
   parser.add_argument("-i", "--hostname", help="hostname")
@@ -297,13 +301,19 @@ def main():
   parser.add_argument("results_dir", help="directory to save/store data")
   args = parser.parse_args()
   
-  global results_dir, verbose, hostname
+  global results_dir, verbose, hostname, max_nodes_exponent
   results_dir = args.results_dir
   verbose = args.verbose
-  
+
+  if not os.path.exists(results_dir):
+    os.mkdir(results_dir)
+
   if not os.path.exists(combined_dir):
     os.mkdir(combined_dir)
-  
+
+  if args.max_nodes_exponent:
+    max_nodes_exponent = args.max_nodes_exponent
+
   if args.hostname:
     hostname = args.hostname
   print "Hostname: %s" % hostname
