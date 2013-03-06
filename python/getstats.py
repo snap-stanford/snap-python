@@ -20,7 +20,8 @@ AVG_DEG = 3
 AVG_DEGREE_RANGE = range(2, 10)
 
 results_dir = '.'
-hostname = ''
+combined_dir = 'public_html'
+hostname = gethostname()
 verbose = False
 
 def calc_stats():
@@ -216,7 +217,7 @@ def plot_residuals(property):
     
     best_r2 = 0.0
     best_model = None
-    p_best = None
+    best_p = None
     
     if g == -1:
       desc = 'all'
@@ -227,8 +228,13 @@ def plot_residuals(property):
 
     print "Fitting %s for %s" % (Snap.GetAttributeDesc(property), desc)
 
-    f = open('%s/coeff_%s.txt' %
-             (results_dir, Snap.GetAttributeAbbr(property)), 'a+')
+    fname = '%s/coeff_%s.txt' % (results_dir, Snap.GetAttributeAbbr(property))
+    f = open(fname, 'w')
+
+    cname = '%s/coeff_%s.txt' % (combined_dir,
+                                 Snap.GetAttributeAbbr(property))
+    combined_file = open(cname, 'a+')
+  
 
     for model in ['poly', 'exp', 'log']:
       # Plot residuals with multiple fitting types
@@ -240,7 +246,7 @@ def plot_residuals(property):
       if (rsquared > best_r2):
         best_r2 = rsquared
         best_model = model
-        p_best = pfinal
+        best_p = pfinal
   
   
     title('Run-time approx. for %s (%s)' %
@@ -252,11 +258,18 @@ def plot_residuals(property):
     legend()
     pname = '%s/residuals_%s_%s.png' % (results_dir,
                                         Snap.GetAttributeAbbr(property),
-                                        desc)
+                                        abbr)
     print "Saving figure %s" % pname
     savefig(pname)
     print "Best model: %s, r2 = %.3f, pfinal: %s" % \
-            (best_model, best_r2, repr(p_best))
+            (best_model, best_r2, repr(best_p))
+
+    # TODO: Get most recent date of data
+    print "Best results to %s" % cname
+    combined_file.write(
+            'hostname=%s, model=%s, type=%s, n=%d, r2=%.4f, pfinal=%s\n' % \
+            (hostname, best_model, abbr, len(X), best_r2,
+             ["%.4e" % p for p in best_p]))
 
 def plot_stats():
   
@@ -273,20 +286,30 @@ def plot_stats():
   #end for loop - plot type
 
 def main():
+  
   parser = argparse.ArgumentParser()
   parser.add_argument("-v", "--verbose", default=False,
                     action="store_true", dest="verbose",
                     help="increase output verbosity")
   parser.add_argument("-n", "--num_iterations", type=int,
                     default=NUM_ITERATIONS, help="number of iterations")
+  parser.add_argument("-i", "--hostname", help="hostname")
   parser.add_argument("-p", "--plot", action="store_true", help="plot stats")
   parser.add_argument("-r", "--run", action="store_true", help="run stats")
+
   parser.add_argument("results_dir", help="directory to save/store data")
   args = parser.parse_args()
   
-  global results_dir, verbose
+  global results_dir, verbose, hostname
   results_dir = args.results_dir
   verbose = args.verbose
+  
+  if not os.path.exists(combined_dir):
+    os.mkdir(combined_dir)
+  
+  if args.hostname:
+    hostname = args.hostname
+  print "Hostname: %s" % hostname
   print "Results dir: %s" % results_dir
 
   if args.run:
@@ -296,7 +319,8 @@ def main():
       calc_stats()
     
   if args.plot:
-    
+    if verbose:
+      print "Plotting results"
     plot_stats()
 
 if __name__ == "__main__":
