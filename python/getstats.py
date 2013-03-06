@@ -29,7 +29,7 @@ def calc_stats():
   for g in GRAPH_TYPES:
     
     for e in range(min_nodes_exponent,max_nodes_exponent+1):
-        
+      
         # Random number of nodes of degree i
         NNodes = randrange(10**e,10**(e+1))
       
@@ -196,18 +196,11 @@ def plot_fit(Xdata, Ydata, labelstr, fit_type):
 def plot_residuals(property):
 
   # Calculate residuals for all graph types, and combined
-  for g in GRAPH_TYPES + [-1]:
-    
     figure()
     
-    if g == -1:
-      # All graphs
-      fname = '%s/%s_all.txt' % (results_dir, Snap.GetAttributeAbbr(property))
+    # All graphs
+    fname = '%s/%s_all.txt' % (results_dir, Snap.GetAttributeAbbr(property))
 
-    else:
-      fname = '%s/%s_%s.txt' % (results_dir, Snap.GetAttributeAbbr(property),
-                                Snap.GetGraphAbbr(g))
-    
     A = loadtxt(fname)
     A = sort(A,0)
     Y = A[:,-1]     # Last column
@@ -218,12 +211,8 @@ def plot_residuals(property):
     best_model = None
     best_p = None
     
-    if g == -1:
-      desc = 'all'
-      abbr = 'all'
-    else:
-      desc = Snap.GetGraphDesc(g)
-      abbr = Snap.GetGraphAbbr(g)
+    desc = 'all'
+    abbr = 'all'
 
     print "Fitting %s for %s" % (Snap.GetAttributeDesc(property), desc)
 
@@ -286,6 +275,8 @@ def plot_stats():
 
 def main():
   
+  global results_dir, verbose, hostname, max_nodes_exponent
+      
   parser = argparse.ArgumentParser()
   parser.add_argument("-v", "--verbose", default=False,
                     action="store_true", dest="verbose",
@@ -301,7 +292,6 @@ def main():
   parser.add_argument("results_dir", help="directory to save/store data")
   args = parser.parse_args()
   
-  global results_dir, verbose, hostname, max_nodes_exponent
   results_dir = args.results_dir
   verbose = args.verbose
 
