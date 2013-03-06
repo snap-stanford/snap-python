@@ -10,7 +10,7 @@ import snap as Snap
 
 MIN_NODES_EXPONENT = 2
 MAX_NODES_EXPONENT = 4
-NUM_ITERATIONS = 2
+NUM_ITERATIONS = 10
 PROPERTY_TYPES = [1, 10]  # 1=Triads, 10=BFS
 GRAPH_TYPES = [0, 3, 4] # Small World, Pref, R-MAT
 DEGREE_TYPES = [0, 1]
@@ -57,8 +57,6 @@ def calc_stats():
                                             Snap.GetAttributeAbbr(j)),
                          'a+')
             f_all.write("%d %d %.5f\n" % (NNodes, NEdges, t))
-
-
   
     # For each characteristic:
     # Write out test data to same file (linear fit using matlab?)
@@ -218,15 +216,23 @@ def plot_residuals(property):
     
     if g == -1:
       desc = 'all'
+      abbr = 'all'
     else:
       desc = Snap.GetGraphDesc(g)
+      abbr = Snap.GetGraphAbbr(g)
 
     print "Fitting %s for %s" % (Snap.GetAttributeDesc(property), desc)
+
+    f = open('%s/coeff_%s.txt' %
+             (RESULTS_DIR, Snap.GetAttributeDesc(property)), 'a+')
 
     for model in ['poly', 'exp', 'log']:
       # Plot residuals with multiple fitting types
       rsquared, pfinal = plot_fit(X, Y, desc, model)
-    
+          
+      f.write("%s, model=%s r2=%.4f pfinal=%s\n" %
+              (abbr, model, rsquared, pfinal))
+
       if (rsquared > best_r2):
         best_r2 = rsquared
         best_model = model
