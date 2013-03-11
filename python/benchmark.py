@@ -24,7 +24,7 @@ AVG_DEGREE_RANGE = range(2, 10)
 HOSTNAME = gethostname()
 
 RESULTS_DIR = os.path.join('..','results')
-PUBLIC_DIR =s os.path.join(RESULTS_DIR, 'public_html')
+PUBLIC_DIR = os.path.join(RESULTS_DIR, 'public_html')
 TABLE_FILE = os.path.join(PUBLIC_DIR, 'results_%s.html' %
                           datetime.now().strftime('%m%d-%H%m'))
 DATA_FILE = os.path.join(RESULTS_DIR, 'results%s.txt' % \
@@ -287,10 +287,11 @@ def main():
   print "Hostname: %s" % HOSTNAME
   print "Range = 10^%s to 10^%s" % (args.range[0], args.range[-1])
 
-  os.makedirs(RESULTS_DIR)
+  if not os.path.exists(RESULTS_DIR):
+    os.makedirs(RESULTS_DIR)
 
-  os.makedirs(PUBLIC_DIR)
-
+  if not os.path.exists(PUBLIC_DIR):
+    os.makedirs(PUBLIC_DIR)
 
   all_results = run_tests(args.num_iterations, int(args.range[0]), int(args.range[-1]))
 
