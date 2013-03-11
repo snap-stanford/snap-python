@@ -286,14 +286,15 @@ def main():
   print "Hostname: %s" % HOSTNAME
   print "Range = 10^%s to 10^%s" % (args.range[0], args.range[-1])
 
+  if not os.path.exists(RESULTS_DIR):
+    os.makedirs(RESULTS_DIR)
+
+
   all_results = run_tests(args.num_iterations, int(args.range[0]), int(args.range[-1]))
 
   if verbose:
     print "Plotting results"
   plot_stats()
-
-  if not os.path.exists(RESULTS_DIR):
-      os.makedirs(RESULTS_DIR)
 
 if __name__ == "__main__":
   main()
