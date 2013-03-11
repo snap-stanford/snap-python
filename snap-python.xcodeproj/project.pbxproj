@@ -502,6 +502,7 @@
 		841E01EF16DC910800B86980 /* demo_ungraph_Twopi_col.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = demo_ungraph_Twopi_col.png; sourceTree = "<group>"; };
 		841E01F016DC910800B86980 /* demo_ungraph_Twopi_col.ps */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = demo_ungraph_Twopi_col.ps; sourceTree = "<group>"; };
 		841E01F116DC910800B86980 /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
+		8444C83B16EDC81800264DA8 /* benchmark.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = benchmark.py; sourceTree = "<group>"; };
 		8456FCE916E2E28D00ECCD5F /* goodgraph.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = goodgraph.cpp; sourceTree = "<group>"; };
 		847482E016CD863500AF3EF4 /* Makefile */ = {isa = PBXFileReference; explicitFileType = sourcecode.make; fileEncoding = 4; path = Makefile; sourceTree = "<group>"; };
 		847482E216CD863500AF3EF4 /* bench.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = bench.py; sourceTree = "<group>"; };
@@ -1685,6 +1686,7 @@
 				847482E316CD863500AF3EF4 /* load.py */,
 				847482E416CD863500AF3EF4 /* tnodei.py */,
 				849766F716D34B6D00EE1E91 /* getstats.py */,
+				8444C83B16EDC81800264DA8 /* benchmark.py */,
 				8481DDEA16E2E83F00124EF3 /* checkgraph.py */,
 				848801D816D2D7CD00C789B8 /* as20graph.txt */,
 			);

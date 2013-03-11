@@ -47,6 +47,8 @@
 %include "dt.h"
 %include "fl.h"
 %include "graph.h"
+%include "cncom.h"
+%include "ggen.h"
 %include "gio.h"
 
 %include "printgraph.h"
@@ -90,9 +92,28 @@
 %template(PNGraph) TPt< TNGraph >;
 %template(LoadEdgeList_PNGraph) TSnap::LoadEdgeList<PNGraph>;
 %template(PrintGraphStatTable_PNGraph) PrintGraphStatTable<PNGraph>;
+
 %template(PercentDegree_PNGraph) PercentDegree<PNGraph>;
 %template(PercentMxWcc_PNGraph) PercentMxWcc<PNGraph>;
 %template(PercentMxScc_PNGraph) PercentMxScc<PNGraph>;
+
+// Directed Graphs
+%template(GenRndGnm_PNGraph) TSnap::GenRndGnm<PNGraph>;
+//%template(GenRMat) TSnap::GenRMat;
+
+// Undirected Graphs
+%template(GenRndGnm_PUNGraph) TSnap::GenRndGnm<PUNGraph>;
+//%template(GenPrefAttach) TSnap::GenPrefAttach;
+//%template(GenSmallWorld) TSnap::GenSmallWorld;
+%template(MxWccSz_PUNGraph) TSnap::GetMxWccSz<PUNGraph>;
+%template(MxSccSz_PUNGraph) TSnap::GetMxScc<PUNGraph>;
+
+
+%template(MxWccSz_PNGraph) TSnap::GetMxWccSz<PNGraph>;
+%template(MxSccSz_PNGraph) TSnap::GetMxScc<PNGraph>;
+
+%template(NodesGTEDegree_PNGraph) NodesGTEDegree<PNGraph>;
+%template(MxDegree_PNGraph) MxDegree<PNGraph>;
 
 //%template(GetStats_PNGraph) TSnap::GetStats<PNGraph>;
 
