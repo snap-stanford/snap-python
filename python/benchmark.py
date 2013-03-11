@@ -24,7 +24,8 @@ AVG_DEGREE_RANGE = range(2, 10)
 HOSTNAME = gethostname()
 
 RESULTS_DIR = os.path.join('..','results')
-TABLE_FILE = os.path.join(RESULTS_DIR, 'public_html', 'results.html')
+TABLE_FILE = os.path.join(RESULTS_DIR, 'public_html', 'results_%s.html' %
+                          datetime.now().strftime('%m%d-%H%m'))
 DATA_FILE = os.path.join(RESULTS_DIR, 'results%s.txt' % \
                          datetime.now().strftime('%m%d-%H%m'))
 
@@ -141,79 +142,81 @@ def run_tests(num_iterations=3, min_nodes_exponent=4, max_nodes_exponent=4):
         
         # Random number of nodes of degree i
         NNodes = 10**e;
-        NEdges = NNodes*10;
-
-#      # load the graph
-#      FIn = Snap.TFIn(Snap.TStr(FName))
-#      Graph2 = Snap.TUNGraph()
-#      Graph2.Load(FIn)
-#      PrintGStats("ManipulateNodesEdges:Graph4",Graph2)
-        FName = "%s_%d.graph" % (g, n)
-
         
-        # Use SNAP to read from file FIn and FOut don't work
-        NGraph = None
+        for avg_deg in [10, 100]:
         
-# TODO: TFIn is buggy, pass read-in for now
-#        if os.path.exists(FName):
-#          print "Reading from %s...." % FName
-        
-#          try:
-#            FIn = Snap.TFIn(Snap.TStr(FName))
-#            NGraph = Snap.TNGraph()
-#            NGraph.Load(FIn)
-#            NGraph = LoadFromFile(FName)
-#
-#          except Exception, e:
-#            print "Unable to load graph file, '%s': %s" % (FName, str(e))
+          NEdges = NNodes/avg_deg
+  #      # load the graph
+  #      FIn = Snap.TFIn(Snap.TStr(FName))
+  #      Graph2 = Snap.TUNGraph()
+  #      Graph2.Load(FIn)
+  #      PrintGStats("ManipulateNodesEdges:Graph4",Graph2)
+          FName = "%s_%d.graph" % (g, n)
 
-        results = {}
-        start_time = time()
-        if not NGraph:
-          print "Generating %s graph with %e NNodes, %e edges" % \
-            (g, NNodes, NEdges)
+          
+          # Use SNAP to read from file FIn and FOut don't work
+          NGraph = None
+          
+  # TODO: TFIn is buggy, pass read-in for now
+  #        if os.path.exists(FName):
+  #          print "Reading from %s...." % FName
+          
+  #          try:
+  #            FIn = Snap.TFIn(Snap.TStr(FName))
+  #            NGraph = Snap.TNGraph()
+  #            NGraph.Load(FIn)
+  #            NGraph = LoadFromFile(FName)
+  #
+  #          except Exception, e:
+  #            print "Unable to load graph file, '%s': %s" % (FName, str(e))
 
-          if g in ['rnd', 'rmat']:
-            
-            if g == 'rnd':
-              NGraph = Snap.GenRndGnm_PNGraph(NNodes, NEdges)
-            elif g == 'rmat':
-              NGraph = Snap.GenRMat(NNodes, NEdges, 0.40, 0.25, 0.2)
-            else:
-              print "Invalid directed graph"
+          results = {}
+          start_time = time()
+          if not NGraph:
+            print "Generating %s graph with %e NNodes, %e edges" % \
+              (g, NNodes, NEdges)
 
-          results['gen_time'] = time() - start_time
-          results['model'] = g
-          results['type'] = 'directed'
-          results['hostname'] = HOSTNAME
-                
-          results = benchmark_ngraph(results, NGraph)
-                
-        else:
-          print "Invalid undirected graph"
-          pass
-       
-        
-        # TFIn is buggy, pass for now
-#        print "Saving %s graph to file...%s" % (g, FName)
-#        FOut = Snap.TFOut(Snap.TStr(FName))
-#        NGraph.Save(FOut)
-#        FOut.Flush()
+            if g in ['rnd', 'rmat']:
+              
+              if g == 'rnd':
+                NGraph = Snap.GenRndGnm_PNGraph(NNodes, NEdges)
+              elif g == 'rmat':
+                NGraph = Snap.GenRMat(NNodes, NEdges, 0.40, 0.25, 0.2)
+              else:
+                print "Invalid directed graph"
 
-#          FOut = Snap.TFOut(Snap.TStr(FName))
-#            Graph.Save(FOut)
-#            FOut.Flush()
+            results['gen_time'] = time() - start_time
+            results['model'] = g
+            results['type'] = 'directed'
+            results['hostname'] = HOSTNAME
+                  
+            results = benchmark_ngraph(results, NGraph)
+                  
+          else:
+            print "Invalid undirected graph"
+            pass
+         
+          
+          # TFIn is buggy, pass for now
+  #        print "Saving %s graph to file...%s" % (g, FName)
+  #        FOut = Snap.TFOut(Snap.TStr(FName))
+  #        NGraph.Save(FOut)
+  #        FOut.Flush()
 
-        print "Elapsed Time = %.4f" % results['time_elapsed']
-        print "-"*75
+  #          FOut = Snap.TFOut(Snap.TStr(FName))
+  #            Graph.Save(FOut)
+  #            FOut.Flush()
 
-        all_results.append(results)
-        
-        # Output to JSON for posterity
-        with open(DATA_FILE, 'w') as outfile:
-          json.dump(all_results, outfile)
-        
-        write_stats(all_results)
+          print "Elapsed Time = %.4f" % results['time_elapsed']
+          print "-"*75
+
+          all_results.append(results)
+          
+          # Output to JSON for posterity
+          with open(DATA_FILE, 'w') as outfile:
+            json.dump(all_results, outfile)
+          
+          write_stats(all_results)
 
   return all_results
 
@@ -255,7 +258,6 @@ def plot_2d(property):
 def plot_stats():
   
   pass
-
 
 
 #end for loop - plot type
