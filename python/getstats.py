@@ -37,7 +37,7 @@ def calc_stats():
         
           if avg:
             # Use average degree
-            NEdges = NNodes*AVG_DEG
+            NEdges = NNodes * AVG_DEG
           
           else:
             # Random number of edges (from 1-3x nodes)
@@ -46,7 +46,8 @@ def calc_stats():
           print "%s graph: NNodes=%.2e, %.2e" % \
                 (Snap.GetGraphDesc(g), NNodes, NEdges)
       
-          fname = "%s%s" % (Snap.GetGraphAbbr(g), 'deg%d' % AVG_DEG if avg else '')
+          fname = "%s%s" % (Snap.GetGraphAbbr(g),
+                            'deg%d' % AVG_DEG if avg else '')
           # Repeat for all graph types
           for j in PROPERTY_TYPES:
             print "Calculating %s..." % Snap.GetAttributeDesc(j)

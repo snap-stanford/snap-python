@@ -1,0 +1,3 @@
+[submodule "snapr"]
+	path = snapr
+	url = git@github.com:snap-stanford/snapr.git

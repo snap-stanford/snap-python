@@ -8,6 +8,7 @@
 
 #include "goodgraph.cpp"
 #include "getassessment.cpp"
+//#include "demo-TNEAGraph.cpp"
 
 %}
 
@@ -38,10 +39,9 @@
 %ignore TNGraph::GetEI(int const&) const;
 %ignore TBPGraph::HasFlag(const TGraphFlag& Flag) const;
 %ignore TNEGraph::GetSmallGraph();
+%ignore TNEAGraph::GetSmallGraph();
 %ignore TBPGraph::GetEI(int const&) const;
 %ignore TUNGraph::GetEI(int const&) const;
-
-//%ignore TNGraphNodeI::TNGNodeI;
 
 %include "bd.h"
 %include "dt.h"
@@ -56,6 +56,8 @@
 
 %include "goodgraph.cpp"
 %include "getassessment.cpp"
+//%include "demo-TNEAGraph.cpp"
+
 
 // TODO can BegNI() be renamed?
 
@@ -88,6 +90,12 @@
                 return TUNGraphEdgeI($self->EndEI());
         }
 };
+
+//// TODO: Incorporate TNEAGraph here.
+//%extend TNEAGraph {
+//
+//};
+
 
 %template(PNGraph) TPt< TNGraph >;
 %template(LoadEdgeList_PNGraph) TSnap::LoadEdgeList<PNGraph>;
