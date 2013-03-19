@@ -1,7 +1,30 @@
+#include <time.h>
+
 namespace TSnap {
 
 typedef TVec<TInt, int> TIntV;
 typedef TVec<TIntV, int> TIntIntVV;
+
+void SeedRandom() {
+  long int ITime;
+  long int IPid;
+  long int RSeed;
+
+  ITime = (long int) time(NULL);
+  IPid = (long int) getpid();
+
+  RSeed = ITime * IPid;
+  srand48(RSeed);
+}
+
+void Randomize(TIntV& Vec) {
+  int Pos;
+  int Last = Vec.Len() - 1;
+  for (int ValN = Last; ValN > 0; ValN--) {
+    Pos = (long) (drand48() * ValN);
+    Vec.Swap(ValN, Pos);
+  }
+}
 
 int StdDist(double Mean, double Dev) {
   int i;
@@ -59,6 +82,17 @@ void GetDegrees(TIntV& Nodes, double Mean, double Dev) {
   }
 }
 
+void IncVal(TIntV& Nodes, int disp) {
+  int i;
+  int Len;
+
+  // increment value for each element
+  Len = Nodes.Len();
+  for (i = 0; i < Len; i++) {
+    Nodes[i] += disp;
+  }
+}
+
 void AssignRndTask(const TIntV& Nodes, TIntIntVV& Tasks) {
   int i;
   int j;
@@ -81,6 +115,38 @@ void AssignRndTask(const TIntV& Nodes, TIntIntVV& Tasks) {
       t = (long) (drand48() * NumTasks);
       Tasks[t].Add(i);
     }
+  }
+}
+
+void AssignEdges(const TIntV& Pairs, TIntIntVV& Tasks, int tsize) {
+  int i;
+  int NumStubs;
+  int NumTasks;
+  int TaskId;
+  int Node1;
+  int Node2;
+
+  printf("AssignEdges\n");
+  printf("Pairs Len %d\n",Pairs.Len());
+  printf("Tasks Len %d\n",Tasks.Len());
+
+  NumStubs = Pairs.Len();
+  NumTasks = Tasks.Len();
+
+  // distribute edges to tasks
+  for (i = 0; i < NumStubs-1; i += 2) {
+
+    Node1 = Pairs.GetVal(i).Val;
+    Node2 = Pairs.GetVal(i+1).Val;
+
+    // add an edge twice, once for each end node
+    TaskId = Node1 / tsize;
+    Tasks[TaskId].Add(Node1);
+    Tasks[TaskId].Add(Node2);
+
+    TaskId = Node2 / tsize;
+    Tasks[TaskId].Add(Node2);
+    Tasks[TaskId].Add(Node1);
   }
 }
 

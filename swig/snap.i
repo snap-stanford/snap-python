@@ -37,12 +37,16 @@
 
 %ignore TVec<TVec<TInt, int>, int>::Add;
 
+%ignore THash< TInt, TVec< TInt, int > >::HashPrimeT;
+%ignore THash< TInt, TVec< TInt, int > >::AddDatId;
+
 %include "bd.h"
 %include "dt.h"
 %include "ds.h"
 %include "fl.h"
 %include "graph.h"
 %include "gio.h"
+%include "hash.h"
 
 %include "snapsw.h"
 %include "printgraph.h"
@@ -87,7 +91,8 @@
 };
 
 %template(TIntV) TVec< TInt, int >;
-%template(TIntIntVV) TVec< TVec< TInt, int > , int >;
+%template(TIntIntVV) TVec< TVec< TInt, int >, int >;
+%template(TIntIntVH) THash< TInt, TVec< TInt, int > >;
 
 %template(PNGraph) TPt< TNGraph >;
 %template(LoadEdgeList_PNGraph) TSnap::LoadEdgeList<PNGraph>;
