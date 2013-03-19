@@ -80,7 +80,6 @@ def ManipulateNodesEdges():
         NCount, ECount1, ECount2)
 
     # assignment
-    Graph1 = Snap.TUNGraph()
     Graph1 = Graph;
     PrintGStats("ManipulateNodesEdges:Graph3",Graph1)
 
@@ -89,12 +88,9 @@ def ManipulateNodesEdges():
     Graph.Save(FOut)
     FOut.Flush()
 
-    # !!! TODO graph loading does not work !!!
-
     # load the graph
     FIn = Snap.TFIn(Snap.TStr(FName))
-    Graph2 = Snap.TUNGraph()
-    Graph2.Load(FIn)
+    Graph2 = Snap.TUNGraph(FIn)
     PrintGStats("ManipulateNodesEdges:Graph4",Graph2)
 
     # remove all the nodes and edges

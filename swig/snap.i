@@ -91,11 +91,6 @@
         }
 };
 
-//// TODO: Incorporate TNEAGraph here.
-//%extend TNEAGraph {
-//
-//};
-
 
 %template(PNGraph) TPt< TNGraph >;
 %template(LoadEdgeList_PNGraph) TSnap::LoadEdgeList<PNGraph>;
