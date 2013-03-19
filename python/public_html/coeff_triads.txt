@@ -1,2 +1,0 @@
-hostname=sheridan, model=poly, type=all, n=120, r2=0.9785, pfinal=['5.1203e-03', '7.2655e-06', '-1.1964e-06', '3.6806e-11', '1.9436e-12']
-hostname=madmax, model=poly, type=all, n=300, r2=0.9890, pfinal=['8.6969e-04', '-1.9718e-05', '8.4570e-06', '3.0229e-10', '-6.9186e-12']

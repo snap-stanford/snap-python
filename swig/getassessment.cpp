@@ -230,6 +230,11 @@ double GetStats(int NNodes, int NEdges, PlotType PType, GraphType RType) {
   return Elapsed;
 }
 
+//template<class PGraph>
+//PGraph GenerateGraph(const int NNodes, const int NEdges) {
+//  
+//}
+
 const char * GetAttributeDesc(PlotType PType) {
   return PlotDesc[PType];
 }
