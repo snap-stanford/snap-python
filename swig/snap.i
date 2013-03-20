@@ -8,7 +8,7 @@
 
 #include "goodgraph.cpp"
 #include "getassessment.cpp"
-//#include "demo-TNEAGraph.cpp"
+//#include "demo-TNEAGraph.cpp
 
 %}
 
@@ -58,9 +58,6 @@
 %include "getassessment.cpp"
 //%include "demo-TNEAGraph.cpp"
 
-
-// TODO can BegNI() be renamed?
-
 %extend TNGraph {
         TNGraphNodeI BegNI() {
                 return TNGraphNodeI($self->BegNI());
@@ -91,32 +88,37 @@
         }
 };
 
-
+// Directed Graphs
 %template(PNGraph) TPt< TNGraph >;
-%template(LoadEdgeList_PNGraph) TSnap::LoadEdgeList<PNGraph>;
-%template(PrintGraphStatTable_PNGraph) PrintGraphStatTable<PNGraph>;
 
 %template(PercentDegree_PNGraph) PercentDegree<PNGraph>;
 %template(PercentMxWcc_PNGraph) PercentMxWcc<PNGraph>;
 %template(PercentMxScc_PNGraph) PercentMxScc<PNGraph>;
 
-// Directed Graphs
+%template(LoadEdgeList_PNGraph) TSnap::LoadEdgeList<PNGraph>;
+%template(PrintGraphStatTable_PNGraph) PrintGraphStatTable<PNGraph>;
 %template(GenRndGnm_PNGraph) TSnap::GenRndGnm<PNGraph>;
-//%template(GenRMat) TSnap::GenRMat;
-
-// Undirected Graphs
-%template(GenRndGnm_PUNGraph) TSnap::GenRndGnm<PUNGraph>;
-//%template(GenPrefAttach) TSnap::GenPrefAttach;
-//%template(GenSmallWorld) TSnap::GenSmallWorld;
-%template(MxWccSz_PUNGraph) TSnap::GetMxWccSz<PUNGraph>;
-%template(MxSccSz_PUNGraph) TSnap::GetMxScc<PUNGraph>;
-
-
 %template(MxWccSz_PNGraph) TSnap::GetMxWccSz<PNGraph>;
 %template(MxSccSz_PNGraph) TSnap::GetMxScc<PNGraph>;
 
 %template(NodesGTEDegree_PNGraph) NodesGTEDegree<PNGraph>;
+%template(NodesGTEDegree_PUNGraph) NodesGTEDegree<PUNGraph>;
+
+%template(MxDegree_PUNGraph) MxDegree<PUNGraph>;
 %template(MxDegree_PNGraph) MxDegree<PNGraph>;
+
+// Undirected Graphs
+%template(PUNGraph) TPt< TUNGraph >;
+
+%template(LoadEdgeList_PUNGraph) TSnap::LoadEdgeList<PUNGraph>;
+%template(PrintGraphStatTable_PUNGraph) PrintGraphStatTable<PUNGraph>;
+
+
+%template(GenRndGnm_PUNGraph) TSnap::GenRndGnm<PUNGraph>;
+%template(MxSccSz_PUNGraph) TSnap::GetMxScc<PUNGraph>;
+%template(MxWccSz_PUNGraph) TSnap::GetMxWccSz<PUNGraph>;
+
+
 
 //%template(GetStats_PNGraph) TSnap::GetStats<PNGraph>;
 

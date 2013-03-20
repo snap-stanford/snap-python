@@ -84,6 +84,7 @@ def ManipulateNodesEdges():
     PrintGStats("ManipulateNodesEdges:Graph3",Graph1)
 
     # save the graph
+    print "graph type = ", type(Graph)
     FOut = Snap.TFOut(Snap.TStr(FName))
     Graph.Save(FOut)
     FOut.Flush()
