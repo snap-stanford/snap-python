@@ -3,7 +3,7 @@ import sys
 from time import time
 from socket import gethostname
 import argparse
-import json
+import glob, csv
 from datetime import datetime
 
 sys.path.append("../swig")
@@ -19,6 +19,7 @@ DEGREE_TYPES = [0, 1]
 DEFAULT_RANGE = '5-7'   # Exponent (e.g. 10^x to 10^y)
 
 VERBOSE = False
+DEFAULT_TIME_MIN = 1.0
 
 AVG_DEG = 3
 AVG_DEGREE_RANGE = range(2, 10)
@@ -28,16 +29,36 @@ HOSTNAME = gethostname()
 
 # Where to build the table.
 PUBLIC_DIR = 'public_html'
-TABLE_FILE = os.path.join(PUBLIC_DIR, 'results_%s.html' %
-                          datetime.now().strftime('%m%d-%H%m'))
+TABLE_FILE = os.path.join(PUBLIC_DIR, 'result_table_%s.html' %
+                          datetime.now().strftime('%m%d-%H%M'))
 
 # Where to read-in/generate the graph.
 
-DATA_DIR = 'data'
+RESULTS_DIR = 'results'
 RESULTS_FILE = os.path.join(RESULTS_DIR, 'results%s.txt' % \
-                            datetime.now().strftime('%m%d-%H%m'))
+                            datetime.now().strftime('%m%d-%H%M'))
 
-def write_stats(all_results):
+def parse_file(f, results):
+
+  import csv
+  print "Parsing %s" % f
+
+  with open(f, 'rb') as csvfile:
+    spamreader = csv.reader(csvfile)
+    for row in spamreader:
+      result = {}
+      result["hostname"] = row[0]
+      result["model"] = row[1]
+      result["type"] = row[2]
+      result["num_nodes"] = int(row[3])
+      result["num_edges"] = int(row[4])
+      result["start_time"] = row[5]
+      result["time_generate"] = float(row[6])
+      result["time_elapsed"] = float(row[7])
+ 
+      results.append(result)
+
+def write_stats(results):
   
   f = open(TABLE_FILE, 'w')
   
@@ -47,30 +68,38 @@ def write_stats(all_results):
   f.write("<table border=1 id=\"datatab\" summary=\"Dataset statistics\">\n");
   
   f.write("<tr>");
+  f.write("<th>Hostname</th>\n");
   f.write("<th>Model</th>\n");
   f.write("<th>Type</th>\n");
   f.write("<th>Nodes</th>\n");
   f.write("<th>Edges</th>\n");
   f.write("<th>Gen Time (sec)</th>\n");
   f.write("<th>Run Time (sec)</th>\n");
-  f.write("<th>Hostname</th>\n");
   f.write("</tr>\n");
   
-  for results in all_results:
-    f.write("<tr>\n");
-    f.write("<td>%s</td>" % results['model']);
-    f.write("<td>%s</td>" % results['type']);
-    f.write("<td>%.3e</td>" % results['num_nodes']);
-    f.write("<td>%.3e</td>" % results['num_edges']);
-    f.write("<td>%.4f</td>" % results['time_generate']);
-    f.write("<td>%.4f</td>" % results['time_elapsed']);
-    f.write("<td>%s</td>" % results['hostname']);
-    f.write("</tr>\n");
-  
+  for result in results:
+
+    for host in ['madmax', 'sheridan']:
+      if host in result['hostname'] and result['time_elapsed'] > time_min:
+        
+        print "adding result to table = ", result
+        f.write("<tr>\n");
+        f.write("<td>%s</td>" % result['hostname']);
+        f.write("<td>%s</td>" % result['model']);
+        f.write("<td>%s</td>" % result['type']);
+        f.write("<td>%.3e</td>" % result['num_nodes']);
+        f.write("<td>%.3e</td>" % result['num_edges']);
+        f.write("<td>%.4f</td>" % result['time_generate']);
+        f.write("<td>%.4f</td>" % result['time_elapsed']);
+        f.write("</tr>\n");
+
   f.write("</table>\n");
   
   f.write("</body>");
   f.write("</html>");
+  if verbose:
+    print "Writing to file ", TABLE_FILE
+          
   
   f.close();
 
@@ -117,7 +146,7 @@ def plot_stats():
 
 def main():
   
-  global results_dir, verbose
+  global results_dir, verbose, time_min
   
   parser = argparse.ArgumentParser()
   parser.add_argument("-v", "--verbose", default=False,
@@ -126,26 +155,41 @@ def main():
   
   parser.add_argument("-r", "--results_dir", help="results directory")
   
+  parser.add_argument("-m", "--time_min", type=float,
+                      default=DEFAULT_TIME_MIN,
+                      help="time minimum threshol")
+
+  
   args = parser.parse_args()
   
   verbose = args.verbose
   
   print "Hostname: %s" % HOSTNAME
-  print "Range = 10^%s to 10^%s" % (args.range[0], args.range[-1])
+  
+  time_min = args.time_min
   
   if not os.path.exists(RESULTS_DIR):
-  os.makedirs(RESULTS_DIR)
+    os.makedirs(RESULTS_DIR)
   
   if not os.path.exists(PUBLIC_DIR):
-  os.makedirs(PUBLIC_DIR)
+    os.makedirs(PUBLIC_DIR)
+
+  if verbose:
+    print "Reading results %s" % args.results_dir
   
-  all_results = run_tests(args.num_iterations, int(args.range[0]), int(args.range[-1]))
+  results = []
+  for f in glob.glob("%s/result*.txt" % args.results_dir):
+    print "Parsing %s" % f
+    parse_file(f, results)
+
+  write_stats(results)
+
   
   if verbose:
-  print "Plotting results"
-  plot_stats()
+    print "Plotting results"
+    plot_stats()
   
-  if __name__ == "__main__":
+if __name__ == "__main__":
   main()
 
                       

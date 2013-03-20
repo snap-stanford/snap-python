@@ -31,7 +31,7 @@ HOSTNAME = gethostname()
 
 RESULTS_DIR = 'results'
 RESULTS_FILE = os.path.join(RESULTS_DIR, 'results%s.txt' % \
-                            datetime.now().strftime('%m%d-%H%m'))
+                            datetime.now().strftime('%m%d-%H%M%S'))
 
 def benchmark_ngraph(results, Graph):
   '''
@@ -159,8 +159,8 @@ def run_tests(num_iterations=3, min_nodes_exponent=3, max_nodes_exponent=4):
           
           StartTime = datetime.now()
         
-          FName = os.path.join(RESULTS_DIR, "%s_%de%d_deg%d_%d.graph" %
-                               (g, NNodes, exp, NEdges/NNodes, n))
+          FName = os.path.join(RESULTS_DIR, "%s_10e%d_deg%d_%d.graph" %
+                               (g, exp, NEdges/NNodes, n))
         
           if not generate:
             
@@ -184,21 +184,23 @@ def run_tests(num_iterations=3, min_nodes_exponent=3, max_nodes_exponent=4):
             
           if not Graph:
             
-            # User wants to re-generate graph, or no graph data available.
-            Graph = generate_graph(NNodes, NEdges, g, Type)
+            try:
             
-            # Save the graph
-            print "Saving '%s' graph to file ... '%s'" % (g, FName)
-
-            if Graph:
-#              try:
-                FOut = Snap.TFOut(Snap.TStr(FName))
-                Graph.Save(FOut)
-                FOut.Flush()
-
+              # User wants to re-generate graph, or no graph data available.
+              Graph = generate_graph(NNodes, NEdges, g, Type)
             
-#              except Exception, e:
-#                print "Unable to save graph file, '%s': %s" % (FName, str(e))
+              # Save the graph
+              print "Saving '%s' graph to file ... '%s'" % (g, FName)
+
+              if Graph:
+
+                  FOut = Snap.TFOut(Snap.TStr(FName))
+                  Graph.Save(FOut)
+                  FOut.Flush()
+            
+            except Exception, e:
+              print "Unable to generate/save graph file, '%s': %s" % (FName, str(e))
+              continue
 
 
           TimeGenerate = datetime.now() - StartTime
@@ -231,6 +233,8 @@ def run_tests(num_iterations=3, min_nodes_exponent=3, max_nodes_exponent=4):
             writer.writerow(row)
               
           print "-"*75
+
+
 
 def main():
   
