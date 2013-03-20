@@ -103,7 +103,6 @@ def generate_graph(NNodes, NEdges, Model, Type):
 
   elif Model == 'rmat':
     Graph = Snap.GenRMat(NNodes, NEdges, 0.40, 0.25, 0.2)
-    print "Invalid directed graph"
 
   elif Model == 'sw':
     Graph = Snap.GenSmallWorld(NNodes, NNodes/NEdges, 0.1)
@@ -201,7 +200,6 @@ def run_tests(num_iterations=3, min_nodes_exponent=3, max_nodes_exponent=4):
 #              except Exception, e:
 #                print "Unable to save graph file, '%s': %s" % (FName, str(e))
 
-              
 
           TimeGenerate = datetime.now() - StartTime
 
@@ -217,22 +215,19 @@ def run_tests(num_iterations=3, min_nodes_exponent=3, max_nodes_exponent=4):
           
           print "Elapsed Time = %.4f sec" % TimeElapsed.total_seconds()
 
-          all_results.append(results)
-
           row_header = ["Hostname", "Model", "Type", "Nodes", "Edges",
                         "StartTime", "Generation Time", "Run Time"]
 
           print "Header: %s" % " ".join(row_header)
 
           import csv
-          with open(RESULTS_FILE, 'w') as csvfile:
+          with open(RESULTS_FILE, 'a+') as csvfile:
             writer = csv.writer(csvfile)
             print "Writing to '%s'..." % RESULTS_FILE
             row = [HOSTNAME, g, Type, NNodes, NEdges,
                    StartTime.strftime("%d/%b/%Y:%H:%M:%S"),
                    TimeGenerate.total_seconds(), TimeElapsed.total_seconds()]
             print "Time Data: %s" % repr(row)
-#            print "Results: %s" % repr(results)
             writer.writerow(row)
               
           print "-"*75
