@@ -11,6 +11,7 @@
 		8456FCEA16E2E28D00ECCD5F /* goodgraph.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8456FCE916E2E28D00ECCD5F /* goodgraph.cpp */; };
 		8488019416D20FF300C789B8 /* printgraph.h in Sources */ = {isa = PBXBuildFile; fileRef = 8474830916CD86B300AF3EF4 /* printgraph.h */; };
 		8488019616D20FF300C789B8 /* snapswig.h in Sources */ = {isa = PBXBuildFile; fileRef = 8474831016CD86B300AF3EF4 /* snapswig.h */; };
+		849E192616FA63710073F921 /* swig-TNEAGraph.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 849E192516FA63710073F921 /* swig-TNEAGraph.cpp */; };
 		84F8AC5116F7DFD400FC5E61 /* Makefile in Sources */ = {isa = PBXBuildFile; fileRef = 84F8A8D216F7DFD200FC5E61 /* Makefile */; };
 		84F8AC5216F7DFD400FC5E61 /* agmfitmain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8A8D616F7DFD200FC5E61 /* agmfitmain.cpp */; };
 		84F8AC5316F7DFD400FC5E61 /* Makefile in Sources */ = {isa = PBXBuildFile; fileRef = 84F8A8D916F7DFD200FC5E61 /* Makefile */; };
@@ -354,7 +355,6 @@
 		84F8ADA516F7DFD400FC5E61 /* demo-TNodeNet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AC2D16F7DFD400FC5E61 /* demo-TNodeNet.cpp */; };
 		84F8ADA616F7DFD400FC5E61 /* demo-TUNGraph.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AC2E16F7DFD400FC5E61 /* demo-TUNGraph.cpp */; };
 		84F8ADA716F7DFD400FC5E61 /* Makefile in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AC5016F7DFD400FC5E61 /* Makefile */; };
-		84F8ADB316F7E1C300FC5E61 /* demo-TNEAGraph.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8ADB216F7E1C300FC5E61 /* demo-TNEAGraph.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -388,6 +388,7 @@
 
 /* Begin PBXFileReference section */
 		8444C83B16EDC81800264DA8 /* benchmark.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = benchmark.py; sourceTree = "<group>"; };
+		84529AEF16F9184700DC307D /* plot_results.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = plot_results.py; sourceTree = "<group>"; };
 		8456FCE916E2E28D00ECCD5F /* goodgraph.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = goodgraph.cpp; sourceTree = "<group>"; };
 		847482E016CD863500AF3EF4 /* Makefile */ = {isa = PBXFileReference; explicitFileType = sourcecode.make; fileEncoding = 4; path = Makefile; sourceTree = "<group>"; };
 		847482E216CD863500AF3EF4 /* bench.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = bench.py; sourceTree = "<group>"; };
@@ -408,6 +409,8 @@
 		8488FEAB16D20F8400C789B8 /* docs */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = docs; sourceTree = BUILT_PRODUCTS_DIR; };
 		849766F416D32A8B00EE1E91 /* getassessment.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = getassessment.cpp; sourceTree = "<group>"; };
 		849766F716D34B6D00EE1E91 /* getstats.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = getstats.py; sourceTree = "<group>"; };
+		849E192516FA63710073F921 /* swig-TNEAGraph.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "swig-TNEAGraph.cpp"; sourceTree = "<group>"; };
+		849E192D16FA67AF0073F921 /* demo-tneagraph.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = "demo-tneagraph.py"; sourceTree = "<group>"; };
 		84F8A8CC16F7DFD200FC5E61 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		84F8A8CD16F7DFD200FC5E61 /* CREDITS.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CREDITS.txt; sourceTree = "<group>"; };
 		84F8A8CF16F7DFD200FC5E61 /* doxyblock.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = doxyblock.py; sourceTree = "<group>"; };
@@ -1261,7 +1264,6 @@
 		84F8AC4E16F7DFD400FC5E61 /* demo_ungraph_Twopi_col.dot */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = demo_ungraph_Twopi_col.dot; sourceTree = "<group>"; };
 		84F8AC4F16F7DFD400FC5E61 /* demo_ungraph_Twopi_col.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = demo_ungraph_Twopi_col.gif; sourceTree = "<group>"; };
 		84F8AC5016F7DFD400FC5E61 /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
-		84F8ADB216F7E1C300FC5E61 /* demo-TNEAGraph.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "demo-TNEAGraph.cpp"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1295,7 +1297,9 @@
 				847482E316CD863500AF3EF4 /* load.py */,
 				847482E416CD863500AF3EF4 /* tnodei.py */,
 				849766F716D34B6D00EE1E91 /* getstats.py */,
+				849E192D16FA67AF0073F921 /* demo-tneagraph.py */,
 				8444C83B16EDC81800264DA8 /* benchmark.py */,
+				84529AEF16F9184700DC307D /* plot_results.py */,
 				8481DDEA16E2E83F00124EF3 /* checkgraph.py */,
 				848801D816D2D7CD00C789B8 /* as20graph.txt */,
 			);
@@ -1310,7 +1314,7 @@
 				8474831016CD86B300AF3EF4 /* snapswig.h */,
 				8474830916CD86B300AF3EF4 /* printgraph.h */,
 				849766F416D32A8B00EE1E91 /* getassessment.cpp */,
-				84F8ADB216F7E1C300FC5E61 /* demo-TNEAGraph.cpp */,
+				849E192516FA63710073F921 /* swig-TNEAGraph.cpp */,
 				8456FCE916E2E28D00ECCD5F /* goodgraph.cpp */,
 			);
 			path = swig;
@@ -3030,7 +3034,7 @@
 				84F8ADA516F7DFD400FC5E61 /* demo-TNodeNet.cpp in Sources */,
 				84F8ADA616F7DFD400FC5E61 /* demo-TUNGraph.cpp in Sources */,
 				84F8ADA716F7DFD400FC5E61 /* Makefile in Sources */,
-				84F8ADB316F7E1C300FC5E61 /* demo-TNEAGraph.cpp in Sources */,
+				849E192616FA63710073F921 /* swig-TNEAGraph.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

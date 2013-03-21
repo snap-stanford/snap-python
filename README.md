@@ -1,7 +1,37 @@
 snap-python
 ===========
 
-SNAP Python code, SWIG related files
+1. Install SWIG for your platform (see below).  Swig should be able to run from the command-line.
+
+2. Checkout the snap-python code, and initialize the submodules (SNAP).
+
+		git clone git@github.com:snap-stanford/snap-python.git
+		git submodule init
+		git submodule update
+
+2. Then, run `make` from the top-level of `snap-python`. This will make the SNAP code into a Python module, using SWIG.  Finally, it will run some Python tests in the `test` directory.  
+
+	From a Python interpreter, you should be able to run:
+
+		>>> import sys
+		>>> sys.path.append("../swig")
+		>>> import snap as Snap
+
+3. There are some examples in the `python` directory.  For example, to run benchmarks:
+
+		$ python benchmark.py -h
+		usage: benchmark.py [-h] [-v] [-r RANGE] [-n NUM_ITERATIONS] [-g]
+		
+		optional arguments:
+		  -h, --help            show this help message and exit
+		  -v, --verbose         increase output verbosity
+		  -r RANGE, --range RANGE
+		                        range (4-5) (10^4 to 10^5 nodes)
+		  -n NUM_ITERATIONS, --num_iterations NUM_ITERATIONS
+		                        number of iterations
+		  -g, --generate        generate new graphs
+		$ python benchmark.py -v -g -r 4-7
+
 
 SWIG Installation
 -----------------

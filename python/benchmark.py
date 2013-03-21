@@ -1,101 +1,70 @@
 import os.path
 import sys
-from time import time
-from socket import gethostname
 import argparse
-import json
+import random
+from socket import gethostname
+
 from datetime import datetime
 
 sys.path.append("../swig")
 import snap as Snap
+from math import log
 
 NUM_ITERATIONS = 1
 PROPERTY_TYPES = [1, 10]  # 1=Triads, 10=BFS
 
 # Random, Small World, Pref, R-MAT
-GRAPH_TYPES = ['rmat', 'rnd','pref','sw']
-#GRAPH_TYPES = ['sw', 'pref', 'rnd', 'rmat']
+#GRAPH_TYPES = ['rmat', 'rnd_ngraph','rnd_ungraph', 'pref', 'sw']
+GRAPH_TYPES = ['rnd_ungraph', 'rnd_ngraph', 'rmat', 'pref', 'sw']
+
+# Average is 1, non-average is 0.
 DEGREE_TYPES = [0, 1]
-DEFAULT_RANGE = '5-7'   # Exponent (e.g. 10^x to 10^y)
-
-VERBOSE = False
-
 AVG_DEG = 3
 AVG_DEGREE_RANGE = range(2, 10)
 SW_REWIRE_PROB = 0.1
 
+# Exponent range (e.g. 10^x to 10^y)
+DEFAULT_RANGE = '5-7'
+
+# Hostname for results
 HOSTNAME = gethostname()
 
-RESULTS_DIR = os.path.join('..','results')
-PUBLIC_DIR = os.path.join(RESULTS_DIR, 'public_html')
-TABLE_FILE = os.path.join(PUBLIC_DIR, 'results_%s.html' %
-                          datetime.now().strftime('%m%d-%H%m'))
-DATA_FILE = os.path.join(RESULTS_DIR, 'results%s.txt' % \
-                         datetime.now().strftime('%m%d-%H%m'))
+RESULTS_DIR = 'results'
+RESULTS_FILE = os.path.join(RESULTS_DIR, 'results%s.txt' % \
+                            datetime.now().strftime('%m%d-%H%M%S'))
 
-def write_stats(all_results):
-  
-  f = open(TABLE_FILE, 'w')
-  
-  f.write("<html>\n");
-  
-  f.write("<body>\n");
-  f.write("<table border=1 id=\"datatab\" summary=\"Dataset statistics\">\n");
-  
-  f.write("<tr>");
-  f.write("<th>Model</th>\n");
-  f.write("<th>Type</th>\n");
-  f.write("<th>Nodes</th>\n");
-  f.write("<th>Edges</th>\n");
-  f.write("<th>Gen Time (sec)</th>\n");
-  f.write("<th>Run Time (sec)</th>\n");
-  f.write("<th>Hostname</th>\n");
-  f.write("</tr>\n");
-  
-  for results in all_results:
-    f.write("<tr>\n");
-    f.write("<td>%s</td>" % results['model']);
-    f.write("<td>%s</td>" % results['type']);
-    f.write("<td>%.3e</td>" % results['num_nodes']);
-    f.write("<td>%.3e</td>" % results['num_edges']);
-    f.write("<td>%.4f</td>" % results['gen_time']);
-    f.write("<td>%.4f</td>" % results['run_time']);
-    f.write("<td>%s</td>" % results['hostname']);
-    f.write("</tr>\n");
-  
-  f.write("</table>\n");
-  
-  f.write("</body>");
-  f.write("</html>");
-  
-  f.close();
-
-# Run benchmark of tests
-def benchmark_ngraph(results, NGraph):
+def benchmark_ngraph(results, Graph):
+  '''
+  Perform benchmark tests for Directed Graphs
+  '''
     
-  results['num_nodes'] = NGraph.GetNodes()
-  results['num_edges'] = NGraph.GetEdges()
+  results['num_nodes'] = Graph.GetNodes()
+  results['num_edges'] = Graph.GetEdges()
   
   for degree in range(0, 11):
-    num = Snap.NodesGTEDegree_PNGraph(NGraph, degree)
+    num = Snap.NodesGTEDegree_PNGraph(Graph, degree)
     percent_deg = float(num) / results['num_nodes']
     results['deg_gte_%d' % degree] = num
     results['deg_gte_%d_percent' % degree] = percent_deg
-  
+
   # Check for over-weighted nodes
-  results['max_degree'] = Snap.MxDegree_PNGraph(NGraph)
-  
-  num = Snap.NodesGTEDegree_PNGraph(NGraph, results['max_degree'])
+  results['max_degree'] = Snap.MxDegree_PNGraph(Graph)
+
+  num = Snap.NodesGTEDegree_PNGraph(Graph, results['max_degree'])
   results['max_degree_num'] = num
   
-  results['max_wcc_percent'] = Snap.MxWccSz_PNGraph(NGraph) \
-                                / results['num_nodes']
-  results['max_scc_percent'] = Snap.MxSccSz_PNGraph(NGraph).GetNodes() \
-                                / results['num_nodes']
+  results['max_wcc_percent'] = Snap.MxWccSz_PNGraph(Graph) \
+    / results['num_nodes']
+  results['max_scc_percent'] = Snap.MxSccSz_PNGraph(Graph).GetNodes() \
+    / results['num_nodes']
+
   return results
 
 def benchmark_ungraph(results, Graph):
-  
+  '''
+  Perform benchmark tests for Undirected Graphs
+  '''
+
   results['num_nodes'] = Graph.GetNodes()
   results['num_edges'] = Graph.GetEdges()
   
@@ -112,184 +81,165 @@ def benchmark_ungraph(results, Graph):
   results['max_degree_num'] = num
   results['max_wcc_percent'] = Snap.MxWccSz_PUNGraph(Graph) \
                                 / results['num_nodes']
-  results['max_scc_percent'] = Snap.MxSccSz_PUNGraph(NGraph).GetNodes() \
+  results['max_scc_percent'] = Snap.MxSccSz_PUNGraph(Graph).GetNodes() \
                                 / results['num_nodes']
-  results['run_time'] = time() - start_time
-  
+
   # Calculate graph skew
+
   return results
 
-def benchmark(results, Graph):
+def generate_graph(NNodes, NEdges, Model, Type):
   
-  print "Running results..."
-  start_time = time()
+  if verbose:
+    print "Generating '%s' '%s' graph with %e nodes, %e edges" % \
+          (Model, Type, NNodes, NEdges)
 
-  if results['type'] == 'directed'
-    results = benchmark_ngraph(results, NGraph)
-  if results['type'] == 'undirected'
-    results = benchmark_ungraph(results, NGraph)
-  else
-    return none
+  if Model == 'rnd_ungraph':
+    # GnRndGnm returns error, so manually generate
+    Graph = Snap.GenRndGnm_PUNGraph(NNodes, NEdges, 0)
 
-  results['time_elapsed'] = time() - start_time
+  elif Model == 'rnd_ngraph':
+    Graph = Snap.GenRndGnm_PNGraph(NNodes, NEdges, 1)
 
+  elif Model == 'rmat':
+    Graph = Snap.GenRMat(NNodes, NEdges, 0.40, 0.25, 0.2)
 
-def run_tests(num_iterations=3, min_nodes_exponent=4, max_nodes_exponent=4):
+  elif Model == 'sw':
+    Graph = Snap.GenSmallWorld(NNodes, NNodes/NEdges, 0.1)
   
+  elif Model == 'pref':
+    Graph = Snap.GenPrefAttach(NNodes, NNodes/NEdges)
+        
+  return Graph
+
+def run_tests(num_iterations=3, min_nodes_exponent=3, max_nodes_exponent=4):
+  '''
+  Performtests with specificed exponent range
+  '''
+
   all_results = []
   
-  print "Running results from %e to %e" % (min_nodes_exponent, max_nodes_exponent)
-
-  import json
+  if verbose:
+    print "Running results from %e to %e" % (min_nodes_exponent,
+                                           max_nodes_exponent)
+  
   for n in range(num_iterations):
     if verbose:
       print "Iteration: %d of %d" % (n+1, num_iterations)
-    
-    for e in range(min_nodes_exponent,max_nodes_exponent+1):
+  
+    for exp in range(min_nodes_exponent,max_nodes_exponent+1):
       
       for g in GRAPH_TYPES:
-      
+        
         # Random number of nodes of degree i
-        NNodes = 10**e;
+        NNodes = 10**exp;
         
         for avg_deg in [10, 100]:
-        
+          
           NEdges = NNodes*avg_deg
-  #      # load the graph
-  #      FIn = Snap.TFIn(Snap.TStr(FName))
-  #      Graph2 = Snap.TUNGraph()
-  #      Graph2.Load(FIn)
-  #      PrintGStats("ManipulateNodesEdges:Graph4",Graph2)
-          FName = "%s_%d.graph" % (g, n)
+          
+          if NEdges > NNodes ** 2:
+            print "Unable to assign %d edges to graph with %d nnodes" % \
+                  (NEdges, NNodes)
+            continue
           
           # Use SNAP to read from file FIn and FOut don't work
           Graph = None
-          
-  # TODO: TFIn is buggy, pass read-in for now
-  #        if os.path.exists(FName):
-  #          print "Reading from %s...." % FName
-          
-  #          try:
-  #            FIn = Snap.TFIn(Snap.TStr(FName))
-  #            NGraph = Snap.TNGraph()
-  #            NGraph.Load(FIn)
-  #            NGraph = LoadFromFile(FName)
-  #
-  #          except Exception, e:
-  #            print "Unable to load graph file, '%s': %s" % (FName, str(e))
-
+                    
           results = {}
           
-          if Graph:
-            # Read in from file
-            results['gen_time'] = 0
-          
-          else:
-            
-            # Generate graph
-            start_time = time()
-            print "Generating %s graph with %e NNodes, %e edges" % \
-                        (g, NNodes, NEdges)
-
-            if g in ['rnd', 'rmat']:
-              
-              if g == 'rnd':
-                Graph = Snap.GenRndGnm_PNGraph(NNodes, NEdges)
-              elif g == 'rmat':
-                Graph = Snap.GenRMat(NNodes, NEdges, 0.40, 0.25, 0.2)
-              else:
-                print "Invalid directed graph"
+          if g in ['rmat', 'rnd_ngraph']:
+            Type = "directed"
+      
+          elif g in ['sw', 'pref', 'rnd_ungraph']:
+            Type = "undirected"
         
-            results['type'] = 'directed'
-
-            else:
-                
-              if g == 'sw':
-                Graph = Snap.GenSmallWorld(NNodes, NNodes/NEdges, 0.1)
-              elif g == 'pref':
-                Graph = Snap.GenPrefAttach(NNodes, NNodes/NEdges)
-
-            results['gen_time'] = time() - start_time
-            results['type'] = 'undirected'
-              
-          results = benchmark(results, Graph)
-
-          results['model'] = g
-          results['hostname'] = HOSTNAME
-  
           else:
-            print "Invalid undirected graph"
-            pass
+            print "Unknown graph type: %s" % g
           
-          # TFIn is buggy, pass for now
-  #        print "Saving %s graph to file...%s" % (g, FName)
-  #        FOut = Snap.TFOut(Snap.TStr(FName))
-  #        NGraph.Save(FOut)
-  #        FOut.Flush()
+          StartTime = datetime.now()
+        
+          FName = os.path.join(RESULTS_DIR, "%s_10e%d_deg%d_%d.graph" %
+                               (g, exp, NEdges/NNodes, n))
+        
+          if not generate:
+            
+            if os.path.exists(FName):
+              try:
+              
+                print "Loading '%s' from ...'%s'" % (g, FName)
+                FIn = Snap.TFIn(Snap.TStr(FName))
+                if Type == "directed":
+                  Graph = Snap.TNGraph(FIn)
+                else:
+                  Graph = Snap.TUNGraph(FIn)
+  
+              except Exception, e:
+                print "Unable to load graph file, '%s': %s" % (FName, str(e))
 
-  #          FOut = Snap.TFOut(Snap.TStr(FName))
-  #            Graph.Save(FOut)
-  #            FOut.Flush()
+        
+            else:
+              print "File not found: %s" % FName
 
-          print "Elapsed Time = %.4f" % results['run_time']
+            
+          if not Graph:
+            
+            try:
+            
+              # User wants to re-generate graph, or no graph data available.
+              Graph = generate_graph(NNodes, NEdges, g, Type)
+            
+              # Save the graph
+              print "Saving '%s' graph to file ... '%s'" % (g, FName)
+
+              if Graph:
+
+                  FOut = Snap.TFOut(Snap.TStr(FName))
+                  Graph.Save(FOut)
+                  FOut.Flush()
+            
+            except Exception, e:
+              print "Unable to generate/save graph file, '%s': %s" % (FName, str(e))
+              continue
+
+
+          TimeGenerate = datetime.now() - StartTime
+
+          print "Running tests..."
+          StartTime = datetime.now()
+
+          if Type == 'directed':
+            results = benchmark_ngraph(results, Graph)
+          if Type == 'undirected':
+            results = benchmark_ungraph(results, Graph)
+
+          TimeElapsed = datetime.now() - StartTime
+          
+          print "Elapsed Time = %.4f sec" % TimeElapsed.total_seconds()
+
+          row_header = ["Hostname", "Model", "Type", "Nodes", "Edges",
+                        "StartTime", "Generation Time", "Run Time"]
+
+          print "Header: %s" % " ".join(row_header)
+
+          import csv
+          with open(RESULTS_FILE, 'a+') as csvfile:
+            writer = csv.writer(csvfile)
+            print "Writing to '%s'..." % RESULTS_FILE
+            row = [HOSTNAME, g, Type, NNodes, NEdges,
+                   StartTime.strftime("%d/%b/%Y:%H:%M:%S"),
+                   TimeGenerate.total_seconds(), TimeElapsed.total_seconds()]
+            print "Time Data: %s" % repr(row)
+            writer.writerow(row)
+              
           print "-"*75
 
-          all_results.append(results)
-          
-          # Output to JSON for posterity
-          with open(DATA_FILE, 'w') as outfile:
-            json.dump(all_results, outfile)
-          
-          write_stats(all_results)
 
-  return all_results
-
-
-# --------------- Plotting ---------------
-import matplotlib
-matplotlib.use('Agg')
-
-from pylab import *
-from numpy import sort,array,ones,linalg,column_stack,loadtxt,savetxt
-from scipy import *
-from scipy.optimize import leastsq
-from scipy import linalg
-
-def plot_2d(property):
-  
-  # Plot average degree on 2d-graph
-  figure()
-  for g in GRAPH_TYPES:
-    
-    fname = '%s/%s_%sdeg%d.txt' % (results_dir, Snap.GetAttributeAbbr(property),
-                                   Snap.GetGraphAbbr(g), AVG_DEG)
-    A = loadtxt(fname)
-    A = sort(A,0)
-    Y = A[:,-1]     # Last column
-    X = A[:,:-1]    # Columns 0-(n-1)
-    
-    loglog(X[:,0], Y, 'o', label=Snap.GetGraphDesc(g))
-    
-    legend(loc='lower right')
-    xlabel('Num Nodes (d_avg = %.1f)' % AVG_DEG)
-    ylabel('time')
-    title('%s runtime (avg degree = %d)' % (Snap.GetAttributeDesc(property), AVG_DEG))
-    pname = '%s/plot2d_%s.png' % (results_dir, Snap.GetAttributeAbbr(property))
-    print "Saving figure %s" % pname
-    savefig(pname)
-
-
-def plot_stats():
-  
-  pass
-
-
-#end for loop - plot type
 
 def main():
   
-  global results_dir, verbose, hostname, max_nodes_exponent
-
+  global results_dir, verbose, generate, hostname, max_nodes_exponent
+  
   parser = argparse.ArgumentParser()
   parser.add_argument("-v", "--verbose", default=False,
                       action="store_true", dest="verbose",
@@ -298,31 +248,26 @@ def main():
                       help="range (4-5) (10^4 to 10^5")
   parser.add_argument("-n", "--num_iterations", type=int,
                       default=NUM_ITERATIONS, help="number of iterations")
-#  parser.add_argument("-i", "--hostname", help="hostname")
-#  parser.add_argument("-p", "--plot", action="store_true", help="plot stats")
-#  parser.add_argument("-r", "--run", action="store_true", help="run stats")
-#  
-#  parser.add_argument("results_dir", help="directory to save/store data")
+  
+  parser.add_argument("-g", "--generate", default=False,
+                      action="store_true", dest="generate", help="generate new graphs")
+  
   args = parser.parse_args()
   
   verbose = args.verbose
+  generate = args.generate
   
   print "Hostname: %s" % HOSTNAME
   print "Range = 10^%s to 10^%s" % (args.range[0], args.range[-1])
-
+  
   if not os.path.exists(RESULTS_DIR):
+    print "Creating results directory %s" % RESULTS_DIR
     os.makedirs(RESULTS_DIR)
-
-  if not os.path.exists(PUBLIC_DIR):
-    os.makedirs(PUBLIC_DIR)
-
-  all_results = run_tests(args.num_iterations, int(args.range[0]), int(args.range[-1]))
-
-  if verbose:
-    print "Plotting results"
-  plot_stats()
+                        
+  all_results = run_tests(args.num_iterations, int(args.range[0]),
+                          int(args.range[-1]))
 
 if __name__ == "__main__":
   main()
-
-
+                      
+                      
