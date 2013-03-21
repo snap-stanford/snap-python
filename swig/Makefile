@@ -2,7 +2,6 @@
 # Makefile for SWIG processing of SNAP
 # 
 GITDIR = ../snapr
-GITDIR = ../../snap
 include $(GITDIR)/Makefile.config
 
 SNAPDIR = $(GITDIR)/$(SNAP)

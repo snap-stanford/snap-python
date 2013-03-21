@@ -8,7 +8,7 @@
 
 #include "goodgraph.cpp"
 #include "getassessment.cpp"
-//#include "demo-TNEAGraph.cpp
+#include "swig-TNEAGraph.cpp"
 
 %}
 
@@ -56,7 +56,7 @@
 
 %include "goodgraph.cpp"
 %include "getassessment.cpp"
-//%include "demo-TNEAGraph.cpp"
+%include "swig-TNEAGraph.cpp"
 
 %extend TNGraph {
         TNGraphNodeI BegNI() {
@@ -113,12 +113,10 @@
 %template(LoadEdgeList_PUNGraph) TSnap::LoadEdgeList<PUNGraph>;
 %template(PrintGraphStatTable_PUNGraph) PrintGraphStatTable<PUNGraph>;
 
-
 %template(GenRndGnm_PUNGraph) TSnap::GenRndGnm<PUNGraph>;
 %template(MxSccSz_PUNGraph) TSnap::GetMxScc<PUNGraph>;
 %template(MxWccSz_PUNGraph) TSnap::GetMxWccSz<PUNGraph>;
 
-
-
-//%template(GetStats_PNGraph) TSnap::GetStats<PNGraph>;
+// TNEAGraphs
+%template(PNEAGraph) TPt< TNEAGraph >;
 
