@@ -9,7 +9,8 @@ template<class PGraph>
 double PercentDegree(const PGraph& Graph, const int Threshold=0) {
 
     int Cnt = 0;
-  for (typename PGraph::TObj::TNodeI NI = Graph->BegNI(); NI < Graph->EndNI(); NI++) {
+  for (typename PGraph::TObj::TNodeI NI = Graph->BegNI(); NI < Graph->EndNI(); NI++)
+  {
     if (NI.GetDeg() >= Threshold) Cnt++;
   }
 
@@ -20,7 +21,9 @@ template<class PGraph>
 int NodesGTEDegree(const PGraph& Graph, const int Threshold=0) {
   
   int Cnt = 0;
-  for (typename PGraph::TObj::TNodeI NI = Graph->BegNI(); NI < Graph->EndNI(); NI++) {
+  for (typename PGraph::TObj::TNodeI NI = Graph->BegNI(); NI < Graph->EndNI();
+       NI++)
+  {
     if (NI.GetDeg() >= Threshold) Cnt++;
   }
   
@@ -40,10 +43,16 @@ int MxDegree(const PGraph& Graph) {
   return MaxDeg;
 }
 
-template<class PGraph>
-PGraph LoadFile(const TStr& FName) {
-  
-}
+//template<class PGraph>
+//bool WriteGraph(const PGraph& Graph, const TStr &OutFNm) {
+//  
+//  TFOut FOut(OutFNm);
+//  FOut.Save(GetNodes());
+//}
+//
+//template<class PGraph>
+//PGraph LoadGraph(const TStr& FName) {
+//}
 
 template<class PGraph>
 double PercentMxWcc(const PGraph& Graph) {
@@ -58,3 +67,4 @@ double PercentMxScc(const PGraph& Graph) {
   
   return (double) MxSccSz->GetNodes() / (double) Graph->GetNodes();
 }
+

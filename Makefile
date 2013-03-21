@@ -17,7 +17,3 @@ test:
 clean:
 	make -C swig clean
 	make -C test clean
-	
-
-
-
