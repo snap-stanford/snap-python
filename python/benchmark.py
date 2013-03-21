@@ -10,12 +10,11 @@ sys.path.append("../swig")
 import snap as Snap
 from math import log
 
-NUM_ITERATIONS = 1
 PROPERTY_TYPES = [1, 10]  # 1=Triads, 10=BFS
 
 # Random, Small World, Pref, R-MAT
-#GRAPH_TYPES = ['rmat', 'rnd_ngraph','rnd_ungraph', 'pref', 'sw']
-GRAPH_TYPES = ['rnd_ungraph', 'rnd_ngraph', 'rmat', 'pref', 'sw']
+#GRAPH_TYPES = ['rand_ungraph', 'rand_ngraph', 'rmat', 'pref', 'sw']
+DEFAULT_TYPES = "rmat"      #   Comma separated
 
 # Average is 1, non-average is 0.
 DEGREE_TYPES = [0, 1]
@@ -25,6 +24,7 @@ SW_REWIRE_PROB = 0.1
 
 # Exponent range (e.g. 10^x to 10^y)
 DEFAULT_RANGE = '5-7'
+DEFAULT_ITERATIONS = 1
 
 # Hostname for results
 HOSTNAME = gethostname()
@@ -94,11 +94,11 @@ def generate_graph(NNodes, NEdges, Model, Type):
     print "Generating '%s' '%s' graph with %e nodes, %e edges" % \
           (Model, Type, NNodes, NEdges)
 
-  if Model == 'rnd_ungraph':
+  if Model == 'rand_ungraph':
     # GnRndGnm returns error, so manually generate
     Graph = Snap.GenRndGnm_PUNGraph(NNodes, NEdges, 0)
 
-  elif Model == 'rnd_ngraph':
+  elif Model == 'rand_ngraph':
     Graph = Snap.GenRndGnm_PNGraph(NNodes, NEdges, 1)
 
   elif Model == 'rmat':
@@ -129,7 +129,7 @@ def run_tests(num_iterations=3, min_nodes_exponent=3, max_nodes_exponent=4):
   
     for exp in range(min_nodes_exponent,max_nodes_exponent+1):
       
-      for g in GRAPH_TYPES:
+      for g in graph_types:
         
         # Random number of nodes of degree i
         NNodes = 10**exp;
@@ -148,10 +148,10 @@ def run_tests(num_iterations=3, min_nodes_exponent=3, max_nodes_exponent=4):
                     
           results = {}
           
-          if g in ['rmat', 'rnd_ngraph']:
+          if g in ['rmat', 'rand_ngraph']:
             Type = "directed"
       
-          elif g in ['sw', 'pref', 'rnd_ungraph']:
+          elif g in ['sw', 'pref', 'rand_ungraph']:
             Type = "undirected"
         
           else:
@@ -238,17 +238,23 @@ def run_tests(num_iterations=3, min_nodes_exponent=3, max_nodes_exponent=4):
 
 def main():
   
-  global results_dir, verbose, generate, hostname, max_nodes_exponent
+  global results_dir, verbose, generate, graph_types, hostname, num_iterations
   
   parser = argparse.ArgumentParser()
   parser.add_argument("-v", "--verbose", default=False,
                       action="store_true", dest="verbose",
                       help="increase output verbosity")
   parser.add_argument("-r", "--range", default=DEFAULT_RANGE,
-                      help="range (4-5) (10^4 to 10^5")
-  parser.add_argument("-n", "--num_iterations", type=int,
-                      default=NUM_ITERATIONS, help="number of iterations")
+                      help="range (4-6) (10^4 to 10^6 nodes)")
   
+  parser.add_argument("-t", "--graph_types", default=DEFAULT_TYPES,
+                      help='''
+      Graph types, comma separated.
+      Available: rand_ungraph, rand_ngraph, rmat, pref, sw''')
+
+  parser.add_argument("-n", "--num_iterations", type=int,
+                      default=DEFAULT_ITERATIONS, help="number of iterations")
+
   parser.add_argument("-g", "--generate", default=False,
                       action="store_true", dest="generate", help="generate new graphs")
   
@@ -256,6 +262,8 @@ def main():
   
   verbose = args.verbose
   generate = args.generate
+  num_iterations = args.num_iterations
+  graph_types = args.graph_types.split(",")
   
   print "Hostname: %s" % HOSTNAME
   print "Range = 10^%s to 10^%s" % (args.range[0], args.range[-1])
@@ -264,7 +272,7 @@ def main():
     print "Creating results directory %s" % RESULTS_DIR
     os.makedirs(RESULTS_DIR)
                         
-  all_results = run_tests(args.num_iterations, int(args.range[0]),
+  all_results = run_tests(num_iterations, int(args.range[0]),
                           int(args.range[-1]))
 
 if __name__ == "__main__":
