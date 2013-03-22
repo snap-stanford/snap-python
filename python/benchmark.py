@@ -10,21 +10,24 @@ sys.path.append("../swig")
 import snap as Snap
 from math import log
 
-NUM_ITERATIONS = 1
 PROPERTY_TYPES = [1, 10]  # 1=Triads, 10=BFS
 
-# Random, Small World, Pref, R-MAT
-#GRAPH_TYPES = ['rmat', 'rnd_ngraph','rnd_ungraph', 'pref', 'sw']
-GRAPH_TYPES = ['rnd_ungraph', 'rnd_ngraph', 'rmat', 'pref', 'sw']
+# Graph types:
+# 'rand_ungraph' - random undirected
+# 'rand_ngraph' - random directed
+# 'rmat' - R-MAT
+# 'pref' - preferential attachment
+# 'sw' - small world
+
+DEFAULT_TYPES = "rmat"      #   Comma separated
 
 # Average is 1, non-average is 0.
-DEGREE_TYPES = [0, 1]
-AVG_DEG = 3
-AVG_DEGREE_RANGE = range(2, 10)
+DEGREES = [10]  #  List of degrees to loop [10, 100] tries N*10, N*100 edges
 SW_REWIRE_PROB = 0.1
 
 # Exponent range (e.g. 10^x to 10^y)
 DEFAULT_RANGE = '5-7'
+DEFAULT_ITERATIONS = 1
 
 # Hostname for results
 HOSTNAME = gethostname()
@@ -33,11 +36,12 @@ RESULTS_DIR = 'results'
 RESULTS_FILE = os.path.join(RESULTS_DIR, 'results%s.txt' % \
                             datetime.now().strftime('%m%d-%H%M%S'))
 
-def benchmark_ngraph(results, Graph):
+def benchmark_ngraph(Graph):
   '''
   Perform benchmark tests for Directed Graphs
   '''
-    
+  
+  results = {}
   results['num_nodes'] = Graph.GetNodes()
   results['num_edges'] = Graph.GetEdges()
   
@@ -60,11 +64,12 @@ def benchmark_ngraph(results, Graph):
 
   return results
 
-def benchmark_ungraph(results, Graph):
+def benchmark_ungraph(Graph):
   '''
   Perform benchmark tests for Undirected Graphs
   '''
 
+  results = {}
   results['num_nodes'] = Graph.GetNodes()
   results['num_edges'] = Graph.GetEdges()
   
@@ -90,15 +95,11 @@ def benchmark_ungraph(results, Graph):
 
 def generate_graph(NNodes, NEdges, Model, Type):
   
-  if verbose:
-    print "Generating '%s' '%s' graph with %e nodes, %e edges" % \
-          (Model, Type, NNodes, NEdges)
-
-  if Model == 'rnd_ungraph':
+  if Model == 'rand_ungraph':
     # GnRndGnm returns error, so manually generate
     Graph = Snap.GenRndGnm_PUNGraph(NNodes, NEdges, 0)
 
-  elif Model == 'rnd_ngraph':
+  elif Model == 'rand_ngraph':
     Graph = Snap.GenRndGnm_PNGraph(NNodes, NEdges, 1)
 
   elif Model == 'rmat':
@@ -114,7 +115,7 @@ def generate_graph(NNodes, NEdges, Model, Type):
 
 def run_tests(num_iterations=3, min_nodes_exponent=3, max_nodes_exponent=4):
   '''
-  Performtests with specificed exponent range
+  Perform tests with specificed exponent range
   '''
 
   all_results = []
@@ -129,55 +130,53 @@ def run_tests(num_iterations=3, min_nodes_exponent=3, max_nodes_exponent=4):
   
     for exp in range(min_nodes_exponent,max_nodes_exponent+1):
       
-      for g in GRAPH_TYPES:
+      for g in graph_types:
         
         # Random number of nodes of degree i
         NNodes = 10**exp;
         
-        for avg_deg in [10, 100]:
+        for avg_deg in DEGREES:
           
+          if verbose:
+            print "Using average degree of %d" % avg_deg
           NEdges = NNodes*avg_deg
-          
-          if NEdges > NNodes ** 2:
-            print "Unable to assign %d edges to graph with %d nnodes" % \
-                  (NEdges, NNodes)
-            continue
-          
-          # Use SNAP to read from file FIn and FOut don't work
+        
           Graph = None
-                    
-          results = {}
-          
-          if g in ['rmat', 'rnd_ngraph']:
+          if g in ['rmat', 'rand_ngraph']:
             Type = "directed"
       
-          elif g in ['sw', 'pref', 'rnd_ungraph']:
+          elif g in ['sw', 'pref', 'rand_ungraph']:
             Type = "undirected"
         
           else:
             print "Unknown graph type: %s" % g
           
           StartTime = datetime.now()
-        
           FName = os.path.join(RESULTS_DIR, "%s_10e%d_deg%d_%d.graph" %
-                               (g, exp, NEdges/NNodes, n))
+                              (g, exp, NEdges/NNodes, n))
         
           if not generate:
             
             if os.path.exists(FName):
               try:
               
-                print "Loading '%s' from ...'%s'" % (g, FName)
+                if verbose:
+                  print "Loading '%s' from ...'%s'" % (g, FName)
+                
                 FIn = Snap.TFIn(Snap.TStr(FName))
                 if Type == "directed":
-                  Graph = Snap.TNGraph(FIn)
+                  Graph = Snap.PNGraph_New()
                 else:
-                  Graph = Snap.TUNGraph(FIn)
+                  Graph = Snap.PUNGraph_New()
+                Graph = Graph.Load(FIn)
+              
+                if verbose:
+                  print "Re-loaded graph with %d Nodes and %d Edges" % \
+                    (Graph.GetNodes(), Graph.GetEdges())
   
               except Exception, e:
                 print "Unable to load graph file, '%s': %s" % (FName, str(e))
 
-        
             else:
               print "File not found: %s" % FName
 
@@ -187,21 +186,24 @@ def run_tests(num_iterations=3, min_nodes_exponent=3, max_nodes_exponent=4):
             try:
             
               # User wants to re-generate graph, or no graph data available.
+              if verbose:
+                print "Generating %s '%s' graph with %d nodes, %d edges" % \
+                        (Type, g, NNodes, NEdges)
+              
               Graph = generate_graph(NNodes, NEdges, g, Type)
             
               # Save the graph
               print "Saving '%s' graph to file ... '%s'" % (g, FName)
-
               if Graph:
 
                   FOut = Snap.TFOut(Snap.TStr(FName))
-                  Graph.Save(FOut)
+                  Graph.__ref__().Save(FOut)   # Save as TUNGraph or TNGraph
                   FOut.Flush()
             
             except Exception, e:
-              print "Unable to generate/save graph file, '%s': %s" % (FName, str(e))
+              print "Unable to generate/save graph file, '%s': %s" % \
+                    (FName, str(e))
               continue
-
 
           TimeGenerate = datetime.now() - StartTime
 
@@ -209,9 +211,9 @@ def run_tests(num_iterations=3, min_nodes_exponent=3, max_nodes_exponent=4):
           StartTime = datetime.now()
 
           if Type == 'directed':
-            results = benchmark_ngraph(results, Graph)
+            results = benchmark_ngraph(Graph)
           if Type == 'undirected':
-            results = benchmark_ungraph(results, Graph)
+            results = benchmark_ungraph(Graph)
 
           TimeElapsed = datetime.now() - StartTime
           
@@ -238,17 +240,23 @@ def run_tests(num_iterations=3, min_nodes_exponent=3, max_nodes_exponent=4):
 
 def main():
   
-  global results_dir, verbose, generate, hostname, max_nodes_exponent
+  global results_dir, verbose, generate, graph_types, hostname, num_iterations
   
   parser = argparse.ArgumentParser()
   parser.add_argument("-v", "--verbose", default=False,
                       action="store_true", dest="verbose",
                       help="increase output verbosity")
   parser.add_argument("-r", "--range", default=DEFAULT_RANGE,
-                      help="range (4-5) (10^4 to 10^5")
-  parser.add_argument("-n", "--num_iterations", type=int,
-                      default=NUM_ITERATIONS, help="number of iterations")
+                      help="range (4-6) (10^4 to 10^6 nodes)")
   
+  parser.add_argument("-t", "--graph_types", default=DEFAULT_TYPES,
+                      help='''
+      Graph types, comma separated.
+      Available: rand_ungraph, rand_ngraph, rmat, pref, sw''')
+
+  parser.add_argument("-n", "--num_iterations", type=int,
+                      default=DEFAULT_ITERATIONS, help="number of iterations")
+
   parser.add_argument("-g", "--generate", default=False,
                       action="store_true", dest="generate", help="generate new graphs")
   
@@ -256,15 +264,18 @@ def main():
   
   verbose = args.verbose
   generate = args.generate
+  num_iterations = args.num_iterations
+  graph_types = args.graph_types.split(",")
   
-  print "Hostname: %s" % HOSTNAME
-  print "Range = 10^%s to 10^%s" % (args.range[0], args.range[-1])
+  if verbose:
+    print "Hostname: %s" % HOSTNAME
+    print "Range = 10^%s to 10^%s" % (args.range[0], args.range[-1])
   
   if not os.path.exists(RESULTS_DIR):
     print "Creating results directory %s" % RESULTS_DIR
     os.makedirs(RESULTS_DIR)
                         
-  all_results = run_tests(args.num_iterations, int(args.range[0]),
+  all_results = run_tests(num_iterations, int(args.range[0]),
                           int(args.range[-1]))
 
 if __name__ == "__main__":
