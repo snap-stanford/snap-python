@@ -15,6 +15,9 @@ def main():
   
   Snap.ManipulateNodesEdges()
 
+  Snap.ManipulateNodeEdgeAttributes()
+
+
 
 if __name__ == "__main__":
   main()

@@ -5,6 +5,10 @@ using namespace TSnap;
 typedef TVec<TInt, int> TIntV;
 typedef TVec<TIntV, int> TIntIntVV;
 
+TUNGraph TPrGraph(PUNGraph G) {
+  return *G;
+};
+
 template<class PGraph>
 double PercentDegree(const PGraph& Graph, const int Threshold=0) {
 
@@ -67,4 +71,3 @@ double PercentMxScc(const PGraph& Graph) {
   
   return (double) MxSccSz->GetNodes() / (double) Graph->GetNodes();
 }
-

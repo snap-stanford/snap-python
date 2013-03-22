@@ -1,6 +1,7 @@
 // snap.i
 %module snap
 %{
+
 #include "Snap.h"
 
 #include "printgraph.h"

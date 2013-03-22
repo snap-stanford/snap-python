@@ -11,12 +11,19 @@ import snap as Snap
 
 NUM_ITERATIONS = 1
 PROPERTY_TYPES = [1, 10]  # 1=Triads, 10=BFS
+DEFAULT_TYPES = "rmat"      #   Comma separated
 
 # Random, Small World, Pref, R-MAT
-GRAPH_TYPES = ['rmat', 'rnd','pref','sw']
-#GRAPH_TYPES = ['sw', 'pref', 'rnd', 'rmat']
+# Graph types:
+# 'rand_ungraph' - random undirected
+# 'rand_ngraph' - random directed
+# 'rmat' - R-MAT
+# 'pref' - preferential attachment
+# 'sw' - small world
+
 DEGREE_TYPES = [0, 1]
 DEFAULT_RANGE = '5-7'   # Exponent (e.g. 10^x to 10^y)
+DEFAULT_NODES_MIN = 10**5
 
 VERBOSE = False
 DEFAULT_TIME_MIN = 1.0
@@ -76,22 +83,29 @@ def write_stats(results):
   f.write("<th>Gen Time (sec)</th>\n");
   f.write("<th>Run Time (sec)</th>\n");
   f.write("</tr>\n");
-  
-  for result in results:
 
-    for host in ['madmax', 'sheridan']:
-      if host in result['hostname'] and result['time_elapsed'] > time_min:
-        
-        print "adding result to table = ", result
-        f.write("<tr>\n");
-        f.write("<td>%s</td>" % result['hostname']);
-        f.write("<td>%s</td>" % result['model']);
-        f.write("<td>%s</td>" % result['type']);
-        f.write("<td>%.3e</td>" % result['num_nodes']);
-        f.write("<td>%.3e</td>" % result['num_edges']);
-        f.write("<td>%.4f</td>" % result['time_generate']);
-        f.write("<td>%.4f</td>" % result['time_elapsed']);
-        f.write("</tr>\n");
+  for host in ['madmax', 'sheridan']:
+
+    for result in results:
+
+        for model in graph_types:
+          
+          print "adding hostname of = ", host
+
+          if host in result['hostname'] \
+            and result['time_elapsed'] > time_min \
+            and model in result['model'] and \
+            result['num_nodes'] >= DEFAULT_NODES_MIN:
+            
+            f.write("<tr>\n");
+            f.write("<td>%s</td>" % result['hostname']);
+            f.write("<td>%s</td>" % result['model']);
+            f.write("<td>%s</td>" % result['type']);
+            f.write("<td>%.3e</td>" % result['num_nodes']);
+            f.write("<td>%.3e</td>" % result['num_edges']);
+            f.write("<td>%.4f</td>" % result['time_generate']);
+            f.write("<td>%.4f</td>" % result['time_elapsed']);
+            f.write("</tr>\n");
 
   f.write("</table>\n");
   
@@ -146,7 +160,7 @@ def plot_stats():
 
 def main():
   
-  global results_dir, verbose, time_min
+  global results_dir, verbose, time_min, graph_types
   
   parser = argparse.ArgumentParser()
   parser.add_argument("-v", "--verbose", default=False,
@@ -157,12 +171,17 @@ def main():
   
   parser.add_argument("-m", "--time_min", type=float,
                       default=DEFAULT_TIME_MIN,
-                      help="time minimum threshol")
-
+                      help="time minimum thresholh")
+  
+  parser.add_argument("-t", "--graph_types", default=DEFAULT_TYPES,
+                      help='''
+                        Graph types, comma separated.
+                        Available: rand_ungraph, rand_ngraph, rmat, pref, sw''')
   
   args = parser.parse_args()
   
   verbose = args.verbose
+  graph_types = args.graph_types.split(",")
   
   print "Hostname: %s" % HOSTNAME
   
