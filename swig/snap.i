@@ -1,6 +1,9 @@
 // snap.i
+%include cpointer.i      // SWIG Pointer Library
+
 %module snap
 %{
+
 #include "Snap.h"
 
 #include "printgraph.h"
