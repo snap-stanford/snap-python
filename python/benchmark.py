@@ -12,8 +12,13 @@ from math import log
 
 PROPERTY_TYPES = [1, 10]  # 1=Triads, 10=BFS
 
-# Random, Small World, Pref, R-MAT
-#GRAPH_TYPES = ['rand_ungraph', 'rand_ngraph', 'rmat', 'pref', 'sw']
+# Graph types:
+# 'rand_ungraph' - random undirected
+# 'rand_ngraph' - random directed
+# 'rmat' - R-MAT
+# 'pref' - preferential attachment
+# 'sw' - small world
+
 DEFAULT_TYPES = "rmat"      #   Comma separated
 
 # Average is 1, non-average is 0.
