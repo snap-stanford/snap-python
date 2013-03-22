@@ -1,6 +1,4 @@
 // snap.i
-%include cpointer.i      // SWIG Pointer Library
-
 %module snap
 %{
 
