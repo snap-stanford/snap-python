@@ -4,6 +4,7 @@ namespace TSnap {
 
 typedef TVec<TInt, int> TIntV;
 typedef TVec<TIntV, int> TIntIntVV;
+typedef THash<TInt, TVec< TInt, int> > TIntIntVH;
 
 void SeedRandom() {
   long int ITime;
@@ -147,6 +148,44 @@ void AssignEdges(const TIntV& Pairs, TIntIntVV& Tasks, int tsize) {
     TaskId = Node2 / tsize;
     Tasks[TaskId].Add(Node2);
     Tasks[TaskId].Add(Node1);
+  }
+}
+
+void GetAdjLists(const TIntV& Edges, TIntIntVH& AdjLists) {
+  int i;
+  int NumStubs;
+  int Node1;
+  int Node2;
+
+  printf("GetAdjLists\n");
+  printf("Edges1 Len %d\n",Edges.Len());
+
+  NumStubs = Edges.Len();
+
+  // distribute node pairs to adjacency lists
+  for (i = 0; i < NumStubs-1; i += 2) {
+    Node1 = Edges.GetVal(i).Val;
+    Node2 = Edges.GetVal(i+1).Val;
+
+    AdjLists.AddKey(Node1);
+    AdjLists(Node1).AddMerged(Node2);
+  }
+}
+
+void Edge2Hash(const TIntV& Edges, TIntH& Hash) {
+  int i;
+  int Num;
+  int Key;
+  int Value;
+
+  printf("Edges2 Len %d\n",Edges.Len());
+  Num = Edges.Len();
+
+  for (i = 0; i < Num-1; i += 2) {
+    Key = Edges.GetVal(i).Val;
+    Value = Edges.GetVal(i+1).Val;
+
+    Hash.AddDat(Key, Value);
   }
 }
 

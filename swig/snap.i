@@ -36,9 +36,14 @@
 //%ignore TNGraphNodeI::TNGNodeI;
 
 %ignore TVec<TVec<TInt, int>, int>::Add;
+%ignore TVec<TVec<TInt, int>, int>::AddMerged;
 
+%ignore THash< TInt, TVec< TInt, int > >::AddDat;
 %ignore THash< TInt, TVec< TInt, int > >::HashPrimeT;
 %ignore THash< TInt, TVec< TInt, int > >::AddDatId;
+
+%ignore THash< TInt, TInt>::HashPrimeT;
+%ignore THash< TInt, TInt>::AddDatId;
 
 %include "bd.h"
 %include "dt.h"
@@ -47,6 +52,7 @@
 %include "graph.h"
 %include "gio.h"
 %include "hash.h"
+%include "ggen.h"
 
 %include "snapsw.h"
 %include "printgraph.h"
@@ -85,16 +91,42 @@
 };
 
 %extend TVec {
+
         TSizeTy Add(int Val) {
                 return $self->Add(TInt(Val));
         }
+
+        TSizeTy AddMerged(int Val) {
+                return $self->AddMerged(TInt(Val));
+        }
 };
+
+%extend THash {
+        int AddKey(int Val) {
+                return $self->AddKey(TInt(Val));
+        }
+        TDat& GetDat(int Val) {
+                return $self->GetDat(TInt(Val));
+        }
+        TDat& AddDat(int Key, int Val) {
+                return $self->AddDat(TInt(Key),TInt(Val));
+        }
+        TIntHI BegII() {
+                return TIntHI($self->BegI());
+        }
+        TIntHI EndII() {
+                return TIntHI($self->EndI());
+        }
+};
+
 
 %template(TIntV) TVec< TInt, int >;
 %template(TIntIntVV) TVec< TVec< TInt, int >, int >;
 %template(TIntIntVH) THash< TInt, TVec< TInt, int > >;
+%template(TIntH) THash<TInt, TInt>;
 
 %template(PNGraph) TPt< TNGraph >;
 %template(LoadEdgeList_PNGraph) TSnap::LoadEdgeList<PNGraph>;
+%template(GenRndGnm_PNGraph) TSnap::GenRndGnm<PNGraph>;
 %template(PrintGraphStatTable_PNGraph) PrintGraphStatTable<PNGraph>;
 
