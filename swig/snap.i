@@ -42,8 +42,9 @@
 %ignore THash< TInt, TVec< TInt, int > >::HashPrimeT;
 %ignore THash< TInt, TVec< TInt, int > >::AddDatId;
 
+%ignore THash< TInt, TInt, TDefaultHashFunc<TInt> >::HashPrimeT;
+%ignore THash< TInt, TInt, TDefaultHashFunc<TInt> >::AddDatId;
 %ignore THash< TInt, TInt>::HashPrimeT;
-%ignore THash< TInt, TInt>::AddDatId;
 
 %include "bd.h"
 %include "dt.h"
@@ -105,25 +106,22 @@
         int AddKey(int Val) {
                 return $self->AddKey(TInt(Val));
         }
+        int IsKey(int Val) {
+                return $self->IsKey(TInt(Val));
+        }
         TDat& GetDat(int Val) {
                 return $self->GetDat(TInt(Val));
         }
         TDat& AddDat(int Key, int Val) {
                 return $self->AddDat(TInt(Key),TInt(Val));
         }
-        TIntHI BegII() {
-                return TIntHI($self->BegI());
-        }
-        TIntHI EndII() {
-                return TIntHI($self->EndI());
-        }
-};
-
+}
 
 %template(TIntV) TVec< TInt, int >;
 %template(TIntIntVV) TVec< TVec< TInt, int >, int >;
 %template(TIntIntVH) THash< TInt, TVec< TInt, int > >;
 %template(TIntH) THash<TInt, TInt>;
+%template(TIntHI) THashKeyDatI < TInt, TInt >;
 
 %template(PNGraph) TPt< TNGraph >;
 %template(LoadEdgeList_PNGraph) TSnap::LoadEdgeList<PNGraph>;

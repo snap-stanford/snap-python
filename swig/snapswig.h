@@ -1,3 +1,42 @@
+#if 0
+template<class TKey, class TDat>
+class THashKeyDatI{
+private:
+  typedef THashKeyDat<TKey, TDat> THKeyDat;
+  THKeyDat* KeyDatI;
+  THKeyDat* EndI;
+public:
+  THashKeyDatI(): KeyDatI(NULL), EndI(NULL){}
+  THashKeyDatI(const THashKeyDatI& _HashKeyDatI):
+    KeyDatI(_HashKeyDatI.KeyDatI), EndI(_HashKeyDatI.EndI){}
+  THashKeyDatI(const THKeyDat* _KeyDatI, const THKeyDat* _EndI):
+    KeyDatI((THKeyDat*)_KeyDatI), EndI((THKeyDat*)_EndI){}
+
+  THashKeyDatI& operator=(const THashKeyDatI& HashKeyDatI){
+    KeyDatI=HashKeyDatI.KeyDatI; EndI=HashKeyDatI.EndI; return *this;}
+  bool operator==(const THashKeyDatI& HashKeyDatI) const {
+    return KeyDatI==HashKeyDatI.KeyDatI;}
+  bool operator<(const THashKeyDatI& HashKeyDatI) const {
+    return KeyDatI<HashKeyDatI.KeyDatI;}
+  THashKeyDatI& operator++(int){ KeyDatI++; while (KeyDatI < EndI && KeyDatI->HashCd==-1) { KeyDatI++; } return *this; }
+  THashKeyDatI& operator--(int){ do { KeyDatI--; } while (KeyDatI->HashCd==-1); return *this;}
+
+  THKeyDat& operator*() const { return *KeyDatI; }
+  THKeyDat& operator()() const { return *KeyDatI; }
+  THKeyDat* operator->() const { return KeyDatI; }
+
+  /// Tests whether the iterator has been initialized.
+  bool IsEmpty() const { return KeyDatI == NULL; }
+  /// Tests whether the iterator is pointing to the past-end element.
+  bool IsEnd() const { return EndI == KeyDatI; }
+
+  const TKey& GetKey() const {Assert((KeyDatI!=NULL)&&(KeyDatI->HashCd!=-1)); return KeyDatI->Key;}
+  const TDat& GetDat() const {Assert((KeyDatI!=NULL)&&(KeyDatI->HashCd!=-1)); return KeyDatI->Dat;}
+  TDat& GetDat() {Assert((KeyDatI!=NULL)&&(KeyDatI->HashCd!=-1)); return KeyDatI->Dat;}
+};
+#endif
+
+#if 0
 class TIntHI {
 public:
   typedef THashKeyDat<TInt, TInt> THKeyDat;
@@ -8,6 +47,10 @@ public:
   TIntHI(): KeyDatI(NULL), EndI(NULL){}
   TIntHI(const TIntHI& _HashKeyDatI):
     KeyDatI(_HashKeyDatI.KeyDatI), EndI(_HashKeyDatI.EndI){}
+
+  TIntHI(THashKeyDatI<TInt, TInt> _HashKeyDatI):
+    KeyDatI(_HashKeyDatI.KeyDatI), EndI(_HashKeyDatI.EndI){}
+
   TIntHI(const THKeyDat* _KeyDatI, const THKeyDat* _EndI):
     KeyDatI((THKeyDat*)_KeyDatI), EndI((THKeyDat*)_EndI){}
 
@@ -34,6 +77,7 @@ public:
   const TInt& GetDat() const {Assert((KeyDatI!=NULL)&&(KeyDatI->HashCd!=-1)); return KeyDatI->Dat;}
   TInt& GetDat() {Assert((KeyDatI!=NULL)&&(KeyDatI->HashCd!=-1)); return KeyDatI->Dat;}
 };
+#endif
 
 class TNGraphNodeI {
 private:

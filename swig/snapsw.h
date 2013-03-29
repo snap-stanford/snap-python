@@ -5,6 +5,7 @@ namespace TSnap {
 typedef TVec<TInt, int> TIntV;
 typedef TVec<TIntV, int> TIntIntVV;
 typedef THash<TInt, TVec< TInt, int> > TIntIntVH;
+//typedef THash<TInt, TInt> TIntH;
 
 void SeedRandom() {
   long int ITime;
@@ -171,6 +172,34 @@ void GetAdjLists(const TIntV& Edges, TIntIntVH& AdjLists) {
     AdjLists(Node1).AddMerged(Node2);
   }
 }
+
+void GetNeighborhood(const TIntV& Nodes, const TIntIntVH& AdjLists, TIntV& Hood) {
+  int i;
+  int j;
+  int Node;
+  int NumNodes;
+  int NumNeighbors;
+  int Neighbor;
+  TIntH HashHood;
+  TIntV Neighbors;
+
+  NumNodes = Nodes.Len();
+
+  // create a union of all neighbors
+  for (i = 0; i < NumNodes; i++) {
+    Node = Nodes.GetVal(i).Val;
+    Neighbors = AdjLists.GetDat(Node);
+    NumNeighbors = Neighbors.Len();
+    for (j = 0; j < NumNeighbors; j++) {
+      Neighbor = Neighbors.GetVal(j).Val;
+      HashHood.AddDat(Neighbor,0);
+    }
+  }
+
+  // change a hash table to a vector
+  HashHood.GetKeyV(Hood);
+}
+  
 
 void Edge2Hash(const TIntV& Edges, TIntH& Hash) {
   int i;

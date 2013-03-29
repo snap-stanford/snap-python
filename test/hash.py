@@ -16,7 +16,7 @@ for i in range(0,numnodes):
 
 d = {}
 for i in range(0,numnodes,2):
-    print "Edges", i/2, Edges.GetVal(i).Val, Edges.GetVal(i+1).Val
+    #print "Edges", i/2, Edges.GetVal(i).Val, Edges.GetVal(i+1).Val
     d[(Edges.GetVal(i).Val,Edges.GetVal(i+1).Val)] = 1
 
 Hash = Snap.TIntH()
@@ -24,6 +24,8 @@ Hash = Snap.TIntH()
 
 Hash.AddDat(3,5)
 Hash.AddDat(4,6)
+Hash.AddDat(1,8)
+Hash.AddDat(6,2)
 
 print "type", type(Edges), type(Hash)
 
@@ -33,14 +35,15 @@ print "type", type(Edges), type(Hash)
 
 print "len", Hash.Len()
 Iter = Hash.BegI()
-Key = Iter.GetKey()
-Value = Iter.GetDat()
+Key = Iter.GetKey().Val
+Value = Iter.GetDat().Val
 print "iter", Key, Value
 
 print "Iter < Hash.EndI", Iter < Hash.EndI()
-while Iter < Hash.EndI():
-    Key = Iter.GetKey()
-    Value = Iter.GetDat()
+#while Iter < Hash.EndI():
+while not Iter.IsEnd():
+    Key = Iter.GetKey().Val
+    Value = Iter.GetDat().Val
     print Key, Value
 
     Iter.Next()
