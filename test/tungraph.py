@@ -1,7 +1,7 @@
 import random
 import sys
 
-sys.path.append("../swig")
+sys.path.append("../swig-sw")
 
 import snap as Snap
 
@@ -76,8 +76,8 @@ def ManipulateNodesEdges():
         ECount2 += 1
         EI.Next()
 
-    print "graph ManipulateNodesEdges:Graph2, nodes %d, edges1 %d, edges2 %d"
-        % (NCount, ECount1, ECount2)
+    print "graph ManipulateNodesEdges:Graph2, nodes %d, edges1 %d, edges2 %d" % (
+        NCount, ECount1, ECount2)
 
     # assignment
     Graph1 = Graph;
