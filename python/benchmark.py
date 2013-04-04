@@ -187,7 +187,7 @@ def run_tests(num_iterations=3, min_nodes_exponent=3, max_nodes_exponent=4):
             
               # User wants to re-generate graph, or no graph data available.
               if verbose:
-                print "Generating %s '%s' graph with %d nodes, %d edges" % \
+                print "Generating %s '%s' graph with %e nodes, %e edges" % \
                         (Type, g, NNodes, NEdges)
               
               Graph = generate_graph(NNodes, NEdges, g, Type)
