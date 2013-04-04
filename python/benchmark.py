@@ -303,14 +303,15 @@ def main():
   
   if verbose:
     print "Hostname: %s" % HOSTNAME
-    print "Range = 10^%s to 10^%s" % (args.range[0], args.range[-1])
+    min = int(args.range.split("-")[0])
+    max = int(args.range.split("-")[-1])
+    print "Range = 10^%d to 10^%d" % (min, max)
   
   if not os.path.exists(RESULTS_DIR):
     print "Creating results directory %s" % RESULTS_DIR
     os.makedirs(RESULTS_DIR)
                         
-  all_results = run_tests(num_iterations, int(args.range[0]),
-                          int(args.range[-1]))
+  all_results = run_tests(num_iterations, min, max)
 
 if __name__ == "__main__":
   main()
