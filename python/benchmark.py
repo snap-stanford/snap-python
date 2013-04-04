@@ -169,6 +169,7 @@ def run_tests(num_iterations=3, min_nodes_exponent=3, max_nodes_exponent=4):
         
           else:
             print "Unknown graph type: %s" % g
+            sys.exit(1)
           
           StartTime = datetime.now()
           FName = os.path.join(RESULTS_DIR, "%s_10e%d_deg%d_%d.graph" %
