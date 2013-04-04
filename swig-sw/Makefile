@@ -3,7 +3,7 @@
 # 
 
 # set the path to your SNAP directory here
-GITDIR = ../../snap-sw
+GITDIR = ../../snap
 
 include $(GITDIR)/Makefile.config
 
