@@ -1,3 +1,13 @@
+# benchmark.py
+#
+# Author: Nick Shelly, Spring 2013
+# Description: Runs a series of graph benchmark tests using Snap as a
+# Python module.
+#
+# Example:
+# python benchmark.py -v -n 3 -g -d -r 2-3 -t rmat -o results/results.txt
+#
+
 import os.path
 import sys
 import argparse
@@ -33,7 +43,7 @@ DEFAULT_ITERATIONS = 1
 HOSTNAME = gethostname()
 
 RESULTS_DIR = 'results'
-RESULTS_FILE = os.path.join(RESULTS_DIR, 'results%s.txt' % \
+DEFAULT_RESULTS_FILE = os.path.join(RESULTS_DIR, 'results%s.txt' % \
                             datetime.now().strftime('%m%d-%H%M%S'))
 
 def benchmark_ngraph(Graph):
@@ -93,8 +103,8 @@ def benchmark_ungraph(Graph):
 
   return results
 
-def generate_graph(NNodes, NEdges, Model, Type):
-  
+def generate_graph(NNodes, NEdges, Model, Type, Rnd):
+    
   if Model == 'rand_ungraph':
     # GnRndGnm returns error, so manually generate
     Graph = Snap.GenRndGnm_PUNGraph(NNodes, NEdges, 0)
@@ -103,7 +113,7 @@ def generate_graph(NNodes, NEdges, Model, Type):
     Graph = Snap.GenRndGnm_PNGraph(NNodes, NEdges, 1)
 
   elif Model == 'rmat':
-    Graph = Snap.GenRMat(NNodes, NEdges, 0.40, 0.25, 0.2)
+    Graph = Snap.GenRMat(NNodes, NEdges, 0.40, 0.25, 0.2, Rnd)
 
   elif Model == 'sw':
     Graph = Snap.GenSmallWorld(NNodes, NNodes/NEdges, 0.1)
@@ -124,6 +134,15 @@ def run_tests(num_iterations=3, min_nodes_exponent=3, max_nodes_exponent=4):
     print "Running results from %e to %e" % (min_nodes_exponent,
                                            max_nodes_exponent)
   
+  Rnd = Snap.TRnd()
+  if not deterministic:
+    if verbose:
+      print "Deterministic mode, putting seed"
+    Rnd.PutSeed(0)
+  else:
+    if verbose:
+      print "Non-deterministic mode"
+
   for n in range(num_iterations):
     if verbose:
       print "Iteration: %d of %d" % (n+1, num_iterations)
@@ -189,8 +208,8 @@ def run_tests(num_iterations=3, min_nodes_exponent=3, max_nodes_exponent=4):
               if verbose:
                 print "Generating %s '%s' graph with %e nodes, %e edges" % \
                         (Type, g, NNodes, NEdges)
-              
-              Graph = generate_graph(NNodes, NEdges, g, Type)
+            
+              Graph = generate_graph(NNodes, NEdges, g, Type, Rnd)
             
               # Save the graph
               print "Saving '%s' graph to file ... '%s'" % (g, FName)
@@ -225,9 +244,9 @@ def run_tests(num_iterations=3, min_nodes_exponent=3, max_nodes_exponent=4):
           print "Header: %s" % " ".join(row_header)
 
           import csv
-          with open(RESULTS_FILE, 'a+') as csvfile:
+          with open(results_file, 'a+') as csvfile:
             writer = csv.writer(csvfile)
-            print "Writing to '%s'..." % RESULTS_FILE
+            print "Writing to '%s'..." % results_file
             row = [HOSTNAME, g, Type, NNodes, NEdges,
                    StartTime.strftime("%d/%b/%Y:%H:%M:%S"),
                    TimeGenerate.total_seconds(), TimeElapsed.total_seconds()]
@@ -240,30 +259,44 @@ def run_tests(num_iterations=3, min_nodes_exponent=3, max_nodes_exponent=4):
 
 def main():
   
-  global results_dir, verbose, generate, graph_types, hostname, num_iterations
+  global results_dir, verbose, deterministic, generate, graph_types, \
+          hostname, num_iterations, results_file
   
   parser = argparse.ArgumentParser()
   parser.add_argument("-v", "--verbose", default=False,
                       action="store_true", dest="verbose",
                       help="increase output verbosity")
+
   parser.add_argument("-r", "--range", default=DEFAULT_RANGE,
                       help="range (4-6) (10^4 to 10^6 nodes)")
-  
+
+  parser.add_argument("-d", "--deterministic", default=False,
+                        action="store_true", dest="deterministic",
+                        help="deterministic benchmark")
+
   parser.add_argument("-t", "--graph_types", default=DEFAULT_TYPES,
                       help='''
-      Graph types, comma separated.
-      Available: rand_ungraph, rand_ngraph, rmat, pref, sw''')
+          Graph types, comma separated.
+          Available: rand_ungraph, rand_ngraph, rmat, pref, sw''')
 
   parser.add_argument("-n", "--num_iterations", type=int,
                       default=DEFAULT_ITERATIONS, help="number of iterations")
 
+  parser.add_argument("-o", "--output_file",
+                      default=DEFAULT_RESULTS_FILE,
+                      help="file to output results")
+
+
   parser.add_argument("-g", "--generate", default=False,
-                      action="store_true", dest="generate", help="generate new graphs")
+                      action="store_true", dest="generate",
+                      help="generate new graphs")
   
   args = parser.parse_args()
   
   verbose = args.verbose
   generate = args.generate
+  deterministic = args.deterministic
+  results_file = args.output_file
   num_iterations = args.num_iterations
   graph_types = args.graph_types.split(",")
   
