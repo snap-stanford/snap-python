@@ -25,8 +25,9 @@
 #    -o OUTPUT_FILE, --output_file OUTPUT_FILE
 #      file to output results
 #    -g, --generate        generate new graphs
+#
 #   Example:
-#   python benchmark.py -v -n 3 -g -d -r 2-3 -t rmat -o results/results.txt
+#   $ python benchmark.py -v -n 3 -g -d -r 2-3 -t rmat -o results/results.txt
 #
 
 import os.path
@@ -43,14 +44,14 @@ from math import log
 
 PROPERTY_TYPES = [1, 10]  # 1=Triads, 10=BFS
 
-# Graph types:
+# Comma-separated, graph types:
 # 'rand_ungraph' - random undirected
 # 'rand_ngraph' - random directed
+# 'rand_neagraph' - random directed attribute
 # 'rmat' - R-MAT
 # 'pref' - preferential attachment
 # 'sw' - small world
-
-DEFAULT_TYPES = "rmat"      #   Comma separated
+DEFAULT_TYPES = "rmat,rand_ungraph"
 
 # Average is 1, non-average is 0.
 DEGREES = [10]  #  List of degrees to loop [10, 100] tries N*10, N*100 edges
@@ -120,9 +121,37 @@ def benchmark_ungraph(Graph):
   results['max_scc_percent'] = Snap.MxSccSz_PUNGraph(Graph).GetNodes() \
                                 / results['num_nodes']
 
-  # Calculate graph skew
-
+  # TODO: Calculate graph skew
   return results
+
+def benchmark_neagraph(Graph):
+  '''
+    Perform benchmark tests for Directed Attribute Graphs
+    '''
+  
+  results = {}
+  results['num_nodes'] = Graph.GetNodes()
+  results['num_edges'] = Graph.GetEdges()
+  
+  for degree in range(0, 11):
+    num = Snap.NodesGTEDegree_PNEAGraph(Graph, degree)
+    percent_deg = float(num) / results['num_nodes']
+    results['deg_gte_%d' % degree] = num
+    results['deg_gte_%d_percent' % degree] = percent_deg
+  
+  # Check for over-weighted nodes
+  results['max_degree'] = Snap.MxDegree_PNEAGraph(Graph)
+  
+  num = Snap.NodesGTEDegree_PNEAGraph(Graph, results['max_degree'])
+  results['max_degree_num'] = num
+  
+  results['max_wcc_percent'] = Snap.MxWccSz_PNEAGraph(Graph) \
+    / results['num_nodes']
+  results['max_scc_percent'] = Snap.MxSccSz_PNEAGraph(Graph).GetNodes() \
+    / results['num_nodes']
+  
+  return results
+
 
 def generate_graph(NNodes, NEdges, Model, Type, Rnd):
     
@@ -141,7 +170,10 @@ def generate_graph(NNodes, NEdges, Model, Type, Rnd):
   
   elif Model == 'pref':
     Graph = Snap.GenPrefAttach(NNodes, NNodes/NEdges)
-        
+
+  elif Model == "rand_neagraph":
+    Graph = Snap.GenRndGnm_PNEAGraph(NNodes, NEdges, 1)
+
   return Graph
 
 def run_tests(num_iterations=3, min_nodes_exponent=3, max_nodes_exponent=4):
@@ -156,13 +188,13 @@ def run_tests(num_iterations=3, min_nodes_exponent=3, max_nodes_exponent=4):
                                            max_nodes_exponent)
   
   Rnd = Snap.TRnd()
-  if not deterministic:
+  if deterministic:
     if verbose:
       print "Deterministic mode, putting seed"
-    Rnd.PutSeed(0)
   else:
     if verbose:
       print "Non-deterministic mode"
+    Rnd.PutSeed(0)
 
   for n in range(num_iterations):
     if verbose:
@@ -188,6 +220,9 @@ def run_tests(num_iterations=3, min_nodes_exponent=3, max_nodes_exponent=4):
           elif g in ['sw', 'pref', 'rand_ungraph']:
             Type = "undirected"
         
+          elif g in ['rand_neagraph']:
+            Type = "attribute"
+              
           else:
             print "Unknown graph type: %s" % g
             sys.exit(1)
@@ -207,8 +242,11 @@ def run_tests(num_iterations=3, min_nodes_exponent=3, max_nodes_exponent=4):
                 FIn = Snap.TFIn(Snap.TStr(FName))
                 if Type == "directed":
                   Graph = Snap.PNGraph_New()
-                else:
+                elif Type == "undirected":
                   Graph = Snap.PUNGraph_New()
+                elif Type == "attribute":
+                  Graph = Snap.PNEAGraph_New()
+
                 Graph = Graph.Load(FIn)
               
                 if verbose:
@@ -253,8 +291,11 @@ def run_tests(num_iterations=3, min_nodes_exponent=3, max_nodes_exponent=4):
 
           if Type == 'directed':
             results = benchmark_ngraph(Graph)
-          if Type == 'undirected':
+          elif Type == 'undirected':
             results = benchmark_ungraph(Graph)
+          elif Type == 'attribute':
+            results = benchmark_neagraph(Graph)
+
 
           TimeElapsed = datetime.now() - StartTime
           

@@ -399,7 +399,6 @@
 		8474830916CD86B300AF3EF4 /* printgraph.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; path = printgraph.h; sourceTree = "<group>"; };
 		8474830A16CD86B300AF3EF4 /* snap.i */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c.preprocessed; path = snap.i; sourceTree = "<group>"; };
 		8474831016CD86B300AF3EF4 /* snapswig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = snapswig.h; sourceTree = "<group>"; };
-		8474831316CD86C000AF3EF4 /* p2p-Gnutella08.txt.gz */ = {isa = PBXFileReference; lastKnownFileType = archive.gzip; path = "p2p-Gnutella08.txt.gz"; sourceTree = "<group>"; };
 		8474831416CD86C000AF3EF4 /* Makefile */ = {isa = PBXFileReference; explicitFileType = sourcecode.make; fileEncoding = 4; path = Makefile; sourceTree = "<group>"; };
 		8474831516CD86C000AF3EF4 /* memtest.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = memtest.py; sourceTree = "<group>"; };
 		8474831816CD86C000AF3EF4 /* printstat.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = printstat.py; sourceTree = "<group>"; };
@@ -409,6 +408,8 @@
 		849766F716D34B6D00EE1E91 /* getstats.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = getstats.py; sourceTree = "<group>"; };
 		849E192516FA63710073F921 /* swig-TNEAGraph.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "swig-TNEAGraph.cpp"; sourceTree = "<group>"; };
 		849E192D16FA67AF0073F921 /* demo-tneagraph.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = "demo-tneagraph.py"; sourceTree = "<group>"; };
+		84A3AD0B1710F7E300D219D2 /* demo-alg.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = "demo-alg.py"; sourceTree = "<group>"; };
+		84A3AD0C1710F86E00D219D2 /* Makefile */ = {isa = PBXFileReference; explicitFileType = sourcecode.make; fileEncoding = 4; path = Makefile; sourceTree = "<group>"; };
 		84F8A8CC16F7DFD200FC5E61 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		84F8A8CD16F7DFD200FC5E61 /* CREDITS.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CREDITS.txt; sourceTree = "<group>"; };
 		84F8A8CF16F7DFD200FC5E61 /* doxyblock.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = doxyblock.py; sourceTree = "<group>"; };
@@ -1278,10 +1279,10 @@
 		847482A916CD85D200AF3EF4 = {
 			isa = PBXGroup;
 			children = (
-				847482E016CD863500AF3EF4 /* Makefile */,
 				847482E516CD863500AF3EF4 /* README.md */,
-				847482E116CD863500AF3EF4 /* examples */,
+				847482E016CD863500AF3EF4 /* Makefile */,
 				8474830616CD86B300AF3EF4 /* swig */,
+				847482E116CD863500AF3EF4 /* examples */,
 				8474831116CD86C000AF3EF4 /* test */,
 				84F8A8CB16F7DFD200FC5E61 /* snapr */,
 				8488FEAC16D20F8400C789B8 /* Products */,
@@ -1291,10 +1292,12 @@
 		847482E116CD863500AF3EF4 /* examples */ = {
 			isa = PBXGroup;
 			children = (
+				84A3AD0C1710F86E00D219D2 /* Makefile */,
 				847482E316CD863500AF3EF4 /* load.py */,
 				847482E416CD863500AF3EF4 /* tnodei.py */,
 				849766F716D34B6D00EE1E91 /* getstats.py */,
 				849E192D16FA67AF0073F921 /* demo-tneagraph.py */,
+				84A3AD0B1710F7E300D219D2 /* demo-alg.py */,
 				8444C83B16EDC81800264DA8 /* benchmark.py */,
 				84529AEF16F9184700DC307D /* plot_results.py */,
 			);
@@ -1319,7 +1322,6 @@
 		8474831116CD86C000AF3EF4 /* test */ = {
 			isa = PBXGroup;
 			children = (
-				8474831216CD86C000AF3EF4 /* data */,
 				8474831416CD86C000AF3EF4 /* Makefile */,
 				8474831516CD86C000AF3EF4 /* memtest.py */,
 				8474831816CD86C000AF3EF4 /* printstat.py */,
@@ -1327,14 +1329,6 @@
 			);
 			path = test;
 			sourceTree = SOURCE_ROOT;
-		};
-		8474831216CD86C000AF3EF4 /* data */ = {
-			isa = PBXGroup;
-			children = (
-				8474831316CD86C000AF3EF4 /* p2p-Gnutella08.txt.gz */,
-			);
-			path = data;
-			sourceTree = "<group>";
 		};
 		8488FEAC16D20F8400C789B8 /* Products */ = {
 			isa = PBXGroup;

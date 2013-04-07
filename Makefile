@@ -2,7 +2,7 @@
 #	Top level Python SNAP Makefile
 #
 
-.PHONY: swig test
+.PHONY: swig test examples
 
 all: swig test examples
 
@@ -15,7 +15,7 @@ test:
 	make -C test
 
 examples:
-  make -C examples
+	make -C examples
   
 clean:
 	make -C swig clean
