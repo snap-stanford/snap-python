@@ -51,6 +51,8 @@
 %include "cncom.h"
 %include "ggen.h"
 %include "gio.h"
+%include "alg.h"
+
 
 %include "printgraph.h"
 %include "snapswig.h"
@@ -120,4 +122,33 @@
 
 // TNEAGraphs
 %template(PNEAGraph) TPt< TNEAGraph >;
+
+// TNEAGraph Functions for alg.h
+%template(CntInDegNodes_PNEAgraph) TSnap::CntInDegNodes<PNEAGraph>;
+%template(CntOutDegNodes_PNEAgraph) TSnap::CntOutDegNodes<PNEAGraph>;
+%template(CntDegNodes_PNEAgraph) TSnap::CntDegNodes<PNEAGraph>;
+%template(CntNonZNodes_PNEAgraph) TSnap::CntNonZNodes<PNEAGraph>;
+%template(CntEdgesToSet_PNEAgraph) TSnap::CntEdgesToSet<PNEAGraph>;
+
+%template(GetMxDegNId_PNEAgraph) TSnap::GetMxDegNId<PNEAGraph>;
+%template(GetMxInDegNId_PNEAgraph) TSnap::GetMxInDegNId<PNEAGraph>;
+%template(GetMxOutDegNId_PNEAgraph) TSnap::GetMxOutDegNId<PNEAGraph>;
+
+%template(GetInDegCnt_PNEAgraph) TSnap::GetInDegCnt<PNEAGraph>;
+%template(GetInDegCnt_PNEAgraph) TSnap::GetInDegCnt<PNEAGraph>;
+%template(GetOutDegCnt_PNEAgraph) TSnap::GetOutDegCnt<PNEAGraph>;
+%template(GetOutDegCnt_PNEAgraph) TSnap::GetOutDegCnt<PNEAGraph>;
+%template(GetDegCnt_PNEAgraph) TSnap::GetDegCnt<PNEAGraph>;
+%template(GetDegCnt_PNEAgraph) TSnap::GetDegCnt<PNEAGraph>;
+%template(GetDegSeqV_PNEAgraph) TSnap::GetDegSeqV<PNEAGraph>;
+%template(GetDegSeqV_PNEAgraph) TSnap::GetDegSeqV<PNEAGraph>;
+
+%template(GetNodeInDegV_PNEAgraph) TSnap::GetNodeInDegV<PNEAGraph>;
+%template(GetNodeOutDegV_PNEAgraph) TSnap::GetNodeOutDegV<PNEAGraph>;
+
+%template(CntUniqUndirEdges_PNEAgraph) TSnap::CntUniqUndirEdges<PNEAGraph>;
+%template(CntUniqDirEdges_PNEAgraph) TSnap::CntUniqDirEdges<PNEAGraph>;
+%template(CntUniqBiDirEdges_PNEAgraph) TSnap::CntUniqBiDirEdges<PNEAGraph>;
+%template(CntSelfEdges_PNEAgraph) TSnap::CntSelfEdges<PNEAGraph>;
+
 

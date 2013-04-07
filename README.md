@@ -36,8 +36,15 @@ snap-python
 SWIG Installation
 -----------------
 
+### Linux
+
+Follow the instructions from SWIG's website: download, configure and make, [SWIG files](http://www.swig.org/download.html).  Or, use your built-in installer:
+
+	sudo yum install swig.i386
+
 ### Mac OS X
-swig-1.3.12 and later support OS-X/Darwin. Simply download the Unix sources, configure, and build from the command terminal. This has been tested on 10.8.2.  Adopted from [ColourBlomb](http://blog.colourbomb.net/?p=49).
+
+SWIG 1.3.12 and later support OS-X/Darwin. Download the Unix sources, configure, and build from the command terminal. This has been tested on 10.8.2 and adopted from [ColourBlomb](http://blog.colourbomb.net/?p=49).
 
 1. Download the Unix source from swig.org/download.html.
 
@@ -55,7 +62,7 @@ This dependency is needed for configure to complete. Either:
 	- Use the `Tools/pcre-build.sh` script to build PCRE just for SWIG to statically
 	link against. Run `Tools/pcre-build.sh –help` for instructions.
 	(quite easy and does not require privileges to install PCRE on your system)
-	- Cconfigure using the `–without-pcre` option to disable regular expressions support in SWIG
+	- Configure using the `–without-pcre` option to disable regular expressions support in SWIG
 	(not recommended).
 	See `config.log` for more details.
 		

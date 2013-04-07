@@ -76,8 +76,8 @@ def ManipulateNodesEdges():
         ECount2 += 1
         EI.Next()
 
-    print "graph ManipulateNodesEdges:Graph2, nodes %d, edges1 %d, edges2 %d"
-        % (NCount, ECount1, ECount2)
+    print "graph ManipulateNodesEdges:Graph2, nodes %d, edges1 %d, edges2 %d" \
+          % (NCount, ECount1, ECount2)
 
     # assignment
     Graph1 = Graph;

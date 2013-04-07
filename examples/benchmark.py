@@ -1,11 +1,32 @@
 # benchmark.py
 #
 # Author: Nick Shelly, Spring 2013
-# Description: Runs a series of graph benchmark tests using Snap as a
-# Python module.
+# Description:
+#     - Loads SNAP as a Python module.
+#     - Randomly generates a graph of specified size and type and saving,
+#         or loading the graph if has already been created.
+#     - Benchmarks a number of "is this a good graph?" tests on the graph,
+#       calculating the amount of time required and appends to a file.
+#           
+#  usage: benchmark.py [-h] [-v] [-r RANGE] [-d] [-t GRAPH_TYPES]
+#    [-n NUM_ITERATIONS] [-o OUTPUT_FILE] [-g]
 #
-# Example:
-# python benchmark.py -v -n 3 -g -d -r 2-3 -t rmat -o results/results.txt
+#  optional arguments:
+#    -h, --help            show this help message and exit
+#    -v, --verbose         increase output verbosity
+#    -r RANGE, --range RANGE
+#      range (4-6) (10^4 to 10^6 nodes)
+#    -d, --deterministic   deterministic benchmark
+#    -t GRAPH_TYPES, --graph_types GRAPH_TYPES
+#      Graph types, comma separated. Available: rand_ungraph,
+#      rand_ngraph, rmat, pref, sw
+#    -n NUM_ITERATIONS, --num_iterations NUM_ITERATIONS
+#      number of iterations
+#    -o OUTPUT_FILE, --output_file OUTPUT_FILE
+#      file to output results
+#    -g, --generate        generate new graphs
+#   Example:
+#   python benchmark.py -v -n 3 -g -d -r 2-3 -t rmat -o results/results.txt
 #
 
 import os.path
@@ -125,7 +146,7 @@ def generate_graph(NNodes, NEdges, Model, Type, Rnd):
 
 def run_tests(num_iterations=3, min_nodes_exponent=3, max_nodes_exponent=4):
   '''
-  Perform tests with specificed exponent range
+  Perform tests with specified exponent range
   '''
 
   all_results = []
