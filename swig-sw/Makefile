@@ -1,7 +1,10 @@
 #
 # Makefile for SWIG processing of SNAP
 # 
-GITDIR = ../snapr
+
+# set the path to your SNAP directory here
+GITDIR = ../../snap
+
 include $(GITDIR)/Makefile.config
 
 SNAPDIR = $(GITDIR)/$(SNAP)
@@ -30,7 +33,7 @@ python: Snap.o snap.i
 	g++ $(LDFLAGS) $(CXXFLAGS) snap_wrap.o Snap.o -o _snap.so
 
 Snap.o: 
-	$(CC) -c $(CXXFLAGS) $(SNAPDIR)/Snap.cpp -I$(SNAPDIR) -I$(GLIBDIR)
+	$(CC) $(CXXFLAGS) -c $(SNAPDIR)/Snap.cpp -I$(SNAPDIR) -I$(GLIBDIR)
 clean:
 	rm -f *.o *_wrap.cxx _*.so *.pyc
 

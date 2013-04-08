@@ -44,9 +44,11 @@ Follow the instructions from SWIG's website: download, configure and make, [SWIG
 
 ### Mac OS X
 
-SWIG 1.3.12 and later support OS-X/Darwin. Download the Unix sources, configure, and build from the command terminal. This has been tested on 10.8.2 and adopted from [ColourBlomb](http://blog.colourbomb.net/?p=49).
+swig-1.3.12 and later support OS-X/Darwin.
 
-1. Download the Unix source from swig.org/download.html.
+0. If you have ``homebrew``, simply hit ``brew install swig`` in terminal and ignore the rest of the instructions. Otherwise, download the Unix sources, configure, and build from the command terminal. This has been tested on 10.8.2. The following is adopted from [ColourBlomb](http://blog.colourbomb.net/?p=49).
+
+1. Download the Unix source from http://swig.org/download.html
 
 2. Moving to the terminal, extract the files from the tarball and move to the root directory of the SWIG install:
 
