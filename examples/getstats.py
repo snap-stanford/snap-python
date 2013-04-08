@@ -5,7 +5,7 @@ from random import randrange, choice
 from socket import gethostname
 import argparse
 
-sys.path.append("../swig")
+sys.path.append("../swig-r")
 
 import snap as Snap
 
