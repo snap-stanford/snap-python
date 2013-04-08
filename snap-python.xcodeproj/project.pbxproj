@@ -391,7 +391,7 @@
 /* Begin PBXFileReference section */
 		841D372816FBFA570098ED0F /* test.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = test.cpp; sourceTree = "<group>"; };
 		8444C83B16EDC81800264DA8 /* benchmark.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = benchmark.py; sourceTree = "<group>"; };
-		844B8C6A17135DCD003C76CF /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
+		844B8C6A17135DCD003C76CF /* Makefile */ = {isa = PBXFileReference; explicitFileType = sourcecode.make; fileEncoding = 4; path = Makefile; sourceTree = "<group>"; };
 		844B8C6C17135DCD003C76CF /* printgraph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = printgraph.h; sourceTree = "<group>"; };
 		844B8C6D17135DCD003C76CF /* snap.i */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c.preprocessed; path = snap.i; sourceTree = "<group>"; };
 		844B8C6E17135DCD003C76CF /* snapsw.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = snapsw.h; sourceTree = "<group>"; };
