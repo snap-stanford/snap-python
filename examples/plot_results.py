@@ -6,7 +6,7 @@ import argparse
 import glob, csv
 from datetime import datetime
 
-sys.path.append("../swig")
+sys.path.append("../swig-r")
 import snap as Snap
 
 NUM_ITERATIONS = 1

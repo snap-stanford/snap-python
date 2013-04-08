@@ -2,7 +2,7 @@
 #	Makefile for running 
 #
 
-#all: tungraph epinions memory
+all: tungraph epinions memory
 
 epinions: p2p-Gnutella08.txt
 	python printstat.py p2p-Gnutella08.txt epinions
