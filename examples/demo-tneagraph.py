@@ -1,7 +1,7 @@
 import sys
 from socket import gethostname
 
-sys.path.append("../swig")
+sys.path.append("../swig-r")
 import snap as Snap
 
 def main():
