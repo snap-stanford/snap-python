@@ -365,9 +365,9 @@ def main():
   
   if verbose:
     print "Hostname: %s" % HOSTNAME
-    min = int(args.range.split("-")[0])
-    max = int(args.range.split("-")[-1])
-    print "Range = 10^%d to 10^%d" % (min, max)
+  min = int(args.range.split("-")[0])
+  max = int(args.range.split("-")[-1])
+  print "Range = 10^%d to 10^%d" % (min, max)
   
   if not os.path.exists(RESULTS_DIR):
     print "Creating results directory %s" % RESULTS_DIR
