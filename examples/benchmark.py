@@ -53,7 +53,7 @@ PROPERTY_TYPES = [1, 10]  # 1=Triads, 10=BFS
 DEFAULT_TYPES = "rmat,rand_ungraph"
 
 # Average is 1, non-average is 0.
-DEGREES = [10]  #  List of degrees to loop [10, 100] tries N*10, N*100 edges
+DEGREES = [10, 100]  #  List of degrees to loop [10, 100] tries N*10, N*100 edges
 SW_REWIRE_PROB = 0.1
 
 # Exponent range (e.g. 10^x to 10^y)
@@ -193,14 +193,15 @@ def run_tests(num_iterations=3, min_nodes_exponent=3, max_nodes_exponent=4):
       print "Non-deterministic mode"
     Rnd.PutSeed(0)
 
-  for n in range(num_iterations):
-    if verbose:
-      print "Iteration: %d of %d" % (n+1, num_iterations)
-  
-    for exp in range(min_nodes_exponent,max_nodes_exponent+1):
+  for exp in range(min_nodes_exponent,max_nodes_exponent+1):
+    
+    for g in graph_types:
       
-      for g in graph_types:
+      for n in range(num_iterations):
         
+        if verbose:
+          print "Iteration: %d of %d" % (n+1, num_iterations)
+
         # Random number of nodes of degree i
         NNodes = 10**exp;
         
