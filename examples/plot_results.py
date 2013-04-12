@@ -1,13 +1,12 @@
 import os.path
 import sys
-from time import time
 from socket import gethostname
 import argparse
-import glob, csv
 from datetime import datetime
 
 sys.path.append("../swig-r")
 import snap as Snap
+from glob import glob
 
 NUM_ITERATIONS = 1
 PROPERTY_TYPES = [1, 10]  # 1=Triads, 10=BFS
@@ -90,8 +89,6 @@ def write_stats(results):
 
         for model in graph_types:
           
-          print "adding hostname of = ", host
-
           if host in result['hostname'] \
             and result['time_elapsed'] > time_min \
             and model in result['model'] and \
@@ -114,7 +111,6 @@ def write_stats(results):
   if verbose:
     print "Writing to file ", TABLE_FILE
           
-  
   f.close();
 
 # --------------- Plotting ---------------
@@ -123,9 +119,6 @@ matplotlib.use('Agg')
 
 from pylab import *
 from numpy import sort,array,ones,linalg,column_stack,loadtxt,savetxt
-from scipy import *
-from scipy.optimize import leastsq
-from scipy import linalg
 
 def plot_2d(property):
   
@@ -150,14 +143,6 @@ def plot_2d(property):
     print "Saving figure %s" % pname
     savefig(pname)
 
-
-def plot_stats():
-  
-  pass
-
-
-#end for loop - plot type
-
 def main():
   
   global results_dir, verbose, time_min, graph_types
@@ -167,11 +152,11 @@ def main():
                       action="store_true", dest="verbose",
                       help="increase output verbosity")
   
-  parser.add_argument("-r", "--results_dir", help="results directory")
+  parser.add_argument("-d", "--results_dir", help="results directory")
   
   parser.add_argument("-m", "--time_min", type=float,
                       default=DEFAULT_TIME_MIN,
-                      help="time minimum thresholh")
+                      help="time minimum threshold")
   
   parser.add_argument("-t", "--graph_types", default=DEFAULT_TYPES,
                       help='''
@@ -197,15 +182,11 @@ def main():
     print "Reading results %s" % args.results_dir
   
   results = []
-  for f in glob.glob("%s/result*.txt" % args.results_dir):
+  for f in glob("%s/result*.txt" % args.results_dir):
     print "Parsing %s" % f
     parse_file(f, results)
 
   write_stats(results)
-  
-  if verbose:
-    print "Plotting results"
-    plot_stats()
   
 if __name__ == "__main__":
   main()
