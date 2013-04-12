@@ -1,3 +1,4 @@
+#!/usr/bin/python
 # benchmark.py
 #
 # Author: Nick Shelly, Spring 2013
@@ -33,14 +34,12 @@
 import os.path
 import sys
 import argparse
-import random
 from socket import gethostname
-
+from time import clock
 from datetime import datetime
 
 sys.path.append("../swig-r")
 import snap as Snap
-from math import log
 
 PROPERTY_TYPES = [1, 10]  # 1=Triads, 10=BFS
 
@@ -181,12 +180,10 @@ def run_tests(num_iterations=3, min_nodes_exponent=3, max_nodes_exponent=4):
   Perform tests with specified exponent range
   '''
 
-  all_results = []
-  
   if verbose:
     print "Running results from %e to %e" % (min_nodes_exponent,
                                            max_nodes_exponent)
-  
+
   Rnd = Snap.TRnd()
   if deterministic:
     if verbose:
@@ -227,7 +224,7 @@ def run_tests(num_iterations=3, min_nodes_exponent=3, max_nodes_exponent=4):
             print "Unknown graph type: %s" % g
             sys.exit(1)
           
-          StartTime = datetime.now()
+          StartTime = clock()
           FName = os.path.join(RESULTS_DIR, "%s_10e%d_deg%d_%d.graph" %
                               (g, exp, NEdges/NNodes, n))
         
@@ -284,10 +281,10 @@ def run_tests(num_iterations=3, min_nodes_exponent=3, max_nodes_exponent=4):
                     (FName, str(e))
               continue
 
-          TimeGenerate = datetime.now() - StartTime
+          TimeGenerate = clock() - StartTime
 
           print "Running tests..."
-          StartTime = datetime.now()
+          StartTime = clock()
 
           if Type == 'directed':
             results = benchmark_ngraph(Graph)
@@ -297,9 +294,9 @@ def run_tests(num_iterations=3, min_nodes_exponent=3, max_nodes_exponent=4):
             results = benchmark_neagraph(Graph)
 
 
-          TimeElapsed = datetime.now() - StartTime
+          TimeElapsed = clock() - StartTime
           
-          print "Elapsed Time = %.4f sec" % TimeElapsed.total_seconds()
+          print "Elapsed Time = %.4f sec" % TimeElapsed
 
           row_header = ["Hostname", "Model", "Type", "Nodes", "Edges",
                         "StartTime", "Generation Time", "Run Time"]
@@ -311,14 +308,12 @@ def run_tests(num_iterations=3, min_nodes_exponent=3, max_nodes_exponent=4):
             writer = csv.writer(csvfile)
             print "Writing to '%s'..." % results_file
             row = [HOSTNAME, g, Type, NNodes, NEdges,
-                   StartTime.strftime("%d/%b/%Y:%H:%M:%S"),
-                   TimeGenerate.total_seconds(), TimeElapsed.total_seconds()]
+                   datetime.now().strftime("%d/%b/%Y:%H:%M:%S"),
+                   TimeGenerate, TimeElapsed]
             print "Time Data: %s" % repr(row)
             writer.writerow(row)
               
           print "-"*75
-
-
 
 def main():
   
@@ -373,7 +368,7 @@ def main():
     print "Creating results directory %s" % RESULTS_DIR
     os.makedirs(RESULTS_DIR)
                         
-  all_results = run_tests(num_iterations, min, max)
+  run_tests(num_iterations, min, max)
 
 if __name__ == "__main__":
   main()

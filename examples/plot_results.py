@@ -202,7 +202,6 @@ def main():
     parse_file(f, results)
 
   write_stats(results)
-
   
   if verbose:
     print "Plotting results"
