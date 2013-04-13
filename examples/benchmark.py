@@ -185,28 +185,29 @@ def run_tests(num_iterations=3, min_nodes_exponent=3, max_nodes_exponent=4):
                                            max_nodes_exponent)
 
   Rnd = Snap.TRnd()
-  if deterministic:
-    if verbose:
-      print "Deterministic mode, putting seed"
-  else:
-    if verbose:
-      print "Non-deterministic mode"
-    Rnd.PutSeed(0)
 
   for exp in range(min_nodes_exponent,max_nodes_exponent+1):
     
-    for g in graph_types:
-      
-      for n in range(num_iterations):
+    for n in range(num_iterations):
         
-        if verbose:
-          print "Iteration: %d of %d" % (n+1, num_iterations)
+      if verbose:
+        print "Iteration: %d of %d" % (n+1, num_iterations)
 
-        # Random number of nodes of degree i
-        NNodes = 10**exp;
-        
-        for avg_deg in DEGREES:
+      # Random number of nodes of degree i
+      NNodes = 10**exp;
+      
+      for avg_deg in DEGREES:
           
+        for g in graph_types:
+
+          if deterministic:
+            if verbose:
+              print "Deterministic mode, putting seed"
+          else:
+            if verbose:
+              print "Non-deterministic mode"
+            Rnd.PutSeed(0)
+
           if verbose:
             print "Using average degree of %d" % avg_deg
           NEdges = NNodes*avg_deg
