@@ -10,7 +10,7 @@ from glob import glob
 
 NUM_ITERATIONS = 1
 PROPERTY_TYPES = [1, 10]  # 1=Triads, 10=BFS
-DEFAULT_TYPES = "rmat"      #   Comma separated
+DEFAULT_TYPES = "rmat,rand_ngraph,rand_neagraph,rand_negraph"      #   Comma separated
 
 # Random, Small World, Pref, R-MAT
 # Graph types:

@@ -6,7 +6,7 @@
 
 #include "printgraph.h"
 #include "snapswig.h"
-
+  
 #include "goodgraph.cpp"
 #include "getassessment.cpp"
 #include "swig-TNEAGraph.cpp"
@@ -54,6 +54,7 @@
 %include "ggen.h"
 %include "gio.h"
 %include "graph.h"
+%include "subgraph.h"
 
 %include "printgraph.h"
 %include "snapswig.h"
@@ -106,6 +107,14 @@
           return TNEAGraphEdgeI($self->EndEI());
         }
 };
+
+// Synthetic graphs for benchmarking
+%template(GenSyntheticGraph_PNGraph) GenSyntheticGraph<PNGraph>;
+%template(GenSyntheticGraph_PNEGraph) GenSyntheticGraph<PNEGraph>;
+%template(GenSyntheticGraph_PNEAGraph) GenSyntheticGraph<PNEAGraph>;
+
+// Convert a directed graph to a multi-edge attribute graph
+%template(ConvertGraph_PNGraphToPNEAGraph) ConvertGraph<PNEAGraph, PNGraph>;
 
 // Directed Graphs
 %template(PNGraph) TPt< TNGraph >;

@@ -357,6 +357,7 @@
 		84F8ADA516F7DFD400FC5E61 /* demo-TNodeNet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AC2D16F7DFD400FC5E61 /* demo-TNodeNet.cpp */; };
 		84F8ADA616F7DFD400FC5E61 /* demo-TUNGraph.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AC2E16F7DFD400FC5E61 /* demo-TUNGraph.cpp */; };
 		84F8ADA716F7DFD400FC5E61 /* Makefile in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AC5016F7DFD400FC5E61 /* Makefile */; };
+		84FE870C1720A8920099963A /* snap.i in Sources */ = {isa = PBXBuildFile; fileRef = 8474830A16CD86B300AF3EF4 /* snap.i */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1228,7 +1229,6 @@
 		84F8AC2416F7DFD400FC5E61 /* demo-gviz.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "demo-gviz.cpp"; sourceTree = "<group>"; };
 		84F8AC2516F7DFD400FC5E61 /* demo-subgraph.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "demo-subgraph.cpp"; sourceTree = "<group>"; };
 		84F8AC2616F7DFD400FC5E61 /* demo-THash.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "demo-THash.cpp"; sourceTree = "<group>"; };
-		84F8AC2716F7DFD400FC5E61 /* demo-TNEAGraph-2.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "demo-TNEAGraph-2.cpp"; sourceTree = "<group>"; };
 		84F8AC2816F7DFD400FC5E61 /* demo-TNEAGraph.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "demo-TNEAGraph.cpp"; sourceTree = "<group>"; };
 		84F8AC2916F7DFD400FC5E61 /* demo-TNEGraph.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "demo-TNEGraph.cpp"; sourceTree = "<group>"; };
 		84F8AC2A16F7DFD400FC5E61 /* demo-TNGraph.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "demo-TNGraph.cpp"; sourceTree = "<group>"; };
@@ -2522,7 +2522,6 @@
 				84F8AC2416F7DFD400FC5E61 /* demo-gviz.cpp */,
 				84F8AC2516F7DFD400FC5E61 /* demo-subgraph.cpp */,
 				84F8AC2616F7DFD400FC5E61 /* demo-THash.cpp */,
-				84F8AC2716F7DFD400FC5E61 /* demo-TNEAGraph-2.cpp */,
 				84F8AC2816F7DFD400FC5E61 /* demo-TNEAGraph.cpp */,
 				84F8AC2916F7DFD400FC5E61 /* demo-TNEGraph.cpp */,
 				84F8AC2A16F7DFD400FC5E61 /* demo-TNGraph.cpp */,
@@ -2601,19 +2600,19 @@
 			passBuildSettingsInEnvironment = 1;
 			productName = "snap-python";
 		};
-		8488019716D221EC00C789B8 /* swig */ = {
+		84FE86FA17209EC20099963A /* swig-r */ = {
 			isa = PBXLegacyTarget;
 			buildArgumentsString = "$(ACTION)";
-			buildConfigurationList = 8488019816D221EC00C789B8 /* Build configuration list for PBXLegacyTarget "swig" */;
+			buildConfigurationList = 84FE870317209EC30099963A /* Build configuration list for PBXLegacyTarget "swig-r" */;
 			buildPhases = (
 			);
 			buildToolPath = /usr/bin/make;
-			buildWorkingDirectory = ./swig;
+			buildWorkingDirectory = "swig-r";
 			dependencies = (
 			);
-			name = swig;
+			name = "swig-r";
 			passBuildSettingsInEnvironment = 1;
-			productName = swig;
+			productName = "swig-r";
 		};
 /* End PBXLegacyTarget section */
 
@@ -2667,7 +2666,7 @@
 			projectRoot = "";
 			targets = (
 				847482B016CD85D200AF3EF4 /* snap-python */,
-				8488019716D221EC00C789B8 /* swig */,
+				84FE86FA17209EC20099963A /* swig-r */,
 				8488FEAA16D20F8400C789B8 /* docs */,
 			);
 		};
@@ -2695,10 +2694,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8488019616D20FF300C789B8 /* snapswig.h in Sources */,
-				8488019416D20FF300C789B8 /* printgraph.h in Sources */,
-				841E00C516DC449900B86980 /* getassessment.cpp in Sources */,
-				8456FCEA16E2E28D00ECCD5F /* goodgraph.cpp in Sources */,
 				84F8AC5116F7DFD400FC5E61 /* Makefile in Sources */,
 				84F8AC5216F7DFD400FC5E61 /* agmfitmain.cpp in Sources */,
 				84F8AC5316F7DFD400FC5E61 /* Makefile in Sources */,
@@ -3041,10 +3036,15 @@
 				84F8ADA516F7DFD400FC5E61 /* demo-TNodeNet.cpp in Sources */,
 				84F8ADA616F7DFD400FC5E61 /* demo-TUNGraph.cpp in Sources */,
 				84F8ADA716F7DFD400FC5E61 /* Makefile in Sources */,
-				849E192616FA63710073F921 /* swig-TNEAGraph.cpp in Sources */,
 				845CA9CF16FBFBBE00E72556 /* test.cpp in Sources */,
 				844B8C7017135DCD003C76CF /* Makefile in Sources */,
+				84FE870C1720A8920099963A /* snap.i in Sources */,
 				844B8C7117135DCD003C76CF /* snap.i in Sources */,
+				8488019616D20FF300C789B8 /* snapswig.h in Sources */,
+				8488019416D20FF300C789B8 /* printgraph.h in Sources */,
+				841E00C516DC449900B86980 /* getassessment.cpp in Sources */,
+				849E192616FA63710073F921 /* swig-TNEAGraph.cpp in Sources */,
+				8456FCEA16E2E28D00ECCD5F /* goodgraph.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3074,6 +3074,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "";
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
@@ -3123,29 +3124,6 @@
 			};
 			name = Release;
 		};
-		8488019916D221EC00C789B8 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				DEBUGGING_SYMBOLS = YES;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				OTHER_CFLAGS = "";
-				OTHER_LDFLAGS = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Debug;
-		};
-		8488019A16D221EC00C789B8 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				OTHER_CFLAGS = "";
-				OTHER_LDFLAGS = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Release;
-		};
 		8488FEB416D20F8400C789B8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -3158,6 +3136,35 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		84FE86FB17209EC30099963A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				DEBUGGING_SYMBOLS = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		84FE86FC17209EC30099963A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -3183,20 +3190,20 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		8488019816D221EC00C789B8 /* Build configuration list for PBXLegacyTarget "swig" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				8488019916D221EC00C789B8 /* Debug */,
-				8488019A16D221EC00C789B8 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		8488FEB316D20F8400C789B8 /* Build configuration list for PBXNativeTarget "docs" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				8488FEB416D20F8400C789B8 /* Debug */,
 				8488FEB516D20F8400C789B8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		84FE870317209EC30099963A /* Build configuration list for PBXLegacyTarget "swig-r" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				84FE86FB17209EC30099963A /* Debug */,
+				84FE86FC17209EC30099963A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

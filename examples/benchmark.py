@@ -44,17 +44,23 @@ import snap as Snap
 PROPERTY_TYPES = [1, 10]  # 1=Triads, 10=BFS
 
 # Comma-separated, graph types:
-# 'rand_ungraph' - random undirected
-# 'rand_ngraph' - random directed
-# 'rand_neagraph' - random directed attribute
 # 'rmat' - R-MAT
 # 'pref' - preferential attachment
 # 'sw' - small world
+# 'rand_ungraph' - random undirected
+# 'rand_ngraph' - random directed
+# 'rand_neagraph' - random directed attribute
+# 'syn_ngraph' - random directed
+# 'syn_negraph' - synthetic multi-edge
+# 'syn_neagraph' - synthetic directed multi-edge attribute
+
 DEFAULT_TYPES = "rmat,rand_ungraph"
 
 # Average is 1, non-average is 0.
-DEGREES = [10, 100]  #  List of degrees to loop [10, 100] tries N*10, N*100 edges
+DEFAULT_DEGREES = 1-2  #  Default is 10x and 100x edges/node
+DEFAULT_WRITE = False
 SW_REWIRE_PROB = 0.1
+SYNTHETIC_DELTA = 10
 
 # Exponent range (e.g. 10^x to 10^y)
 DEFAULT_RANGE = '5-7'
@@ -152,6 +158,13 @@ def benchmark_neagraph(Graph):
   return results
 
 
+def convert_graph(Graph, TypeSrc, TypeDst):
+  '''
+  Converts a GRAPH from type TYPESRC to a TYPEDST and returns the new graph
+  '''
+  pass
+
+
 def generate_graph(NNodes, NEdges, Model, Type, Rnd):
     
   if Model == 'rand_ungraph':
@@ -160,6 +173,17 @@ def generate_graph(NNodes, NEdges, Model, Type, Rnd):
 
   elif Model == 'rand_ngraph':
     Graph = Snap.GenRndGnm_PNGraph(NNodes, NEdges, 1)
+      
+  elif Model == 'rand_neagraph':
+    Graph = Snap.GenRndGnm_PNEAGraph(NNodes, NEdges, 1)
+
+  elif Model == 'syn_neagraph':
+    Graph = Snap.GenSyntheticGraph_PNEAGraph(NNodes, NEdges/NNodes,
+                                             SYNTHETIC_DELTA)
+
+  elif Model == 'syn_ngraph':
+    Graph = Snap.GenSyntheticGraph_PNGraph(NNodes, NEdges/NNodes,
+                                             SYNTHETIC_DELTA)
 
   elif Model == 'rmat':
     Graph = Snap.GenRMat(NNodes, NEdges, 0.40, 0.25, 0.2, Rnd)
@@ -169,9 +193,6 @@ def generate_graph(NNodes, NEdges, Model, Type, Rnd):
   
   elif Model == 'pref':
     Graph = Snap.GenPrefAttach(NNodes, NNodes/NEdges)
-
-  elif Model == "rand_neagraph":
-    Graph = Snap.GenRndGnm_PNEAGraph(NNodes, NEdges, 1)
 
   return Graph
 
@@ -196,7 +217,7 @@ def run_tests(num_iterations=3, min_nodes_exponent=3, max_nodes_exponent=4):
       # Random number of nodes of degree i
       NNodes = 10**exp;
       
-      for avg_deg in DEGREES:
+      for avg_deg in range(min_degree_edges, max_degree_edges+1):
           
         for g in graph_types:
 
@@ -208,18 +229,17 @@ def run_tests(num_iterations=3, min_nodes_exponent=3, max_nodes_exponent=4):
               print "Non-deterministic mode"
             Rnd.PutSeed(0)
 
-          if verbose:
-            print "Using average degree of %d" % avg_deg
-          NEdges = NNodes*avg_deg
+          if verbose: print "Using average degree of 10^%d" % avg_deg
+          NEdges = NNodes*(10**avg_deg)
         
           Graph = None
-          if g in ['rmat', 'rand_ngraph']:
+          if g in ['rmat', 'rand_ngraph', 'syn_ngraph','syn_negraph']:
             Type = "directed"
       
           elif g in ['sw', 'pref', 'rand_ungraph']:
             Type = "undirected"
         
-          elif g in ['rand_neagraph']:
+          elif g in ['rand_neagraph', 'syn_neagraph']:
             Type = "attribute"
               
           else:
@@ -236,8 +256,9 @@ def run_tests(num_iterations=3, min_nodes_exponent=3, max_nodes_exponent=4):
               try:
               
                 if verbose:
-                  print "Loading '%s' from ...'%s'" % (g, FName)
-                
+                  print "Loading '%s' from ...'%s'" % (g, FName),
+                  sys.stdout.flush()
+
                 FIn = Snap.TFIn(Snap.TStr(FName))
                 if Type == "directed":
                   Graph = Snap.PNGraph_New()
@@ -247,6 +268,7 @@ def run_tests(num_iterations=3, min_nodes_exponent=3, max_nodes_exponent=4):
                   Graph = Snap.PNEAGraph_New()
 
                 Graph = Graph.Load(FIn)
+                if verbose: print "done"
               
                 if verbose:
                   print "Re-loaded graph with %d Nodes and %d Edges" % \
@@ -265,18 +287,28 @@ def run_tests(num_iterations=3, min_nodes_exponent=3, max_nodes_exponent=4):
             
               # User wants to re-generate graph, or no graph data available.
               if verbose:
-                print "Generating %s '%s' graph with %e nodes, %e edges" % \
-                        (Type, g, NNodes, NEdges)
-            
+                print "Generating '%s %s' graph with %e nodes, %e edges..." % \
+                        (Type, g, NNodes, NEdges),
+                sys.stdout.flush()
               Graph = generate_graph(NNodes, NEdges, g, Type, Rnd)
+              if verbose: print "done"
             
-              # Save the graph
-              print "Saving '%s' graph to file ... '%s'" % (g, FName)
-              if Graph:
-
-                  FOut = Snap.TFOut(Snap.TStr(FName))
-                  Graph.__ref__().Save(FOut)   # Save as TUNGraph or TNGraph
-                  FOut.Flush()
+              if opt_write:
+              
+                # Save the graph
+                if verbose:
+                  print "Saving '%s' graph to file '%s'..." % (g, FName),
+                  sys.stdout.flush()
+                          
+                if Graph:
+                    FOut = Snap.TFOut(Snap.TStr(FName))
+                    Graph.__ref__().Save(FOut)   # Save as TUNGraph or TNGraph
+                    FOut.Flush()
+                if verbose: print "done"
+              else:
+                if verbose: print "Not writing graph"
+                
+                
             
             except Exception, e:
               print "Unable to generate/save graph file, '%s': %s" % \
@@ -285,7 +317,9 @@ def run_tests(num_iterations=3, min_nodes_exponent=3, max_nodes_exponent=4):
 
           TimeGenerate = clock() - StartTime
 
-          print "Running tests..."
+          print "Running tests...",
+          sys.stdout.flush()
+
           StartTime = clock()
 
           if Type == 'directed':
@@ -295,6 +329,7 @@ def run_tests(num_iterations=3, min_nodes_exponent=3, max_nodes_exponent=4):
           elif Type == 'attribute':
             results = benchmark_neagraph(Graph)
 
+          if verbose: print "done"
 
           TimeElapsed = clock() - StartTime
           
@@ -308,10 +343,14 @@ def run_tests(num_iterations=3, min_nodes_exponent=3, max_nodes_exponent=4):
           import csv
           with open(results_file, 'a+') as csvfile:
             writer = csv.writer(csvfile)
-            print "Writing to '%s'..." % results_file
+            if verbose:
+              print "Writing to '%s'..." % results_file,
+              sys.stdout.flush()
+
             row = [HOSTNAME, g, Type, NNodes, NEdges,
                    datetime.now().strftime("%d/%b/%Y:%H:%M:%S"),
                    TimeGenerate, TimeElapsed]
+            if verbose: print "done"
             print "Time Data: %s" % repr(row)
             writer.writerow(row)
               
@@ -320,7 +359,8 @@ def run_tests(num_iterations=3, min_nodes_exponent=3, max_nodes_exponent=4):
 def main():
   
   global results_dir, verbose, deterministic, generate, graph_types, \
-          hostname, num_iterations, results_file
+          hostname, num_iterations, results_file, \
+          min_degree_edges, max_degree_edges, opt_write
   
   parser = argparse.ArgumentParser()
   parser.add_argument("-v", "--verbose", default=False,
@@ -329,6 +369,9 @@ def main():
 
   parser.add_argument("-r", "--range", default=DEFAULT_RANGE,
                       help="range (4-6) (10^4 to 10^6 nodes)")
+
+  parser.add_argument("-e", "--edges_deg", default=DEFAULT_DEGREES,
+      help="range of degrees (e.g \"2-3\" => (10^1 to 10^3 edges per node)")
 
   parser.add_argument("-d", "--deterministic", default=False,
                         action="store_true", dest="deterministic",
@@ -346,25 +389,37 @@ def main():
                       default=DEFAULT_RESULTS_FILE,
                       help="file to output results")
 
-
   parser.add_argument("-g", "--generate", default=False,
                       action="store_true", dest="generate",
                       help="generate new graphs")
-  
+
+  parser.add_argument("-w", "--write_graph", default=DEFAULT_WRITE,
+                      action="store_true", dest="write",
+                      help="save graph")
+
+
   args = parser.parse_args()
-  
+
   verbose = args.verbose
   generate = args.generate
   deterministic = args.deterministic
   results_file = args.output_file
   num_iterations = args.num_iterations
   graph_types = args.graph_types.split(",")
+  min_degree_edges = int(args.edges_deg.split("-")[0])
+  max_degree_edges = int(args.edges_deg.split("-")[-1])
+  opt_write = args.write
+
+
+  print "Edge degree = 10^%d to 10^%d edges/node" % \
+        (min_degree_edges, max_degree_edges)
+
   
   if verbose:
     print "Hostname: %s" % HOSTNAME
   min = int(args.range.split("-")[0])
   max = int(args.range.split("-")[-1])
-  print "Range = 10^%d to 10^%d" % (min, max)
+  print "Node range = 10^%d to 10^%d" % (min, max)
   
   if not os.path.exists(RESULTS_DIR):
     print "Creating results directory %s" % RESULTS_DIR

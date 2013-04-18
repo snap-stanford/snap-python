@@ -77,6 +77,23 @@ typedef TVec<TInt, int> TIntV;
 typedef TVec<TIntV, int> TIntIntVV;
 
 template <class PGraph>
+PGraph GenSyntheticGraph(const int& Nodes, const int Deg, const int Delta) {
+  PGraph Graph = PGraph::TObj::New();
+  Graph->Reserve(Nodes, Nodes*Deg);
+  for (int n = 0; n < Nodes; n++) {
+    Graph->AddNode(n); }
+  for (int n1 = 0; n1 < Nodes; n1++) {
+    for (int d = 0; d < Deg; d++) {
+       // When Delta=10 and Deg=3, create edges from n1 to n1+10, n1+11, n1+12
+      int n2 = (n1+d+Delta)%Nodes;
+      if (n1 != n2) { Graph->AddEdge(n1, n2); }
+    }
+  }
+  return Graph;
+}
+
+
+template <class PGraph>
 void RunBasicInfo(const PGraph& Graph, const TStr& Desc, const TStr& OutFNm) {
   int BiDirEdges=0, ZeroNodes=0, ZeroInNodes=0, ZeroOutNodes=0, SelfEdges=0, NonZIODegNodes=0;
   THash<TIntPr, TInt> UniqDirE, UniqUnDirE;
@@ -129,7 +146,6 @@ void RunCalculations(const PGraph& Graph, PlotType PType) {
 //  printf("Calculating '%s'\n", PlotDesc[PType]);
   switch (PType) {
     case Iteration:
-//      PrintInfo(Graph, Desc, OutFNm, 0); // Not fast option
       RunBasicInfo(Graph, Desc, OutFNm);
       break;
       
@@ -160,7 +176,6 @@ void RunCalculations(const PGraph& Graph, PlotType PType) {
       break;
       
     case PlotClustCoef:
-//      PlotClustCf(Graph, OutFNm, Desc);
       RunClustCf(Graph);
       break;
       
@@ -174,7 +189,6 @@ void RunCalculations(const PGraph& Graph, PlotType PType) {
       break;
       
     case BFS:
-      //      PlotClustCf(Graph, OutFNm, Desc);
       RunBFS(Graph);
       break;
 
@@ -186,7 +200,7 @@ void RunCalculations(const PGraph& Graph, PlotType PType) {
 double GetStats(int NNodes, int NEdges, PlotType PType, GraphType RType) {
   
   TExeTm ExeTm;
-//  printf("Timing '%s'\n", PlotDesc[PType]);
+  printf("Timing '%s'\n", PlotDesc[PType]);
   
   int StartTime = clock();
   
@@ -195,8 +209,6 @@ double GetStats(int NNodes, int NEdges, PlotType PType, GraphType RType) {
   
   switch (RType) {
     case SmallWorld:
-//      printf("Generating random graph for %d nodes, %d edges\n",
-//             NNodes, NEdges);
       GN = GenRndGnm<PNGraph>(NNodes, NEdges);
       RunCalculations(GN, PType);
       break;
