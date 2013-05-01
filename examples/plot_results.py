@@ -79,30 +79,29 @@ def write_stats(results):
   f.write("<th>Type</th>\n");
   f.write("<th>Nodes</th>\n");
   f.write("<th>Edges</th>\n");
+  f.write("<th>Start Time</th>\n");
   f.write("<th>Gen Time (sec)</th>\n");
   f.write("<th>Run Time (sec)</th>\n");
   f.write("</tr>\n");
 
-  for host in ['madmax', 'sheridan']:
+  for result in results:
 
-    for result in results:
-
-        for model in graph_types:
+      for model in graph_types:
+        
+        if result['time_elapsed'] > time_min \
+          and model in result['model'] and \
+          result['num_nodes'] >= DEFAULT_NODES_MIN:
           
-          if host in result['hostname'] \
-            and result['time_elapsed'] > time_min \
-            and model in result['model'] and \
-            result['num_nodes'] >= DEFAULT_NODES_MIN:
-            
-            f.write("<tr>\n");
-            f.write("<td>%s</td>" % result['hostname']);
-            f.write("<td>%s</td>" % result['model']);
-            f.write("<td>%s</td>" % result['type']);
-            f.write("<td>%.3e</td>" % result['num_nodes']);
-            f.write("<td>%.3e</td>" % result['num_edges']);
-            f.write("<td>%.4f</td>" % result['time_generate']);
-            f.write("<td>%.4f</td>" % result['time_elapsed']);
-            f.write("</tr>\n");
+          f.write("<tr>\n");
+          f.write("<td>%s</td>" % result['hostname']);
+          f.write("<td>%s</td>" % result['model']);
+          f.write("<td>%s</td>" % result['type']);
+          f.write("<td>%.3e</td>" % result['num_nodes']);
+          f.write("<td>%.3e</td>" % result['num_edges']);
+          f.write("<td>%s</td>" % result['start_time']);
+          f.write("<td>%.4f</td>" % result['time_generate']);
+          f.write("<td>%.4f</td>" % result['time_elapsed']);
+          f.write("</tr>\n");
 
   f.write("</table>\n");
   

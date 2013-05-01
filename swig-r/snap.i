@@ -13,6 +13,10 @@
 
 %}
 
+%module test
+
+%feature("autodoc", "3");
+
 %ignore TOnExeStop;
 %ignore TPt::TPt;
 %ignore TPt::LoadXml;
@@ -46,6 +50,7 @@
 %ignore TUNGraph::GetEI(int const&) const;
 %ignore TNEAGraph::GetEI(int const&) const;
 
+// SNAP Library
 %include "alg.h"
 %include "bd.h"
 %include "cncom.h"
@@ -56,6 +61,29 @@
 %include "graph.h"
 %include "subgraph.h"
 
+%include "bfsdfs.h"
+%include "triad.h"
+
+//%ignore TGVizLayout;
+%include "gviz.h"
+
+//%include "kcore.h"
+//%include "gsvd.h"
+//%include "centr.h"
+//%include "gstat.h"
+//%include "cmty.h"
+//%include "ff.h"
+//%include "anf.h"
+
+
+//%include "timenet.h"
+//%include "statplot.h"
+//%include "bignet.h"
+//%include "ghash.h"
+
+//%include "ncp.h"
+
+// Used for SNAP-R Tests
 %include "printgraph.h"
 %include "snapswig.h"
 
@@ -115,6 +143,7 @@
 
 // Convert a directed graph to a multi-edge attribute graph
 %template(ConvertGraph_PNGraphToPNEAGraph) ConvertGraph<PNEAGraph, PNGraph>;
+
 
 // Directed Graphs
 %template(PNGraph) TPt< TNGraph >;
@@ -180,4 +209,5 @@
 %template(CntUniqBiDirEdges_PNEAGraph) TSnap::CntUniqBiDirEdges<PNEAGraph>;
 %template(CntSelfEdges_PNEAGraph) TSnap::CntSelfEdges<PNEAGraph>;
 
-
+%template(GetBfsTree_PNGraph) TSnap::GetBfsTree<PNGraph>;
+%template(DrawGViz_PNGraph) TSnap::DrawGViz<PNGraph>;
