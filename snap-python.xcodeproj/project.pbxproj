@@ -414,6 +414,8 @@
 		849E192516FA63710073F921 /* swig-TNEAGraph.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "swig-TNEAGraph.cpp"; sourceTree = "<group>"; };
 		849E192D16FA67AF0073F921 /* demo-tneagraph.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = "demo-tneagraph.py"; sourceTree = "<group>"; };
 		84A3AD0C1710F86E00D219D2 /* Makefile */ = {isa = PBXFileReference; explicitFileType = sourcecode.make; fileEncoding = 4; path = Makefile; sourceTree = "<group>"; };
+		84ADEF361731D3E50009E449 /* snappy.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = snappy.py; sourceTree = "<group>"; };
+		84ADEF371731EC4E0009E449 /* snap.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = snap.py; sourceTree = "<group>"; };
 		84F8A8CC16F7DFD200FC5E61 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		84F8A8CD16F7DFD200FC5E61 /* CREDITS.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CREDITS.txt; sourceTree = "<group>"; };
 		84F8A8CF16F7DFD200FC5E61 /* doxyblock.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = doxyblock.py; sourceTree = "<group>"; };
@@ -1310,6 +1312,7 @@
 			isa = PBXGroup;
 			children = (
 				84A3AD0C1710F86E00D219D2 /* Makefile */,
+				8463271F172A008900467FAC /* test-snapswig.py */,
 				847482E316CD863500AF3EF4 /* load.py */,
 				847482E416CD863500AF3EF4 /* tnodei.py */,
 				849766F716D34B6D00EE1E91 /* getstats.py */,
@@ -1317,7 +1320,6 @@
 				8444C83B16EDC81800264DA8 /* benchmark.py */,
 				84FE870D1720B9460099963A /* convert.py */,
 				84529AEF16F9184700DC307D /* plot_results.py */,
-				8463271F172A008900467FAC /* test-snapswig.py */,
 			);
 			path = examples;
 			sourceTree = "<group>";
@@ -1327,6 +1329,8 @@
 			children = (
 				8474830816CD86B300AF3EF4 /* Makefile */,
 				8474830A16CD86B300AF3EF4 /* snap.i */,
+				84ADEF371731EC4E0009E449 /* snap.py */,
+				84ADEF361731D3E50009E449 /* snappy.py */,
 				8474831016CD86B300AF3EF4 /* snapswig.h */,
 				8474830916CD86B300AF3EF4 /* printgraph.h */,
 				849766F416D32A8B00EE1E91 /* getassessment.cpp */,
