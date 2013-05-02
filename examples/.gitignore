@@ -1,3 +1,5 @@
 results
 results-*
 public_html
+*.dot
+*.png

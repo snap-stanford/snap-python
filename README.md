@@ -84,4 +84,14 @@ This dependency is needed for configure to complete. Either:
 5. Once this has completed test that SWIG has installed correctly, type `swig` into the terminal and hopefully you’ll get the response:
   Must specify an input file. Use `-help` for available options.
 
+SWIG Benchmarks
+-----------------
+Example SWIG programs using the SNAP Ringo for multi-attribute edges are in the `examples` directory.  The benchmark program `benchmark.py` performs a series of functions on the graph data, including node/edge iteration, degree checks, clustering coefficients, largest weakly and strongest components, etc.  For R-MAT graphs with 1 million nodes and 10 million edges, this takes on average: 
+
+- On CentOS 6.3 with 2.66 GHz processor, 19.71 sec to generate a new graph and and 17.49 sec to run the tests.
+- On Mac OSX 10.8 with 2.6 GHz processor, 13.95 sec to generate and 15.06 sec to run the tests.
+	
+To run a benchmark test you can run the following command:
+
+	python benchmark.py --verbose -n 5 --range 4-7 --type rmat --generate
 
