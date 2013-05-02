@@ -15,18 +15,28 @@ import unittest
 
 from snap import *
 
-def FIn(fname):
+def FIn(FName):
 
   return TFIn(TStr(FName))
 
-def FOut(fname):
+def FOut(FName):
   
   return TFOut(TStr(FName))
 
-def Load(fname):
+def Load(FName):
   """
     Opens graph file and returns graph.
   """
     
   f = TFIn(TStr(FName))
   return Load(f)
+
+
+def Save(Graph, FName):
+  """
+    Saves graph file.
+  """
+  
+  FOut = FOut(FName)
+  Graph.__ref__().Save(FOut)   # Save as TUNGraph or TNGraph
+  FOut.Flush()

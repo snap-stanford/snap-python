@@ -57,12 +57,13 @@ PROPERTY_TYPES = [1, 10]  # 1=Triads, 10=BFS
 DEFAULT_TYPES = "rmat,rand_ungraph"
 
 # Average is 1, non-average is 0.
-DEFAULT_DEGREES = 1-2  #  Default is 10x and 100x edges/node
+DEFAULT_DEGREES = "1-2"  #  Default is 10x and 100x edges/node
 DEFAULT_WRITE = False
 SW_REWIRE_PROB = 0.1
 SYNTHETIC_DELTA = 10
 
 # Exponent range (e.g. 10^x to 10^y)
+DEFAULT_VERBOSE=True
 DEFAULT_RANGE = '5-7'
 DEFAULT_ITERATIONS = 1
 
@@ -363,7 +364,7 @@ def main():
           min_degree_edges, max_degree_edges, opt_write
   
   parser = argparse.ArgumentParser()
-  parser.add_argument("-v", "--verbose", default=False,
+  parser.add_argument("-v", "--verbose", default=DEFAULT_VERBOSE,
                       action="store_true", dest="verbose",
                       help="increase output verbosity")
 

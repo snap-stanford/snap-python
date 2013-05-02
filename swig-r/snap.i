@@ -157,6 +157,11 @@
 
 %template(NodesGTEDegree_PNGraph) NodesGTEDegree<PNGraph>;
 %template(MxDegree_PNGraph) MxDegree<PNGraph>;
+%template(MxSccSz_PNGraph) TSnap::GetMxScc<PNGraph>;
+%template(MxWccSz_PNGraph) TSnap::GetMxWccSz<PNGraph>;
+%template(MxDegree_PNGraph) MxDegree<PNGraph>;
+// End Basic Directed Graphs
+
 
 // Basic Undirected Graphs
 %template(PUNGraph) TPt< TUNGraph >;
@@ -169,6 +174,8 @@
 %template(MxSccSz_PUNGraph) TSnap::GetMxScc<PUNGraph>;
 %template(MxWccSz_PUNGraph) TSnap::GetMxWccSz<PUNGraph>;
 %template(MxDegree_PUNGraph) MxDegree<PUNGraph>;
+// End Basic Undirected Graphs
+
 
 // Basic PNEAGraphs
 %template(PNEAGraph) TPt< TNEAGraph >;
@@ -176,14 +183,6 @@
 %template(NodesGTEDegree_PNEAGraph) NodesGTEDegree<PNEAGraph>;
 
 %template(MxDegree_PNEAGraph) MxDegree<PNEAGraph>;
-
-
-/* Note in Vim, this replaces SNAP Template headers:
-
- :%s#^template.*<class PGraph> \S* \([^(]*\).*#%template(\1_PNEAGraph) TSnap::\1<PNEAGraph>;#gc
- :%s#^///.*\n:##g
-
- */
 
 // cncom.h - PNEAGraph
 %template(GetNodeWcc_PNEAGraph) TSnap::GetNodeWcc<PNEAGraph>;
@@ -275,7 +274,6 @@
 %template(GetTriadParticip_PNEAGraph) TSnap::GetTriadParticip<PNEAGraph>;
 
 %template(GetCmnNbrs_PNEAGraph) TSnap::GetCmnNbrs<PNEAGraph>;
-// FIXME: "triad.h:429: error: no type named ‘TNodeI’ in ‘class TPt<TNGraph>"
 //%template(GetLen2Paths_PNEAGraph) TSnap::GetLen2Paths<PNEAGraph>;
 
 // cmty.h - PNEAGraph
@@ -285,3 +283,10 @@
 // anf.h - PNEAGraph
 %template(GetAnf_PNEAGraph) TSnap::GetAnf<PNEAGraph>;
 %template(GetAnfEffDiam_PNEAGraph) TSnap::GetAnfEffDiam<PNEAGraph>;
+
+/* Note in Vim, this replaces SNAP Template headers:
+ 
+ :%s#^template.*<class PGraph> \S* \([^(]*\).*#%template(\1_PNEAGraph) TSnap::\1<PNEAGraph>;#gc
+ :%s#^///.*\n:##g
+ 
+*/
