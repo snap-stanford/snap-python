@@ -68,20 +68,20 @@ void GetDegrees(TIntV& Nodes, double Mean, double Dev) {
   int i;
   int d;
   int Len;
-  printf("GetDegrees\n");
-  printf("Nodes Len %d\n",Nodes.Len());
+  //printf("GetDegrees\n");
+  //printf("Nodes Len %d\n",Nodes.Len());
 
   // assign degree to each node
   Len = Nodes.Len();
   for (i = 0; i < Len; i++) {
     d = StdDist(Mean, Dev);
-    printf("degree1 %d %d\n", i, d);
+    //printf("degree1 %d %d\n", i, d);
     Nodes[i] = d;
   }
 
-  for (i = 0; i < Len; i++) {
-    printf("degree2 %d %d\n", i, Nodes[i].Val);
-  }
+  //for (i = 0; i < Len; i++) {
+    //printf("degree2 %d %d\n", i, Nodes[i].Val);
+  //}
 }
 
 void IncVal(TIntV& Nodes, int disp) {
@@ -102,9 +102,9 @@ void AssignRndTask(const TIntV& Nodes, TIntIntVV& Tasks) {
   int t;
   int NumNodes;
   int NumTasks;
-  printf("AssignRndTask\n");
-  printf("Nodes Len %d\n",Nodes.Len());
-  printf("Tasks Len %d\n",Tasks.Len());
+  //printf("AssignRndTask\n");
+  //printf("Nodes Len %d\n",Nodes.Len());
+  //printf("Tasks Len %d\n",Tasks.Len());
 
   NumNodes = Nodes.Len();
   NumTasks = Tasks.Len();
@@ -112,7 +112,7 @@ void AssignRndTask(const TIntV& Nodes, TIntIntVV& Tasks) {
   // distribute stubs randomly to tasks
   for (i = 0; i < NumNodes; i++) {
     n = Nodes[i].Val;
-    printf("degree3 %d %d\n", i, n);
+    //printf("degree3 %d %d\n", i, n);
     for (j = 0; j < n; j++) {
       t = (long) (drand48() * NumTasks);
       Tasks[t].Add(i);
@@ -128,9 +128,9 @@ void AssignEdges(const TIntV& Pairs, TIntIntVV& Tasks, int tsize) {
   int Node1;
   int Node2;
 
-  printf("AssignEdges\n");
-  printf("Pairs Len %d\n",Pairs.Len());
-  printf("Tasks Len %d\n",Tasks.Len());
+  //printf("AssignEdges\n");
+  //printf("Pairs Len %d\n",Pairs.Len());
+  //printf("Tasks Len %d\n",Tasks.Len());
 
   NumStubs = Pairs.Len();
   NumTasks = Tasks.Len();
@@ -158,8 +158,8 @@ void GetAdjLists(const TIntV& Edges, TIntIntVH& AdjLists) {
   int Node1;
   int Node2;
 
-  printf("GetAdjLists\n");
-  printf("Edges1 Len %d\n",Edges.Len());
+  //printf("GetAdjLists\n");
+  //printf("Edges1 Len %d\n",Edges.Len());
 
   NumStubs = Edges.Len();
 
@@ -199,7 +199,6 @@ void GetNeighborhood(const TIntV& Nodes, const TIntIntVH& AdjLists, TIntV& Hood)
   // change a hash table to a vector
   HashHood.GetKeyV(Hood);
 }
-  
 
 void Edge2Hash(const TIntV& Edges, TIntH& Hash) {
   int i;
@@ -207,7 +206,7 @@ void Edge2Hash(const TIntV& Edges, TIntH& Hash) {
   int Key;
   int Value;
 
-  printf("Edges2 Len %d\n",Edges.Len());
+  //printf("Edges2 Len %d\n",Edges.Len());
   Num = Edges.Len();
 
   for (i = 0; i < Num-1; i += 2) {
@@ -218,5 +217,37 @@ void Edge2Hash(const TIntV& Edges, TIntH& Hash) {
   }
 }
 
-}; // namespace TSnap
+void GetNewNodes(const TIntV& Nodes, TIntH& Visited, TIntH& NewNodes, int distance) {
+  int i;
+  int Num;
+  int Node;
 
+  //printf("GetNewNodes Nodes %d\n",Nodes.Len());
+  Num = Nodes.Len();
+
+  for (i = 0; i < Num; i++) {
+    Node = Nodes.GetVal(i).Val;
+
+    if (!Visited.IsKey(Node)) {
+      NewNodes.AddDat(Node,0);
+      Visited.AddDat(Node,distance);
+    }
+  }
+
+  //printf("GetNewNodes NewNodes %d\n",NewNodes.Len());
+}
+
+void Nodes2Tasks(const TIntH& Nodes, TIntIntVV& Tasks, int tsize) {
+  int Node;
+  int TaskId;
+
+  for (TIntH::TIter It = Nodes.BegI(); It < Nodes.EndI(); It++) {
+    Node = It.GetKey();
+    TaskId = Node / tsize;
+
+    //printf("Nodes2Tasks node %d, task %d\n", Node, TaskId);
+    Tasks[TaskId].Add(Node);
+  }
+}
+
+}; // namespace TSnap

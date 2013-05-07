@@ -23,9 +23,13 @@
 
 %ignore GetStr;
 
+%ignore TUInt::IsIpv6Str;
+
 %ignore TFInOut;
 %ignore TFRnd;
 %ignore TFile::GetLastAccessTm;
+%ignore TMOut::AppendBf;
+%ignore TMIn::New;
 
 %ignore TNGraph::GetEI(int const&) const;
 %ignore TBPGraph::HasFlag(const TGraphFlag& Flag) const;
