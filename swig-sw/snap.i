@@ -58,6 +58,7 @@
 %include "gio.h"
 %include "hash.h"
 %include "ggen.h"
+%include "util.h"
 
 %include "snapsw.h"
 %include "printgraph.h"
@@ -126,6 +127,9 @@
 %template(TIntIntVH) THash< TInt, TVec< TInt, int > >;
 %template(TIntH) THash<TInt, TInt>;
 %template(TIntHI) THashKeyDatI < TInt, TInt >;
+
+//%template(SendVec_TIntV) TSnap::SendVec< TVec< TInt, int > >;
+%template(SendVec_TIntV) SendVec< TInt, int >;
 
 %template(PNGraph) TPt< TNGraph >;
 %template(LoadEdgeList_PNGraph) TSnap::LoadEdgeList<PNGraph>;
