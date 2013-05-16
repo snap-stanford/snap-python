@@ -50,6 +50,7 @@
 %ignore THash< TInt, TInt, TDefaultHashFunc<TInt> >::AddDatId;
 %ignore THash< TInt, TInt>::HashPrimeT;
 
+#define GLib_UNIX
 %include "bd.h"
 %include "dt.h"
 %include "ds.h"
