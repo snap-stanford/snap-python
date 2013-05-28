@@ -64,19 +64,23 @@ void GetDegrees(TIntV* Nodes, double Mean, double Dev) {
 }
 #endif
 
+void ZeroVec(TIntV& Nodes) {
+  // set all values to zero
+  for (TIntV::TIter i = Nodes.BegI(); i != Nodes.EndI(); i++) {
+    *i = 0;
+  }
+}
+
 void GetDegrees(TIntV& Nodes, double Mean, double Dev) {
-  int i;
   int d;
-  int Len;
   //printf("GetDegrees\n");
   //printf("Nodes Len %d\n",Nodes.Len());
 
   // assign degree to each node
-  Len = Nodes.Len();
-  for (i = 0; i < Len; i++) {
+  for (TIntV::TIter i = Nodes.BegI(); i != Nodes.EndI(); i++) {
     d = StdDist(Mean, Dev);
     //printf("degree1 %d %d\n", i, d);
-    Nodes[i] = d;
+    *i = d;
   }
 
   //for (i = 0; i < Len; i++) {
@@ -85,13 +89,9 @@ void GetDegrees(TIntV& Nodes, double Mean, double Dev) {
 }
 
 void IncVal(TIntV& Nodes, int disp) {
-  int i;
-  int Len;
-
   // increment value for each element
-  Len = Nodes.Len();
-  for (i = 0; i < Len; i++) {
-    Nodes[i] += disp;
+  for (TIntV::TIter i = Nodes.BegI(); i != Nodes.EndI(); i++) {
+    *i += disp;
   }
 }
 
@@ -235,6 +235,29 @@ void GetNewNodes(const TIntV& Nodes, TIntH& Visited, TIntH& NewNodes, int distan
   }
 
   //printf("GetNewNodes NewNodes %d\n",NewNodes.Len());
+}
+
+void GetNewNodes1(const TIntV& Nodes, TIntV& Visited, TIntV& NewNodes, int distance) {
+  int Node;
+
+  //printf("GetNewNodes1 Nodes %d\n",Nodes.Len());
+
+  for (TIntV::TIter i = Nodes.BegI(); i != Nodes.EndI(); i++) {
+    Node = *i;
+
+    if (Visited[Node] <= 0) {
+      Visited[Node] = distance;
+      NewNodes.Add(Node);
+    }
+  }
+
+  //printf("GetNewNodes1 NewNodes %d\n",NewNodes.Len());
+}
+
+void GetDistances(const TIntV& Visited, TIntV& DistCount) {
+  for (TIntV::TIter i = Visited.BegI(); i != Visited.EndI(); i++) {
+    DistCount[*i]++;
+  }
 }
 
 void Nodes2Tasks(const TIntH& Nodes, TIntIntVV& Tasks, int tsize) {

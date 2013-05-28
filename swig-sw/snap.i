@@ -121,7 +121,7 @@
         TDat& AddDat(int Key, int Val) {
                 return $self->AddDat(TInt(Key),TInt(Val));
         }
-}
+};
 
 %template(TIntV) TVec< TInt, int >;
 %template(TIntIntVV) TVec< TVec< TInt, int >, int >;
