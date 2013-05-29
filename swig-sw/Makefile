@@ -18,7 +18,8 @@ ifeq ($(UNAME), Linux)
   LDFLAGS += -lrt
 else ifeq ($(UNAME), Darwin)
   # OS X flags
-  LDFLAGS += -lpython -dynamiclib -undefined dynamic_lookup
+  # LDFLAGS += -lpython -dynamiclib -undefined dynamic_lookup
+  LDFLAGS += -lpython -dynamiclib
 else ifeq ($(shell uname -o), Cygwin)
   # Cygwin flags
 endif

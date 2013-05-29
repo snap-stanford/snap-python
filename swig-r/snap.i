@@ -1,4 +1,8 @@
 // snap.i
+
+//   Currently, only includes PNEAGraph types. Other graph types
+//   can be added by including their SWIG interface types below.
+
 %module snap
 %{
 
@@ -6,9 +10,10 @@
 
 #include "printgraph.h"
 #include "snapswig.h"
+#include "snap_types.h"
   
 #include "goodgraph.cpp"
-#include "getassessment.cpp"
+//#include "getassessment.cpp"
 #include "swig-TNEAGraph.cpp"
 
 %}
@@ -50,31 +55,46 @@
 %ignore TUNGraph::GetEI(int const&) const;
 %ignore TNEAGraph::GetEI(int const&) const;
 
+%ignore TVec<TVec<TInt, int>, int>::Add;
+%ignore TVec<TVec<TInt, int>, int>::AddMerged;
+
+%ignore THash< TInt, TVec< TInt, int > >::AddDat;
+%ignore THash< TInt, TVec< TInt, int > >::HashPrimeT;
+%ignore THash< TInt, TVec< TInt, int > >::AddDatId;
+
+%ignore THash< TInt, TInt, TDefaultHashFunc<TInt> >::HashPrimeT;
+%ignore THash< TInt, TInt, TDefaultHashFunc<TInt> >::AddDatId;
+%ignore THash< TInt, TInt>::HashPrimeT;
+
 // SNAP Library
+
+// snap-core
 %include "alg.h"
-%include "bd.h"
-%include "cncom.h"
-%include "dt.h"
-%include "fl.h"
-%include "ggen.h"
-%include "gio.h"
-%include "graph.h"
-%include "subgraph.h"
-
-%include "bfsdfs.h"
-%include "triad.h"
-%include "gviz.h"
-
-%include "kcore.h"
-%include "gsvd.h"
-%include "centr.h"
-
-// FIXME: gstat.h:51: Error: Syntax error in input(3)
-//%include "gstat.h"
-
-%include "cmty.h"
-%include "ff.h"
 %include "anf.h"
+%include "bfsdfs.h"
+%include "bd.h"
+%include "centr.h"
+%include "cmty.h"
+%include "cncom.h"
+%include "ff.h"
+%include "fl.h"
+%include "graph.h"
+%include "gsvd.h"
+%include "gio.h"
+%include "gviz.h"
+%include "hash.h"
+%include "kcore.h"
+%include "ggen.h"
+%include "subgraph.h"
+%include "util.h"
+%include "triad.h"
+
+#define GLib_UNIX
+// glib-core
+%include "ds.h"
+%include "dt.h"
+
+//%include "gstat.h"
 
 //%include "timenet.h"
 //%include "statplot.h"
@@ -83,210 +103,49 @@
 
 //%include "ncp.h"
 
+%extend TVec {
+
+        TSizeTy Add(int Val) {
+                return $self->Add(TInt(Val));
+        }
+
+        TSizeTy AddMerged(int Val) {
+                return $self->AddMerged(TInt(Val));
+        }
+};
+
+%extend THash {
+        int AddKey(int Val) {
+                return $self->AddKey(TInt(Val));
+        }
+        int IsKey(int Val) {
+                return $self->IsKey(TInt(Val));
+        }
+        TDat& GetDat(int Val) {
+                return $self->GetDat(TInt(Val));
+        }
+        TDat& AddDat(int Key, int Val) {
+                return $self->AddDat(TInt(Key),TInt(Val));
+        }
+}
+
+
 // Used for SNAP-R Tests
 %include "printgraph.h"
 %include "snapswig.h"
-
 %include "goodgraph.cpp"
-%include "getassessment.cpp"
 %include "swig-TNEAGraph.cpp"
 
-%extend TNGraph {
-        TNGraphNodeI BegNI() {
-                return TNGraphNodeI($self->BegNI());
-        }
-        TNGraphNodeI EndNI() {
-                return TNGraphNodeI($self->EndNI());
-        }
-        TNGraphEdgeI BegEI() {
-                return TNGraphEdgeI($self->BegEI());
-        }
-        TNGraphEdgeI EndEI() {
-                return TNGraphEdgeI($self->EndEI());
-        }
-};
+%template(TIntV) TVec< TInt, int >;
+%template(TIntIntVV) TVec< TVec< TInt, int >, int >;
+%template(TIntIntVH) THash< TInt, TVec< TInt, int > >;
+%template(TIntH) THash<TInt, TInt>;
+%template(TIntHI) THashKeyDatI < TInt, TInt >;
 
-%extend TUNGraph {
-        TUNGraphNodeI BegNI() {
-                return TUNGraphNodeI($self->BegNI());
-        }
-        TUNGraphNodeI EndNI() {
-                return TUNGraphNodeI($self->EndNI());
-        }
-        TUNGraphEdgeI BegEI() {
-                return TUNGraphEdgeI($self->BegEI());
-        }
-        TUNGraphEdgeI EndEI() {
-                return TUNGraphEdgeI($self->EndEI());
-        }
-};
+/* Graph templates - include other SWIG interface types here. */
+%include "pneagraph.i"
+//%include "pngraph.i"
+//%include "pungraph.i"
 
-%extend TNEAGraph {
-        TNEAGraphNodeI BegNI() {
-          return TNEAGraphNodeI($self->BegNI());
-        }
-        TNEAGraphNodeI EndNI() {
-          return TNEAGraphNodeI($self->EndNI());
-        }
-        TNEAGraphEdgeI BegEI() {
-          return TNEAGraphEdgeI($self->BegEI());
-        }
-        TNEAGraphEdgeI EndEI() {
-          return TNEAGraphEdgeI($self->EndEI());
-        }
-};
-
-// Synthetic graphs for benchmarking
-%template(GenSyntheticGraph_PNGraph) GenSyntheticGraph<PNGraph>;
-%template(GenSyntheticGraph_PNEGraph) GenSyntheticGraph<PNEGraph>;
-%template(GenSyntheticGraph_PNEAGraph) GenSyntheticGraph<PNEAGraph>;
-
-// Convert a directed graph to a multi-edge attribute graph
-%template(ConvertGraph_PNGraphToPNEAGraph) ConvertGraph<PNEAGraph, PNGraph>;
-
-// Basic Directed Graphs
-%template(PNGraph) TPt< TNGraph >;
-
-%template(PercentDegree_PNGraph) PercentDegree<PNGraph>;
-%template(PercentMxWcc_PNGraph) PercentMxWcc<PNGraph>;
-%template(PercentMxScc_PNGraph) PercentMxScc<PNGraph>;
-
-%template(LoadEdgeList_PNGraph) TSnap::LoadEdgeList<PNGraph>;
-%template(PrintGraphStatTable_PNGraph) PrintGraphStatTable<PNGraph>;
-%template(GenRndGnm_PNGraph) TSnap::GenRndGnm<PNGraph>;
-
-%template(NodesGTEDegree_PNGraph) NodesGTEDegree<PNGraph>;
-%template(MxDegree_PNGraph) MxDegree<PNGraph>;
-%template(MxSccSz_PNGraph) TSnap::GetMxScc<PNGraph>;
-%template(MxWccSz_PNGraph) TSnap::GetMxWccSz<PNGraph>;
-%template(MxDegree_PNGraph) MxDegree<PNGraph>;
-// End Basic Directed Graphs
-
-
-// Basic Undirected Graphs
-%template(PUNGraph) TPt< TUNGraph >;
-
-%template(LoadEdgeList_PUNGraph) TSnap::LoadEdgeList<PUNGraph>;
-%template(PrintGraphStatTable_PUNGraph) PrintGraphStatTable<PUNGraph>;
-
-%template(NodesGTEDegree_PUNGraph) NodesGTEDegree<PUNGraph>;
-%template(GenRndGnm_PUNGraph) TSnap::GenRndGnm<PUNGraph>;
-%template(MxSccSz_PUNGraph) TSnap::GetMxScc<PUNGraph>;
-%template(MxWccSz_PUNGraph) TSnap::GetMxWccSz<PUNGraph>;
-%template(MxDegree_PUNGraph) MxDegree<PUNGraph>;
-// End Basic Undirected Graphs
-
-
-// Basic PNEAGraphs
-%template(PNEAGraph) TPt< TNEAGraph >;
-%template(GenRndGnm_PNEAGraph) TSnap::GenRndGnm<PNEAGraph>;
-%template(NodesGTEDegree_PNEAGraph) NodesGTEDegree<PNEAGraph>;
-
-%template(MxDegree_PNEAGraph) MxDegree<PNEAGraph>;
-
-// cncom.h - PNEAGraph
-%template(GetNodeWcc_PNEAGraph) TSnap::GetNodeWcc<PNEAGraph>;
-%template(IsConnected_PNEAGraph) TSnap::IsConnected<PNEAGraph>;
-%template(IsWeaklyConn_PNEAGraph) TSnap::IsWeaklyConn<PNEAGraph>;
-%template(GetWccSzCnt_PNEAGraph) TSnap::GetWccSzCnt<PNEAGraph>;
-%template(GetWccs_PNEAGraph) TSnap::GetWccs<PNEAGraph>;
-%template(GetSccSzCnt_PNEAGraph) TSnap::GetSccSzCnt<PNEAGraph>;
-%template(GetSccs_PNEAGraph) TSnap::GetSccs<PNEAGraph>;
-%template(GetMxWccSz_PNEAGraph) TSnap::GetMxWccSz<PNEAGraph>;
-
-%template(GetMxWcc_PNEAGraph) TSnap::GetMxWcc<PNEAGraph>;
-%template(GetMxScc_PNEAGraph) TSnap::GetMxScc<PNEAGraph>;
-%template(GetMxBiCon_PNEAGraph) TSnap::GetMxBiCon<PNEAGraph>;
-
-// cncom.h - PNGraph
-%template(GetNodeWcc_PNGraph) TSnap::GetNodeWcc<PNGraph>;
-%template(IsConnected_PNGraph) TSnap::IsConnected<PNGraph>;
-%template(IsWeaklyConn_PNGraph) TSnap::IsWeaklyConn<PNGraph>;
-%template(GetWccSzCnt_PNGraph) TSnap::GetWccSzCnt<PNGraph>;
-%template(GetWccs_PNGraph) TSnap::GetWccs<PNGraph>;
-%template(GetSccSzCnt_PNGraph) TSnap::GetSccSzCnt<PNGraph>;
-%template(GetSccs_PNGraph) TSnap::GetSccs<PNGraph>;
-%template(GetMxWccSz_PNGraph) TSnap::GetMxWccSz<PNGraph>;
-
-%template(GetMxWcc_PNGraph) TSnap::GetMxWcc<PNGraph>;
-%template(GetMxScc_PNGraph) TSnap::GetMxScc<PNGraph>;
-%template(GetMxBiCon_PNGraph) TSnap::GetMxBiCon<PNGraph>;
-// End cncom.h
-
-// alg.h - PNEAGraph
-%template(CntInDegNodes_PNEAGraph) TSnap::CntInDegNodes<PNEAGraph>;
-%template(CntOutDegNodes_PNEAGraph) TSnap::CntOutDegNodes<PNEAGraph>;
-%template(CntDegNodes_PNEAGraph) TSnap::CntDegNodes<PNEAGraph>;
-%template(CntNonZNodes_PNEAGraph) TSnap::CntNonZNodes<PNEAGraph>;
-%template(CntEdgesToSet_PNEAGraph) TSnap::CntEdgesToSet<PNEAGraph>;
-
-%template(GetMxDegNId_PNEAGraph) TSnap::GetMxDegNId<PNEAGraph>;
-%template(GetMxInDegNId_PNEAGraph) TSnap::GetMxInDegNId<PNEAGraph>;
-%template(GetMxOutDegNId_PNEAGraph) TSnap::GetMxOutDegNId<PNEAGraph>;
-
-%template(GetInDegCnt_PNEAGraph) TSnap::GetInDegCnt<PNEAGraph>;
-%template(GetOutDegCnt_PNEAGraph) TSnap::GetOutDegCnt<PNEAGraph>;
-%template(GetDegCnt_PNEAGraph) TSnap::GetDegCnt<PNEAGraph>;
-%template(GetDegSeqV_PNEAGraph) TSnap::GetDegSeqV<PNEAGraph>;
-
-%template(GetNodeInDegV_PNEAGraph) TSnap::GetNodeInDegV<PNEAGraph>;
-%template(GetNodeOutDegV_PNEAGraph) TSnap::GetNodeOutDegV<PNEAGraph>;
-
-%template(CntUniqUndirEdges_PNEAGraph) TSnap::CntUniqUndirEdges<PNEAGraph>;
-%template(CntUniqDirEdges_PNEAGraph) TSnap::CntUniqDirEdges<PNEAGraph>;
-%template(CntUniqBiDirEdges_PNEAGraph) TSnap::CntUniqBiDirEdges<PNEAGraph>;
-%template(CntSelfEdges_PNEAGraph) TSnap::CntSelfEdges<PNEAGraph>;
-/* End alg.h */
-
-// bfsdfs.h - PNGraph
-%template(GetBfsTree_PNGraph) TSnap::GetBfsTree<PNGraph>;
-%template(GetSubTreeSz_PNGraph) TSnap::GetSubTreeSz<PNGraph>;
-%template(GetNodesAtHop_PNGraph) TSnap::GetNodesAtHop<PNGraph>;
-%template(GetNodesAtHops_PNGraph) TSnap::GetNodesAtHops<PNGraph>;
-// Shortest paths
-%template(GetShortPath_PNGraph) TSnap::GetShortPath<PNGraph>;
-// Diameter
-%template(GetBfsFullDiam_PNGraph) TSnap::GetBfsFullDiam<PNGraph>;
-%template(GetBfsEffDiam_PNGraph) TSnap::GetBfsEffDiam<PNGraph>;
-
-// bfsdfs.h - PNEAGraph
-%template(GetBfsTree_PNEAGraph) TSnap::GetBfsTree<PNEAGraph>;
-%template(GetSubTreeSz_PNEAGraph) TSnap::GetSubTreeSz<PNEAGraph>;
-%template(GetNodesAtHop_PNEAGraph) TSnap::GetNodesAtHop<PNEAGraph>;
-%template(GetNodesAtHops_PNEAGraph) TSnap::GetNodesAtHops<PNEAGraph>;
-// Shortest paths
-%template(GetShortPath_PNEAGraph) TSnap::GetShortPath<PNEAGraph>;
-// Diameter
-%template(GetBfsFullDiam_PNEAGraph) TSnap::GetBfsFullDiam<PNEAGraph>;
-%template(GetBfsEffDiam_PNEAGraph) TSnap::GetBfsEffDiam<PNEAGraph>;
-
-// drawgviz.h
-%template(DrawGViz_PNEAGraph) TSnap::DrawGViz<PNEAGraph>;
-%template(DrawGViz_PNGraph) TSnap::DrawGViz<PNGraph>;
-
-// triad.h - PNEAGraph
-%template(GetClustCf_PNEAGraph) TSnap::GetClustCf<PNEAGraph>;
-%template(GetNodeClustCf_PNEAGraph) TSnap::GetNodeClustCf<PNEAGraph>;
-
-%template(GetTriads_PNEAGraph) TSnap::GetTriads<PNEAGraph>;
-%template(GetTriadEdges_PNEAGraph) TSnap::GetTriadEdges<PNEAGraph>;
-//%template(GetNodeTriads_PNEAGraph) TSnap::GetNodeTriads<PNEAGraph>;
-%template(GetTriadParticip_PNEAGraph) TSnap::GetTriadParticip<PNEAGraph>;
-
-%template(GetCmnNbrs_PNEAGraph) TSnap::GetCmnNbrs<PNEAGraph>;
-//%template(GetLen2Paths_PNEAGraph) TSnap::GetLen2Paths<PNEAGraph>;
-
-// cmty.h - PNEAGraph
-%template(GetModularity_PNEAGraph) TSnap::GetModularity<PNEAGraph>;
-%template(GetEdgesInOut_PNEAGraph) TSnap::GetEdgesInOut<PNEAGraph>;
-
-// anf.h - PNEAGraph
-%template(GetAnf_PNEAGraph) TSnap::GetAnf<PNEAGraph>;
-%template(GetAnfEffDiam_PNEAGraph) TSnap::GetAnfEffDiam<PNEAGraph>;
-
-/* Note in Vim, this replaces SNAP Template headers:
- 
- :%s#^template.*<class PGraph> \S* \([^(]*\).*#%template(\1_PNEAGraph) TSnap::\1<PNEAGraph>;#gc
- :%s#^///.*\n:##g
- 
-*/
+// Include SNAP conversion types, currently TInt vector
+%include "snap_types.i"
