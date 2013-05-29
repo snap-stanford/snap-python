@@ -273,4 +273,17 @@ void Nodes2Tasks(const TIntH& Nodes, TIntIntVV& Tasks, int tsize) {
   }
 }
 
+void Nodes2Tasks1(const TIntV& Nodes, TIntIntVV& Tasks, int tsize) {
+  int Node;
+  int TaskId;
+
+  for (TIntV::TIter i = Nodes.BegI(); i != Nodes.EndI(); i++) {
+    Node = *i;
+    TaskId = Node / tsize;
+
+    //printf("Nodes2Tasks node %d, task %d\n", Node, TaskId);
+    Tasks[TaskId].Add(Node);
+  }
+}
+
 }; // namespace TSnap
