@@ -1,3 +1,4 @@
+#include "Python.h"
 #include "Snap.h"
 
 using namespace TSnap;
@@ -8,6 +9,14 @@ typedef TVec<TIntV, int> TIntIntVV;
 TUNGraph TPrGraph(PUNGraph G) {
   return *G;
 };
+
+int accept_array(int array[]) {
+  
+  for (int i=0; i < 10; i++)
+    printf("array[%d] = %d\n", i, array[i]);
+
+  return 0;
+}
 
 template<class PGraph>
 double PercentDegree(const PGraph& Graph, const int Threshold=0) {
