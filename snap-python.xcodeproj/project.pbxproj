@@ -12,349 +12,10 @@
 		8488019416D20FF300C789B8 /* printgraph.h in Sources */ = {isa = PBXBuildFile; fileRef = 8474830916CD86B300AF3EF4 /* printgraph.h */; };
 		8488019616D20FF300C789B8 /* snapswig.h in Sources */ = {isa = PBXBuildFile; fileRef = 8474831016CD86B300AF3EF4 /* snapswig.h */; };
 		849E192616FA63710073F921 /* swig-TNEAGraph.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 849E192516FA63710073F921 /* swig-TNEAGraph.cpp */; };
-		84F8AC5116F7DFD400FC5E61 /* Makefile in Sources */ = {isa = PBXBuildFile; fileRef = 84F8A8D216F7DFD200FC5E61 /* Makefile */; };
-		84F8AC5216F7DFD400FC5E61 /* agmfitmain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8A8D616F7DFD200FC5E61 /* agmfitmain.cpp */; };
-		84F8AC5316F7DFD400FC5E61 /* Makefile in Sources */ = {isa = PBXBuildFile; fileRef = 84F8A8D916F7DFD200FC5E61 /* Makefile */; };
-		84F8AC5416F7DFD400FC5E61 /* stdafx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8A8DC16F7DFD200FC5E61 /* stdafx.cpp */; };
-		84F8AC5516F7DFD400FC5E61 /* agmgen.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8A8E016F7DFD200FC5E61 /* agmgen.cpp */; };
-		84F8AC5616F7DFD400FC5E61 /* Makefile in Sources */ = {isa = PBXBuildFile; fileRef = 84F8A8E316F7DFD200FC5E61 /* Makefile */; };
-		84F8AC5716F7DFD400FC5E61 /* stdafx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8A8E616F7DFD200FC5E61 /* stdafx.cpp */; };
-		84F8AC5816F7DFD400FC5E61 /* bigclam.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8A8EB16F7DFD300FC5E61 /* bigclam.cpp */; };
-		84F8AC5916F7DFD400FC5E61 /* Makefile in Sources */ = {isa = PBXBuildFile; fileRef = 84F8A8ED16F7DFD300FC5E61 /* Makefile */; };
-		84F8AC5A16F7DFD400FC5E61 /* stdafx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8A8F016F7DFD300FC5E61 /* stdafx.cpp */; };
-		84F8AC5B16F7DFD400FC5E61 /* cascades.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8A8F416F7DFD300FC5E61 /* cascades.cpp */; };
-		84F8AC5C16F7DFD400FC5E61 /* Makefile in Sources */ = {isa = PBXBuildFile; fileRef = 84F8A8F716F7DFD300FC5E61 /* Makefile */; };
-		84F8AC5D16F7DFD400FC5E61 /* stdafx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8A8FA16F7DFD300FC5E61 /* stdafx.cpp */; };
-		84F8AC5E16F7DFD400FC5E61 /* centrality.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8A8FE16F7DFD300FC5E61 /* centrality.cpp */; };
-		84F8AC5F16F7DFD400FC5E61 /* Makefile in Sources */ = {isa = PBXBuildFile; fileRef = 84F8A90116F7DFD300FC5E61 /* Makefile */; };
-		84F8AC6016F7DFD400FC5E61 /* stdafx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8A90416F7DFD300FC5E61 /* stdafx.cpp */; };
-		84F8AC6116F7DFD400FC5E61 /* circles.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8A90816F7DFD300FC5E61 /* circles.cpp */; };
-		84F8AC6216F7DFD400FC5E61 /* Makefile in Sources */ = {isa = PBXBuildFile; fileRef = 84F8A90C16F7DFD300FC5E61 /* Makefile */; };
-		84F8AC6316F7DFD400FC5E61 /* stdafx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8A90E16F7DFD300FC5E61 /* stdafx.cpp */; };
-		84F8AC6416F7DFD400FC5E61 /* cliquesmain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8A91416F7DFD300FC5E61 /* cliquesmain.cpp */; };
-		84F8AC6516F7DFD400FC5E61 /* Makefile in Sources */ = {isa = PBXBuildFile; fileRef = 84F8A91516F7DFD300FC5E61 /* Makefile */; };
-		84F8AC6616F7DFD400FC5E61 /* stdafx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8A91816F7DFD300FC5E61 /* stdafx.cpp */; };
-		84F8AC6716F7DFD400FC5E61 /* community.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8A91C16F7DFD300FC5E61 /* community.cpp */; };
-		84F8AC6816F7DFD400FC5E61 /* Makefile in Sources */ = {isa = PBXBuildFile; fileRef = 84F8A91F16F7DFD300FC5E61 /* Makefile */; };
-		84F8AC6916F7DFD400FC5E61 /* stdafx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8A92216F7DFD300FC5E61 /* stdafx.cpp */; };
-		84F8AC6A16F7DFD400FC5E61 /* concomp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8A92616F7DFD300FC5E61 /* concomp.cpp */; };
-		84F8AC6B16F7DFD400FC5E61 /* Makefile in Sources */ = {isa = PBXBuildFile; fileRef = 84F8A92916F7DFD300FC5E61 /* Makefile */; };
-		84F8AC6C16F7DFD400FC5E61 /* stdafx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8A92C16F7DFD300FC5E61 /* stdafx.cpp */; };
-		84F8AC6D16F7DFD400FC5E61 /* forestfire.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8A93016F7DFD300FC5E61 /* forestfire.cpp */; };
-		84F8AC6E16F7DFD400FC5E61 /* Makefile in Sources */ = {isa = PBXBuildFile; fileRef = 84F8A93316F7DFD300FC5E61 /* Makefile */; };
-		84F8AC6F16F7DFD400FC5E61 /* stdafx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8A93616F7DFD300FC5E61 /* stdafx.cpp */; };
-		84F8AC7016F7DFD400FC5E61 /* graphgen.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8A93A16F7DFD300FC5E61 /* graphgen.cpp */; };
-		84F8AC7116F7DFD400FC5E61 /* Makefile in Sources */ = {isa = PBXBuildFile; fileRef = 84F8A93D16F7DFD300FC5E61 /* Makefile */; };
-		84F8AC7216F7DFD400FC5E61 /* stdafx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8A94016F7DFD300FC5E61 /* stdafx.cpp */; };
-		84F8AC7316F7DFD400FC5E61 /* graphhash.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8A94416F7DFD300FC5E61 /* graphhash.cpp */; };
-		84F8AC7416F7DFD400FC5E61 /* Makefile in Sources */ = {isa = PBXBuildFile; fileRef = 84F8A94716F7DFD300FC5E61 /* Makefile */; };
-		84F8AC7516F7DFD400FC5E61 /* stdafx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8A94A16F7DFD300FC5E61 /* stdafx.cpp */; };
-		84F8AC7616F7DFD400FC5E61 /* generate_nets.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8A95016F7DFD300FC5E61 /* generate_nets.cpp */; };
-		84F8AC7716F7DFD400FC5E61 /* infopath.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8A95116F7DFD300FC5E61 /* infopath.cpp */; };
-		84F8AC7816F7DFD400FC5E61 /* Makefile in Sources */ = {isa = PBXBuildFile; fileRef = 84F8A95416F7DFD300FC5E61 /* Makefile */; };
-		84F8AC7916F7DFD400FC5E61 /* stdafx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8A95716F7DFD300FC5E61 /* stdafx.cpp */; };
-		84F8AC7A16F7DFD400FC5E61 /* kcores.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8A95B16F7DFD300FC5E61 /* kcores.cpp */; };
-		84F8AC7B16F7DFD400FC5E61 /* Makefile in Sources */ = {isa = PBXBuildFile; fileRef = 84F8A95E16F7DFD300FC5E61 /* Makefile */; };
-		84F8AC7C16F7DFD400FC5E61 /* stdafx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8A96116F7DFD300FC5E61 /* stdafx.cpp */; };
-		84F8AC7D16F7DFD400FC5E61 /* kronem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8A96516F7DFD300FC5E61 /* kronem.cpp */; };
-		84F8AC7E16F7DFD400FC5E61 /* Makefile in Sources */ = {isa = PBXBuildFile; fileRef = 84F8A96816F7DFD300FC5E61 /* Makefile */; };
-		84F8AC7F16F7DFD400FC5E61 /* stdafx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8A96B16F7DFD300FC5E61 /* stdafx.cpp */; };
-		84F8AC8016F7DFD400FC5E61 /* kronfit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8A96F16F7DFD300FC5E61 /* kronfit.cpp */; };
-		84F8AC8116F7DFD400FC5E61 /* Makefile in Sources */ = {isa = PBXBuildFile; fileRef = 84F8A97216F7DFD300FC5E61 /* Makefile */; };
-		84F8AC8216F7DFD400FC5E61 /* stdafx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8A97516F7DFD300FC5E61 /* stdafx.cpp */; };
-		84F8AC8316F7DFD400FC5E61 /* krongen.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8A97916F7DFD300FC5E61 /* krongen.cpp */; };
-		84F8AC8416F7DFD400FC5E61 /* Makefile in Sources */ = {isa = PBXBuildFile; fileRef = 84F8A97C16F7DFD300FC5E61 /* Makefile */; };
-		84F8AC8516F7DFD400FC5E61 /* stdafx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8A97F16F7DFD300FC5E61 /* stdafx.cpp */; };
-		84F8AC8616F7DFD400FC5E61 /* magfit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8A98416F7DFD300FC5E61 /* magfit.cpp */; };
-		84F8AC8716F7DFD400FC5E61 /* Makefile in Sources */ = {isa = PBXBuildFile; fileRef = 84F8A98716F7DFD300FC5E61 /* Makefile */; };
-		84F8AC8816F7DFD400FC5E61 /* stdafx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8A98A16F7DFD300FC5E61 /* stdafx.cpp */; };
-		84F8AC8916F7DFD400FC5E61 /* maggen.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8A98F16F7DFD300FC5E61 /* maggen.cpp */; };
-		84F8AC8A16F7DFD400FC5E61 /* Makefile in Sources */ = {isa = PBXBuildFile; fileRef = 84F8A99216F7DFD300FC5E61 /* Makefile */; };
-		84F8AC8B16F7DFD400FC5E61 /* stdafx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8A99516F7DFD300FC5E61 /* stdafx.cpp */; };
-		84F8AC8C16F7DFD400FC5E61 /* Makefile in Sources */ = {isa = PBXBuildFile; fileRef = 84F8A99816F7DFD300FC5E61 /* Makefile */; };
-		84F8AC8D16F7DFD400FC5E61 /* Makefile in Sources */ = {isa = PBXBuildFile; fileRef = 84F8A99B16F7DFD300FC5E61 /* Makefile */; };
-		84F8AC8E16F7DFD400FC5E61 /* mkdatasets.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8A99D16F7DFD300FC5E61 /* mkdatasets.cpp */; };
-		84F8AC8F16F7DFD400FC5E61 /* stdafx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8A9A116F7DFD300FC5E61 /* stdafx.cpp */; };
-		84F8AC9016F7DFD400FC5E61 /* Makefile in Sources */ = {isa = PBXBuildFile; fileRef = 84F8A9A516F7DFD300FC5E61 /* Makefile */; };
-		84F8AC9116F7DFD400FC5E61 /* motifs.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8A9A716F7DFD300FC5E61 /* motifs.cpp */; };
-		84F8AC9216F7DFD400FC5E61 /* stdafx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8A9AB16F7DFD300FC5E61 /* stdafx.cpp */; };
-		84F8AC9316F7DFD400FC5E61 /* Makefile in Sources */ = {isa = PBXBuildFile; fileRef = 84F8A9AF16F7DFD300FC5E61 /* Makefile */; };
-		84F8AC9416F7DFD400FC5E61 /* ncpplot.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8A9B116F7DFD300FC5E61 /* ncpplot.cpp */; };
-		84F8AC9516F7DFD400FC5E61 /* stdafx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8A9B516F7DFD300FC5E61 /* stdafx.cpp */; };
-		84F8AC9616F7DFD400FC5E61 /* Makefile in Sources */ = {isa = PBXBuildFile; fileRef = 84F8A9B916F7DFD300FC5E61 /* Makefile */; };
-		84F8AC9716F7DFD400FC5E61 /* netevol.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8A9BB16F7DFD300FC5E61 /* netevol.cpp */; };
-		84F8AC9816F7DFD400FC5E61 /* stdafx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8A9BF16F7DFD300FC5E61 /* stdafx.cpp */; };
-		84F8AC9916F7DFD400FC5E61 /* Makefile in Sources */ = {isa = PBXBuildFile; fileRef = 84F8A9C516F7DFD300FC5E61 /* Makefile */; };
-		84F8AC9A16F7DFD400FC5E61 /* netinf.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8A9C716F7DFD300FC5E61 /* netinf.cpp */; };
-		84F8AC9B16F7DFD400FC5E61 /* stdafx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8A9CD16F7DFD300FC5E61 /* stdafx.cpp */; };
-		84F8AC9C16F7DFD400FC5E61 /* Makefile in Sources */ = {isa = PBXBuildFile; fileRef = 84F8A9D116F7DFD300FC5E61 /* Makefile */; };
-		84F8AC9D16F7DFD400FC5E61 /* netstat.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8A9D316F7DFD300FC5E61 /* netstat.cpp */; };
-		84F8AC9E16F7DFD400FC5E61 /* stdafx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8A9D716F7DFD300FC5E61 /* stdafx.cpp */; };
-		84F8AC9F16F7DFD400FC5E61 /* Makefile in Sources */ = {isa = PBXBuildFile; fileRef = 84F8A9DE16F7DFD300FC5E61 /* Makefile */; };
-		84F8ACA016F7DFD400FC5E61 /* stdafx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8A9E116F7DFD300FC5E61 /* stdafx.cpp */; };
-		84F8ACA116F7DFD400FC5E61 /* testgraph.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8A9E416F7DFD300FC5E61 /* testgraph.cpp */; };
-		84F8ACA216F7DFD400FC5E61 /* acquis.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8A9E816F7DFD300FC5E61 /* acquis.cpp */; };
-		84F8ACA316F7DFD400FC5E61 /* adox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8A9EA16F7DFD300FC5E61 /* adox.cpp */; };
-		84F8ACA416F7DFD400FC5E61 /* aest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8A9EC16F7DFD300FC5E61 /* aest.cpp */; };
-		84F8ACA516F7DFD400FC5E61 /* amazon.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8A9EE16F7DFD300FC5E61 /* amazon.cpp */; };
-		84F8ACA616F7DFD400FC5E61 /* appsrv.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8A9F016F7DFD300FC5E61 /* appsrv.cpp */; };
-		84F8ACA716F7DFD400FC5E61 /* bde.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8A9F216F7DFD300FC5E61 /* bde.cpp */; };
-		84F8ACA816F7DFD400FC5E61 /* biling.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8A9F416F7DFD300FC5E61 /* biling.cpp */; };
-		84F8ACA916F7DFD400FC5E61 /* bix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8A9F616F7DFD300FC5E61 /* bix.cpp */; };
-		84F8ACAA16F7DFD400FC5E61 /* book.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8A9F816F7DFD300FC5E61 /* book.cpp */; };
-		84F8ACAB16F7DFD400FC5E61 /* bowactlearn.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8A9FA16F7DFD300FC5E61 /* bowactlearn.cpp */; };
-		84F8ACAC16F7DFD400FC5E61 /* bowbs.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8A9FC16F7DFD300FC5E61 /* bowbs.cpp */; };
-		84F8ACAD16F7DFD400FC5E61 /* bowclust.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8A9FE16F7DFD300FC5E61 /* bowclust.cpp */; };
-		84F8ACAE16F7DFD400FC5E61 /* bowfl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AA0016F7DFD300FC5E61 /* bowfl.cpp */; };
-		84F8ACAF16F7DFD400FC5E61 /* bowflx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AA0216F7DFD300FC5E61 /* bowflx.cpp */; };
-		84F8ACB016F7DFD400FC5E61 /* bowlearn.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AA0416F7DFD300FC5E61 /* bowlearn.cpp */; };
-		84F8ACB116F7DFD400FC5E61 /* bowlinalg.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AA0616F7DFD300FC5E61 /* bowlinalg.cpp */; };
-		84F8ACB216F7DFD400FC5E61 /* bowmatrix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AA0816F7DFD300FC5E61 /* bowmatrix.cpp */; };
-		84F8ACB316F7DFD400FC5E61 /* bowmd.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AA0A16F7DFD300FC5E61 /* bowmd.cpp */; };
-		84F8ACB416F7DFD400FC5E61 /* btalarms.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AA0C16F7DFD300FC5E61 /* btalarms.cpp */; };
-		84F8ACB516F7DFD400FC5E61 /* btaserver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AA0E16F7DFD300FC5E61 /* btaserver.cpp */; };
-		84F8ACB616F7DFD400FC5E61 /* casino.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AA1016F7DFD300FC5E61 /* casino.cpp */; };
-		84F8ACB716F7DFD400FC5E61 /* ccar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AA1216F7DFD300FC5E61 /* ccar.cpp */; };
-		84F8ACB816F7DFD400FC5E61 /* cfyres.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AA1416F7DFD300FC5E61 /* cfyres.cpp */; };
-		84F8ACB916F7DFD400FC5E61 /* cgi.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AA1616F7DFD300FC5E61 /* cgi.cpp */; };
-		84F8ACBA16F7DFD400FC5E61 /* ciawfb.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AA1816F7DFD300FC5E61 /* ciawfb.cpp */; };
-		84F8ACBB16F7DFD400FC5E61 /* cordis.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AA1B16F7DFD300FC5E61 /* cordis.cpp */; };
-		84F8ACBC16F7DFD400FC5E61 /* corrgr.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AA1D16F7DFD300FC5E61 /* corrgr.cpp */; };
-		84F8ACBD16F7DFD400FC5E61 /* cpdoc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AA1F16F7DFD300FC5E61 /* cpdoc.cpp */; };
-		84F8ACBE16F7DFD400FC5E61 /* crawler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AA2116F7DFD300FC5E61 /* crawler.cpp */; };
-		84F8ACBF16F7DFD400FC5E61 /* cyc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AA2316F7DFD300FC5E61 /* cyc.cpp */; };
-		84F8ACC016F7DFD400FC5E61 /* dm.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AA2516F7DFD300FC5E61 /* dm.cpp */; };
-		84F8ACC116F7DFD400FC5E61 /* dmhd.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AA2716F7DFD300FC5E61 /* dmhd.cpp */; };
-		84F8ACC216F7DFD400FC5E61 /* dmine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AA2916F7DFD300FC5E61 /* dmine.cpp */; };
-		84F8ACC316F7DFD400FC5E61 /* dmoz.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AA2B16F7DFD300FC5E61 /* dmoz.cpp */; };
-		84F8ACC416F7DFD400FC5E61 /* dnet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AA2D16F7DFD300FC5E61 /* dnet.cpp */; };
-		84F8ACC516F7DFD400FC5E61 /* dzs.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AA2F16F7DFD300FC5E61 /* dzs.cpp */; };
-		84F8ACC616F7DFD400FC5E61 /* email.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AA3116F7DFD300FC5E61 /* email.cpp */; };
-		84F8ACC716F7DFD400FC5E61 /* euproj.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AA3316F7DFD300FC5E61 /* euproj.cpp */; };
-		84F8ACC816F7DFD400FC5E61 /* exset.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AA3516F7DFD300FC5E61 /* exset.cpp */; };
-		84F8ACC916F7DFD400FC5E61 /* fa.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AA3716F7DFD300FC5E61 /* fa.cpp */; };
-		84F8ACCA16F7DFD400FC5E61 /* flx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AA3916F7DFD300FC5E61 /* flx.cpp */; };
-		84F8ACCB16F7DFD400FC5E61 /* ftrgen.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AA3B16F7DFD300FC5E61 /* ftrgen.cpp */; };
-		84F8ACCC16F7DFD400FC5E61 /* geoip.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AA3D16F7DFD300FC5E61 /* geoip.cpp */; };
-		84F8ACCD16F7DFD400FC5E61 /* gix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AA3F16F7DFD300FC5E61 /* gix.cpp */; };
-		84F8ACCE16F7DFD400FC5E61 /* gks.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AA4116F7DFD300FC5E61 /* gks.cpp */; };
-		84F8ACCF16F7DFD400FC5E61 /* gksmfc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AA4316F7DFD300FC5E61 /* gksmfc.cpp */; };
-		84F8ACD016F7DFD400FC5E61 /* gksvcl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AA4516F7DFD300FC5E61 /* gksvcl.cpp */; };
-		84F8ACD116F7DFD400FC5E61 /* gksvml.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AA4716F7DFD300FC5E61 /* gksvml.cpp */; };
-		84F8ACD216F7DFD400FC5E61 /* gkswf.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AA4916F7DFD300FC5E61 /* gkswf.cpp */; };
-		84F8ACD316F7DFD400FC5E61 /* google.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AA4B16F7DFD300FC5E61 /* google.cpp */; };
-		84F8ACD416F7DFD400FC5E61 /* googlex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AA4D16F7DFD300FC5E61 /* googlex.cpp */; };
-		84F8ACD516F7DFD400FC5E61 /* graph.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AA4F16F7DFD300FC5E61 /* graph.cpp */; };
-		84F8ACD616F7DFD400FC5E61 /* gridvcl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AA5116F7DFD300FC5E61 /* gridvcl.cpp */; };
-		84F8ACD716F7DFD400FC5E61 /* gsearch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AA5316F7DFD300FC5E61 /* gsearch.cpp */; };
-		84F8ACD816F7DFD400FC5E61 /* hc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AA5516F7DFD300FC5E61 /* hc.cpp */; };
-		84F8ACD916F7DFD400FC5E61 /* hldoc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AA5716F7DFD300FC5E61 /* hldoc.cpp */; };
-		84F8ACDA16F7DFD400FC5E61 /* infonet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AA5916F7DFD300FC5E61 /* infonet.cpp */; };
-		84F8ACDB16F7DFD400FC5E61 /* kernelmethods.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AA5B16F7DFD300FC5E61 /* kernelmethods.cpp */; };
-		84F8ACDC16F7DFD400FC5E61 /* logreg.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AA5D16F7DFD300FC5E61 /* logreg.cpp */; };
-		84F8ACDD16F7DFD400FC5E61 /* lsionto.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AA5F16F7DFD300FC5E61 /* lsionto.cpp */; };
-		84F8ACDE16F7DFD400FC5E61 /* Makefile in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AA6116F7DFD300FC5E61 /* Makefile */; };
-		84F8ACDF16F7DFD400FC5E61 /* md.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AA6216F7DFD300FC5E61 /* md.cpp */; };
-		84F8ACE016F7DFD400FC5E61 /* mdtr.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AA6416F7DFD300FC5E61 /* mdtr.cpp */; };
-		84F8ACE116F7DFD400FC5E61 /* medline.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AA6616F7DFD300FC5E61 /* medline.cpp */; };
-		84F8ACE216F7DFD400FC5E61 /* mg.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AA6816F7DFD300FC5E61 /* mg.cpp */; };
-		84F8ACE316F7DFD400FC5E61 /* mine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AA6B16F7DFD300FC5E61 /* mine.cpp */; };
-		84F8ACE416F7DFD400FC5E61 /* mkcca.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AA6D16F7DFD300FC5E61 /* mkcca.cpp */; };
-		84F8ACE516F7DFD400FC5E61 /* mte.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AA6F16F7DFD300FC5E61 /* mte.cpp */; };
-		84F8ACE616F7DFD400FC5E61 /* mtr.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AA7116F7DFD300FC5E61 /* mtr.cpp */; };
-		84F8ACE716F7DFD400FC5E61 /* net.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AA7316F7DFD300FC5E61 /* net.cpp */; };
-		84F8ACE816F7DFD400FC5E61 /* netobj.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AA7516F7DFD300FC5E61 /* netobj.cpp */; };
-		84F8ACE916F7DFD400FC5E61 /* nlpwinlf.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AA7716F7DFD300FC5E61 /* nlpwinlf.cpp */; };
-		84F8ACEA16F7DFD400FC5E61 /* nmen.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AA7916F7DFD300FC5E61 /* nmen.cpp */; };
-		84F8ACEB16F7DFD400FC5E61 /* nmobj.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AA7B16F7DFD300FC5E61 /* nmobj.cpp */; };
-		84F8ACEC16F7DFD400FC5E61 /* nntp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AA7D16F7DFD300FC5E61 /* nntp.cpp */; };
-		84F8ACED16F7DFD400FC5E61 /* nyta.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AA7F16F7DFD300FC5E61 /* nyta.cpp */; };
-		84F8ACEE16F7DFD400FC5E61 /* nytngrams.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AA8116F7DFD300FC5E61 /* nytngrams.cpp */; };
-		84F8ACEF16F7DFD400FC5E61 /* odbc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AA8316F7DFD300FC5E61 /* odbc.cpp */; };
-		84F8ACF016F7DFD400FC5E61 /* ontolight.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AA8516F7DFD300FC5E61 /* ontolight.cpp */; };
-		84F8ACF116F7DFD400FC5E61 /* pest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AA8716F7DFD300FC5E61 /* pest.cpp */; };
-		84F8ACF216F7DFD400FC5E61 /* phrase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AA8916F7DFD300FC5E61 /* phrase.cpp */; };
-		84F8ACF316F7DFD400FC5E61 /* pi.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AA8B16F7DFD300FC5E61 /* pi.cpp */; };
-		84F8ACF416F7DFD400FC5E61 /* postag.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AA8D16F7DFD300FC5E61 /* postag.cpp */; };
-		84F8ACF516F7DFD400FC5E61 /* prolog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AA8F16F7DFD300FC5E61 /* prolog.cpp */; };
-		84F8ACF616F7DFD400FC5E61 /* prologparser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AA9116F7DFD300FC5E61 /* prologparser.cpp */; };
-		84F8ACF716F7DFD400FC5E61 /* proxy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AA9316F7DFD300FC5E61 /* proxy.cpp */; };
-		84F8ACF816F7DFD400FC5E61 /* pww.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AA9516F7DFD300FC5E61 /* pww.cpp */; };
-		84F8ACF916F7DFD400FC5E61 /* rdbms.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AA9616F7DFD300FC5E61 /* rdbms.cpp */; };
-		84F8ACFA16F7DFD400FC5E61 /* roget.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AA9816F7DFD300FC5E61 /* roget.cpp */; };
-		84F8ACFB16F7DFD400FC5E61 /* sappsrv.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AA9A16F7DFD300FC5E61 /* sappsrv.cpp */; };
-		84F8ACFC16F7DFD400FC5E61 /* sch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AA9C16F7DFD300FC5E61 /* sch.cpp */; };
-		84F8ACFD16F7DFD400FC5E61 /* semspace.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AA9E16F7DFD300FC5E61 /* semspace.cpp */; };
-		84F8ACFE16F7DFD400FC5E61 /* sgraph.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AAA016F7DFD300FC5E61 /* sgraph.cpp */; };
-		84F8ACFF16F7DFD400FC5E61 /* skygrid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AAA216F7DFD300FC5E61 /* skygrid.cpp */; };
-		84F8AD0016F7DFD400FC5E61 /* smtp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AAA416F7DFD300FC5E61 /* smtp.cpp */; };
-		84F8AD0116F7DFD400FC5E61 /* soap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AAA616F7DFD300FC5E61 /* soap.cpp */; };
-		84F8AD0216F7DFD400FC5E61 /* sock-new.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AAA816F7DFD300FC5E61 /* sock-new.cpp */; };
-		84F8AD0316F7DFD400FC5E61 /* sock.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AAAA16F7DFD300FC5E61 /* sock.cpp */; };
-		84F8AD0416F7DFD400FC5E61 /* sqlite3.c in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AAAC16F7DFD300FC5E61 /* sqlite3.c */; };
-		84F8AD0516F7DFD400FC5E61 /* sqlitedb.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AAAE16F7DFD300FC5E61 /* sqlitedb.cpp */; };
-		84F8AD0616F7DFD400FC5E61 /* ssch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AAB016F7DFD300FC5E61 /* ssch.cpp */; };
-		84F8AD0716F7DFD400FC5E61 /* sskj.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AAB216F7DFD300FC5E61 /* sskj.cpp */; };
-		84F8AD0816F7DFD400FC5E61 /* ssql.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AAB416F7DFD300FC5E61 /* ssql.cpp */; };
-		84F8AD0916F7DFD400FC5E61 /* ssqldm.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AAB616F7DFD300FC5E61 /* ssqldm.cpp */; };
-		84F8AD0A16F7DFD400FC5E61 /* stemming.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AAB816F7DFD300FC5E61 /* stemming.cpp */; };
-		84F8AD0B16F7DFD400FC5E61 /* stopword.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AABA16F7DFD300FC5E61 /* stopword.cpp */; };
-		84F8AD0C16F7DFD400FC5E61 /* strkernel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AABC16F7DFD300FC5E61 /* strkernel.cpp */; };
-		84F8AD0D16F7DFD400FC5E61 /* svmbasic.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AABE16F7DFD300FC5E61 /* svmbasic.cpp */; };
-		84F8AD0E16F7DFD400FC5E61 /* svmmodels.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AAC016F7DFD300FC5E61 /* svmmodels.cpp */; };
-		84F8AD0F16F7DFD400FC5E61 /* svmPrLoqo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AAC216F7DFD300FC5E61 /* svmPrLoqo.cpp */; };
-		84F8AD1016F7DFD400FC5E61 /* tagcloud.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AAC416F7DFD300FC5E61 /* tagcloud.cpp */; };
-		84F8AD1116F7DFD400FC5E61 /* tb.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AAC616F7DFD300FC5E61 /* tb.cpp */; };
-		84F8AD1216F7DFD400FC5E61 /* tbhc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AAC816F7DFD300FC5E61 /* tbhc.cpp */; };
-		84F8AD1316F7DFD400FC5E61 /* tbval.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AACA16F7DFD300FC5E61 /* tbval.cpp */; };
-		84F8AD1416F7DFD400FC5E61 /* term.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AACC16F7DFD300FC5E61 /* term.cpp */; };
-		84F8AD1516F7DFD400FC5E61 /* testBase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AACE16F7DFD300FC5E61 /* testBase.cpp */; };
-		84F8AD1616F7DFD400FC5E61 /* tmine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AACF16F7DFD300FC5E61 /* tmine.cpp */; };
-		84F8AD1716F7DFD400FC5E61 /* tnt.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AAD116F7DFD300FC5E61 /* tnt.cpp */; };
-		84F8AD1816F7DFD400FC5E61 /* tql.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AAD316F7DFD300FC5E61 /* tql.cpp */; };
-		84F8AD1916F7DFD400FC5E61 /* ts.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AAD516F7DFD300FC5E61 /* ts.cpp */; };
-		84F8AD1A16F7DFD400FC5E61 /* txtbs.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AAD716F7DFD300FC5E61 /* txtbs.cpp */; };
-		84F8AD1B16F7DFD400FC5E61 /* ultra.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AAD916F7DFD300FC5E61 /* ultra.cpp */; };
-		84F8AD1C16F7DFD400FC5E61 /* valds.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AADB16F7DFD300FC5E61 /* valds.cpp */; };
-		84F8AD1D16F7DFD400FC5E61 /* valret.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AADD16F7DFD300FC5E61 /* valret.cpp */; };
-		84F8AD1E16F7DFD400FC5E61 /* vizmap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AADF16F7DFD300FC5E61 /* vizmap.cpp */; };
-		84F8AD1F16F7DFD400FC5E61 /* vizmapgks.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AAE116F7DFD300FC5E61 /* vizmapgks.cpp */; };
-		84F8AD2016F7DFD400FC5E61 /* wbmp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AAE316F7DFD300FC5E61 /* wbmp.cpp */; };
-		84F8AD2116F7DFD400FC5E61 /* webbsfetch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AAE516F7DFD300FC5E61 /* webbsfetch.cpp */; };
-		84F8AD2216F7DFD400FC5E61 /* webmb.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AAE716F7DFD300FC5E61 /* webmb.cpp */; };
-		84F8AD2316F7DFD400FC5E61 /* webnetobj.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AAE916F7DFD300FC5E61 /* webnetobj.cpp */; };
-		84F8AD2416F7DFD400FC5E61 /* webold.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AAEB16F7DFD300FC5E61 /* webold.cpp */; };
-		84F8AD2516F7DFD400FC5E61 /* webpgfetch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AAED16F7DFD300FC5E61 /* webpgfetch.cpp */; };
-		84F8AD2616F7DFD400FC5E61 /* websrv.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AAEF16F7DFD300FC5E61 /* websrv.cpp */; };
-		84F8AD2716F7DFD400FC5E61 /* webtrv.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AAF116F7DFD300FC5E61 /* webtrv.cpp */; };
-		84F8AD2816F7DFD400FC5E61 /* webtxtbs.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AAF316F7DFD300FC5E61 /* webtxtbs.cpp */; };
-		84F8AD2916F7DFD400FC5E61 /* wikipedia.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AAF516F7DFD300FC5E61 /* wikipedia.cpp */; };
-		84F8AD2A16F7DFD400FC5E61 /* wix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AAF716F7DFD300FC5E61 /* wix.cpp */; };
-		84F8AD2B16F7DFD400FC5E61 /* wixexp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AAF916F7DFD300FC5E61 /* wixexp.cpp */; };
-		84F8AD2C16F7DFD400FC5E61 /* wmine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AAFB16F7DFD300FC5E61 /* wmine.cpp */; };
-		84F8AD2D16F7DFD400FC5E61 /* wordco.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AAFD16F7DFD300FC5E61 /* wordco.cpp */; };
-		84F8AD2E16F7DFD400FC5E61 /* wordnet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AAFF16F7DFD300FC5E61 /* wordnet.cpp */; };
-		84F8AD2F16F7DFD400FC5E61 /* xql.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AB0116F7DFD300FC5E61 /* xql.cpp */; };
-		84F8AD3016F7DFD400FC5E61 /* yahoobs.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AB0316F7DFD300FC5E61 /* yahoobs.cpp */; };
-		84F8AD3116F7DFD400FC5E61 /* yahoodm.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AB0516F7DFD300FC5E61 /* yahoodm.cpp */; };
-		84F8AD3216F7DFD400FC5E61 /* yahooex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AB0716F7DFD300FC5E61 /* yahooex.cpp */; };
-		84F8AD3316F7DFD400FC5E61 /* zipcode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AB0916F7DFD300FC5E61 /* zipcode.cpp */; };
-		84F8AD3416F7DFD400FC5E61 /* app.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AB0C16F7DFD300FC5E61 /* app.cpp */; };
-		84F8AD3516F7DFD400FC5E61 /* base.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AB0E16F7DFD300FC5E61 /* base.cpp */; };
-		84F8AD3616F7DFD400FC5E61 /* bd.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AB1016F7DFD300FC5E61 /* bd.cpp */; };
-		84F8AD3716F7DFD400FC5E61 /* bits.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AB1216F7DFD300FC5E61 /* bits.cpp */; };
-		84F8AD3816F7DFD400FC5E61 /* blobbs.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AB1416F7DFD300FC5E61 /* blobbs.cpp */; };
-		84F8AD3916F7DFD400FC5E61 /* console.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AB1616F7DFD300FC5E61 /* console.cpp */; };
-		84F8AD3A16F7DFD400FC5E61 /* dt.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AB1C16F7DFD300FC5E61 /* dt.cpp */; };
-		84F8AD3B16F7DFD400FC5E61 /* env.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AB1E16F7DFD300FC5E61 /* env.cpp */; };
-		84F8AD3C16F7DFD400FC5E61 /* exp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AB2016F7DFD300FC5E61 /* exp.cpp */; };
-		84F8AD3D16F7DFD400FC5E61 /* fl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AB2316F7DFD300FC5E61 /* fl.cpp */; };
-		84F8AD3E16F7DFD400FC5E61 /* gnuplot.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AB2516F7DFD300FC5E61 /* gnuplot.cpp */; };
-		84F8AD3F16F7DFD400FC5E61 /* hash.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AB2716F7DFD300FC5E61 /* hash.cpp */; };
-		84F8AD4016F7DFD400FC5E61 /* html.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AB2916F7DFD300FC5E61 /* html.cpp */; };
-		84F8AD4116F7DFD400FC5E61 /* http.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AB2B16F7DFD300FC5E61 /* http.cpp */; };
-		84F8AD4216F7DFD400FC5E61 /* json.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AB2D16F7DFD300FC5E61 /* json.cpp */; };
-		84F8AD4316F7DFD400FC5E61 /* linalg.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AB2F16F7DFD300FC5E61 /* linalg.cpp */; };
-		84F8AD4416F7DFD400FC5E61 /* lx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AB3116F7DFD300FC5E61 /* lx.cpp */; };
-		84F8AD4516F7DFD400FC5E61 /* macro.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AB3316F7DFD300FC5E61 /* macro.cpp */; };
-		84F8AD4616F7DFD400FC5E61 /* md5.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AB3516F7DFD300FC5E61 /* md5.cpp */; };
-		84F8AD4716F7DFD400FC5E61 /* os.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AB3716F7DFD300FC5E61 /* os.cpp */; };
-		84F8AD4816F7DFD400FC5E61 /* pp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AB3916F7DFD300FC5E61 /* pp.cpp */; };
-		84F8AD4916F7DFD400FC5E61 /* ss.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AB3C16F7DFD300FC5E61 /* ss.cpp */; };
-		84F8AD4A16F7DFD400FC5E61 /* tm.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AB3F16F7DFD300FC5E61 /* tm.cpp */; };
-		84F8AD4B16F7DFD400FC5E61 /* unicode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AB4116F7DFD300FC5E61 /* unicode.cpp */; };
-		84F8AD4C16F7DFD400FC5E61 /* unicodestring.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AB4316F7DFD300FC5E61 /* unicodestring.cpp */; };
-		84F8AD4D16F7DFD400FC5E61 /* url.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AB4516F7DFD300FC5E61 /* url.cpp */; };
-		84F8AD4E16F7DFD400FC5E61 /* ut.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AB4716F7DFD300FC5E61 /* ut.cpp */; };
-		84F8AD4F16F7DFD400FC5E61 /* wch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AB4916F7DFD300FC5E61 /* wch.cpp */; };
-		84F8AD5016F7DFD400FC5E61 /* xdt.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AB4B16F7DFD300FC5E61 /* xdt.cpp */; };
-		84F8AD5116F7DFD400FC5E61 /* xfl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AB4D16F7DFD300FC5E61 /* xfl.cpp */; };
-		84F8AD5216F7DFD400FC5E61 /* xmath.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AB4F16F7DFD300FC5E61 /* xmath.cpp */; };
-		84F8AD5316F7DFD400FC5E61 /* xml.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AB5116F7DFD300FC5E61 /* xml.cpp */; };
-		84F8AD5416F7DFD400FC5E61 /* zipfl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AB5416F7DFD300FC5E61 /* zipfl.cpp */; };
-		84F8AD5516F7DFD400FC5E61 /* Makefile in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AB5616F7DFD300FC5E61 /* Makefile */; };
-		84F8AD5616F7DFD400FC5E61 /* agm.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AB5B16F7DFD300FC5E61 /* agm.cpp */; };
-		84F8AD5716F7DFD400FC5E61 /* agmfast.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AB5D16F7DFD300FC5E61 /* agmfast.cpp */; };
-		84F8AD5816F7DFD400FC5E61 /* agmfit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AB5F16F7DFD300FC5E61 /* agmfit.cpp */; };
-		84F8AD5916F7DFD400FC5E61 /* cascdynetinf.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AB6116F7DFD300FC5E61 /* cascdynetinf.cpp */; };
-		84F8AD5A16F7DFD400FC5E61 /* cascnetinf.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AB6316F7DFD300FC5E61 /* cascnetinf.cpp */; };
-		84F8AD5B16F7DFD400FC5E61 /* cliques.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AB6616F7DFD300FC5E61 /* cliques.cpp */; };
-		84F8AD5C16F7DFD400FC5E61 /* graphcounter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AB6A16F7DFD300FC5E61 /* graphcounter.cpp */; };
-		84F8AD5D16F7DFD400FC5E61 /* kronecker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AB6C16F7DFD300FC5E61 /* kronecker.cpp */; };
-		84F8AD5E16F7DFD400FC5E61 /* mag.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AB6E16F7DFD300FC5E61 /* mag.cpp */; };
-		84F8AD5F16F7DFD400FC5E61 /* ncp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AB7016F7DFD300FC5E61 /* ncp.cpp */; };
-		84F8AD6016F7DFD400FC5E61 /* subgraphenum.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AB7216F7DFD300FC5E61 /* subgraphenum.cpp */; };
-		84F8AD6116F7DFD400FC5E61 /* alg.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AB7516F7DFD300FC5E61 /* alg.cpp */; };
-		84F8AD6216F7DFD400FC5E61 /* anf.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AB7716F7DFD300FC5E61 /* anf.cpp */; };
-		84F8AD6316F7DFD400FC5E61 /* centr.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AB7B16F7DFD300FC5E61 /* centr.cpp */; };
-		84F8AD6416F7DFD400FC5E61 /* cmty.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AB7D16F7DFD300FC5E61 /* cmty.cpp */; };
-		84F8AD6516F7DFD400FC5E61 /* cncom.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AB7F16F7DFD300FC5E61 /* cncom.cpp */; };
-		84F8AD6616F7DFD400FC5E61 /* ff.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AB8E16F7DFD300FC5E61 /* ff.cpp */; };
-		84F8AD6716F7DFD400FC5E61 /* gbase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AB9016F7DFD300FC5E61 /* gbase.cpp */; };
-		84F8AD6816F7DFD400FC5E61 /* ggen.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AB9216F7DFD300FC5E61 /* ggen.cpp */; };
-		84F8AD6916F7DFD400FC5E61 /* ghash.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AB9416F7DFD300FC5E61 /* ghash.cpp */; };
-		84F8AD6A16F7DFD400FC5E61 /* gio.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AB9616F7DFD300FC5E61 /* gio.cpp */; };
-		84F8AD6B16F7DFD400FC5E61 /* graph.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AB9816F7DFD300FC5E61 /* graph.cpp */; };
-		84F8AD6C16F7DFD400FC5E61 /* gstat.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AB9B16F7DFD300FC5E61 /* gstat.cpp */; };
-		84F8AD6D16F7DFD400FC5E61 /* gsvd.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AB9D16F7DFD300FC5E61 /* gsvd.cpp */; };
-		84F8AD6E16F7DFD400FC5E61 /* gviz.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AB9F16F7DFD300FC5E61 /* gviz.cpp */; };
-		84F8AD6F16F7DFD400FC5E61 /* Makefile in Sources */ = {isa = PBXBuildFile; fileRef = 84F8ABA216F7DFD300FC5E61 /* Makefile */; };
-		84F8AD7016F7DFD400FC5E61 /* Snap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8ABA416F7DFD300FC5E61 /* Snap.cpp */; };
-		84F8AD7116F7DFD400FC5E61 /* statplot.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8ABA616F7DFD300FC5E61 /* statplot.cpp */; };
-		84F8AD7216F7DFD400FC5E61 /* subgraph.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8ABA916F7DFD300FC5E61 /* subgraph.cpp */; };
-		84F8AD7316F7DFD400FC5E61 /* testSnap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8ABAB16F7DFD300FC5E61 /* testSnap.cpp */; };
-		84F8AD7416F7DFD400FC5E61 /* timenet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8ABAC16F7DFD300FC5E61 /* timenet.cpp */; };
-		84F8AD7516F7DFD400FC5E61 /* util.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8ABAF16F7DFD300FC5E61 /* util.cpp */; };
-		84F8AD7616F7DFD400FC5E61 /* arxiv.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8ABB216F7DFD300FC5E61 /* arxiv.cpp */; };
-		84F8AD7716F7DFD400FC5E61 /* circles.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8ABB516F7DFD300FC5E61 /* circles.cpp */; };
-		84F8AD7816F7DFD400FC5E61 /* Makefile in Sources */ = {isa = PBXBuildFile; fileRef = 84F8ABB916F7DFD300FC5E61 /* Makefile */; };
-		84F8AD7916F7DFD400FC5E61 /* stdafx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8ABBB16F7DFD300FC5E61 /* stdafx.cpp */; };
-		84F8AD7A16F7DFD400FC5E61 /* dblp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8ABBE16F7DFD300FC5E61 /* dblp.cpp */; };
-		84F8AD7B16F7DFD400FC5E61 /* imdbnet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8ABC016F7DFD300FC5E61 /* imdbnet.cpp */; };
-		84F8AD7C16F7DFD400FC5E61 /* linkpred.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8ABC216F7DFD300FC5E61 /* linkpred.cpp */; };
-		84F8AD7D16F7DFD400FC5E61 /* memenet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8ABC416F7DFD300FC5E61 /* memenet.cpp */; };
-		84F8AD7E16F7DFD400FC5E61 /* memes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8ABC616F7DFD300FC5E61 /* memes.cpp */; };
-		84F8AD7F16F7DFD400FC5E61 /* mxdag.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8ABC816F7DFD300FC5E61 /* mxdag.cpp */; };
-		84F8AD8016F7DFD400FC5E61 /* signnet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8ABCA16F7DFD300FC5E61 /* signnet.cpp */; };
-		84F8AD8116F7DFD400FC5E61 /* sir.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8ABCC16F7DFD300FC5E61 /* sir.cpp */; };
-		84F8AD8216F7DFD400FC5E61 /* spinn3r.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8ABCE16F7DFD300FC5E61 /* spinn3r.cpp */; };
-		84F8AD8316F7DFD400FC5E61 /* trawling.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8ABD016F7DFD300FC5E61 /* trawling.cpp */; };
-		84F8AD8416F7DFD400FC5E61 /* wgtnet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8ABD216F7DFD400FC5E61 /* wgtnet.cpp */; };
-		84F8AD8516F7DFD400FC5E61 /* wikinet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8ABD416F7DFD400FC5E61 /* wikinet.cpp */; };
-		84F8AD8616F7DFD400FC5E61 /* Makefile in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AC0816F7DFD400FC5E61 /* Makefile */; };
-		84F8AD8716F7DFD400FC5E61 /* run-all-tests.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AC0916F7DFD400FC5E61 /* run-all-tests.cpp */; };
-		84F8AD8816F7DFD400FC5E61 /* test-bfsdfs.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AC0A16F7DFD400FC5E61 /* test-bfsdfs.cpp */; };
-		84F8AD8916F7DFD400FC5E61 /* test-cncom.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AC0B16F7DFD400FC5E61 /* test-cncom.cpp */; };
-		84F8AD8A16F7DFD400FC5E61 /* test-ggen.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AC0C16F7DFD400FC5E61 /* test-ggen.cpp */; };
-		84F8AD8B16F7DFD400FC5E61 /* test-gio.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AC0D16F7DFD400FC5E61 /* test-gio.cpp */; };
-		84F8AD8C16F7DFD400FC5E61 /* test-gviz.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AC0E16F7DFD400FC5E61 /* test-gviz.cpp */; };
-		84F8AD8D16F7DFD400FC5E61 /* test-helper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AC0F16F7DFD400FC5E61 /* test-helper.cpp */; };
-		84F8AD8E16F7DFD400FC5E61 /* test-subgraph.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AC1116F7DFD400FC5E61 /* test-subgraph.cpp */; };
-		84F8AD8F16F7DFD400FC5E61 /* test-THash.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AC1216F7DFD400FC5E61 /* test-THash.cpp */; };
-		84F8AD9016F7DFD400FC5E61 /* test-TNEGraph.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AC1316F7DFD400FC5E61 /* test-TNEGraph.cpp */; };
-		84F8AD9116F7DFD400FC5E61 /* test-TNGraph.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AC1416F7DFD400FC5E61 /* test-TNGraph.cpp */; };
-		84F8AD9216F7DFD400FC5E61 /* test-TNodeEDatNet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AC1516F7DFD400FC5E61 /* test-TNodeEDatNet.cpp */; };
-		84F8AD9316F7DFD400FC5E61 /* test-TNodeEdgeNet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AC1616F7DFD400FC5E61 /* test-TNodeEdgeNet.cpp */; };
-		84F8AD9416F7DFD400FC5E61 /* test-TNodeNet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AC1716F7DFD400FC5E61 /* test-TNodeNet.cpp */; };
-		84F8AD9516F7DFD400FC5E61 /* test-TStrPool.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AC1816F7DFD400FC5E61 /* test-TStrPool.cpp */; };
-		84F8AD9616F7DFD400FC5E61 /* test-TSysTm.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AC1916F7DFD400FC5E61 /* test-TSysTm.cpp */; };
-		84F8AD9716F7DFD400FC5E61 /* test-TUNGraph.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AC1A16F7DFD400FC5E61 /* test-TUNGraph.cpp */; };
-		84F8AD9816F7DFD400FC5E61 /* demo-bfsdfs.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AC2016F7DFD400FC5E61 /* demo-bfsdfs.cpp */; };
-		84F8AD9916F7DFD400FC5E61 /* demo-cncom.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AC2116F7DFD400FC5E61 /* demo-cncom.cpp */; };
-		84F8AD9A16F7DFD400FC5E61 /* demo-ggen.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AC2216F7DFD400FC5E61 /* demo-ggen.cpp */; };
-		84F8AD9B16F7DFD400FC5E61 /* demo-gio.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AC2316F7DFD400FC5E61 /* demo-gio.cpp */; };
-		84F8AD9C16F7DFD400FC5E61 /* demo-gviz.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AC2416F7DFD400FC5E61 /* demo-gviz.cpp */; };
-		84F8AD9D16F7DFD400FC5E61 /* demo-subgraph.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AC2516F7DFD400FC5E61 /* demo-subgraph.cpp */; };
-		84F8AD9E16F7DFD400FC5E61 /* demo-THash.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AC2616F7DFD400FC5E61 /* demo-THash.cpp */; };
-		84F8ADA016F7DFD400FC5E61 /* demo-TNEAGraph.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AC2816F7DFD400FC5E61 /* demo-TNEAGraph.cpp */; };
-		84F8ADA116F7DFD400FC5E61 /* demo-TNEGraph.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AC2916F7DFD400FC5E61 /* demo-TNEGraph.cpp */; };
-		84F8ADA216F7DFD400FC5E61 /* demo-TNGraph.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AC2A16F7DFD400FC5E61 /* demo-TNGraph.cpp */; };
-		84F8ADA316F7DFD400FC5E61 /* demo-TNodeEDatNet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AC2B16F7DFD400FC5E61 /* demo-TNodeEDatNet.cpp */; };
-		84F8ADA416F7DFD400FC5E61 /* demo-TNodeEdgeNet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AC2C16F7DFD400FC5E61 /* demo-TNodeEdgeNet.cpp */; };
-		84F8ADA516F7DFD400FC5E61 /* demo-TNodeNet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AC2D16F7DFD400FC5E61 /* demo-TNodeNet.cpp */; };
-		84F8ADA616F7DFD400FC5E61 /* demo-TUNGraph.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AC2E16F7DFD400FC5E61 /* demo-TUNGraph.cpp */; };
-		84F8ADA716F7DFD400FC5E61 /* Makefile in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AC5016F7DFD400FC5E61 /* Makefile */; };
+		84E69972173C737C00864F83 /* Snap.h in Sources */ = {isa = PBXBuildFile; fileRef = 84F8ABA516F7DFD300FC5E61 /* Snap.h */; };
+		84E69973173C738B00864F83 /* graph.h in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AB9916F7DFD300FC5E61 /* graph.h */; };
 		84FE870C1720A8920099963A /* snap.i in Sources */ = {isa = PBXBuildFile; fileRef = 8474830A16CD86B300AF3EF4 /* snap.i */; };
+		84FF218717555FE400D11D81 /* snap_types.h in Sources */ = {isa = PBXBuildFile; fileRef = 84FF218617555ACD00D11D81 /* snap_types.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -390,6 +51,9 @@
 		8444C83B16EDC81800264DA8 /* benchmark.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; name = benchmark.py; path = "/Users/sheridan/GoogleDrive/snap_proj/snap-python/examples/benchmark.py"; sourceTree = "<absolute>"; };
 		84529AEF16F9184700DC307D /* plot_results.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = plot_results.py; sourceTree = "<group>"; };
 		8456FCE916E2E28D00ECCD5F /* goodgraph.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = goodgraph.cpp; sourceTree = "<group>"; };
+		845FBA5B17458D390068CC0C /* pngraph.i */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c.preprocessed; path = pngraph.i; sourceTree = "<group>"; };
+		845FBA6217458DCD0068CC0C /* pungraph.i */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c.preprocessed; path = pungraph.i; sourceTree = "<group>"; };
+		845FBA6417458DE40068CC0C /* pneagraph.i */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c.preprocessed; path = pneagraph.i; sourceTree = "<group>"; };
 		846327191729FED800467FAC /* Makefile */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
 		8463271A1729FED800467FAC /* printgraph.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = printgraph.h; sourceTree = "<group>"; };
 		8463271B1729FED800467FAC /* snap.i */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c.preprocessed; path = snap.i; sourceTree = "<group>"; };
@@ -402,12 +66,14 @@
 		847482E516CD863500AF3EF4 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		8474830816CD86B300AF3EF4 /* Makefile */ = {isa = PBXFileReference; explicitFileType = sourcecode.make; fileEncoding = 4; path = Makefile; sourceTree = "<group>"; };
 		8474830916CD86B300AF3EF4 /* printgraph.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; path = printgraph.h; sourceTree = "<group>"; };
-		8474830A16CD86B300AF3EF4 /* snap.i */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c.preprocessed; path = snap.i; sourceTree = "<group>"; };
-		8474831016CD86B300AF3EF4 /* snapswig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = snapswig.h; sourceTree = "<group>"; };
+		8474830A16CD86B300AF3EF4 /* snap.i */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; path = snap.i; sourceTree = "<group>"; };
+		8474831016CD86B300AF3EF4 /* snapswig.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; path = snapswig.h; sourceTree = "<group>"; };
 		8474831416CD86C000AF3EF4 /* Makefile */ = {isa = PBXFileReference; explicitFileType = sourcecode.make; fileEncoding = 4; path = Makefile; sourceTree = "<group>"; };
 		8474831516CD86C000AF3EF4 /* memtest.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = memtest.py; sourceTree = "<group>"; };
 		8474831816CD86C000AF3EF4 /* printstat.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = printstat.py; sourceTree = "<group>"; };
 		8474831A16CD86C000AF3EF4 /* tungraph.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = tungraph.py; sourceTree = "<group>"; };
+		8488387817558C2F00F3BBD7 /* vector_comp.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = vector_comp.py; sourceTree = "<group>"; };
+		848838791755941700F3BBD7 /* snap_types.i */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c.preprocessed; path = snap_types.i; sourceTree = "<group>"; };
 		8488FEAB16D20F8400C789B8 /* docs */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = docs; sourceTree = BUILT_PRODUCTS_DIR; };
 		849766F416D32A8B00EE1E91 /* getassessment.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = getassessment.cpp; sourceTree = "<group>"; };
 		849766F716D34B6D00EE1E91 /* getstats.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = getstats.py; sourceTree = "<group>"; };
@@ -1269,6 +935,7 @@
 		84F8AC4F16F7DFD400FC5E61 /* demo_ungraph_Twopi_col.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = demo_ungraph_Twopi_col.gif; sourceTree = "<group>"; };
 		84F8AC5016F7DFD400FC5E61 /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
 		84FE870D1720B9460099963A /* convert.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = convert.py; sourceTree = "<group>"; };
+		84FF218617555ACD00D11D81 /* snap_types.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; path = snap_types.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1318,6 +985,7 @@
 				849766F716D34B6D00EE1E91 /* getstats.py */,
 				849E192D16FA67AF0073F921 /* demo-tneagraph.py */,
 				8444C83B16EDC81800264DA8 /* benchmark.py */,
+				8488387817558C2F00F3BBD7 /* vector_comp.py */,
 				84FE870D1720B9460099963A /* convert.py */,
 				84529AEF16F9184700DC307D /* plot_results.py */,
 			);
@@ -1329,13 +997,18 @@
 			children = (
 				8474830816CD86B300AF3EF4 /* Makefile */,
 				8474830A16CD86B300AF3EF4 /* snap.i */,
+				84FF218617555ACD00D11D81 /* snap_types.h */,
+				848838791755941700F3BBD7 /* snap_types.i */,
+				8474831016CD86B300AF3EF4 /* snapswig.h */,
+				845FBA6417458DE40068CC0C /* pneagraph.i */,
+				845FBA6217458DCD0068CC0C /* pungraph.i */,
+				845FBA5B17458D390068CC0C /* pngraph.i */,
 				84ADEF371731EC4E0009E449 /* snap.py */,
 				84ADEF361731D3E50009E449 /* snappy.py */,
-				8474831016CD86B300AF3EF4 /* snapswig.h */,
 				8474830916CD86B300AF3EF4 /* printgraph.h */,
 				849766F416D32A8B00EE1E91 /* getassessment.cpp */,
-				849E192516FA63710073F921 /* swig-TNEAGraph.cpp */,
 				8456FCE916E2E28D00ECCD5F /* goodgraph.cpp */,
+				849E192516FA63710073F921 /* swig-TNEAGraph.cpp */,
 			);
 			path = "swig-r";
 			sourceTree = "<group>";
@@ -2697,351 +2370,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				84F8AC5116F7DFD400FC5E61 /* Makefile in Sources */,
-				84F8AC5216F7DFD400FC5E61 /* agmfitmain.cpp in Sources */,
-				84F8AC5316F7DFD400FC5E61 /* Makefile in Sources */,
-				84F8AC5416F7DFD400FC5E61 /* stdafx.cpp in Sources */,
-				84F8AC5516F7DFD400FC5E61 /* agmgen.cpp in Sources */,
-				84F8AC5616F7DFD400FC5E61 /* Makefile in Sources */,
-				84F8AC5716F7DFD400FC5E61 /* stdafx.cpp in Sources */,
-				84F8AC5816F7DFD400FC5E61 /* bigclam.cpp in Sources */,
-				84F8AC5916F7DFD400FC5E61 /* Makefile in Sources */,
-				84F8AC5A16F7DFD400FC5E61 /* stdafx.cpp in Sources */,
-				84F8AC5B16F7DFD400FC5E61 /* cascades.cpp in Sources */,
-				84F8AC5C16F7DFD400FC5E61 /* Makefile in Sources */,
-				84F8AC5D16F7DFD400FC5E61 /* stdafx.cpp in Sources */,
-				84F8AC5E16F7DFD400FC5E61 /* centrality.cpp in Sources */,
-				84F8AC5F16F7DFD400FC5E61 /* Makefile in Sources */,
-				84F8AC6016F7DFD400FC5E61 /* stdafx.cpp in Sources */,
-				84F8AC6116F7DFD400FC5E61 /* circles.cpp in Sources */,
-				84F8AC6216F7DFD400FC5E61 /* Makefile in Sources */,
-				84F8AC6316F7DFD400FC5E61 /* stdafx.cpp in Sources */,
-				84F8AC6416F7DFD400FC5E61 /* cliquesmain.cpp in Sources */,
-				84F8AC6516F7DFD400FC5E61 /* Makefile in Sources */,
-				84F8AC6616F7DFD400FC5E61 /* stdafx.cpp in Sources */,
-				84F8AC6716F7DFD400FC5E61 /* community.cpp in Sources */,
-				84F8AC6816F7DFD400FC5E61 /* Makefile in Sources */,
-				84F8AC6916F7DFD400FC5E61 /* stdafx.cpp in Sources */,
-				84F8AC6A16F7DFD400FC5E61 /* concomp.cpp in Sources */,
-				84F8AC6B16F7DFD400FC5E61 /* Makefile in Sources */,
-				84F8AC6C16F7DFD400FC5E61 /* stdafx.cpp in Sources */,
-				84F8AC6D16F7DFD400FC5E61 /* forestfire.cpp in Sources */,
-				84F8AC6E16F7DFD400FC5E61 /* Makefile in Sources */,
-				84F8AC6F16F7DFD400FC5E61 /* stdafx.cpp in Sources */,
-				84F8AC7016F7DFD400FC5E61 /* graphgen.cpp in Sources */,
-				84F8AC7116F7DFD400FC5E61 /* Makefile in Sources */,
-				84F8AC7216F7DFD400FC5E61 /* stdafx.cpp in Sources */,
-				84F8AC7316F7DFD400FC5E61 /* graphhash.cpp in Sources */,
-				84F8AC7416F7DFD400FC5E61 /* Makefile in Sources */,
-				84F8AC7516F7DFD400FC5E61 /* stdafx.cpp in Sources */,
-				84F8AC7616F7DFD400FC5E61 /* generate_nets.cpp in Sources */,
-				84F8AC7716F7DFD400FC5E61 /* infopath.cpp in Sources */,
-				84F8AC7816F7DFD400FC5E61 /* Makefile in Sources */,
-				84F8AC7916F7DFD400FC5E61 /* stdafx.cpp in Sources */,
-				84F8AC7A16F7DFD400FC5E61 /* kcores.cpp in Sources */,
-				84F8AC7B16F7DFD400FC5E61 /* Makefile in Sources */,
-				84F8AC7C16F7DFD400FC5E61 /* stdafx.cpp in Sources */,
-				84F8AC7D16F7DFD400FC5E61 /* kronem.cpp in Sources */,
-				84F8AC7E16F7DFD400FC5E61 /* Makefile in Sources */,
-				84F8AC7F16F7DFD400FC5E61 /* stdafx.cpp in Sources */,
-				84F8AC8016F7DFD400FC5E61 /* kronfit.cpp in Sources */,
-				84F8AC8116F7DFD400FC5E61 /* Makefile in Sources */,
-				84F8AC8216F7DFD400FC5E61 /* stdafx.cpp in Sources */,
-				84F8AC8316F7DFD400FC5E61 /* krongen.cpp in Sources */,
-				84F8AC8416F7DFD400FC5E61 /* Makefile in Sources */,
-				84F8AC8516F7DFD400FC5E61 /* stdafx.cpp in Sources */,
-				84F8AC8616F7DFD400FC5E61 /* magfit.cpp in Sources */,
-				84F8AC8716F7DFD400FC5E61 /* Makefile in Sources */,
-				84F8AC8816F7DFD400FC5E61 /* stdafx.cpp in Sources */,
-				84F8AC8916F7DFD400FC5E61 /* maggen.cpp in Sources */,
-				84F8AC8A16F7DFD400FC5E61 /* Makefile in Sources */,
-				84F8AC8B16F7DFD400FC5E61 /* stdafx.cpp in Sources */,
-				84F8AC8C16F7DFD400FC5E61 /* Makefile in Sources */,
-				84F8AC8D16F7DFD400FC5E61 /* Makefile in Sources */,
-				84F8AC8E16F7DFD400FC5E61 /* mkdatasets.cpp in Sources */,
-				84F8AC8F16F7DFD400FC5E61 /* stdafx.cpp in Sources */,
-				84F8AC9016F7DFD400FC5E61 /* Makefile in Sources */,
-				84F8AC9116F7DFD400FC5E61 /* motifs.cpp in Sources */,
-				84F8AC9216F7DFD400FC5E61 /* stdafx.cpp in Sources */,
-				84F8AC9316F7DFD400FC5E61 /* Makefile in Sources */,
-				84F8AC9416F7DFD400FC5E61 /* ncpplot.cpp in Sources */,
-				84F8AC9516F7DFD400FC5E61 /* stdafx.cpp in Sources */,
-				84F8AC9616F7DFD400FC5E61 /* Makefile in Sources */,
-				84F8AC9716F7DFD400FC5E61 /* netevol.cpp in Sources */,
-				84F8AC9816F7DFD400FC5E61 /* stdafx.cpp in Sources */,
-				84F8AC9916F7DFD400FC5E61 /* Makefile in Sources */,
-				84F8AC9A16F7DFD400FC5E61 /* netinf.cpp in Sources */,
-				84F8AC9B16F7DFD400FC5E61 /* stdafx.cpp in Sources */,
-				84F8AC9C16F7DFD400FC5E61 /* Makefile in Sources */,
-				84F8AC9D16F7DFD400FC5E61 /* netstat.cpp in Sources */,
-				84F8AC9E16F7DFD400FC5E61 /* stdafx.cpp in Sources */,
-				84F8AC9F16F7DFD400FC5E61 /* Makefile in Sources */,
-				84F8ACA016F7DFD400FC5E61 /* stdafx.cpp in Sources */,
-				84F8ACA116F7DFD400FC5E61 /* testgraph.cpp in Sources */,
-				84F8ACA216F7DFD400FC5E61 /* acquis.cpp in Sources */,
-				84F8ACA316F7DFD400FC5E61 /* adox.cpp in Sources */,
-				84F8ACA416F7DFD400FC5E61 /* aest.cpp in Sources */,
-				84F8ACA516F7DFD400FC5E61 /* amazon.cpp in Sources */,
-				84F8ACA616F7DFD400FC5E61 /* appsrv.cpp in Sources */,
-				84F8ACA716F7DFD400FC5E61 /* bde.cpp in Sources */,
-				84F8ACA816F7DFD400FC5E61 /* biling.cpp in Sources */,
-				84F8ACA916F7DFD400FC5E61 /* bix.cpp in Sources */,
-				84F8ACAA16F7DFD400FC5E61 /* book.cpp in Sources */,
-				84F8ACAB16F7DFD400FC5E61 /* bowactlearn.cpp in Sources */,
-				84F8ACAC16F7DFD400FC5E61 /* bowbs.cpp in Sources */,
-				84F8ACAD16F7DFD400FC5E61 /* bowclust.cpp in Sources */,
-				84F8ACAE16F7DFD400FC5E61 /* bowfl.cpp in Sources */,
-				84F8ACAF16F7DFD400FC5E61 /* bowflx.cpp in Sources */,
-				84F8ACB016F7DFD400FC5E61 /* bowlearn.cpp in Sources */,
-				84F8ACB116F7DFD400FC5E61 /* bowlinalg.cpp in Sources */,
-				84F8ACB216F7DFD400FC5E61 /* bowmatrix.cpp in Sources */,
-				84F8ACB316F7DFD400FC5E61 /* bowmd.cpp in Sources */,
-				84F8ACB416F7DFD400FC5E61 /* btalarms.cpp in Sources */,
-				84F8ACB516F7DFD400FC5E61 /* btaserver.cpp in Sources */,
-				84F8ACB616F7DFD400FC5E61 /* casino.cpp in Sources */,
-				84F8ACB716F7DFD400FC5E61 /* ccar.cpp in Sources */,
-				84F8ACB816F7DFD400FC5E61 /* cfyres.cpp in Sources */,
-				84F8ACB916F7DFD400FC5E61 /* cgi.cpp in Sources */,
-				84F8ACBA16F7DFD400FC5E61 /* ciawfb.cpp in Sources */,
-				84F8ACBB16F7DFD400FC5E61 /* cordis.cpp in Sources */,
-				84F8ACBC16F7DFD400FC5E61 /* corrgr.cpp in Sources */,
-				84F8ACBD16F7DFD400FC5E61 /* cpdoc.cpp in Sources */,
-				84F8ACBE16F7DFD400FC5E61 /* crawler.cpp in Sources */,
-				84F8ACBF16F7DFD400FC5E61 /* cyc.cpp in Sources */,
-				84F8ACC016F7DFD400FC5E61 /* dm.cpp in Sources */,
-				84F8ACC116F7DFD400FC5E61 /* dmhd.cpp in Sources */,
-				84F8ACC216F7DFD400FC5E61 /* dmine.cpp in Sources */,
-				84F8ACC316F7DFD400FC5E61 /* dmoz.cpp in Sources */,
-				84F8ACC416F7DFD400FC5E61 /* dnet.cpp in Sources */,
-				84F8ACC516F7DFD400FC5E61 /* dzs.cpp in Sources */,
-				84F8ACC616F7DFD400FC5E61 /* email.cpp in Sources */,
-				84F8ACC716F7DFD400FC5E61 /* euproj.cpp in Sources */,
-				84F8ACC816F7DFD400FC5E61 /* exset.cpp in Sources */,
-				84F8ACC916F7DFD400FC5E61 /* fa.cpp in Sources */,
-				84F8ACCA16F7DFD400FC5E61 /* flx.cpp in Sources */,
-				84F8ACCB16F7DFD400FC5E61 /* ftrgen.cpp in Sources */,
-				84F8ACCC16F7DFD400FC5E61 /* geoip.cpp in Sources */,
-				84F8ACCD16F7DFD400FC5E61 /* gix.cpp in Sources */,
-				84F8ACCE16F7DFD400FC5E61 /* gks.cpp in Sources */,
-				84F8ACCF16F7DFD400FC5E61 /* gksmfc.cpp in Sources */,
-				84F8ACD016F7DFD400FC5E61 /* gksvcl.cpp in Sources */,
-				84F8ACD116F7DFD400FC5E61 /* gksvml.cpp in Sources */,
-				84F8ACD216F7DFD400FC5E61 /* gkswf.cpp in Sources */,
-				84F8ACD316F7DFD400FC5E61 /* google.cpp in Sources */,
-				84F8ACD416F7DFD400FC5E61 /* googlex.cpp in Sources */,
-				84F8ACD516F7DFD400FC5E61 /* graph.cpp in Sources */,
-				84F8ACD616F7DFD400FC5E61 /* gridvcl.cpp in Sources */,
-				84F8ACD716F7DFD400FC5E61 /* gsearch.cpp in Sources */,
-				84F8ACD816F7DFD400FC5E61 /* hc.cpp in Sources */,
-				84F8ACD916F7DFD400FC5E61 /* hldoc.cpp in Sources */,
-				84F8ACDA16F7DFD400FC5E61 /* infonet.cpp in Sources */,
-				84F8ACDB16F7DFD400FC5E61 /* kernelmethods.cpp in Sources */,
-				84F8ACDC16F7DFD400FC5E61 /* logreg.cpp in Sources */,
-				84F8ACDD16F7DFD400FC5E61 /* lsionto.cpp in Sources */,
-				84F8ACDE16F7DFD400FC5E61 /* Makefile in Sources */,
-				84F8ACDF16F7DFD400FC5E61 /* md.cpp in Sources */,
-				84F8ACE016F7DFD400FC5E61 /* mdtr.cpp in Sources */,
-				84F8ACE116F7DFD400FC5E61 /* medline.cpp in Sources */,
-				84F8ACE216F7DFD400FC5E61 /* mg.cpp in Sources */,
-				84F8ACE316F7DFD400FC5E61 /* mine.cpp in Sources */,
-				84F8ACE416F7DFD400FC5E61 /* mkcca.cpp in Sources */,
-				84F8ACE516F7DFD400FC5E61 /* mte.cpp in Sources */,
-				84F8ACE616F7DFD400FC5E61 /* mtr.cpp in Sources */,
-				84F8ACE716F7DFD400FC5E61 /* net.cpp in Sources */,
-				84F8ACE816F7DFD400FC5E61 /* netobj.cpp in Sources */,
-				84F8ACE916F7DFD400FC5E61 /* nlpwinlf.cpp in Sources */,
-				84F8ACEA16F7DFD400FC5E61 /* nmen.cpp in Sources */,
-				84F8ACEB16F7DFD400FC5E61 /* nmobj.cpp in Sources */,
-				84F8ACEC16F7DFD400FC5E61 /* nntp.cpp in Sources */,
-				84F8ACED16F7DFD400FC5E61 /* nyta.cpp in Sources */,
-				84F8ACEE16F7DFD400FC5E61 /* nytngrams.cpp in Sources */,
-				84F8ACEF16F7DFD400FC5E61 /* odbc.cpp in Sources */,
-				84F8ACF016F7DFD400FC5E61 /* ontolight.cpp in Sources */,
-				84F8ACF116F7DFD400FC5E61 /* pest.cpp in Sources */,
-				84F8ACF216F7DFD400FC5E61 /* phrase.cpp in Sources */,
-				84F8ACF316F7DFD400FC5E61 /* pi.cpp in Sources */,
-				84F8ACF416F7DFD400FC5E61 /* postag.cpp in Sources */,
-				84F8ACF516F7DFD400FC5E61 /* prolog.cpp in Sources */,
-				84F8ACF616F7DFD400FC5E61 /* prologparser.cpp in Sources */,
-				84F8ACF716F7DFD400FC5E61 /* proxy.cpp in Sources */,
-				84F8ACF816F7DFD400FC5E61 /* pww.cpp in Sources */,
-				84F8ACF916F7DFD400FC5E61 /* rdbms.cpp in Sources */,
-				84F8ACFA16F7DFD400FC5E61 /* roget.cpp in Sources */,
-				84F8ACFB16F7DFD400FC5E61 /* sappsrv.cpp in Sources */,
-				84F8ACFC16F7DFD400FC5E61 /* sch.cpp in Sources */,
-				84F8ACFD16F7DFD400FC5E61 /* semspace.cpp in Sources */,
-				84F8ACFE16F7DFD400FC5E61 /* sgraph.cpp in Sources */,
-				84F8ACFF16F7DFD400FC5E61 /* skygrid.cpp in Sources */,
-				84F8AD0016F7DFD400FC5E61 /* smtp.cpp in Sources */,
-				84F8AD0116F7DFD400FC5E61 /* soap.cpp in Sources */,
-				84F8AD0216F7DFD400FC5E61 /* sock-new.cpp in Sources */,
-				84F8AD0316F7DFD400FC5E61 /* sock.cpp in Sources */,
-				84F8AD0416F7DFD400FC5E61 /* sqlite3.c in Sources */,
-				84F8AD0516F7DFD400FC5E61 /* sqlitedb.cpp in Sources */,
-				84F8AD0616F7DFD400FC5E61 /* ssch.cpp in Sources */,
-				84F8AD0716F7DFD400FC5E61 /* sskj.cpp in Sources */,
-				84F8AD0816F7DFD400FC5E61 /* ssql.cpp in Sources */,
-				84F8AD0916F7DFD400FC5E61 /* ssqldm.cpp in Sources */,
-				84F8AD0A16F7DFD400FC5E61 /* stemming.cpp in Sources */,
-				84F8AD0B16F7DFD400FC5E61 /* stopword.cpp in Sources */,
-				84F8AD0C16F7DFD400FC5E61 /* strkernel.cpp in Sources */,
-				84F8AD0D16F7DFD400FC5E61 /* svmbasic.cpp in Sources */,
-				84F8AD0E16F7DFD400FC5E61 /* svmmodels.cpp in Sources */,
-				84F8AD0F16F7DFD400FC5E61 /* svmPrLoqo.cpp in Sources */,
-				84F8AD1016F7DFD400FC5E61 /* tagcloud.cpp in Sources */,
-				84F8AD1116F7DFD400FC5E61 /* tb.cpp in Sources */,
-				84F8AD1216F7DFD400FC5E61 /* tbhc.cpp in Sources */,
-				84F8AD1316F7DFD400FC5E61 /* tbval.cpp in Sources */,
-				84F8AD1416F7DFD400FC5E61 /* term.cpp in Sources */,
-				84F8AD1516F7DFD400FC5E61 /* testBase.cpp in Sources */,
-				84F8AD1616F7DFD400FC5E61 /* tmine.cpp in Sources */,
-				84F8AD1716F7DFD400FC5E61 /* tnt.cpp in Sources */,
-				84F8AD1816F7DFD400FC5E61 /* tql.cpp in Sources */,
-				84F8AD1916F7DFD400FC5E61 /* ts.cpp in Sources */,
-				84F8AD1A16F7DFD400FC5E61 /* txtbs.cpp in Sources */,
-				84F8AD1B16F7DFD400FC5E61 /* ultra.cpp in Sources */,
-				84F8AD1C16F7DFD400FC5E61 /* valds.cpp in Sources */,
-				84F8AD1D16F7DFD400FC5E61 /* valret.cpp in Sources */,
-				84F8AD1E16F7DFD400FC5E61 /* vizmap.cpp in Sources */,
-				84F8AD1F16F7DFD400FC5E61 /* vizmapgks.cpp in Sources */,
-				84F8AD2016F7DFD400FC5E61 /* wbmp.cpp in Sources */,
-				84F8AD2116F7DFD400FC5E61 /* webbsfetch.cpp in Sources */,
-				84F8AD2216F7DFD400FC5E61 /* webmb.cpp in Sources */,
-				84F8AD2316F7DFD400FC5E61 /* webnetobj.cpp in Sources */,
-				84F8AD2416F7DFD400FC5E61 /* webold.cpp in Sources */,
-				84F8AD2516F7DFD400FC5E61 /* webpgfetch.cpp in Sources */,
-				84F8AD2616F7DFD400FC5E61 /* websrv.cpp in Sources */,
-				84F8AD2716F7DFD400FC5E61 /* webtrv.cpp in Sources */,
-				84F8AD2816F7DFD400FC5E61 /* webtxtbs.cpp in Sources */,
-				84F8AD2916F7DFD400FC5E61 /* wikipedia.cpp in Sources */,
-				84F8AD2A16F7DFD400FC5E61 /* wix.cpp in Sources */,
-				84F8AD2B16F7DFD400FC5E61 /* wixexp.cpp in Sources */,
-				84F8AD2C16F7DFD400FC5E61 /* wmine.cpp in Sources */,
-				84F8AD2D16F7DFD400FC5E61 /* wordco.cpp in Sources */,
-				84F8AD2E16F7DFD400FC5E61 /* wordnet.cpp in Sources */,
-				84F8AD2F16F7DFD400FC5E61 /* xql.cpp in Sources */,
-				84F8AD3016F7DFD400FC5E61 /* yahoobs.cpp in Sources */,
-				84F8AD3116F7DFD400FC5E61 /* yahoodm.cpp in Sources */,
-				84F8AD3216F7DFD400FC5E61 /* yahooex.cpp in Sources */,
-				84F8AD3316F7DFD400FC5E61 /* zipcode.cpp in Sources */,
-				84F8AD3416F7DFD400FC5E61 /* app.cpp in Sources */,
-				84F8AD3516F7DFD400FC5E61 /* base.cpp in Sources */,
-				84F8AD3616F7DFD400FC5E61 /* bd.cpp in Sources */,
-				84F8AD3716F7DFD400FC5E61 /* bits.cpp in Sources */,
-				84F8AD3816F7DFD400FC5E61 /* blobbs.cpp in Sources */,
-				84F8AD3916F7DFD400FC5E61 /* console.cpp in Sources */,
-				84F8AD3A16F7DFD400FC5E61 /* dt.cpp in Sources */,
-				84F8AD3B16F7DFD400FC5E61 /* env.cpp in Sources */,
-				84F8AD3C16F7DFD400FC5E61 /* exp.cpp in Sources */,
-				84F8AD3D16F7DFD400FC5E61 /* fl.cpp in Sources */,
-				84F8AD3E16F7DFD400FC5E61 /* gnuplot.cpp in Sources */,
-				84F8AD3F16F7DFD400FC5E61 /* hash.cpp in Sources */,
-				84F8AD4016F7DFD400FC5E61 /* html.cpp in Sources */,
-				84F8AD4116F7DFD400FC5E61 /* http.cpp in Sources */,
-				84F8AD4216F7DFD400FC5E61 /* json.cpp in Sources */,
-				84F8AD4316F7DFD400FC5E61 /* linalg.cpp in Sources */,
-				84F8AD4416F7DFD400FC5E61 /* lx.cpp in Sources */,
-				84F8AD4516F7DFD400FC5E61 /* macro.cpp in Sources */,
-				84F8AD4616F7DFD400FC5E61 /* md5.cpp in Sources */,
-				84F8AD4716F7DFD400FC5E61 /* os.cpp in Sources */,
-				84F8AD4816F7DFD400FC5E61 /* pp.cpp in Sources */,
-				84F8AD4916F7DFD400FC5E61 /* ss.cpp in Sources */,
-				84F8AD4A16F7DFD400FC5E61 /* tm.cpp in Sources */,
-				84F8AD4B16F7DFD400FC5E61 /* unicode.cpp in Sources */,
-				84F8AD4C16F7DFD400FC5E61 /* unicodestring.cpp in Sources */,
-				84F8AD4D16F7DFD400FC5E61 /* url.cpp in Sources */,
-				84F8AD4E16F7DFD400FC5E61 /* ut.cpp in Sources */,
-				84F8AD4F16F7DFD400FC5E61 /* wch.cpp in Sources */,
-				84F8AD5016F7DFD400FC5E61 /* xdt.cpp in Sources */,
-				84F8AD5116F7DFD400FC5E61 /* xfl.cpp in Sources */,
-				84F8AD5216F7DFD400FC5E61 /* xmath.cpp in Sources */,
-				84F8AD5316F7DFD400FC5E61 /* xml.cpp in Sources */,
-				84F8AD5416F7DFD400FC5E61 /* zipfl.cpp in Sources */,
-				84F8AD5516F7DFD400FC5E61 /* Makefile in Sources */,
-				84F8AD5616F7DFD400FC5E61 /* agm.cpp in Sources */,
-				84F8AD5716F7DFD400FC5E61 /* agmfast.cpp in Sources */,
-				84F8AD5816F7DFD400FC5E61 /* agmfit.cpp in Sources */,
-				84F8AD5916F7DFD400FC5E61 /* cascdynetinf.cpp in Sources */,
-				84F8AD5A16F7DFD400FC5E61 /* cascnetinf.cpp in Sources */,
-				84F8AD5B16F7DFD400FC5E61 /* cliques.cpp in Sources */,
-				84F8AD5C16F7DFD400FC5E61 /* graphcounter.cpp in Sources */,
-				84F8AD5D16F7DFD400FC5E61 /* kronecker.cpp in Sources */,
-				84F8AD5E16F7DFD400FC5E61 /* mag.cpp in Sources */,
-				84F8AD5F16F7DFD400FC5E61 /* ncp.cpp in Sources */,
-				84F8AD6016F7DFD400FC5E61 /* subgraphenum.cpp in Sources */,
-				84F8AD6116F7DFD400FC5E61 /* alg.cpp in Sources */,
-				84F8AD6216F7DFD400FC5E61 /* anf.cpp in Sources */,
-				84F8AD6316F7DFD400FC5E61 /* centr.cpp in Sources */,
-				84F8AD6416F7DFD400FC5E61 /* cmty.cpp in Sources */,
-				84F8AD6516F7DFD400FC5E61 /* cncom.cpp in Sources */,
-				84F8AD6616F7DFD400FC5E61 /* ff.cpp in Sources */,
-				84F8AD6716F7DFD400FC5E61 /* gbase.cpp in Sources */,
-				84F8AD6816F7DFD400FC5E61 /* ggen.cpp in Sources */,
-				84F8AD6916F7DFD400FC5E61 /* ghash.cpp in Sources */,
-				84F8AD6A16F7DFD400FC5E61 /* gio.cpp in Sources */,
-				84F8AD6B16F7DFD400FC5E61 /* graph.cpp in Sources */,
-				84F8AD6C16F7DFD400FC5E61 /* gstat.cpp in Sources */,
-				84F8AD6D16F7DFD400FC5E61 /* gsvd.cpp in Sources */,
-				84F8AD6E16F7DFD400FC5E61 /* gviz.cpp in Sources */,
-				84F8AD6F16F7DFD400FC5E61 /* Makefile in Sources */,
-				84F8AD7016F7DFD400FC5E61 /* Snap.cpp in Sources */,
-				84F8AD7116F7DFD400FC5E61 /* statplot.cpp in Sources */,
-				84F8AD7216F7DFD400FC5E61 /* subgraph.cpp in Sources */,
-				84F8AD7316F7DFD400FC5E61 /* testSnap.cpp in Sources */,
-				84F8AD7416F7DFD400FC5E61 /* timenet.cpp in Sources */,
-				84F8AD7516F7DFD400FC5E61 /* util.cpp in Sources */,
-				84F8AD7616F7DFD400FC5E61 /* arxiv.cpp in Sources */,
-				84F8AD7716F7DFD400FC5E61 /* circles.cpp in Sources */,
-				84F8AD7816F7DFD400FC5E61 /* Makefile in Sources */,
-				84F8AD7916F7DFD400FC5E61 /* stdafx.cpp in Sources */,
-				84F8AD7A16F7DFD400FC5E61 /* dblp.cpp in Sources */,
-				84F8AD7B16F7DFD400FC5E61 /* imdbnet.cpp in Sources */,
-				84F8AD7C16F7DFD400FC5E61 /* linkpred.cpp in Sources */,
-				84F8AD7D16F7DFD400FC5E61 /* memenet.cpp in Sources */,
-				84F8AD7E16F7DFD400FC5E61 /* memes.cpp in Sources */,
-				84F8AD7F16F7DFD400FC5E61 /* mxdag.cpp in Sources */,
-				84F8AD8016F7DFD400FC5E61 /* signnet.cpp in Sources */,
-				84F8AD8116F7DFD400FC5E61 /* sir.cpp in Sources */,
-				84F8AD8216F7DFD400FC5E61 /* spinn3r.cpp in Sources */,
-				84F8AD8316F7DFD400FC5E61 /* trawling.cpp in Sources */,
-				84F8AD8416F7DFD400FC5E61 /* wgtnet.cpp in Sources */,
-				84F8AD8516F7DFD400FC5E61 /* wikinet.cpp in Sources */,
-				84F8AD8616F7DFD400FC5E61 /* Makefile in Sources */,
-				84F8AD8716F7DFD400FC5E61 /* run-all-tests.cpp in Sources */,
-				84F8AD8816F7DFD400FC5E61 /* test-bfsdfs.cpp in Sources */,
-				84F8AD8916F7DFD400FC5E61 /* test-cncom.cpp in Sources */,
-				84F8AD8A16F7DFD400FC5E61 /* test-ggen.cpp in Sources */,
-				84F8AD8B16F7DFD400FC5E61 /* test-gio.cpp in Sources */,
-				84F8AD8C16F7DFD400FC5E61 /* test-gviz.cpp in Sources */,
-				84F8AD8D16F7DFD400FC5E61 /* test-helper.cpp in Sources */,
-				84F8AD8E16F7DFD400FC5E61 /* test-subgraph.cpp in Sources */,
-				84F8AD8F16F7DFD400FC5E61 /* test-THash.cpp in Sources */,
-				84F8AD9016F7DFD400FC5E61 /* test-TNEGraph.cpp in Sources */,
-				84F8AD9116F7DFD400FC5E61 /* test-TNGraph.cpp in Sources */,
-				84F8AD9216F7DFD400FC5E61 /* test-TNodeEDatNet.cpp in Sources */,
-				84F8AD9316F7DFD400FC5E61 /* test-TNodeEdgeNet.cpp in Sources */,
-				84F8AD9416F7DFD400FC5E61 /* test-TNodeNet.cpp in Sources */,
-				84F8AD9516F7DFD400FC5E61 /* test-TStrPool.cpp in Sources */,
-				84F8AD9616F7DFD400FC5E61 /* test-TSysTm.cpp in Sources */,
-				84F8AD9716F7DFD400FC5E61 /* test-TUNGraph.cpp in Sources */,
-				84F8AD9816F7DFD400FC5E61 /* demo-bfsdfs.cpp in Sources */,
-				84F8AD9916F7DFD400FC5E61 /* demo-cncom.cpp in Sources */,
-				84F8AD9A16F7DFD400FC5E61 /* demo-ggen.cpp in Sources */,
-				84F8AD9B16F7DFD400FC5E61 /* demo-gio.cpp in Sources */,
-				84F8AD9C16F7DFD400FC5E61 /* demo-gviz.cpp in Sources */,
-				84F8AD9D16F7DFD400FC5E61 /* demo-subgraph.cpp in Sources */,
-				84F8AD9E16F7DFD400FC5E61 /* demo-THash.cpp in Sources */,
-				84F8ADA016F7DFD400FC5E61 /* demo-TNEAGraph.cpp in Sources */,
-				84F8ADA116F7DFD400FC5E61 /* demo-TNEGraph.cpp in Sources */,
-				84F8ADA216F7DFD400FC5E61 /* demo-TNGraph.cpp in Sources */,
-				84F8ADA316F7DFD400FC5E61 /* demo-TNodeEDatNet.cpp in Sources */,
-				84F8ADA416F7DFD400FC5E61 /* demo-TNodeEdgeNet.cpp in Sources */,
-				84F8ADA516F7DFD400FC5E61 /* demo-TNodeNet.cpp in Sources */,
-				84F8ADA616F7DFD400FC5E61 /* demo-TUNGraph.cpp in Sources */,
-				84F8ADA716F7DFD400FC5E61 /* Makefile in Sources */,
 				84FE870C1720A8920099963A /* snap.i in Sources */,
+				84E69973173C738B00864F83 /* graph.h in Sources */,
+				84E69972173C737C00864F83 /* Snap.h in Sources */,
 				8488019616D20FF300C789B8 /* snapswig.h in Sources */,
 				8488019416D20FF300C789B8 /* printgraph.h in Sources */,
+				84FF218717555FE400D11D81 /* snap_types.h in Sources */,
 				841E00C516DC449900B86980 /* getassessment.cpp in Sources */,
 				849E192616FA63710073F921 /* swig-TNEAGraph.cpp in Sources */,
 				8456FCEA16E2E28D00ECCD5F /* goodgraph.cpp in Sources */,

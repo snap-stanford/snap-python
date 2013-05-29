@@ -27,7 +27,11 @@
 #      file to output results
 #    -g, --generate        generate new graphs
 #
-#   Example:
+#   Examples:
+#   1. Use default arguments.
+#   $ python menchmark.py
+#   2. Generate deterministic RMAT graphs from 10^2-10^3 nodes, and
+#       run 3 times, outputing to results.txt.
 #   $ python benchmark.py -v -n 3 -g -d -r 2-3 -t rmat -o results/results.txt
 #
 
@@ -54,7 +58,7 @@ PROPERTY_TYPES = [1, 10]  # 1=Triads, 10=BFS
 # 'syn_negraph' - synthetic multi-edge
 # 'syn_neagraph' - synthetic directed multi-edge attribute
 
-DEFAULT_TYPES = "rmat,rand_ungraph"
+DEFAULT_TYPES = "rmat,rand_neagraph"
 
 # Average is 1, non-average is 0.
 DEFAULT_DEGREES = "1-2"  #  Default is 10x and 100x edges/node
