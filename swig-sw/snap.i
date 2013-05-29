@@ -130,7 +130,7 @@
 %template(TIntHI) THashKeyDatI < TInt, TInt >;
 
 //%template(SendVec_TIntV) TSnap::SendVec< TVec< TInt, int > >;
-//%template(SendVec_TIntV) SendVec< TInt, int >;
+%template(SendVec_TIntV) SendVec< TInt, int >;
 
 %template(PNGraph) TPt< TNGraph >;
 %template(LoadEdgeList_PNGraph) TSnap::LoadEdgeList<PNGraph>;
