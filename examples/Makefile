@@ -2,10 +2,13 @@
 #	Makefile for running 
 #
 
-all: benchmark
+all: benchmark, tneanet
 
 benchmark:
-	python benchmark.py -v -n 1 -g -d -r 4-5 -t rmat,rand_neagraph -o results/results.txt
+	python benchmark.py
+
+tneanet:
+	python tneanet.py
 
 clean:
 	rm -rf results *.graph

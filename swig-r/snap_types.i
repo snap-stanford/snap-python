@@ -53,6 +53,46 @@
   $1 = temp;
 }
 
+// Translate Python strings to SNAP TStr
+//%typemap(in) const TStr& attr {
+//  printf("Converting %s\n", PyString_AsString($input));
+//  TStr S(PyString_AsString($input));
+//  $1 = &S;
+//}
+
+%typemap(in) TStr defaultValue {
+  TStr S(PyString_AsString($input));
+  $1 = S;
+}
+
+
+// Translate Python ints to TInt
+%typemap(in) const TInt& value {
+  TInt I = PyInt_AsLong($input);
+  $1 = &I;
+}
+
+%typemap(in) TInt defaultValue {
+  TInt I = PyInt_AsLong($input);
+  $1 = I;
+}
+
+%typemap(in) TInt& NId {
+  TInt I = PyInt_AsLong($input);
+  $1 = &I;
+}
+
+// Translate Python floats to TInt
+%typemap(in) const TFlt &value {
+  TFlt F = PyFloat_AsDouble($input);
+  $1 = &F;
+}
+
+%typemap(in) TFlt defaultValue {
+  TFlt F = PyFloat_AsDouble($input);
+  $1 = F;
+}
+
 // Slow but safe.  Create type for Python variable-size lists of integers (must keep argument name or create typemap.
 %typemap(in) (int *arraySlow, int lengthSlow) {
   int i;
@@ -88,9 +128,8 @@
   $1 = temp;
   $2 = length;
 }
-%typemap(freearg) (int len, int *value) 
-  {
-     if ($2) free($2);
+%typemap(freearg) (int *array, int length) {
+     if ($1) free($1);
 }
 
 
