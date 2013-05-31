@@ -79,10 +79,10 @@ def ManipulateNodesEdges():
 
     # assignment
     Graph1 = Graph
-    PrintGStats("ManipulateNodesEdges:Graph3" % Graph1)
+    PrintGStats("ManipulateNodesEdges:Graph3", Graph1)
 
     # save the graph
-    print "graph type = " % type(Graph)
+    print "graph type = ", type(Graph)
     FOut = TFOut(TStr(FName))
     Graph.Save(FOut)
     FOut.Flush()
@@ -90,17 +90,17 @@ def ManipulateNodesEdges():
     # load the graph
     FIn = TFIn(TStr(FName))
     Graph2 = TNEANet(FIn)
-    PrintGStats("ManipulateNodesEdges:Graph4" % Graph2)
+    PrintGStats("ManipulateNodesEdges:Graph4" , Graph2)
 
     # remove all the nodes and edges
     for i in range(0, NNodes):
         n = Graph.GetRndNId()
         Graph.DelNode(n)
 
-    PrintGStats("ManipulateNodesEdges:Graph5" % Graph)
+    PrintGStats("ManipulateNodesEdges:Graph5" , Graph)
     
     Graph1.Clr()
-    PrintGStats("ManipulateNodesEdges:Graph6" % Graph1)
+    PrintGStats("ManipulateNodesEdges:Graph6" , Graph1)
 
 def ManipulateNodeEdgeAttributes():
   '''
@@ -314,10 +314,10 @@ def ManipulateNodeEdgeAttributes():
     Graph.AddIntAttrDatE(i, 70, attr2)
 
   total = 0
-  EI = Graph.BegNAIntI(attr2)
-  while EI < Graph.EndNAIntI(attr2):
+#  EI = Graph.BegNAIntI(attr2)
+#  while EI < Graph.EndNAIntI(attr2):
 #    total += EI.GetDat()
-    EI.Next()
+#    EI.Next()
 
   print "Average: %i (should be 70)\n" % (total/NEdges)
   
@@ -325,9 +325,9 @@ def ManipulateNodeEdgeAttributes():
 
 if __name__ == '__main__':
     print "----- DefaultConstructor -----"
-#    DefaultConstructor()
+    DefaultConstructor()
     print "----- ManipulateNodesEdges -----"
-#    ManipulateNodesEdges()
+    ManipulateNodesEdges()
     print "----- ManipulateNodesEdgesAttributes -----"
     ManipulateNodeEdgeAttributes()
 
