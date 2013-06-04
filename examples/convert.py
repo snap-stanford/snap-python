@@ -76,10 +76,10 @@ def generate_graph(NNodes, NEdges, Model, Rnd):
     Graph = Snap.GenRndGnm_PNGraph(NNodes, NEdges, 1)
       
   elif Model == 'rand_neagraph':
-    Graph = Snap.GenRndGnm_PNEAGraph(NNodes, NEdges, 1)
+    Graph = Snap.GenRndGnm_PNEANet(NNodes, NEdges, 1)
 
   elif Model == 'syn_neagraph':
-    Graph = Snap.GenSyntheticGraph_PNEAGraph(NNodes, NEdges/NNodes,
+    Graph = Snap.GenSyntheticGraph_PNEANet(NNodes, NEdges/NNodes,
                                              SYNTHETIC_DELTA)
 
   elif Model == 'syn_ngraph':
@@ -113,7 +113,7 @@ def convert_graph(Graph, TypeSrc, TypeDst):
   
   if TypeSrc == 'ngraph' and TypeDst == 'neagraph':
 
-    GraphOut = Snap.ConvertGraph_PNGraphToPNEAGraph(Graph)
+    GraphOut = Snap.ConvertGraph_PNGraphToPNEANet(Graph)
   
   else:
     print "Unable to convert: %s to %s" % (TypeSrc, TypeDst)
@@ -200,7 +200,7 @@ def main():
           Graph types, comma separated: (rmat, pref, rand_ngraph, syn_ngraph)'''
 
   parser.add_argument("-o", "--output_type", required=True,
-                      help="output type (pneagraph)")
+                      help="output type (PNEANet)")
 
   args = parser.parse_args()
 

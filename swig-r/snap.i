@@ -1,20 +1,19 @@
 // snap.i
 
-//   Currently, only includes PNEAGraph types. Other graph types
-//   can be added by including their SWIG interface types below.
+//   The multi-attribute network graph type, PNEANet is instantiated, along
+//   with standard SNAP functions.
 
 %module snap
 %{
 
 #include "Snap.h"
+  
+#include "Engine.h"
+#include "snapswig.h"
 
 #include "printgraph.h"
-#include "snapswig.h"
 #include "snap_types.h"
-  
 #include "goodgraph.cpp"
-//#include "getassessment.cpp"
-#include "swig-TNEAGraph.cpp"
 
 %}
 
@@ -48,15 +47,19 @@
 
 %ignore TBPGraph::HasFlag(const TGraphFlag& Flag) const;
 %ignore TNEGraph::GetSmallGraph();
-%ignore TNEAGraph::GetSmallGraph();
+%ignore TNEANet::GetSmallGraph();
 %ignore TBPGraph::GetEI(int const&) const;
 
 %ignore TNGraph::GetEI(int const&) const;
 %ignore TUNGraph::GetEI(int const&) const;
-%ignore TNEAGraph::GetEI(int const&) const;
+%ignore TNEANet::GetEI(int const&) const;
 
 %ignore TVec<TVec<TInt, int>, int>::Add;
 %ignore TVec<TVec<TInt, int>, int>::AddMerged;
+
+%ignore TVec<TStr, int>::Add;
+%ignore TVec<TStr, int>::AddMerged;
+
 
 %ignore THash< TInt, TVec< TInt, int > >::AddDat;
 %ignore THash< TInt, TVec< TInt, int > >::HashPrimeT;
@@ -67,7 +70,6 @@
 %ignore THash< TInt, TInt>::HashPrimeT;
 
 // SNAP Library
-
 // snap-core
 %include "alg.h"
 %include "anf.h"
@@ -93,15 +95,6 @@
 // glib-core
 %include "ds.h"
 %include "dt.h"
-
-//%include "gstat.h"
-
-//%include "timenet.h"
-//%include "statplot.h"
-//%include "bignet.h"
-//%include "ghash.h"
-
-//%include "ncp.h"
 
 %extend TVec {
 
@@ -129,12 +122,11 @@
         }
 }
 
-
-// Used for SNAP-R Tests
-%include "printgraph.h"
-%include "snapswig.h"
-%include "goodgraph.cpp"
-%include "swig-TNEAGraph.cpp"
+//%extend TAFltI {
+//  TFlt GetDat(int val) { const { return HI[0]; }
+//
+//  
+//}
 
 %template(TIntV) TVec< TInt, int >;
 %template(TIntIntVV) TVec< TVec< TInt, int >, int >;
@@ -142,10 +134,17 @@
 %template(TIntH) THash<TInt, TInt>;
 %template(TIntHI) THashKeyDatI < TInt, TInt >;
 
-/* Graph templates - include other SWIG interface types here. */
-%include "pneagraph.i"
-//%include "pngraph.i"
-//%include "pungraph.i"
+%template(TStrV) TVec< TStr, int >;
 
-// Include SNAP conversion types, currently TInt vector
+// Python-SNAP conversion typemaps
+%include "snapswig.h"
+%include "goodgraph.cpp"
+%include "printgraph.h"
+
 %include "snap_types.i"
+
+// For TNEANet
+%include "network.h"
+
+/* Graph templates - include other SWIG interface types here. */
+%include "pneanet.i"

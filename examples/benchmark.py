@@ -4,8 +4,8 @@
 # Author: Nick Shelly, Spring 2013
 # Description:
 #     - Loads SNAP as a Python module.
-#     - Randomly generates a graph of specified size and type and saving,
-#         or loading the graph if has already been created.
+#     - Randomly generates a graph of specified size and type, and saves
+#         or loads the graph if it has already been created.
 #     - Benchmarks a number of "is this a good graph?" tests on the graph,
 #       calculating the amount of time required and appends to a file.
 #           
@@ -53,12 +53,12 @@ PROPERTY_TYPES = [1, 10]  # 1=Triads, 10=BFS
 # 'sw' - small world
 # 'rand_ungraph' - random undirected
 # 'rand_ngraph' - random directed
-# 'rand_neagraph' - random directed attribute
+# 'rand_neanet' - random directed attribute
 # 'syn_ngraph' - random directed
 # 'syn_negraph' - synthetic multi-edge
-# 'syn_neagraph' - synthetic directed multi-edge attribute
+# 'syn_neanet' - synthetic directed multi-edge attribute
 
-DEFAULT_TYPES = "rmat,rand_neagraph"
+DEFAULT_TYPES = "rand_neanet"
 
 # Average is 1, non-average is 0.
 DEFAULT_DEGREES = "1-2"  #  Default is 10x and 100x edges/node
@@ -68,7 +68,7 @@ SYNTHETIC_DELTA = 10
 
 # Exponent range (e.g. 10^x to 10^y)
 DEFAULT_VERBOSE=True
-DEFAULT_RANGE = '5-7'
+DEFAULT_RANGE = '3-4'
 DEFAULT_ITERATIONS = 1
 
 # Hostname for results
@@ -134,7 +134,7 @@ def benchmark_ungraph(Graph):
   # TODO: Calculate graph skew
   return results
 
-def benchmark_neagraph(Graph):
+def benchmark_neanet(Graph):
   '''
     Perform benchmark tests for Directed Attribute Graphs
     '''
@@ -144,20 +144,20 @@ def benchmark_neagraph(Graph):
   results['num_edges'] = Graph.GetEdges()
   
   for degree in range(0, 11):
-    num = Snap.NodesGTEDegree_PNEAGraph(Graph, degree)
+    num = Snap.NodesGTEDegree(Graph, degree)
     percent_deg = float(num) / results['num_nodes']
     results['deg_gte_%d' % degree] = num
     results['deg_gte_%d_percent' % degree] = percent_deg
   
   # Check for over-weighted nodes
-  results['max_degree'] = Snap.MxDegree_PNEAGraph(Graph)
+  results['max_degree'] = Snap.MxDegree(Graph)
   
-  num = Snap.NodesGTEDegree_PNEAGraph(Graph, results['max_degree'])
+  num = Snap.NodesGTEDegree(Graph, results['max_degree'])
   results['max_degree_num'] = num
   
-  results['max_wcc_percent'] = Snap.MxWccSz_PNEAGraph(Graph) \
+  results['max_wcc_percent'] = Snap.MxWccSz(Graph) \
     / results['num_nodes']
-  results['max_scc_percent'] = Snap.MxSccSz_PNEAGraph(Graph).GetNodes() \
+  results['max_scc_percent'] = Snap.MxSccSz(Graph).GetNodes() \
     / results['num_nodes']
   
   return results
@@ -179,11 +179,11 @@ def generate_graph(NNodes, NEdges, Model, Type, Rnd):
   elif Model == 'rand_ngraph':
     Graph = Snap.GenRndGnm_PNGraph(NNodes, NEdges, 1)
       
-  elif Model == 'rand_neagraph':
-    Graph = Snap.GenRndGnm_PNEAGraph(NNodes, NEdges, 1)
+  elif Model == 'rand_neanet':
+    Graph = Snap.GenRndGnm(NNodes, NEdges, 1)
 
-  elif Model == 'syn_neagraph':
-    Graph = Snap.GenSyntheticGraph_PNEAGraph(NNodes, NEdges/NNodes,
+  elif Model == 'syn_neanet':
+    Graph = Snap.GenSyntheticGraph(NNodes, NEdges/NNodes,
                                              SYNTHETIC_DELTA)
 
   elif Model == 'syn_ngraph':
@@ -244,7 +244,7 @@ def run_tests(num_iterations=3, min_nodes_exponent=3, max_nodes_exponent=4):
           elif g in ['sw', 'pref', 'rand_ungraph']:
             Type = "undirected"
         
-          elif g in ['rand_neagraph', 'syn_neagraph']:
+          elif g in ['rand_neanet', 'syn_neanet']:
             Type = "attribute"
               
           else:
@@ -270,7 +270,7 @@ def run_tests(num_iterations=3, min_nodes_exponent=3, max_nodes_exponent=4):
                 elif Type == "undirected":
                   Graph = Snap.PUNGraph_New()
                 elif Type == "attribute":
-                  Graph = Snap.PNEAGraph_New()
+                  Graph = Snap.PNEANet_New()
 
                 Graph = Graph.Load(FIn)
                 if verbose: print "done"
@@ -282,9 +282,8 @@ def run_tests(num_iterations=3, min_nodes_exponent=3, max_nodes_exponent=4):
               except Exception, e:
                 print "Unable to load graph file, '%s': %s" % (FName, str(e))
 
-            else:
-              print "File not found: %s" % FName
-
+#            else:
+#              print "File not found: %s" % FName
             
           if not Graph:
             
@@ -310,10 +309,6 @@ def run_tests(num_iterations=3, min_nodes_exponent=3, max_nodes_exponent=4):
                     Graph.__ref__().Save(FOut)   # Save as TUNGraph or TNGraph
                     FOut.Flush()
                 if verbose: print "done"
-              else:
-                if verbose: print "Not writing graph"
-                
-                
             
             except Exception, e:
               print "Unable to generate/save graph file, '%s': %s" % \
@@ -332,7 +327,7 @@ def run_tests(num_iterations=3, min_nodes_exponent=3, max_nodes_exponent=4):
           elif Type == 'undirected':
             results = benchmark_ungraph(Graph)
           elif Type == 'attribute':
-            results = benchmark_neagraph(Graph)
+            results = benchmark_neanet(Graph)
 
           if verbose: print "done"
 
@@ -402,7 +397,6 @@ def main():
                       action="store_true", dest="write",
                       help="save graph")
 
-
   args = parser.parse_args()
 
   verbose = args.verbose
@@ -419,7 +413,6 @@ def main():
   print "Edge degree = 10^%d to 10^%d edges/node" % \
         (min_degree_edges, max_degree_edges)
 
-  
   if verbose:
     print "Hostname: %s" % HOSTNAME
   min = int(args.range.split("-")[0])
