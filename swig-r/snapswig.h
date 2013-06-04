@@ -108,18 +108,18 @@ public:
   int GetDstNId() const { return EI.GetDstNId(); }
 };
     
-class TNEAGraphNodeI {
+class TNEANetNodeI {
 private:
-  TNEAGraph::TNodeI NI;
+  TNEANet::TNodeI NI;
 public:
-  TNEAGraphNodeI() : NI() { }
-  TNEAGraphNodeI(const TNEAGraph::TNodeI& NodeI) : NI(NodeI) { }
-  TNEAGraphNodeI& operator = (const TNEAGraph::TNodeI& NodeI) { NI = NodeI; return *this; }
+  TNEANetNodeI() : NI() { }
+  TNEANetNodeI(const TNEANet::TNodeI& NodeI) : NI(NodeI) { }
+  TNEANetNodeI& operator = (const TNEANet::TNodeI& NodeI) { NI = NodeI; return *this; }
   /// Increment iterator.
-  TNEAGraphNodeI& operator++ (int) { NI++; return *this; }
-  TNEAGraphNodeI& Next() { NI++; return *this; }
-  bool operator < (const TNEAGraphNodeI& NodeI) const { return NI < NodeI.NI; }
-  bool operator == (const TNEAGraphNodeI& NodeI) const { return NI == NodeI.NI; }
+  TNEANetNodeI& operator++ (int) { NI++; return *this; }
+  TNEANetNodeI& Next() { NI++; return *this; }
+  bool operator < (const TNEANetNodeI& NodeI) const { return NI < NodeI.NI; }
+  bool operator == (const TNEANetNodeI& NodeI) const { return NI == NodeI.NI; }
   /// Returns ID of the current node.
   int GetId() const { return NI.GetId(); }
   /// Returns degree of the current node, the sum of in-degree and out-degree.
@@ -128,11 +128,11 @@ public:
   int GetInDeg() const { return NI.GetInDeg(); }
   /// Returns out-degree of the current node.
   int GetOutDeg() const { return NI.GetOutDeg(); }
-  /// Returns ID of NodeN-th in-node (the node pointing to the current node). ##TNEAGraph::TNodeI::GetInNId
+  /// Returns ID of NodeN-th in-node (the node pointing to the current node). ##TNEANet::TNodeI::GetInNId
   int GetInNId(const int& NodeN) const { return NI.GetInNId(NodeN); }
-  /// Returns ID of NodeN-th out-node (the node the current node points to). ##TNEAGraph::TNodeI::GetOutNId
+  /// Returns ID of NodeN-th out-node (the node the current node points to). ##TNEANet::TNodeI::GetOutNId
   int GetOutNId(const int& NodeN) const { return NI.GetOutNId(NodeN); }
-  /// Returns ID of NodeN-th neighboring node. ##TNEAGraph::TNodeI::GetNbrNId
+  /// Returns ID of NodeN-th neighboring node. ##TNEANet::TNodeI::GetNbrNId
   int GetNbrNId(const int& NodeN) const { return NI.GetNbrNId(NodeN); }
   /// Tests whether node with ID NId points to the current node.
   bool IsInNId(const int& NId) const { return NI.IsInNId(NId); }
@@ -143,18 +143,18 @@ public:
 };
 
 /// Edge iterator. Only forward iteration (operator++) is supported.
-class TNEAGraphEdgeI {
+class TNEANetEdgeI {
 private:
-  TNEAGraph::TEdgeI EI;
+  TNEANet::TEdgeI EI;
 public:
-  TNEAGraphEdgeI() : EI() { }
-  TNEAGraphEdgeI(const TNEAGraph::TEdgeI& EdgeI) : EI(EdgeI) { }
-  TNEAGraphEdgeI& operator = (const TNEAGraph::TEdgeI& EdgeI) { EI = EdgeI; return *this; }
+  TNEANetEdgeI() : EI() { }
+  TNEANetEdgeI(const TNEANet::TEdgeI& EdgeI) : EI(EdgeI) { }
+  TNEANetEdgeI& operator = (const TNEANet::TEdgeI& EdgeI) { EI = EdgeI; return *this; }
   /// Increment iterator.
-  TNEAGraphEdgeI& operator++ (int) { EI++; return *this; }
-  TNEAGraphEdgeI& Next() { EI++; return *this; }
-  bool operator < (const TNEAGraphEdgeI& EdgeI) const { return EI < EdgeI.EI; }
-  bool operator == (const TNEAGraphEdgeI& EdgeI) const { return EI == EdgeI.EI; }
+  TNEANetEdgeI& operator++ (int) { EI++; return *this; }
+  TNEANetEdgeI& Next() { EI++; return *this; }
+  bool operator < (const TNEANetEdgeI& EdgeI) const { return EI < EdgeI.EI; }
+  bool operator == (const TNEANetEdgeI& EdgeI) const { return EI == EdgeI.EI; }
   /// Gets edge ID. Always returns -1 since only edges in multigraphs have explicit IDs.
   int GetId() const { return EI.GetId(); }
   /// Gets the source of an edge. Since the graph is undirected this is the node with smaller ID of the edge endpoints.

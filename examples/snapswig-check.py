@@ -17,22 +17,21 @@ import unittest
 
 def GVizTest(NNodes, NEdges):
   
-  Graph = Snap.GenRndGnm_PNGraph(NNodes, NEdges, 1)
+  Graph = Snap.GenRndGnm(NNodes, NEdges, 1)
   FName = "test.png"
-  Snap.DrawGViz_PNGraph(Graph, 1, Snap.TStr(FName),
+  Snap.DrawGViz(Graph, 1, Snap.TStr(FName),
                         Snap.TStr("Snap Ringo Dot"), 1)
   
   return os.path.exists(FName)
 
 def BfsDfsTest(NNodes, NEdges):
-  Graph = Snap.GenRndGnm_PNGraph(NNodes, NEdges, 1)
+  Graph = Snap.GenRndGnm(NNodes, NEdges, 1)
   
-  Snap.GetBfsTree_PNGraph(Graph, False, False, 1)
+  Snap.GetBfsTree(Graph, False, False, 1)
   
-  G2 = Snap.GetBfsTree_PNGraph(Graph, False, False, 1)
+  G2 = Snap.GetBfsTree(Graph, False, False, 1)
   
   return G2
-
 
 class GVizTests(unittest.TestCase):
   

@@ -9,27 +9,21 @@
 #
 # Note: Uses Python format when possible (lower-case 'open'), SNAP-otherise.
 
-import sys
 import os
+import sys
 import unittest
 
-
-from darray import *
-# Turn a Python list into a C double array
-def createfromlist(l):
-  d = new_darray(len(l))
-  for i in range(0,len(l)):
-    darray_set(d,i,l[i])
-  return d
-
-# Print out some elements of an array
-def printelements(a, first, last):
-  for i in range(first,last):
-    print darray_get(a,i)
-
+sys.path.append("../swig-r")
 
 from snap import *
-import snap
+
+# Pass snap type through
+def AddIntAttrN(attr, defaultValue=0):
+
+  TNEANet.AddIntAttrN(TStr(attr), defaultValue)
+
+TNEANet.AddIntAttrN = AddIntAttrN
+
 
 def FIn(FName):
 
@@ -62,6 +56,4 @@ def Save(Graph, FName):
 
 def GetWccs(G, V):
 
-  G = snap.PNGraph()
-  G = snap.TN
-  GetWccs_PNGraph(
+  G = snap.PNGraph() 
