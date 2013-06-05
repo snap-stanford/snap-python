@@ -228,8 +228,7 @@ def ManipulateNodeEdgeAttributes():
     Graph.AddIntAttrDatN(i, 70, attr2)
 
   total = 0
-  B = Graph.BegNAIntI(attr2)
-  NI = TNEANetAIntI(B)
+  NI = Graph.BegNAIntI(attr2)
   while NI < Graph.EndNAIntI(attr2):
     total += NI.GetDat()
     NI.Next()
@@ -247,7 +246,7 @@ def ManipulateNodeEdgeAttributes():
     if EI.GetDat() != TInt.Mn:
       print "E Attribute: %s, Edge: %i, Val: %i"\
         % (attr2(), EdgeId, EI.GetDat())
-    EdgeID += 1
+    EdgeId += 1
     EI.Next()
 
   # Test vertical flt iterator for edge
