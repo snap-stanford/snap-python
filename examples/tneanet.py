@@ -151,10 +151,9 @@ def ManipulateNodeEdgeAttributes():
   NodeId = 0
   NI = Graph.BegNAIntI(attr2)
   while NI < Graph.EndNAIntI(attr2):
-    import epdb; epdb.set_trace()
-    print "In NI"
     if NI.GetDat() != 0:
-      print "Attribute: %s, Node: %i, Val: %f" % (attr2(), NI.GetId(), NI.GetDat())
+      print "Attribute: %s, Node: %i, Val: %d" % (attr2, NodeId, NI.GetDat())
+    NodeId += 1
     NI.Next()
 
   # Test vertical flt iterator for node 3, 50, 700, 900
@@ -171,9 +170,11 @@ def ManipulateNodeEdgeAttributes():
     NI.Next()
         
   NI = Graph.BegNAFltI(attr3)
+  NodeId = 0
   while NI < Graph.EndNAFltI(attr3):
     if NI.GetDat() != TFlt.Mn:
-      print "Attribute: %s, Node: %i, Val: %f" % (attr3(), NI.GetId(), NI.GetDat())
+      print "Attribute: %s, Node: %i, Val: %f" % (attr3(), NodeId, NI.GetDat())
+    NodeId += 1
     NI.Next()
 
   # Test vertical str iterator for node 3, 50, 700, 900
@@ -184,10 +185,12 @@ def ManipulateNodeEdgeAttributes():
   Graph.AddStrAttrDatN(455, TStr(""), attr1)
   NodeId = 0
 
-  NI = Graph.BegNAFltI(attr1)
-  while NI < Graph.EndNAFltI(attr1):
+  NI = Graph.BegNAStrI(attr1)
+  NodeId = 0
+  while NI < Graph.EndNAStrI(attr1):
     if NI.GetDat() != TStr.GetNullStr():
       print "Attribute: %s, Node: %i, Val: %s" % (attr1(), NodeId, NI.GetDat())
+    NodeId += 1
     NI.Next()
 
   # Test vertical iterator over many types (must skip default/deleted attr)
@@ -225,9 +228,9 @@ def ManipulateNodeEdgeAttributes():
     Graph.AddIntAttrDatN(i, 70, attr2)
 
   total = 0
-  NI = Graph.BegNAIntI(attr2)
+  B = Graph.BegNAIntI(attr2)
+  NI = TNEANetAIntI(B)
   while NI < Graph.EndNAIntI(attr2):
-    import epdb; epdb.set_trace()
     total += NI.GetDat()
     NI.Next()
 
@@ -244,9 +247,8 @@ def ManipulateNodeEdgeAttributes():
     if EI.GetDat() != TInt.Mn:
       print "E Attribute: %s, Edge: %i, Val: %i"\
         % (attr2(), EdgeId, EI.GetDat())
-    EI.Next()
     EdgeID += 1
-  
+    EI.Next()
 
   # Test vertical flt iterator for edge
   Graph.AddFltAttrE(attr3, 0.00)
@@ -276,8 +278,8 @@ def ManipulateNodeEdgeAttributes():
     if EI.GetDat() != TStr.GetNullStr():
       print "E Attribute: %s, Edge: %i, Val: %s" %\
         (attr1(), EdgeId, EI.GetDat())
-    EI.Next()
     EdgeId += 1
+    EI.Next()
 
   # Test vertical iterator over many types (must skip default/deleted attr)
   EId = 55

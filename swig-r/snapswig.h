@@ -178,10 +178,11 @@ public:
   TNEANetAIntI(const TNEANet::TAIntI& I) : IntAI(I) { }
   TNEANetAIntI& operator = (const TNEANetAIntI& I)
               { IntAI = I.IntAI; return *this; }
+  TNEANetAIntI& Next() { IntAI++; return *this; }
   bool operator < (const TNEANetAIntI& I) const { return IntAI < I.IntAI; }
   bool operator == (const TNEANetAIntI& I) const { return IntAI == I.IntAI; }
   /// Returns an attribute of the node.
-  TInt GetDat() const { return IntAI.GetDat(); }
+  int GetDat() const { return IntAI.GetDat().Val; }
   /// Returns true if node or edge has been deleted.
   bool IsDeleted() const { return IntAI.IsDeleted(); };
   TNEANetAIntI& operator++(int) { IntAI++; return *this; }
@@ -202,10 +203,11 @@ public:
   TNEANetAStrI(const TNEANet::TAStrI& I) : StrAI(I) { }
   TNEANetAStrI& operator = (const TNEANetAStrI& I)
   { StrAI = I.StrAI; return *this; }
+  TNEANetAStrI& Next() { StrAI++; return *this; }
   bool operator < (const TNEANetAStrI& I) const { return StrAI < I.StrAI; }
   bool operator == (const TNEANetAStrI& I) const { return StrAI == I.StrAI; }
   /// Returns an attribute of the node.
-  TStr GetDat() const { return StrAI.GetDat(); }
+  char * GetDat() const { return StrAI.GetDat().CStr(); }
   /// Returns true if node or edge has been deleted.
   bool IsDeleted() const { return StrAI.IsDeleted(); };
   TNEANetAStrI& operator++(int) { StrAI++; return *this; }
@@ -227,10 +229,11 @@ public:
   TNEANetAFltI(const TNEANet::TAFltI& I) : FltAI(I) { }
   TNEANetAFltI& operator = (const TNEANetAFltI& I)
   { FltAI = I.FltAI; return *this; }
+  TNEANetAFltI& Next() { FltAI++; return *this; }
   bool operator < (const TNEANetAFltI& I) const { return FltAI < I.FltAI; }
   bool operator == (const TNEANetAFltI& I) const { return FltAI == I.FltAI; }
   /// Returns an attribute of the node.
-  TFlt GetDat() const { return FltAI.GetDat(); }
+  double GetDat() const { return FltAI.GetDat().Val; }
   /// Returns true if node or edge has been deleted.
   bool IsDeleted() const { return FltAI.IsDeleted(); };
   TNEANetAFltI& operator++(int) { FltAI++; return *this; }
