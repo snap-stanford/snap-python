@@ -152,7 +152,7 @@ def ManipulateNodeEdgeAttributes():
   NI = Graph.BegNAIntI(attr2)
   while NI < Graph.EndNAIntI(attr2):
     if NI.GetDat() != 0:
-      print "Attribute: %s, Node: %i, Val: %d" % (attr2, NodeId, NI.GetDat())
+      print "Attribute: %s, Node: %i, Val: %d" % (attr2(), NodeId, NI.GetDat())
     NodeId += 1
     NI.Next()
 
@@ -228,8 +228,7 @@ def ManipulateNodeEdgeAttributes():
     Graph.AddIntAttrDatN(i, 70, attr2)
 
   total = 0
-  B = Graph.BegNAIntI(attr2)
-  NI = TNEANetAIntI(B)
+  NI = Graph.BegNAIntI(attr2)
   while NI < Graph.EndNAIntI(attr2):
     total += NI.GetDat()
     NI.Next()
@@ -247,7 +246,7 @@ def ManipulateNodeEdgeAttributes():
     if EI.GetDat() != TInt.Mn:
       print "E Attribute: %s, Edge: %i, Val: %i"\
         % (attr2(), EdgeId, EI.GetDat())
-    EdgeID += 1
+    EdgeId += 1
     EI.Next()
 
   # Test vertical flt iterator for edge
@@ -304,13 +303,13 @@ def ManipulateNodeEdgeAttributes():
 #  Graph.AttrNameEI(EId, EIdAttrName)
   AttrLen = EIdAttrName.Len()
   for i in range(AttrLen):
-    print "Vertical Edge (no str) : %i, Attr: %s" % (EId, EIdAttrName.GetI(i))
+    print "Vertical Edge (no str) : %i, Attr: %s" % (EId, EIdAttrName.GetI(i)())
 
   EIdAttrValue = TStrV()
   Graph.AttrValueEI(TInt(EId), EIdAttrValue)
   AttrLen = EIdAttrValue.Len()
   for i in range(AttrLen):
-    print "Vertical Edge (no str) : %i, Attr_Val: %s" % (EId, EIdAttrValue.GetI(i))
+    print "Vertical Edge (no str) : %i, Attr_Val: %s" % (EId, EIdAttrValue.GetI(i)())
 
   for i in range(NEdges):
     Graph.AddIntAttrDatE(i, 70, attr2)
