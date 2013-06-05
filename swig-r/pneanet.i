@@ -45,6 +45,28 @@
         TNEANetAFltI EndNAFltI(const TStr& attr) {
           return TNEANetAFltI($self->EndNAFltI(attr));
         }
+  
+        TNEANetAIntI BegEAIntI(const TStr& attr) {
+          return TNEANetAIntI($self->BegEAIntI(attr));
+        }
+        TNEANetAIntI EndEAIntI(const TStr& attr) {
+          return TNEANetAIntI($self->EndEAIntI(attr));
+        }
+        
+        TNEANetAStrI BegEAStrI(const TStr& attr) {
+          return TNEANetAStrI($self->BegEAStrI(attr));
+        }
+        TNEANetAStrI EndEAStrI(const TStr& attr) {
+          return TNEANetAStrI($self->EndEAStrI(attr));
+        }
+        
+        TNEANetAFltI BegEAFltI(const TStr& attr) {
+          return TNEANetAFltI($self->BegEAFltI(attr));
+        }
+        TNEANetAFltI EndEAFltI(const TStr& attr) {
+          return TNEANetAFltI($self->EndEAFltI(attr));
+        }
+  
 };
 
 // Convert a directed graph to a multi-edge attribute graph
