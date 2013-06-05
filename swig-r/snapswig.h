@@ -149,7 +149,8 @@ private:
 public:
   TNEANetEdgeI() : EI() { }
   TNEANetEdgeI(const TNEANet::TEdgeI& EdgeI) : EI(EdgeI) { }
-  TNEANetEdgeI& operator = (const TNEANet::TEdgeI& EdgeI) { EI = EdgeI; return *this; }
+  TNEANetEdgeI& operator = (const TNEANet::TEdgeI& EdgeI)
+                            { EI = EdgeI; return *this; }
   /// Increment iterator.
   TNEANetEdgeI& operator++ (int) { EI++; return *this; }
   TNEANetEdgeI& Next() { EI++; return *this; }
@@ -162,3 +163,78 @@ public:
   /// Gets destination of an edge. Since the graph is undirected this is the node with greater ID of the edge endpoints.
   int GetDstNId() const { return EI.GetDstNId(); }
 };
+
+typedef TIntV::TIter TIntVecIter;
+
+/// Node/Edge Attr iterator. Iterate through all node for one attr value.
+class TNEANetAIntI {
+private:
+  TNEANet::TAIntI IntAI;
+public:
+  TNEANetAIntI() : IntAI() { }
+  TNEANetAIntI(const TIntVecIter& HIter, TStr attribute, bool isEdgeIter,
+               const TNEANet* GraphPt) :
+              IntAI(HIter, attribute, isEdgeIter, GraphPt) { }
+  TNEANetAIntI(const TNEANet::TAIntI& I) : IntAI(I) { }
+  TNEANetAIntI& operator = (const TNEANetAIntI& I)
+              { IntAI = I.IntAI; return *this; }
+  bool operator < (const TNEANetAIntI& I) const { return IntAI < I.IntAI; }
+  bool operator == (const TNEANetAIntI& I) const { return IntAI == I.IntAI; }
+  /// Returns an attribute of the node.
+  TInt GetDat() const { return IntAI.GetDat(); }
+  /// Returns true if node or edge has been deleted.
+  bool IsDeleted() const { return IntAI.IsDeleted(); };
+  TNEANetAIntI& operator++(int) { IntAI++; return *this; }
+//  friend class TNEANet;
+};
+
+typedef TStrV::TIter TStrVecIter;
+
+/// Node/Edge Attr iterator. Iterate through all node for one attr value.
+class TNEANetAStrI {
+private:
+  TNEANet::TAStrI StrAI;
+public:
+  TNEANetAStrI() : StrAI() { }
+  TNEANetAStrI(const TStrVecIter& HIter, TStr attribute, bool isEdgeIter,
+               const TNEANet* GraphPt) :
+  StrAI(HIter, attribute, isEdgeIter, GraphPt) { }
+  TNEANetAStrI(const TNEANet::TAStrI& I) : StrAI(I) { }
+  TNEANetAStrI& operator = (const TNEANetAStrI& I)
+  { StrAI = I.StrAI; return *this; }
+  bool operator < (const TNEANetAStrI& I) const { return StrAI < I.StrAI; }
+  bool operator == (const TNEANetAStrI& I) const { return StrAI == I.StrAI; }
+  /// Returns an attribute of the node.
+  TStr GetDat() const { return StrAI.GetDat(); }
+  /// Returns true if node or edge has been deleted.
+  bool IsDeleted() const { return StrAI.IsDeleted(); };
+  TNEANetAStrI& operator++(int) { StrAI++; return *this; }
+  //  friend class TNEANet;
+};
+
+
+typedef TFltV::TIter TFltVecIter;
+
+/// Node/Edge Attr iterator. Iterate through all node for one attr value.
+class TNEANetAFltI {
+private:
+  TNEANet::TAFltI FltAI;
+public:
+  TNEANetAFltI() : FltAI() { }
+  TNEANetAFltI(const TFltVecIter& HIter, TStr attribute, bool isEdgeIter,
+               const TNEANet* GraphPt) :
+  FltAI(HIter, attribute, isEdgeIter, GraphPt) { }
+  TNEANetAFltI(const TNEANet::TAFltI& I) : FltAI(I) { }
+  TNEANetAFltI& operator = (const TNEANetAFltI& I)
+  { FltAI = I.FltAI; return *this; }
+  bool operator < (const TNEANetAFltI& I) const { return FltAI < I.FltAI; }
+  bool operator == (const TNEANetAFltI& I) const { return FltAI == I.FltAI; }
+  /// Returns an attribute of the node.
+  TFlt GetDat() const { return FltAI.GetDat(); }
+  /// Returns true if node or edge has been deleted.
+  bool IsDeleted() const { return FltAI.IsDeleted(); };
+  TNEANetAFltI& operator++(int) { FltAI++; return *this; }
+  //  friend class TNEANet;
+};
+
+

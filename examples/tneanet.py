@@ -151,6 +151,8 @@ def ManipulateNodeEdgeAttributes():
   NodeId = 0
   NI = Graph.BegNAIntI(attr2)
   while NI < Graph.EndNAIntI(attr2):
+    import epdb; epdb.set_trace()
+    print "In NI"
     if NI.GetDat() != 0:
       print "Attribute: %s, Node: %i, Val: %f" % (attr2(), NI.GetId(), NI.GetDat())
     NI.Next()
@@ -224,9 +226,10 @@ def ManipulateNodeEdgeAttributes():
 
   total = 0
   NI = Graph.BegNAIntI(attr2)
-#  while NI < Graph.EndNAIntI(attr2):
-#    total += NI.GetDat()
-#    NI.Next()
+  while NI < Graph.EndNAIntI(attr2):
+    import epdb; epdb.set_trace()
+    total += NI.GetDat()
+    NI.Next()
 
   print "Average: %i (should be 70)" % (total/NNodes)
 
@@ -237,12 +240,12 @@ def ManipulateNodeEdgeAttributes():
   Graph.AddIntAttrDatE(905, 905*2, attr2)
   EdgeId = 0
   EI = Graph.BegEAIntI(attr2)
-#  while EI < Graph.EndEAIntI(attr2):
-#    if EI.GetDat() != TInt.Mn:
-#    print "E Attribute: %s, Edge: %i, Val: %i"\
-#        % (attr2(), EdgeId, EI.GetDat())
-#    EI.Next()
-#    EdgeID += 1
+  while EI < Graph.EndEAIntI(attr2):
+    if EI.GetDat() != TInt.Mn:
+      print "E Attribute: %s, Edge: %i, Val: %i"\
+        % (attr2(), EdgeId, EI.GetDat())
+    EI.Next()
+    EdgeID += 1
   
 
   # Test vertical flt iterator for edge
@@ -253,13 +256,13 @@ def ManipulateNodeEdgeAttributes():
   Graph.AddFltAttrDatE(653, 654, attr3)
   EdgeId = 0
   EI = Graph.BegEAFltI(attr3)
-#  while EI < Graph.EndEAFltI(attr3):
+  while EI < Graph.EndEAFltI(attr3):
     # Check if defaults are set to 0.
-#    if EI.GetDat() != 0:
-#    print "E Attribute: %s, Edge: %i, Val: %f" % \
-#        (attr3(), EdgeId, EI.GetDat())
-#    EdgeId += 1
-#    EI.Next()
+    if EI.GetDat() != 0:
+      print "E Attribute: %s, Edge: %i, Val: %f" % \
+        (attr3(), EdgeId, EI.GetDat())
+    EdgeId += 1
+    EI.Next()
 
   # Test vertical str iterator for edge
   Graph.AddStrAttrDatE(10, TStr("abc"), attr1)
@@ -269,12 +272,12 @@ def ManipulateNodeEdgeAttributes():
   Graph.AddStrAttrDatE(455, TStr(""), attr1)
   EdgeId = 0
   EI = Graph.BegEAStrI(attr1)
-#  while EI < Graph.EndEAStrI(attr1):
-#    if EI.GetDat() != TStr.GetNullStr():
-#      print "E Attribute: %s, Edge: %i, Val: %s" %\
-#        (attr1(), EdgeId, EI.GetDat())
-#    EI.Next()
-#    EdgeId += 1
+  while EI < Graph.EndEAStrI(attr1):
+    if EI.GetDat() != TStr.GetNullStr():
+      print "E Attribute: %s, Edge: %i, Val: %s" %\
+        (attr1(), EdgeId, EI.GetDat())
+    EI.Next()
+    EdgeId += 1
 
   # Test vertical iterator over many types (must skip default/deleted attr)
   EId = 55
