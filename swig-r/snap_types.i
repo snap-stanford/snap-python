@@ -65,7 +65,6 @@
   $1 = S;
 }
 
-
 // Translate Python ints to TInt
 %typemap(in) const TInt& value {
   TInt I = PyInt_AsLong($input);

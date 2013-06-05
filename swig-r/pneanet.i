@@ -10,7 +10,6 @@
  :%s#^///.*\n:##g
 */
 
-
 %extend TNEANet {
         TNEANetNodeI BegNI() {
           return TNEANetNodeI($self->BegNI());
@@ -18,11 +17,33 @@
         TNEANetNodeI EndNI() {
           return TNEANetNodeI($self->EndNI());
         }
+  
         TNEANetEdgeI BegEI() {
           return TNEANetEdgeI($self->BegEI());
         }
         TNEANetEdgeI EndEI() {
           return TNEANetEdgeI($self->EndEI());
+        }
+  
+        TNEANetAIntI BegNAIntI(const TStr& attr) {
+          return TNEANetAIntI($self->BegNAIntI(attr));
+        }
+        TNEANetAIntI EndNAIntI(const TStr& attr) {
+          return TNEANetAIntI($self->EndNAIntI(attr));
+        }
+  
+        TNEANetAStrI BegNAStrI(const TStr& attr) {
+          return TNEANetAStrI($self->BegNAStrI(attr));
+        }
+        TNEANetAStrI EndNAStrI(const TStr& attr) {
+          return TNEANetAStrI($self->EndNAStrI(attr));
+        }
+  
+        TNEANetAFltI BegNAFltI(const TStr& attr) {
+          return TNEANetAFltI($self->BegNAFltI(attr));
+        }
+        TNEANetAFltI EndNAFltI(const TStr& attr) {
+          return TNEANetAFltI($self->EndNAFltI(attr));
         }
 };
 

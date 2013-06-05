@@ -8,7 +8,7 @@
 
 #include "Snap.h"
   
-#include "Engine.h"
+//#include "Engine.h"
 #include "snapswig.h"
 
 #include "printgraph.h"
@@ -140,7 +140,6 @@
 %include "snapswig.h"
 %include "goodgraph.cpp"
 %include "printgraph.h"
-
 %include "snap_types.i"
 
 // For TNEANet

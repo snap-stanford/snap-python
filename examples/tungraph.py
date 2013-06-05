@@ -1,7 +1,7 @@
 import random
 import sys
 
-sys.path.append("../swig")
+sys.path.append("../swig-r")
 
 import snap as Snap
 

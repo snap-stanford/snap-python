@@ -3,12 +3,12 @@
 # 
 
 # set the path to your SNAP directory here
-GITDIR = ../../snapr
+GITDIR = ../../snap
 
 include $(GITDIR)/Makefile.config
 
 SNAPDIR = $(GITDIR)/$(SNAP)
-RINGODIR = $(GITDIR)/ringo-engine
+RINGODIR = ../../ringo
 GLIBDIR = $(GITDIR)/$(GLIB)
 
 UNAME := $(shell uname)
