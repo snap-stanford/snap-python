@@ -8,8 +8,9 @@ GITDIR = ../../snap
 include $(GITDIR)/Makefile.config
 
 SNAPDIR = $(GITDIR)/$(SNAP)
-RINGODIR = ../../ringo
 GLIBDIR = $(GITDIR)/$(GLIB)
+
+RINGODIR = ../../ringo/ringo-engine
 
 UNAME := $(shell uname)
 
@@ -28,10 +29,17 @@ endif
 
 all: python
 
-python: Snap.o snap.i
-	swig -python -c++ -w302,312,317,325,362,383,384,389,401,503,508,509 -O -D_CMPWARN -I$(SNAPDIR) -I$(GLIBDIR) snap.i
+python: Snap.o Engine.o jusnap.i
+	swig -python -c++ -w302,312,317,325,362,383,384,389,401,503,508,509 -O -D_CMPWARN -I$(SNAPDIR) -I$(GLIBDIR) -I$(RINGODIR) snap.i
 	g++ $(CXXFLAGS) -c snap_wrap.cxx $(SWIGFILES) -I$(SNAPDIR) -I$(GLIBDIR) -I$(RINGODIR) -I/usr/include/python2.6 -I/usr/include/python2.7
 	g++ $(LDFLAGS) $(CXXFLAGS) snap_wrap.o Snap.o -o _snap.so
+
+#Engine.o: $(HEADER) $(CPP) $(CSNAP)/Snap.o
+#  $(CC) -c $(CXXFLAGS) Engine.cpp -I$(CSNAP) -I$(CGLIB)
+#
+#lib: Engine.o
+#  rm -f libengine.a
+#  ar -cvq libengine.a Engine.o
 
 Snap.o: 
 	$(CC) $(CXXFLAGS) -c $(SNAPDIR)/Snap.cpp -I$(SNAPDIR) -I$(GLIBDIR)
