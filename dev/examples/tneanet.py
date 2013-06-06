@@ -1,6 +1,6 @@
 import random
 import sys
-sys.path.append("../swig")
+sys.path.append("../swig-r")
 from snap import *
 
 def PrintGStats(s, Graph):

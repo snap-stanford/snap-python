@@ -1,4 +1,4 @@
-# Directed graph: data/p2p-Gnutella08.txt 
+# Directed graph: p2p-Gnutella08.txt 
 # epinions
 # Nodes: 6301 Edges: 20777
 # FromNodeId	ToNodeId
