@@ -4,7 +4,7 @@
 
 all: tneanet epinions
 
-epinions: p2p-Gnutella08.txt
+epinions: 
 	python printstat.py data/p2p-Gnutella08.txt epinions
 
 tneanet:
