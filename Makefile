@@ -2,17 +2,14 @@
 #	Top level Python SNAP Makefile
 #
 
-.PHONY: swig-r test examples
+.PHONY: swig test examples
 
 #all: swig-r swig-sw test examples
-all: swig-r test examples
+all: swig test examples
 
 # run SWIG and create Python interface code
-swig-r:
-	make -C swig-r
-
-swig-sw:
-	make -C swig-sw
+swig:
+	make -C swig
 
 # run tests
 test:
@@ -22,7 +19,7 @@ examples:
 	make -C examples
   
 clean:
-	make -C swig-r clean
-	make -C swig-sw clean
+	make -C swig clean
+	make -C swig clean
 	make -C test clean
 	make -C examples clean

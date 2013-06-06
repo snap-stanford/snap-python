@@ -1,6 +1,3 @@
-# printstat.py
-# python printstat.py data/p2p-Gnutella08.txt p2p
-
 import os
 import sys
 
@@ -21,5 +18,5 @@ if __name__ == '__main__':
     tlabel = snap.TStr(os.path.splitext(gname)[0])
     theader = snap.TStr(header)
 
-    g = snap.LoadEdgeList(tname, 0, 1)
-    snap.PrintGraphStatTable(g,tlabel,theader)
+    g = snap.LoadEdgeList_PNGraph(tname, 0, 1)
+    snap.PrintGraphStatTable_PNGraph(g,tlabel,theader)

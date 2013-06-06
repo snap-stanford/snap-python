@@ -2,7 +2,7 @@
 #	Makefile for running 
 #
 
-all: benchmark tneanet
+all: benchmark, tneanet
 
 benchmark:
 	python benchmark.py

@@ -8,7 +8,7 @@
 
 #include "Snap.h"
   
-//#include "Engine.h"
+#include "Engine.h"
 #include "snapswig.h"
 
 #include "printgraph.h"
@@ -95,6 +95,8 @@
 // glib-core
 %include "ds.h"
 %include "dt.h"
+
+%include "Engine.h"
 
 %extend TVec {
 

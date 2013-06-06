@@ -4,13 +4,13 @@ from socket import gethostname
 import argparse
 from datetime import datetime
 
-sys.path.append("../swig-r")
+sys.path.append("../swig")
 import snap as Snap
 from glob import glob
 
 NUM_ITERATIONS = 1
 PROPERTY_TYPES = [1, 10]  # 1=Triads, 10=BFS
-DEFAULT_TYPES = "rmat,rand_ngraph,rand_neagraph,rand_negraph"      #   Comma separated
+DEFAULT_TYPES = "rmat,rand_ngraph,rand_neanet,rand_negraph"      #   Comma separated
 
 # Random, Small World, Pref, R-MAT
 # Graph types:
@@ -25,7 +25,7 @@ DEFAULT_RANGE = '5-7'   # Exponent (e.g. 10^x to 10^y)
 DEFAULT_NODES_MIN = 10**5
 
 VERBOSE = False
-DEFAULT_TIME_MIN = 1.0
+DEFAULT_TIME_MIN = 0.0
 
 AVG_DEG = 3
 AVG_DEGREE_RANGE = range(2, 10)
@@ -151,7 +151,8 @@ def main():
                       action="store_true", dest="verbose",
                       help="increase output verbosity")
   
-  parser.add_argument("-d", "--results_dir", help="results directory")
+  parser.add_argument("-d", "--results_dir", help="results directory",
+                      default=RESULTS_DIR)
   
   parser.add_argument("-m", "--time_min", type=float,
                       default=DEFAULT_TIME_MIN,
@@ -160,7 +161,8 @@ def main():
   parser.add_argument("-t", "--graph_types", default=DEFAULT_TYPES,
                       help='''
                         Graph types, comma separated.
-                        Available: rand_ungraph, rand_ngraph, rmat, pref, sw''')
+                        Available: rand_ungraph, rand_ngraph, rand_neanet rmat, 
+                        pref, sw''')
   
   args = parser.parse_args()
   
@@ -189,5 +191,3 @@ def main():
   
 if __name__ == "__main__":
   main()
-
-                      

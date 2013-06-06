@@ -42,7 +42,7 @@ from socket import gethostname
 from time import clock
 from datetime import datetime
 
-sys.path.append("../swig")
+sys.path.append("../swig-r")
 import snap as Snap
 
 PROPERTY_TYPES = [1, 10]  # 1=Triads, 10=BFS
