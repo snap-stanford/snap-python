@@ -3,7 +3,7 @@ import sys
 import time
 
 sys.path.append("/home/rok/git/rok/snapworld")
-import snap as Snap
+import snap
 
 if __name__ == '__main__':
 
@@ -13,8 +13,8 @@ if __name__ == '__main__':
 
     fname = sys.argv[1]
 
-    FIn = Snap.TFIn(Snap.TStr(fname))
-    Vec = Snap.TIntV(FIn)
+    FIn = snap.TFIn(snap.TStr(fname))
+    Vec = snap.TIntV(FIn)
     print "len", Vec.Len()
 
     Vec.Sort()

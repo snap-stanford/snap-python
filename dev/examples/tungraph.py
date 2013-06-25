@@ -3,7 +3,7 @@ import sys
 
 sys.path.append("../swig-r")
 
-import snap as Snap
+import snap
 
 def PrintGStats(s, Graph):
     '''
@@ -19,7 +19,7 @@ def DefaultConstructor():
     Test the default constructor
     '''
 
-    Graph = Snap.TUNGraph()
+    Graph = snap.TUNGraph()
     PrintGStats("DefaultConstructor:Graph",Graph)
 
 def ManipulateNodesEdges():
@@ -31,7 +31,7 @@ def ManipulateNodesEdges():
     NEdges = 100000
     FName = "test.graph"
 
-    Graph = Snap.TUNGraph()
+    Graph = snap.TUNGraph()
     t = Graph.Empty()
 
     # create the nodes
@@ -84,13 +84,13 @@ def ManipulateNodesEdges():
     PrintGStats("ManipulateNodesEdges:Graph3",Graph1)
 
     # save the graph
-    FOut = Snap.TFOut(Snap.TStr(FName))
+    FOut = snap.TFOut(snap.TStr(FName))
     Graph.Save(FOut)
     FOut.Flush()
 
     # load the graph
-    FIn = Snap.TFIn(Snap.TStr(FName))
-    Graph2 = Snap.TUNGraph(FIn)
+    FIn = snap.TFIn(snap.TStr(FName))
+    Graph2 = snap.TUNGraph(FIn)
     PrintGStats("ManipulateNodesEdges:Graph4",Graph2)
 
     # remove all the nodes and edges
@@ -108,7 +108,7 @@ def GetSmallGraph():
     Test small graph
     '''
 
-    Graph = Snap.TUNGraph()
+    Graph = snap.TUNGraph()
     Graph.GetSmallGraph()
     PrintGStats("GetSmallGraph:Graph",Graph)
 

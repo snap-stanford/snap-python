@@ -25,7 +25,7 @@ from time import clock
 from datetime import datetime
 
 sys.path.append("../swig-r")
-import snap as Snap
+import snap
 
 PROPERTY_TYPES = [1, 10]  # 1=Triads, 10=BFS
 
@@ -70,30 +70,30 @@ def generate_graph(NNodes, NEdges, Model, Rnd):
   Graph = None
   if Model == 'rand_ungraph':
     # GnRndGnm returns error, so manually generate
-    Graph = Snap.GenRndGnm_PUNGraph(NNodes, NEdges, 0)
+    Graph = snap.GenRndGnm_PUNGraph(NNodes, NEdges, 0)
 
   elif Model == 'rand_ngraph':
-    Graph = Snap.GenRndGnm_PNGraph(NNodes, NEdges, 1)
+    Graph = snap.GenRndGnm_PNGraph(NNodes, NEdges, 1)
       
   elif Model == 'rand_neagraph':
-    Graph = Snap.GenRndGnm_PNEANet(NNodes, NEdges, 1)
+    Graph = snap.GenRndGnm_PNEANet(NNodes, NEdges, 1)
 
   elif Model == 'syn_neagraph':
-    Graph = Snap.GenSyntheticGraph_PNEANet(NNodes, NEdges/NNodes,
+    Graph = snap.GenSyntheticGraph_PNEANet(NNodes, NEdges/NNodes,
                                              SYNTHETIC_DELTA)
 
   elif Model == 'syn_ngraph':
-    Graph = Snap.GenSyntheticGraph_PNGraph(NNodes, NEdges/NNodes,
+    Graph = snap.GenSyntheticGraph_PNGraph(NNodes, NEdges/NNodes,
                                              SYNTHETIC_DELTA)
 
   elif Model == 'rmat':
-    Graph = Snap.GenRMat(NNodes, NEdges, 0.40, 0.25, 0.2, Rnd)
+    Graph = snap.GenRMat(NNodes, NEdges, 0.40, 0.25, 0.2, Rnd)
 
   elif Model == 'sw':
-    Graph = Snap.GenSmallWorld(NNodes, NNodes/NEdges, 0.1)
+    Graph = snap.GenSmallWorld(NNodes, NNodes/NEdges, 0.1)
   
   elif Model == 'pref':
-    Graph = Snap.GenPrefAttach(NNodes, NNodes/NEdges)
+    Graph = snap.GenPrefAttach(NNodes, NNodes/NEdges)
 
   else:
     print "Unknown model: %s" % Model
@@ -113,7 +113,7 @@ def convert_graph(Graph, TypeSrc, TypeDst):
   
   if TypeSrc == 'ngraph' and TypeDst == 'neagraph':
 
-    GraphOut = Snap.ConvertGraph_PNGraphToPNEANet(Graph)
+    GraphOut = snap.ConvertGraph_PNGraphToPNEANet(Graph)
   
   else:
     print "Unable to convert: %s to %s" % (TypeSrc, TypeDst)
@@ -136,7 +136,7 @@ def run(nodes_exp, edges_exp, InputModel, OutputType):
     print "Running results from %e to %e" % (min_nodes_exponent,
                                            max_nodes_exponent)
 
-  Rnd = Snap.TRnd()
+  Rnd = snap.TRnd()
 
   # Random number of nodes of degree i
   NNodes = 10**nodes_exp

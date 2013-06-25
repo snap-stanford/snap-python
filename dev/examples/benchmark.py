@@ -43,7 +43,7 @@ from time import clock
 from datetime import datetime
 
 sys.path.append("../swig-r")
-import snap as Snap
+import snap
 
 PROPERTY_TYPES = [1, 10]  # 1=Triads, 10=BFS
 
@@ -88,20 +88,20 @@ def benchmark_ngraph(Graph):
   results['num_edges'] = Graph.GetEdges()
   
   for degree in range(0, 11):
-    num = Snap.NodesGTEDegree_PNGraph(Graph, degree)
+    num = snap.NodesGTEDegree_PNGraph(Graph, degree)
     percent_deg = float(num) / results['num_nodes']
     results['deg_gte_%d' % degree] = num
     results['deg_gte_%d_percent' % degree] = percent_deg
 
   # Check for over-weighted nodes
-  results['max_degree'] = Snap.MxDegree_PNGraph(Graph)
+  results['max_degree'] = snap.MxDegree_PNGraph(Graph)
 
-  num = Snap.NodesGTEDegree_PNGraph(Graph, results['max_degree'])
+  num = snap.NodesGTEDegree_PNGraph(Graph, results['max_degree'])
   results['max_degree_num'] = num
   
-  results['max_wcc_percent'] = Snap.MxWccSz_PNGraph(Graph) \
+  results['max_wcc_percent'] = snap.MxWccSz_PNGraph(Graph) \
     / results['num_nodes']
-  results['max_scc_percent'] = Snap.MxSccSz_PNGraph(Graph).GetNodes() \
+  results['max_scc_percent'] = snap.MxSccSz_PNGraph(Graph).GetNodes() \
     / results['num_nodes']
 
   return results
@@ -116,19 +116,19 @@ def benchmark_ungraph(Graph):
   results['num_edges'] = Graph.GetEdges()
   
   for degree in range(0,11):
-    num = Snap.NodesGTEDegree_PUNGraph(Graph, degree)
+    num = snap.NodesGTEDegree_PUNGraph(Graph, degree)
     percent_deg = float(num) / results['num_nodes']
     results['deg_gte_%d' % degree] = num
     results['deg_gte_%d_percent' % degree] = percent_deg
   
   # Check for over-weighted nodes
-  results['max_degree'] = Snap.MxDegree_PUNGraph(Graph)
+  results['max_degree'] = snap.MxDegree_PUNGraph(Graph)
   
-  num = Snap.NodesGTEDegree_PUNGraph(Graph, results['max_degree'])
+  num = snap.NodesGTEDegree_PUNGraph(Graph, results['max_degree'])
   results['max_degree_num'] = num
-  results['max_wcc_percent'] = Snap.MxWccSz_PUNGraph(Graph) \
+  results['max_wcc_percent'] = snap.MxWccSz_PUNGraph(Graph) \
                                 / results['num_nodes']
-  results['max_scc_percent'] = Snap.MxSccSz_PUNGraph(Graph).GetNodes() \
+  results['max_scc_percent'] = snap.MxSccSz_PUNGraph(Graph).GetNodes() \
                                 / results['num_nodes']
 
   # TODO: Calculate graph skew
@@ -144,20 +144,20 @@ def benchmark_neanet(Graph):
   results['num_edges'] = Graph.GetEdges()
   
   for degree in range(0, 11):
-    num = Snap.NodesGTEDegree(Graph, degree)
+    num = snap.NodesGTEDegree(Graph, degree)
     percent_deg = float(num) / results['num_nodes']
     results['deg_gte_%d' % degree] = num
     results['deg_gte_%d_percent' % degree] = percent_deg
   
   # Check for over-weighted nodes
-  results['max_degree'] = Snap.MxDegree(Graph)
+  results['max_degree'] = snap.MxDegree(Graph)
   
-  num = Snap.NodesGTEDegree(Graph, results['max_degree'])
+  num = snap.NodesGTEDegree(Graph, results['max_degree'])
   results['max_degree_num'] = num
   
-  results['max_wcc_percent'] = Snap.MxWccSz(Graph) \
+  results['max_wcc_percent'] = snap.MxWccSz(Graph) \
     / results['num_nodes']
-  results['max_scc_percent'] = Snap.MxSccSz(Graph).GetNodes() \
+  results['max_scc_percent'] = snap.MxSccSz(Graph).GetNodes() \
     / results['num_nodes']
   
   return results
@@ -174,30 +174,30 @@ def generate_graph(NNodes, NEdges, Model, Type, Rnd):
     
   if Model == 'rand_ungraph':
     # GnRndGnm returns error, so manually generate
-    Graph = Snap.GenRndGnm_PUNGraph(NNodes, NEdges, 0)
+    Graph = snap.GenRndGnm_PUNGraph(NNodes, NEdges, 0)
 
   elif Model == 'rand_ngraph':
-    Graph = Snap.GenRndGnm_PNGraph(NNodes, NEdges, 1)
+    Graph = snap.GenRndGnm_PNGraph(NNodes, NEdges, 1)
       
   elif Model == 'rand_neanet':
-    Graph = Snap.GenRndGnm(NNodes, NEdges, 1)
+    Graph = snap.GenRndGnm(NNodes, NEdges, 1)
 
   elif Model == 'syn_neanet':
-    Graph = Snap.GenSyntheticGraph(NNodes, NEdges/NNodes,
+    Graph = snap.GenSyntheticGraph(NNodes, NEdges/NNodes,
                                              SYNTHETIC_DELTA)
 
   elif Model == 'syn_ngraph':
-    Graph = Snap.GenSyntheticGraph_PNGraph(NNodes, NEdges/NNodes,
+    Graph = snap.GenSyntheticGraph_PNGraph(NNodes, NEdges/NNodes,
                                              SYNTHETIC_DELTA)
 
   elif Model == 'rmat':
-    Graph = Snap.GenRMat(NNodes, NEdges, 0.40, 0.25, 0.2, Rnd)
+    Graph = snap.GenRMat(NNodes, NEdges, 0.40, 0.25, 0.2, Rnd)
 
   elif Model == 'sw':
-    Graph = Snap.GenSmallWorld(NNodes, NNodes/NEdges, 0.1)
+    Graph = snap.GenSmallWorld(NNodes, NNodes/NEdges, 0.1)
   
   elif Model == 'pref':
-    Graph = Snap.GenPrefAttach(NNodes, NNodes/NEdges)
+    Graph = snap.GenPrefAttach(NNodes, NNodes/NEdges)
 
   return Graph
 
@@ -210,7 +210,7 @@ def run_tests(num_iterations=3, min_nodes_exponent=3, max_nodes_exponent=4):
     print "Running results from %e to %e" % (min_nodes_exponent,
                                            max_nodes_exponent)
 
-  Rnd = Snap.TRnd()
+  Rnd = snap.TRnd()
 
   for exp in range(min_nodes_exponent,max_nodes_exponent+1):
     
@@ -264,13 +264,13 @@ def run_tests(num_iterations=3, min_nodes_exponent=3, max_nodes_exponent=4):
                   print "Loading '%s' from ...'%s'" % (g, FName),
                   sys.stdout.flush()
 
-                FIn = Snap.TFIn(Snap.TStr(FName))
+                FIn = snap.TFIn(snap.TStr(FName))
                 if Type == "directed":
-                  Graph = Snap.PNGraph_New()
+                  Graph = snap.PNGraph_New()
                 elif Type == "undirected":
-                  Graph = Snap.PUNGraph_New()
+                  Graph = snap.PUNGraph_New()
                 elif Type == "attribute":
-                  Graph = Snap.PNEANet_New()
+                  Graph = snap.PNEANet_New()
 
                 Graph = Graph.Load(FIn)
                 if verbose: print "done"
@@ -305,7 +305,7 @@ def run_tests(num_iterations=3, min_nodes_exponent=3, max_nodes_exponent=4):
                   sys.stdout.flush()
                           
                 if Graph:
-                    FOut = Snap.TFOut(Snap.TStr(FName))
+                    FOut = snap.TFOut(snap.TStr(FName))
                     Graph.__ref__().Save(FOut)   # Save as TUNGraph or TNGraph
                     FOut.Flush()
                 if verbose: print "done"

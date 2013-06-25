@@ -10,26 +10,26 @@
 
 import sys
 sys.path.append("../swig-r")
-import snap as Snap
+import snap
 
 import os
 import unittest
 
 def GVizTest(NNodes, NEdges):
   
-  Graph = Snap.GenRndGnm(NNodes, NEdges, 1)
+  Graph = snap.GenRndGnm(NNodes, NEdges, 1)
   FName = "test.png"
-  Snap.DrawGViz(Graph, 1, Snap.TStr(FName),
-                        Snap.TStr("Snap Ringo Dot"), 1)
+  snap.DrawGViz(Graph, 1, snap.TStr(FName),
+                        snap.TStr("Snap Ringo Dot"), 1)
   
   return os.path.exists(FName)
 
 def BfsDfsTest(NNodes, NEdges):
-  Graph = Snap.GenRndGnm(NNodes, NEdges, 1)
+  Graph = snap.GenRndGnm(NNodes, NEdges, 1)
   
-  Snap.GetBfsTree(Graph, False, False, 1)
+  snap.GetBfsTree(Graph, False, False, 1)
   
-  G2 = Snap.GetBfsTree(Graph, False, False, 1)
+  G2 = snap.GetBfsTree(Graph, False, False, 1)
   
   return G2
 

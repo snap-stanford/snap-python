@@ -7,7 +7,7 @@ import argparse
 
 sys.path.append("../swig-r")
 
-import snap as Snap
+import snap
 
 min_nodes_exponent = 1
 max_nodes_exponent = 4
@@ -44,21 +44,21 @@ def calc_stats():
             NEdges = NNodes * choice(AVG_DEGREE_RANGE)
       
           print "%s graph: NNodes=%.2e, %.2e" % \
-                (Snap.GetGraphDesc(g), NNodes, NEdges)
+                (snap.GetGraphDesc(g), NNodes, NEdges)
       
-          fname = "%s%s" % (Snap.GetGraphAbbr(g),
+          fname = "%s%s" % (snap.GetGraphAbbr(g),
                             'deg%d' % AVG_DEG if avg else '')
           # Repeat for all graph types
           for j in PROPERTY_TYPES:
-            print "Calculating %s..." % Snap.GetAttributeDesc(j)
-            t = Snap.GetStats(NNodes, NEdges, j, g)
-            f = open('%s/%s_%s.txt' % (results_dir, Snap.GetAttributeAbbr(j),
+            print "Calculating %s..." % snap.GetAttributeDesc(j)
+            t = snap.GetStats(NNodes, NEdges, j, g)
+            f = open('%s/%s_%s.txt' % (results_dir, snap.GetAttributeAbbr(j),
                                        fname),
                      'a')
             f.write("%d %d %.5f\n" % (NNodes, NEdges, t))
 
             f_all = open('%s/%s_all.txt' % (results_dir,
-                                            Snap.GetAttributeAbbr(j)),
+                                            snap.GetAttributeAbbr(j)),
                          'a')
             f_all.write("%d %d %.5f\n" % (NNodes, NEdges, t))
   
@@ -84,20 +84,20 @@ def plot_2d(property):
   figure()
   for g in GRAPH_TYPES:
     
-    fname = '%s/%s_%sdeg%d.txt' % (results_dir, Snap.GetAttributeAbbr(property),
-                                   Snap.GetGraphAbbr(g), AVG_DEG)
+    fname = '%s/%s_%sdeg%d.txt' % (results_dir, snap.GetAttributeAbbr(property),
+                                   snap.GetGraphAbbr(g), AVG_DEG)
     A = loadtxt(fname)
     A = sort(A,0)
     Y = A[:,-1]     # Last column
     X = A[:,:-1]    # Columns 0-(n-1)
     
-    loglog(X[:,0], Y, 'o', label=Snap.GetGraphDesc(g))
+    loglog(X[:,0], Y, 'o', label=snap.GetGraphDesc(g))
     
     legend(loc='lower right')
     xlabel('Num Nodes (d_avg = %.1f)' % AVG_DEG)
     ylabel('time')
-    title('%s runtime (avg degree = %d)' % (Snap.GetAttributeDesc(property), AVG_DEG))
-    pname = '%s/plot2d_%s.png' % (results_dir, Snap.GetAttributeAbbr(property))
+    title('%s runtime (avg degree = %d)' % (snap.GetAttributeDesc(property), AVG_DEG))
+    pname = '%s/plot2d_%s.png' % (results_dir, snap.GetAttributeAbbr(property))
     print "Saving figure %s" % pname
     savefig(pname)
 
@@ -109,8 +109,8 @@ def plot_3d(property):
   ax = fig3d.add_subplot(111, projection='3d')
   
   for g in GRAPH_TYPES:
-    fname = '%s/%s_%s.txt' % (results_dir, Snap.GetAttributeAbbr(property),
-                              Snap.GetGraphAbbr(g))
+    fname = '%s/%s_%s.txt' % (results_dir, snap.GetAttributeAbbr(property),
+                              snap.GetGraphAbbr(g))
     
     if not os.path.exists(fname):
       print "No such file: %s" % fname
@@ -125,12 +125,12 @@ def plot_3d(property):
     Nodes = X[:,0]
     Edges = X[:,1]
     ax.plot(Nodes,Edges,Y,'o',
-           label="%s-%s" % (Snap.GetAttributeAbbr(property),
-                            Snap.GetGraphAbbr(g)))
+           label="%s-%s" % (snap.GetAttributeAbbr(property),
+                            snap.GetGraphAbbr(g)))
   
   ax.set_xlabel('# of nodes', fontsize=9)
   ax.set_ylabel('# of edges', fontsize=9)
-  ax.set_zlabel('Run time %s (sec)' % Snap.GetAttributeAbbr(property),
+  ax.set_zlabel('Run time %s (sec)' % snap.GetAttributeAbbr(property),
                 fontsize=9)
   ax.legend()
 
@@ -142,8 +142,8 @@ def plot_3d(property):
 #  ax.w_yaxis.set_scale('log')
 #  ax.set_zscale('log')
 #  ax.auto_scale_xyz([0, max(Nodes)], [0, max(Edges)], [0, max(Y)])
-#  ax.title("%s run time" % Snap.GetAttributeAbbr(property))
-  pname = '%s/plot3d_%s.png' % (results_dir, Snap.GetAttributeAbbr(property))
+#  ax.title("%s run time" % snap.GetAttributeAbbr(property))
+  pname = '%s/plot3d_%s.png' % (results_dir, snap.GetAttributeAbbr(property))
   print "Saving figure %s" % pname
 
   fig3d.savefig(pname)
@@ -200,7 +200,7 @@ def plot_residuals(property):
     figure()
     
     # All graphs
-    fname = '%s/%s_all.txt' % (results_dir, Snap.GetAttributeAbbr(property))
+    fname = '%s/%s_all.txt' % (results_dir, snap.GetAttributeAbbr(property))
 
     A = loadtxt(fname)
     A = sort(A,0)
@@ -215,13 +215,13 @@ def plot_residuals(property):
     desc = 'all'
     abbr = 'all'
 
-    print "Fitting %s for %s" % (Snap.GetAttributeDesc(property), desc)
+    print "Fitting %s for %s" % (snap.GetAttributeDesc(property), desc)
 
-    fname = '%s/coeff_%s.txt' % (results_dir, Snap.GetAttributeAbbr(property))
+    fname = '%s/coeff_%s.txt' % (results_dir, snap.GetAttributeAbbr(property))
     f = open(fname, 'w')
 
     cname = '%s/coeff_%s.txt' % (combined_dir,
-                                 Snap.GetAttributeAbbr(property))
+                                 snap.GetAttributeAbbr(property))
     combined_file = open(cname, 'a+')
   
 
@@ -239,7 +239,7 @@ def plot_residuals(property):
   
   
     title('Residual error for approx. of run-time, %s (%s)' %
-          (Snap.GetAttributeDesc(property).title(), desc))
+          (snap.GetAttributeDesc(property).title(), desc))
     xscale('log')
     yscale('symlog')
     grid(True)
@@ -247,7 +247,7 @@ def plot_residuals(property):
     ylabel('Residual')
     legend(loc='lower right')
     pname = '%s/residuals_%s_%s.png' % (results_dir,
-                                        Snap.GetAttributeAbbr(property),
+                                        snap.GetAttributeAbbr(property),
                                         abbr)
     print "Saving figure %s" % pname
     savefig(pname)

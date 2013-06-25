@@ -20,6 +20,5 @@ examples:
   
 clean:
 	make -C swig clean
-	make -C swig clean
 	make -C test clean
 	make -C examples clean

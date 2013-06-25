@@ -4,12 +4,12 @@ import sys
 import time
 
 sys.path.append("../swig")
-import snap as Snap
+import snap
 
 numnodes = 100
 valrange = numnodes / 5
 
-Edges = Snap.TIntV()
+Edges = snap.TIntV()
 
 for i in range(0,numnodes):
     Edges.Add(int(random.random() * valrange))
@@ -19,8 +19,8 @@ for i in range(0,numnodes,2):
     #print "Edges", i/2, Edges.GetVal(i).Val, Edges.GetVal(i+1).Val
     d[(Edges.GetVal(i).Val,Edges.GetVal(i+1).Val)] = 1
 
-Hash = Snap.TIntH()
-#Snap.Edge2Hash(Edges,Hash)
+Hash = snap.TIntH()
+#snap.Edge2Hash(Edges,Hash)
 
 Hash.AddDat(3,5)
 Hash.AddDat(4,6)
@@ -50,9 +50,9 @@ while not Iter.IsEnd():
 
 sys.exit(0)
 
-AdjLists = Snap.TIntIntVH()
+AdjLists = snap.TIntIntVH()
 print "type", type(Edges), type(AdjLists)
-Snap.GetAdjLists(Edges, AdjLists)
+snap.GetAdjLists(Edges, AdjLists)
 
 size = 0
 for i in range(0,valrange):
@@ -66,24 +66,24 @@ print "done", Edges.Len(), AdjLists.Len(), size, len(d)
 
 sys.exit(0)
 
-#print "dir(Snap.TIntV)", dir(Snap.TIntV)
-Vec1 = Snap.TIntV(numnodes)
+#print "dir(snap.TIntV)", dir(snap.TIntV)
+Vec1 = snap.TIntV(numnodes)
 #print "dir(Vec1)", dir(Vec1)
 print "Len Vec1", Vec1.Len()
 
-#print "dir(Snap.TIntIntVV)", dir(Snap.TIntIntVV)
-Vec2 = Snap.TIntIntVV(numtask)
+#print "dir(snap.TIntIntVV)", dir(snap.TIntIntVV)
+Vec2 = snap.TIntIntVV(numtask)
 #print "dir(Vec2)", dir(Vec2)
 print "Len Vec2", Vec2.Len()
 
 print "Vec1", type(Vec1)
 
-Snap.GetDegrees(Vec1, 10.0, 1.5)
+snap.GetDegrees(Vec1, 10.0, 1.5)
 
 for i in range(0,Vec1.Len()):
     print "Vec1", i, Vec1.GetVal(i).Val
 
-Snap.AssignRndTask(Vec1, Vec2)
+snap.AssignRndTask(Vec1, Vec2)
 
 for i in range(0,Vec2.Len()):
     Vec3 = Vec2.GetVal(i)

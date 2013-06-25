@@ -5,7 +5,7 @@ import argparse
 from datetime import datetime
 
 sys.path.append("../swig")
-import snap as Snap
+import snap
 from glob import glob
 
 NUM_ITERATIONS = 1
@@ -125,20 +125,20 @@ def plot_2d(property):
   figure()
   for g in GRAPH_TYPES:
     
-    fname = '%s/%s_%sdeg%d.txt' % (results_dir, Snap.GetAttributeAbbr(property),
-                                   Snap.GetGraphAbbr(g), AVG_DEG)
+    fname = '%s/%s_%sdeg%d.txt' % (results_dir, snap.GetAttributeAbbr(property),
+                                   snap.GetGraphAbbr(g), AVG_DEG)
     A = loadtxt(fname)
     A = sort(A,0)
     Y = A[:,-1]     # Last column
     X = A[:,:-1]    # Columns 0-(n-1)
     
-    loglog(X[:,0], Y, 'o', label=Snap.GetGraphDesc(g))
+    loglog(X[:,0], Y, 'o', label=snap.GetGraphDesc(g))
     
     legend(loc='lower right')
     xlabel('Num Nodes (d_avg = %.1f)' % AVG_DEG)
     ylabel('time')
-    title('%s runtime (avg degree = %d)' % (Snap.GetAttributeDesc(property), AVG_DEG))
-    pname = '%s/plot2d_%s.png' % (results_dir, Snap.GetAttributeAbbr(property))
+    title('%s runtime (avg degree = %d)' % (snap.GetAttributeDesc(property), AVG_DEG))
+    pname = '%s/plot2d_%s.png' % (results_dir, snap.GetAttributeAbbr(property))
     print "Saving figure %s" % pname
     savefig(pname)
 
@@ -191,3 +191,4 @@ def main():
   
 if __name__ == "__main__":
   main()
+

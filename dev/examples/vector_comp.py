@@ -11,14 +11,14 @@
 
 import sys
 sys.path.append("../swig-r")
-import snap as Snap
+import snap
 import timeit
 import cProfile
 
 # Python conversion of Python list to SNAP vector
 def PyListToTIntV(pylist):
   
-  v = Snap.TIntV()
+  v = snap.TIntV()
   for i in pylist:
     v.Add(i)
 
@@ -26,7 +26,7 @@ def PyListToTIntV(pylist):
 
 # C++ conversion of Python list to SNAP vector
 def SwigPyList(pylist):
-  v = Snap.PyToTIntV(pylist)
+  v = snap.PyToTIntV(pylist)
   return v
 
 def main():
@@ -45,7 +45,7 @@ def main():
   #print "Converted %d values\n" % v2.Len()
   
   setup = """\
-import snap as Snap 
+import snap
 from __main__ import PyListToTIntV, SwigPyList
 pylist = range(%d)
 """ % n
