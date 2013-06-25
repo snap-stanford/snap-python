@@ -25,7 +25,7 @@ snap-python
 		$ cd examples
 		$ python benchmark.py -h
 		usage: benchmark.py [-h] [-v] [-r RANGE] [-e EDGES_DEG] [-d] [-t GRAPH_TYPES]
-                    		     [-n NUM_ITERATIONS] [-o OUTPUT_FILE] [-g] [-w]
+                    		    [-n NUM_ITERATIONS] [-o OUTPUT_FILE] [-g] [-w]
 
 		optional arguments:
 		  -h, --help            show this help message and exit
@@ -45,7 +45,7 @@ snap-python
 		                        file to output results
 		  -g, --generate        generate new graphs
 		  -w, --write_graph     save graph
-		$ python benchmark.py -v -g -r 4-6	# needs about 4.3GB RAM and 3 min to run
+		$ python benchmark.py -v -g -r 4-6	# needs about 4.3GB RAM and 4 min to run
 
 
 SWIG Installation
