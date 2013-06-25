@@ -14,7 +14,7 @@ snap-python
 		cd snap-python
 		make
 
-	From a Python interpreter, you should be able to run:
+	From a Python interpreter, you should be able to import `snap` module:
 
 		$ python
 		>>> import sys
