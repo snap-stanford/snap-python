@@ -20,7 +20,7 @@ snap-python
 		>>> sys.path.append("swig")
 		>>> import snap
 
-3. There are some examples in the `python` directory.  For example, to run benchmarks:
+3. There are some examples in the `examples` directory.  For example, to run benchmarks:
 
 		$ cd examples
 		$ python benchmark.py -h
