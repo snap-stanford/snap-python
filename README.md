@@ -7,7 +7,6 @@ snap-python
 
 		git clone git@github.com:snap-stanford/snap-python.git
 		git clone git@github.com:snap-stanford/snap.git
-		cd snap-python
 
 2. Then, run `make` from the top-level of `snap-python`. This will make the SNAP code into a Python module, using SWIG.  Finally, it will run some Python tests in the `test` directory.
 
@@ -18,23 +17,35 @@ snap-python
 
 		$ python
 		>>> import sys
-		>>> sys.path.append("../swig")
+		>>> sys.path.append("swig")
 		>>> import snap
 
 3. There are some examples in the `python` directory.  For example, to run benchmarks:
 
+		$ cd examples
 		$ python benchmark.py -h
-		usage: benchmark.py [-h] [-v] [-r RANGE] [-n NUM_ITERATIONS] [-g]
-		
+		usage: benchmark.py [-h] [-v] [-r RANGE] [-e EDGES_DEG] [-d] [-t GRAPH_TYPES]
+                    		     [-n NUM_ITERATIONS] [-o OUTPUT_FILE] [-g] [-w]
+
 		optional arguments:
 		  -h, --help            show this help message and exit
 		  -v, --verbose         increase output verbosity
 		  -r RANGE, --range RANGE
-		                        range (4-5) (10^4 to 10^5 nodes)
+		                        range (4-6) (10^4 to 10^6 nodes)
+		  -e EDGES_DEG, --edges_deg EDGES_DEG
+		                        range of degrees (e.g "2-3" => (10^1 to 10^3 edges per
+		                        node)
+		  -d, --deterministic   deterministic benchmark
+		  -t GRAPH_TYPES, --graph_types GRAPH_TYPES
+		                        Graph types, comma separated. Available: rand_ungraph,
+		                        rand_ngraph, rmat, pref, sw
 		  -n NUM_ITERATIONS, --num_iterations NUM_ITERATIONS
 		                        number of iterations
+		  -o OUTPUT_FILE, --output_file OUTPUT_FILE
+		                        file to output results
 		  -g, --generate        generate new graphs
-		$ python benchmark.py -v -g -r 4-7
+		  -w, --write_graph     save graph
+		$ python benchmark.py -v -g -r 4-6	# needs about 4.3GB RAM and 3 min to run
 
 
 SWIG Installation
@@ -42,9 +53,9 @@ SWIG Installation
 
 ### Linux
 
-Follow the instructions from SWIG's website: download, configure and make, [SWIG files](http://www.swig.org/download.html).  Or, use your built-in installer:
+Follow the instructions from SWIG's website: download, configure and make, [SWIG files](http://www.swig.org/download.html).  Or, use your built-in installer (a CentOS example):
 
-	sudo yum install swig.i386
+	sudo yum install swig
 
 ### Mac OS X
 
