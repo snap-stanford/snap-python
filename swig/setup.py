@@ -10,6 +10,11 @@ import sys
 
 from distutils.core import setup, Extension
 
+snap_version = "0.1"
+python_version = "py" + str(sys.version_info[0]) + "." + str(sys.version_info[1])
+os_version = "centos6.2"
+arch = "x64"
+
 snap_module = Extension(
     '_snap',
     sources = ['snap_wrap.cxx'],
@@ -39,7 +44,7 @@ setup (name = 'snap',
     py_modules = ["snap"],
     #ext_modules = [snap_module],
     data_files = [(user_install, ["_snap.so"])],
-    version = '0.1',
+    version = "-".join([snap_version, os_version, arch, python_version]),
     author      = "snap.stanford.edu",
     description = """SNAP (Stanford Network Analysis Platform) Python""",
     )
