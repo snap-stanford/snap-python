@@ -25,7 +25,7 @@ snap-python
 		$ cd examples
 		$ python benchmark.py -h
 		usage: benchmark.py [-h] [-v] [-r RANGE] [-e EDGES_DEG] [-d] [-t GRAPH_TYPES]
-                    		    [-n NUM_ITERATIONS] [-o OUTPUT_FILE] [-g] [-w]
+		                    [-n NUM_ITERATIONS] [-o OUTPUT_FILE] [-g] [-w]
 
 		optional arguments:
 		  -h, --help            show this help message and exit
