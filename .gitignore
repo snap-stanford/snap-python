@@ -4,7 +4,7 @@
 *.so
 
 # Swig files
-*.cxx
+swig/*.cxx
 swig/snap.py
 
 # Packages
