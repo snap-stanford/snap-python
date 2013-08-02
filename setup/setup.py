@@ -24,7 +24,7 @@ try:
     content = f.read()
     f.close()
     w = content.split("-")
-    snap_version += "-" + w[1]
+    snap_version += "-" + w[1].strip()
 except:
     pass
 
@@ -32,20 +32,43 @@ except:
 python_version = "py" + str(sys.version_info[0]) + "." + str(sys.version_info[1])
 
 # os version
-try:
-    f = open("/etc/centos-release","r")
-except:
-    f = open("/etc/redhat-release","r")
+uname = platform.uname()
+os_version = "unknown-x.x"
 
-content = f.read()
-f.close()
-w = content.split(" ")
-os_version = (w[0] + w[2]).lower()
+if uname[0] == "Linux":
+    try:
+        f = open("/etc/centos-release","r")
+    except:
+        try:
+            f = open("/etc/redhat-release","r")
+        except:
+            pass
+
+    try:
+        content = f.read()
+        f.close()
+        w = content.split(" ")
+        os_version = (w[0] + w[2]).lower()
+    except:
+        pass
+elif uname[0] == "Darwin":
+    os.system("sw_vers -productVersion > OSX-Release")
+    try:
+        f = open("OSX-Release","r")
+        content = f.read()
+        f.close()
+        os_version = "macosx" + content.strip()
+    except:
+        pass
+
+elif uname[0].find("CYGWIN") == 0:
+    w = uname[0].rsplit("-",1)
+    os_version = w[0].lower()
 
 # architecture
-uname = platform.uname()
 arch = "i386"
-if uname[-1] == "x86_64":
+# x86_64 on Linux, Mac OS X, i686 on Cygwin
+if uname[4] == "x86_64"  or  uname[4] == "i686":
     arch = "x64"
 
 pkg_version = "-".join([snap_version, os_version, arch, python_version])
@@ -74,7 +97,7 @@ for p in sys.path:
 #   setup configuration
 #
 
-setup (name = 'snappy',
+setup (name = 'snap',
     py_modules  = ["snap"],
     #ext_modules = [snap_module],
     data_files  = [(user_install, ["_snap.so"])],
