@@ -25,7 +25,7 @@ python_version = "py" + str(sys.version_info[0]) + "." + str(sys.version_info[1]
 
 # os version
 uname = platform.uname()
-os_version = "x.x"
+os_version = "unknown-x.x"
 
 if uname[0] == "Linux":
     try:
@@ -54,15 +54,20 @@ elif uname[0] == "Darwin":
     except:
         pass
 
+elif uname[0].find("CYGWIN") == 0:
+    w = uname[0].rsplit("-",1)
+    os_version = w[0].lower()
+
 # architecture
 arch = "i386"
-if uname[4] == "x86_64":
+# x86_64 on Linux, Mac OS X, i686 on Cygwin
+if uname[4] == "x86_64"  or  uname[4] == "i686":
     arch = "x64"
 
 pkg_version = "-".join([snap_version, os_version, arch, python_version])
 
-#print "pkg_version", pkg_version
-#sys.exit(0)
+print "pkg_version", pkg_version
+sys.exit(0)
 
 #
 #   get the installation directory
