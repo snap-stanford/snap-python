@@ -24,20 +24,39 @@ snap_version = "0.1"
 python_version = "py" + str(sys.version_info[0]) + "." + str(sys.version_info[1])
 
 # os version
-try:
-    f = open("/etc/centos-release","r")
-except:
-    f = open("/etc/redhat-release","r")
+uname = platform.uname()
+os_version = "x.x"
 
-content = f.read()
-f.close()
-w = content.split(" ")
-os_version = (w[0] + w[2]).lower()
+if uname[0] == "Linux":
+    try:
+        f = open("/etc/centos-release","r")
+    except:
+        try:
+            f = open("/etc/redhat-release","r")
+        except:
+            pass
+    
+    try:
+        content = f.read()
+        f.close()
+        w = content.split(" ")
+        os_version = (w[0] + w[2]).lower()
+    except:
+        pass
+
+elif uname[0] == "Darwin":
+    os.system("sw_vers -productVersion > OSX-Release")
+    try:
+        f = open("OSX-Release","r")
+        content = f.read()
+        f.close()
+        os_version = "macosx" + content.strip()
+    except:
+        pass
 
 # architecture
-uname = platform.uname()
 arch = "i386"
-if uname[-1] == "x86_64":
+if uname[4] == "x86_64":
     arch = "x64"
 
 pkg_version = "-".join([snap_version, os_version, arch, python_version])
