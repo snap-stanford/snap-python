@@ -16,9 +16,18 @@ from distutils.core import setup, Extension
 #   determine package parameters:
 #       snap-py version, python version, os version, architecture
 #
+snappy_version = "0.1"
 
 # snap-py version
-snap_version = "0.1"
+snap_version = "dev"
+try:
+    f = open("Version","r")
+    content = f.read()
+    f.close()
+    w = content.split("-")
+    snap_version = w[1].strip()
+except:
+    pass
 
 # python version
 python_version = "py" + str(sys.version_info[0]) + "." + str(sys.version_info[1])
@@ -35,7 +44,7 @@ if uname[0] == "Linux":
             f = open("/etc/redhat-release","r")
         except:
             pass
-    
+
     try:
         content = f.read()
         f.close()
@@ -43,7 +52,6 @@ if uname[0] == "Linux":
         os_version = (w[0] + w[2]).lower()
     except:
         pass
-
 elif uname[0] == "Darwin":
     os.system("sw_vers -productVersion > OSX-Release")
     try:
@@ -64,10 +72,11 @@ arch = "i386"
 if uname[4] == "x86_64"  or  uname[4] == "i686":
     arch = "x64"
 
-pkg_version = "-".join([snap_version, os_version, arch, python_version])
+pkg_version = "-".join([snappy_version, snap_version,
+                        os_version, arch, python_version])
 
-print "pkg_version", pkg_version
-sys.exit(0)
+#print "pkg_version", pkg_version
+#sys.exit(0)
 
 #
 #   get the installation directory

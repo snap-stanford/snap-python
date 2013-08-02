@@ -19,11 +19,11 @@ include ../Makefile.config
 all: _snap.so
 
 snap_wrap.o: snap_wrap.cxx
-	@if ! diff Version $(GITDIR)/Version >/dev/null ; then echo "*** Error: SNAP versions do not match"; exit 1; fi
+	@if [ -r Version ] &&  ! diff Version $(GITDIR)/Version >/dev/null ; then echo "*** Error: SNAP versions do not match"; exit 1; fi
 	g++ $(CXXFLAGS) -c snap_wrap.cxx -I$(SWIGDIR) -I$(SNAPDIR) -I$(GLIBDIR)  -I/usr/include/python2.6 -I/usr/include/python2.7
 
 Snap.o: 
-	@if ! diff Version $(GITDIR)/Version >/dev/null ; then echo "*** Error: SNAP versions do not match"; exit 1; fi
+	@if [ -r Version ] &&  ! diff Version $(GITDIR)/Version >/dev/null ; then echo "*** Error: SNAP versions do not match"; exit 1; fi
 	$(CC) $(CXXFLAGS) -c $(SNAPDIR)/Snap.cpp -I$(SNAPDIR) -I$(GLIBDIR)
 
 _snap.so: snap_wrap.o Snap.o

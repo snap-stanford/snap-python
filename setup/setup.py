@@ -16,15 +16,16 @@ from distutils.core import setup, Extension
 #   determine package parameters:
 #       snap-py version, python version, os version, architecture
 #
+snappy_version = "0.1"
 
 # snap-py version
-snap_version = "0.1"
+snap_version = "dev"
 try:
     f = open("Version","r")
     content = f.read()
     f.close()
     w = content.split("-")
-    snap_version += "-" + w[1].strip()
+    snap_version = w[1].strip()
 except:
     pass
 
@@ -71,7 +72,8 @@ arch = "i386"
 if uname[4] == "x86_64"  or  uname[4] == "i686":
     arch = "x64"
 
-pkg_version = "-".join([snap_version, os_version, arch, python_version])
+pkg_version = "-".join([snappy_version, snap_version,
+                        os_version, arch, python_version])
 
 #print "pkg_version", pkg_version
 #sys.exit(0)
