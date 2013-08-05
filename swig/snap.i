@@ -7,13 +7,8 @@
 %{
 
 #include "Snap.h"
-<<<<<<< HEAD
-#include "snapsw.h"
-#include "printgraph.h"
-=======
   
 /* #include "Engine.h" */
->>>>>>> upstream/master
 #include "snapswig.h"
 
 #include "printgraph.h"
@@ -70,25 +65,10 @@
 %ignore THash< TInt, TVec< TInt, int > >::HashPrimeT;
 %ignore THash< TInt, TVec< TInt, int > >::AddDatId;
 
-<<<<<<< HEAD
-%ignore TVec<TVec<TInt, int>, int>::Add;
-%ignore TVec<TVec<TInt, int>, int>::AddMerged;
-
-%ignore THash< TInt, TVec< TInt, int > >::AddDat;
-%ignore THash< TInt, TVec< TInt, int > >::HashPrimeT;
-%ignore THash< TInt, TVec< TInt, int > >::AddDatId;
-
-=======
->>>>>>> upstream/master
 %ignore THash< TInt, TInt, TDefaultHashFunc<TInt> >::HashPrimeT;
 %ignore THash< TInt, TInt, TDefaultHashFunc<TInt> >::AddDatId;
 %ignore THash< TInt, TInt>::HashPrimeT;
 
-<<<<<<< HEAD
-%include "bd.h"
-%include "dt.h"
-%include "ds.h"
-=======
 // SNAP Library
 // snap-core
 %include "alg.h"
@@ -99,19 +79,10 @@
 %include "cmty.h"
 %include "cncom.h"
 %include "ff.h"
->>>>>>> upstream/master
 %include "fl.h"
 %include "graph.h"
 %include "gsvd.h"
 %include "gio.h"
-<<<<<<< HEAD
-%include "hash.h"
-%include "ggen.h"
-
-%include "snapsw.h"
-%include "printgraph.h"
-%include "snapswig.h"
-=======
 %include "gviz.h"
 %include "hash.h"
 %include "kcore.h"
@@ -119,7 +90,6 @@
 %include "subgraph.h"
 %include "util.h"
 %include "triad.h"
->>>>>>> upstream/master
 
 #define GLib_UNIX
 // glib-core
@@ -160,44 +130,6 @@
 %template(TIntH) THash<TInt, TInt>;
 %template(TIntHI) THashKeyDatI < TInt, TInt >;
 
-<<<<<<< HEAD
-%extend TVec {
-
-        TSizeTy Add(int Val) {
-                return $self->Add(TInt(Val));
-        }
-
-        TSizeTy AddMerged(int Val) {
-                return $self->AddMerged(TInt(Val));
-        }
-};
-
-%extend THash {
-        int AddKey(int Val) {
-                return $self->AddKey(TInt(Val));
-        }
-        int IsKey(int Val) {
-                return $self->IsKey(TInt(Val));
-        }
-        TDat& GetDat(int Val) {
-                return $self->GetDat(TInt(Val));
-        }
-        TDat& AddDat(int Key, int Val) {
-                return $self->AddDat(TInt(Key),TInt(Val));
-        }
-}
-
-%template(TIntV) TVec< TInt, int >;
-%template(TIntIntVV) TVec< TVec< TInt, int >, int >;
-%template(TIntIntVH) THash< TInt, TVec< TInt, int > >;
-%template(TIntH) THash<TInt, TInt>;
-%template(TIntHI) THashKeyDatI < TInt, TInt >;
-
-%template(PNGraph) TPt< TNGraph >;
-%template(LoadEdgeList_PNGraph) TSnap::LoadEdgeList<PNGraph>;
-%template(GenRndGnm_PNGraph) TSnap::GenRndGnm<PNGraph>;
-%template(PrintGraphStatTable_PNGraph) PrintGraphStatTable<PNGraph>;
-=======
 %template(TStrV) TVec< TStr, int >;
 
 // Python-SNAP conversion typemaps
@@ -208,7 +140,6 @@
 
 // For TNEANet
 %include "network.h"
->>>>>>> upstream/master
 
 /* Graph templates - include other SWIG interface types here. */
 %include "pneanet.i"
