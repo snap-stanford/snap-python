@@ -3,6 +3,10 @@
 # C extensions
 *.so
 
+# Swig files
+swig/*.cxx
+swig/snap.py
+
 # Packages
 *.egg
 *.egg-info
@@ -33,3 +37,12 @@ nosetests.xml
 .mr.developer.cfg
 .project
 .pydevproject
+
+#test/results*
+
+swig-2.0.9/
+
+test/*.eps
+test/*.plt
+test/*.tab
+test/info
