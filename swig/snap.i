@@ -143,3 +143,7 @@
 
 /* Graph templates - include other SWIG interface types here. */
 %include "pneanet.i"
+%include "pngraph.i"
+%include "pungraph.i"
+%include "pgraph.i"
+

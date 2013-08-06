@@ -172,3 +172,4 @@
 // anf.h - PNEANet
 %template(GetAnf) TSnap::GetAnf<PNEANet>;
 %template(GetAnfEffDiam) TSnap::GetAnfEffDiam<PNEANet>;
+
