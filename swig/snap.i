@@ -1,7 +1,11 @@
 // snap.i
 
-//   The multi-attribute network graph type, PNEANet is instantiated, along
-//   with standard SNAP functions.
+//   PNEANet, PUNGraph, PNGraph are supported,
+//     along with standard SNAP functions.
+
+%pythoncode %{
+Version = "0.2"
+%}
 
 %module snap
 %{
@@ -143,3 +147,7 @@
 
 /* Graph templates - include other SWIG interface types here. */
 %include "pneanet.i"
+%include "pngraph.i"
+%include "pungraph.i"
+%include "pgraph.i"
+

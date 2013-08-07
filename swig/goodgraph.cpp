@@ -1,5 +1,7 @@
 #include "Snap.h"
 
+// TODO: move declarations to goodgraph.h
+
 using namespace TSnap;
   
 typedef TVec<TInt, int> TIntV;
@@ -68,3 +70,4 @@ double PercentMxScc(const PGraph& Graph) {
   
   return (double) MxSccSz->GetNodes() / (double) Graph->GetNodes();
 }
+
