@@ -1,5 +1,5 @@
 // pneanet.i
-// Templates for SNAP Ringo
+// Templates for SNAP TNEANet, PNEANet
 //
 
 /*
@@ -73,103 +73,111 @@
 //%template(ConvertGraphToPNEANet) ConvertGraph<PNEANet, PNGraph>;
 
 // Use PNEANet as default function name.
-%template(PercentDegree) PercentDegree<PNEANet>;
-%template(PercentMxWcc) PercentMxWcc<PNEANet>;
-%template(PercentMxScc) PercentMxScc<PNEANet>;
 
-%template(LoadEdgeList) TSnap::LoadEdgeList<PNEANet>;
-%template(PrintGraphStatTable) PrintGraphStatTable<PNEANet>;
-%template(GenRndGnm) TSnap::GenRndGnm<PNEANet>;
+%template(LoadEdgeList_PNEANet) TSnap::LoadEdgeList<PNEANet>;
+%template(PrintGraphStatTable_PNEANet) PrintGraphStatTable<PNEANet>;
 
-%template(NodesGTEDegree) NodesGTEDegree<PNEANet>;
-%template(MxDegree) MxDegree<PNEANet>;
-%template(MxSccSz) TSnap::GetMxScc<PNEANet>;
-%template(MxWccSz) TSnap::GetMxWccSz<PNEANet>;
-%template(MxDegree) MxDegree<PNEANet>;
+//%template(MxSccSz_PNEANet) TSnap::GetMxScc<PNEANet>;
+//%template(MxWccSz_PNEANet) TSnap::GetMxWccSz<PNEANet>;
 // End Basic Directed Graphs
 
 
 // Basic PNEANets
 %template(PNEANet) TPt< TNEANet >;
-%template(GenRndGnm) TSnap::GenRndGnm<PNEANet>;
-%template(NodesGTEDegree) NodesGTEDegree<PNEANet>;
-%template(MxDegree) MxDegree<PNEANet>;
 
 
 // cncom.h - PNEANet
-%template(GetNodeWcc) TSnap::GetNodeWcc<PNEANet>;
-%template(IsConnected) TSnap::IsConnected<PNEANet>;
-%template(IsWeaklyConn) TSnap::IsWeaklyConn<PNEANet>;
-%template(GetWccSzCnt) TSnap::GetWccSzCnt<PNEANet>;
-%template(GetWccs) TSnap::GetWccs<PNEANet>;
-%template(GetSccSzCnt) TSnap::GetSccSzCnt<PNEANet>;
-%template(GetSccs) TSnap::GetSccs<PNEANet>;
-%template(GetMxWccSz) TSnap::GetMxWccSz<PNEANet>;
+%template(GetNodeWcc_PNEANet) TSnap::GetNodeWcc<PNEANet>;
+%template(IsConnected_PNEANet) TSnap::IsConnected<PNEANet>;
+%template(IsWeaklyConn_PNEANet) TSnap::IsWeaklyConn<PNEANet>;
+%template(GetWccSzCnt_PNEANet) TSnap::GetWccSzCnt<PNEANet>;
+%template(GetWccs_PNEANet) TSnap::GetWccs<PNEANet>;
+%template(GetSccSzCnt_PNEANet) TSnap::GetSccSzCnt<PNEANet>;
+%template(GetSccs_PNEANet) TSnap::GetSccs<PNEANet>;
+%template(GetMxWccSz_PNEANet) TSnap::GetMxWccSz<PNEANet>;
 
-%template(GetMxWcc) TSnap::GetMxWcc<PNEANet>;
-%template(GetMxScc) TSnap::GetMxScc<PNEANet>;
-%template(GetMxBiCon) TSnap::GetMxBiCon<PNEANet>;
+%template(GetMxWcc_PNEANet) TSnap::GetMxWcc<PNEANet>;
+%template(GetMxScc_PNEANet) TSnap::GetMxScc<PNEANet>;
+%template(GetMxBiCon_PNEANet) TSnap::GetMxBiCon<PNEANet>;
 
 
 // alg.h - PNEANet
-%template(CntInDegNodes) TSnap::CntInDegNodes<PNEANet>;
-%template(CntOutDegNodes) TSnap::CntOutDegNodes<PNEANet>;
-%template(CntDegNodes) TSnap::CntDegNodes<PNEANet>;
-%template(CntNonZNodes) TSnap::CntNonZNodes<PNEANet>;
-%template(CntEdgesToSet) TSnap::CntEdgesToSet<PNEANet>;
+%template(CntInDegNodes_PNEANet) TSnap::CntInDegNodes<PNEANet>;
+%template(CntOutDegNodes_PNEANet) TSnap::CntOutDegNodes<PNEANet>;
+%template(CntDegNodes_PNEANet) TSnap::CntDegNodes<PNEANet>;
+%template(CntNonZNodes_PNEANet) TSnap::CntNonZNodes<PNEANet>;
+%template(CntEdgesToSet_PNEANet) TSnap::CntEdgesToSet<PNEANet>;
 
-%template(GetMxDegNId) TSnap::GetMxDegNId<PNEANet>;
-%template(GetMxInDegNId) TSnap::GetMxInDegNId<PNEANet>;
-%template(GetMxOutDegNId) TSnap::GetMxOutDegNId<PNEANet>;
+%template(GetMxDegNId_PNEANet) TSnap::GetMxDegNId<PNEANet>;
+%template(GetMxInDegNId_PNEANet) TSnap::GetMxInDegNId<PNEANet>;
+%template(GetMxOutDegNId_PNEANet) TSnap::GetMxOutDegNId<PNEANet>;
 
-%template(GetInDegCnt) TSnap::GetInDegCnt<PNEANet>;
-%template(GetOutDegCnt) TSnap::GetOutDegCnt<PNEANet>;
-%template(GetDegCnt) TSnap::GetDegCnt<PNEANet>;
-%template(GetDegSeqV) TSnap::GetDegSeqV<PNEANet>;
+%template(GetInDegCnt_PNEANet) TSnap::GetInDegCnt<PNEANet>;
+%template(GetOutDegCnt_PNEANet) TSnap::GetOutDegCnt<PNEANet>;
+%template(GetDegCnt_PNEANet) TSnap::GetDegCnt<PNEANet>;
+%template(GetDegSeqV_PNEANet) TSnap::GetDegSeqV<PNEANet>;
 
-%template(GetNodeInDegV) TSnap::GetNodeInDegV<PNEANet>;
-%template(GetNodeOutDegV) TSnap::GetNodeOutDegV<PNEANet>;
+%template(GetNodeInDegV_PNEANet) TSnap::GetNodeInDegV<PNEANet>;
+%template(GetNodeOutDegV_PNEANet) TSnap::GetNodeOutDegV<PNEANet>;
 
-%template(CntUniqUndirEdges) TSnap::CntUniqUndirEdges<PNEANet>;
-%template(CntUniqDirEdges) TSnap::CntUniqDirEdges<PNEANet>;
-%template(CntUniqBiDirEdges) TSnap::CntUniqBiDirEdges<PNEANet>;
-%template(CntSelfEdges) TSnap::CntSelfEdges<PNEANet>;
+%template(CntUniqUndirEdges_PNEANet) TSnap::CntUniqUndirEdges<PNEANet>;
+%template(CntUniqDirEdges_PNEANet) TSnap::CntUniqDirEdges<PNEANet>;
+%template(CntUniqBiDirEdges_PNEANet) TSnap::CntUniqBiDirEdges<PNEANet>;
+%template(CntSelfEdges_PNEANet) TSnap::CntSelfEdges<PNEANet>;
 
 
 // bfsdfs.h - PNEANet
-%template(GetBfsTree) TSnap::GetBfsTree<PNEANet>;
-%template(GetSubTreeSz) TSnap::GetSubTreeSz<PNEANet>;
-%template(GetNodesAtHop) TSnap::GetNodesAtHop<PNEANet>;
-%template(GetNodesAtHops) TSnap::GetNodesAtHops<PNEANet>;
+%template(GetBfsTree_PNEANet) TSnap::GetBfsTree<PNEANet>;
+%template(GetSubTreeSz_PNEANet) TSnap::GetSubTreeSz<PNEANet>;
+%template(GetNodesAtHop_PNEANet) TSnap::GetNodesAtHop<PNEANet>;
+%template(GetNodesAtHops_PNEANet) TSnap::GetNodesAtHops<PNEANet>;
 // Shortest paths
-%template(GetShortPath) TSnap::GetShortPath<PNEANet>;
+%template(GetShortPath_PNEANet) TSnap::GetShortPath<PNEANet>;
 // Diameter
-%template(GetBfsFullDiam) TSnap::GetBfsFullDiam<PNEANet>;
-%template(GetBfsEffDiam) TSnap::GetBfsEffDiam<PNEANet>;
+%template(GetBfsFullDiam_PNEANet) TSnap::GetBfsFullDiam<PNEANet>;
+%template(GetBfsEffDiam_PNEANet) TSnap::GetBfsEffDiam<PNEANet>;
 
 
 // drawgviz.h
-%template(DrawGViz) TSnap::DrawGViz<PNEANet>;
+%template(DrawGViz_PNEANet) TSnap::DrawGViz<PNEANet>;
+
+
+// ggen.h
+%template(GenGrid_PNEANet) TSnap::GenGrid<PNEANet>;
+%template(GenStar_PNEANet) TSnap::GenStar<PNEANet>;
+%template(GenCircle_PNEANet) TSnap::GenCircle<PNEANet>;
+%template(GenFull_PNEANet) TSnap::GenFull<PNEANet>;
+%template(GenTree_PNEANet) TSnap::GenTree<PNEANet>;
+%template(GenBaraHierar_PNEANet) TSnap::GenBaraHierar<PNEANet>;
+%template(GenRndGnm_PNEANet) TSnap::GenRndGnm<PNEANet>;
+
 
 // triad.h - PNEANet
-%template(GetClustCf) TSnap::GetClustCf<PNEANet>;
-%template(GetNodeClustCf) TSnap::GetNodeClustCf<PNEANet>;
+%template(GetClustCf_PNEANet) TSnap::GetClustCf<PNEANet>;
+%template(GetNodeClustCf_PNEANet) TSnap::GetNodeClustCf<PNEANet>;
+%template(GetTriads_PNEANet) TSnap::GetTriads<PNEANet>;
+%template(GetTriadEdges_PNEANet) TSnap::GetTriadEdges<PNEANet>;
+//%template(GetNodeTriads_PNEANet) TSnap::GetNodeTriads<PNEANet>;
+%template(GetTriadParticip_PNEANet) TSnap::GetTriadParticip<PNEANet>;
 
-%template(GetTriads) TSnap::GetTriads<PNEANet>;
-%template(GetTriadEdges) TSnap::GetTriadEdges<PNEANet>;
-//%template(GetNodeTriads) TSnap::GetNodeTriads<PNEANet>;
-%template(GetTriadParticip) TSnap::GetTriadParticip<PNEANet>;
-
-%template(GetCmnNbrs) TSnap::GetCmnNbrs<PNEANet>;
-//%template(GetLen2Paths) TSnap::GetLen2Paths<PNEANet>;
+%template(GetCmnNbrs_PNEANet) TSnap::GetCmnNbrs<PNEANet>;
+//%template(GetLen2Paths_PNEANet) TSnap::GetLen2Paths<PNEANet>;
 
 
 // cmty.h - PNEANet
-%template(GetModularity) TSnap::GetModularity<PNEANet>;
-%template(GetEdgesInOut) TSnap::GetEdgesInOut<PNEANet>;
+%template(GetModularity_PNEANet) TSnap::GetModularity<PNEANet>;
+%template(GetEdgesInOut_PNEANet) TSnap::GetEdgesInOut<PNEANet>;
 
 
 // anf.h - PNEANet
-%template(GetAnf) TSnap::GetAnf<PNEANet>;
-%template(GetAnfEffDiam) TSnap::GetAnfEffDiam<PNEANet>;
+%template(GetAnf_PNEANet) TSnap::GetAnf<PNEANet>;
+%template(GetAnfEffDiam_PNEANet) TSnap::GetAnfEffDiam<PNEANet>;
+
+
+// goodgraph.cpp - PNEANet
+%template(PercentDegree_PNEANet) PercentDegree<PNEANet>;
+%template(NodesGTEDegree_PNEANet) NodesGTEDegree<PNEANet>;
+%template(MxDegree_PNEANet) MxDegree<PNEANet>;
+%template(PercentMxWcc_PNEANet) PercentMxWcc<PNEANet>;
+%template(PercentMxScc_PNEANet) PercentMxScc<PNEANet>;
 

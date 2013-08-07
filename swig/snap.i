@@ -1,7 +1,11 @@
 // snap.i
 
-//   The multi-attribute network graph type, PNEANet is instantiated, along
-//   with standard SNAP functions.
+//   PNEANet, PUNGraph, PNGraph are supported,
+//     along with standard SNAP functions.
+
+%pythoncode %{
+Version = "0.2"
+%}
 
 %module snap
 %{
