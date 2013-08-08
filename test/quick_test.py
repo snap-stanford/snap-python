@@ -1,5 +1,7 @@
 import snap
 
+print "Version", snap.Version
+
 i = snap.TInt(5)
 
 if i == 5:
