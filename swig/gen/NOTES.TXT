@@ -1,0 +1,22 @@
+#
+# generate the Python dispatch table
+#
+
+# add new functions to types.txt
+
+# generate flist.txt
+cat types.txt | grep -v "^#" | cut -f 2 > flist.txt
+
+# generate a dispatch table for each type
+awk -f f.awk -v g=PUNGraph flist.txt > dispatch-pungraph.txt
+awk -f f.awk -v g=PNGraph flist.txt > dispatch-pngraph.txt
+awk -f f.awk -v g=PNEANet flist.txt > dispatch-pneanet.txt
+
+# combine the dispatch tables
+cat dispatch-pungraph.txt dispatch-pngraph.txt dispatch-pneanet.txt > dispatch.txt
+
+# generate the Python code
+python gendispatch.py types.txt dispatch.txt > out-20130807.txt
+
+# include output out-20130807.txt in ../pgraph.i
+

@@ -1,6 +1,14 @@
 # __cons__ constructors, no object parameters
 # __func__ functions, the first parameter is an object
 __cons__	LoadEdgeList
+__cons__	LoadEdgeListStr
+__cons__	LoadConnList
+__cons__	LoadConnListStr
+__cons__	LoadPajek
+__func__	SaveEdgeList
+__func__	SavePajek
+__func__	SaveMatlabSparseMtx
+__func__	SaveGViz
 __func__	PrintGraphStatTable
 __func__	MxSccSz
 __func__	MxWccSz

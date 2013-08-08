@@ -74,7 +74,6 @@
 
 // Use PNEANet as default function name.
 
-%template(LoadEdgeList_PNEANet) TSnap::LoadEdgeList<PNEANet>;
 %template(PrintGraphStatTable_PNEANet) PrintGraphStatTable<PNEANet>;
 
 //%template(MxSccSz_PNEANet) TSnap::GetMxScc<PNEANet>;
@@ -150,6 +149,18 @@
 %template(GenTree_PNEANet) TSnap::GenTree<PNEANet>;
 %template(GenBaraHierar_PNEANet) TSnap::GenBaraHierar<PNEANet>;
 %template(GenRndGnm_PNEANet) TSnap::GenRndGnm<PNEANet>;
+
+
+// gio.h
+%template(LoadEdgeList_PNEANet) TSnap::LoadEdgeList<PNEANet>;
+%template(LoadEdgeListStr_PNEANet) TSnap::LoadEdgeListStr<PNEANet>;
+%template(LoadConnList_PNEANet) TSnap::LoadConnList<PNEANet>;
+%template(LoadConnListStr_PNEANet) TSnap::LoadConnListStr<PNEANet>;
+%template(LoadPajek_PNEANet) TSnap::LoadPajek<PNEANet>;
+%template(SaveEdgeList_PNEANet) TSnap::SaveEdgeList<PNEANet>;
+%template(SavePajek_PNEANet) TSnap::SavePajek<PNEANet>;
+%template(SaveMatlabSparseMtx_PNEANet) TSnap::SaveMatlabSparseMtx<PNEANet>;
+%template(SaveGViz_PNEANet) TSnap::SaveGViz<PNEANet>;
 
 
 // triad.h - PNEANet

@@ -26,7 +26,6 @@ TUNGraphEdgeI.GetId = GetId
 
 // Basic Undirected Graphs
 
-%template(LoadEdgeList_PUNGraph) TSnap::LoadEdgeList<PUNGraph>;
 %template(PrintGraphStatTable_PUNGraph) PrintGraphStatTable<PUNGraph>;
 
 //%template(MxSccSz_PUNGraph) TSnap::GetMxScc<PUNGraph>;
@@ -100,6 +99,18 @@ TUNGraphEdgeI.GetId = GetId
 %template(GenTree_PUNGraph) TSnap::GenTree<PUNGraph>;
 %template(GenBaraHierar_PUNGraph) TSnap::GenBaraHierar<PUNGraph>;
 %template(GenRndGnm_PUNGraph) TSnap::GenRndGnm<PUNGraph>;
+
+
+// gio.h
+%template(LoadEdgeList_PUNGraph) TSnap::LoadEdgeList<PUNGraph>;
+%template(LoadEdgeListStr_PUNGraph) TSnap::LoadEdgeListStr<PUNGraph>;
+%template(LoadConnList_PUNGraph) TSnap::LoadConnList<PUNGraph>;
+%template(LoadConnListStr_PUNGraph) TSnap::LoadConnListStr<PUNGraph>;
+%template(LoadPajek_PUNGraph) TSnap::LoadPajek<PUNGraph>;
+%template(SaveEdgeList_PUNGraph) TSnap::SaveEdgeList<PUNGraph>;
+%template(SavePajek_PUNGraph) TSnap::SavePajek<PUNGraph>;
+%template(SaveMatlabSparseMtx_PUNGraph) TSnap::SaveMatlabSparseMtx<PUNGraph>;
+%template(SaveGViz_PUNGraph) TSnap::SaveGViz<PUNGraph>;
 
 
 // triad.h - PUNGraph

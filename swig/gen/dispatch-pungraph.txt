@@ -1,4 +1,12 @@
 PUNGraph	LoadEdgeList
+PUNGraph	LoadEdgeListStr
+PUNGraph	LoadConnList
+PUNGraph	LoadConnListStr
+PUNGraph	LoadPajek
+PUNGraph	SaveEdgeList
+PUNGraph	SavePajek
+PUNGraph	SaveMatlabSparseMtx
+PUNGraph	SaveGViz
 PUNGraph	PrintGraphStatTable
 PUNGraph	MxSccSz
 PUNGraph	MxWccSz

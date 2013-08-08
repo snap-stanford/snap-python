@@ -27,7 +27,6 @@ TNGraphEdgeI.GetId = GetId
 
 // Basic Undirected Graphs
 
-%template(LoadEdgeList_PNGraph) TSnap::LoadEdgeList<PNGraph>;
 %template(PrintGraphStatTable_PNGraph) PrintGraphStatTable<PNGraph>;
 
 //%template(MxSccSz_PNGraph) TSnap::GetMxScc<PNGraph>;
@@ -101,6 +100,18 @@ TNGraphEdgeI.GetId = GetId
 %template(GenTree_PNGraph) TSnap::GenTree<PNGraph>;
 %template(GenBaraHierar_PNGraph) TSnap::GenBaraHierar<PNGraph>;
 %template(GenRndGnm_PNGraph) TSnap::GenRndGnm<PNGraph>;
+
+
+// gio.h
+%template(LoadEdgeList_PNGraph) TSnap::LoadEdgeList<PNGraph>;
+%template(LoadEdgeListStr_PNGraph) TSnap::LoadEdgeListStr<PNGraph>;
+%template(LoadConnList_PNGraph) TSnap::LoadConnList<PNGraph>;
+%template(LoadConnListStr_PNGraph) TSnap::LoadConnListStr<PNGraph>;
+%template(LoadPajek_PNGraph) TSnap::LoadPajek<PNGraph>;
+%template(SaveEdgeList_PNGraph) TSnap::SaveEdgeList<PNGraph>;
+%template(SavePajek_PNGraph) TSnap::SavePajek<PNGraph>;
+%template(SaveMatlabSparseMtx_PNGraph) TSnap::SaveMatlabSparseMtx<PNGraph>;
+%template(SaveGViz_PNGraph) TSnap::SaveGViz<PNGraph>;
 
 
 // triad.h - PNGraph

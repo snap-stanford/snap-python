@@ -1,4 +1,12 @@
 PNGraph	LoadEdgeList
+PNGraph	LoadEdgeListStr
+PNGraph	LoadConnList
+PNGraph	LoadConnListStr
+PNGraph	LoadPajek
+PNGraph	SaveEdgeList
+PNGraph	SavePajek
+PNGraph	SaveMatlabSparseMtx
+PNGraph	SaveGViz
 PNGraph	PrintGraphStatTable
 PNGraph	MxSccSz
 PNGraph	MxWccSz

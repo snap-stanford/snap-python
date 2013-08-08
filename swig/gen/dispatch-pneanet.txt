@@ -1,4 +1,12 @@
 PNEANet	LoadEdgeList
+PNEANet	LoadEdgeListStr
+PNEANet	LoadConnList
+PNEANet	LoadConnListStr
+PNEANet	LoadPajek
+PNEANet	SaveEdgeList
+PNEANet	SavePajek
+PNEANet	SaveMatlabSparseMtx
+PNEANet	SaveGViz
 PNEANet	PrintGraphStatTable
 PNEANet	MxSccSz
 PNEANet	MxWccSz
