@@ -7,332 +7,331 @@
 # dispatch table for instantiated polymorphic SNAP templates
 #
 
-def GetMxScc(gtype, *args):
-    if gtype == PNEANet : return GetMxScc_PNEANet(*args)
-    if gtype == PUNGraph: return GetMxScc_PUNGraph(*args)
-    if gtype == PNGraph : return GetMxScc_PNGraph(*args)
-    return None
-def GetMxBiCon(gtype, *args):
-    if gtype == PNEANet : return GetMxBiCon_PNEANet(*args)
-    if gtype == PUNGraph: return GetMxBiCon_PUNGraph(*args)
-    if gtype == PNGraph : return GetMxBiCon_PNGraph(*args)
-    return None
-def CntUniqDirEdges(gtype, *args):
-    if gtype == PNEANet : return CntUniqDirEdges_PNEANet(*args)
-    if gtype == PUNGraph: return CntUniqDirEdges_PUNGraph(*args)
-    if gtype == PNGraph : return CntUniqDirEdges_PNGraph(*args)
-    return None
-def MxSccSz(gtype, *args):
-    if gtype == PNEANet : return MxSccSz_PNEANet(*args)
-    if gtype == PUNGraph: return MxSccSz_PUNGraph(*args)
-    if gtype == PNGraph : return MxSccSz_PNGraph(*args)
-    return None
-def PercentMxScc(gtype, *args):
-    if gtype == PNEANet : return PercentMxScc_PNEANet(*args)
-    if gtype == PUNGraph: return PercentMxScc_PUNGraph(*args)
-    if gtype == PNGraph : return PercentMxScc_PNGraph(*args)
-    return None
-def GetAnfEffDiam(gtype, *args):
-    if gtype == PNEANet : return GetAnfEffDiam_PNEANet(*args)
-    if gtype == PUNGraph: return GetAnfEffDiam_PUNGraph(*args)
-    if gtype == PNGraph : return GetAnfEffDiam_PNGraph(*args)
-    return None
-def CntUniqBiDirEdges(gtype, *args):
-    if gtype == PNEANet : return CntUniqBiDirEdges_PNEANet(*args)
-    if gtype == PUNGraph: return CntUniqBiDirEdges_PUNGraph(*args)
-    if gtype == PNGraph : return CntUniqBiDirEdges_PNGraph(*args)
-    return None
-def CntOutDegNodes(gtype, *args):
-    if gtype == PNEANet : return CntOutDegNodes_PNEANet(*args)
-    if gtype == PUNGraph: return CntOutDegNodes_PUNGraph(*args)
-    if gtype == PNGraph : return CntOutDegNodes_PNGraph(*args)
-    return None
-def GetNodeWcc(gtype, *args):
-    if gtype == PNEANet : return GetNodeWcc_PNEANet(*args)
-    if gtype == PUNGraph: return GetNodeWcc_PUNGraph(*args)
-    if gtype == PNGraph : return GetNodeWcc_PNGraph(*args)
-    return None
-def GetOutDegCnt(gtype, *args):
-    if gtype == PNEANet : return GetOutDegCnt_PNEANet(*args)
-    if gtype == PUNGraph: return GetOutDegCnt_PUNGraph(*args)
-    if gtype == PNGraph : return GetOutDegCnt_PNGraph(*args)
-    return None
-def CntEdgesToSet(gtype, *args):
-    if gtype == PNEANet : return CntEdgesToSet_PNEANet(*args)
-    if gtype == PUNGraph: return CntEdgesToSet_PUNGraph(*args)
-    if gtype == PNGraph : return CntEdgesToSet_PNGraph(*args)
-    return None
-def GenBaraHierar(gtype, *args):
-    if gtype == PNEANet : return GenBaraHierar_PNEANet(*args)
-    if gtype == PUNGraph: return GenBaraHierar_PUNGraph(*args)
-    if gtype == PNGraph : return GenBaraHierar_PNGraph(*args)
-    return None
-def GetSccs(gtype, *args):
-    if gtype == PNEANet : return GetSccs_PNEANet(*args)
-    if gtype == PUNGraph: return GetSccs_PUNGraph(*args)
-    if gtype == PNGraph : return GetSccs_PNGraph(*args)
-    return None
-def PercentDegree(gtype, *args):
-    if gtype == PNEANet : return PercentDegree_PNEANet(*args)
-    if gtype == PUNGraph: return PercentDegree_PUNGraph(*args)
-    if gtype == PNGraph : return PercentDegree_PNGraph(*args)
-    return None
-def GetShortPath(gtype, *args):
-    if gtype == PNEANet : return GetShortPath_PNEANet(*args)
-    if gtype == PUNGraph: return GetShortPath_PUNGraph(*args)
-    if gtype == PNGraph : return GetShortPath_PNGraph(*args)
-    return None
-def GetSubTreeSz(gtype, *args):
-    if gtype == PNEANet : return GetSubTreeSz_PNEANet(*args)
-    if gtype == PUNGraph: return GetSubTreeSz_PUNGraph(*args)
-    if gtype == PNGraph : return GetSubTreeSz_PNGraph(*args)
-    return None
-def GetBfsEffDiam(gtype, *args):
-    if gtype == PNEANet : return GetBfsEffDiam_PNEANet(*args)
-    if gtype == PUNGraph: return GetBfsEffDiam_PUNGraph(*args)
-    if gtype == PNGraph : return GetBfsEffDiam_PNGraph(*args)
-    return None
-def IsWeaklyConn(gtype, *args):
-    if gtype == PNEANet : return IsWeaklyConn_PNEANet(*args)
-    if gtype == PUNGraph: return IsWeaklyConn_PUNGraph(*args)
-    if gtype == PNGraph : return IsWeaklyConn_PNGraph(*args)
-    return None
-def PercentMxWcc(gtype, *args):
-    if gtype == PNEANet : return PercentMxWcc_PNEANet(*args)
-    if gtype == PUNGraph: return PercentMxWcc_PUNGraph(*args)
-    if gtype == PNGraph : return PercentMxWcc_PNGraph(*args)
-    return None
-def GetMxInDegNId(gtype, *args):
-    if gtype == PNEANet : return GetMxInDegNId_PNEANet(*args)
-    if gtype == PUNGraph: return GetMxInDegNId_PUNGraph(*args)
-    if gtype == PNGraph : return GetMxInDegNId_PNGraph(*args)
-    return None
-def GetInDegCnt(gtype, *args):
-    if gtype == PNEANet : return GetInDegCnt_PNEANet(*args)
-    if gtype == PUNGraph: return GetInDegCnt_PUNGraph(*args)
-    if gtype == PNGraph : return GetInDegCnt_PNGraph(*args)
-    return None
-def GetSccSzCnt(gtype, *args):
-    if gtype == PNEANet : return GetSccSzCnt_PNEANet(*args)
-    if gtype == PUNGraph: return GetSccSzCnt_PUNGraph(*args)
-    if gtype == PNGraph : return GetSccSzCnt_PNGraph(*args)
-    return None
-def IsConnected(gtype, *args):
-    if gtype == PNEANet : return IsConnected_PNEANet(*args)
-    if gtype == PUNGraph: return IsConnected_PUNGraph(*args)
-    if gtype == PNGraph : return IsConnected_PNGraph(*args)
-    return None
-def MxWccSz(gtype, *args):
-    if gtype == PNEANet : return MxWccSz_PNEANet(*args)
-    if gtype == PUNGraph: return MxWccSz_PUNGraph(*args)
-    if gtype == PNGraph : return MxWccSz_PNGraph(*args)
-    return None
-def GetCmnNbrs(gtype, *args):
-    if gtype == PNEANet : return GetCmnNbrs_PNEANet(*args)
-    if gtype == PUNGraph: return GetCmnNbrs_PUNGraph(*args)
-    if gtype == PNGraph : return GetCmnNbrs_PNGraph(*args)
-    return None
-def GetNodeInDegV(gtype, *args):
-    if gtype == PNEANet : return GetNodeInDegV_PNEANet(*args)
-    if gtype == PUNGraph: return GetNodeInDegV_PUNGraph(*args)
-    if gtype == PNGraph : return GetNodeInDegV_PNGraph(*args)
-    return None
-def GetTriadEdges(gtype, *args):
-    if gtype == PNEANet : return GetTriadEdges_PNEANet(*args)
-    if gtype == PUNGraph: return GetTriadEdges_PUNGraph(*args)
-    if gtype == PNGraph : return GetTriadEdges_PNGraph(*args)
-    return None
-def GetMxWccSz(gtype, *args):
-    if gtype == PNEANet : return GetMxWccSz_PNEANet(*args)
-    if gtype == PUNGraph: return GetMxWccSz_PUNGraph(*args)
-    if gtype == PNGraph : return GetMxWccSz_PNGraph(*args)
-    return None
-def GetMxOutDegNId(gtype, *args):
-    if gtype == PNEANet : return GetMxOutDegNId_PNEANet(*args)
-    if gtype == PUNGraph: return GetMxOutDegNId_PUNGraph(*args)
-    if gtype == PNGraph : return GetMxOutDegNId_PNGraph(*args)
-    return None
-def GetLen2Paths(gtype, *args):
-    if gtype == PNEANet : return GetLen2Paths_PNEANet(*args)
-    if gtype == PUNGraph: return GetLen2Paths_PUNGraph(*args)
-    if gtype == PNGraph : return GetLen2Paths_PNGraph(*args)
-    return None
-def GetEdgesInOut(gtype, *args):
-    if gtype == PNEANet : return GetEdgesInOut_PNEANet(*args)
-    if gtype == PUNGraph: return GetEdgesInOut_PUNGraph(*args)
-    if gtype == PNGraph : return GetEdgesInOut_PNGraph(*args)
-    return None
-def GetBfsTree(gtype, *args):
-    if gtype == PNEANet : return GetBfsTree_PNEANet(*args)
-    if gtype == PUNGraph: return GetBfsTree_PUNGraph(*args)
-    if gtype == PNGraph : return GetBfsTree_PNGraph(*args)
-    return None
-def GetNodeClustCf(gtype, *args):
-    if gtype == PNEANet : return GetNodeClustCf_PNEANet(*args)
-    if gtype == PUNGraph: return GetNodeClustCf_PUNGraph(*args)
-    if gtype == PNGraph : return GetNodeClustCf_PNGraph(*args)
-    return None
-def GetBfsFullDiam(gtype, *args):
-    if gtype == PNEANet : return GetBfsFullDiam_PNEANet(*args)
-    if gtype == PUNGraph: return GetBfsFullDiam_PUNGraph(*args)
-    if gtype == PNGraph : return GetBfsFullDiam_PNGraph(*args)
-    return None
-def PrintGraphStatTable(gtype, *args):
-    if gtype == PNEANet : return PrintGraphStatTable_PNEANet(*args)
-    if gtype == PUNGraph: return PrintGraphStatTable_PUNGraph(*args)
-    if gtype == PNGraph : return PrintGraphStatTable_PNGraph(*args)
-    return None
-def GetDegSeqV(gtype, *args):
-    if gtype == PNEANet : return GetDegSeqV_PNEANet(*args)
-    if gtype == PUNGraph: return GetDegSeqV_PUNGraph(*args)
-    if gtype == PNGraph : return GetDegSeqV_PNGraph(*args)
-    return None
-def GetWccs(gtype, *args):
-    if gtype == PNEANet : return GetWccs_PNEANet(*args)
-    if gtype == PUNGraph: return GetWccs_PUNGraph(*args)
-    if gtype == PNGraph : return GetWccs_PNGraph(*args)
-    return None
-def GenStar(gtype, *args):
-    if gtype == PNEANet : return GenStar_PNEANet(*args)
-    if gtype == PUNGraph: return GenStar_PUNGraph(*args)
-    if gtype == PNGraph : return GenStar_PNGraph(*args)
-    return None
-def GenTree(gtype, *args):
-    if gtype == PNEANet : return GenTree_PNEANet(*args)
-    if gtype == PUNGraph: return GenTree_PUNGraph(*args)
-    if gtype == PNGraph : return GenTree_PNGraph(*args)
-    return None
-def NodesGTEDegree(gtype, *args):
-    if gtype == PNEANet : return NodesGTEDegree_PNEANet(*args)
-    if gtype == PUNGraph: return NodesGTEDegree_PUNGraph(*args)
-    if gtype == PNGraph : return NodesGTEDegree_PNGraph(*args)
-    return None
-def CntNonZNodes(gtype, *args):
-    if gtype == PNEANet : return CntNonZNodes_PNEANet(*args)
-    if gtype == PUNGraph: return CntNonZNodes_PUNGraph(*args)
-    if gtype == PNGraph : return CntNonZNodes_PNGraph(*args)
-    return None
-def GetClustCf(gtype, *args):
-    if gtype == PNEANet : return GetClustCf_PNEANet(*args)
-    if gtype == PUNGraph: return GetClustCf_PUNGraph(*args)
-    if gtype == PNGraph : return GetClustCf_PNGraph(*args)
-    return None
-def GetDegCnt(gtype, *args):
-    if gtype == PNEANet : return GetDegCnt_PNEANet(*args)
-    if gtype == PUNGraph: return GetDegCnt_PUNGraph(*args)
-    if gtype == PNGraph : return GetDegCnt_PNGraph(*args)
-    return None
-def LoadEdgeList(gtype, *args):
-    if gtype == PNEANet : return LoadEdgeList_PNEANet(*args)
-    if gtype == PUNGraph: return LoadEdgeList_PUNGraph(*args)
-    if gtype == PNGraph : return LoadEdgeList_PNGraph(*args)
-    return None
-def GetNodesAtHops(gtype, *args):
-    if gtype == PNEANet : return GetNodesAtHops_PNEANet(*args)
-    if gtype == PUNGraph: return GetNodesAtHops_PUNGraph(*args)
-    if gtype == PNGraph : return GetNodesAtHops_PNGraph(*args)
-    return None
-def GetNodeOutDegV(gtype, *args):
-    if gtype == PNEANet : return GetNodeOutDegV_PNEANet(*args)
-    if gtype == PUNGraph: return GetNodeOutDegV_PUNGraph(*args)
-    if gtype == PNGraph : return GetNodeOutDegV_PNGraph(*args)
-    return None
-def GetAnf(gtype, *args):
-    if gtype == PNEANet : return GetAnf_PNEANet(*args)
-    if gtype == PUNGraph: return GetAnf_PUNGraph(*args)
-    if gtype == PNGraph : return GetAnf_PNGraph(*args)
-    return None
-def CntSelfEdges(gtype, *args):
-    if gtype == PNEANet : return CntSelfEdges_PNEANet(*args)
-    if gtype == PUNGraph: return CntSelfEdges_PUNGraph(*args)
-    if gtype == PNGraph : return CntSelfEdges_PNGraph(*args)
-    return None
-def GenCircle(gtype, *args):
-    if gtype == PNEANet : return GenCircle_PNEANet(*args)
-    if gtype == PUNGraph: return GenCircle_PUNGraph(*args)
-    if gtype == PNGraph : return GenCircle_PNGraph(*args)
-    return None
-def GetModularity(gtype, *args):
-    if gtype == PNEANet : return GetModularity_PNEANet(*args)
-    if gtype == PUNGraph: return GetModularity_PUNGraph(*args)
-    if gtype == PNGraph : return GetModularity_PNGraph(*args)
-    return None
-def GetNodeTriads(gtype, *args):
-    if gtype == PNEANet : return GetNodeTriads_PNEANet(*args)
-    if gtype == PUNGraph: return GetNodeTriads_PUNGraph(*args)
-    if gtype == PNGraph : return GetNodeTriads_PNGraph(*args)
-    return None
-def DrawGViz(gtype, *args):
-    if gtype == PNEANet : return DrawGViz_PNEANet(*args)
-    if gtype == PUNGraph: return DrawGViz_PUNGraph(*args)
-    if gtype == PNGraph : return DrawGViz_PNGraph(*args)
-    return None
-def GenFull(gtype, *args):
-    if gtype == PNEANet : return GenFull_PNEANet(*args)
-    if gtype == PUNGraph: return GenFull_PUNGraph(*args)
-    if gtype == PNGraph : return GenFull_PNGraph(*args)
-    return None
-def GenGrid(gtype, *args):
-    if gtype == PNEANet : return GenGrid_PNEANet(*args)
-    if gtype == PUNGraph: return GenGrid_PUNGraph(*args)
-    if gtype == PNGraph : return GenGrid_PNGraph(*args)
-    return None
-def MxDegree(gtype, *args):
-    if gtype == PNEANet : return MxDegree_PNEANet(*args)
-    if gtype == PUNGraph: return MxDegree_PUNGraph(*args)
-    if gtype == PNGraph : return MxDegree_PNGraph(*args)
-    return None
-def CntUniqUndirEdges(gtype, *args):
-    if gtype == PNEANet : return CntUniqUndirEdges_PNEANet(*args)
-    if gtype == PUNGraph: return CntUniqUndirEdges_PUNGraph(*args)
-    if gtype == PNGraph : return CntUniqUndirEdges_PNGraph(*args)
-    return None
-def GetTriadParticip(gtype, *args):
-    if gtype == PNEANet : return GetTriadParticip_PNEANet(*args)
-    if gtype == PUNGraph: return GetTriadParticip_PUNGraph(*args)
-    if gtype == PNGraph : return GetTriadParticip_PNGraph(*args)
-    return None
-def GetMxDegNId(gtype, *args):
-    if gtype == PNEANet : return GetMxDegNId_PNEANet(*args)
-    if gtype == PUNGraph: return GetMxDegNId_PUNGraph(*args)
-    if gtype == PNGraph : return GetMxDegNId_PNGraph(*args)
-    return None
-def GetWccSzCnt(gtype, *args):
-    if gtype == PNEANet : return GetWccSzCnt_PNEANet(*args)
-    if gtype == PUNGraph: return GetWccSzCnt_PUNGraph(*args)
-    if gtype == PNGraph : return GetWccSzCnt_PNGraph(*args)
-    return None
-def GetTriads(gtype, *args):
-    if gtype == PNEANet : return GetTriads_PNEANet(*args)
-    if gtype == PUNGraph: return GetTriads_PUNGraph(*args)
-    if gtype == PNGraph : return GetTriads_PNGraph(*args)
-    return None
-def GetNodesAtHop(gtype, *args):
-    if gtype == PNEANet : return GetNodesAtHop_PNEANet(*args)
-    if gtype == PUNGraph: return GetNodesAtHop_PUNGraph(*args)
-    if gtype == PNGraph : return GetNodesAtHop_PNGraph(*args)
-    return None
-def CntDegNodes(gtype, *args):
-    if gtype == PNEANet : return CntDegNodes_PNEANet(*args)
-    if gtype == PUNGraph: return CntDegNodes_PUNGraph(*args)
-    if gtype == PNGraph : return CntDegNodes_PNGraph(*args)
-    return None
-def GenRndGnm(gtype, *args):
-    if gtype == PNEANet : return GenRndGnm_PNEANet(*args)
-    if gtype == PUNGraph: return GenRndGnm_PUNGraph(*args)
-    if gtype == PNGraph : return GenRndGnm_PNGraph(*args)
-    return None
-def GetMxWcc(gtype, *args):
-    if gtype == PNEANet : return GetMxWcc_PNEANet(*args)
-    if gtype == PUNGraph: return GetMxWcc_PUNGraph(*args)
-    if gtype == PNGraph : return GetMxWcc_PNGraph(*args)
-    return None
-def CntInDegNodes(gtype, *args):
-    if gtype == PNEANet : return CntInDegNodes_PNEANet(*args)
-    if gtype == PUNGraph: return CntInDegNodes_PUNGraph(*args)
-    if gtype == PNGraph : return CntInDegNodes_PNGraph(*args)
-    return None
-
+def GetMxScc(tspec, *args):
+    if type(tspec) == PNEANet : return GetMxScc_PNEANet(tspec, *args)
+    if type(tspec) == PUNGraph: return GetMxScc_PUNGraph(tspec, *args)
+    if type(tspec) == PNGraph : return GetMxScc_PNGraph(tspec, *args)
+    return None
+def GetMxBiCon(tspec, *args):
+    if type(tspec) == PNEANet : return GetMxBiCon_PNEANet(tspec, *args)
+    if type(tspec) == PUNGraph: return GetMxBiCon_PUNGraph(tspec, *args)
+    if type(tspec) == PNGraph : return GetMxBiCon_PNGraph(tspec, *args)
+    return None
+def CntUniqDirEdges(tspec, *args):
+    if type(tspec) == PNEANet : return CntUniqDirEdges_PNEANet(tspec, *args)
+    if type(tspec) == PUNGraph: return CntUniqDirEdges_PUNGraph(tspec, *args)
+    if type(tspec) == PNGraph : return CntUniqDirEdges_PNGraph(tspec, *args)
+    return None
+def MxSccSz(tspec, *args):
+    if type(tspec) == PNEANet : return MxSccSz_PNEANet(tspec, *args)
+    if type(tspec) == PUNGraph: return MxSccSz_PUNGraph(tspec, *args)
+    if type(tspec) == PNGraph : return MxSccSz_PNGraph(tspec, *args)
+    return None
+def PercentMxScc(tspec, *args):
+    if type(tspec) == PNEANet : return PercentMxScc_PNEANet(tspec, *args)
+    if type(tspec) == PUNGraph: return PercentMxScc_PUNGraph(tspec, *args)
+    if type(tspec) == PNGraph : return PercentMxScc_PNGraph(tspec, *args)
+    return None
+def GetAnfEffDiam(tspec, *args):
+    if type(tspec) == PNEANet : return GetAnfEffDiam_PNEANet(tspec, *args)
+    if type(tspec) == PUNGraph: return GetAnfEffDiam_PUNGraph(tspec, *args)
+    if type(tspec) == PNGraph : return GetAnfEffDiam_PNGraph(tspec, *args)
+    return None
+def CntUniqBiDirEdges(tspec, *args):
+    if type(tspec) == PNEANet : return CntUniqBiDirEdges_PNEANet(tspec, *args)
+    if type(tspec) == PUNGraph: return CntUniqBiDirEdges_PUNGraph(tspec, *args)
+    if type(tspec) == PNGraph : return CntUniqBiDirEdges_PNGraph(tspec, *args)
+    return None
+def CntOutDegNodes(tspec, *args):
+    if type(tspec) == PNEANet : return CntOutDegNodes_PNEANet(tspec, *args)
+    if type(tspec) == PUNGraph: return CntOutDegNodes_PUNGraph(tspec, *args)
+    if type(tspec) == PNGraph : return CntOutDegNodes_PNGraph(tspec, *args)
+    return None
+def GetNodeWcc(tspec, *args):
+    if type(tspec) == PNEANet : return GetNodeWcc_PNEANet(tspec, *args)
+    if type(tspec) == PUNGraph: return GetNodeWcc_PUNGraph(tspec, *args)
+    if type(tspec) == PNGraph : return GetNodeWcc_PNGraph(tspec, *args)
+    return None
+def GetOutDegCnt(tspec, *args):
+    if type(tspec) == PNEANet : return GetOutDegCnt_PNEANet(tspec, *args)
+    if type(tspec) == PUNGraph: return GetOutDegCnt_PUNGraph(tspec, *args)
+    if type(tspec) == PNGraph : return GetOutDegCnt_PNGraph(tspec, *args)
+    return None
+def CntEdgesToSet(tspec, *args):
+    if type(tspec) == PNEANet : return CntEdgesToSet_PNEANet(tspec, *args)
+    if type(tspec) == PUNGraph: return CntEdgesToSet_PUNGraph(tspec, *args)
+    if type(tspec) == PNGraph : return CntEdgesToSet_PNGraph(tspec, *args)
+    return None
+def GenBaraHierar(tspec, *args):
+    if tspec == PNEANet : return GenBaraHierar_PNEANet(*args)
+    if tspec == PUNGraph: return GenBaraHierar_PUNGraph(*args)
+    if tspec == PNGraph : return GenBaraHierar_PNGraph(*args)
+    return None
+def GetSccs(tspec, *args):
+    if type(tspec) == PNEANet : return GetSccs_PNEANet(tspec, *args)
+    if type(tspec) == PUNGraph: return GetSccs_PUNGraph(tspec, *args)
+    if type(tspec) == PNGraph : return GetSccs_PNGraph(tspec, *args)
+    return None
+def PercentDegree(tspec, *args):
+    if type(tspec) == PNEANet : return PercentDegree_PNEANet(tspec, *args)
+    if type(tspec) == PUNGraph: return PercentDegree_PUNGraph(tspec, *args)
+    if type(tspec) == PNGraph : return PercentDegree_PNGraph(tspec, *args)
+    return None
+def GetShortPath(tspec, *args):
+    if type(tspec) == PNEANet : return GetShortPath_PNEANet(tspec, *args)
+    if type(tspec) == PUNGraph: return GetShortPath_PUNGraph(tspec, *args)
+    if type(tspec) == PNGraph : return GetShortPath_PNGraph(tspec, *args)
+    return None
+def GetSubTreeSz(tspec, *args):
+    if type(tspec) == PNEANet : return GetSubTreeSz_PNEANet(tspec, *args)
+    if type(tspec) == PUNGraph: return GetSubTreeSz_PUNGraph(tspec, *args)
+    if type(tspec) == PNGraph : return GetSubTreeSz_PNGraph(tspec, *args)
+    return None
+def GetBfsEffDiam(tspec, *args):
+    if type(tspec) == PNEANet : return GetBfsEffDiam_PNEANet(tspec, *args)
+    if type(tspec) == PUNGraph: return GetBfsEffDiam_PUNGraph(tspec, *args)
+    if type(tspec) == PNGraph : return GetBfsEffDiam_PNGraph(tspec, *args)
+    return None
+def IsWeaklyConn(tspec, *args):
+    if type(tspec) == PNEANet : return IsWeaklyConn_PNEANet(tspec, *args)
+    if type(tspec) == PUNGraph: return IsWeaklyConn_PUNGraph(tspec, *args)
+    if type(tspec) == PNGraph : return IsWeaklyConn_PNGraph(tspec, *args)
+    return None
+def PercentMxWcc(tspec, *args):
+    if type(tspec) == PNEANet : return PercentMxWcc_PNEANet(tspec, *args)
+    if type(tspec) == PUNGraph: return PercentMxWcc_PUNGraph(tspec, *args)
+    if type(tspec) == PNGraph : return PercentMxWcc_PNGraph(tspec, *args)
+    return None
+def GetMxInDegNId(tspec, *args):
+    if type(tspec) == PNEANet : return GetMxInDegNId_PNEANet(tspec, *args)
+    if type(tspec) == PUNGraph: return GetMxInDegNId_PUNGraph(tspec, *args)
+    if type(tspec) == PNGraph : return GetMxInDegNId_PNGraph(tspec, *args)
+    return None
+def GetInDegCnt(tspec, *args):
+    if type(tspec) == PNEANet : return GetInDegCnt_PNEANet(tspec, *args)
+    if type(tspec) == PUNGraph: return GetInDegCnt_PUNGraph(tspec, *args)
+    if type(tspec) == PNGraph : return GetInDegCnt_PNGraph(tspec, *args)
+    return None
+def GetSccSzCnt(tspec, *args):
+    if type(tspec) == PNEANet : return GetSccSzCnt_PNEANet(tspec, *args)
+    if type(tspec) == PUNGraph: return GetSccSzCnt_PUNGraph(tspec, *args)
+    if type(tspec) == PNGraph : return GetSccSzCnt_PNGraph(tspec, *args)
+    return None
+def IsConnected(tspec, *args):
+    if type(tspec) == PNEANet : return IsConnected_PNEANet(tspec, *args)
+    if type(tspec) == PUNGraph: return IsConnected_PUNGraph(tspec, *args)
+    if type(tspec) == PNGraph : return IsConnected_PNGraph(tspec, *args)
+    return None
+def MxWccSz(tspec, *args):
+    if type(tspec) == PNEANet : return MxWccSz_PNEANet(tspec, *args)
+    if type(tspec) == PUNGraph: return MxWccSz_PUNGraph(tspec, *args)
+    if type(tspec) == PNGraph : return MxWccSz_PNGraph(tspec, *args)
+    return None
+def GetCmnNbrs(tspec, *args):
+    if type(tspec) == PNEANet : return GetCmnNbrs_PNEANet(tspec, *args)
+    if type(tspec) == PUNGraph: return GetCmnNbrs_PUNGraph(tspec, *args)
+    if type(tspec) == PNGraph : return GetCmnNbrs_PNGraph(tspec, *args)
+    return None
+def GetNodeInDegV(tspec, *args):
+    if type(tspec) == PNEANet : return GetNodeInDegV_PNEANet(tspec, *args)
+    if type(tspec) == PUNGraph: return GetNodeInDegV_PUNGraph(tspec, *args)
+    if type(tspec) == PNGraph : return GetNodeInDegV_PNGraph(tspec, *args)
+    return None
+def GetTriadEdges(tspec, *args):
+    if type(tspec) == PNEANet : return GetTriadEdges_PNEANet(tspec, *args)
+    if type(tspec) == PUNGraph: return GetTriadEdges_PUNGraph(tspec, *args)
+    if type(tspec) == PNGraph : return GetTriadEdges_PNGraph(tspec, *args)
+    return None
+def GetMxWccSz(tspec, *args):
+    if type(tspec) == PNEANet : return GetMxWccSz_PNEANet(tspec, *args)
+    if type(tspec) == PUNGraph: return GetMxWccSz_PUNGraph(tspec, *args)
+    if type(tspec) == PNGraph : return GetMxWccSz_PNGraph(tspec, *args)
+    return None
+def GetMxOutDegNId(tspec, *args):
+    if type(tspec) == PNEANet : return GetMxOutDegNId_PNEANet(tspec, *args)
+    if type(tspec) == PUNGraph: return GetMxOutDegNId_PUNGraph(tspec, *args)
+    if type(tspec) == PNGraph : return GetMxOutDegNId_PNGraph(tspec, *args)
+    return None
+def GetLen2Paths(tspec, *args):
+    if type(tspec) == PNEANet : return GetLen2Paths_PNEANet(tspec, *args)
+    if type(tspec) == PUNGraph: return GetLen2Paths_PUNGraph(tspec, *args)
+    if type(tspec) == PNGraph : return GetLen2Paths_PNGraph(tspec, *args)
+    return None
+def GetEdgesInOut(tspec, *args):
+    if type(tspec) == PNEANet : return GetEdgesInOut_PNEANet(tspec, *args)
+    if type(tspec) == PUNGraph: return GetEdgesInOut_PUNGraph(tspec, *args)
+    if type(tspec) == PNGraph : return GetEdgesInOut_PNGraph(tspec, *args)
+    return None
+def GetBfsTree(tspec, *args):
+    if type(tspec) == PNEANet : return GetBfsTree_PNEANet(tspec, *args)
+    if type(tspec) == PUNGraph: return GetBfsTree_PUNGraph(tspec, *args)
+    if type(tspec) == PNGraph : return GetBfsTree_PNGraph(tspec, *args)
+    return None
+def GetNodeClustCf(tspec, *args):
+    if type(tspec) == PNEANet : return GetNodeClustCf_PNEANet(tspec, *args)
+    if type(tspec) == PUNGraph: return GetNodeClustCf_PUNGraph(tspec, *args)
+    if type(tspec) == PNGraph : return GetNodeClustCf_PNGraph(tspec, *args)
+    return None
+def GetBfsFullDiam(tspec, *args):
+    if type(tspec) == PNEANet : return GetBfsFullDiam_PNEANet(tspec, *args)
+    if type(tspec) == PUNGraph: return GetBfsFullDiam_PUNGraph(tspec, *args)
+    if type(tspec) == PNGraph : return GetBfsFullDiam_PNGraph(tspec, *args)
+    return None
+def PrintGraphStatTable(tspec, *args):
+    if type(tspec) == PNEANet : return PrintGraphStatTable_PNEANet(tspec, *args)
+    if type(tspec) == PUNGraph: return PrintGraphStatTable_PUNGraph(tspec, *args)
+    if type(tspec) == PNGraph : return PrintGraphStatTable_PNGraph(tspec, *args)
+    return None
+def GetDegSeqV(tspec, *args):
+    if type(tspec) == PNEANet : return GetDegSeqV_PNEANet(tspec, *args)
+    if type(tspec) == PUNGraph: return GetDegSeqV_PUNGraph(tspec, *args)
+    if type(tspec) == PNGraph : return GetDegSeqV_PNGraph(tspec, *args)
+    return None
+def GetWccs(tspec, *args):
+    if type(tspec) == PNEANet : return GetWccs_PNEANet(tspec, *args)
+    if type(tspec) == PUNGraph: return GetWccs_PUNGraph(tspec, *args)
+    if type(tspec) == PNGraph : return GetWccs_PNGraph(tspec, *args)
+    return None
+def GenStar(tspec, *args):
+    if tspec == PNEANet : return GenStar_PNEANet(*args)
+    if tspec == PUNGraph: return GenStar_PUNGraph(*args)
+    if tspec == PNGraph : return GenStar_PNGraph(*args)
+    return None
+def GenTree(tspec, *args):
+    if tspec == PNEANet : return GenTree_PNEANet(*args)
+    if tspec == PUNGraph: return GenTree_PUNGraph(*args)
+    if tspec == PNGraph : return GenTree_PNGraph(*args)
+    return None
+def NodesGTEDegree(tspec, *args):
+    if type(tspec) == PNEANet : return NodesGTEDegree_PNEANet(tspec, *args)
+    if type(tspec) == PUNGraph: return NodesGTEDegree_PUNGraph(tspec, *args)
+    if type(tspec) == PNGraph : return NodesGTEDegree_PNGraph(tspec, *args)
+    return None
+def CntNonZNodes(tspec, *args):
+    if type(tspec) == PNEANet : return CntNonZNodes_PNEANet(tspec, *args)
+    if type(tspec) == PUNGraph: return CntNonZNodes_PUNGraph(tspec, *args)
+    if type(tspec) == PNGraph : return CntNonZNodes_PNGraph(tspec, *args)
+    return None
+def GetClustCf(tspec, *args):
+    if type(tspec) == PNEANet : return GetClustCf_PNEANet(tspec, *args)
+    if type(tspec) == PUNGraph: return GetClustCf_PUNGraph(tspec, *args)
+    if type(tspec) == PNGraph : return GetClustCf_PNGraph(tspec, *args)
+    return None
+def GetDegCnt(tspec, *args):
+    if type(tspec) == PNEANet : return GetDegCnt_PNEANet(tspec, *args)
+    if type(tspec) == PUNGraph: return GetDegCnt_PUNGraph(tspec, *args)
+    if type(tspec) == PNGraph : return GetDegCnt_PNGraph(tspec, *args)
+    return None
+def LoadEdgeList(tspec, *args):
+    if tspec == PNEANet : return LoadEdgeList_PNEANet(*args)
+    if tspec == PUNGraph: return LoadEdgeList_PUNGraph(*args)
+    if tspec == PNGraph : return LoadEdgeList_PNGraph(*args)
+    return None
+def GetNodesAtHops(tspec, *args):
+    if type(tspec) == PNEANet : return GetNodesAtHops_PNEANet(tspec, *args)
+    if type(tspec) == PUNGraph: return GetNodesAtHops_PUNGraph(tspec, *args)
+    if type(tspec) == PNGraph : return GetNodesAtHops_PNGraph(tspec, *args)
+    return None
+def GetNodeOutDegV(tspec, *args):
+    if type(tspec) == PNEANet : return GetNodeOutDegV_PNEANet(tspec, *args)
+    if type(tspec) == PUNGraph: return GetNodeOutDegV_PUNGraph(tspec, *args)
+    if type(tspec) == PNGraph : return GetNodeOutDegV_PNGraph(tspec, *args)
+    return None
+def GetAnf(tspec, *args):
+    if type(tspec) == PNEANet : return GetAnf_PNEANet(tspec, *args)
+    if type(tspec) == PUNGraph: return GetAnf_PUNGraph(tspec, *args)
+    if type(tspec) == PNGraph : return GetAnf_PNGraph(tspec, *args)
+    return None
+def CntSelfEdges(tspec, *args):
+    if type(tspec) == PNEANet : return CntSelfEdges_PNEANet(tspec, *args)
+    if type(tspec) == PUNGraph: return CntSelfEdges_PUNGraph(tspec, *args)
+    if type(tspec) == PNGraph : return CntSelfEdges_PNGraph(tspec, *args)
+    return None
+def GenCircle(tspec, *args):
+    if tspec == PNEANet : return GenCircle_PNEANet(*args)
+    if tspec == PUNGraph: return GenCircle_PUNGraph(*args)
+    if tspec == PNGraph : return GenCircle_PNGraph(*args)
+    return None
+def GetModularity(tspec, *args):
+    if type(tspec) == PNEANet : return GetModularity_PNEANet(tspec, *args)
+    if type(tspec) == PUNGraph: return GetModularity_PUNGraph(tspec, *args)
+    if type(tspec) == PNGraph : return GetModularity_PNGraph(tspec, *args)
+    return None
+def GetNodeTriads(tspec, *args):
+    if type(tspec) == PNEANet : return GetNodeTriads_PNEANet(tspec, *args)
+    if type(tspec) == PUNGraph: return GetNodeTriads_PUNGraph(tspec, *args)
+    if type(tspec) == PNGraph : return GetNodeTriads_PNGraph(tspec, *args)
+    return None
+def DrawGViz(tspec, *args):
+    if type(tspec) == PNEANet : return DrawGViz_PNEANet(tspec, *args)
+    if type(tspec) == PUNGraph: return DrawGViz_PUNGraph(tspec, *args)
+    if type(tspec) == PNGraph : return DrawGViz_PNGraph(tspec, *args)
+    return None
+def GenFull(tspec, *args):
+    if tspec == PNEANet : return GenFull_PNEANet(*args)
+    if tspec == PUNGraph: return GenFull_PUNGraph(*args)
+    if tspec == PNGraph : return GenFull_PNGraph(*args)
+    return None
+def GenGrid(tspec, *args):
+    if tspec == PNEANet : return GenGrid_PNEANet(*args)
+    if tspec == PUNGraph: return GenGrid_PUNGraph(*args)
+    if tspec == PNGraph : return GenGrid_PNGraph(*args)
+    return None
+def MxDegree(tspec, *args):
+    if type(tspec) == PNEANet : return MxDegree_PNEANet(tspec, *args)
+    if type(tspec) == PUNGraph: return MxDegree_PUNGraph(tspec, *args)
+    if type(tspec) == PNGraph : return MxDegree_PNGraph(tspec, *args)
+    return None
+def CntUniqUndirEdges(tspec, *args):
+    if type(tspec) == PNEANet : return CntUniqUndirEdges_PNEANet(tspec, *args)
+    if type(tspec) == PUNGraph: return CntUniqUndirEdges_PUNGraph(tspec, *args)
+    if type(tspec) == PNGraph : return CntUniqUndirEdges_PNGraph(tspec, *args)
+    return None
+def GetTriadParticip(tspec, *args):
+    if type(tspec) == PNEANet : return GetTriadParticip_PNEANet(tspec, *args)
+    if type(tspec) == PUNGraph: return GetTriadParticip_PUNGraph(tspec, *args)
+    if type(tspec) == PNGraph : return GetTriadParticip_PNGraph(tspec, *args)
+    return None
+def GetMxDegNId(tspec, *args):
+    if type(tspec) == PNEANet : return GetMxDegNId_PNEANet(tspec, *args)
+    if type(tspec) == PUNGraph: return GetMxDegNId_PUNGraph(tspec, *args)
+    if type(tspec) == PNGraph : return GetMxDegNId_PNGraph(tspec, *args)
+    return None
+def GetWccSzCnt(tspec, *args):
+    if type(tspec) == PNEANet : return GetWccSzCnt_PNEANet(tspec, *args)
+    if type(tspec) == PUNGraph: return GetWccSzCnt_PUNGraph(tspec, *args)
+    if type(tspec) == PNGraph : return GetWccSzCnt_PNGraph(tspec, *args)
+    return None
+def GetTriads(tspec, *args):
+    if type(tspec) == PNEANet : return GetTriads_PNEANet(tspec, *args)
+    if type(tspec) == PUNGraph: return GetTriads_PUNGraph(tspec, *args)
+    if type(tspec) == PNGraph : return GetTriads_PNGraph(tspec, *args)
+    return None
+def GetNodesAtHop(tspec, *args):
+    if type(tspec) == PNEANet : return GetNodesAtHop_PNEANet(tspec, *args)
+    if type(tspec) == PUNGraph: return GetNodesAtHop_PUNGraph(tspec, *args)
+    if type(tspec) == PNGraph : return GetNodesAtHop_PNGraph(tspec, *args)
+    return None
+def CntDegNodes(tspec, *args):
+    if type(tspec) == PNEANet : return CntDegNodes_PNEANet(tspec, *args)
+    if type(tspec) == PUNGraph: return CntDegNodes_PUNGraph(tspec, *args)
+    if type(tspec) == PNGraph : return CntDegNodes_PNGraph(tspec, *args)
+    return None
+def GenRndGnm(tspec, *args):
+    if tspec == PNEANet : return GenRndGnm_PNEANet(*args)
+    if tspec == PUNGraph: return GenRndGnm_PUNGraph(*args)
+    if tspec == PNGraph : return GenRndGnm_PNGraph(*args)
+    return None
+def GetMxWcc(tspec, *args):
+    if type(tspec) == PNEANet : return GetMxWcc_PNEANet(tspec, *args)
+    if type(tspec) == PUNGraph: return GetMxWcc_PUNGraph(tspec, *args)
+    if type(tspec) == PNGraph : return GetMxWcc_PNGraph(tspec, *args)
+    return None
+def CntInDegNodes(tspec, *args):
+    if type(tspec) == PNEANet : return CntInDegNodes_PNEANet(tspec, *args)
+    if type(tspec) == PUNGraph: return CntInDegNodes_PUNGraph(tspec, *args)
+    if type(tspec) == PNGraph : return CntInDegNodes_PNGraph(tspec, *args)
+    return None
 #
 # generators for nodes and edges
 #
