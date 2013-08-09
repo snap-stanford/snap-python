@@ -39,6 +39,16 @@ PNEANet	CntUniqUndirEdges
 PNEANet	CntUniqDirEdges
 PNEANet	CntUniqBiDirEdges
 PNEANet	CntSelfEdges
+PNEANet	GetUnDir
+PNEANet	MakeUnDir
+PNEANet	AddSelfEdges
+PNEANet	DelSelfEdges
+PNEANet	DelNodes
+PNEANet	DelZeroDegNodes
+PNEANet	DelDegKNodes
+PNEANet	IsTree
+PNEANet	GetTreeRootNId
+PNEANet	GetTreeSig
 PNEANet	GetBfsTree
 PNEANet	GetSubTreeSz
 PNEANet	GetNodesAtHop
@@ -71,3 +81,4 @@ PNEANet	NodesGTEDegree
 PNEANet	MxDegree
 PNEANet	PercentMxWcc
 PNEANet	PercentMxScc
+PNEANet	GetKCore

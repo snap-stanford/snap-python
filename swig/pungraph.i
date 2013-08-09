@@ -74,6 +74,17 @@ TUNGraphEdgeI.GetId = GetId
 %template(CntUniqBiDirEdges_PUNGraph) TSnap::CntUniqBiDirEdges<PUNGraph>;
 %template(CntSelfEdges_PUNGraph) TSnap::CntSelfEdges<PUNGraph>;
 
+%template(GetUnDir_PUNGraph) TSnap::GetUnDir<PUNGraph>;
+%template(MakeUnDir_PUNGraph) TSnap::MakeUnDir<PUNGraph>;
+%template(AddSelfEdges_PUNGraph) TSnap::AddSelfEdges<PUNGraph>;
+%template(DelSelfEdges_PUNGraph) TSnap::DelSelfEdges<PUNGraph>;
+%template(DelNodes_PUNGraph) TSnap::DelNodes<PUNGraph>;
+%template(DelZeroDegNodes_PUNGraph) TSnap::DelZeroDegNodes<PUNGraph>;
+%template(DelDegKNodes_PUNGraph) TSnap::DelDegKNodes<PUNGraph>;
+%template(IsTree_PUNGraph) TSnap::IsTree<PUNGraph>;
+%template(GetTreeRootNId_PUNGraph) TSnap::GetTreeRootNId<PUNGraph>;
+%template(GetTreeSig_PUNGraph) TSnap::GetTreeSig<PUNGraph>;
+
 
 // bfsdfs.h - PUNGraph
 %template(GetBfsTree_PUNGraph) TSnap::GetBfsTree<PUNGraph>;
@@ -111,6 +122,19 @@ TUNGraphEdgeI.GetId = GetId
 %template(SavePajek_PUNGraph) TSnap::SavePajek<PUNGraph>;
 %template(SaveMatlabSparseMtx_PUNGraph) TSnap::SaveMatlabSparseMtx<PUNGraph>;
 %template(SaveGViz_PUNGraph) TSnap::SaveGViz<PUNGraph>;
+
+
+// kcore.h
+%template(GetKCore_PUNGraph) TSnap::GetKCore<PUNGraph>;
+
+
+// subgraph.h
+%template(ConvertGraph_PUNGraph_PUNGraph) TSnap::ConvertGraph <PUNGraph, PUNGraph>;
+%template(ConvertGraph_PUNGraph_PNGraph) TSnap::ConvertGraph <PUNGraph, PNGraph>;
+%template(ConvertGraph_PUNGraph_PNEANet) TSnap::ConvertGraph <PUNGraph, PNEANet>;
+%template(ConvertSubGraph_PUNGraph_PUNGraph) TSnap::ConvertSubGraph <PUNGraph, PUNGraph>;
+%template(ConvertSubGraph_PUNGraph_PNGraph) TSnap::ConvertSubGraph <PUNGraph, PNGraph>;
+%template(ConvertSubGraph_PUNGraph_PNEANet) TSnap::ConvertSubGraph <PUNGraph, PNEANet>;
 
 
 // triad.h - PUNGraph

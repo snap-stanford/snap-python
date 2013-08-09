@@ -3,73 +3,81 @@ from snap import *
 if __name__ == '__main__':
 
     # create a graph PNGraph
-    Graph = TNGraph.New()
-    Graph.AddNode(1)
-    Graph.AddNode(5)
-    Graph.AddNode(32)
-    Graph.AddEdge(1,5)
-    Graph.AddEdge(5,1)
-    Graph.AddEdge(5,32)
-    print "Graph: Nodes %d, Edges %d" % (Graph.GetNodes(), Graph.GetEdges())
+    G1 = TNGraph.New()
+    G1.AddNode(1)
+    G1.AddNode(5)
+    G1.AddNode(32)
+    G1.AddEdge(1,5)
+    G1.AddEdge(5,1)
+    G1.AddEdge(5,32)
+    print "G1: Nodes %d, Edges %d" % (G1.GetNodes(), G1.GetEdges())
 
     # create a directed random graph on 100 nodes and 1k edges
-    Graph = GenRndGnm(PNGraph, 100, 1000)
-    print "Graph: Nodes %d, Edges %d" % (Graph.GetNodes(), Graph.GetEdges())
+    G2 = GenRndGnm(PNGraph, 100, 1000)
+    print "G2: Nodes %d, Edges %d" % (G2.GetNodes(), G2.GetEdges())
 
     # traverse the nodes
-    for NI in Graph.Nodes():
+    for NI in G2.Nodes():
         print "node id %d with out-degree %d and in-degree %d" % (
             NI.GetId(), NI.GetOutDeg(), NI.GetInDeg())
     # traverse the edges
-    for EI in Graph.Edges():
+    for EI in G2.Edges():
         print "edge (%d, %d)" % (EI.GetSrcNId(), EI.GetDstNId())
 
     # traverse the edges by nodes
-    for NI in Graph.Nodes():
+    for NI in G2.Nodes():
         for e in range(0, NI.GetOutDeg()):
             print "edge (%d %d)" % (NI.GetId(), NI.GetOutNId(e))
 
     # generate a network using Forest Fire model
-    G = GenForestFire(1000, 0.35, 0.35)
-    print "G: Nodes %d, Edges %d" % (G.GetNodes(), G.GetEdges())
+    G3 = GenForestFire(1000, 0.35, 0.35)
+    print "G3: Nodes %d, Edges %d" % (G3.GetNodes(), G3.GetEdges())
 
     # save and load binary
     FOut = TFOut(TStr("test.graph"))
-    G.Save(FOut)
+    G3.Save(FOut)
     FOut.Flush()
     FIn = TFIn(TStr("test.graph"))
-    G2 = TNGraph.Load(FIn)
-    print "G2: Nodes %d, Edges %d" % (G2.GetNodes(), G2.GetEdges())
+    G4 = TNGraph.Load(FIn)
+    print "G4: Nodes %d, Edges %d" % (G4.GetNodes(), G4.GetEdges())
 
     # save and load from a text file
-    SaveEdgeList(G2, TStr("test.txt"), TStr("Save as tab-separated list of edges"))
-    G3 = LoadEdgeList(PNGraph, TStr("test.txt"), 0, 1)
-    print "G3: Nodes %d, Edges %d" % (G3.GetNodes(), G3.GetEdges())
+    SaveEdgeList(G4, TStr("test.txt"), TStr("Save as tab-separated list of edges"))
+    G5 = LoadEdgeList(PNGraph, TStr("test.txt"), 0, 1)
+    print "G5: Nodes %d, Edges %d" % (G5.GetNodes(), G5.GetEdges())
 
     # generate a network using Forest Fire model
-    G = GenForestFire(1000, 0.35, 0.35)
+    G6 = GenForestFire(1000, 0.35, 0.35)
+    print "G6: Nodes %d, Edges %d" % (G6.GetNodes(), G6.GetEdges())
     # convert to undirected graph
-    # TODO UG = ConvertGraph(G,PUNGraph)
+    G7 = ConvertGraph(PUNGraph,G6)
+    print "G7: Nodes %d, Edges %d" % (G7.GetNodes(), G7.GetEdges())
     # get largest weakly connected component of G
-    WccG = GetMxWcc(G)
+    WccG = GetMxWcc(G6)
     # get a subgraph induced on nodes {0,1,2,3,4,5}
-    SubG = GetSubGraph(G, TIntV.GetV(TInt(0),TInt(1),TInt(2),TInt(3),TInt(4)))
+    SubG = GetSubGraph(G6, TIntV.GetV(TInt(0),TInt(1),TInt(2),TInt(3),TInt(4)))
     # get 3-core of G
-    # TODO Core3 = GetKCore(G, TInt(3))
-    # delete nodes of degree 10
-    # TODO DelDegKNodes(G, TInt(10))
+    Core3 = GetKCore(G6, 3)
+    # delete nodes of out degree 10 and in degree 5
+    DelDegKNodes(G6, 10, 5)
+    print "G6a: Nodes %d, Edges %d" % (G6.GetNodes(), G6.GetEdges())
 
     # generate a Preferential Attachment graph on 1000 nodes and node out degree of 3
-    G = GenPrefAttach(1000, 3)
+    G8 = GenPrefAttach(1000, 3)
+    print "G8: Nodes %d, Edges %d" % (G8.GetNodes(), G8.GetEdges())
+    # vector of pairs of integers (size, count)
+    CntV = TIntPrV()
     # get distribution of connected components (component size, count)
-    # TODO TVec<TPair<TInt, TInt> > CntV    # vector of pairs of integers (size, count)
-    # TODO GetWccSzCnt(G, CntV)    # get degree distribution pairs (degree, count)
-    # TODO GetOutDegCnt(G, CntV)   # get first eigenvector of graph adjacency matrix
-    # TODO EigV = TFltV()          # vector of floats
-    # TODO GetEigVec(G, EigV)
-    # get diameter of G
-    # TODO GetBfsFullDiam(G)
-    # count the number of triads in G, get the clustering coefficient of G
-    # TODO GetTriads(G)
-    # TODO GetClustCf(G)
+    GetWccSzCnt(G8, CntV)
+    # get degree distribution pairs (degree, count)
+    GetOutDegCnt(G8, CntV)
+    # vector of floats
+    EigV = TFltV()
+    # get first eigenvector of graph adjacency matrix
+    GetEigVec(G8, EigV)
+    # get diameter of G8
+    GetBfsFullDiam(G8, 100)
+    # count the number of triads in G8, get the clustering coefficient of G8
+    GetTriads(G8)
+    GetClustCf(G8)
 
