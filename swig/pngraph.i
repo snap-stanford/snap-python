@@ -27,7 +27,6 @@ TNGraphEdgeI.GetId = GetId
 
 // Basic Undirected Graphs
 
-%template(LoadEdgeList_PNGraph) TSnap::LoadEdgeList<PNGraph>;
 %template(PrintGraphStatTable_PNGraph) PrintGraphStatTable<PNGraph>;
 
 //%template(MxSccSz_PNGraph) TSnap::GetMxScc<PNGraph>;
@@ -76,6 +75,17 @@ TNGraphEdgeI.GetId = GetId
 %template(CntUniqBiDirEdges_PNGraph) TSnap::CntUniqBiDirEdges<PNGraph>;
 %template(CntSelfEdges_PNGraph) TSnap::CntSelfEdges<PNGraph>;
 
+%template(GetUnDir_PNGraph) TSnap::GetUnDir<PNGraph>;
+%template(MakeUnDir_PNGraph) TSnap::MakeUnDir<PNGraph>;
+%template(AddSelfEdges_PNGraph) TSnap::AddSelfEdges<PNGraph>;
+%template(DelSelfEdges_PNGraph) TSnap::DelSelfEdges<PNGraph>;
+%template(DelNodes_PNGraph) TSnap::DelNodes<PNGraph>;
+%template(DelZeroDegNodes_PNGraph) TSnap::DelZeroDegNodes<PNGraph>;
+%template(DelDegKNodes_PNGraph) TSnap::DelDegKNodes<PNGraph>;
+%template(IsTree_PNGraph) TSnap::IsTree<PNGraph>;
+%template(GetTreeRootNId_PNGraph) TSnap::GetTreeRootNId<PNGraph>;
+%template(GetTreeSig_PNGraph) TSnap::GetTreeSig<PNGraph>;
+
 
 // bfsdfs.h - PNGraph
 %template(GetBfsTree_PNGraph) TSnap::GetBfsTree<PNGraph>;
@@ -101,6 +111,31 @@ TNGraphEdgeI.GetId = GetId
 %template(GenTree_PNGraph) TSnap::GenTree<PNGraph>;
 %template(GenBaraHierar_PNGraph) TSnap::GenBaraHierar<PNGraph>;
 %template(GenRndGnm_PNGraph) TSnap::GenRndGnm<PNGraph>;
+
+
+// gio.h
+%template(LoadEdgeList_PNGraph) TSnap::LoadEdgeList<PNGraph>;
+%template(LoadEdgeListStr_PNGraph) TSnap::LoadEdgeListStr<PNGraph>;
+%template(LoadConnList_PNGraph) TSnap::LoadConnList<PNGraph>;
+%template(LoadConnListStr_PNGraph) TSnap::LoadConnListStr<PNGraph>;
+%template(LoadPajek_PNGraph) TSnap::LoadPajek<PNGraph>;
+%template(SaveEdgeList_PNGraph) TSnap::SaveEdgeList<PNGraph>;
+%template(SavePajek_PNGraph) TSnap::SavePajek<PNGraph>;
+%template(SaveMatlabSparseMtx_PNGraph) TSnap::SaveMatlabSparseMtx<PNGraph>;
+%template(SaveGViz_PNGraph) TSnap::SaveGViz<PNGraph>;
+
+
+// kcore.h
+%template(GetKCore_PNGraph) TSnap::GetKCore<PNGraph>;
+
+
+// subgraph.h
+%template(ConvertGraph_PNGraph_PUNGraph) TSnap::ConvertGraph <PNGraph, PUNGraph>;
+%template(ConvertGraph_PNGraph_PNGraph) TSnap::ConvertGraph <PNGraph, PNGraph>;
+%template(ConvertGraph_PNGraph_PNEANet) TSnap::ConvertGraph <PNGraph, PNEANet>;
+%template(ConvertSubGraph_PNGraph_PUNGraph) TSnap::ConvertSubGraph <PNGraph, PUNGraph>;
+%template(ConvertSubGraph_PNGraph_PNGraph) TSnap::ConvertSubGraph <PNGraph, PNGraph>;
+%template(ConvertSubGraph_PNGraph_PNEANet) TSnap::ConvertSubGraph <PNGraph, PNEANet>;
 
 
 // triad.h - PNGraph
