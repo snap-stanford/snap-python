@@ -1,6 +1,19 @@
-# __cons__ constructors, no object parameters
-# __func__ functions, the first parameter is an object
+# __cons__ constructors,
+#		the first parameter is a result type
+# __func__ functions
+#		the first parameter is an object
+# __conv__ conversions
+#		the first parameter is a result type,
+#		the second parameter is an input object
 __cons__	LoadEdgeList
+__cons__	LoadEdgeListStr
+__cons__	LoadConnList
+__cons__	LoadConnListStr
+__cons__	LoadPajek
+__func__	SaveEdgeList
+__func__	SavePajek
+__func__	SaveMatlabSparseMtx
+__func__	SaveGViz
 __func__	PrintGraphStatTable
 __func__	MxSccSz
 __func__	MxWccSz
@@ -33,6 +46,16 @@ __func__	CntUniqUndirEdges
 __func__	CntUniqDirEdges
 __func__	CntUniqBiDirEdges
 __func__	CntSelfEdges
+__func__	GetUnDir
+__func__	MakeUnDir
+__func__	AddSelfEdges
+__func__	DelSelfEdges
+__func__	DelNodes
+__func__	DelZeroDegNodes
+__func__	DelDegKNodes
+__func__	IsTree
+__func__	GetTreeRootNId
+__func__	GetTreeSig
 __func__	GetBfsTree
 __func__	GetSubTreeSz
 __func__	GetNodesAtHop
@@ -65,3 +88,4 @@ __func__	NodesGTEDegree
 __func__	MxDegree
 __func__	PercentMxWcc
 __func__	PercentMxScc
+__func__	GetKCore

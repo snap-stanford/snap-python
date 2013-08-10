@@ -1,3 +1,3 @@
   {
-	printf "%s\t%s\n", "PUNGraph", $1;
+	printf "%s\t%s\n", g, $1;
   }

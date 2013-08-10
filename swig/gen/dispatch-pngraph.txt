@@ -1,4 +1,12 @@
 PNGraph	LoadEdgeList
+PNGraph	LoadEdgeListStr
+PNGraph	LoadConnList
+PNGraph	LoadConnListStr
+PNGraph	LoadPajek
+PNGraph	SaveEdgeList
+PNGraph	SavePajek
+PNGraph	SaveMatlabSparseMtx
+PNGraph	SaveGViz
 PNGraph	PrintGraphStatTable
 PNGraph	MxSccSz
 PNGraph	MxWccSz
@@ -31,6 +39,16 @@ PNGraph	CntUniqUndirEdges
 PNGraph	CntUniqDirEdges
 PNGraph	CntUniqBiDirEdges
 PNGraph	CntSelfEdges
+PNGraph	GetUnDir
+PNGraph	MakeUnDir
+PNGraph	AddSelfEdges
+PNGraph	DelSelfEdges
+PNGraph	DelNodes
+PNGraph	DelZeroDegNodes
+PNGraph	DelDegKNodes
+PNGraph	IsTree
+PNGraph	GetTreeRootNId
+PNGraph	GetTreeSig
 PNGraph	GetBfsTree
 PNGraph	GetSubTreeSz
 PNGraph	GetNodesAtHop
@@ -63,3 +81,4 @@ PNGraph	NodesGTEDegree
 PNGraph	MxDegree
 PNGraph	PercentMxWcc
 PNGraph	PercentMxScc
+PNGraph	GetKCore

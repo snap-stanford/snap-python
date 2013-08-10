@@ -74,7 +74,6 @@
 
 // Use PNEANet as default function name.
 
-%template(LoadEdgeList_PNEANet) TSnap::LoadEdgeList<PNEANet>;
 %template(PrintGraphStatTable_PNEANet) PrintGraphStatTable<PNEANet>;
 
 //%template(MxSccSz_PNEANet) TSnap::GetMxScc<PNEANet>;
@@ -125,6 +124,17 @@
 %template(CntUniqBiDirEdges_PNEANet) TSnap::CntUniqBiDirEdges<PNEANet>;
 %template(CntSelfEdges_PNEANet) TSnap::CntSelfEdges<PNEANet>;
 
+%template(GetUnDir_PNEANet) TSnap::GetUnDir<PNEANet>;
+%template(MakeUnDir_PNEANet) TSnap::MakeUnDir<PNEANet>;
+%template(AddSelfEdges_PNEANet) TSnap::AddSelfEdges<PNEANet>;
+%template(DelSelfEdges_PNEANet) TSnap::DelSelfEdges<PNEANet>;
+%template(DelNodes_PNEANet) TSnap::DelNodes<PNEANet>;
+%template(DelZeroDegNodes_PNEANet) TSnap::DelZeroDegNodes<PNEANet>;
+%template(DelDegKNodes_PNEANet) TSnap::DelDegKNodes<PNEANet>;
+%template(IsTree_PNEANet) TSnap::IsTree<PNEANet>;
+%template(GetTreeRootNId_PNEANet) TSnap::GetTreeRootNId<PNEANet>;
+%template(GetTreeSig_PNEANet) TSnap::GetTreeSig<PNEANet>;
+
 
 // bfsdfs.h - PNEANet
 %template(GetBfsTree_PNEANet) TSnap::GetBfsTree<PNEANet>;
@@ -150,6 +160,31 @@
 %template(GenTree_PNEANet) TSnap::GenTree<PNEANet>;
 %template(GenBaraHierar_PNEANet) TSnap::GenBaraHierar<PNEANet>;
 %template(GenRndGnm_PNEANet) TSnap::GenRndGnm<PNEANet>;
+
+
+// gio.h
+%template(LoadEdgeList_PNEANet) TSnap::LoadEdgeList<PNEANet>;
+%template(LoadEdgeListStr_PNEANet) TSnap::LoadEdgeListStr<PNEANet>;
+%template(LoadConnList_PNEANet) TSnap::LoadConnList<PNEANet>;
+%template(LoadConnListStr_PNEANet) TSnap::LoadConnListStr<PNEANet>;
+%template(LoadPajek_PNEANet) TSnap::LoadPajek<PNEANet>;
+%template(SaveEdgeList_PNEANet) TSnap::SaveEdgeList<PNEANet>;
+%template(SavePajek_PNEANet) TSnap::SavePajek<PNEANet>;
+%template(SaveMatlabSparseMtx_PNEANet) TSnap::SaveMatlabSparseMtx<PNEANet>;
+%template(SaveGViz_PNEANet) TSnap::SaveGViz<PNEANet>;
+
+
+// kcore.h
+%template(GetKCore_PNEANet) TSnap::GetKCore<PNEANet>;
+
+
+// subgraph.h
+%template(ConvertGraph_PNEANet_PUNGraph) TSnap::ConvertGraph <PNEANet, PUNGraph>;
+%template(ConvertGraph_PNEANet_PNGraph) TSnap::ConvertGraph <PNEANet, PNGraph>;
+%template(ConvertGraph_PNEANet_PNEANet) TSnap::ConvertGraph <PNEANet, PNEANet>;
+%template(ConvertSubGraph_PNEANet_PUNGraph) TSnap::ConvertSubGraph <PNEANet, PUNGraph>;
+%template(ConvertSubGraph_PNEANet_PNGraph) TSnap::ConvertSubGraph <PNEANet, PNGraph>;
+%template(ConvertSubGraph_PNEANet_PNEANet) TSnap::ConvertSubGraph <PNEANet, PNEANet>;
 
 
 // triad.h - PNEANet
