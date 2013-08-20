@@ -59,6 +59,11 @@
 //  $1 = &S;
 //}
 
+// Translate Python strings to SNAP TStr
+%typemap(in) const TStr& {
+  $1 = new TStr(PyString_AsString($input));
+}
+
 %typemap(in) TStr defaultValue {
   TStr S(PyString_AsString($input));
   $1 = S;

@@ -82,12 +82,14 @@ def ManipulateNodesEdges():
 
     # save the graph
     print "graph type = ", type(Graph)
-    FOut = TFOut(TStr(FName))
+    #FOut = TFOut(TStr(FName))
+    FOut = TFOut(FName)
     Graph.Save(FOut)
     FOut.Flush()
 
     # load the graph
-    FIn = TFIn(TStr(FName))
+    #FIn = TFIn(TStr(FName))
+    FIn = TFIn(FName)
     Graph2 = TNEANet(FIn)
     PrintGStats("ManipulateNodesEdges:Graph4" , Graph2)
 
@@ -132,10 +134,14 @@ def ManipulateNodeEdgeAttributes():
   print "Added nodes"
 
   # create attributes and fill all nodes
-  attr1 = TStr("str")
-  attr2 = TStr("int")
-  attr3 = TStr("float")
-  attr4 = TStr("default")
+  #attr1 = TStr("str")
+  #attr2 = TStr("int")
+  #attr3 = TStr("float")
+  #attr4 = TStr("default")
+  attr1 = "str"
+  attr2 = "int"
+  attr3 = "float"
+  attr4 = "default"
   
   # Test verticaliterator for node 3, 50, 700, 900
   # Check if we can set defaults to 0 fordata.
@@ -151,7 +157,8 @@ def ManipulateNodeEdgeAttributes():
   NI = Graph.BegNAIntI(attr2)
   while NI < Graph.EndNAIntI(attr2):
     if NI.GetDat() != 0:
-      print "Attribute: %s, Node: %i, Val: %d" % (attr2(), NodeId, NI.GetDat())
+      print "Attribute: %s, Node: %i, Val: %d" % (attr2, NodeId, NI.GetDat())
+      #print "Attribute: %s, Node: %i, Val: %d" % (attr2(), NodeId, NI.GetDat())
     NodeId += 1
     NI.Next()
 
@@ -167,37 +174,45 @@ def ManipulateNodeEdgeAttributes():
   while NI < Graph.EndNI():
     NCount += 1
     NI.Next()
-        
+
   NI = Graph.BegNAFltI(attr3)
   NodeId = 0
   while NI < Graph.EndNAFltI(attr3):
     if NI.GetDat() != TFlt.Mn:
-      print "Attribute: %s, Node: %i, Val: %f" % (attr3(), NodeId, NI.GetDat())
+      print "Attribute: %s, Node: %i, Val: %f" % (attr3, NodeId, NI.GetDat())
+      #print "Attribute: %s, Node: %i, Val: %f" % (attr3(), NodeId, NI.GetDat())
     NodeId += 1
     NI.Next()
 
   # Test vertical str iterator for node 3, 50, 700, 900
-  Graph.AddStrAttrDatN(10, TStr("abc"), attr1)
-  Graph.AddStrAttrDatN(20, TStr("def"), attr1)
-  Graph.AddStrAttrDatN(400, TStr("ghi"), attr1)
+  #Graph.AddStrAttrDatN(10, TStr("abc"), attr1)
+  #Graph.AddStrAttrDatN(20, TStr("def"), attr1)
+  #Graph.AddStrAttrDatN(400, TStr("ghi"), attr1)
+  Graph.AddStrAttrDatN(10, "abc", attr1)
+  Graph.AddStrAttrDatN(20, "def", attr1)
+  Graph.AddStrAttrDatN(400, "ghi", attr1)
   # this does not show since ""=null
-  Graph.AddStrAttrDatN(455, TStr(""), attr1)
+  #Graph.AddStrAttrDatN(455, TStr(""), attr1)
+  # TODO Graph.AddStrAttrDatN(455, "", attr1)
   NodeId = 0
 
   NI = Graph.BegNAStrI(attr1)
   NodeId = 0
   while NI < Graph.EndNAStrI(attr1):
     if NI.GetDat() != TStr.GetNullStr():
-      print "Attribute: %s, Node: %i, Val: %s" % (attr1(), NodeId, NI.GetDat())
+      print "Attribute: %s, Node: %i, Val: %s" % (attr1, NodeId, NI.GetDat())
+      #print "Attribute: %s, Node: %i, Val: %s" % (attr1(), NodeId, NI.GetDat())
     NodeId += 1
     NI.Next()
 
   # Test vertical iterator over many types (must skip default/deleted attr)
   NId = 55
-  Graph.AddStrAttrDatN(NId, TStr("aaa"), attr1)
+  #Graph.AddStrAttrDatN(NId, TStr("aaa"), attr1)
+  Graph.AddStrAttrDatN(NId, "aaa", attr1)
   Graph.AddIntAttrDatN(NId, 3*2, attr2)
   Graph.AddFltAttrDatN(NId, 3.41, attr3)
-  Graph.AddStrAttrDatN(80, TStr("dont appear"), attr4) # should not show up
+  #Graph.AddStrAttrDatN(80, TStr("dont appear"), attr4) # should not show up
+  Graph.AddStrAttrDatN(80, "dont appear", attr4) # should not show up
   NIdAttrName = TStrV()
   Graph.AttrNameNI(NId, NIdAttrName)
   AttrLen = NIdAttrName.Len()
@@ -244,7 +259,8 @@ def ManipulateNodeEdgeAttributes():
   while EI < Graph.EndEAIntI(attr2):
     if EI.GetDat() != TInt.Mn:
       print "E Attribute: %s, Edge: %i, Val: %i"\
-        % (attr2(), EdgeId, EI.GetDat())
+        % (attr2, EdgeId, EI.GetDat())
+        #% (attr2(), EdgeId, EI.GetDat())
     EdgeId += 1
     EI.Next()
 
@@ -260,31 +276,39 @@ def ManipulateNodeEdgeAttributes():
     # Check if defaults are set to 0.
     if EI.GetDat() != 0:
       print "E Attribute: %s, Edge: %i, Val: %f" % \
-        (attr3(), EdgeId, EI.GetDat())
+        (attr3, EdgeId, EI.GetDat())
+        #(attr3(), EdgeId, EI.GetDat())
     EdgeId += 1
     EI.Next()
 
   # Test vertical str iterator for edge
-  Graph.AddStrAttrDatE(10, TStr("abc"), attr1)
-  Graph.AddStrAttrDatE(20, TStr("def"), attr1)
-  Graph.AddStrAttrDatE(400, TStr("ghi"), attr1)
+  #Graph.AddStrAttrDatE(10, TStr("abc"), attr1)
+  #Graph.AddStrAttrDatE(20, TStr("def"), attr1)
+  #Graph.AddStrAttrDatE(400, TStr("ghi"), attr1)
+  Graph.AddStrAttrDatE(10, "abc", attr1)
+  Graph.AddStrAttrDatE(20, "def", attr1)
+  Graph.AddStrAttrDatE(400, "ghi", attr1)
   # this does not show since ""=null
-  Graph.AddStrAttrDatE(455, TStr(""), attr1)
+  #Graph.AddStrAttrDatE(455, TStr(""), attr1)
+  # TODO Graph.AddStrAttrDatE(455, "", attr1)
   EdgeId = 0
   EI = Graph.BegEAStrI(attr1)
   while EI < Graph.EndEAStrI(attr1):
     if EI.GetDat() != TStr.GetNullStr():
       print "E Attribute: %s, Edge: %i, Val: %s" %\
-        (attr1(), EdgeId, EI.GetDat())
+        (attr1, EdgeId, EI.GetDat())
+        #(attr1(), EdgeId, EI.GetDat())
     EdgeId += 1
     EI.Next()
 
   # Test vertical iterator over many types (must skip default/deleted attr)
   EId = 55
-  Graph.AddStrAttrDatE(EId, TStr("aaa"), attr1)
+  #Graph.AddStrAttrDatE(EId, TStr("aaa"), attr1)
+  Graph.AddStrAttrDatE(EId, "aaa", attr1)
   Graph.AddIntAttrDatE(EId, 3*2, attr2)
   Graph.AddFltAttrDatE(EId, 3.41, attr3)
-  Graph.AddStrAttrDatE(80, TStr("dont appear"), attr4) # should not show up
+  #Graph.AddStrAttrDatE(80, TStr("dont appear"), attr4) # should not show up
+  Graph.AddStrAttrDatE(80, "dont appear", attr4) # should not show up
   EIdAttrName = TStrV()
 #  Graph.AttrNameEI(EId, EIdAttrName)
   AttrLen = EIdAttrName.Len()
