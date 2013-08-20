@@ -36,6 +36,9 @@ TNGraphEdgeI.GetId = GetId
 // Basic PNGraphs
 %template(PNGraph) TPt< TNGraph >;
 
+// gbase.h - PNGraph
+%template(PrintInfo_PNGraph) TSnap::PrintInfo<PNGraph>;
+
 // cncom.h - PNGraph
 %template(GetNodeWcc_PNGraph) TSnap::GetNodeWcc<PNGraph>;
 %template(IsConnected_PNGraph) TSnap::IsConnected<PNGraph>;

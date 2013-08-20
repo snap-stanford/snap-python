@@ -28,7 +28,7 @@ def ManipulateNodesEdges():
     NEdges = 100000
     FName = "test.graph"
 
-    Graph = TNEANet()
+    Graph = TNEANet.New()
     t = Graph.Empty()
 
     # create the nodes
@@ -75,6 +75,7 @@ def ManipulateNodesEdges():
 
     print "graph ManipulateNodesEdges:Graph2, nodes %d, edges1 %d, edges2 %d"\
         % (NCount, ECount1, ECount2)
+    PrintInfo(Graph,TStr("test"),TStr(""),0)
 
     # assignment
     Graph1 = Graph

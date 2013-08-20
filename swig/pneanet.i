@@ -85,6 +85,10 @@
 %template(PNEANet) TPt< TNEANet >;
 
 
+// gbase.h - PNEANet
+%template(PrintInfo_PNEANet) TSnap::PrintInfo<PNEANet>;
+
+
 // cncom.h - PNEANet
 %template(GetNodeWcc_PNEANet) TSnap::GetNodeWcc<PNEANet>;
 %template(IsConnected_PNEANet) TSnap::IsConnected<PNEANet>;

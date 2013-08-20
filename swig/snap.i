@@ -122,6 +122,7 @@ Version = "0.3"
 
 // SNAP Library
 // snap-core
+%include "gbase.h"
 %include "alg.h"
 %include "anf.h"
 %include "bfsdfs.h"
@@ -170,8 +171,9 @@ Version = "0.3"
 //%template(TIntV) TVec< TInt, int >;
 //%template(TIntIntVV) TVec< TVec< TInt, int >, int >;
 //%template(TIntIntVH) THash< TInt, TVec< TInt, int > >;
-//%template(TIntH) THash<TInt, TInt>;
-//%template(TIntHI) THashKeyDatI < TInt, TInt >;
+
+%template(TIntH) THash<TInt, TInt>;
+%template(TIntHI) THashKeyDatI < TInt, TInt >;
 
 //%template(TStrV) TVec< TStr, int >;
 
@@ -182,6 +184,7 @@ Version = "0.3"
 
 // ds.h
 
+#if 0
 //%template(TBoolChPr) TPair<TBool, TCh>;
 %template(TBoolFltPr) TPair<TBool, TFlt>;
 //%template(TUChIntPr) TPair<TUCh, TInt>;
@@ -279,7 +282,11 @@ Version = "0.3"
 %template(TChV) TVec<TCh>;
 %template(TUChV) TVec<TUCh>;
 %template(TUIntV) TVec<TUInt>;
+#endif
+
 %template(TIntV) TVec<TInt>;
+
+#if 0
 %template(TUInt64V) TVec<TUInt64>;
 %template(TFltV) TVec<TFlt>;
 %template(TSFltV) TVec<TSFlt>;
@@ -473,6 +480,7 @@ Version = "0.3"
 ////%template(TStrTmPr) TPair<TStr, TTm>;
 //%template(TTmStrPrV) TVec<TTmStrPr>;
 //%template(TStrTmPrV) TVec<TStrTmPr>;
+#endif
 
 //----------
 
@@ -482,7 +490,13 @@ Version = "0.3"
 %include "printgraph.h"
 %include "snap_types.i"
 
-/* Graph templates - include other SWIG interface types here. */
+/* Include other SWIG interface types here. */
+
+/* Vector and hash interface */
+%include "tvec.i"
+%include "thash.i"
+
+/* Graph and network interface */
 %include "pneanet.i"
 %include "pngraph.i"
 %include "pungraph.i"

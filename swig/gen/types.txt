@@ -89,3 +89,4 @@ __func__	MxDegree
 __func__	PercentMxWcc
 __func__	PercentMxScc
 __func__	GetKCore
+__func__	PrintInfo
