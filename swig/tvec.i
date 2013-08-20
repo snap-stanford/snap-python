@@ -11,7 +11,7 @@ def getitem(self, i):
 # define iterator for TVec
 #
 
-class Iter:
+class IterVec:
     def __init__(self, vec):
         self.vec = vec
         self.count = -1
@@ -26,10 +26,10 @@ class Iter:
 
         raise StopIteration
 
-def iter(self):
-    return Iter(self)
+def itervec(self):
+    return IterVec(self)
 
-TIntV.__iter__ = iter
+TIntV.__iter__ = itervec
 
 #TBoolV.__getitem__ = getitem
 #TChV.__getitem__ = getitem

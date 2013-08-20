@@ -1,6 +1,7 @@
 from snap import *
 
-v = TIntV.GetV(TInt(11),TInt(12),TInt(13),TInt(14),TInt(15))
+#v = TIntV.GetV(TInt(11),TInt(12),TInt(13),TInt(14),TInt(15))
+v = TIntV.GetV(11,12,13,14,15)
 
 print "--------- 1"
 for item in v:

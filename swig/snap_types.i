@@ -65,10 +65,11 @@
 }
 
 // Translate Python ints to TInt
-//%typemap(in) const TInt& value {
 %typemap(in) const TInt& {
-  TInt I = PyInt_AsLong($input);
-  $1 = &I;
+//%typemap(in) const TInt& value {
+  //TInt I = PyInt_AsLong($input);
+  //$1 = &I;
+  $1 = new TInt(PyInt_AsLong($input));
 }
 
 %typemap(in) TInt defaultValue {
@@ -76,10 +77,11 @@
   $1 = I;
 }
 
-//%typemap(in) TInt & NId {
 %typemap(in) TInt& {
-  TInt I = PyInt_AsLong($input);
-  $1 = &I;
+//%typemap(in) TInt & NId {
+  //TInt I = PyInt_AsLong($input);
+  //$1 = &I;
+  $1 = new TInt(PyInt_AsLong($input));
 }
 
 // Translate Python floats to TInt

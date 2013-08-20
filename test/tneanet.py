@@ -305,6 +305,7 @@ def ManipulateNodeEdgeAttributes():
     print "Vertical Edge (no str) : %i, Attr: %s" % (EId, EIdAttrName.GetI(i)())
 
   EIdAttrValue = TStrV()
+  #Graph.AttrValueEI(TInt(EId), EIdAttrValue)
   Graph.AttrValueEI(EId, EIdAttrValue)
   AttrLen = EIdAttrValue.Len()
   for i in range(AttrLen):
