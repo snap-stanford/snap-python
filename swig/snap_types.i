@@ -65,7 +65,8 @@
 }
 
 // Translate Python ints to TInt
-%typemap(in) const TInt& value {
+//%typemap(in) const TInt& value {
+%typemap(in) const TInt& {
   TInt I = PyInt_AsLong($input);
   $1 = &I;
 }
@@ -75,7 +76,8 @@
   $1 = I;
 }
 
-%typemap(in) TInt& NId {
+//%typemap(in) TInt & NId {
+%typemap(in) TInt& {
   TInt I = PyInt_AsLong($input);
   $1 = &I;
 }
@@ -94,13 +96,13 @@
 // Slow but safe.  Create type for Python variable-size lists of integers (must keep argument name or create typemap.
 %typemap(in) (int *arraySlow, int lengthSlow) {
   int i;
-  int length = PySequence_Length($input);
-  int *temp = (int *) malloc(length*sizeof(int));
   if (!PySequence_Check($input)) {
     PyErr_SetString(PyExc_ValueError,"Expected a sequence");
     return NULL;
   }
-  for (i = 0; i < length; i++) {
+  int lengthSlow = PySequence_Size($input);
+  int *temp = (int *) malloc(lengthSlow*sizeof(int));
+  for (i = 0; i < lengthSlow; i++) {
     PyObject *o = PySequence_GetItem($input,i);
     if (PyNumber_Check(o)) {
       temp[i] = (int) PyInt_AsLong(o);
@@ -110,7 +112,7 @@
     }
   }
   $1 = temp;
-  $2 = length;
+  $2 = lengthSlow;
 }
 
 // Fast.  Create type for Python variable-size lists of integers (must keep argument name or create typemap.
@@ -129,7 +131,6 @@
 %typemap(freearg) (int *array, int length) {
      if ($1) free($1);
 }
-
 
 // Convert an TIntV to a Python list
 

@@ -16,7 +16,7 @@ def DefaultConstructor():
     Test the default constructor
     '''
 
-    Graph = TNEANet()
+    Graph = TNEANet.New()
     PrintGStats("DefaultConstructor:Graph", Graph)
 
 def ManipulateNodesEdges():
@@ -28,7 +28,7 @@ def ManipulateNodesEdges():
     NEdges = 100000
     FName = "test.graph"
 
-    Graph = TNEANet()
+    Graph = TNEANet.New()
     t = Graph.Empty()
 
     # create the nodes
@@ -109,7 +109,7 @@ def ManipulateNodeEdgeAttributes():
   NNodes = 1000
   NEdges = 1000
   
-  Graph = TNEANet()
+  Graph = TNEANet.New()
   t = Graph.Empty()
 
   # create the nodes
@@ -305,7 +305,7 @@ def ManipulateNodeEdgeAttributes():
     print "Vertical Edge (no str) : %i, Attr: %s" % (EId, EIdAttrName.GetI(i)())
 
   EIdAttrValue = TStrV()
-  Graph.AttrValueEI(TInt(EId), EIdAttrValue)
+  Graph.AttrValueEI(EId, EIdAttrValue)
   AttrLen = EIdAttrValue.Len()
   for i in range(AttrLen):
     print "Vertical Edge (no str) : %i, Attr_Val: %s" % (EId, EIdAttrValue.GetI(i)())

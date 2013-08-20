@@ -1,6 +1,7 @@
 #include "Snap.h"
 
 // TODO: move declarations to goodgraph.h
+// RS 2013/08/19, this code should go to snap-core
 
 using namespace TSnap;
   
@@ -11,13 +12,13 @@ TUNGraph TPrGraph(PUNGraph G) {
   return *G;
 };
 
-int accept_array(int array[]) {
-  
-  for (int i=0; i < 10; i++)
-    printf("array[%d] = %d\n", i, array[i]);
-
-  return 0;
-}
+//int accept_array(int array[]) {
+//  
+//  for (int i=0; i < 10; i++)
+//    printf("array[%d] = %d\n", i, array[i]);
+//
+//  return 0;
+//}
 
 template<class PGraph>
 double PercentDegree(const PGraph& Graph, const int Threshold=0) {

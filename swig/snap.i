@@ -112,6 +112,8 @@ Version = "0.3"
 //%ignore THash< TVec<TStr, int>, TVec<TInt, int>, TDefaultHashFunc<TVec<TStr, int> > >::AddDatId;
 //%ignore THash<  TVec<TStr, int>, TVec<TStr, int>, TDefaultHashFunc<TVec<TStr, int> > >::AddDatId;
 
+%include "snap_types.i"
+
 #define GLib_UNIX
 // glib-core
 %include "bd.h"
@@ -291,7 +293,11 @@ Version = "0.3"
 %template(TFltV) TVec<TFlt>;
 %template(TSFltV) TVec<TSFlt>;
 %template(TAscFltV) TVec<TAscFlt>;
+#endif
+
 %template(TStrV) TVec<TStr>;
+
+#if 0
 %template(TChAV) TVec<TChA>;
 %template(TIntPrV) TVec<TIntPr>;
 %template(TIntTrV) TVec<TIntTr>;
@@ -485,10 +491,10 @@ Version = "0.3"
 //----------
 
 // Python-SNAP conversion typemaps
+
 %include "snapswig.h"
 %include "goodgraph.cpp"
 %include "printgraph.h"
-%include "snap_types.i"
 
 /* Include other SWIG interface types here. */
 

@@ -7,10 +7,13 @@ from snap import *
 
 Hash = TIntH()
 
-Hash.AddDat(TInt(3),TInt(5))
-Hash.AddDat(TInt(4),TInt(6))
-Hash.AddDat(TInt(1),TInt(8))
-Hash.AddDat(TInt(6),TInt(2))
+Hash.AddDat(5,4)
+Hash.AddDat(1,2)
+Hash.AddDat(4,8)
+#Hash.AddDat(TInt(3),TInt(5))
+#Hash.AddDat(TInt(4),TInt(6))
+#Hash.AddDat(TInt(1),TInt(8))
+#Hash.AddDat(TInt(6),TInt(2))
 
 print "len", Hash.Len()
 
