@@ -84,3 +84,26 @@ python gentypes.py typedef-tm.txt | grep template > swig-tm.txt
 //%template(TDbStrIntH) THash<TDbStr, TInt>;
 //%template(TDbStrStrH) THash<TDbStr, TStr>;
 
+#
+# add new methods to vector types
+#
+
+# list of vector types is in vectors.txt
+
+# generate the vector dispatch table
+awk -f v.awk vectors.txt > vec-20130820.txt
+
+# include vec-20130820.txt in tvec.i
+
+#
+# add new methods to hash types
+#
+
+# list of hash types is in hashes.txt
+
+# generate the vector dispatch table
+awk -f h.awk hashes.txt > hash-20130820.txt
+
+# include hash-20130820.txt in thash.i
+
+

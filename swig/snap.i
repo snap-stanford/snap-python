@@ -4,7 +4,7 @@
 //     along with standard SNAP functions.
 
 %pythoncode %{
-Version = "0.3"
+Version = "0.4"
 %}
 
 %module snap
@@ -114,6 +114,19 @@ Version = "0.3"
 
 %include "snap_types.i"
 
+//%include exception.i
+//
+//%exception {
+//    try {
+//        $action
+//    }
+//    catch (int i) {
+//        printf("*** CATCH %d\n", i);
+//        PyErr_SetString(PyExc_IndexError,"index out-of-bounds");
+//        SWIG_exception(SWIG_UnknownError,"Unknown exception");
+//    }
+//}
+
 #define GLib_UNIX
 // glib-core
 %include "bd.h"
@@ -121,6 +134,7 @@ Version = "0.3"
 %include "dt.h"
 %include "fl.h"
 //%include "tm.h"
+//%include "ut.h"
 
 // SNAP Library
 // snap-core
@@ -186,7 +200,6 @@ Version = "0.3"
 
 // ds.h
 
-#if 0
 //%template(TBoolChPr) TPair<TBool, TCh>;
 %template(TBoolFltPr) TPair<TBool, TFlt>;
 //%template(TUChIntPr) TPair<TUCh, TInt>;
@@ -284,20 +297,16 @@ Version = "0.3"
 %template(TChV) TVec<TCh>;
 %template(TUChV) TVec<TUCh>;
 %template(TUIntV) TVec<TUInt>;
-#endif
 
 %template(TIntV) TVec<TInt>;
 
-#if 0
 %template(TUInt64V) TVec<TUInt64>;
 %template(TFltV) TVec<TFlt>;
 %template(TSFltV) TVec<TSFlt>;
 %template(TAscFltV) TVec<TAscFlt>;
-#endif
 
 %template(TStrV) TVec<TStr>;
 
-#if 0
 %template(TChAV) TVec<TChA>;
 %template(TIntPrV) TVec<TIntPr>;
 %template(TIntTrV) TVec<TIntTr>;
@@ -486,7 +495,6 @@ Version = "0.3"
 ////%template(TStrTmPr) TPair<TStr, TTm>;
 //%template(TTmStrPrV) TVec<TTmStrPr>;
 //%template(TStrTmPrV) TVec<TStrTmPr>;
-#endif
 
 //----------
 

@@ -65,8 +65,9 @@
 }
 
 %typemap(in) TStr defaultValue {
-  TStr S(PyString_AsString($input));
-  $1 = S;
+  //TStr S(PyString_AsString($input));
+  //$1 = S;
+  $1 = TStr(PyString_AsString($input));
 }
 
 // Translate Python ints to TInt
@@ -78,8 +79,9 @@
 }
 
 %typemap(in) TInt defaultValue {
-  TInt I = PyInt_AsLong($input);
-  $1 = I;
+  //TInt I = PyInt_AsLong($input);
+  //$1 = I;
+  $1 = TInt(PyInt_AsLong($input));
 }
 
 %typemap(in) TInt& {
@@ -90,14 +92,17 @@
 }
 
 // Translate Python floats to TInt
-%typemap(in) const TFlt &value {
-  TFlt F = PyFloat_AsDouble($input);
-  $1 = &F;
+//%typemap(in) const TFlt &value {
+%typemap(in) const TFlt& {
+  //TFlt F = PyFloat_AsDouble($input);
+  //$1 = &F;
+  $1 = new TFlt(PyFloat_AsDouble($input));
 }
 
 %typemap(in) TFlt defaultValue {
-  TFlt F = PyFloat_AsDouble($input);
-  $1 = F;
+  //TFlt F = PyFloat_AsDouble($input);
+  //$1 = F;
+  $1 = TFlt(PyFloat_AsDouble($input));
 }
 
 // Slow but safe.  Create type for Python variable-size lists of integers (must keep argument name or create typemap.
