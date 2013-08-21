@@ -34,16 +34,16 @@ if __name__ == '__main__':
     print "G3: Nodes %d, Edges %d" % (G3.GetNodes(), G3.GetEdges())
 
     # save and load binary
-    FOut = TFOut(TStr("test.graph"))
+    FOut = TFOut("test.graph")
     G3.Save(FOut)
     FOut.Flush()
-    FIn = TFIn(TStr("test.graph"))
+    FIn = TFIn("test.graph")
     G4 = TNGraph.Load(FIn)
     print "G4: Nodes %d, Edges %d" % (G4.GetNodes(), G4.GetEdges())
 
     # save and load from a text file
-    SaveEdgeList(G4, TStr("test.txt"), TStr("Save as tab-separated list of edges"))
-    G5 = LoadEdgeList(PNGraph, TStr("test.txt"), 0, 1)
+    SaveEdgeList(G4, "test.txt", "Save as tab-separated list of edges")
+    G5 = LoadEdgeList(PNGraph, "test.txt", 0, 1)
     print "G5: Nodes %d, Edges %d" % (G5.GetNodes(), G5.GetEdges())
 
     # generate a network using Forest Fire model
@@ -55,7 +55,7 @@ if __name__ == '__main__':
     # get largest weakly connected component of G
     WccG = GetMxWcc(G6)
     # get a subgraph induced on nodes {0,1,2,3,4,5}
-    SubG = GetSubGraph(G6, TIntV.GetV(TInt(0),TInt(1),TInt(2),TInt(3),TInt(4)))
+    SubG = GetSubGraph(G6, TIntV.GetV(0,1,2,3,4))
     # get 3-core of G
     Core3 = GetKCore(G6, 3)
     # delete nodes of out degree 10 and in degree 5

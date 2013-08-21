@@ -427,6 +427,11 @@ def SaveMatlabSparseMtx(tspec, *args):
     if type(tspec) == PNGraph : return SaveMatlabSparseMtx_PNGraph(tspec, *args)
     if type(tspec) == PNEANet : return SaveMatlabSparseMtx_PNEANet(tspec, *args)
     return None
+def PrintInfo(tspec, *args):
+    if type(tspec) == PUNGraph: return PrintInfo_PUNGraph(tspec, *args)
+    if type(tspec) == PNGraph : return PrintInfo_PNGraph(tspec, *args)
+    if type(tspec) == PNEANet : return PrintInfo_PNEANet(tspec, *args)
+    return None
 
 def ConvertGraph(toutspec, tinspec, *args):
     if toutspec == PUNGraph:
