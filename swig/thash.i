@@ -32,14 +32,11 @@ class IterHash:
 def iterhash(self):
     return IterHash(self)
 
-TChChH.__iter__ = iterhash
-TChTrIntH.__iter__ = iterhash
 TIntH.__iter__ = iterhash
 TUInt64H.__iter__ = iterhash
 TIntBoolH.__iter__ = iterhash
 TIntIntH.__iter__ = iterhash
 TIntUInt64H.__iter__ = iterhash
-TIntIntFltPrH.__iter__ = iterhash
 TIntIntVH.__iter__ = iterhash
 TIntIntHH.__iter__ = iterhash
 TIntFltH.__iter__ = iterhash
@@ -83,8 +80,6 @@ TStrStrKdVH.__iter__ = iterhash
 TStrIntFltPrH.__iter__ = iterhash
 TStrStrIntPrVH.__iter__ = iterhash
 TStrStrIntKdVH.__iter__ = iterhash
-TDbStrIntH.__iter__ = iterhash
-TDbStrStrH.__iter__ = iterhash
 TStrPrBoolH.__iter__ = iterhash
 TStrPrIntH.__iter__ = iterhash
 TStrPrFltH.__iter__ = iterhash
@@ -93,12 +88,9 @@ TStrPrStrVH.__iter__ = iterhash
 TStrTrIntH.__iter__ = iterhash
 TStrIntPrIntH.__iter__ = iterhash
 TStrVH.__iter__ = iterhash
-TStrVIntH.__iter__ = iterhash
 TStrVIntVH.__iter__ = iterhash
 TStrVStrH.__iter__ = iterhash
 TStrVStrVH.__iter__ = iterhash
-TStrSH.__iter__ = iterhash
-TStrIntSH.__iter__ = iterhash
-TStrToIntVSH.__iter__ = iterhash
+
 %}
 

@@ -1,11 +1,8 @@
-TChChH
-TChTrIntH
 TIntH
 TUInt64H
 TIntBoolH
 TIntIntH
 TIntUInt64H
-TIntIntFltPrH
 TIntIntVH
 TIntIntHH
 TIntFltH
@@ -49,8 +46,6 @@ TStrStrKdVH
 TStrIntFltPrH
 TStrStrIntPrVH
 TStrStrIntKdVH
-TDbStrIntH
-TDbStrStrH
 TStrPrBoolH
 TStrPrIntH
 TStrPrFltH
@@ -59,10 +54,6 @@ TStrPrStrVH
 TStrTrIntH
 TStrIntPrIntH
 TStrVH
-TStrVIntH
 TStrVIntVH
 TStrVStrH
 TStrVStrVH
-TStrSH
-TStrIntSH
-TStrToIntVSH
