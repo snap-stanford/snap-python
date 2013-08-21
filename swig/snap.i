@@ -4,7 +4,7 @@
 //     along with standard SNAP functions.
 
 %pythoncode %{
-Version = "0.3"
+Version = "0.4"
 %}
 
 %module snap
@@ -112,6 +112,21 @@ Version = "0.3"
 //%ignore THash< TVec<TStr, int>, TVec<TInt, int>, TDefaultHashFunc<TVec<TStr, int> > >::AddDatId;
 //%ignore THash<  TVec<TStr, int>, TVec<TStr, int>, TDefaultHashFunc<TVec<TStr, int> > >::AddDatId;
 
+%include "snap_types.i"
+
+//%include exception.i
+//
+//%exception {
+//    try {
+//        $action
+//    }
+//    catch (int i) {
+//        printf("*** CATCH %d\n", i);
+//        PyErr_SetString(PyExc_IndexError,"index out-of-bounds");
+//        SWIG_exception(SWIG_UnknownError,"Unknown exception");
+//    }
+//}
+
 #define GLib_UNIX
 // glib-core
 %include "bd.h"
@@ -119,9 +134,11 @@ Version = "0.3"
 %include "dt.h"
 %include "fl.h"
 //%include "tm.h"
+//%include "ut.h"
 
 // SNAP Library
 // snap-core
+%include "gbase.h"
 %include "alg.h"
 %include "anf.h"
 %include "bfsdfs.h"
@@ -170,8 +187,9 @@ Version = "0.3"
 //%template(TIntV) TVec< TInt, int >;
 //%template(TIntIntVV) TVec< TVec< TInt, int >, int >;
 //%template(TIntIntVH) THash< TInt, TVec< TInt, int > >;
-//%template(TIntH) THash<TInt, TInt>;
-//%template(TIntHI) THashKeyDatI < TInt, TInt >;
+
+%template(TIntH) THash<TInt, TInt>;
+%template(TIntHI) THashKeyDatI < TInt, TInt >;
 
 //%template(TStrV) TVec< TStr, int >;
 
@@ -279,12 +297,16 @@ Version = "0.3"
 %template(TChV) TVec<TCh>;
 %template(TUChV) TVec<TUCh>;
 %template(TUIntV) TVec<TUInt>;
+
 %template(TIntV) TVec<TInt>;
+
 %template(TUInt64V) TVec<TUInt64>;
 %template(TFltV) TVec<TFlt>;
 %template(TSFltV) TVec<TSFlt>;
 %template(TAscFltV) TVec<TAscFlt>;
+
 %template(TStrV) TVec<TStr>;
+
 %template(TChAV) TVec<TChA>;
 %template(TIntPrV) TVec<TIntPr>;
 %template(TIntTrV) TVec<TIntTr>;
@@ -477,12 +499,18 @@ Version = "0.3"
 //----------
 
 // Python-SNAP conversion typemaps
+
 %include "snapswig.h"
 %include "goodgraph.cpp"
 %include "printgraph.h"
-%include "snap_types.i"
 
-/* Graph templates - include other SWIG interface types here. */
+/* Include other SWIG interface types here. */
+
+/* Vector and hash interface */
+%include "tvec.i"
+%include "thash.i"
+
+/* Graph and network interface */
 %include "pneanet.i"
 %include "pngraph.i"
 %include "pungraph.i"

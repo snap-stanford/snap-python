@@ -14,7 +14,7 @@ include ../Makefile.config
 
 all: snap.py _snap.so
 
-snap_wrap.cxx: snap.i snap_types.i pneanet.i pungraph.i pngraph.i pgraph.i \
+snap_wrap.cxx: snap.i snap_types.i tvec.i pneanet.i pungraph.i pngraph.i pgraph.i \
 	snapswig.h snap_types.h printgraph.h goodgraph.cpp
 	swig -python -c++ -w302,312,317,325,362,383,384,389,401,503,508,509 -O -D_CMPWARN -I$(SNAPDIR) -I$(GLIBDIR) snap.i
 
