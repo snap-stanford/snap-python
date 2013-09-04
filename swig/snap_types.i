@@ -2,6 +2,132 @@
 //
 // Provides an interface between Python types (lists, strings) and SNAP.
 //
+
+//
+// TInt
+//
+
+%typemap(in) TInt& {
+//%typemap(in) TInt & NId {
+  //TInt I = PyInt_AsLong($input);
+  //$1 = &I;
+  $1 = new TInt(PyInt_AsLong($input));
+}
+
+%typemap(freearg) TInt& {
+   free($1);
+}
+
+%typemap(in) const TInt& {
+//%typemap(in) const TInt& value {
+  //TInt I = PyInt_AsLong($input);
+  //$1 = &I;
+  $1 = new TInt(PyInt_AsLong($input));
+}
+
+%typemap(freearg) const TInt& {
+   free($1);
+}
+
+%typemap(in) TInt defaultValue {
+  //TInt I = PyInt_AsLong($input);
+  //$1 = I;
+  $1 = TInt(PyInt_AsLong($input));
+}
+
+%typemap(out) TInt {
+  $result = PyInt_FromLong((long) ($1.Val));
+}
+
+%typemap(out) TInt& {
+  $result = PyInt_FromLong((long) ($1->Val));
+}
+
+//
+// TFlt
+//
+
+// Translate Python floats to TFlt
+
+%typemap(in) TFlt& {
+  //TFlt F = PyFloat_AsDouble($input);
+  //$1 = &F;
+  $1 = new TFlt(PyFloat_AsDouble($input));
+}
+
+%typemap(freearg) TFlt& {
+   free($1);
+}
+
+%typemap(in) const TFlt& {
+  //TFlt F = PyFloat_AsDouble($input);
+  //$1 = &F;
+  $1 = new TFlt(PyFloat_AsDouble($input));
+}
+
+%typemap(freearg) const TFlt& {
+   free($1);
+}
+
+%typemap(in) TFlt defaultValue {
+  TFlt F = PyFloat_AsDouble($input);
+  $1 = F;
+  //$1 = TFlt(PyFloat_AsDouble($input));
+}
+
+%typemap(out) TFlt {
+  $result = PyFloat_FromDouble((double) ($1.Val));
+}
+
+%typemap(out) TFlt& {
+  $result = PyFloat_FromDouble((double) ($1->Val));
+}
+
+//
+// TStr
+//
+
+// Translate Python strings to SNAP TStr
+//%typemap(in) const TStr& attr {
+//  TStr S(PyString_AsString($input));
+//  $1 = &S;
+//}
+
+%typemap(in) TStr& {
+  //TStr S(PyString_AsString($input));
+  //$1 = &S;
+  $1 = new TStr(PyString_AsString($input));
+}
+
+%typemap(freearg) TStr& {
+   free($1);
+}
+
+%typemap(in) const TStr& {
+  //TStr S(PyString_AsString($input));
+  //$1 = &S;
+  $1 = new TStr(PyString_AsString($input));
+}
+
+%typemap(freearg) const TStr& {
+   free($1);
+}
+
+%typemap(in) TStr defaultValue {
+  TStr S(PyString_AsString($input));
+  $1 = S;
+  //$1 = TStr(PyString_AsString($input));
+}
+
+%typemap(out) TStr {
+  $result = PyString_FromString($1.CStr());
+}
+
+%typemap(out) TStr& {
+  $result = PyString_FromString($1->CStr());
+}
+
+
 %typemap(in) (char *str, int len) {
   $1 = PyString_AsString($input);   /* char *str */
   $2 = PyString_Size($input);       /* int len   */
@@ -51,58 +177,6 @@
     }
   }
   $1 = temp;
-}
-
-// Translate Python strings to SNAP TStr
-//%typemap(in) const TStr& attr {
-//  TStr S(PyString_AsString($input));
-//  $1 = &S;
-//}
-
-// Translate Python strings to SNAP TStr
-%typemap(in) const TStr& {
-  $1 = new TStr(PyString_AsString($input));
-}
-
-%typemap(in) TStr defaultValue {
-  //TStr S(PyString_AsString($input));
-  //$1 = S;
-  $1 = TStr(PyString_AsString($input));
-}
-
-// Translate Python ints to TInt
-%typemap(in) const TInt& {
-//%typemap(in) const TInt& value {
-  //TInt I = PyInt_AsLong($input);
-  //$1 = &I;
-  $1 = new TInt(PyInt_AsLong($input));
-}
-
-%typemap(in) TInt defaultValue {
-  //TInt I = PyInt_AsLong($input);
-  //$1 = I;
-  $1 = TInt(PyInt_AsLong($input));
-}
-
-%typemap(in) TInt& {
-//%typemap(in) TInt & NId {
-  //TInt I = PyInt_AsLong($input);
-  //$1 = &I;
-  $1 = new TInt(PyInt_AsLong($input));
-}
-
-// Translate Python floats to TInt
-//%typemap(in) const TFlt &value {
-%typemap(in) const TFlt& {
-  //TFlt F = PyFloat_AsDouble($input);
-  //$1 = &F;
-  $1 = new TFlt(PyFloat_AsDouble($input));
-}
-
-%typemap(in) TFlt defaultValue {
-  //TFlt F = PyFloat_AsDouble($input);
-  //$1 = F;
-  $1 = TFlt(PyFloat_AsDouble($input));
 }
 
 // Slow but safe.  Create type for Python variable-size lists of integers (must keep argument name or create typemap.

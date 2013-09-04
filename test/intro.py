@@ -1,6 +1,6 @@
 from snap import *
 
-if __name__ == '__main__':
+def intro():
 
     # create a graph PNGraph
     G1 = TNGraph.New()
@@ -80,4 +80,7 @@ if __name__ == '__main__':
     # count the number of triads in G8, get the clustering coefficient of G8
     GetTriads(G8)
     GetClustCf(G8)
+
+if __name__ == '__main__':
+    intro()
 
