@@ -18,19 +18,19 @@ Hash.AddDat(4,8)
 print "len", Hash.Len()
 
 Iter = Hash.BegI()
-Key = Iter.GetKey().Val
-Value = Iter.GetDat().Val
+Key = Iter.GetKey()
+Value = Iter.GetDat()
 print "iter", Key, Value
 
 print "Iter < Hash.EndI", Iter < Hash.EndI()
 #while Iter < Hash.EndI():
 while not Iter.IsEnd():
-    Key = Iter.GetKey().Val
-    Value = Iter.GetDat().Val
+    Key = Iter.GetKey()
+    Value = Iter.GetDat()
     print Key, Value
 
     Iter.Next()
 
 for item in Hash:
-    print item.GetKey().Val, item.GetDat().Val
+    print item.GetKey(), item.GetDat()
 
