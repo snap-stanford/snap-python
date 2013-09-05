@@ -30,3 +30,4 @@
 %template(MxWccSz_PUNGraph) TSnap::GetMxWccSz<PUNGraph>;
 %template(MxDegree_PUNGraph) MxDegree<PUNGraph>;
 // End Basic Undirected Graphs
+
