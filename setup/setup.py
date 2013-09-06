@@ -52,6 +52,9 @@ if uname[0] == "Linux":
         os_version = (w[0] + w[2]).lower()
     except:
         pass
+
+    obj_name = "_snap.so"
+
 elif uname[0] == "Darwin":
     os.system("sw_vers -productVersion > OSX-Release")
     try:
@@ -62,20 +65,28 @@ elif uname[0] == "Darwin":
     except:
         pass
 
+    obj_name = "_snap.so"
+
 elif uname[0].find("CYGWIN") == 0:
     w = uname[0].rsplit("-",1)
     os_version = w[0].lower()
+    obj_name = "_snap.so"
+
+elif uname[0].find("Windows") == 0:
+    os_version = "Win"
+    obj_name = "_snap.pyd"
 
 # architecture
 arch = "i386"
 # x86_64 on Linux, Mac OS X, i686 on Cygwin
-if uname[4] == "x86_64"  or  uname[4] == "i686":
+if uname[4] == "x86_64"  or  uname[4] == "i686"  or  uname[4] == "AMD64":
     arch = "x64"
 
 pkg_version = "-".join([snappy_version, snap_version,
                         os_version, arch, python_version])
 
 #print "pkg_version", pkg_version
+#print "obj_name", obj_name
 #sys.exit(0)
 
 #
@@ -102,7 +113,7 @@ for p in sys.path:
 setup (name = 'snap',
     py_modules  = ["snap"],
     #ext_modules = [snap_module],
-    data_files  = [(user_install, ["_snap.so"])],
+    data_files  = [(user_install, [obj_name])],
     version     = pkg_version,
     author      = "snap.stanford.edu",
     description = """SNAP (Stanford Network Analysis Platform) Python""",

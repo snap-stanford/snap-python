@@ -35,6 +35,12 @@ install: setup.py snap.py _snap.so
 dist: setup.py snap.py _snap.so
 	python setup.py sdist
 
+install-win: setup.py snap.py _snap.pyd
+	/cygdrive/c/Python27/python.exe setup.py install
+
+dist-win: setup.py snap.py _snap.pyd
+	/cygdrive/c/Python27/python.exe setup.py sdist
+
 clean:
-	rm -f *.o *_wrap.cxx _*.so *.pyc snap.py
+	rm -f *.o *_wrap.cxx _*.so *.pyc snap.py _snap.*
 
