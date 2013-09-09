@@ -26,8 +26,8 @@ def intro():
 
     # traverse the edges by nodes
     for NI in G2.Nodes():
-        for e in range(0, NI.GetOutDeg()):
-            print "edge (%d %d)" % (NI.GetId(), NI.GetOutNId(e))
+        for Id in NI.GetOutEdges():
+            print "edge (%d %d)" % (NI.GetId(), Id)
 
     # generate a network using Forest Fire model
     G3 = GenForestFire(1000, 0.35, 0.35)

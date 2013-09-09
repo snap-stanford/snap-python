@@ -484,17 +484,29 @@ def ConvertSubGraph(toutspec, tinspec, *args):
 # generators for nodes and edges
 #
 
+# iterate through all the nodes
 def Nodes(self):
     NI = self.BegNI()
     while NI < self.EndNI():
         yield NI
         NI.Next()
 
+# iterate through all the edges
 def Edges(self):
     EI = self.BegEI()
     while EI < self.EndEI():
         yield EI
         EI.Next()
+
+# iterate through out edges of a node
+def GetOutEdges(self):
+    for e in range(0, self.GetOutDeg()):
+        yield self.GetOutNId(e)
+
+# iterate through in edges of a node
+def GetInEdges(self):
+    for e in range(0, self.GetInDeg()):
+        yield self.GetInNId(e)
 
 #
 # redefine some methods to use T... class not P... class
@@ -530,6 +542,15 @@ PNGraph.Edges = Edges
 PNGraph.Clr = Clr
 PNGraph.Empty = Empty
 PNGraph.Save = Save
+
+TNGraphNodeI.GetOutEdges = GetOutEdges
+TNGraphNodeI.GetInEdges = GetInEdges
+
+TUNGraphNodeI.GetOutEdges = GetOutEdges
+TUNGraphNodeI.GetInEdges = GetInEdges
+
+TNEANetNodeI.GetOutEdges = GetOutEdges
+TNEANetNodeI.GetInEdges = GetInEdges
 
 %}
 
