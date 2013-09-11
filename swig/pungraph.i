@@ -8,6 +8,9 @@
         TUNGraphNodeI EndNI() {
                 return TUNGraphNodeI($self->EndNI());
         }
+        TUNGraphNodeI GetNI(const int &NId) {
+                return TUNGraphNodeI($self->GetNI(NId));
+        }
         TUNGraphEdgeI BegEI() {
                 return TUNGraphEdgeI($self->BegEI());
         }
