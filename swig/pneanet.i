@@ -17,6 +17,10 @@
         TNEANetNodeI EndNI() {
           return TNEANetNodeI($self->EndNI());
         }
+        TNEANetNodeI GetNI(const int &NId) {
+          return TNEANetNodeI($self->GetNI(NId));
+        }
+
   
         TNEANetEdgeI BegEI() {
           return TNEANetEdgeI($self->BegEI());
