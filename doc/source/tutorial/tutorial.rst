@@ -141,10 +141,80 @@ Load the graph from a text file:
 Graph Manipulation
 ------------------
 
-To be done.
+Snap.py provides rich functionality to efficiently manipulate graphs and networks. Most functions support all graph and network types. Below are a few examples of graph operations.
+
+Generate a random Erdos-Renyi directed graph on 10000 nodes and with 5000 edges:
+
+>>> G6 = snap.GenRndGnm(snap.PNGraph, 10000, 5000)
+
+Convert a directed graph to an undirected graph:
+
+>>> G7 = snap.ConvertGraph(snap.PUNGraph, G6)
+
+Get the largest weakly connected component:
+
+>>> WccG = snap.GetMxWcc(G6)
+
+Generate a network using Forest Fire model:
+
+>>> G8 = snap.GenForestFire(1000, 0.35, 0.35)
+
+Get a subgraph induced on nodes {0,1,2,3,4}:
+
+>>> SubG = snap.GetSubGraph(G8, snap.TIntV.GetV(0,1,2,3,4))
+
+Get 3-core of G:
+
+>>> Core3 = snap.GetKCore(G8, 3)
+
+Delete nodes of out-degree 3 and in-degree 2:
+
+>>> snap.DelDegKNodes(G8, 3, 2)
 
 Computing Structural Properties
 -------------------------------
 
-To be done.
+Snap.py provides rich functionality to efficiently compute structural properties of networks. Most functions support all graph and network types.
+
+Generate a random Erdos-Renyi directed graph on 10000 nodes and with 1000 edges:
+
+>>> G9 = snap.GenRndGnm(snap.PNGraph, 10000, 1000)
+
+Define a vector of pairs of integers (size, count) and get a distribution of connected components (component size, count):
+
+>>> CntV = snap.TIntPrV()
+>>> snap.GetWccSzCnt(G9, CntV)
+>>> for p in CntV:
+>>>     print "size %d: count %d" % (p.GetVal1(), p.GetVal2())
+
+Get degree distribution pairs (out-degree, count):
+
+>>> snap.GetOutDegCnt(G9, CntV)
+>>> for p in CntV:
+>>>     print "degree %d: count %d" % (p.GetVal1(), p.GetVal2())
+
+Generate a Preferential Attachment graph on 100 nodes and out-degree of 3:
+
+>>> G10 = snap.GenPrefAttach(100, 3)
+
+Define a vector of floats and get first eigenvector of graph adjacency matrix:
+
+>>> EigV = snap.TFltV() 
+>>> snap.GetEigVec(G10, EigV)
+>>> nr = 0
+>>> for f in EigV:
+>>>     nr += 1
+>>>     print "%d: %.6f" % (nr, f)
+
+Get an approximation of graph diameter:
+
+>>> diam = snap.GetBfsFullDiam(G10, 10)
+
+Count the number of triads:
+
+>>> triads = snap.GetTriads(G10)
+
+Get the clustering coefficient:
+
+>>> cf = snap.GetClustCf(G10)
 
