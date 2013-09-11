@@ -8,6 +8,9 @@
         TNGraphNodeI EndNI() {
                 return TNGraphNodeI($self->EndNI());
         }
+        TNGraphNodeI GetNI(const int &NId) {
+                return TNGraphNodeI($self->GetNI(NId));
+        }
         TNGraphEdgeI BegEI() {
                 return TNGraphEdgeI($self->BegEI());
         }
