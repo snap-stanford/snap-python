@@ -136,7 +136,7 @@ Save the graph to a text file:
 
 Load the graph from a text file:
 
->>> G5 = snap.LoadEdgeList(PNGraph, "test.txt", 0, 1)
+>>> G5 = snap.LoadEdgeList(snap.PNGraph, "test.txt", 0, 1)
 
 Graph Manipulation
 ------------------
