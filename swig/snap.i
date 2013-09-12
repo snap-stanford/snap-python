@@ -157,6 +157,7 @@ Version = "0.5.1"
 %include "subgraph.h"
 %include "util.h"
 %include "triad.h"
+%include "statplot.h"
 
 %extend TVec {
 
