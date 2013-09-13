@@ -51,10 +51,16 @@ TNGraphEdgeI.GetId = GetId
 %template(GetSccSzCnt_PNGraph) TSnap::GetSccSzCnt<PNGraph>;
 %template(GetSccs_PNGraph) TSnap::GetSccs<PNGraph>;
 %template(GetMxWccSz_PNGraph) TSnap::GetMxWccSz<PNGraph>;
+%template(GetMxSccSz_PNGraph) TSnap::GetMxSccSz<PNGraph>;
 
 %template(GetMxWcc_PNGraph) TSnap::GetMxWcc<PNGraph>;
 %template(GetMxScc_PNGraph) TSnap::GetMxScc<PNGraph>;
 %template(GetMxBiCon_PNGraph) TSnap::GetMxBiCon<PNGraph>;
+
+// centr.h - PNGraph
+%template(GetNodeEcc_PNGraph) TSnap::GetNodeEcc<PNGraph>;
+%template(GetPageRank_PNGraph) TSnap::GetPageRank<PNGraph>;
+%template(GetHits_PNGraph) TSnap::GetHits<PNGraph>;
 
 
 // alg.h - PNGraph
@@ -133,6 +139,8 @@ TNGraphEdgeI.GetId = GetId
 
 // kcore.h
 %template(GetKCore_PNGraph) TSnap::GetKCore<PNGraph>;
+%template(GetKCoreEdges_PNGraph) TSnap::GetKCoreEdges<PNGraph>;
+%template(GetKCoreNodes_PNGraph) TSnap::GetKCoreNodes<PNGraph>;
 
 
 // subgraph.h
@@ -142,6 +150,10 @@ TNGraphEdgeI.GetId = GetId
 %template(ConvertSubGraph_PNGraph_PUNGraph) TSnap::ConvertSubGraph <PNGraph, PUNGraph>;
 %template(ConvertSubGraph_PNGraph_PNGraph) TSnap::ConvertSubGraph <PNGraph, PNGraph>;
 %template(ConvertSubGraph_PNGraph_PNEANet) TSnap::ConvertSubGraph <PNGraph, PNEANet>;
+%template(ConvertESubGraph_PNGraph_PNEANet) TSnap::ConvertESubGraph <PNGraph, PNEANet>;
+%template(GetSubGraph_PNGraph) TSnap::GetSubGraph<PNGraph>;
+%template(GetRndSubGraph_PNGraph) TSnap::GetRndSubGraph<PNGraph>;
+%template(GetRndESubGraph_PNGraph) TSnap::GetRndESubGraph<PNGraph>;
 
 
 // triad.h - PNGraph
@@ -164,6 +176,18 @@ TNGraphEdgeI.GetId = GetId
 // anf.h - PNGraph
 %template(GetAnf_PNGraph) TSnap::GetAnf<PNGraph>;
 %template(GetAnfEffDiam_PNGraph) TSnap::GetAnfEffDiam<PNGraph>;
+%template(TestAnf_PNGraph) TSnap::TestAnf<PNGraph>;
+
+// statplot.h - PNGraph
+%template(PlotKCoreEdges_PNGraph) TSnap::PlotKCoreEdges<PNGraph>;
+%template(PlotKCoreNodes_PNGraph) TSnap::PlotKCoreNodes<PNGraph>;
+%template(PlotShortPathDistr_PNGraph) TSnap::PlotShortPathDistr<PNGraph>;
+%template(PlotHops_PNGraph) TSnap::PlotHops<PNGraph>;
+%template(PlotClustCf_PNGraph) TSnap::PlotClustCf<PNGraph>;
+%template(PlotSccDistr_PNGraph) TSnap::PlotSccDistr<PNGraph>;
+%template(PlotWccDistr_PNGraph) TSnap::PlotWccDistr<PNGraph>;
+%template(PlotOutDegDistr_PNGraph) TSnap::PlotOutDegDistr<PNGraph>;
+%template(PlotInDegDistr_PNGraph) TSnap::PlotInDegDistr<PNGraph>;
 
 
 // goodgraph.cpp - PNGraph
