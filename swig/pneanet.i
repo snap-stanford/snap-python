@@ -102,10 +102,16 @@
 %template(GetSccSzCnt_PNEANet) TSnap::GetSccSzCnt<PNEANet>;
 %template(GetSccs_PNEANet) TSnap::GetSccs<PNEANet>;
 %template(GetMxWccSz_PNEANet) TSnap::GetMxWccSz<PNEANet>;
+%template(GetMxSccSz_PNEANet) TSnap::GetMxSccSz<PNEANet>;
 
 %template(GetMxWcc_PNEANet) TSnap::GetMxWcc<PNEANet>;
 %template(GetMxScc_PNEANet) TSnap::GetMxScc<PNEANet>;
 %template(GetMxBiCon_PNEANet) TSnap::GetMxBiCon<PNEANet>;
+
+// centr.h - PNEANet
+%template(GetNodeEcc_PNEANet) TSnap::GetNodeEcc<PNEANet>;
+%template(GetPageRank_PNEANet) TSnap::GetPageRank<PNEANet>;
+%template(GetHits_PNEANet) TSnap::GetHits<PNEANet>;
 
 
 // alg.h - PNEANet
@@ -184,15 +190,22 @@
 
 // kcore.h
 %template(GetKCore_PNEANet) TSnap::GetKCore<PNEANet>;
+%template(GetKCoreEdges_PNEANet) TSnap::GetKCoreEdges<PNEANet>;
+%template(GetKCoreNodes_PNEANet) TSnap::GetKCoreNodes<PNEANet>;
 
 
 // subgraph.h
-%template(ConvertGraph_PNEANet_PUNGraph) TSnap::ConvertGraph <PNEANet, PUNGraph>;
-%template(ConvertGraph_PNEANet_PNGraph) TSnap::ConvertGraph <PNEANet, PNGraph>;
 %template(ConvertGraph_PNEANet_PNEANet) TSnap::ConvertGraph <PNEANet, PNEANet>;
-%template(ConvertSubGraph_PNEANet_PUNGraph) TSnap::ConvertSubGraph <PNEANet, PUNGraph>;
-%template(ConvertSubGraph_PNEANet_PNGraph) TSnap::ConvertSubGraph <PNEANet, PNGraph>;
+%template(ConvertGraph_PNEANet_PNGraph) TSnap::ConvertGraph <PNEANet, PNGraph>;
+%template(ConvertGraph_PNEANet_PUNGraph) TSnap::ConvertGraph <PNEANet, PUNGraph>;
 %template(ConvertSubGraph_PNEANet_PNEANet) TSnap::ConvertSubGraph <PNEANet, PNEANet>;
+%template(ConvertSubGraph_PNEANet_PNGraph) TSnap::ConvertSubGraph <PNEANet, PNGraph>;
+%template(ConvertSubGraph_PNEANet_PUNGraph) TSnap::ConvertSubGraph <PNEANet, PUNGraph>;
+%template(ConvertESubGraph_PNEANet_PNEANet) TSnap::ConvertESubGraph <PNGraph, PNEANet>;
+%template(GetSubGraph_PNEANet) TSnap::GetSubGraph<PNEANet>;
+%template(GetESubGraph_PNEANet) TSnap::GetESubGraph<PNEANet>;
+%template(GetRndSubGraph_PNEANet) TSnap::GetRndSubGraph<PNEANet>;
+%template(GetRndESubGraph_PNEANet) TSnap::GetRndESubGraph<PNEANet>;
 
 
 // triad.h - PNEANet
@@ -215,6 +228,19 @@
 // anf.h - PNEANet
 %template(GetAnf_PNEANet) TSnap::GetAnf<PNEANet>;
 %template(GetAnfEffDiam_PNEANet) TSnap::GetAnfEffDiam<PNEANet>;
+%template(TestAnf_PNEANet) TSnap::TestAnf<PNEANet>;
+
+
+// statplot.h - PNEANet
+%template(PlotKCoreEdges_PNEANet) TSnap::PlotKCoreEdges<PNEANet>;
+%template(PlotKCoreNodes_PNEANet) TSnap::PlotKCoreNodes<PNEANet>;
+%template(PlotShortPathDistr_PNEANet) TSnap::PlotShortPathDistr<PNEANet>;
+%template(PlotHops_PNEANet) TSnap::PlotHops<PNEANet>;
+%template(PlotClustCf_PNEANet) TSnap::PlotClustCf<PNEANet>;
+%template(PlotSccDistr_PNEANet) TSnap::PlotSccDistr<PNEANet>;
+%template(PlotWccDistr_PNEANet) TSnap::PlotWccDistr<PNEANet>;
+%template(PlotOutDegDistr_PNEANet) TSnap::PlotOutDegDistr<PNEANet>;
+%template(PlotInDegDistr_PNEANet) TSnap::PlotInDegDistr<PNEANet>;
 
 
 // goodgraph.cpp - PNEANet
