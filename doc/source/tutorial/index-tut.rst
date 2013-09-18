@@ -1,5 +1,5 @@
 Snap.py Tutorial
-================
+----------------
 
 Contents:
 
