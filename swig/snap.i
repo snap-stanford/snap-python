@@ -189,9 +189,6 @@ Version = "0.6"
 //%template(TIntIntVV) TVec< TVec< TInt, int >, int >;
 //%template(TIntIntVH) THash< TInt, TVec< TInt, int > >;
 
-%template(TIntH) THash<TInt, TInt>;
-%template(TIntHI) THashKeyDatI < TInt, TInt >;
-
 //%template(TStrV) TVec< TStr, int >;
 
 //%template(TIntPrV) TVec< TIntPr >;
@@ -413,11 +410,13 @@ Version = "0.6"
 
 // hash.h
 
+// define hash types
 //%template(TChChH) THash<TCh, TCh>;
 //%template(TChTrIntH) THash<TChTr, TInt>;
 %template(TIntH) THash<TInt, TInt>;
 %template(TUInt64H) THash<TUInt64, TInt>;
 %template(TIntBoolH) THash<TInt, TBool>;
+%template(TIntH) THash<TInt, TInt>;
 %template(TIntIntH) THash<TInt, TInt>;
 %template(TIntUInt64H) THash<TInt, TUInt64>;
 //%template(TIntIntFltPrH) THash<TInt, TIntFltPr>;
@@ -481,6 +480,77 @@ Version = "0.6"
 //%template(TStrSH) TStrHash<TInt>;
 //%template(TStrIntSH) TStrHash<TInt>;
 //%template(TStrToIntVSH) TStrHash<TIntV>;
+
+
+// define keydat types
+//%template(TChChHI) THashKeyDatI <TCh, TCh>;
+//%template(TChTrIntHI) THashKeyDatI <TChTr, TInt>;
+%template(TIntHI) THashKeyDatI <TInt, TInt>;
+%template(TUInt64HI) THashKeyDatI <TUInt64, TInt>;
+%template(TIntBoolHI) THashKeyDatI <TInt, TBool>;
+%template(TIntHI) THashKeyDatI <TInt, TInt>;
+%template(TIntIntHI) THashKeyDatI <TInt, TInt>;
+%template(TIntUInt64HI) THashKeyDatI <TInt, TUInt64>;
+//%template(TIntIntFltPrHI) THashKeyDatI <TInt, TIntFltPr>;
+%template(TIntIntVHI) THashKeyDatI <TInt, TIntV>;
+%template(TIntIntHHI) THashKeyDatI <TInt, TIntH>;
+%template(TIntFltHI) THashKeyDatI <TInt, TFlt>;
+%template(TIntFltPrHI) THashKeyDatI <TInt, TFltPr>;
+%template(TIntFltTrHI) THashKeyDatI <TInt, TFltTr>;
+%template(TIntFltVHI) THashKeyDatI <TInt, TFltV>;
+%template(TIntStrHI) THashKeyDatI <TInt, TStr>;
+%template(TIntStrVHI) THashKeyDatI <TInt, TStrV>;
+%template(TIntIntPrHI) THashKeyDatI <TInt, TIntPr>;
+%template(TIntIntPrVHI) THashKeyDatI <TInt, TIntPrV>;
+%template(TUInt64StrVHI) THashKeyDatI <TUInt64, TStrV>;
+%template(TIntPrIntHI) THashKeyDatI <TIntPr, TInt>;
+%template(TIntPrIntVHI) THashKeyDatI <TIntPr, TIntV>;
+%template(TIntPrIntPrVHI) THashKeyDatI <TIntPr, TIntPrV>;
+%template(TIntTrIntHI) THashKeyDatI <TIntTr, TInt>;
+%template(TIntVIntHI) THashKeyDatI <TIntV, TInt>;
+%template(TUIntHI) THashKeyDatI <TUInt, TUInt>;
+%template(TIntPrIntHI) THashKeyDatI <TIntPr, TInt>;
+%template(TIntPrIntVHI) THashKeyDatI <TIntPr, TIntV>;
+%template(TIntPrFltHI) THashKeyDatI <TIntPr, TFlt>;
+%template(TIntTrFltHI) THashKeyDatI <TIntTr, TFlt>;
+%template(TIntPrStrHI) THashKeyDatI <TIntPr, TStr>;
+%template(TIntPrStrVHI) THashKeyDatI <TIntPr, TStrV>;
+%template(TIntStrPrIntHI) THashKeyDatI <TIntStrPr, TInt>;
+%template(TFltFltHI) THashKeyDatI <TFlt, TFlt>;
+%template(TStrHI) THashKeyDatI <TStr, TInt>;
+%template(TStrBoolHI) THashKeyDatI <TStr, TBool>;
+%template(TStrIntHI) THashKeyDatI <TStr, TInt>;
+%template(TStrIntPrHI) THashKeyDatI <TStr, TIntPr>;
+%template(TStrIntVHI) THashKeyDatI <TStr, TIntV>;
+%template(TStrUInt64HI) THashKeyDatI <TStr, TUInt64>;
+%template(TStrUInt64VHI) THashKeyDatI <TStr, TUInt64V>;
+%template(TStrIntPrVHI) THashKeyDatI <TStr, TIntPrV>;
+%template(TStrFltHI) THashKeyDatI <TStr, TFlt>;
+%template(TStrFltVHI) THashKeyDatI <TStr, TFltV>;
+%template(TStrStrHI) THashKeyDatI <TStr, TStr>;
+%template(TStrStrPrHI) THashKeyDatI <TStr, TStrPr>;
+%template(TStrStrVHI) THashKeyDatI <TStr, TStrV>;
+%template(TStrStrPrVHI) THashKeyDatI <TStr, TStrPrV>;
+%template(TStrStrKdVHI) THashKeyDatI <TStr, TStrKdV>;
+%template(TStrIntFltPrHI) THashKeyDatI <TStr, TIntFltPr>;
+%template(TStrStrIntPrVHI) THashKeyDatI <TStr, TStrIntPrV>;
+%template(TStrStrIntKdVHI) THashKeyDatI <TStr, TStrIntKdV>;
+//%template(TDbStrIntHI) THashKeyDatI <TDbStr, TInt>;
+//%template(TDbStrStrHI) THashKeyDatI <TDbStr, TStr>;
+%template(TStrPrBoolHI) THashKeyDatI <TStrPr, TBool>;
+%template(TStrPrIntHI) THashKeyDatI <TStrPr, TInt>;
+%template(TStrPrFltHI) THashKeyDatI <TStrPr, TFlt>;
+%template(TStrPrStrHI) THashKeyDatI <TStrPr, TStr>;
+%template(TStrPrStrVHI) THashKeyDatI <TStrPr, TStrV>;
+%template(TStrTrIntHI) THashKeyDatI <TStrTr, TInt>;
+%template(TStrIntPrIntHI) THashKeyDatI <TStrIntPr, TInt>;
+%template(TStrVHI) THashKeyDatI <TStrV, TInt>;
+//%template(TStrVIntHI) THashKeyDatI <TStrV, TInt>;
+%template(TStrVIntVHI) THashKeyDatI <TStrV, TIntV>;
+%template(TStrVStrHI) THashKeyDatI <TStrV, TStr>;
+%template(TStrVStrVHI) THashKeyDatI <TStrV, TStrV>;
+//%template(TStrSHI) TStrHashKeyDatI <TInt>;
+//%template(TStrIntSHI) TStrHashKeyDatI <TInt>;
 
 // dt.h
 
