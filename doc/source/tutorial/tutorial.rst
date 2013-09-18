@@ -1,5 +1,7 @@
 Introduction
-------------
+````````````
+
+This document is a quick tutorial to key Snap.py functionality.
 
 Snap.py is a Python interface for SNAP. SNAP is a general purpose,
 high performance system for analysis and manipulation of large networks.
@@ -9,17 +11,16 @@ with hundreds of millions of nodes, and billions of edges.
 
 Snap.py provides performance benefits of SNAP, combined with flexibility
 of Python. Most of the SNAP functionality is available via Snap.py in Python.
-This document gives a quick tutorial to a range of Snap.py operations.
 
 To use Snap.py in Python, import the **snap** module:
 
 >>> import snap
 
-The code below assumes that Snap.py has been imported as shown above.
+The code in this document assumes that Snap.py has been imported as shown above.
 
 
 Graph and Network Types
------------------------
+```````````````````````
 
 Snap.py supports *graphs* and *networks*. Graphs describe topologies,
 where nodes have unique integer ids and directed/undirected/multiple edges
@@ -40,7 +41,7 @@ Network types in SNAP:
 
 
 Graph Creation
---------------
+``````````````
 
 Graphs are created with the **New()** method.
 Examples of how to create graphs and networks:
@@ -51,7 +52,7 @@ Examples of how to create graphs and networks:
 
 
 Adding Nodes and Edges
-----------------------
+``````````````````````
 
 Nodes are added with the **AddNode()** method.
 
@@ -72,7 +73,7 @@ In TUNGraph and TNGraph edges have no explicit ids -- edges are identified by a 
 
 
 Traversing Nodes and Edges
---------------------------
+``````````````````````````
 
 Nodes and edges are traversed with iterators. Some examples of iterator usage in Snap.py are shown below.
 
@@ -108,7 +109,7 @@ Node iterators provide several useful methods:
 * IsNbrNId(n): tests if node n is a neighbor
 
 Saving and Loading Graphs
--------------------------
+`````````````````````````
 
 With Snap.py, it is easy to save and load networks in various formats.
 Internally, SNAP saves networks in a compact binary format, but functions for loading and saving networks in various other text and XML formats are also available (see gio.h).
@@ -139,7 +140,7 @@ Load the graph from a text file:
 >>> G5 = snap.LoadEdgeList(snap.PNGraph, "test.txt", 0, 1)
 
 Graph Manipulation
-------------------
+``````````````````
 
 Snap.py provides rich functionality to efficiently manipulate graphs and networks. Most functions support all graph and network types. Below are a few examples of graph operations.
 
@@ -172,7 +173,7 @@ Delete nodes of out-degree 3 and in-degree 2:
 >>> snap.DelDegKNodes(G8, 3, 2)
 
 Computing Structural Properties
--------------------------------
+```````````````````````````````
 
 Snap.py provides rich functionality to efficiently compute structural properties of networks. Most functions support all graph and network types.
 

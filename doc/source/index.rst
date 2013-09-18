@@ -4,7 +4,8 @@ Welcome to Snap.py!
 Contents:
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
 
-   tutorial/index
+   tutorial/index-tut
+   reference/index-ref
 
