@@ -3,7 +3,7 @@ GetPageRank
 
 .. function:: GetPageRank(Graph, PRankH, C = 0.85, Eps = 1e-4, MaxIter = 100)
 
-Computes the page ranking of the nodes in *Graph*. Rankings are stored to *PRankH*.
+Computes the PageRank score of every node in *Graph*. The scores are stored in *PRankH*.
 
 Parameters:
 
@@ -11,7 +11,7 @@ Parameters:
     A Snap.py graph or a network
 
 - *PRankH*: a hash of int keys and float values (output)
-    Page rankings. Keys are node IDs, values are calculated page rankings.
+    PageRank scores. Keys are node IDs, values are computed PageRank scores.
 
 - *C*: float (input)
     Damping factor
@@ -28,7 +28,7 @@ Return value:
 
 For more info see: http://en.wikipedia.org/wiki/PageRank
 
-The following example shows how to calculate node page rankings for
+The following example shows how to calculate PageRank scores for nodes in
 :class:`TNGraph`, :class:`TUNGraph`, and :class:`TNEANet`::
 
     import snap

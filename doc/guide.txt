@@ -1,0 +1,44 @@
+A Quick Guide to Sphinx for Snap.py
+
+This guide gives an overview of a subset of the Sphinx markup language
+as used to document functions in the Snap.py documentation.
+
+
+Page Title
+
+Use the following format:
+<function name>
+'''''''''''''''
+
+
+Function Definition
+
+.. function:: <optional_return_value>  <name>(<parameters>)
+
+
+List
+
+- <item1>
+    <text1>
+    
+- <item2>
+    <text2>
+
+
+References of Programming Constructs
+
+class        :class:`<class_name>`
+method       :meth:`<method_name>`
+function     :func:`<function_name>`
+parameter    *<parameter_name>*
+
+
+Source Code
+
+<text>::
+
+    <code_line1>
+    <code_line2>
+    <code_line3>
+    <code_line4>
+
