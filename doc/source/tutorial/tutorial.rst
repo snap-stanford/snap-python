@@ -30,20 +30,34 @@ Data types that reside on nodes and edges are simply passed as template
 parameters which provides a very fast and convenient way to implement
 various kinds of networks with rich data on nodes and edges.
 
-Graph types in SNAP:
+Graph classes in SNAP:
 
-* **TUNGraph**: undirected graphs (single edge between an unordered pair of nodes)
-* **TNGraph**: directed graphs (single directed edge between an ordered pair of nodes)
+* :class:`TUNGraph`: undirected graphs (single edge between an unordered pair of nodes)
+* :class:`TNGraph`: directed graphs (single directed edge between an ordered pair of nodes)
 
-Network types in SNAP:
+Network classes in SNAP:
 
-* **TNEANet**: directed graphs like TNGraph but with attributes for nodes and edges 
+* :class:`TNEANet`: directed graphs like :class:`TNGraph` but with attributes for nodes and edges
 
+Snap.py does not directly use instances of the graph and network classes,
+but utilizes smart pointers to those instances instead. The actual
+instances in the Python program are of type :class:`PUNGraph`,
+:class:`PNGraph`, or :class:`PNEAnet` and correspond to :class:`TUNGraph`,
+:class:`TNGraph`, and :class:`TNEAnet`, respectively.
+
+In general, if you need to call a class method, use **T** and
+if you need to specify an instance type, use **P**. For example:
+
+>>> G1 = snap.TNGraph.New()
+>>> G2 = snap.GenRndGnm(snap.PNGraph, 100, 1000)
+
+You can read more about smart pointers here:
+http://snap.stanford.edu/snap/doc/snapdev-guide/#Smart_Pointers.
 
 Graph Creation
 ``````````````
 
-Graphs are created with the **New()** method.
+Graphs are created with the :meth:`New()` method.
 Examples of how to create graphs and networks:
 
 >>> G1 = snap.TUNGraph.New()
@@ -54,7 +68,7 @@ Examples of how to create graphs and networks:
 Adding Nodes and Edges
 ``````````````````````
 
-Nodes are added with the **AddNode()** method.
+Nodes are added with the :meth:`AddNode()` method.
 
 >>> G1.AddNode(1)
 >>> G1.AddNode(5)
@@ -63,7 +77,7 @@ Nodes are added with the **AddNode()** method.
 Nodes have unique integer node ids.
 There is no restriction for node ids to be contiguous integers starting at 0. 
 
-Edges are added with the **AddEdge()** method.
+Edges are added with the :meth:`AddEdge()` method.
 
 >>> G1.AddEdge(1,5)
 >>> G1.AddEdge(5,1)
