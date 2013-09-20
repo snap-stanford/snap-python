@@ -93,6 +93,12 @@
 //  $1 = &S;
 //}
 
+%typemap(in) TStr {
+  //TStr S(PyString_AsString($input));
+  //$1 = &S;
+  $1 = TStr(PyString_AsString($input));
+}
+
 %typemap(in) TStr& {
   //TStr S(PyString_AsString($input));
   //$1 = &S;
