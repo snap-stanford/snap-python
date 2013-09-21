@@ -3,9 +3,11 @@ import os
 import sys
 import time
 
-from snap import *
+import snap
 
-Hash = TIntH()
+print "---------- 1 ---------"
+
+Hash = snap.TIntIntH()
 
 Hash.AddDat(5,4)
 Hash.AddDat(1,2)
@@ -32,5 +34,25 @@ while not Iter.IsEnd():
     Iter.Next()
 
 for item in Hash:
+    print item.GetKey(), item.GetDat()
+
+print "---------- 2 ---------"
+
+h = snap.TIntStrH()
+
+h.AddDat(5,"five")
+h.AddDat(3,"three")
+h.AddDat(9,"nine")
+h.AddDat(6,"six")
+h.AddDat(1,"one")
+
+print h.Len()
+
+print "h[3] =", h.GetDat(3)
+
+h.AddDat(3,"four")
+print "h[3] =", h.GetDat(3)
+
+for item in h:
     print item.GetKey(), item.GetDat()
 

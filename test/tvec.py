@@ -1,7 +1,7 @@
-from snap import *
+import snap
 
 #v = TIntV.GetV(TInt(11),TInt(12),TInt(13),TInt(14),TInt(15))
-v = TIntV.GetV(11,12,13,14,15)
+v = snap.TIntV.GetV(11,12,13,14,15)
 
 print v[2]
 
@@ -21,4 +21,25 @@ for i in range(0, v.Len()):
 print "--------- 3"
 for i in range(0, v.Len()):
     print v.GetVal(i)
+
+print "--------- 4"
+v = snap.TIntV()
+
+v.Add(1)
+v.Add(2)
+v.Add(3)
+v.Add(4)
+v.Add(5)
+
+print v.Len()
+print v[2]
+
+v.SetVal(2, 2*v[2])
+print v[2]
+
+for item in v:
+    print item
+
+for i in range(0, v.Len()):
+    print i, v[i]
 
