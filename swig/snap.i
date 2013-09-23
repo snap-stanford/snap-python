@@ -4,7 +4,7 @@
 //     along with standard SNAP functions.
 
 %pythoncode %{
-Version = "0.6"
+Version = "0.7"
 %}
 
 %module snap
