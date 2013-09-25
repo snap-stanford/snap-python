@@ -39,9 +39,8 @@ install-win: setup.py snap.py _snap.pyd
 	/cygdrive/c/Python27/python.exe setup.py install
 
 dist-win: setup.py snap.py _snap.pyd
-	echo *** WIN DISTRIBUTION DOES NOT WORK _snap.pyd IS MISSING ***
+	cp MANIFEST.win MANIFEST
 	/cygdrive/c/Python27/python.exe setup.py sdist
-	exit 1
 
 clean:
 	rm -f *.o *_wrap.cxx _*.so *.pyc snap.py _snap.*
