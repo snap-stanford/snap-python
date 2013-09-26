@@ -137,13 +137,13 @@ Below are the most commonly used hash table operations:
 
 - get a value for a specific key
 
-  >>> print "h[3] =", h[3].GetDat(3)
+  >>> print "h[3] =", h.GetDat(3)
   h[3] = three
 
 - change a value at a specific key
 
   >>> h.AddDat(3,"four")
-  >>> print "h[3] =", h[3].GetDat(3)
+  >>> print "h[3] =", h.GetDat(3)
   h[3] = four
 
 - print all values in a table using an iterator
