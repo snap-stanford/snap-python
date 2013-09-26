@@ -170,7 +170,7 @@ Below are the most commonly used hash table operations:
 
 - create a pair of an integer and a string:
 
-  >>> pr = snap.TIntStrPr(1, "one")
+  >>> p = snap.TIntStrPr(1, "one")
 
 - print the first value:
 
