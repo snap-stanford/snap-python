@@ -180,7 +180,7 @@ Below are the most commonly used hash table operations:
 - print the second value:
 
   >>> print p.GetVal2()
-  2
+  one
 
 .. seealso::
 
