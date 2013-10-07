@@ -1,41 +1,35 @@
-GetLen2Paths
+GetLen2Path
 '''''''''''
 
-.. function:: GetLen2Paths (Graph, NId1, NId2, NbrV)
+.. function:: GetLen2Paths (Graph, NId1, NId2)
 
-Return the number of length 2 paths between a pair of nodes.
+Returns the number of length 2 directed paths between a pair of nodes NId1, NId2 (NId1 --> U --> NId2).
 
 Parameters:
 
 - *Graph*: graph (input)
-    A Snap.py graph or a network
+    A Snap.py graph or a network.
 
 - *NId1*: int (input)
-    ID of the source node
+    ID of first node.
 
-- *NId2*: int (input)
-    ID of the destination node
-
-- *NbrV*: TIntV (input)
-    List of nodes on each path between node NId1 and node NId2. The list is filled by the function.
+- *NId1*: int (input)
+    ID of second node.
 
 Return value:
 
-- Number of length 2 paths between a pair of nodes.
+- int
 
-The following example shows how to use GetLen2Paths in :class:`PUNGraph`, :class:`PNGraph`, and :class:`PNEANet` 
-(**NOTE**: at the time this document was written, GetLen2Paths is not implemented yet so the author could not verify the code)::
+The following example shows how to calculate the number of length 2 directed paths between nodes within a :class:`TNGraph`, :class:`TUNGraph`, and :class:`TNEANet`::
 
     import snap
 
-    g = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
-    middle_nodes = snap.TIntV()
-    print snap.GetLen2Paths(g, 0, 1, middle_nodes)
+    Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
+    NumLen2Paths = snap.GetLen2Paths(Graph, 0, 1)
 
-    g = snap.GenRndGnm(snap.PNGraph, 100, 1000)
-    middle_nodes = snap.TIntV()
-    print snap.GetLen2Paths(g, 0, 1, middle_nodes)
+    Graph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
+    NumLen2Paths = snap.GetLen2Paths(Graph, 0, 1)
 
-    g = snap.GenRndGnm(snap.PNEANet, 100, 1000)
-    middle_nodes = snap.TIntV()
-    print snap.GetLen2Paths(g, 0, 1, middle_nodes)
+    Graph = snap.GenRndGnm(snap.PNEANet, 100, 1000)
+    NumLen2Paths = snap.GetLen2Paths(Graph, 0, 1)
+

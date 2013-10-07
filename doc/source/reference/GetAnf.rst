@@ -1,52 +1,38 @@
 GetAnf
-''''''
+'''''''''''
 
-.. function::  GetAnf(Graph, DistNbrsV, MxDist, IsDir, NApprox = 32)
+.. function:: GetAnf(Graph,SrcNId,DistNbrsV,MxDist,IsDir,Napprox)
 
-Approximate Neighborhood Function of *Graph*. Returns the number of pairs of nodes reachable in less than or equal to H hops.
 
 Parameters:
 
 - *Graph*: graph (input)
     A Snap.py graph or a network
+
+- *SrcNId*: int (input)
     
-- *DistNbrsV*: a vector of TIntFltKd (output)
-    Maps between the distance H (in hops) and the number of nodes reachable in <= H hops
+- *DistNbrsV*: vector of (integer,float) values (input)
 
 - *MxDist*: int (input)
-    Maximum number of hops the algorithm takes between pairs
+    
+- *isDir*: bool (input)
 
-- *IsDir*: bool (input)
-    If false, consider links as undirected (drop link directions)
-
-- *NApprox*: int (input)
-    Quality of approximation. See the ANF paper (link below)
+- *Napprox*: int (input)
 
 Return value:
 
 - None
 
-The ANF paper: http://www.cs.cmu.edu/~christos/PUBLICATIONS/kdd02-anf.pdf
-
-The following example shows how to use :func:`GetAnf` with
-:class:`TNGraph`, :class:`TUNGraph`, and :class:`TNEANet`::
+The following example shows how count number of self edges in :class:`Graph`::
 
     import snap
 
-    Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
-    DistNbrsV = snap.TIntFltKdV()
-    snap.GetAnf(Graph, DistNbrsV, 3, False)
-    for item in DistNbrsV:
-        print item.Dat()
+    G1 = snap.PNGraph.New()
+	G1.AddNode(0)
+	G1.AddNode(1)
+	G1.AddEdge(0,1)
+	G1.AddEdge(1,1)
 
-    Graph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
-    DistNbrsV = snap.TIntFltKdV()
-    snap.GetAnf(Graph, DistNbrsV, 3, False)
-    for item in DistNbrsV:
-        print item.Dat()
+	snap.GetAnf(G1)
 
-    Graph = snap.GenRndGnm(snap.PNEANet, 100, 1000)
-    DistNbrsV = snap.TIntFltKdV()
-    snap.GetAnf(Graph, DistNbrsV, 3, False)
-    for item in DistNbrsV:
-        print item.Dat()
+

@@ -1,41 +1,32 @@
 GetEigVec
 '''''''''''
 
-.. function:: GetEigVec(Graph, EigVecs, EigValV, EigVecV)
+.. function:: GetEigVec(Graph, EigVecV)
 
-Computes top EigVecs eigenvalues and eigenvectors of the adjacency matrix representing a given undirected Graph.
+Computes leading eigenvector of the adjacency matrix representing an undirected *Graph*
+
 
 Parameters:
 
-- *Graph*: graph (input)
-    A Snap.py undirected Graph.
-
-- *EigVecs*: int (input)
-    Rank of eigenvalues and eigenvectors that should be outputted.
-
-- *EigValV*: TFlt (output)
-    Eigenvalues.
+- *Graph*: PUNGraph (input)
+    A Snap.py graph or a network
 
 - *EigVecV*: TFltV (output)
-    Eigenvectors.
+    A leading eigenvector of the adjacency matrix representing the given *Graph*
 
 Return value:
 
 - None
 
-For more info see: http://en.wikipedia.org/wiki/GetEigVec
-
-The following example shows how to calculate the top 2 eigenvalues and eigenvectors for :class:`TUNGraph`::
+The following example shows how to get leading eigenvector of the adjacency matrix for 
+:class:`TUNGraph``::
 
     import snap
 
     Graph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
-    Eigval = snap.TFlt()
-    Eigvec = snap.TFltV()
-    snap.GetEigVec(Graph, 2, Eigval, Eigvec)
-
-    print "Eigenvalue: ", Eigval.Val
-
-    print "Eigenvector: "
-    for i in Eigvec:
-	print i
+    EigvV =  snap.TFltV()
+    snap.GetEigVec(Graph, EigvV)
+    index = 0
+    for Vl in EigvV:
+        index += 1
+        print "%d: %.6f" % (index, v)

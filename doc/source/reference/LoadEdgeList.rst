@@ -1,54 +1,64 @@
 LoadEdgeList
 ''''''''''''
 
-.. function:: LoadEdgeList(PGraph, InFNm, SrcColId, DstColId, Separator)
+.. function:: LoadEdgeList(GraphType, InFNm, SrcColId, DstColId)
 
-Loads a (directed, undirected or multi) graph from a text file *InFNm* of type *PGraph* (e.g. (snap.PNGraph | snap.PUNGraph | snap.PNEANet)) with 1 edge per line ('*Separator*' separated columns, integer node ids).
+    |  Loads a (directed, undirected or multi) graph from a text file InFNm with 1 edge per line (whitespace separated columns, integer node ids).
 
-Loads the format saved by TSnap.SaveEdgeList() if we set Separator=''.
+    |  Loads the format saved by SaveEdgeList()
 
-'*Separator*' separated file of several columns: ... <source node="" id>=""> ... <destination node="" id>=""> ... *SrcColId* and *DstColId* are column indexes of source/destination (integer!) node ids. This means there is one edge per line and node IDs are assumed to be integers.
+    |  Whitespace separated file of several columns: ... <source node id> ... <destination node id> ...
+    |  SrcColId and DstColId are column indexes of source/destination (integer!) node ids.
+    |  This means there is one edge per line and node IDs are assumed to be integers.
 
-References TSsParser.GetInt(), and TSsParser.Next().
 
 Parameters:
 
-- *PGraph*: graph type (input)
-    A graph type, e.g. (snap.PNGraph | snap.PUNGraph | snap.PNEANet)
+- *GraphType*: Type of the graph (input)
+    |  Possible values are :
+    |  :class:`PUNGraph` for Undirected Graphs
+    |  :class:`PNGraph`  for Directed   Graphs
+    |  :class:`PNEANet`  for Directed Node-Edge Networks
 
-- *InFNm*: file (input)
-    A text file with a (directed, undirected or multi) graph with 1 edge per line.
+- *InFNm*: a string containing the file name (input)
+    The file name of the file which contains the edges
 
-- *SrcColId*: integer (input)
-    Column indexes of source (integer!) node ids.
+- *SrcColId*: Source column number  (input)
+    |  The column number in the file, which contains the node id representing the source vertex
 
-- *DstColId*: integer (input)
-    Column indexes of destination (integer!) node ids.
-
-- *Separator*: char (input)
-    Column separator.
+- *DstColId*: Destination column number  (input)
+    |  The column number in the file, which contains the node id representing the destination vertex
 
 Return value:
 
-- *PGraph*: graph (return)
-    A loaded graph of type *PGraph*
+- A Snap.py graph or a network represented by the InFNm of type "GraphType"
 
-The following example shows how to load edge lists for
-:class:`TNGraph`, :class:`TUNGraph`, and :class:`TNEANet`::
 
-    import snap
-    
-    Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
-    snap.SaveEdgeList(Graph, "PNGraph.edges")
-    LoadedGraph = snap.LoadEdgeList(snap.PNGraph, "PNGraph.edges", 0, 1, '\t')
-    LoadedGraph.Dump()
-    
-    Graph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
-    snap.SaveEdgeList(Graph, "PUNGraph.edges")
-    LoadedGraph = snap.LoadEdgeList(snap.PUNGraph, "PUNGraph.edges", 0, 1, '\t')
-    LoadedGraph.Dump()
-    
-    Graph = snap.GenRndGnm(snap.PNEANet, 100, 1000)
-    snap.SaveEdgeList(Graph, "PNEANet.edges")
-    LoadedGraph = snap.LoadEdgeList(snap.PNEANet, "PNEANet.edges", 0, 1, '\t')
-    LoadedGraph.Dump()
+**Example:**
+
+The following example shows how to load a small file representing a directed graph::
+
+    import snap;
+
+    #Load Directed Graph
+    Graph = snap.LoadEdgeList(snap.PNGraph, "toy_graph", 0, 1)
+    Graph.Dump()
+
+    #Load Undirected Graph
+    Graph = snap.LoadEdgeList(snap.PNGraph, "toy_graph", 0, 1)
+    Graph.Dump()
+
+    #Load Node Edge Network
+    Graph = snap.LoadEdgeList(snap.PNGraph, "toy_graph", 0, 1)
+    Graph.Dump()
+
+
+An example file is given below (toy_graph) ::
+
+    1 1
+    1 2
+    2 1
+    1 3
+
+
+

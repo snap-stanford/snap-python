@@ -1,50 +1,42 @@
-LoadEdgeListStr
+LoadEdgeListStr 
 '''''''''''
 
-.. function:: LoadEdgeListStr(GraphType, InFNm, SrcColId, DstColId, StrToNIdH)
+.. function:: Graph LoadEdgeListStr (GraphType, InFNm, SrcColId = 0, DstColId = 1)
 
 Loads a (directed, undirected or multi) graph from a text file InFNm with 1 edge per line (whitespace separated columns, arbitrary string node ids).
 
-Loads the format saved by TSnap::SaveEdgeList(), where node IDs are strings and mapping of strings to node ids are stored.
+Loads the format saved by SaveEdgeList(), where node IDs are strings.
 
-Whitespace separated file of several columns: ... <source node="" id>=""> ... <destination node="" id>=""> ... SrcColId and DstColId are column indexes of source/destination (string) node ids. This means there is one edge per line and node IDs can be arbitrary STRINGs. The mapping of strings to node ids in stored in StrToNIdH. To map between node names and ids use: NId = StrToNIdH.GetKeyId(NodeName) and TStr NodeName = StrToNIdH.GetKey(NId);
+SrcColId and DstColId are column indexes of source/destination (string) node ids. This means there is one edge per line and node IDs can be arbitrary STRINGs. Note that the mapping of node names to ids is discarded.
 
 Parameters:
 
-- *GraphType*: Graph type (output)
-    Specifies the type (PNGraph, PUNGraph) of graph that is output.
+- *GraphType*: graph type (input)
+    One of: PNGraph (directed graph), PUNGraph (undirected graph), PNEANet (directed network)
 
-- *InFNm*: Input Filename (input)
-    Name of the file: 1 edge per line, with whitespace separated columns and arbitrary string node ids.
+- *InFNm*: string (input)
+    Name of text file
 
-- *SrcColId*: Source Column ID (input)
-    Contains the column indices of the source node ids.
+- *SrcColId*: int (input)
+    Column index of source (string) node ids
 
-- *DstColId*: Destination Column ID (input)
-    Contains the column indices of the destination node ids.
-
-- *StrToNIdH*: String To Node ID Hash (output)
-    Contains the mapping of strings to node ids.
-
+- *DstColId*: int (input)
+    Column index of destination (string) node ids
 
 Return value:
 
-- *Graph*: Returns a PGraph (can be directed, undirected, or multi).
+- *Graph*: graph
+    A Snap.py graph or a network
 
-Also see: function:: LoadEdgeListStr(GraphType, InFNm, SrcColId, DstColId)
-
-Note I couldn't get the one with StrToNIdH version to work... I can't seem to define a TStringHash. Is it not implemented yet?
-
-See below for example uses::
+The following example shows how to load the following from a text file where node IDs are strings: :class:`TNGraph`, :class:`TUNGraph`, and :class:`TNEANet`::
 
     import snap
 
-    # assuming you have the wiki-vote.txt file from: http://snap.stanford.edu/data/wiki-Vote.html
+    G = snap.LoadEdgeListStr(snap.PNGraph, "Wiki-Vote.txt", 0, 1)
+    print "Number of Nodes:", G.GetNodes()
 
-    # Without StrToNIdH
-    G0 = snap.LoadEdgeListStr(snap.PNGraph, "wiki-Vote.txt", 0, 1)
-    
-    # With StrToNIdH
-    # Initialize StrToNIdH (string to node mapping)
-    mapping = snap.TStrHash()
-    G0 = snap.LoadEdgeListStr(snap.PNGraph, "wiki-Vote.txt", 0, 1, mapping)
+    G = snap.LoadEdgeListStr(snap.PUNGraph, "Wiki-Vote.txt", 0, 1)
+    print "Number of Nodes:", G.GetNodes()
+
+    G = snap.LoadEdgeListStr(snap.PNEANet, "Wiki-Vote.txt", 0, 1)
+    print "Number of Nodes:", G.GetNodes()

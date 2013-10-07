@@ -1,77 +1,42 @@
 GetSngVec
 '''''''''
 
-.. function:: GetSngVec(Graph, SngVecs, SngValV, LeftSV, RightSV)
+.. function:: GetSngVec(Graph, LeftSV, RightSV)
 
-Computes the singular values and left and right singular vectors of the adjacency matrix representing a directed Graph.
+Computes the leading left and right singular vectors of the adjacency matrix
+representing a directed Graph.
 
 Parameters:
 
 - *Graph*: graph (input)
-    A Snap.py graph or a network
+    A Snap.py directed graph
 
-- SngVecs: int (input)
-    The number of singular values/vectors to compute
+- *LeftSV*: vector of floats (output)
+    The left singular vector
 
-- SngValV: TFltV (output)
-    Computed singular values stored as a vector of floats
+- *RightSV*: vector of floats (output)
+    The right singular vector
 
-- LeftSV: TVec<TFltV> (output)
-    Computed left singular vectors stored as a vector of vectors of floats
-
-- RightSV: TVec<TFltV> (output)
-    Computed right singular vectors stored as a vector of vectors of floats
-    
 Return value:
 
 - None
 
-The following example shows how to fetch the in-degrees for nodes in
-:class:`TNGraph`, :class:`TUNGraph`, and :class:`TNEANet`::
+For more info see: http://en.wikipedia.org/wiki/Singular_value_decomposition
+
+The following example shows how to calculate the left and right singular
+vectors.
 
     import snap
 
     Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
-    SngVecs = 5
-    SngValV = snap.TFltV()
-    LeftSV = snap.TVec(snap.TFltV())
-    RightSV = snap.TVec(snap.TFltV())
-    snap.GetSngVec(Graph, SngVecs, SngValV, LeftSV, RightSV)
-    for value in SngValV:
-        print("Singular value: %f" % value)
-    for vector in LeftSV:
-        for value in vector:
-            print("Left Singular Vector Value %f" % value)
-    for vector in RightSV:
-        for value in vector:
-            print("Right Singular Vector Value %f" % value)
+    LeftSV = snap.TFltV()
+    RightSV = snap.TFltV()
+    snap.GetSngVec(Graph, LeftSV, RightSV)
 
-    Graph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
-    SngVecs = 5
-    SngValV = snap.TFltV()
-    LeftSV = snap.TVec(snap.TFltV())
-    RightSV = snap.TVec(snap.TFltV())
-    snap.GetSngVec(Graph, SngVecs, SngValV, LeftSV, RightSV)
-    for value in SngValV:
-        print("Singular value: %f" % value)
-    for vector in LeftSV:
-        for value in vector:
-            print("Left Singular Vector Value %f" % value)
-    for vector in RightSV:
-        for value in vector:
-            print("Right Singular Vector Value %f" % value)
+    print "Left singular vector:"
+    for v in LeftSV:
+      print v
 
-    Graph = snap.GenRndGnm(snap.PNEANet, 100, 1000)
-    SngVecs = 5
-    SngValV = snap.TFltV()
-    LeftSV = snap.TVec(snap.TFltV())
-    RightSV = snap.TVec(snap.TFltV())
-    snap.GetSngVec(Graph, SngVecs, SngValV, LeftSV, RightSV)
-    for value in SngValV:
-        print("Singular value: %f" % value)
-    for vector in LeftSV:
-        for value in vector:
-            print("Left Singular Vector Value %f" % value)
-    for vector in RightSV:
-        for value in vector:
-            print("Right Singular Vector Value %f" % value)
+    print "Right singular vector:"
+    for v in RightSV:
+      print v

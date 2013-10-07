@@ -1,9 +1,9 @@
 SaveGViz
-'''''''''''
+''''''''
 
-.. function:: SaveGViz(Graph, OutFNm, Desc, NIdLabelH)
+.. function:: SaveGViz(Graph, OutFNm, Desc, NodeLabels, NIdColorH)
 
-Save a graph in GraphVizp .DOT format.
+Computes the PageRank score of every node in *Graph*. The scores are stored in *PRankH*.
 
 Parameters:
 
@@ -11,46 +11,41 @@ Parameters:
     A Snap.py graph or a network
 
 - *OutFNm*: string (input)
-    The filename to save the graph
+    Name of the output file
 
 - *Desc*: string (input)
-    The file description
+    Desc of the Graph
 
-- *NIDLabelH*: hash table with integer keys and string values (input)
-    Maps node ids to node string labels
-    
+- *NodeLabels*: bool (input)
+    True: Show the node lables 
+	False: Hide the node lables
+
+- *NIdColorH*: int string Hash (input)
+    Hash Table containing color for each node with NId as Key and Color as Value
+
 Return value:
 
 - None
 
-The following example shows how to save for
+For more info about Graph Viz see: http://www.graphviz.org
+
+The following example shows how to save graphs of following types for GraphViz
 :class:`TNGraph`, :class:`TUNGraph`, and :class:`TNEANet`::
 
     import snap
 
-    Graph = snap.TNGraph.New()
-    Graph.AddNode(1)
-    Graph.AddNode(2)
-    Graph.AddEdge(1, 2)
-    NIdLabelH = snap.TIntStrH()     
-    NIdLabelH.AddDat(1, "one")
-    NIdLabelH.AddDat(2, "two")
-    snap.SaveGViz(Graph, "graph.dot", "Graph file", NIdLabelH)
+	H = snap.TIntStrH()
+	H.AddDat(1, "blue")
+	H.AddDat(2, "blue")
+	H.AddDat(3, "red")
+	H.AddDat(4, "red")
 
-    Graph = snap.TUNGraph.New()
-    Graph.AddNode(1)
-    Graph.AddNode(2)
-    Graph.AddEdge(1, 2)
-    NIdLabelH = snap.TIntStrH()     
-    NIdLabelH.AddDat(1, "one")
-    NIdLabelH.AddDat(2, "two")
-    snap.SaveGViz(Graph, "graph.dot", "Graph file", NIdLabelH)
+    Graph = snap.GenRndGnm(snap.PNGraph, 4, 6)
+    snap.SaveGViz(Graph, "Graph.gv", "Directed Random Graph", True, H)
 
-    Graph = snap.TNEANet.New()
-    Graph.AddNode(1)
-    Graph.AddNode(2)
-    Graph.AddEdge(1, 2)
-    NIdLabelH = snap.TIntStrH()     
-    NIdLabelH.AddDat(1, "one")
-    NIdLabelH.AddDat(2, "two")
-    snap.SaveGViz(Graph, "graph.dot", "Graph file", NIdLabelH)
+    Graph = snap.GenRndGnm(snap.PUNGraph, 4, 6)
+    snap.SaveGViz(Graph, "Graph.gv", "Undirected Random Graph", True, H)
+
+    Graph = snap.GenRndGnm(snap.PNEANet, 4, 6)
+    snap.SaveGViz(Graph, "Graph.gv", "Directed Random Graph with Attributes", True, H)
+

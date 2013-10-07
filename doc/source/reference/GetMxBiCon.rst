@@ -1,35 +1,46 @@
 GetMxBiCon
 '''''''''''
 
-.. function:: GetMxBiCon(Graph)
+.. function:: GetMxBiCon(Graph, RenumberNodes = false)
 
-Returns a graph representing the largest bi-connected component on an input Graph.
-An undirected graph is bi-connected if by removing any single node does not disconnect the graph.
+Returns a graph representing the largest bi-connected component on an undirected Graph. 
 
 Parameters:
 
-- *Graph*: graph (input)
-    A Snap.py graph or a network
+- *Graph*: PUNGraph (input)
+    A Snap.py undirected graph
+
+- *RenumberNodes*: Boolean (input)
+    Optional renumbering. If true, the nodes in the resulting subgraph are renumbered from 0 to N-1
 
 Return value:
 
-- *Graph*: graph (input)
-    A Snap.py graph or a network
+- PUNGraph (output)
+    A graph representing the largest bi-connected component on an undirected Graph. 
+	
+GetMxBiCon currently has a bug which causes an error if GetMxBiCon is called with more than one argument. For example, GetMxBiCon(Graph) will work, but GetMxBiCon(Graph, True) or GetMxBiCon(Graph, False) will cause an error.
 
+An undirected graph is bi-connected if by removing any single node does not disconnect the graph. See http://en.wikipedia.org/wiki/Biconnected_component for more details.
 
-For more info see: http://en.wikipedia.org/wiki/Biconnected_component
+The following example shows how to get the largest bi-connected component::
 
-The following example shows how to calculate PageRank scores for nodes in
-:class:`TNGraph`, :class:`TUNGraph`, and :class:`TNEANet`::
+    from snap import *
 
-    import snap
+    Graph = GenRndGnm(PUNGraph, 10, 10)
 
-    Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
-    MxBiConGraph = snap.GetMxBiCon(Graph)
+    # This executes correctly without an error message
+    subGraph = GetMxBiCon(Graph)
+    #subGraph = GetMxBiCon(Graph, False)
 
+    print "Original Graph"
+    for NI in Graph.Nodes():
+        print "Node: %d" % NI.GetId()
+        for Id in NI.GetOutEdges():
+            print "edge (%d, %d)" % (NI.GetId(), Id)
 
-    Graph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
-    MxBiConGraph = snap.GetMxBiCon(Graph)
-
-    Graph = snap.GenRndGnm(snap.PNEANet, 100, 1000)
-    MxBiConGraph = snap.GetMxBiCon(Graph)
+    print "\nLargest bi-connected component"
+    for NI in subGraph.Nodes():
+        print "Node: %d" % NI.GetId()
+        for Id in NI.GetOutEdges():
+            print "edge (%d, %d)" % (NI.GetId(), Id)
+        
