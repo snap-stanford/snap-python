@@ -166,7 +166,7 @@ Pairs contain two values. Each value has its own type.
 
 Pair types in Snap.py and SNAP use a naming convention of being named as `<type1><type2>`, followed by `Pr`. For example, a pair of (integer, string) is named :class:`TIntStrPr`. If `<type1>` and `<type2>` have the same type, only one type name might be used, such as :class:`TIntPr`.
 
-Below are the most commonly used hash table operations:
+Below are the most commonly used pair operations:
 
 - create a pair of an integer and a string:
 
