@@ -3,6 +3,10 @@ LoadConnListStr
 
 .. function:: PGraph LoadConnListStr(tspec, InFNm, StrToNIdH)
 
+.. note::
+
+    This functions is not yet supported.
+
 TODO: Unsure how to create a TStrHash<TInt>, so the demonstration is not functional.
 
 Loads a (directed, undirected, or multi) graph from a text file, *InFNm*, with 1 node and all its edges in a single line.

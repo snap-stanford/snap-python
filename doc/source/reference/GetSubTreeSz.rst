@@ -3,6 +3,10 @@ GetSubTreeSz
 
 .. function:: GetSubTreeSz(Graph, StartNId, FollowOut, FollowIn, TreeSz, TreeDepth)
 
+.. note::
+
+    This functions is not yet supported.
+
 Returns the BFS tree size (number of nodes) and depth (number of
 levels) by following in-links (parameter FollowIn = true) and/or
 out-links (parameter FollowOut = true) of node StartNId.

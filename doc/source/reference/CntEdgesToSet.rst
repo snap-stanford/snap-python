@@ -3,6 +3,10 @@ CntEdgesToSet
 
 .. function:: int CntEdgesToSet(Graph, NId, NodeSet)
 
+.. note::
+
+    This functions is not yet supported.
+
 Counts the number of edges between the given node and the given set of nodes in the provided graph.
 
 Parameters:

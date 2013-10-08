@@ -3,6 +3,10 @@ GetEigVec
 
 .. function:: GetEigVec(Graph, EigVecV)
 
+.. note::
+
+    This functions is not yet supported.
+
 Computes leading eigenvector of the adjacency matrix representing an undirected *Graph*
 
 

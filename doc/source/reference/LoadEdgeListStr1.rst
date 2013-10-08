@@ -3,6 +3,10 @@ LoadEdgeListStr
 
 .. function:: LoadEdgeListStr(GraphType, InFNm, SrcColId, DstColId, StrToNIdH)
 
+.. note::
+
+    This functions is not yet supported.
+
 Loads a (directed, undirected or multi) graph from a text file InFNm with 1 edge per line (whitespace separated columns, arbitrary string node ids).
 
 Loads the format saved by TSnap::SaveEdgeList(), where node IDs are strings and mapping of strings to node ids are stored.

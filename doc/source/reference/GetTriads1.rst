@@ -3,6 +3,10 @@ GetTriads
 
 .. function:: GetTriads(Graph, NIdCOTriadV, SampleNodes = -1)
 
+.. note::
+
+    This functions is not yet supported.
+
 Computes the number of open and closed triads for every node in *Graph*. Considers the graph as undirected.
 
 Parameters:

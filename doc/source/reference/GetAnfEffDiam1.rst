@@ -3,6 +3,10 @@ GetAnfEffDiam
 
 .. function:: GetAnfEffDiam(Graph, NRuns = 1, NApprox = -1)
 
+.. note::
+
+    This functions is not yet supported.
+
 Returns a 90-th percentile of the shortest path length distribution of a Graph (based on a NRuns runs of Approximate Neighborhood Function of approximation quality NApprox). 
 
 Parameters:

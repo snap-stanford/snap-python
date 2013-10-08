@@ -3,6 +3,10 @@ GetEdgesInOut
 
 .. function:: GetEdgesInOut (Graph, NIdV, EdgesIn, EdgesOut)
 
+.. note::
+
+    This functions is not yet supported.
+
 Returns the number of edges between the nodes NIdV and the edges pointing outside the set NIdV.
 
 Parameters:

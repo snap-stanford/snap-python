@@ -3,6 +3,10 @@ GetBfsEffDiam
 
 .. function:: GetBfsEffDiam(Graph, NTestNodes, IsDir, EffDiam, FullDiam)
 
+.. note::
+
+    This functions is not yet supported.
+
 Returns the (approximation of the) Effective Diameter and the Diameter of Graph by performing BFS from NTestNodes starting nodes.
 
 Parameters:

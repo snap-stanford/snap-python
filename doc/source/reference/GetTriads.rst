@@ -3,6 +3,10 @@ GetTriads
 
 .. function:: GetTriads(Graph, SampleNodes=-1)
 
+.. note::
+
+    This functions is not yet supported.
+
 Computes the number of triads in the graph.
 
 Parameters:

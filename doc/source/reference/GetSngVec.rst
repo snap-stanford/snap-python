@@ -3,6 +3,10 @@ GetSngVec
 
 .. function:: GetSngVec(Graph, LeftSV, RightSV)
 
+.. note::
+
+    This functions is not yet supported.
+
 Computes the leading left and right singular vectors of the adjacency matrix
 representing a directed Graph.
 

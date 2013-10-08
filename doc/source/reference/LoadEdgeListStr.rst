@@ -3,6 +3,10 @@ LoadEdgeListStr
 
 .. function:: Graph LoadEdgeListStr (GraphType, InFNm, SrcColId = 0, DstColId = 1)
 
+.. note::
+
+    This functions is not yet supported.
+
 Loads a (directed, undirected or multi) graph from a text file InFNm with 1 edge per line (whitespace separated columns, arbitrary string node ids).
 
 Loads the format saved by SaveEdgeList(), where node IDs are strings.

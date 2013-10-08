@@ -3,6 +3,10 @@ GetLen2Path
 
 .. function:: GetLen2Paths (Graph, NId1, NId2)
 
+.. note::
+
+    This functions is not yet supported.
+
 Returns the number of length 2 directed paths between a pair of nodes NId1, NId2 (NId1 --> U --> NId2).
 
 Parameters:

@@ -3,6 +3,10 @@ GetModularity
 
 .. function:: GetModularity(Graph, NIdV, GEdges=-1)
 
+.. note::
+
+    This functions is not yet supported.
+
 Computes the Modularity score of a set of node ids NIdV in *Graph*. The function runs much faster if the number of edges in Graph is provided in the optional GEdges parameter.
 
 Parameters:

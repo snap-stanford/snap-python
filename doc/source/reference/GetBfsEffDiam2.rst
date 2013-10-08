@@ -2,7 +2,11 @@
 GetBfsEffDiam
 *************
 
-double GetBfsEffDiam(Graph, NTestNode, IsDir, EffDiam, FullDiam, AvgSPL)
+.. function:: double GetBfsEffDiam(Graph, NTestNode, IsDir, EffDiam, FullDiam, AvgSPL)
+
+.. note::
+
+    This functions is not yet supported.
 
 Returns the approximation of the effective diameter, the diameter, and
 the average shortest path length in a graph. Does this by performing

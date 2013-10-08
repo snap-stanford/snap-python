@@ -3,6 +3,10 @@ GetTreeSig
 
 .. function:: GetTreeSig (Graph, RootNId, Sig, NodeMap)
 
+.. note::
+
+    This functions is not yet supported.
+
 Returns the tree signature of the graph, for each level we sort the node in-degrees and concatenate them into a vector.
 
 Parameters:

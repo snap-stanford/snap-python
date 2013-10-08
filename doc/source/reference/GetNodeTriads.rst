@@ -3,6 +3,10 @@ GetNodeTriads
 
 .. function:: GetNodeTriads(Graph, NId)
 
+.. note::
+
+    This functions is not yet supported.
+
 Returns number of triads a node *NId* participates in.
 
 Considers the graph as undirected. 

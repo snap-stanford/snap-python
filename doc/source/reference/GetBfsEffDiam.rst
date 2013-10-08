@@ -3,6 +3,10 @@ GetBfsEffDiam
 
 .. function:: GetBfsEffDiam(Graph, NTestNodes, IsDir = false) 
 
+.. note::
+
+    This functions is not yet supported.
+
 Returns the (approximation of the) Effective Diameter (90-th percentile of the distribution of shortest path lengths) of a graph (by performing BFS from NTestNodes random starting nodes).
 
 Parameters:
