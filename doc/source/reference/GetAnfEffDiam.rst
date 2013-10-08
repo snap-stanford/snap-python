@@ -5,7 +5,7 @@ GetAnfEffDiam
 
 .. note::
 
-    This functions is not yet supported.
+    This function is not yet supported.
 
 Returns a given *Percentile* of the shortest path length distribution of a *Graph* (based on a single run of ANF of approximation quality *NApprox*)
 

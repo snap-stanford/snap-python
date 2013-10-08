@@ -5,7 +5,7 @@ GetSngVec
 
 .. note::
 
-    This functions is not yet supported.
+    This function is not yet supported.
 
 Computes the leading left and right singular vectors of the adjacency matrix
 representing a directed Graph.

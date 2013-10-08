@@ -5,7 +5,7 @@ GetBfsEffDiam
 
 .. note::
 
-    This functions is not yet supported.
+    This function is not yet supported.
 
 Uses the entire graph (all edges) to measure the shortest path lengths but reports only the path lengths between nodes in SubGraphNIdV.
 

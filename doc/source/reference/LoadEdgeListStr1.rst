@@ -5,7 +5,7 @@ LoadEdgeListStr
 
 .. note::
 
-    This functions is not yet supported.
+    This function is not yet supported.
 
 Loads a (directed, undirected or multi) graph from a text file InFNm with 1 edge per line (whitespace separated columns, arbitrary string node ids).
 

@@ -5,7 +5,7 @@ GetEigVec
 
 .. note::
 
-    This functions is not yet supported.
+    This function is not yet supported.
 
 Computes leading eigenvector of the adjacency matrix representing an undirected *Graph*
 

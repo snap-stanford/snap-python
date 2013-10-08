@@ -5,7 +5,7 @@ GetNodeTriads
 
 .. note::
 
-    This functions is not yet supported.
+    This function is not yet supported.
 
 Returns number of triads a node *NId* participates in.
 

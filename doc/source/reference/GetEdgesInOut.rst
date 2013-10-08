@@ -5,7 +5,7 @@ GetEdgesInOut
 
 .. note::
 
-    This functions is not yet supported.
+    This function is not yet supported.
 
 Returns the number of edges between the nodes NIdV and the edges pointing outside the set NIdV.
 

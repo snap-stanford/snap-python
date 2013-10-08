@@ -5,7 +5,7 @@ GetLen2Path
 
 .. note::
 
-    This functions is not yet supported.
+    This function is not yet supported.
 
 Returns the number of length 2 directed paths between a pair of nodes NId1, NId2 (NId1 --> U --> NId2).
 

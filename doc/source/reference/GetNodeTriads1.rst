@@ -5,7 +5,7 @@ GetNodeTriads
 
 .. note::
 
-    This functions is not yet supported.
+    This function is not yet supported.
 
 Returns the number of Open and Closed triads that a node NId participates in.  Note that this function is currently overloaded in the C++ SNAP definition: there are other GetNodeTriads functions which take other arguments.  In addition, this function calls either GetNodeTriads_PNGraph, GetNodeTriads_PUNGraph, or GetNodeTriads_PNEANet (depending on the type of *Graph*), and none of these functions are defined (see below for error report).
 

@@ -5,7 +5,7 @@ GetClosenessCentr
 
 .. note::
 
-    This functions is not yet supported.
+    This function is not yet supported.
 
 
 Returns Closeness centrality of a given node specified by NId parameter. Closeness centrality of a node is defined as 1/FarnessCentrality.

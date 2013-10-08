@@ -5,7 +5,7 @@ GetTriads
 
 .. note::
 
-    This functions is not yet supported.
+    This function is not yet supported.
 
 Computes the number of open and closed triads for every node in *Graph*. Considers the graph as undirected.
 

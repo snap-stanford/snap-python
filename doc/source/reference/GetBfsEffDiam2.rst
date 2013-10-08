@@ -6,7 +6,7 @@ GetBfsEffDiam
 
 .. note::
 
-    This functions is not yet supported.
+    This function is not yet supported.
 
 Returns the approximation of the effective diameter, the diameter, and
 the average shortest path length in a graph. Does this by performing

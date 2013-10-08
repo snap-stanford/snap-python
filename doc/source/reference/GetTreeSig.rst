@@ -5,7 +5,7 @@ GetTreeSig
 
 .. note::
 
-    This functions is not yet supported.
+    This function is not yet supported.
 
 Fills Sig, a TIntV object, with the tree signature of the input graph starting at node RootNId. The tree signature is the id of the nodes in descending level sorted within each level.
 

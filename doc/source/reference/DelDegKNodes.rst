@@ -5,7 +5,7 @@ DelDegKNodes
 
 .. note::
 
-    This functions is not yet supported.
+    This function is not yet supported.
 
 Removes all nodes of out-degree OutDegK and all nodes of in-degree InDegK from the specified graph. 
 

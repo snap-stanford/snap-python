@@ -5,7 +5,7 @@ GetTriads
 
 .. note::
 
-    This functions is not yet supported.
+    This function is not yet supported.
 
 Computes the number of triads in the graph.
 

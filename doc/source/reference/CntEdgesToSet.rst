@@ -5,7 +5,7 @@ CntEdgesToSet
 
 .. note::
 
-    This functions is not yet supported.
+    This function is not yet supported.
 
 Counts the number of edges between the given node and the given set of nodes in the provided graph.
 

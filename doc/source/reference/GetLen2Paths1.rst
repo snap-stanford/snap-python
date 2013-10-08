@@ -5,7 +5,7 @@ GetLen2Paths
 
 .. note::
 
-    This functions is not yet supported.
+    This function is not yet supported.
 
 Return the number of length 2 paths between a pair of nodes.
 

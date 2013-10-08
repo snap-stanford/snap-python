@@ -5,7 +5,7 @@ GetSubTreeSz
 
 .. note::
 
-    This functions is not yet supported.
+    This function is not yet supported.
 
 Returns the BFS tree size (number of nodes) and depth (number of
 levels) by following in-links (parameter FollowIn = true) and/or

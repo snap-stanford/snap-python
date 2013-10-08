@@ -5,7 +5,7 @@ GetClustCf
 
 .. note::
 
-    This functions is not yet supported.
+    This function is not yet supported.
 
 Computes the average clustering coefficient, as well as the number of open and closed triads in the graph, as defined in Watts and Strogatz, Collective dynamics of 'small-world' networks. 
 

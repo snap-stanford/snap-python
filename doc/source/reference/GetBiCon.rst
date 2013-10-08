@@ -5,7 +5,7 @@ GetBiCon
 
 .. note::
 
-    This functions is not yet supported.
+    This function is not yet supported.
 
 Returns all bi-connected components of a Graph.
 

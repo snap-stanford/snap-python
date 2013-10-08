@@ -5,7 +5,7 @@ LoadConnListStr
 
 .. note::
 
-    This functions is not yet supported.
+    This function is not yet supported.
 
 TODO: Unsure how to create a TStrHash<TInt>, so the demonstration is not functional.
 

@@ -5,7 +5,7 @@ GetBetweennessCentr
 
 .. note::
 
-    This functions is not yet supported.
+    This function is not yet supported.
 
 Computes (approximate) Node and Edge Betweenness Centrality based on a sample o NodeFrac nodes. See "A Faster Algorithm for Betweenness Centrality", Ulrik Brandes, Journal of Mathematical Sociology, 2001, and "Centrality Estimation in Large Networks", Urlik Brandes and Christian Pich, 2006 for more details. 
 

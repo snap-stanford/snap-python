@@ -5,7 +5,7 @@ CommunityCNM
 
 .. note::
 
-    This functions is not yet supported.
+    This function is not yet supported.
 
 Clauset-Newman-Moore community detection method for large networks. At every step of the algorithm two communities that contribute maximum positive value to global modularity are merged. See: Finding community structure in very large networks, A. Clauset, M.E.J. Newman, C. Moore, 2004
 
