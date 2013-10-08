@@ -4,7 +4,7 @@
 //     along with standard SNAP functions.
 
 %pythoncode %{
-Version = "0.8"
+Version = "0.8.1"
 %}
 
 %module snap
@@ -555,6 +555,10 @@ Version = "0.8"
 // dt.h
 
 %template(TStrV) TVec<TStr, int>;
+
+// cncom.h
+
+%template(TCnComV) TVec<TCnCom>;
 
 // tm.h
 
