@@ -207,6 +207,10 @@ TFltVVV.__iter__ = itervec
 #TIntQV.__iter__ = itervec
 TStrV.__getitem__ = getitem
 TStrV.__iter__ = itervec
+TCnComV.__getitem__ = getitem
+TCnComV.__iter__ = itervec
 
+TCnCom.__getitem__ = getitem
+TCnCom.__iter__ = itervec
 %}
 
