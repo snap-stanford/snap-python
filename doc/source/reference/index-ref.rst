@@ -8,21 +8,22 @@ Contents:
 
    introduction
    centr
+   bfsdfs
+   community
+   cncom
+   draw
+   edges
+   generators
+   info
+   manipulation
+   io
+   kcore
+   anf
+   degree
+   svd
+   subgraphs
+   triads
 
 .. # classes
-.. # alg
-.. # anf
-.. # bfsdfs
-.. # cmty
-.. # cncom
-.. # ff
-.. # ggen
-.. # gio
-.. # gstat
-.. # gsvd
-.. # kcore
-.. # statplot
-.. # subgraph
-.. # triad
 .. # util
 
