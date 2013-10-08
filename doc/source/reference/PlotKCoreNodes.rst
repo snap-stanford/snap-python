@@ -1,5 +1,9 @@
 PlotKCoreNodes
 ''''''''''''''
+.. note::
+
+    This page is a draft and under revision.
+
 
 .. function:: PlotKCoreNodes(Graph, FNmPref, DescStr)
 

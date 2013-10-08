@@ -1,11 +1,11 @@
 CommunityGirvanNewman
 '''''''''''''''''''''
-
-.. function:: CommunityGirvanNewman(Graph, CmtyV)
-
 .. note::
 
-    This function is not yet supported.
+    This page is a draft and under revision.
+
+
+.. function:: CommunityGirvanNewman(Graph, CmtyV)
 
 Girvan-Newman community detection algorithm based on Betweenness centrality.See: Girvan M. and Newman M. E. J., Community structure in social and biological networks, Proc. Natl. Acad. Sci. USA99, 7821-7826 (2002)
 

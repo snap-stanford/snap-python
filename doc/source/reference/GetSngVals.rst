@@ -1,5 +1,9 @@
 GetSngVals
 '''''''''''
+.. note::
+
+    This page is a draft and under revision.
+
 
 .. function:: GetSngVals(Graph, SngVals, SngValV)
 

@@ -1,5 +1,9 @@
 GenRewire
 '''''''''''
+.. note::
+
+    This page is a draft and under revision.
+
 
 .. function:: GenRewire (Graph, NSwitch=100, Rnd)
 

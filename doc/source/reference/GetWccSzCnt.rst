@@ -1,5 +1,9 @@
 GetWccSzCnt
 '''''''''''
+.. note::
+
+    This page is a draft and under revision.
+
 .. function:: GetWccSzCnt ( PGraph, &WccSzCnt)
 
 Returns a distribution of weakly connected component sizes.

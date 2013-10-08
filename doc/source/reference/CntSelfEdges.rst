@@ -1,5 +1,9 @@
 CntSelfEdges
 ''''''''''''
+.. note::
+
+    This page is a draft and under revision.
+
 
 .. function:: int CntSelfEdges (Graph)
 

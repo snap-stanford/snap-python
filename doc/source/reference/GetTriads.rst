@@ -1,5 +1,9 @@
 GetTriads
 '''''''''
+.. note::
+
+    This page is a draft and under revision.
+
 
 .. function:: GetTriads(Graph, SampleNodes=-1)
 

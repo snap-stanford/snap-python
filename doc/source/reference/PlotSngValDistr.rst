@@ -1,5 +1,9 @@
 PlotSngValDistr
 '''''''''''''''
+.. note::
+
+    This page is a draft and under revision.
+
 
 .. function:: PlotSngValDistr(Graph,SngVals, FNMPref, DescStr)
 

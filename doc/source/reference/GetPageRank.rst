@@ -1,5 +1,9 @@
 GetPageRank
 '''''''''''
+.. note::
+
+    This page is a draft and under revision.
+
 
 .. function:: GetPageRank(Graph, PRankH, C = 0.85, Eps = 1e-4, MaxIter = 100)
 

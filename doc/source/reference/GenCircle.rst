@@ -1,5 +1,9 @@
 GenCircle
 '''''''''
+.. note::
+
+    This page is a draft and under revision.
+
 
 .. function:: GenCircle(Type, NumNodes, OutDegree, IsDirected = true)
 

@@ -1,5 +1,9 @@
 Get1CnCom
 '''''''''''
+.. note::
+
+    This page is a draft and under revision.
+
 
 .. function:: Get1CnCom(Graph, Cn1ComV)
 

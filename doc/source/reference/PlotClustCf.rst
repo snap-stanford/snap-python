@@ -1,5 +1,9 @@
 PlotClustCf
 '''''''''''
+.. note::
+
+    This page is a draft and under revision.
+
 
 .. function:: PlotClustCf(Graph, FNmPref, DescStr = snap.TStr())
 

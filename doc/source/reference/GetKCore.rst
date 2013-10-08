@@ -1,5 +1,9 @@
 GetKCore
 '''''''''''''''
+.. note::
+
+    This page is a draft and under revision.
+
 
 
 .. function:: PGraph GetKCore (Graph, K)

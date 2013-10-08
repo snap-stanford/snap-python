@@ -1,5 +1,9 @@
 CntEdgesToSet
 '''''''''''''
+.. note::
+
+    This page is a draft and under revision.
+
 
 .. function:: int CntEdgesToSet(Graph, NId, NodeSet)
 

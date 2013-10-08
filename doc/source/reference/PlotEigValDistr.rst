@@ -1,5 +1,9 @@
 PlotEigValDistr
 '''''''''''''''
+.. note::
+
+    This page is a draft and under revision.
+
 
 .. function:: PlotEigValDistr(Graph, NumEigenvalues, NameSuffix, TitlePrefix)
 

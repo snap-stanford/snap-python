@@ -1,11 +1,11 @@
 GetWccs
 '''''''
-
-.. function:: GetWccs (Graph, CnComV)
-
 .. note::
 
-    This function is not yet supported.
+    This page is a draft and under revision.
+
+
+.. function:: GetWccs (Graph, CnComV)
 
 Returns all weakly connected components in a Graph.
 

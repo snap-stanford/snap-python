@@ -1,5 +1,9 @@
 GenRMat
 '''''''
+.. note::
+
+    This page is a draft and under revision.
+
 
 .. function:: GenRMat(Nodes, Edges, A, B, C, Rnd)
 

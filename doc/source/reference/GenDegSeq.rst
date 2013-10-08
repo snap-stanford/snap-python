@@ -1,5 +1,9 @@
 GenDegSeq
 '''''''''
+.. note::
+
+    This page is a draft and under revision.
+
 
 .. function:: GenDegSeq(DegSeqV, Rnd)
 

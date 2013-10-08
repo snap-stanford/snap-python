@@ -1,5 +1,9 @@
 GenCopyModel
 ''''''''''''
+.. note::
+
+    This page is a draft and under revision.
+
 
 .. function:: GenCopyModel (Nodes, Beta, Rnd=TInt::Rnd)
 

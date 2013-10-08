@@ -47,3 +47,5 @@ GMxBi = snap.GetMxBiCon(G)
 print "GMxBi: GetNodes() = %d, GetEdges() = %d" % (
     GMxBi.GetNodes(), GMxBi.GetEdges())
 
+
+

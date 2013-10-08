@@ -1,5 +1,9 @@
 GetShortPath
 ''''''''''''
+.. note::
+
+    This page is a draft and under revision.
+
 
 .. function:: Length = GetShortPath(Graph, SrcNId, DstNId)
 

@@ -1,5 +1,9 @@
 GetMxDegNId
 '''''''''''
+.. note::
+
+    This page is a draft and under revision.
+
 
 .. function:: TSnap::GetMxDegNId(Graph)   
 

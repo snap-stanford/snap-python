@@ -1,5 +1,9 @@
 GetModularity
 '''''''''''''
+.. note::
+
+    This page is a draft and under revision.
+
 
 .. function:: GetModularity(Graph, NIdV, GEdges=-1)
 

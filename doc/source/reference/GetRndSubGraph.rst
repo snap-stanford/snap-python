@@ -1,5 +1,9 @@
 GetRndSubGraph
 ''''''''''''''
+.. note::
+
+    This page is a draft and under revision.
+
 
 .. function:: GetRndSubGraph(Graph, numNodes)
 

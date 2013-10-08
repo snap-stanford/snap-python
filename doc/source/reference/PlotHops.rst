@@ -1,5 +1,9 @@
 PlotHops
 ''''''''
+.. note::
+
+    This page is a draft and under revision.
+
 
 .. function:: PlotHops(Graph, FNmPref, DescStr = snap.TStr(), IsDir = false, NApprox = 32)
 

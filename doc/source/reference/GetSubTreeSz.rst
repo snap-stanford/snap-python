@@ -1,5 +1,9 @@
 GetSubTreeSz
 ''''''''''''
+.. note::
+
+    This page is a draft and under revision.
+
 
 .. function:: GetSubTreeSz(Graph, StartNId, FollowOut, FollowIn, TreeSz, TreeDepth)
 

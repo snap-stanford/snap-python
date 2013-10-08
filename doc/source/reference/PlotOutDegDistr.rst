@@ -1,5 +1,9 @@
 PlotOutDegDistr
 '''''''''''''''
+.. note::
+
+    This page is a draft and under revision.
+
 
 .. function:: PlotOutDegDistr(Graph, FNmPref, DescStr, PlotCCdf, PowerFit)
 

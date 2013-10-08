@@ -1,5 +1,9 @@
 GetClustCf
 '''''''''''
+.. note::
+
+    This page is a draft and under revision.
+
 
 .. function:: AvgClustCf = GetClustCf(Graph, DegToCCfV, SampleNodes = -1)
 

@@ -1,5 +1,9 @@
 AddSelfEdges
 ''''''''''''
+.. note::
+
+    This page is a draft and under revision.
+
 
 .. function:: AddSelfEdges(Graph)
 

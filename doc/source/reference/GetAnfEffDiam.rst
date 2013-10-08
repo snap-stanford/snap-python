@@ -1,5 +1,9 @@
 GetAnfEffDiam
 '''''''''''''
+.. note::
+
+    This page is a draft and under revision.
+
 
 .. function:: GetAnfEffDiam(Graph, IsDir, Percentile, NApprox)
 
