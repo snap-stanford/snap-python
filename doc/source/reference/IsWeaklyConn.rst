@@ -1,5 +1,5 @@
 IsWeaklyConn
-'''''''''''
+''''''''''''
 
 .. function:: IsWeaklyConn(Graph)
 

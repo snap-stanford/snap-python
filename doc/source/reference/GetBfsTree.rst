@@ -4,7 +4,7 @@ GetBfsTree
 
 Function Definition
 
-.. GetBfsTree:: PNGraph GetBfsTree(PGraph, startNodeId, followOut, followIn)
+.. function:: GetBfsTree:: PNGraph GetBfsTree(PGraph, startNodeId, followOut, followIn)
 
 Returns a directed Breadth-First-Search tree rooted at startNodeId.
 Links are such that parent points to its child.

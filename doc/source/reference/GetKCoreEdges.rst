@@ -1,5 +1,5 @@
 GetKCoreEdges
-'''''''''''
+'''''''''''''
 
 .. function:: GetKCoreEdges(Graph, CoreIDSzV)
 

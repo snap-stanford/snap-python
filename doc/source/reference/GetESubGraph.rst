@@ -1,5 +1,5 @@
 GetESubGraph
-'''''''''''
+''''''''''''
 
 .. function:: GetESubGraph(Graph, EIdV)
 

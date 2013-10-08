@@ -1,5 +1,5 @@
 GetTriadEdges
-'''''''''''
+'''''''''''''
 
 .. function:: GetTriadEdges(Graph, SampleEdges = -1)
 
@@ -19,7 +19,7 @@ Return value:
 - int
 
 The following example shows how to calculate the number of edges in triads for nodes in
-:class:`TNGraph`, :class:`TUNGraph`, and :class:`TNEANet`:: (only shows first type):
+:class:`TNGraph`, :class:`TUNGraph`, and :class:`TNEANet`:: (only shows first type)::
 
     import snap
 

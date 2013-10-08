@@ -20,7 +20,8 @@ Return value:
 
 - None
 
-The following example shows how to calculate singular values for :class:`TNGraph`:
+The following example shows how to calculate singular values for :class:`TNGraph`::
+
 	import snap
 
 	Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)

@@ -24,7 +24,7 @@ Return value:
 For more info see: http://en.wikipedia.org/wiki/Singular_value_decomposition
 
 The following example shows how to calculate the left and right singular
-vectors.
+vectors::
 
     import snap
 

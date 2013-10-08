@@ -25,7 +25,7 @@ Return value:
 
 For more info see http://snap.stanford.edu/class/cs224w-readings/kumar00stochastic.pdf
 
-The following example shows how to generate a network using GenCopyModel:
+The following example shows how to generate a network using GenCopyModel::
 
     import snap
 

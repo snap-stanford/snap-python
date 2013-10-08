@@ -1,5 +1,5 @@
 GetBetweennessCentr
-'''''''''''
+'''''''''''''''''''
 
 .. function:: GetBetweennessCentr(Graph, NIdBtwH, EdgeBtwH, NodeFrac=1.0)
 

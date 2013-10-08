@@ -1,5 +1,5 @@
 GetShortPath
-'''''''''''
+''''''''''''
 
 .. function:: GetShortPath(Graph, SrcNId, NIdToDistH, IsDir=false, MaxDist=TInt::Mx)
 

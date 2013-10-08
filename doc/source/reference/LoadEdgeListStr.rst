@@ -1,5 +1,5 @@
 LoadEdgeListStr 
-'''''''''''
+'''''''''''''''
 
 .. function:: Graph LoadEdgeListStr (GraphType, InFNm, SrcColId = 0, DstColId = 1)
 

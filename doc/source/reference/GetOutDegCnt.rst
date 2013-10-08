@@ -1,5 +1,5 @@
 GetOutDegCnt
-'''''''''''
+''''''''''''
 
 .. function:: GetOutDegCnt(Graph, DegToCntV)
 

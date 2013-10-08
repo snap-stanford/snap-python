@@ -16,10 +16,11 @@ Parameters:
 	Number of desired edges to select for subgraph
 
 Return value:
+
 - graph
 	Randomly generated subgraph with NEdges edges
 
-Note: does not error check to ensure that NEdges is non-negative and less than the total number of edges in the graph
+.. note:: Does not error check to ensure that NEdges is non-negative and less than the total number of edges in the graph
 
 Example::
 	

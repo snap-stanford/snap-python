@@ -1,5 +1,5 @@
 PlotSngValDistr
-'''''''''''
+'''''''''''''''
 
 .. function:: PlotSngValDistr(Graph,SngVals, FNMPref, DescStr)
 

@@ -1,5 +1,5 @@
 GetNodeTriads
-'''''''''''
+'''''''''''''
 
 .. function:: GetNodeTriads(Graph, NId, GroupSet)
 
@@ -27,8 +27,10 @@ OR
 - *InGroupEdges*: int
 	Number of triads between the node of interest (*NId*) and a subset of its neighbors (*GroupSet*)
 
-NOTE - This function does not currently perform as indicated. It is not yet implemented in SNAP.py. The error message is as follows: "if type(tspec) == PNGraph : return GetNodeTriads_PNGraph(tspec, *args)
-NameError: global name 'GetNodeTriads_PNGraph' is not defined." The example code below is theoretical and has not been tested.
+.. note::
+
+   This function does not currently perform as indicated. It is not yet implemented in SNAP.py. The error message is as follows: "if type(tspec) == PNGraph : return GetNodeTriads_PNGraph(tspec, * args)
+   NameError: global name 'GetNodeTriads_PNGraph' is not defined." The example code below is theoretical and has not been tested.
 
 The following example shows how to calculate the number of triads a node participates in for nodes in
 :class:`TNGraph`, :class:`TUNGraph`, and :class:`TNEANet`::

@@ -2,7 +2,6 @@ GetSubTreeSz
 ''''''''''''
 
 .. function:: GetSubTreeSz(Graph, StartNId, FollowOut, FollowIn, TreeSz, TreeDepth)
-Graph, const int &StartNId, const bool &FollowOut, const bool &FollowIn, int &TreeSz, int &TreeDepth
 
 Returns the BFS tree size (number of nodes) and depth (number of
 levels) by following in-links (parameter FollowIn = true) and/or
@@ -32,7 +31,7 @@ Return value:
 
 - Number of nodes in the tree (same as TreeSz)
 
-This function is not yet implemented, but it might work like this:
+This function is not yet implemented, but it might work like this::
 
     import snap
 

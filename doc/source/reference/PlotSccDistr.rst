@@ -1,5 +1,5 @@
 PlotSccDistr
-'''''''''''
+''''''''''''
 
 .. function:: PlotSccDistr(Graph, FNmPref, DescStr = '')
 

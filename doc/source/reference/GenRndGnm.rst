@@ -1,5 +1,5 @@
 GenRndGnm
-''''''''
+'''''''''
 
 .. function:: GenRndGnm(GraphType, Nodes, Edges, IsDir=True, Rnd=TInt.Rnd)
 

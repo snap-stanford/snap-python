@@ -26,8 +26,7 @@ Draws a given Graph using a selected GraphViz Layout engine with nodes labeled.
     - None
 
 
-    The following example shows how to draw the graph for 
-    :class:`TNGraph`, :class:`TUNGraph`, and :class:`TNEANet`::
+The following example shows how to draw the graph for :class:`TNGraph`, :class:`TUNGraph`, and :class:`TNEANet`::
 
     from snap import *
     Graph = GenRndGnm(PNGraph, 10, 50)

@@ -19,7 +19,7 @@ Parameters:
 - *NIdLabelH*: TIntStrH (input)
     NIdLabelH maps node ids to node string labels. 
 
-- *EIdColorH *: TIntStrH (input)
+- *EIdColorH*: TIntStrH (input)
     EIdColorH maps edge ids to node colors. Default edge color is Black. See http://vlado.fmf.uni-lj.si/pub/networks/pajek/doc/pajekman.pdf for a list of supported color names.
 
 
@@ -33,10 +33,10 @@ The following example saves the graph in the Pajek format in:
     import snap
 
     Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
-	snap.SavePajek(Graph, 'PNGout.net');
+    snap.SavePajek(Graph, 'PNGout.net')
 
     Graph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
-    snap.SavePajek(Graph, 'PUNGout.net');
+    snap.SavePajek(Graph, 'PUNGout.net')
 
     Graph = snap.GenRndGnm(snap.PNEANet, 100, 1000)
-    snap.SavePajek(Graph, 'PNEANput.net');
+    snap.SavePajek(Graph, 'PNEANput.net')

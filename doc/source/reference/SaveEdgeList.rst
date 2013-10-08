@@ -24,18 +24,18 @@ The following example shows how to save edge lists with
 
     import snap
 
-	g = snap.TNGraph.New()
+    g = snap.TNGraph.New()
 
-	g.AddNode(1)
-	g.AddNode(2)
-	g.AddEdge(1,2)
-	g.AddNode(3)
-	g.AddEdge(1,3)
+    g.AddNode(1)
+    g.AddNode(2)
+    g.AddEdge(1,2)
+    g.AddNode(3)
+    g.AddEdge(1,3)
 
-	snap.SaveEdgeList(g, 'mygraph.txt')
+    snap.SaveEdgeList(g, 'mygraph.txt')
 
-	ug = snap.ConvertGraph(snap.PUNGraph, g)
-	snap.SaveEdgeList(ug, 'unordered_mygraph.txt')
+    ug = snap.ConvertGraph(snap.PUNGraph, g)
+    snap.SaveEdgeList(ug, 'unordered_mygraph.txt')
 
-	nw = snap.ConvertGraph(snap.PNEANet, g)
-	snap.SaveEdgeList(nw, 'network_mygraph.txt')
+    nw = snap.ConvertGraph(snap.PNEANet, g)
+    snap.SaveEdgeList(nw, 'network_mygraph.txt')

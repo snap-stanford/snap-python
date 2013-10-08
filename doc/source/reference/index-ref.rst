@@ -1,28 +1,28 @@
-Snap.py Reference
------------------
+Snap.py Manual
+--------------
 
 Contents:
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
 
    introduction
-   centr
-   bfsdfs
-   community
-   cncom
-   draw
-   edges
    generators
-   info
-   manipulation
    io
+   degree
+   edges
+   manipulation
+   subgraphs
+   info
+   draw
+   cncom
+   bfsdfs
+   centr
+   community
+   triads
    kcore
    anf
-   degree
    svd
-   subgraphs
-   triads
 
 .. # classes
 .. # util

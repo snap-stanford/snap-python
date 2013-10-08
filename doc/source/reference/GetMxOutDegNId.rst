@@ -1,5 +1,5 @@
 GetMxOutDegNId
-'''''''''''
+''''''''''''''
 
 .. function:: GetMxOutDegNId(Graph)
 

@@ -1,5 +1,5 @@
 GetModularity
-'''''''''''
+'''''''''''''
 
 .. function:: GetModularity(Graph, NIdV, GEdges=-1)
 

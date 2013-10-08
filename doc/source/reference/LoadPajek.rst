@@ -23,9 +23,7 @@ Return value:
 
 For more information on the Pajek format see: http://pajek.imfm.si/doku.php
 
-The following example shows how to load a Pajek file:
-
-.. testsetup::
+The following example shows how to load a Pajek file::
 
    import snap
 
@@ -42,8 +40,6 @@ The following example shows how to load a Pajek file:
    """)
    output.close()
 
-.. testcode::
-
    Graph = snap.LoadPajek(snap.PNGraph, 'example.paj')
    print '%s' % ', '.join(str(x.GetId()) for x in Graph.Nodes())
 
@@ -53,9 +49,3 @@ The following example shows how to load a Pajek file:
    Graph = snap.LoadPajek(snap.PNEANet, 'example.paj')
    print '%s' % ', '.join(str(x.GetId()) for x in Graph.Nodes())
 
-.. testoutput::
-   :hide:
-
-   1, 2, 3
-   1, 2, 3
-   1, 2, 3

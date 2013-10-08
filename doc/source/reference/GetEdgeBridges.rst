@@ -1,5 +1,5 @@
 GetEdgeBridges
-'''''''''''
+''''''''''''''
 
 .. function:: GetEdgeBridges(Graph, EdgeV)
 

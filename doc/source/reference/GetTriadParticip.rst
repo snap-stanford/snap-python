@@ -1,5 +1,5 @@
 GetTriadParticip
-'''''''''''
+''''''''''''''''
 
 .. function:: GetTriadParticip(Graph, TriadCntV)
 

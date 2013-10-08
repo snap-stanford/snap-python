@@ -1,5 +1,5 @@
 GetDegreeCentr
-'''''''''''
+''''''''''''''
 
 .. function:: GetDegreeCentr(Graph, NId)
 

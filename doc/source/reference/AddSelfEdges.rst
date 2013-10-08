@@ -1,5 +1,5 @@
 AddSelfEdges
-'''''''''''
+''''''''''''
 
 .. function:: AddSelfEdges(Graph)
 

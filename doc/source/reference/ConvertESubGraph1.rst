@@ -28,7 +28,7 @@ Return value:
 - *NewGraphPt*
     A new Snap.py graph or network where node and edge data is shared by input and output graphs but are renumbered if *RenumberNodes* is true
 
-The following code shows an example of ConvertESubGraph:
+The following code shows an example of ConvertESubGraph::
 
     import snap
 

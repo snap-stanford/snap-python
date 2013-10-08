@@ -1,5 +1,5 @@
 GetMxWccSz
-'''''''''
+''''''''''
 
 .. function:: GetMxWccSz(Graph)
 

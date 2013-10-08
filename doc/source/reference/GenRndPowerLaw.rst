@@ -1,5 +1,5 @@
 GenRndPowerLaw
-'''''''''''
+''''''''''''''
 
 .. function:: GenRndPowerLaw (Nodes, PowerExp, ConfModel=true, Rnd=TInt::Rnd)
 
@@ -27,7 +27,7 @@ Return value:
 
 For more info see: http://snap.stanford.edu/snap/doc/snapdev-ref/d3/d73/namespaceTSnap.html#aeda37b68958ab617b74f44d8ef20dd79
 
-The following example shows how to create :class:`PUNGraph` with this function:
+The following example shows how to create :class:`PUNGraph` with this function::
 
     import snap
 

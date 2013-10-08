@@ -1,5 +1,5 @@
 GetShortPath
-'''''''''''
+''''''''''''
 
 .. function:: Length = GetShortPath(Graph, SrcNId, DstNId)
 

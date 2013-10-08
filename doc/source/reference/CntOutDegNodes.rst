@@ -22,7 +22,7 @@ Return value:
 The following example shows how to use CntOutDegNodes for Graphs in
 :class:`TNGraph`, :class:`TUNGraph`, and :class:`TNEANet`::
     
-	import snap
+    import snap
 
     Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
     nodeCount = snap.CntOutDegNodes(Graph, 10)

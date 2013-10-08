@@ -1,5 +1,5 @@
 GetBiConSzCnt
-'''''''''''
+'''''''''''''
 
 .. function:: GetBiConSzCnt(Graph, SzCntV)
 

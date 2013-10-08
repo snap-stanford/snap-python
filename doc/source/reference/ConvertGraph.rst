@@ -1,9 +1,7 @@
 ConvertGraph
-'''''''''''
+''''''''''''
 
 .. function:: PNGraph ConvertGraph(toutspec, tinspec, InGraph, RenumberNodes=False)
-
-TODO: Doesn't seem like this function is implemented -- always returned None
 
 Performs conversion of graph, *InGraph*, with an optional node renumbering.
 
@@ -38,8 +36,8 @@ The following example shows how to convert between different types of graphs::
 
     GIn = snap.GenRndGnm(snap.PNGraph, 100, 1000)
     # convert directed graph to undirected
-    GOut = snap.ConvertGraph(snap.PUNGraph, snap.PNGraph, GIn)
+    GOut = snap.ConvertGraph(snap.PUNGraph, GIn)
 
     GIn = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
     # convert undirected graph to directed
-    GOut = snap.ConvertGraph(snap.PNGraph, snap.PUNGraph, GIn)
+    GOut = snap.ConvertGraph(snap.PNGraph, GIn)

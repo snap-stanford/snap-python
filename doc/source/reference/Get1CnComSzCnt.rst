@@ -1,5 +1,5 @@
 Get1CnComSzCnt
-'''''''''''
+''''''''''''''
 
 .. function:: Get1CnComSzCnt (Graph, SzCntV)
 

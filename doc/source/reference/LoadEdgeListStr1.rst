@@ -1,5 +1,5 @@
 LoadEdgeListStr
-'''''''''''
+'''''''''''''''
 
 .. function:: LoadEdgeListStr(GraphType, InFNm, SrcColId, DstColId, StrToNIdH)
 
@@ -33,7 +33,7 @@ Return value:
 
 Also see: function:: LoadEdgeListStr(GraphType, InFNm, SrcColId, DstColId)
 
-Note I couldn't get the one with StrToNIdH version to work... I can't seem to define a TStringHash. Is it not implemented yet?
+.. note:: I couldn't get the one with StrToNIdH version to work... I can't seem to define a TStringHash. Is it not implemented yet?
 
 See below for example uses::
 

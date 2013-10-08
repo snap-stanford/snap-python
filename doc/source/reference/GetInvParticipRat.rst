@@ -30,9 +30,7 @@ Return value:
 
 - None
 
-The following example computes the top eigenvectors and prints them:
-
-.. testsetup::
+The following example computes the top eigenvectors and prints them::
 
  import snap
  Graph = snap.TUNGraph.New()
@@ -48,16 +46,8 @@ The following example computes the top eigenvectors and prints them:
  Graph.AddEdge(4, 6)
  Graph.AddEdge(4, 1)
 
-.. testcode::
-
  EigValIprV = snap.TFltPrV()
  snap.GetInvParticipRat(Graph, 20, 1000, EigValIprV)
  for x in EigValIprV:
     print '%f, %f' % (x.GetVal1(), x.GetVal2())
 
-.. testoutput::
-   :hide:
-
-   -1.246980, 0.214286
-   0.445042, 0.214286
-   1.801938, 0.214286

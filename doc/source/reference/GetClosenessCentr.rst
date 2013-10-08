@@ -1,5 +1,5 @@
 GetClosenessCentr
-'''''''''''
+'''''''''''''''''
 
 .. function:: GetClosenessCentr(Graph, NId)
 
@@ -20,7 +20,7 @@ Return value:
 For more info about Farness Centrality see :func:'GetFarnessCentr'
 
 The following example shows how to get the Closeness Centrality for a node in
-:class:`TUNGraph`
+:class:`TUNGraph`::
 
     import snap
 

@@ -1,5 +1,5 @@
 PlotWccDistr
-'''''''''''
+''''''''''''
 
 .. function:: PlotWccDistr(Graph, path, description)
 

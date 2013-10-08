@@ -1,5 +1,5 @@
 GetBfsFullDiam
-'''''''''''
+''''''''''''''
 
 .. function:: GetBfsFullDiam (Graph, NTestNodes, IsDir=false)
 

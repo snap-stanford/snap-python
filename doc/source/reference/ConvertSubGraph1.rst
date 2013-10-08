@@ -1,5 +1,5 @@
 ConvertSubGraph
-'''''''''''
+'''''''''''''''
 
 .. function:: ConvertSubGraph(InGraph, NIdV, RenumberNodes=false)
 

@@ -19,7 +19,7 @@ Parameters:
 Return value:
 - None
 
-The following example shows how to calcualte the top EigVals eigenvalues of the adjacency matrix of a random undirected graph.
+The following example shows how to calcualte the top EigVals eigenvalues of the adjacency matrix of a random undirected graph::
 
 	import snap
 

@@ -1,5 +1,5 @@
 SaveMatlabSparseMtx
-'''''''''''
+'''''''''''''''''''
 
 .. function:: SaveMatlabSparseMtx(Graph, OutFNm)
 
@@ -19,7 +19,7 @@ Return value:
 
 - None
 
-The following example shows how to save a graph in a MATLAB sparse matrix format:
+The following example shows how to save a graph in a MATLAB sparse matrix format::
 
     import snap
 

@@ -23,7 +23,7 @@ Return Value:
 -PUNGraph
 	An Undirected Graph representing the power-law degree distribution. 
 
-Example:
+Example::
 	
 	import snap 
 

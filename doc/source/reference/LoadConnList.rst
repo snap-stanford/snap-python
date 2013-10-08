@@ -25,15 +25,16 @@ Return value:
 The following example shows how to construct a graph using LoadConnList function::
 
     import snap
-	Graph = snap.LoadConnList(snap.PNGraph, "test.txt")
-	for EI in Graph.Edges():
-		print "edge (%d, %d)" % (EI.GetSrcNId(), EI.GetDstNId())
+
+    Graph = snap.LoadConnList(snap.PNGraph, "test.txt")
+    for EI in Graph.Edges():
+        print "edge (%d, %d)" % (EI.GetSrcNId(), EI.GetDstNId())
 	
-	Graph = snap.LoadConnList(snap.PUNGraph, "test.txt")
-	for EI in Graph.Edges():
-		print "edge (%d, %d)" % (EI.GetSrcNId(), EI.GetDstNId())
+    Graph = snap.LoadConnList(snap.PUNGraph, "test.txt")
+    for EI in Graph.Edges():
+        print "edge (%d, %d)" % (EI.GetSrcNId(), EI.GetDstNId())
 	
-	Graph = snap.LoadConnList(snap.PNEANet, "test.txt")
-	for EI in Graph.Edges():
-		print "edge (%d, %d)" % (EI.GetSrcNId(), EI.GetDstNId())
+    Graph = snap.LoadConnList(snap.PNEANet, "test.txt")
+    for EI in Graph.Edges():
+        print "edge (%d, %d)" % (EI.GetSrcNId(), EI.GetDstNId())
 	

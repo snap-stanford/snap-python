@@ -34,11 +34,11 @@ The following example shows how to save graphs of following types for GraphViz
 
     import snap
 
-	H = snap.TIntStrH()
-	H.AddDat(1, "blue")
-	H.AddDat(2, "blue")
-	H.AddDat(3, "red")
-	H.AddDat(4, "red")
+    H = snap.TIntStrH()
+    H.AddDat(1, "blue")
+    H.AddDat(2, "blue")
+    H.AddDat(3, "red")
+    H.AddDat(4, "red")
 
     Graph = snap.GenRndGnm(snap.PNGraph, 4, 6)
     snap.SaveGViz(Graph, "Graph.gv", "Directed Random Graph", True, H)

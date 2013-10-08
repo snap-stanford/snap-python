@@ -23,8 +23,7 @@ Return value:
 
 - None
 
-The following example shows how to calculate betweenness centrality values for nodes and edges in
-:class:`TUNGraph`
+The following example shows how to calculate betweenness centrality values for nodes and edges in :class:`TUNGraph`::
 
     import snap
 

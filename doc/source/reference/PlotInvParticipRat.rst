@@ -1,5 +1,5 @@
 PlotInvParticipRat
-'''''''''''
+''''''''''''''''''
 
 .. function:: PlotInvParticipRat(Graph, MaxEigVecs,TimeLimit,EigValIprV )
 

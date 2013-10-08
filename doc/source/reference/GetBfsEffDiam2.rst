@@ -38,14 +38,16 @@ Return value:
 
 * the effective diameter
 
-IMPORTANT NOTE: In C++, you can pass references to doubles and ints.
-You cannot in python. THEREFORE, ONLY RELY ON THE RETURN VALUE FOR THE
-EFFECTIVE DIAMETER. Don't expect the variables you passed in to be
-populated to the correct values. Additionally, the following code will
-not actually run because the fourth argument does not match due to
-type error.
+.. note::
 
-The following example shows how to calculate an effective diameter:
+   In C++, you can pass references to doubles and ints.
+   You cannot in python. THEREFORE, ONLY RELY ON THE RETURN VALUE FOR THE
+   EFFECTIVE DIAMETER. Don't expect the variables you passed in to be
+   populated to the correct values. Additionally, the following code will
+   not actually run because the fourth argument does not match due to
+   type error.
+
+The following example shows how to calculate an effective diameter::
 
    import snap G = snap.GenRndGnm(snap.PUNGraph, 100, 1000); effDiam =
    snap.GetBfsEffDiam(G, 1, False, 0, 0, 0); print effDiam;

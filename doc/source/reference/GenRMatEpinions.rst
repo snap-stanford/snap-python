@@ -1,5 +1,5 @@
 GenRMatEpinions
-'''''''''''
+'''''''''''''''
 
 .. function:: GenRMatEpinions()
 

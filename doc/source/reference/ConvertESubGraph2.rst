@@ -1,5 +1,5 @@
 ConvertESubGraph
-'''''''''''
+''''''''''''''''
 
 .. function:: ConvertESubGraph(OutGraphType, InGraph, EIdV, RenumberNodes=False)
 
@@ -22,6 +22,8 @@ Parameters:
 Return value:
 
 - Graph of type OutGraphType, which is constructed as the subgraph of *InGraph* containing the edges in EIdV and the nodes adjacent to at least one edge from EIdV. 
+
+An example::
 
     import snap
 

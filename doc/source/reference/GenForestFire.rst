@@ -1,5 +1,5 @@
 GenForestFire
-'''''''''''
+'''''''''''''
 
 .. function:: GenForestFire(Nodes, FwdProb, BckProb)
 

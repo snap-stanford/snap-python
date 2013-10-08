@@ -1,5 +1,5 @@
 GetNodeTriads
-'''''''''''
+'''''''''''''
 
 .. function:: GetNodeTriads(Graph, NId, GroupSet, InGroupEdges, InOutGroupEdges, OutGroupEdges)
 
@@ -35,7 +35,7 @@ Unexpected behaviors:
 
 - GetNodeTriads method calls three sub-methods (GetNodeTriads_PUNGraph, GetNodeTriads_PNGraph and GetNodeTriads_PNEANet). None of these three are actually implemented, causing errors like "NameError: global name 'GetNodeTriads_PNGraph' is not defined"
 
-The following example shows how to calculate the number of triads between a node NId and a subset of its neighbors GroupSet:
+The following example shows how to calculate the number of triads between a node NId and a subset of its neighbors GroupSet::
 
     import snap
 

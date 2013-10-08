@@ -5,7 +5,7 @@ GenBaraHierar
 
 Generates a Ravasz-Barabasi deterministic scale-free graph.
 
-Corners of the graph are recursively expanded with miniature copies of the base graph (below). The graph has power-law degree distribution with the exponent 1+ln(5)/ln(4) and clustering coefficient with power-law decay exponent -1. Base graph:
+Corners of the graph are recursively expanded with miniature copies of the base graph (below). The graph has power-law degree distribution with the exponent 1+ln(5)/ln(4) and clustering coefficient with power-law decay exponent -1. Base graph::
 
   *   o---o
   *   |\ /|
@@ -29,7 +29,7 @@ Return value:
 
 For more information see: Hierarchical organization in complex networks. Ravasz and Barabasi. http://arxiv.org/abs/cond-mat/0206130
 
-The following example shows how to generate a Ravasz-Barabasi deterministic scale-free graph (in this case of level 100) using the GenBaraHierar function.
+The following example shows how to generate a Ravasz-Barabasi deterministic scale-free graph (in this case of level 100) using the GenBaraHierar function::
 
     
     import snap

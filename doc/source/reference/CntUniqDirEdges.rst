@@ -1,5 +1,5 @@
 CntUniqDirEdges
-'''''''''''
+'''''''''''''''
 
 .. function:: CntUniqDirEdges(Graph)
 

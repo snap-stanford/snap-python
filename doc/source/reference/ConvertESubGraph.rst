@@ -1,5 +1,5 @@
 ConvertESubGraph
-'''''''''''
+''''''''''''''''
 
 .. function:: OutGraph = ConvertESubGraph(InGraph, EIdV, RenumberNodes = false)
 

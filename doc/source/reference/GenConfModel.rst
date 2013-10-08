@@ -19,14 +19,14 @@ Return value:
 
 - Random undirect graph with degree sequence given by DegSeqV.
 
-The following example generates a random unidirect graph with degree sequence 1, 2, 3. 
+The following example generates a random unidirect graph with degree sequence 1, 2, 3::
 
-from snap import *
+    from snap import *
 
-DegSeqV = TIntV()
-DegSeqV.Add(1)
-DegSeqV.Add(2)
-DegSeqV.Add(3)
-Rnd = TRnd()
+    DegSeqV = TIntV()
+    DegSeqV.Add(1)
+    DegSeqV.Add(2)
+    DegSeqV.Add(3)
+    Rnd = TRnd()
 
-GenConfModel(DegSeqV, Rnd)
+    GenConfModel(DegSeqV, Rnd)

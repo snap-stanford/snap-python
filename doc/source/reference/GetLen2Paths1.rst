@@ -1,5 +1,5 @@
 GetLen2Paths
-'''''''''''
+''''''''''''
 
 .. function:: GetLen2Paths (Graph, NId1, NId2, NbrV)
 

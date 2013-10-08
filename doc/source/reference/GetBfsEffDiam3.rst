@@ -1,5 +1,5 @@
 GetBfsEffDiam
-'''''''''''
+'''''''''''''
 
 .. function:: GetBfsEffDiam(Graph, NTestNodes, SubGraphNIdV, IsDir, EffDiam, FullDiam)
 

@@ -1,5 +1,5 @@
 SavePajek
-'''''''''''
+'''''''''
 
 .. function:: SavePajek(Graph, OutFNm, NIdColorH = None, NIdLabelH = None)
 

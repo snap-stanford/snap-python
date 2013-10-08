@@ -1,5 +1,5 @@
 PlotKCoreNodes
-'''''''''''
+''''''''''''''
 
 .. function:: PlotKCoreNodes(Graph, FNmPref, DescStr)
 

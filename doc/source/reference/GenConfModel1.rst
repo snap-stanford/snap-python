@@ -1,5 +1,5 @@
 GenConfModel 
-'''''''''''
+''''''''''''
 
 .. function:: PUNGraph GenConfModel (const PUNGraph &G)
 

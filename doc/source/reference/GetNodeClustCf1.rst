@@ -1,5 +1,5 @@
 GetNodeClustCf
-'''''''''''
+''''''''''''''
 
 .. function:: GetNodeClustCf(Graph, NIdCCfH)
 

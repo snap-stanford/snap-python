@@ -1,5 +1,5 @@
 PlotShortPathDistr
-'''''''''''
+''''''''''''''''''
 
 .. function:: PlotShortPathDistr(Graph, FNmPref, DescStr = TStr(), int TestNodes = TInt.Mx)
 

@@ -1,5 +1,5 @@
 PlotInDegDistr
-'''''''''''
+''''''''''''''
 
 .. function:: PlotInDegDistr(Graph, FNmPref, DescStr=snap.TStr(), PlotCCdf=False, PowerFit=False)
 
@@ -39,7 +39,7 @@ Output:
 
 For more info see: http://www.gnuplot.info
 
-The following example shows how generate a plot of the in-degree distribution for a random graph
+The following example shows how generate a plot of the in-degree distribution for a random graph::
 
     import snap
 
