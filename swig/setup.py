@@ -2,7 +2,7 @@
 
 """
 setup.py file for SNAP (Stanford Network Analysis Platform) Python
-    CentOS version
+    Linux version, generated on CentOS, tested on Ubuntu as well
 """
 
 import inspect
@@ -16,7 +16,7 @@ from distutils.core import setup, Extension
 #   determine package parameters:
 #       snap-py version, python version, os version, architecture
 #
-snappy_version = "0.8"
+snappy_version = "0.8.1"
 
 # snap-py version
 snap_version = "dev"
