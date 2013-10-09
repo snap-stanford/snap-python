@@ -1,5 +1,5 @@
 GetMxSccSz
-'''''''''''
+''''''''''
 .. note::
 
     This page is a draft and under revision.
@@ -19,7 +19,7 @@ Return value:
 - *GetMxSccSz*: double (output)
     The fraction of nodes in the largest strongly connected component of a graph.
 
-The following example shows how to calculate PageRank scores for nodes in
+The following example shows how to calculate the size of the maximum strongly connected component for nodes in
 :class:`TNGraph`, :class:`TUNGraph`, and :class:`TNEANet`::
 
     import snap
