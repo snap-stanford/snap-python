@@ -1,36 +1,33 @@
 GetMxDegNId
 '''''''''''
 
-.. function:: TSnap::GetMxDegNId(Graph)   
+.. function:: int GetMxDegNId(Graph)   
 
-Returns a randomly chosen node from all the nodes with the maximum degree.
+Returns the node id for a randomly chosen node from all the nodes in *Graph* with the maximum degree.
 
 Parameters:
 
-- *Graph*: PGraph (input)
-    Any graph, directed or undirected
+- *Graph*: graph (input)
+    A Snap.py graph or a network
 
 Return value:
 
-- *NodeID*: int (output)
-    A randomly chosen node from all the nodes with the maximum degree
+- int
 
-For more info see: http://snap.stanford.edu/snap/doc/snapdev-ref/d3/d73/namespaceTSnap.html#afbc8b8ef6cc8d4b8a0de1faad0c0a912
-
-The following example shows how to find a node with maximum degree for nodes in
+The following example shows how to use :func:`GetMxDegNId` with
 :class:`TNGraph`, :class:`TUNGraph`, and :class:`TNEANet`::
 
     import snap
 
-    G1 = snap.GenRndGnm(snap.PNGraph, 100, 1000)
-    id1 = snap.GetMxDegNId(G1)
+    Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
+    id1 = snap.GetMxDegNId(Graph)
     print id1
 
-    G2 = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
-    id2 = snap.GetMxDegNId(G2)
+    Graph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
+    id2 = snap.GetMxDegNId(Graph)
     print id2
 
-    G3 = snap.GenRndGnm(snap.PNEANet, 100, 1000)
-    id3 = snap.GetMxDegNId(G3)
+    Graph = snap.GenRndGnm(snap.PNEANet, 100, 1000)
+    id3 = snap.GetMxDegNId(Graph)
     print id3
 

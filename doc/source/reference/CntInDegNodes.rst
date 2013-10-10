@@ -1,9 +1,9 @@
 CntInDegNodes
 '''''''''''''''''''
 
-.. function:: CntInDegNodes(Graph, NodeInDeg)
+.. function:: int CntInDegNodes(Graph, NodeInDeg)
 
-Returns the number of nodes with in-degree NodeInDeg.
+Returns the number of nodes with in-degree *NodeInDeg*.
 
 Parameters:
 
@@ -15,11 +15,10 @@ Parameters:
 
 Return value:
 
-- TInt (output)
-	Integer with the number of nodes with in-degree equals to *NodeInDeg*
+- int
 
 
-The following example shows how to use CntInDegNodes for Graphs in
+The following example shows how to get the number of nodes with in-degree *NodeInDeg* in
 :class:`TNGraph`, :class:`TUNGraph`, and :class:`TNEANet`::
     
     import snap

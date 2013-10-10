@@ -1,9 +1,9 @@
 CntNonZNodes 
 ''''''''''''
 
-.. function:: CntNonZNodes (Graph) 
+.. function:: int CntNonZNodes (Graph) 
 
-Returns the number of nodes with degree greater than 0.
+Returns the number of nodes in *Graph* with degree greater than 0.
 
 Parameters:
 
@@ -14,7 +14,7 @@ Return value:
 
 - int
 
-The following example shows how to calculate the number of non-zero nodes for graphs
+The following example shows how to calculate the number of non-zero nodes in
 :class:`TNGraph`, :class:`TUNGraph`, and :class:`TNEANet`::
 
     import snap

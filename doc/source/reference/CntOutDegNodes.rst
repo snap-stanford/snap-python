@@ -1,7 +1,7 @@
 CntOutDegNodes
 '''''''''''''''''''
 
-.. function:: CntOutDegNodes(Graph, NodeOutDeg)
+.. function:: int CntOutDegNodes(Graph, NodeOutDeg)
 
 Returns the number of nodes with out-degree NodeOutDeg.
 
@@ -15,11 +15,10 @@ Parameters:
 
 Return value:
 
-- TInt (output)
-	Integer with the number of nodes with out-degree equals to *NodeOutDeg*
+- int
 
 
-The following example shows how to use CntOutDegNodes for Graphs in
+The following example shows how to get the number of nodes with out-degree *NodeOutDeg* in
 :class:`TNGraph`, :class:`TUNGraph`, and :class:`TNEANet`::
     
     import snap
