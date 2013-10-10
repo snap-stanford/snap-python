@@ -1974,14 +1974,6 @@ def GenSmallWorld(*args):
   return _snap.GenSmallWorld(*args)
 GenSmallWorld = _snap.GenSmallWorld
 
-def GenConfModel(*args):
-  return _snap.GenConfModel(*args)
-GenConfModel = _snap.GenConfModel
-
-def GenRewire(*args):
-  return _snap.GenRewire(*args)
-GenRewire = _snap.GenRewire
-
 def GenForestFire(*args):
   return _snap.GenForestFire(*args)
 GenForestFire = _snap.GenForestFire
@@ -1997,6 +1989,14 @@ GenRMat = _snap.GenRMat
 def GenRMatEpinions():
   return _snap.GenRMatEpinions()
 GenRMatEpinions = _snap.GenRMatEpinions
+
+def GenRewire(*args):
+  return _snap.GenRewire(*args)
+GenRewire = _snap.GenRewire
+
+def GenConfModel(*args):
+  return _snap.GenConfModel(*args)
+GenConfModel = _snap.GenConfModel
 class TGUtil(object):
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
     __repr__ = _swig_repr
@@ -2172,6 +2172,10 @@ def StdDist(*args):
   return _snap.StdDist(*args)
 StdDist = _snap.StdDist
 
+def ZeroVec(*args):
+  return _snap.ZeroVec(*args)
+ZeroVec = _snap.ZeroVec
+
 def GetDegrees(*args):
   return _snap.GetDegrees(*args)
 GetDegrees = _snap.GetDegrees
@@ -2204,9 +2208,21 @@ def GetNewNodes(*args):
   return _snap.GetNewNodes(*args)
 GetNewNodes = _snap.GetNewNodes
 
+def GetNewNodes1(*args):
+  return _snap.GetNewNodes1(*args)
+GetNewNodes1 = _snap.GetNewNodes1
+
+def GetDistances(*args):
+  return _snap.GetDistances(*args)
+GetDistances = _snap.GetDistances
+
 def Nodes2Tasks(*args):
   return _snap.Nodes2Tasks(*args)
 Nodes2Tasks = _snap.Nodes2Tasks
+
+def Nodes2Tasks1(*args):
+  return _snap.Nodes2Tasks1(*args)
+Nodes2Tasks1 = _snap.Nodes2Tasks1
 class TNGraphNodeI(object):
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
     __repr__ = _swig_repr
@@ -2323,6 +2339,7 @@ TIntV.AddBackSorted = new_instancemethod(_snap.TIntV_AddBackSorted,None,TIntV)
 TIntV.AddVMerged = new_instancemethod(_snap.TIntV_AddVMerged,None,TIntV)
 TIntV.AddUnique = new_instancemethod(_snap.TIntV_AddUnique,None,TIntV)
 TIntV.GetVal = new_instancemethod(_snap.TIntV_GetVal,None,TIntV)
+TIntV.SetVal = new_instancemethod(_snap.TIntV_SetVal,None,TIntV)
 TIntV.GetSubValV = new_instancemethod(_snap.TIntV_GetSubValV,None,TIntV)
 TIntV.Ins = new_instancemethod(_snap.TIntV_Ins,None,TIntV)
 TIntV.Del = new_instancemethod(_snap.TIntV_Del,None,TIntV)
@@ -2413,6 +2430,7 @@ TIntIntVV.AddBackSorted = new_instancemethod(_snap.TIntIntVV_AddBackSorted,None,
 TIntIntVV.AddVMerged = new_instancemethod(_snap.TIntIntVV_AddVMerged,None,TIntIntVV)
 TIntIntVV.AddUnique = new_instancemethod(_snap.TIntIntVV_AddUnique,None,TIntIntVV)
 TIntIntVV.GetVal = new_instancemethod(_snap.TIntIntVV_GetVal,None,TIntIntVV)
+TIntIntVV.SetVal = new_instancemethod(_snap.TIntIntVV_SetVal,None,TIntIntVV)
 TIntIntVV.GetSubValV = new_instancemethod(_snap.TIntIntVV_GetSubValV,None,TIntIntVV)
 TIntIntVV.Ins = new_instancemethod(_snap.TIntIntVV_Ins,None,TIntIntVV)
 TIntIntVV.Del = new_instancemethod(_snap.TIntIntVV_Del,None,TIntIntVV)
@@ -2598,6 +2616,10 @@ TIntHI.GetDat = new_instancemethod(_snap.TIntHI_GetDat,None,TIntHI)
 TIntHI_swigregister = _snap.TIntHI_swigregister
 TIntHI_swigregister(TIntHI)
 
+
+def SendVec_TIntV(*args):
+  return _snap.SendVec_TIntV(*args)
+SendVec_TIntV = _snap.SendVec_TIntV
 class PNGraph(object):
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
     def __init__(self, *args, **kwargs): raise AttributeError("No constructor defined")
