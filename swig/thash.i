@@ -33,17 +33,22 @@ def iterhash(self):
     return IterHash(self)
 
 TIntH.__iter__ = iterhash
+TIntFltH.__iter__ = iterhash
+TIntStrH.__iter__ = iterhash
+TIntPrFltH.__iter__ = iterhash
+%}
+
+#if SNAP_ALL
+%pythoncode %{
 TUInt64H.__iter__ = iterhash
 TIntBoolH.__iter__ = iterhash
 TIntIntH.__iter__ = iterhash
 TIntUInt64H.__iter__ = iterhash
 TIntIntVH.__iter__ = iterhash
 TIntIntHH.__iter__ = iterhash
-TIntFltH.__iter__ = iterhash
 TIntFltPrH.__iter__ = iterhash
 TIntFltTrH.__iter__ = iterhash
 TIntFltVH.__iter__ = iterhash
-TIntStrH.__iter__ = iterhash
 TIntStrVH.__iter__ = iterhash
 TIntIntPrH.__iter__ = iterhash
 TIntIntPrVH.__iter__ = iterhash
@@ -56,7 +61,6 @@ TIntVIntH.__iter__ = iterhash
 TUIntH.__iter__ = iterhash
 TIntPrIntH.__iter__ = iterhash
 TIntPrIntVH.__iter__ = iterhash
-TIntPrFltH.__iter__ = iterhash
 TIntTrFltH.__iter__ = iterhash
 TIntPrStrH.__iter__ = iterhash
 TIntPrStrVH.__iter__ = iterhash
@@ -91,6 +95,6 @@ TStrVH.__iter__ = iterhash
 TStrVIntVH.__iter__ = iterhash
 TStrVStrH.__iter__ = iterhash
 TStrVStrVH.__iter__ = iterhash
-
 %}
+#endif
 
