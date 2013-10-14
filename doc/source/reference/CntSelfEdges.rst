@@ -12,19 +12,23 @@ Parameters:
 
 Return value:
 
-- (int) Number of self-edges in the graph.
+- int
 
-The following example shows how count number of self edges in :class:`Graph`::
+The following example shows how to count the number of self edges in :class:`TNGraph`, :class:`TUNGraph`, and :class:`TNEANet`::.
 
     import snap
 
-    G1 = snap.TUNGraph.New()
-    G1.AddNode(0)
-    G1.AddNode(1)
-    G1.AddEdge(0,1)
-    G1.AddEdge(1,1)
+    Graph = snap.TNGraph.New()
+    Graph.AddNode(0)
+    Graph.AddEdge(0,0)
+    print snap.CntSelfEdges(Graph)
 
-    for NI in G1.Nodes():
-        print "node: %d, out-degree %d, in-degree %d" % ( NI.GetId(), NI.GetOutDeg(), NI.GetInDeg())
+    Graph = snap.TUNGraph.New()
+    Graph.AddNode(0)
+    Graph.AddEdge(0,0)
+    print snap.CntSelfEdges(Graph)
 
-    print snap.CntSelfEdges(G1)
+    Graph = snap.TNEANet.New()
+    Graph.AddNode(0)
+    Graph.AddEdge(0,0)
+    print snap.CntSelfEdges(Graph)

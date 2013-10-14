@@ -17,7 +17,7 @@ Return value:
 
 - None
 
-The following example shows how to use :func:`InDegCnt` in
+The following example shows how to use :func:`InDegCnt` with nodes in
 :class:`TNGraph`, :class:`TUNGraph`, and :class:`TNEANet`::
 
     import snap

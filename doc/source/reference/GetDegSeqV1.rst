@@ -10,17 +10,17 @@ Parameters:
 - *Graph*: graph (input)
     A Snap.py graph or a network
 
-- *InDegV*: TIntV (output)
+- *InDegV*: TIntV, a vector of int values (output)
     In-degree sequence vector
 
-- *OutDegV*: TIntV (output)
+- *OutDegV*: TIntV, a vector of int values (output)
     Out-degree sequence vector
 
 Return Value:
 
 - None
 
-The following examples shows how to obtain the in- and out-degree sequence vectors for networks of class :class:`TNGraph`, :class:`TUNGraph`, and :class:`TNEANet`::
+The following examples shows how to compute the in- and out-degree sequence vectors for nodes in :class:`TNGraph`, :class:`TUNGraph`, and :class:`TNEANet`::
 
     import snap
 

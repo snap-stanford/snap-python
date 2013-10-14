@@ -10,7 +10,7 @@ Parameters:
 - *Graph*: graph (input)
     A Snap.py graph or a network
 
-- *PRankH*: a hash of int keys and float values (output)
+- *PRankH*: TIntFltH, a hash of int keys and float values (output)
     PageRank scores. Keys are node IDs, values are computed PageRank scores.
 
 - *C*: float (input)

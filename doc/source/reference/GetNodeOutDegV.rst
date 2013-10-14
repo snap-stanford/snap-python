@@ -1,25 +1,25 @@
 GetNodeOutDegV
 ''''''''''''''''
 
-.. function:: GetNodeOutDegV(Graph, OutDegV)
+.. function:: GetNodeOutDegV(Graph, NIdOutDegV)
 
-
-Returns a vector of pairs for *Graph*. The node id and node out-degree are stored in *OutDeV*.
+Computes the out-degree for every node in *Graph*. 
+The result is stored in *NIdOutDegV*, a vector of pairs (node id, node out degree).
 
 Parameters:
 
 - *Graph*: graph (input)
     A Snap.py graph or a network
 
-- *OutDegV*: a vector of pairs of integers TIntPrV (output). Keys are node IDs and out-degrees of the node.
-
+- *NIdOutDegV*: TIntPrV, a vector of (int, int) pairs (output)
+    A vecotr of (node id, node out degree) pairs.
 
 Return value:
 
 - None
 
 
-The following example shows how to calculate GetNodeOutDegV scores for nodes in :class:`TNGraph`, :class:`TUNGraph`, and :class:`TNEANet`::
+The following example shows how to use :func:`GetNodeOutDegV` with nodes in :class:`TNGraph`, :class:`TUNGraph`, and :class:`TNEANet`::
 
     import snap
 
