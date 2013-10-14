@@ -1,5 +1,9 @@
 Get1CnComSzCnt
 ''''''''''''''
+.. note::
+
+    This page is a draft and under revision.
+
 
 .. function:: Get1CnComSzCnt (Graph, SzCntV)
 

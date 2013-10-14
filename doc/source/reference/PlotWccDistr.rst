@@ -1,5 +1,9 @@
 PlotWccDistr
 ''''''''''''
+.. note::
+
+    This page is a draft and under revision.
+
 
 .. function:: PlotWccDistr(Graph, path, description)
 

@@ -1,5 +1,9 @@
 GenTree
 '''''''''''''''
+.. note::
+
+    This page is a draft and under revision.
+
 
 .. function:: GenTree(GraphType, Fanout, Levels, IsDir=True, ChildPointsToParent=True)
 

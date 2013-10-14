@@ -1,5 +1,9 @@
 CntDegNodes
 '''''''''''
+.. note::
+
+    This page is a draft and under revision.
+
 
 .. function:: int CntDegNodes(Graph, NodeDeg)
 

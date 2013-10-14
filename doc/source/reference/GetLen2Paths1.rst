@@ -1,5 +1,9 @@
 GetLen2Paths
 ''''''''''''
+.. note::
+
+    This page is a draft and under revision.
+
 
 .. function:: GetLen2Paths (Graph, NId1, NId2, NbrV)
 

@@ -1,5 +1,9 @@
 LoadEdgeList
 ''''''''''''
+.. note::
+
+    This page is a draft and under revision.
+
 
 .. function:: LoadEdgeList(PGraph, InFNm, SrcColId, DstColId, Separator)
 

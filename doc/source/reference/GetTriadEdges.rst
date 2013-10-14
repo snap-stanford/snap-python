@@ -1,5 +1,9 @@
 GetTriadEdges
 '''''''''''''
+.. note::
+
+    This page is a draft and under revision.
+
 
 .. function:: GetTriadEdges(Graph, SampleEdges = -1)
 

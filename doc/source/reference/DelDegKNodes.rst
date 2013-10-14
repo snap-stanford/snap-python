@@ -1,5 +1,9 @@
 DelDegKNodes
 ''''''''''''
+.. note::
+
+    This page is a draft and under revision.
+
 
 .. function:: DelDegKNodes(Graph, OutDegK, InDegK)
 

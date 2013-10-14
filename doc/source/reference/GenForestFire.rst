@@ -1,5 +1,9 @@
 GenForestFire
 '''''''''''''
+.. note::
+
+    This page is a draft and under revision.
+
 
 .. function:: GenForestFire(Nodes, FwdProb, BckProb)
 

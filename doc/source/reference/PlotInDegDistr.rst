@@ -1,5 +1,9 @@
 PlotInDegDistr
 ''''''''''''''
+.. note::
+
+    This page is a draft and under revision.
+
 
 .. function:: PlotInDegDistr(Graph, FNmPref, DescStr=snap.TStr(), PlotCCdf=False, PowerFit=False)
 

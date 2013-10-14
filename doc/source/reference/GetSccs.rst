@@ -1,11 +1,11 @@
 GetSccs
 '''''''
-
-.. function:: GetSccs (Graph, CnComV)
-
 .. note::
 
-    This function is not yet supported.
+    This page is a draft and under revision.
+
+
+.. function:: GetSccs (Graph, CnComV)
 
 Returns all strongly connected components in a Graph.
 

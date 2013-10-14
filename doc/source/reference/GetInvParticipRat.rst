@@ -1,5 +1,9 @@
 GetInvParticipRat
 '''''''''''''''''
+.. note::
+
+    This page is a draft and under revision.
+
 
 .. function:: GetInvParticipRat(Graph, MaxEigVecs, TimeLimit, EigValIprV)
 

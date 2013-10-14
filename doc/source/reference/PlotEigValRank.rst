@@ -1,5 +1,9 @@
 PlotEigValRank
 ''''''''''''''
+.. note::
+
+    This page is a draft and under revision.
+
 
 .. function:: PlotEigValRank(Graph, NumEigenvalues, NameSuffix, TitlePrefix)
 

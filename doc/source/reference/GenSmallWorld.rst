@@ -1,5 +1,9 @@
 GenSmallWorld
 '''''''''''''
+.. note::
+
+    This page is a draft and under revision.
+
 
 .. function:: PUNGraph GenSmallWorld(Nodes, NodeOutDeg, RewireProb, Rnd=TInt::Rnd)
 

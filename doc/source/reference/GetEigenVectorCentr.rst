@@ -1,5 +1,9 @@
 GetEigenVectorCentr
 '''''''''''''''''''
+.. note::
+
+    This page is a draft and under revision.
+
 
 .. function:: GetEigenVectorCentr(Graph, NIdEigenH, Eps = 1e-4, MaxIter = 100)
 

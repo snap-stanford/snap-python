@@ -1,5 +1,9 @@
 GetHits
 '''''''''''''''
+.. note::
+
+    This page is a draft and under revision.
+
 
 
 .. function:: GetHits (Graph, NIdHubH, NIdAuthH, MaxIter = 20)

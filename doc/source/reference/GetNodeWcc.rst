@@ -1,5 +1,9 @@
 GetNodeWcc
 ''''''''''
+.. note::
+
+    This page is a draft and under revision.
+
 
 .. function:: GetNodeWcc(Graph, NId, CnCom)
 

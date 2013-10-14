@@ -1,11 +1,11 @@
 GetBiCon
 ''''''''
-
-.. function:: GetBiCon(Graph, BiCnComV)
-
 .. note::
 
-    This function is not yet supported.
+    This page is a draft and under revision.
+
+
+.. function:: GetBiCon(Graph, BiCnComV)
 
 Returns all bi-connected components of a Graph.
 

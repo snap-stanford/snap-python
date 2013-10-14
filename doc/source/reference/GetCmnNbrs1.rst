@@ -1,5 +1,9 @@
 GetCmnNbrs
 ''''''''''
+.. note::
+
+    This page is a draft and under revision.
+
 
 .. function:: GetCmnNbrs(Graph, NId1, NId2, NbrV)
 

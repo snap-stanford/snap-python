@@ -1,5 +1,9 @@
 GetEdgesInOut
 '''''''''''''
+.. note::
+
+    This page is a draft and under revision.
+
 
 .. function:: GetEdgesInOut (Graph, NIdV, EdgesIn, EdgesOut)
 

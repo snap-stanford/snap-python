@@ -1,5 +1,9 @@
 GenRndGnm
 '''''''''
+.. note::
+
+    This page is a draft and under revision.
+
 
 .. function:: GenRndGnm(GraphType, Nodes, Edges, IsDir=True, Rnd=TInt.Rnd)
 

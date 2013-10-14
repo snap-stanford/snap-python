@@ -1,5 +1,9 @@
 ConvertESubGraph
 ''''''''''''''''
+.. note::
+
+    This page is a draft and under revision.
+
 
 .. function:: OutGraph = ConvertESubGraph(InGraph, EIdV, RenumberNodes = false)
 

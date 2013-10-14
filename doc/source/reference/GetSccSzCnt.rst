@@ -1,5 +1,9 @@
 GetSccSzCnt
 '''''''''''
+.. note::
+
+    This page is a draft and under revision.
+
 
 .. function:: GetSccSzCnt(Graph, SccSzCnt)
 

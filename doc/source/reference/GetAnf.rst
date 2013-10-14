@@ -1,5 +1,9 @@
 GetAnf
 '''''''''''
+.. note::
+
+    This page is a draft and under revision.
+
 
 .. function:: GetAnf(Graph,SrcNId,DistNbrsV,MxDist,IsDir,Napprox)
 

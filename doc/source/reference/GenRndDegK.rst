@@ -1,5 +1,9 @@
 GenRndDegK
 ''''''''''
+.. note::
+
+    This page is a draft and under revision.
+
 
 .. function:: GenRndDegK(Nodes, NodeDeg, NSwitch = 100, Rnd = Rnd)
 
