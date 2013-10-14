@@ -17,7 +17,7 @@ Parameters:
 - *NId*: int (input)
 	The node id of the source node
 
-- *NodeSet*: TIntSet (input)
+- *NodeSet*: TIntSet, a set of ints (input)
 	The set of destination node ids
 
 Return Value:

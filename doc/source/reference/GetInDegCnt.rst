@@ -10,7 +10,7 @@ Parameters:
 - *Graph*: graph (input)
     A Snap.py graph or a network
 
-- *DegToCntV*: a vector of int pairs (output)
+- *DegToCntV*: TIntPrV, a vector of (int, int) pairs (output)
     A vector of (in-degree, number of nodes of such out-degree) pairs.
 
 Return value:
