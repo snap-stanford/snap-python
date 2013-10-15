@@ -3,16 +3,13 @@
 //   PNEANet, PUNGraph, PNGraph are supported,
 //     along with standard SNAP functions.
 
-#define SNAP_ALL 1
+#define SNAP_ALL 0
 
 %pythoncode %{
 Version = "0.8.1"
 %}
 
 %module snap
-
-//%include typemaps.i
-//%apply int &OUTPUT { int& };
 
 %{
 
@@ -88,33 +85,7 @@ Version = "0.8.1"
 %ignore THash::MarkDelKey;
 %ignore THash::MarkDelKeyId;
 
-// these are specific instances with errors, g++ still complains
-//%ignore THash< TInt, TVec<TInt, int>, TDefaultHashFunc<TInt> >::AddDatId;
-//%ignore THash< TInt, THash<TInt, TInt, TDefaultHashFunc<TInt> >, TDefaultHashFunc<TInt> >::AddDatId;
-//%ignore THash< TInt, TPair<TFlt, TFlt>, TDefaultHashFunc<TInt> >::AddDatId;
-//%ignore THash< TInt, TTriple<TFlt, TFlt, TFlt>, TDefaultHashFunc<TInt> >::AddDatId;
-//%ignore THash< TInt, TVec<TFlt, int>, TDefaultHashFunc<TInt> >::AddDatId;
-//%ignore THash< TInt, TVec<TStr, int>, TDefaultHashFunc<TInt> >::AddDatId;
-//%ignore THash< TInt, TPair<TInt, TInt>, TDefaultHashFunc<TInt> >::AddDatId;
-//%ignore THash< TInt, TVec<TPair<TInt, TInt> >, TDefaultHashFunc<TInt> >::AddDatId;
-//%ignore THash< TUInt64, TVec<TStr, int>, TDefaultHashFunc<TUInt64> >::AddDatId;
-//%ignore THash< TPair<TInt, TInt>, TVec<TInt, int>, TDefaultHashFunc<TPair<TInt, TInt> > >::AddDatId;
-//%ignore THash< TPair<TInt, TInt>, TVec<TPair<TInt, TInt>, int>, TDefaultHashFunc<TPair<TInt, TInt> > >::AddDatId;
-//%ignore THash< TPair<TInt, TInt>, TVec<TStr, int>, TDefaultHashFunc<TPair<TInt, TInt> > >::AddDatId;
-//%ignore THash< TStr, TPair<TInt, TInt>, TDefaultHashFunc<TStr> >::AddDatId;
-//%ignore THash< TStr, TVec<TInt, int>, TDefaultHashFunc<TStr> >::AddDatId;
-//%ignore THash< TStr, TVec<TUInt64, int>, TDefaultHashFunc<TStr> >::AddDatId;
-//%ignore THash< TStr, TVec<TPair<TInt, TInt>, int>, TDefaultHashFunc<TStr> >::AddDatId;
-//%ignore THash< TStr, TVec<TFlt, int>, TDefaultHashFunc<TStr> >::AddDatId;
-//%ignore THash< TStr, TPair<TStr, TStr>, TDefaultHashFunc<TStr> >::AddDatId;
-//%ignore THash< TStr, TVec<TStr, int>, TDefaultHashFunc<TStr> >::AddDatId;
-//%ignore THash< TStr, TVec<TPair<TStr, TStr>, int>, TDefaultHashFunc<TStr> >::AddDatId;
-//%ignore THash< TStr, TVec<TKeyDat<TStr, TStr>, int>, TDefaultHashFunc<TStr> >::AddDatId;
-//%ignore THash< TStr, TPair<TInt, TFlt>, TDefaultHashFunc<TStr> >::AddDatId;
-//%ignore THash< TStr, TVec<TPair<TStr, TInt>, int>, TDefaultHashFunc<TStr> >::AddDatId;
-//%ignore THash< TStr, TVec<TKeyDat<TStr, TInt>, int>, TDefaultHashFunc<TStr> >::AddDatId;
-//%ignore THash< TVec<TStr, int>, TVec<TInt, int>, TDefaultHashFunc<TVec<TStr, int> > >::AddDatId;
-//%ignore THash<  TVec<TStr, int>, TVec<TStr, int>, TDefaultHashFunc<TVec<TStr, int> > >::AddDatId;
+// Python-C++ conversion typemaps
 
 %include "snap_types.i"
 
@@ -162,41 +133,6 @@ Version = "0.8.1"
 %include "util.h"
 %include "triad.h"
 %include "statplot.h"
-
-%extend TVec {
-
-        //TSizeTy Add(int Val) {
-                //return $self->Add(TInt(Val));
-        //}
-
-        //TSizeTy AddMerged(int Val) {
-                //return $self->AddMerged(TInt(Val));
-        //}
-};
-
-%extend THash {
-        //int AddKey(int Val) {
-                //return $self->AddKey(TInt(Val));
-        //}
-        //int IsKey(int Val) {
-                //return $self->IsKey(TInt(Val));
-        //}
-        //TDat& GetDat(int Val) {
-                //return $self->GetDat(TInt(Val));
-        //}
-        //TDat& AddDat(int Key, int Val) {
-                //return $self->AddDat(TInt(Key),TInt(Val));
-        //}
-};
-
-//%template(TIntV) TVec< TInt, int >;
-//%template(TIntIntVV) TVec< TVec< TInt, int >, int >;
-//%template(TIntIntVH) THash< TInt, TVec< TInt, int > >;
-
-//%template(TStrV) TVec< TStr, int >;
-
-//%template(TIntPrV) TVec< TIntPr >;
-//%template(TFltV) TVec< TFlt >;
 
 // SNAP type definitions
 
@@ -416,12 +352,14 @@ Version = "0.8.1"
 
 // define hash types
 %template(TIntH) THash<TInt, TInt>;
+%template(TIntIntH) THash<TInt, TInt>;
 %template(TIntFltH) THash<TInt, TFlt>;
 %template(TIntStrH) THash<TInt, TStr>;
 %template(TIntPrFltH) THash<TIntPr, TFlt>;
 
 // define keydat types
 %template(TIntHI) THashKeyDatI <TInt, TInt>;
+%template(TIntIntHI) THashKeyDatI <TInt, TInt>;
 %template(TIntFltHI) THashKeyDatI <TInt, TFlt>;
 %template(TIntStrHI) THashKeyDatI <TInt, TStr>;
 %template(TIntPrFltHI) THashKeyDatI <TIntPr, TFlt>;
@@ -432,7 +370,6 @@ Version = "0.8.1"
 //%template(TChTrIntH) THash<TChTr, TInt>;
 %template(TUInt64H) THash<TUInt64, TInt>;
 %template(TIntBoolH) THash<TInt, TBool>;
-%template(TIntIntH) THash<TInt, TInt>;
 %template(TIntUInt64H) THash<TInt, TUInt64>;
 //%template(TIntIntFltPrH) THash<TInt, TIntFltPr>;
 %template(TIntIntVH) THash<TInt, TIntV>;
@@ -500,7 +437,6 @@ Version = "0.8.1"
 %template(TUInt64HI) THashKeyDatI <TUInt64, TInt>;
 %template(TIntBoolHI) THashKeyDatI <TInt, TBool>;
 %template(TIntHI) THashKeyDatI <TInt, TInt>;
-%template(TIntIntHI) THashKeyDatI <TInt, TInt>;
 %template(TIntUInt64HI) THashKeyDatI <TInt, TUInt64>;
 //%template(TIntIntFltPrHI) THashKeyDatI <TInt, TIntFltPr>;
 %template(TIntIntVHI) THashKeyDatI <TInt, TIntV>;
@@ -581,7 +517,7 @@ Version = "0.8.1"
 
 //----------
 
-// Python-SNAP conversion typemaps
+// SWIG conversion C++ code
 
 %include "snapswig.h"
 %include "goodgraph.cpp"
