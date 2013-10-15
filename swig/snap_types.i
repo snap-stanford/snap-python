@@ -1,7 +1,24 @@
 // snap_types.i
 //
-// Provides an interface between Python types (lists, strings) and SNAP.
+// Provides type interface between Snap.py Python and SNAP C++
 //
+
+%include typemaps.i
+%apply int &OUTPUT { int& RootNIdX};
+%apply int &OUTPUT { int& TreeSzX};
+%apply int &OUTPUT { int& TreeDepthX};
+%apply double &OUTPUT { double& EffDiamX};
+%apply double &OUTPUT { double& AvgSPLX};
+%apply int &OUTPUT { int& FullDiamX};
+%apply int &OUTPUT { int& EdgesInX};
+%apply int &OUTPUT { int& EdgesOutX};
+//%apply int64 &OUTPUT { int64& ClosedTriadsX};
+//%apply int64 &OUTPUT { int64& OpenTriadsX};
+%apply int &OUTPUT { int& ClosedNTriadsX};
+%apply int &OUTPUT { int& OpenNTriadsX};
+%apply int &OUTPUT { int& InGroupEdgesX};
+%apply int &OUTPUT { int& InOutGroupEdgesX};
+%apply int &OUTPUT { int& OutGroupX};
 
 //
 // TInt

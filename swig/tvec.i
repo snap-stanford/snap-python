@@ -31,6 +31,25 @@ def itervec(self):
 
 # expand TVec types with methods __iter__ and __getitem__
 
+TIntV.__getitem__ = getitem
+TIntV.__iter__ = itervec
+TFltV.__getitem__ = getitem
+TFltV.__iter__ = itervec
+TIntPrV.__getitem__ = getitem
+TIntPrV.__iter__ = itervec
+TFltPrV.__getitem__ = getitem
+TFltPrV.__iter__ = itervec
+TIntFltKdV.__getitem__ = getitem
+TIntFltKdV.__iter__ = itervec
+TCnComV.__getitem__ = getitem
+TCnComV.__iter__ = itervec
+
+TCnCom.__getitem__ = getitem
+TCnCom.__iter__ = itervec
+%}
+
+#if SNAP_ALL
+%pythoncode %{
 TBoolV.__getitem__ = getitem
 TBoolV.__iter__ = itervec
 TChV.__getitem__ = getitem
@@ -39,12 +58,8 @@ TUChV.__getitem__ = getitem
 TUChV.__iter__ = itervec
 TUIntV.__getitem__ = getitem
 TUIntV.__iter__ = itervec
-TIntV.__getitem__ = getitem
-TIntV.__iter__ = itervec
 TUInt64V.__getitem__ = getitem
 TUInt64V.__iter__ = itervec
-TFltV.__getitem__ = getitem
-TFltV.__iter__ = itervec
 TSFltV.__getitem__ = getitem
 TSFltV.__iter__ = itervec
 TAscFltV.__getitem__ = getitem
@@ -53,14 +68,10 @@ TStrV.__getitem__ = getitem
 TStrV.__iter__ = itervec
 TChAV.__getitem__ = getitem
 TChAV.__iter__ = itervec
-TIntPrV.__getitem__ = getitem
-TIntPrV.__iter__ = itervec
 TIntTrV.__getitem__ = getitem
 TIntTrV.__iter__ = itervec
 TIntQuV.__getitem__ = getitem
 TIntQuV.__iter__ = itervec
-TFltPrV.__getitem__ = getitem
-TFltPrV.__iter__ = itervec
 TFltTrV.__getitem__ = getitem
 TFltTrV.__iter__ = itervec
 TIntKdV.__getitem__ = getitem
@@ -99,8 +110,6 @@ TIntKdV.__getitem__ = getitem
 TIntKdV.__iter__ = itervec
 TUIntIntKdV.__getitem__ = getitem
 TUIntIntKdV.__iter__ = itervec
-TIntFltKdV.__getitem__ = getitem
-TIntFltKdV.__iter__ = itervec
 TIntPrFltKdV.__getitem__ = getitem
 TIntPrFltKdV.__iter__ = itervec
 TIntStrKdV.__getitem__ = getitem
@@ -207,10 +216,6 @@ TFltVVV.__iter__ = itervec
 #TIntQV.__iter__ = itervec
 TStrV.__getitem__ = getitem
 TStrV.__iter__ = itervec
-TCnComV.__getitem__ = getitem
-TCnComV.__iter__ = itervec
-
-TCnCom.__getitem__ = getitem
-TCnCom.__iter__ = itervec
 %}
+#endif
 
