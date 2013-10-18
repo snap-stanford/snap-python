@@ -1,9 +1,5 @@
 CntDegNodes
 '''''''''''
-.. note::
-
-    This page is a draft and under revision.
-
 
 .. function:: CntDegNodes(Graph, NodeDeg)
 
@@ -20,8 +16,9 @@ Parameters:
 Return value:
 
 - int
+    The number of nodes in *Graph* with degree *NodeDeg*
 
-The following example shows how to get the number of nodes with degree *NodeDeg* in
+The following example shows how to get the number of nodes with degree 20 in
 :class:`TNGraph`, :class:`TUNGraph`, and :class:`TNEANet`::
 
     import snap
