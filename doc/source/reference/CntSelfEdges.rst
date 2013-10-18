@@ -5,7 +5,7 @@ CntSelfEdges
     This page is a draft and under revision.
 
 
-.. function:: int CntSelfEdges (Graph)
+.. function:: CntSelfEdges (Graph)
 
 Counts the number of self-edges in a graph. Edge (u,u) is a self-edge.
 

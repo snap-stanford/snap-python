@@ -5,7 +5,7 @@ CntOutDegNodes
     This page is a draft and under revision.
 
 
-.. function:: int CntOutDegNodes(Graph, NodeOutDeg)
+.. function:: CntOutDegNodes(Graph, NodeOutDeg)
 
 Returns the number of nodes with out-degree NodeOutDeg.
 

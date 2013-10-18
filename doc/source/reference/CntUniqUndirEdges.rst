@@ -5,7 +5,7 @@ CntUniqUndirEdges
     This page is a draft and under revision.
 
 
-.. function:: int CntUniqUndirEdges(Graph)
+.. function:: CntUniqUndirEdges(Graph)
 
 Counts unique undirected edges in the graph *Graph*. Nodes (u,v), where u!=v, are considered to be connected via an undirected edge if there exists an edge in either direction. 
 

@@ -5,7 +5,7 @@ CntEdgesToSet
     This page is a draft and under revision.
 
 
-.. function:: int CntEdgesToSet(Graph, NId, NodeSet)
+.. function:: CntEdgesToSet(Graph, NId, NodeSet)
 
 .. note::
 

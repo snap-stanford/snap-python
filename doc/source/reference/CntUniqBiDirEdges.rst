@@ -5,7 +5,7 @@ CntUniqBiDirEdges
     This page is a draft and under revision.
 
 
-.. function:: int CntUniqBiDirEdges(Graph)
+.. function:: CntUniqBiDirEdges(Graph)
 
 Counts unique bidirectional edges in the graph *Graph*. Edge is bidirectional if there exists directed edges in both directions: (u,v) and (v,u).
 

@@ -5,7 +5,7 @@ CntDegNodes
     This page is a draft and under revision.
 
 
-.. function:: int CntDegNodes(Graph, NodeDeg)
+.. function:: CntDegNodes(Graph, NodeDeg)
 
 Returns the number of nodes in *Graph* with degree *NodeDeg*.
 

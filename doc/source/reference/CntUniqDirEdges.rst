@@ -5,7 +5,7 @@ CntUniqDirEdges
     This page is a draft and under revision.
 
 
-.. function:: int CntUniqDirEdges(Graph)
+.. function:: CntUniqDirEdges(Graph)
 
 Returns the number of unique directed edges in the graph *Graph*. Nodes (u,v), where u != v, are connected via a directed edge if there exists a directed edge from node u to node v. If there are multiple directed edges from u to v, the connection will be counted only once.
 

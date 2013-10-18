@@ -5,7 +5,7 @@ CntNonZNodes
     This page is a draft and under revision.
 
 
-.. function:: int CntNonZNodes (Graph) 
+.. function:: CntNonZNodes (Graph) 
 
 Returns the number of nodes in *Graph* with degree greater than 0.
 

@@ -5,7 +5,7 @@ GetMxOutDegNId
     This page is a draft and under revision.
 
 
-.. function:: int GetMxOutDegNId(Graph)
+.. function:: GetMxOutDegNId(Graph)
 
 Returns the node id of a randomly chosen node from all the nodes in *Graph* with the maximum out-degree.
 
