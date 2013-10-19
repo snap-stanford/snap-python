@@ -160,7 +160,7 @@ TUNGraphEdgeI.GetId = GetId
 %template(GetNodeClustCf_PUNGraph) TSnap::GetNodeClustCf<PUNGraph>;
 %template(GetTriads_PUNGraph) TSnap::GetTriads<PUNGraph>;
 %template(GetTriadEdges_PUNGraph) TSnap::GetTriadEdges<PUNGraph>;
-//%template(GetNodeTriads_PUNGraph) TSnap::GetNodeTriads<PUNGraph>;
+%template(GetNodeTriads_PUNGraph) TSnap::GetNodeTriads<PUNGraph>;
 %template(GetTriadParticip_PUNGraph) TSnap::GetTriadParticip<PUNGraph>;
 
 %template(GetCmnNbrs_PUNGraph) TSnap::GetCmnNbrs<PUNGraph>;
