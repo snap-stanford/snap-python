@@ -161,7 +161,7 @@ TNGraphEdgeI.GetId = GetId
 %template(GetNodeClustCf_PNGraph) TSnap::GetNodeClustCf<PNGraph>;
 %template(GetTriads_PNGraph) TSnap::GetTriads<PNGraph>;
 %template(GetTriadEdges_PNGraph) TSnap::GetTriadEdges<PNGraph>;
-//%template(GetNodeTriads_PNGraph) TSnap::GetNodeTriads<PNGraph>;
+%template(GetNodeTriads_PNGraph) TSnap::GetNodeTriads<PNGraph>;
 %template(GetTriadParticip_PNGraph) TSnap::GetTriadParticip<PNGraph>;
 
 %template(GetCmnNbrs_PNGraph) TSnap::GetCmnNbrs<PNGraph>;

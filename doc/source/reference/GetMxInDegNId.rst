@@ -1,13 +1,9 @@
 GetMxInDegNId
 '''''''''''''
-.. note::
 
-    This page is a draft and under revision.
+.. function:: GetMxInDegNId(Graph)
 
-
-.. function:: int  GetMxInDegNId(Graph)
-
-Returns a randomly chosen node from all the nodes in *Graph* with the maximum in-degree.
+Returns the node id of a randomly chosen node from all the nodes in *Graph* with the maximum in-degree.
 
 Parameters:
 
@@ -16,7 +12,8 @@ Parameters:
 
 Return value:
 
-- A randomly chosen node from all the nodes in *Graph* with the maximum in-degree
+- int
+    The node id of a randomly chosen node from all the nodes in *Graph* with the maximum in-degree
 
 The following example shows how to use :func:`GetMxInDegNId` with
 :class:`TNGraph`, :class:`TUNGraph`, and :class:`TNEANet`::
@@ -24,10 +21,14 @@ The following example shows how to use :func:`GetMxInDegNId` with
     import snap
 
     Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
-    snap.GetMxInDegNId(Graph)
+    NId1 = snap.GetMxInDegNId(Graph)
+    print NId1
 
     Graph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
-    snap.GetMxInDegNId(Graph)
+    NId2 = snap.GetMxInDegNId(Graph)
+    print NId2
 
     Graph = snap.GenRndGnm(snap.PNEANet, 100, 1000)
-    snap.GetMxInDegNId(Graph)
+    NId3 = snap.GetMxInDegNId(Graph)
+    print NId3
+

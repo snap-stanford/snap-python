@@ -1,13 +1,9 @@
 CntInDegNodes
 '''''''''''''''''''
-.. note::
-
-    This page is a draft and under revision.
-
 
 .. function:: CntInDegNodes(Graph, NodeInDeg)
 
-Returns the number of nodes with in-degree NodeInDeg.
+Returns the number of nodes in *Graph* with in-degree *NodeInDeg*.
 
 Parameters:
 
@@ -15,15 +11,15 @@ Parameters:
     A Snap.py graph or a network
 
 - *NodeInDeg*: int (input)
-    The value of in-degree to be found in *Graph*
+    The in-degree of the nodes to be counted
 
 Return value:
 
-- TInt (output)
-	Integer with the number of nodes with in-degree equals to *NodeInDeg*
+- int
+    The number of nodes in *Graph* with in-degree *NodeInDeg*
 
 
-The following example shows how to use CntInDegNodes for Graphs in
+The following example shows how to get the number of nodes with in-degrees 10, 20 and 5 in
 :class:`TNGraph`, :class:`TUNGraph`, and :class:`TNEANet`::
     
     import snap

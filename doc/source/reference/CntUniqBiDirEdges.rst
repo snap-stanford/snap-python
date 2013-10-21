@@ -5,9 +5,9 @@ CntUniqBiDirEdges
     This page is a draft and under revision.
 
 
-.. function:: CntUniqBiDirEdges(Graph)
+.. function:: int CntUniqBiDirEdges(Graph)
 
-Counts unique bidirectional edges in the graph Graph. Edge is bidirectional if there exists directed edges in both directions: (u,v) and (v,u).
+Counts unique bidirectional edges in the graph *Graph*. Edge is bidirectional if there exists directed edges in both directions: (u,v) and (v,u).
 
 Parameters:
 
@@ -16,11 +16,9 @@ Parameters:
 
 Return value:
 
-- Integer value
+- int
 
-For more info see: http://snap.stanford.edu/snap/doc/snapdev-ref/index.html
-
-The following example shows how to calculate CntUniqBiDirEdges for edges in
+The following example shows how to use CntUniqBiDirEdges with
 :class:`TNGraph`, :class:`TUNGraph`, and :class:`TNEANet`::
 
     import snap

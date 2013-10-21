@@ -7,21 +7,21 @@ GetInDegCnt
 
 .. function:: GetInDegCnt(Graph, DegToCntV)
 
-Returns an in-degree histogram: a set of pairs (in-degree, number of nodes of such in-degree).
+Computes an in-degree histogram: a set of pairs (in-degree, number of nodes of such in-degree). The results are stored in *DegToCntV*.
 
 Parameters:
 
 - *Graph*: graph (input)
     A Snap.py graph or a network
 
-- *DegToCntV*: a vector of int pairs (output)
-    An in-degree histogram. Pairs are in-degree, number of nodes of such in-degree.
+- *DegToCntV*: TIntPrV, a vector of (int, int) pairs (output)
+    A vector of (in-degree, number of nodes of such out-degree) pairs.
 
 Return value:
 
 - None
 
-The following example shows how to calculate InDegCnt for nodes in
+The following example shows how to use :func:`InDegCnt` with nodes in
 :class:`TNGraph`, :class:`TUNGraph`, and :class:`TNEANet`::
 
     import snap

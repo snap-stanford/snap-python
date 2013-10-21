@@ -11,7 +11,7 @@ CntEdgesToSet
 
     This function is not yet supported.
 
-Counts the number of edges between the given node and the given set of nodes in the provided graph.
+Counts the number of edges between the given node with node id *NId* and the given set of nodes *NodeSet* in the provided graph.
 
 Parameters:
 
@@ -21,25 +21,25 @@ Parameters:
 - *NId*: int (input)
 	The node id of the source node
 
-- *NodeSet*: TIntSet (input)
+- *NodeSet*: TIntSet, a set of ints (input)
 	The set of destination node ids
 
 Return Value:
 
-- *EdgeCount*: int (output)
-	The number of edges between the node NId and the nodes in NodeSet
+- int
 
 If Graph is a directed graph, this function will return edges occurring in both directions between the given NId and NodeSet.
 
-The following example shows how to count edges to a node set in :class:`TNGraph`, :class:`TUNGraph`, and :class:`TNEANet`::
+The following example shows how to use :func:`CntEdgesToSet` with :class:`TNGraph`, :class:`TUNGraph`, and :class:`TNEANet`::
 
 	import snap
 
-	Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
 	NodeSet = snap.TIntSet()
 	for Id in range(1,50):
 		NodeSet.Add(Id)
 	NodeId = 65
+
+	Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
 	EdgeCount = CntEdgesToSet(Graph, NodeId, NodeSet)
 	print "Number of edges from %d to NodeSet in PNGraph = %d" % (NodeId, EdgeCount)
 
@@ -47,11 +47,12 @@ The following example shows how to count edges to a node set in :class:`TNGraph`
 	EdgeCount = CntEdgesToSet(UGraph, NodeId, NodeSet)
 	print "Number of edges from %d to NodeSet in PUNGraph = %d" % (NodeId, EdgeCount)
 
-	NGraph = snap.GenRndGnm(snap.PNEANet, 10, 50)
 	NodeSet = snap.TIntSet()
 	NodeSet.Add(1)
 	NodeSet.Add(2)
 	NodeSet.Add(3)
 	NodeId = 4
+
+	NGraph = snap.GenRndGnm(snap.PNEANet, 10, 50)
 	EdgeCount = CntEdgesToSet(NGraph, NodeId, NodeSet)
 	print "Number of edges from %d to NodeSet in PNEANet = %d" % (NodeId, EdgeCount)

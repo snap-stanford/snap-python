@@ -7,15 +7,15 @@ GetDegCnt
 
 .. function:: GetDegCnt(Graph, DegToCntV)
 
-Returns a degree histogram: a set of pairs *(degree, number of nodes of such degree)*
+Computes a degree histogram: a set of pairs (degree, number of nodes of such degree). The results are stored in *DegToCntV*.
 
 Parameters:
 
 - *Graph*: graph (input)
     A Snap.py graph or a network
 
-- *DegToCntV*: TFltPrV (output)
-    The degree histogram as a vector of float pairs
+- *DegToCntV*: TFltPrV, a vector of (float, float) pairs (output)
+    A vector of (degree, number of nodes of such degree) pairs.
 
 Return Value:
 

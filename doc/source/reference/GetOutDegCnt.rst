@@ -7,25 +7,23 @@ GetOutDegCnt
 
 .. function:: GetOutDegCnt(Graph, DegToCntV)
 
-Computes the number of out degrees of each node and saves the result in a vector of (out-degree, number of nodes of such out-degree) pairs.
+Computes an out-degree histogram: a set of pairs (out-degree, number of nodes of such out-degree). The results are stored in *DegToCntV*.
 
 Parameters:
 
 - *Graph*: graph (input)
     A Snap.py graph or a network
 
-- *DegToCntV*: vector of (int, int) pairs (output)
+- *DegToCntV*: TIntPrV, vector of (int, int) pairs (output)
     A vector of (out-degree, number of nodes of such out-degree) pairs
 
 Return value:
 
 - None
 
-For more information, see http://en.wikipedia.org/wiki/Directed_graph#Indegree_and_outdegree.
-
 Note that in an undirected graph of N nodes, each edge is counted twice, so the number of nodes of all out-degrees will be 2*N.
 
-The following example shows how to calculate out degree data for
+The following example shows how to use :func:`GetOutDegCnt` with
 :class:`TNGraph`, :class:`TUNGraph`, and :class:`TNEANet`::
 
     import snap
