@@ -1,8 +1,5 @@
 DelSelfEdges
 ''''''''''''
-.. note::
-
-    This page is a draft and under revision.
 
 
 .. function:: DelSelfEdges (Graph)
@@ -11,7 +8,8 @@ Removes all the self-edges from the graph.
 
 Parameters:
 
-- *Graph*: the PGraph that will be modified by deleting self-edges
+- *Graph*: graph (input)
+    A Snap.py graph or network
 
 Return value:
 

@@ -1,44 +1,38 @@
 IsTree (Graph)
 ''''''''''''''''''''''''''''''''''''''''''
-.. note::
-
-    This page is a draft and under revision.
 
 
-.. function:: bool IsTree(Graph)
+.. function:: IsTree(Graph, RootNId)
 
-Determines if the graph is a connected tree.  As a special case, if a graph has one node and no edges, it is a tree.  If there are any orphaned nodes, the graph is not a tree.
+Determines if *Graph* is a connected tree with *RootNID* as the root.  As a special case, if a graph has one node and no edges, it is a tree.  If there are any orphaned nodes, the graph is not a tree. The function returns a boolean indicating whether *Graph* is a tree.
 
 Parameters:
 
-- *Graph*: (input) A Snap.py graph or a network
+- *Graph*: (input) 
+    A Snap.py graph or a network
+
+- *RootNId*: (input)
+    The node id of the root
 
 Return value: 
 
-- bool: true if this graph represents a tree and false otherwise
+- bool: 
+    true if *Graph* represents a tree with root *RootNId* and false otherwise
 
 The following example shows how to detect trees in 
 :class:`TNGraph`, :class:`TUNGraph`, and :class:`TNEANet`::
 
     import snap
 
-	g = snap.TNGraph.New()
+    Graph = snap.GenTree(snap.PNGraph, 3, 3)
+    firstnode = 0
+    IsTree(Graph, firstnode)
 
-	g.AddNode(1)
-	g.AddNode(2)
-	g.AddEdge(1,2)
-	g.AddNode(3)
-	g.AddEdge(1,3)
+    Graph = snap.GenTree(snap.PUNGraph, 3, 3)
+    firstnode = 0
+    IsTree(Graph, firstnode)
 
-	print snap.IsTree(g)  # 'false'
+    Graph = snap.GenTree(snap.PNEANraph, 3, 3)
+    firstnode = 0
+    IsTree(Graph, firstnode)
 
-	g.AddNode(4)
-	g.AddEdge(4,1)
-
-	print snap.IsTree(g) # 'false'
-
-	ug = snap.ConvertGraph(snap.PUNGraph, g)
-	print snap.IsTree(ug) # 'true'
-
-	net = snap.ConvertGraph(snap.PNEANet, g)
-	print snap.IsTree(net) # 'false'

@@ -1,13 +1,10 @@
 DelZeroDegNodes 
 '''''''''''''''
-.. note::
-
-    This page is a draft and under revision.
 
 
 .. function:: DelZeroDegNodes(Graph)
 
-Removes all the zero-degree nodes, that isolated nodes, from the graph.
+Removes all the zero-degree nodes from the graph *Graph*.
 
 Parameters:
 
@@ -18,7 +15,8 @@ Return value:
 
 - None
 
-The following example shows how to delete all zero-degree nodes for 
+
+The following example shows how to delete all zero-degree nodes in 
 :class:`TNGraph`, :class:`TUNGraph`, and :class:`TNEANet`::
 
 	import snap

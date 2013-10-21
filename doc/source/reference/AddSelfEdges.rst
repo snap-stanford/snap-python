@@ -1,13 +1,10 @@
 AddSelfEdges
 ''''''''''''
-.. note::
-
-    This page is a draft and under revision.
 
 
 .. function:: AddSelfEdges(Graph)
 
-Adds a self-edge to every node in the *Graph*.
+Adds a self-edge to every node in *Graph*.
 
 Parameters:
 
@@ -18,7 +15,7 @@ Return value:
 
 - None
 
-The following example shows how to use AddSelfEdges on
+The following example shows how to add self edges to every node in
 :class:`PNGraph`, :class:`PUNGraph`, and :class:`PNEANet`::
 
 	from snap import *

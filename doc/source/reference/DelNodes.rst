@@ -1,20 +1,16 @@
 DelNodes
 ''''''''
-.. note::
-
-    This page is a draft and under revision.
-
 
 .. function:: DelNodes(Graph, NIdV)
 
-Returns (via output parameter CnCom) all nodes that are in the same connected component as node NId.
+Removes all the nodes contained in the vector *NIdV*.
 
 Parameters:
 
 - *Graph*: graph (input)
     A Snap.py graph or a network
 
-- *NIdV*: Vector of Node Id's in int (input)
+- *NIdV*: TIntV, vector of ints (input)
     Node Id's to be deleted from the Graph
 
 
