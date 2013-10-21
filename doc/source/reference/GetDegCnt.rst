@@ -1,13 +1,10 @@
 GetDegCnt
 '''''''''''''''
-.. note::
-
-    This page is a draft and under revision.
 
 
 .. function:: GetDegCnt(Graph, DegToCntV)
 
-Computes a degree histogram: a set of pairs (degree, number of nodes of such degree). The results are stored in *DegToCntV*.
+Computes a degree histogram: a vector of pairs (degree, number of nodes of such degree). The results are stored in *DegToCntV*.
 
 Parameters:
 
@@ -23,7 +20,7 @@ Return Value:
 
 For more info see http://en.wikipedia.org/wiki/Degree_distribution
 
-The following examples shows how to obtain the degree histogram for networks of class :class:`TNGraph`, :class:`TUNGraph`, and :class:`TNEANet`::
+The following examples shows how to obtain the degree histogram for nodes in :class:`TNGraph`, :class:`TUNGraph`, and :class:`TNEANet`::
 
     import snap
 

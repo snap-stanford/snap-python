@@ -1,13 +1,10 @@
 GetInDegCnt
 '''''''''''
-.. note::
-
-    This page is a draft and under revision.
 
 
 .. function:: GetInDegCnt(Graph, DegToCntV)
 
-Computes an in-degree histogram: a set of pairs (in-degree, number of nodes of such in-degree). The results are stored in *DegToCntV*.
+Computes an in-degree histogram: a vector of pairs (in-degree, number of nodes of such in-degree). The results are stored in *DegToCntV*.
 
 Parameters:
 
@@ -21,8 +18,7 @@ Return value:
 
 - None
 
-The following example shows how to use :func:`InDegCnt` with nodes in
-:class:`TNGraph`, :class:`TUNGraph`, and :class:`TNEANet`::
+The following examples shows how to obtain the degree histogram for nodes in :class:`TNGraph`, :class:`TUNGraph`, and :class:`TNEANet`::
 
     import snap
 

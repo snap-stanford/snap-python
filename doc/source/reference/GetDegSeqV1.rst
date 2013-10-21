@@ -7,7 +7,7 @@ GetDegSeqV
 
 .. function:: GetDegSeqV(Graph, InDegV, OutDegV)
 
-Returns in- and out-degree sequence vectors for all nodes.
+Computes the in- and out- degree sequence vector for nodes in *Graph*. The degree sequence vectors are stored in *InDegV* and *OutDegV*, respectively.
 
 Parameters:
 

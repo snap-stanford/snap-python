@@ -1,8 +1,5 @@
 GetDegSeqV
 ''''''''''
-.. note::
-
-    This page is a draft and under revision.
 
 
 .. function:: GetDegSeqV(Graph, DegV)
@@ -21,7 +18,7 @@ Return value:
 
 - None
 
-The following example shows how to calculate degrees for nodes in
+The following example shows how to compute the sequence vector for nodes in
 :class:`TNGraph`, :class:`TUNGraph`, and :class:`TNEANet`::
 
     import snap

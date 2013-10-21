@@ -1,8 +1,5 @@
 GetNodeOutDegV
 ''''''''''''''''
-.. note::
-
-    This page is a draft and under revision.
 
 
 .. function:: GetNodeOutDegV(Graph, NIdOutDegV)
@@ -16,7 +13,7 @@ Parameters:
     A Snap.py graph or a network
 
 - *NIdOutDegV*: TIntPrV, a vector of (int, int) pairs (output)
-    A vecotr of (node id, node out degree) pairs.
+    A vector of (node id, node out degree) pairs.
 
 Return value:
 

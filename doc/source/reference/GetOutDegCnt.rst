@@ -1,13 +1,10 @@
 GetOutDegCnt
 ''''''''''''
-.. note::
-
-    This page is a draft and under revision.
 
 
 .. function:: GetOutDegCnt(Graph, DegToCntV)
 
-Computes an out-degree histogram: a set of pairs (out-degree, number of nodes of such out-degree). The results are stored in *DegToCntV*.
+Computes an out-degree histogram: a vector of pairs (out-degree, number of nodes of such out-degree). The results are stored in *DegToCntV*.
 
 Parameters:
 
@@ -21,10 +18,8 @@ Return value:
 
 - None
 
-Note that in an undirected graph of N nodes, each edge is counted twice, so the number of nodes of all out-degrees will be 2*N.
 
-The following example shows how to use :func:`GetOutDegCnt` with
-:class:`TNGraph`, :class:`TUNGraph`, and :class:`TNEANet`::
+The following examples shows how to obtain the degree histogram for nodes in :class:`TNGraph`, :class:`TUNGraph`, and :class:`TNEANet`::
 
     import snap
 

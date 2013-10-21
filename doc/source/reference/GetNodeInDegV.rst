@@ -1,8 +1,5 @@
 GetNodeInDegV
 '''''''''''''''
-.. note::
-
-    This page is a draft and under revision.
 
 
 .. function:: GetNodeInDegV(Graph, NIdInDegV)
@@ -16,7 +13,7 @@ Parameters:
 	A Snap.py graph or a network
 
 - *NIdInDegV*: TIntPrV, a vector or (int, int) pairs (output)
-	A vecotr of (node id, node in degree) pairs.
+	A vector of (node id, node in-degree) pairs.
 
 Return value:
 
