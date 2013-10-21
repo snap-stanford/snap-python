@@ -1,13 +1,10 @@
 GetTreeRootNId
 '''''''''''''''
-.. note::
-
-    This page is a draft and under revision.
 
 
 .. function:: GetTreeRootNId(Graph)
 
-Returns root id of tree in graph, -1 if There is no root node.
+If *Graph* is a tree, the function returns the root id of the tree. Otherwise, it returns -1.
 
 Parameters:
 
@@ -16,13 +13,23 @@ Parameters:
 
 Return value:
 
-- int: Returns root id of tree in graph, -1 if There is no root node.
+- int: 
+    If *Graph* is a tree, the node id of the root. Otherwise, -1 is returned.
 
-The following example shows how to use GetKCoreNodes for nodes in
+The following example shows how to get the root node id in
 :class:`TNGraph`, :class:`TUNGraph`, and :class:`TNEANet`::
 
     import snap
 
-    G = snap.LoadEdgeList(snap.PNGraph, "example.txt",0,1)
-    rootNodeId = snap.GetTreeRootNId(G)
+    Graph = snap.GenTree(snap.PNGraph, 3, 3)
+    root_id = snap.GetTreeRootNId(Graph)
+    print root_id
+
+    Graph = snap.GenTree(snap.PUNGraph, 3, 3)
+    root_id = snap.GetTreeRootNId(Graph)
+    print root_id
+
+    Graph = snap.GenTree(snap.PNEANet, 3, 3)
+    root_id = snap.GetTreeRootNId(Graph)
+    print root_id
     

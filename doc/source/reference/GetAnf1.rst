@@ -1,9 +1,5 @@
 GetAnf
 ''''''
-.. note::
-
-    This page is a draft and under revision.
-
 
 .. function::  GetAnf(Graph, DistNbrsV, MxDist, IsDir, NApprox = 32)
 
@@ -14,7 +10,7 @@ Parameters:
 - *Graph*: graph (input)
     A Snap.py graph or a network
     
-- *DistNbrsV*: a vector of TIntFltKd (output)
+- *DistNbrsV*: TIntFltKd, a vector of (int, float) pairs (output)
     Maps between the distance H (in hops) and the number of nodes reachable in <= H hops
 
 - *MxDist*: int (input)
