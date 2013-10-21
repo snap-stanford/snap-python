@@ -114,5 +114,57 @@ class SnapPythonTest(unittest.TestCase):
         max_id = snap.GetMxOutDegNId(self.NetStar)
         self.assertEqual(0, max_id)
 
+    def test_CntUniqUndirEdges(self):
+        # Directed Graph
+        num_edges = snap.CntUniqUndirEdges(self.DirGraphFull)
+        self.assertEqual(self.num_nodes * (self.num_nodes - 1)/2, num_edges)
+
+        # Unidrected Graph
+        num_edges = snap.CntUniqUndirEdges(self.UnDirGraphFull)
+        self.assertEqual(self.num_nodes * (self.num_nodes - 1)/2, num_edges)
+
+        # Network
+        num_edges = snap.CntUniqUndirEdges(self.NetFull)
+        self.assertEqual(self.num_nodes * (self.num_nodes - 1)/2, num_edges)
+
+    def test_CntUniqDirEdges(self):
+        # Directed Graph
+        num_edges = snap.CntUniqDirEdges(self.DirGraphFull)
+        self.assertEqual(self.num_nodes * (self.num_nodes - 1), num_edges)
+
+        # Unidrected Graph
+        num_edges = snap.CntUniqDirEdges(self.UnDirGraphFull)
+        self.assertEqual(self.num_nodes * (self.num_nodes - 1), num_edges)
+
+        # Network
+        num_edges = snap.CntUniqDirEdges(self.NetFull)
+        self.assertEqual(self.num_nodes * (self.num_nodes - 1), num_edges)
+
+    def test_CntUniqBiDirEdges(self):
+        # Directed Graph
+        num_edges = snap.CntUniqBiDirEdges(self.DirGraphFull)
+        self.assertEqual(self.num_nodes * (self.num_nodes - 1)/2, num_edges)
+
+        # Unidrected Graph
+        num_edges = snap.CntUniqBiDirEdges(self.UnDirGraphFull)
+        self.assertEqual(self.num_nodes * (self.num_nodes - 1)/2, num_edges)
+
+        # Network
+        num_edges = snap.CntUniqBiDirEdges(self.NetFull)
+        self.assertEqual(self.num_nodes * (self.num_nodes - 1)/2, num_edges)
+
+    def test_CntSelfEdges(self):
+        # Directed Graph
+        num_edges = snap.CntSelfEdges(self.DirGraphFull)
+        self.assertEqual(0, num_edges)
+
+        # Undirected Graph
+        num_edges = snap.CntSelfEdges(self.UnDirGraphFull)
+        self.assertEqual(0, num_edges)
+
+        # Network
+        num_edges = snap.CntSelfEdges(self.NetFull)
+        self.assertEqual(0, num_edges)
+
 if __name__ == '__main__':
   unittest.main()
