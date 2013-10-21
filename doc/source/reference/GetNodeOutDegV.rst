@@ -27,18 +27,18 @@ The following example shows how to use :func:`GetNodeOutDegV` with nodes in :cla
     Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
     OutDegV = snap.TIntPrV()
     snap.GetNodeOutDegV(Graph, OutDegV)
-    for p in OutDegV:
-        print "node ID %d: degree %d" % (p.GetVal1(), p.GetVal2())
+    for item in OutDegV:
+        print "node ID %d: out-degree %d" % (item.GetVal1(), item.GetVal2())
 
     Graph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
     OutDegV = snap.TIntPrV()
     snap.GetNodeOutDegV(Graph, OutDegV)
-    for p in OutDegV:
-        print "node ID %d: degree %d" % (p.GetVal1(), p.GetVal2())
+    for item in OutDegV:
+        print "node ID %d: out-degree %d" % (item.GetVal1(), item.GetVal2())
 
     Graph = snap.GenRndGnm(snap.PNEANet, 100, 1000)
     OutDegV = snap.TIntPrV()
     snap.GetNodeOutDegV(Graph, OutDegV)
-    for p in OutDegV:
-        print "node ID %d: degree %d" % (p.GetVal1(), p.GetVal2())
+    for item in OutDegV:
+        print "node ID %d: out-degree %d" % (item.GetVal1(), item.GetVal2())
 

@@ -4,7 +4,7 @@ CntUniqUndirEdges
 
 .. function:: CntUniqUndirEdges(Graph)
 
-Returns the number of unique undirected edges in the graph *Graph*. Nodes (u,v), where u!=v, are considered to be connected via an undirected edge if there exists an edge in either direction. 
+Returns the number of unique undirected edges in the graph *Graph*. 
 
 Parameters:
 
@@ -16,16 +16,20 @@ Return value:
 - int
     The number of unique undirected edges in *Graph*.
 
+
 The following example shows how to calculate the number of unique undirected edges in
 :class:`TNGraph`, :class:`TUNGraph`, and :class:`TNEANet`::
 
-		import snap
+    import snap
 
-		Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
-		print snap.CntUniqUndirEdges(Graph)
+    Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
+    count = snap.CntUniqUndirEdges(Graph)
+    print "Directed Graph: Count of unique undirected edges is %d" % count
 
-		Graph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
-		print snap.CntUniqUndirEdges(Graph)
+    Graph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
+    count = snap.CntUniqUndirEdges(Graph)
+    print "Undirected Graph: Count of unique undirected edges is %d" % count
 
-		Graph = snap.GenRndGnm(snap.PNEANet, 100, 1000)
-		print snap.CntUniqUndirEdges(Graph) 
+    Graph = snap.GenRndGnm(snap.PNEANet, 100, 1000)
+    count = snap.CntUniqUndirEdges(Graph)
+    print "Network Graph: Count of unique undirected edges is %d" % count

@@ -12,30 +12,31 @@ Parameters:
     A Snap.py graph or a network
 
 - *DegToCntV*: TIntPrV, a vector of (int, int) pairs (output)
-    A vector of (in-degree, number of nodes of such out-degree) pairs.
+    A vector of (in-degree, number of nodes of such in-degree) pairs.
 
 Return value:
 
 - None
 
-The following examples shows how to obtain the degree histogram for nodes in :class:`TNGraph`, :class:`TUNGraph`, and :class:`TNEANet`::
+
+The following examples shows how to obtain the in-degree histogram for nodes in :class:`TNGraph`, :class:`TUNGraph`, and :class:`TNEANet`::
 
     import snap
 
     Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
     DegToCntV = snap.TIntPrV()
     snap.GetInDegCnt(Graph, DegToCntV)
-    for pair in DegToCntV:
-      print pair.GetVal1(), pair.GetVal2()
+    for item in DegToCntV:
+        print "%s nodes with in-degree %s" % (item.GetVal1(), item.GetVal2())
 
     Graph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
     DegToCntV = snap.TIntPrV()
     snap.GetInDegCnt(Graph, DegToCntV)
-    for pair in DegToCntV:
-      print pair.GetVal1(), pair.GetVal2()
+    for item in DegToCntV:
+        print "%s nodes with in-degree %s" % (item.GetVal1(), item.GetVal2())
 
     Graph = snap.GenRndGnm(snap.PNEANet, 100, 1000)
     DegToCntV = snap.TIntPrV()
     snap.GetInDegCnt(Graph, DegToCntV)
-    for pair in DegToCntV:
-      print pair.GetVal1(), pair.GetVal2()
+    for item in DegToCntV:
+        print "%s nodes with in-degree %s" % (item.GetVal1(), item.GetVal2())

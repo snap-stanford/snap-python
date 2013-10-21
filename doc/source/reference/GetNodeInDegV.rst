@@ -19,30 +19,25 @@ Return value:
 
 - None
 
+
 The following example shows how to use :func:`GetNodeInDegV` with nodes in :class:`TNGraph`, :class:`TUNGraph`, and :class:`TNEANet`::
 
     import snap
 
     Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
-    NIdInDegV = snap.TIntPrV()
-
-    snap.GetNodeInDegV(Graph, NIdInDegV)
-
-    for pair in NIdInDegV:
-        print "Node id: %d, in-degree: %d" % (pair.GetVal1(), pair.GetVal2())
+    InDegV = snap.TIntPrV()
+    snap.GetNodeInDegV(Graph, InDegV)
+    for item in InDegV:
+        print "node ID %d: in-degree %d" % (item.GetVal1(), item.GetVal2())
 
     Graph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
-    NIdInDegV = snap.TIntPrV()
-
-    snap.GetNodeInDegV(Graph, NIdInDegV)
-
-    for pair in NIdInDegV:
-        print "Node id: %d, in-degree: %d" % (pair.GetVal1(), pair.GetVal2())
+    InDegV = snap.TIntPrV()
+    snap.GetNodeInDegV(Graph, InDegV)
+    for item in InDegV:
+        print "node ID %d: in-degree %d" % (item.GetVal1(), item.GetVal2())
 
     Graph = snap.GenRndGnm(snap.PNEANet, 100, 1000)
-    NIdInDegV = snap.TIntPrV()
-
-    snap.GetNodeInDegV(Graph, NIdInDegV)
-
-    for pair in NIdInDegV:
-        print "Node id: %d, in-degree: %d" % (pair.GetVal1(), pair.GetVal2())
+    InDegV = snap.TIntPrV()
+    snap.GetNodeInDegV(Graph, InDegV)
+    for item in InDegV:
+        print "node ID %d: in-degree %d" % (item.GetVal1(), item.GetVal2())
