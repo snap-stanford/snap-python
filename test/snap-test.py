@@ -5,6 +5,7 @@ import snap
 class SnapPythonTest(unittest.TestCase):
 
     def setUp(self):
+        # Defaults for creating graphs
         self.num_nodes = 10
 
         # Full Graphs
@@ -69,10 +70,6 @@ class SnapPythonTest(unittest.TestCase):
         num_nodes = snap.CntNonZNodes(self.NetFull)
         self.assertEqual(self.num_nodes, num_nodes)
 
-    def test_CntEdgesToSet(self):
-        ######## Function not yet implemeted ########
-        pass
-
     def test_GetMxDegNId(self):
         # Directed Graph
         max_id = snap.GetMxDegNId(self.DirGraphStar)
@@ -113,6 +110,118 @@ class SnapPythonTest(unittest.TestCase):
         # Network
         max_id = snap.GetMxOutDegNId(self.NetStar)
         self.assertEqual(0, max_id)
+
+    def test_GetInDegCnt(self):
+        # Directed Graph
+        DegToCntV = snap.TIntPrV()
+        snap.GetInDegCnt(self.DirGraphFull, DegToCntV)
+        # There should be only one entry (num_nodes -1, num_nodes) in DegToCntV
+        for item in DegToCntV:
+            self.assertEqual(self.num_nodes-1, item.GetVal1())
+            self.assertEqual(self.num_nodes, item.GetVal2())
+
+        # Undirected Graph
+        DegToCntV = snap.TIntPrV()
+        snap.GetInDegCnt(self.UnDirGraphFull, DegToCntV)
+        # There should be only one entry (num_nodes -1, num_nodes) in DegToCntV
+        for item in DegToCntV:
+            self.assertEqual(self.num_nodes-1, item.GetVal1())
+            self.assertEqual(self.num_nodes, item.GetVal2())
+
+        # Network
+        DegToCntV = snap.TIntPrV()
+        snap.GetInDegCnt(self.NetFull, DegToCntV)
+        # There should be only one entry (num_nodes -1, num_nodes) in DegToCntV
+        for item in DegToCntV:
+            self.assertEqual(self.num_nodes-1, item.GetVal1())
+            self.assertEqual(self.num_nodes, item.GetVal2())
+
+    def test_GetOutDegCnt(self):
+        # Directed Graph
+        DegToCntV = snap.TIntPrV()
+        snap.GetOutDegCnt(self.DirGraphFull, DegToCntV)
+        # There should be only one entry (num_nodes -1, num_nodes) in DegToCntV
+        for item in DegToCntV:
+            self.assertEqual(self.num_nodes-1, item.GetVal1())
+            self.assertEqual(self.num_nodes, item.GetVal2())
+
+        # Undirected Graph
+        DegToCntV = snap.TIntPrV()
+        snap.GetOutDegCnt(self.UnDirGraphFull, DegToCntV)
+        # There should be only one entry (num_nodes -1, num_nodes) in DegToCntV
+        for item in DegToCntV:
+            self.assertEqual(self.num_nodes-1, item.GetVal1())
+            self.assertEqual(self.num_nodes, item.GetVal2())
+
+        # Network
+        DegToCntV = snap.TIntPrV()
+        snap.GetOutDegCnt(self.NetFull, DegToCntV)
+        # There should be only one entry (2*(num_nodes-1), num_nodes) in DegToCntV
+        for item in DegToCntV:
+            self.assertEqual(self.num_nodes-1, item.GetVal1())
+            self.assertEqual(self.num_nodes, item.GetVal2())
+
+    def test_GetDegCnt(self):
+        # Directed Graph
+        DegToCntV = snap.TIntPrV()
+        snap.GetDegCnt(self.DirGraphFull, DegToCntV)
+        # There should be only one entry (2*(num_nodes-1), num_nodes) in DegToCntV
+        for item in DegToCntV:
+            self.assertEqual(2*(self.num_nodes-1), item.GetVal1())
+            self.assertEqual(self.num_nodes, item.GetVal2())
+
+        # Undirected Graph
+        DegToCntV = snap.TIntPrV()
+        snap.GetDegCnt(self.UnDirGraphFull, DegToCntV)
+        # There should be only one entry (num_nodes-1, num_nodes) in DegToCntV
+        for item in DegToCntV:
+            self.assertEqual(self.num_nodes-1, item.GetVal1())
+            self.assertEqual(self.num_nodes, item.GetVal2())
+
+        # Network
+        DegToCntV = snap.TIntPrV()
+        snap.GetDegCnt(self.NetFull, DegToCntV)
+        # There should be only one entry (2*(num_nodes-1), num_nodes) in DegToCntV
+        for item in DegToCntV:
+            self.assertEqual(self.num_nodes, item.GetVal2())
+
+    def test_GetNodeInDegV(self):
+        # Directed Graph
+        DegToCntV = snap.TIntPrV()
+        snap.GetNodeInDegV(self.DirGraphFull, DegToCntV)
+        for item in DegToCntV:
+            self.assertEqual(self.num_nodes-1, item.GetVal2())
+
+        # Undirected Graph
+        DegToCntV = snap.TIntPrV()
+        snap.GetNodeInDegV(self.UnDirGraphFull, DegToCntV)
+        for item in DegToCntV:
+            self.assertEqual(self.num_nodes-1, item.GetVal2())
+
+        # Network
+        DegToCntV = snap.TIntPrV()
+        snap.GetNodeInDegV(self.NetFull, DegToCntV)
+        for item in DegToCntV:
+            self.assertEqual(self.num_nodes-1, item.GetVal2())
+
+    def test_GetNodeOutDegV(self):
+        # Directed Graph
+        DegToCntV = snap.TIntPrV()
+        snap.GetNodeOutDegV(self.DirGraphFull, DegToCntV)
+        for item in DegToCntV:
+            self.assertEqual(self.num_nodes-1, item.GetVal2())
+
+        # Undirected Graph
+        DegToCntV = snap.TIntPrV()
+        snap.GetNodeOutDegV(self.UnDirGraphFull, DegToCntV)
+        for item in DegToCntV:
+            self.assertEqual(self.num_nodes-1, item.GetVal2())
+
+        # Network
+        DegToCntV = snap.TIntPrV()
+        snap.GetNodeOutDegV(self.NetFull, DegToCntV)
+        for item in DegToCntV:
+            self.assertEqual(self.num_nodes-1, item.GetVal2())
 
     def test_CntUniqUndirEdges(self):
         # Directed Graph
