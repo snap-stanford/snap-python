@@ -275,5 +275,83 @@ class SnapPythonTest(unittest.TestCase):
         num_edges = snap.CntSelfEdges(self.NetFull)
         self.assertEqual(0, num_edges)
 
+    def test_GetUnDir(self):
+        # Directed Graph
+        New_Graph = snap.GetUnDir(self.DirGraphStar)
+        for node in self.DirGraphStar.Nodes():
+            self.assertTrue(New_Graph.IsNode(node.GetId()))
+        for edge in self.DirGraphStar.Edges():
+            self.assertTrue(New_Graph.IsEdge(edge.GetSrcNId(), edge.GetDstNId()))
+            self.assertTrue(New_Graph.IsEdge(edge.GetDstNId(), edge.GetSrcNId()))
+
+        # Undirected Graph
+        New_Graph = snap.GetUnDir(self.UnDirGraphStar)
+        for node in self.UnDirGraphStar.Nodes():
+            self.assertTrue(New_Graph.IsNode(node.GetId()))
+        for edge in self.UnDirGraphStar.Edges():
+            self.assertTrue(New_Graph.IsEdge(edge.GetSrcNId(), edge.GetDstNId()))
+            self.assertTrue(New_Graph.IsEdge(edge.GetDstNId(), edge.GetSrcNId()))
+
+        # Network
+        New_Graph = snap.GetUnDir(self.NetStar)
+        for node in self.NetStar.Nodes():
+            self.assertTrue(New_Graph.IsNode(node.GetId()))
+        for edge in self.NetStar.Edges():
+            self.assertTrue(New_Graph.IsEdge(edge.GetSrcNId(), edge.GetDstNId()))
+            self.assertTrue(New_Graph.IsEdge(edge.GetDstNId(), edge.GetSrcNId()))
+
+    def test_MakeUnDir(self):
+        # Directed Graph
+        New_Graph = self.DirGraphStar
+        snap.MakeUnDir(New_Graph)
+        for node in self.DirGraphStar.Nodes():
+            self.assertTrue(New_Graph.IsNode(node.GetId()))
+        for edge in self.DirGraphStar.Edges():
+            self.assertTrue(New_Graph.IsEdge(edge.GetSrcNId(), edge.GetDstNId()))
+            self.assertTrue(New_Graph.IsEdge(edge.GetDstNId(), edge.GetSrcNId()))
+
+        # Undirected Graph
+        New_Graph = self.UnDirGraphStar
+        snap.MakeUnDir(New_Graph)
+        for node in self.UnDirGraphStar.Nodes():
+            self.assertTrue(New_Graph.IsNode(node.GetId()))
+        for edge in self.UnDirGraphStar.Edges():
+            self.assertTrue(New_Graph.IsEdge(edge.GetSrcNId(), edge.GetDstNId()))
+            self.assertTrue(New_Graph.IsEdge(edge.GetDstNId(), edge.GetSrcNId()))
+
+        # Network
+        New_Graph = self.NetStar
+        snap.MakeUnDir(New_Graph)
+        for node in self.NetStar.Nodes():
+            self.assertTrue(New_Graph.IsNode(node.GetId()))
+        for edge in self.NetStar.Edges():
+            self.assertTrue(New_Graph.IsEdge(edge.GetSrcNId(), edge.GetDstNId()))
+            self.assertTrue(New_Graph.IsEdge(edge.GetDstNId(), edge.GetSrcNId()))
+
+    def test_AddSelfEdges(self):
+        # Directed Graph
+        Graph_Copy = self.DirGraphFull
+        snap.AddSelfEdges(Graph_Copy)
+        for node in Graph_Copy.Nodes():
+            self.assertTrue(Graph_Copy.IsEdge(node.GetId(), node.GetId()))
+
+        # Undirected Graph
+        Graph_Copy = self.UnDirGraphFull
+        snap.AddSelfEdges(Graph_Copy)
+        for node in Graph_Copy.Nodes():
+            self.assertTrue(Graph_Copy.IsEdge(node.GetId(), node.GetId()))
+
+        # Network
+        Graph_Copy = self.NetFull
+        snap.AddSelfEdges(Graph_Copy)
+        for node in Graph_Copy.Nodes():
+            self.assertTrue(Graph_Copy.IsEdge(node.GetId(), node.GetId()))
+
+    def test_DelSelfEdges(self):
+        # Directed Graph
+        # Undirected Graph
+        # Network
+        pass
+
 if __name__ == '__main__':
   unittest.main()
