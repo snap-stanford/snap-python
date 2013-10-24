@@ -27,16 +27,16 @@ The following examples shows how to obtain the in-degree histogram for nodes in 
     DegToCntV = snap.TIntPrV()
     snap.GetInDegCnt(Graph, DegToCntV)
     for item in DegToCntV:
-        print "%s nodes with in-degree %s" % (item.GetVal1(), item.GetVal2())
+        print "%d nodes with in-degree %d" % (item.GetVal1(), item.GetVal2())
 
     Graph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
     DegToCntV = snap.TIntPrV()
     snap.GetInDegCnt(Graph, DegToCntV)
     for item in DegToCntV:
-        print "%s nodes with in-degree %s" % (item.GetVal1(), item.GetVal2())
+        print "%d nodes with in-degree %d" % (item.GetVal1(), item.GetVal2())
 
     Graph = snap.GenRndGnm(snap.PNEANet, 100, 1000)
     DegToCntV = snap.TIntPrV()
     snap.GetInDegCnt(Graph, DegToCntV)
     for item in DegToCntV:
-        print "%s nodes with in-degree %s" % (item.GetVal1(), item.GetVal2())
+        print "%d nodes with in-degree %d" % (item.GetVal1(), item.GetVal2())
