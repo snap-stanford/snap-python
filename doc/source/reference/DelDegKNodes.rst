@@ -4,10 +4,6 @@ DelDegKNodes
 
 .. function:: DelDegKNodes(Graph, OutDegK, InDegK)
 
-.. note::
-
-    This function is not yet supported.
-
 Removes all nodes of out-degree *OutDegK* and all nodes of in-degree *InDegK* from *Graph*. 
 
 Parameters:

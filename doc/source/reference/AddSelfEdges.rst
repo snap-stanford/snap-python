@@ -4,7 +4,7 @@ AddSelfEdges
 
 .. function:: AddSelfEdges(Graph)
 
-Adds a self-edge to every node in *Graph*.
+Adds a self-edge for every node in *Graph*.
 
 Parameters:
 
@@ -15,70 +15,65 @@ Return value:
 
 - None
 
+
 The following example shows how to add self edges to every node in
 :class:`PNGraph`, :class:`PUNGraph`, and :class:`PNEANet`::
 
-	from snap import *
+    import snap
 
-	### PNGraph
-	print "--- PNGraph ---"
-	Graph = GenRndGnm(PNGraph, 100, 1000)
+    ### PNGraph
+    print "--- PNGraph ---"
+    Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
 
-	# Print starting number of edges and count number of self edges
-	print Graph.GetEdges(), "starting total edges"
-	nSelfEdges = 0
-	for NI in Graph.Nodes():
-	    if Graph.IsEdge(NI.GetId(),NI.GetId()): nSelfEdges += 1
-	print nSelfEdges, "starting self edges"
+    # Print starting number of edges, nodes
+    print "Starting total edges: %d" % Graph.GetEdges()
+    print "Starting total nodes: %d" % Graph.GetNodes()
 
-	# Add Self Edges
-	AddSelfEdges(Graph)
-	print Graph.GetEdges(), "ending total edges"
-	nSelfEdges = 0
-	for NI in Graph.Nodes():
-	    if Graph.IsEdge(NI.GetId(),NI.GetId()): nSelfEdges += 1
-	print nSelfEdges, "ending self edges"
+    # Add Self Edges
+    snap.AddSelfEdges(Graph)
+    print "Ending total edges: %d" % Graph.GetEdges()
+    NumSelfEdges = 0
+    for NI in Graph.Nodes():
+        if Graph.IsEdge(NI.GetId(),NI.GetId()): 
+            NumSelfEdges += 1
+    print "Number of self edges: %d" % NumSelfEdges
 
 
 
 
-	### PUNGraph
-	print "--- PUNGraph ---"
-	Graph = GenRndGnm(PUNGraph, 100, 1000)
-	
-	# Print starting number of edges and count number of self edges
-	print Graph.GetEdges(), "starting total edges"
-	nSelfEdges = 0
-	for NI in Graph.Nodes():
-	    if Graph.IsEdge(NI.GetId(),NI.GetId()): nSelfEdges += 1
-	print nSelfEdges, "starting self edges"
-	
-	# Add Self Edges
-	AddSelfEdges(Graph)
-	print Graph.GetEdges(), "ending total edges"
-	nSelfEdges = 0
-	for NI in Graph.Nodes():
-	    if Graph.IsEdge(NI.GetId(),NI.GetId()): nSelfEdges += 1
-	print nSelfEdges, "ending self edges"
+    ### PUNGraph
+    print "--- PUNGraph ---"
+    Graph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
+
+    # Print starting number of edges, nodes
+    print "Starting total edges: %d" % Graph.GetEdges()
+    print "Starting total nodes: %d" % Graph.GetNodes()
+
+    # Add Self Edges
+    snap.AddSelfEdges(Graph)
+    print "Ending total edges: %d" % Graph.GetEdges()
+    NumSelfEdges = 0
+    for NI in Graph.Nodes():
+        if Graph.IsEdge(NI.GetId(),NI.GetId()): 
+            NumSelfEdges += 1
+    print "Number of self edges: %d" % NumSelfEdges
 
 
 
 
-	### PNEANet
-	print "--- PNEANet ---"
-	Graph = GenRndGnm(PNEANet, 100, 1000)
-	
-	# Print starting number of edges and count number of self edges
-	print Graph.GetEdges(), "starting total edges"
-	nSelfEdges = 0
-	for NI in Graph.Nodes():
-	    if Graph.IsEdge(NI.GetId(),NI.GetId()): nSelfEdges += 1
-	print nSelfEdges, "starting self edges"
-	
-	# Add Self Edges
-	AddSelfEdges(Graph)
-	print Graph.GetEdges(), "ending total edges"
-	nSelfEdges = 0
-	for NI in Graph.Nodes():
-	    if Graph.IsEdge(NI.GetId(),NI.GetId()): nSelfEdges += 1
-	print nSelfEdges, "ending self edges"
+    ### PNEANet
+    print "--- PNEANet ---"
+    Graph = snap.GenRndGnm(snap.PNEANet, 100, 1000)
+
+    # Print starting number of edges, nodes
+    print "Starting total edges: %d" % Graph.GetEdges()
+    print "Starting total nodes: %d" % Graph.GetNodes()
+
+    # Add Self Edges
+    snap.AddSelfEdges(Graph)
+    print "Ending total edges: %d" % Graph.GetEdges()
+    NumSelfEdges = 0
+    for NI in Graph.Nodes():
+        if Graph.IsEdge(NI.GetId(),NI.GetId()): 
+            NumSelfEdges += 1
+    print "Number of self edges: %d" % NumSelfEdges

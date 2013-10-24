@@ -3,7 +3,7 @@ DelNodes
 
 .. function:: DelNodes(Graph, NIdV)
 
-Removes all the nodes contained in the vector *NIdV*.
+Removes the nodes contained in the vector *NIdV* from *Graph*.
 
 Parameters:
 
@@ -11,7 +11,7 @@ Parameters:
     A Snap.py graph or a network
 
 - *NIdV*: TIntV, vector of ints (input)
-    Node Id's to be deleted from the Graph
+    A vector of node ids to be deleted from *Graph*
 
 
 Return value:

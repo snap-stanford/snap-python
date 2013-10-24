@@ -4,7 +4,7 @@ DelSelfEdges
 
 .. function:: DelSelfEdges (Graph)
 
-Removes all the self-edges from the graph.
+Removes all the self-edges from *Graph*.
 
 Parameters:
 
@@ -21,47 +21,62 @@ The following example shows how to delete self-edges in
 
     import snap
 
-	#PNGraph Example
-	Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
-	Graph.AddEdge(1,1)
-	for node in Graph.Nodes():
-		for dest in node.GetOutEdges():
-			if dest == node.GetId():
-				print "Self edge on node " + str(node.GetId())
+    ### PNGraph
+    print "--- PNGraph ---"
+    Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
+    Graph.AddEdge(1,1)
 
-	snap.DelSelfEdges(Graph)
-	print "Deleted self-edges"
-	for node in Graph.Nodes():
-		for dest in node.GetOutEdges():
-			if dest == node.GetId():
-				print "Self edge on node " + node.GetId()
+    # Print initial self-edges
+    print "Self-edges in initial graph: "
+    for NI in Graph.Nodes():
+        if Graph.IsEdge(NI.GetId(),NI.GetId()): 
+            print "Self-edge on node %d" % NI.GetId()
 
-	# PUNGraph Example
-	Graph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
-	Graph.AddEdge(1,1)
-	for node in Graph.Nodes():
-		for dest in node.GetOutEdges():
-			if dest == node.GetId():
-				print "Self edge on node " + str(node.GetId())
+    # Remove self-edges
+    snap.DelSelfEdges(Graph)
+    print "Deleted self-edges"
+    for NI in Graph.Nodes():
+        if Graph.IsEdge(NI.GetId(),NI.GetId()): 
+            print "Self-edge on node %d" % NI.GetId()
 
-	snap.DelSelfEdges(Graph)
-	print "Deleted self-edges"
-	for node in Graph.Nodes():
-		for dest in node.GetOutEdges():
-			if dest == node.GetId():
-				print "Self edge on node " + node.GetId()
 
-	# PNEANet Example
-	Graph = snap.GenRndGnm(snap.PNEANet, 100, 1000)
-	Graph.AddEdge(1,1)
-	for node in Graph.Nodes():
-		for dest in node.GetOutEdges():
-			if dest == node.GetId():
-				print "Self edge on node " + str(node.GetId())
 
-	snap.DelSelfEdges(Graph)
-	print "Deleted self-edges"
-	for node in Graph.Nodes():
-		for dest in node.GetOutEdges():
-			if dest == node.GetId():
-				print "Self edge on node " + node.GetId()
+
+    ### PUNGraph
+    print "--- PUNGraph ---"
+    Graph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
+    Graph.AddEdge(1,1)
+
+    # Print initial self-edges
+    print "Self-edges in initial graph: "
+    for NI in Graph.Nodes():
+        if Graph.IsEdge(NI.GetId(),NI.GetId()): 
+            print "Self-edge on node %d" % NI.GetId()
+
+    # Remove self-edges
+    snap.DelSelfEdges(Graph)
+    print "Deleted self-edges"
+    for NI in Graph.Nodes():
+        if Graph.IsEdge(NI.GetId(),NI.GetId()): 
+            print "Self-edge on node %d" % NI.GetId()
+
+
+
+
+    ### PNEANet
+    print "--- PNEANet ---"
+    Graph = snap.GenRndGnm(snap.PNEANet, 100, 1000)
+    Graph.AddEdge(1,1)
+
+    # Print initial self-edges
+    print "Self-edges in initial graph: "
+    for NI in Graph.Nodes():
+        if Graph.IsEdge(NI.GetId(),NI.GetId()): 
+            print "Self-edge on node %d" % NI.GetId()
+
+    # Remove self-edges
+    snap.DelSelfEdges(Graph)
+    print "Deleted self-edges"
+    for NI in Graph.Nodes():
+        if Graph.IsEdge(NI.GetId(),NI.GetId()): 
+            print "Self-edge on node %d" % NI.GetId()
