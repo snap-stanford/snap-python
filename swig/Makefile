@@ -43,6 +43,7 @@ install: setup.py snap.py _snap.so
 	sudo python setup.py install
 
 dist: setup.py snap.py _snap.so
+	cp MANIFEST.nx MANIFEST
 	python setup.py sdist
 
 swig-win: snap_wrap.cxx
