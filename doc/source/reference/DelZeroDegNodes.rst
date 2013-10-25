@@ -1,83 +1,71 @@
 DelZeroDegNodes 
 '''''''''''''''
 
-
 .. function:: DelZeroDegNodes(Graph)
 
-Removes all the zero-degree nodes from the graph *Graph*.
+Removes all the zero-degree nodes from *Graph*.
 
 Parameters:
 
 - *Graph*: graph (input and output)
-    A Snap.py graph
+    A Snap.py graph or a network
 
 Return value:
 
 - None
 
 
-The following example shows how to delete all zero-degree nodes in 
+The following example shows how to delete all zero-degree nodes from 
 :class:`TNGraph`, :class:`TUNGraph`, and :class:`TNEANet`::
 
-	import snap
-	
-	G1 = snap.TNGraph.New()
-	G1.AddNode(1)
-	G1.AddNode(2)
-	G1.AddNode(3)
-	G1.AddNode(4)
-	G1.AddNode(5)
-	
-	G1.AddEdge(1,3)
-	G1.AddEdge(3,5)
-	G1.AddEdge(1,5)
-	
-	for NI in G1.Nodes():
-		print "node: %d, out-degree %d, in-degree %d" % ( NI.GetId(), NI.GetOutDeg(), NI.GetInDeg())
-	
-	snap.DelZeroDegNodes(G1)
-	
-	for NI in G1.Nodes():
-	 print "node: %d, out-degree %d, in-degree %d" % ( NI.GetId(), NI.GetOutDeg(), NI.GetInDeg())
-	 
-	 
-	
-	 G1 = snap.TUNGraph.New()
-	 G1.AddNode(1)
-	 G1.AddNode(2)
-	 G1.AddNode(3)
-	 G1.AddNode(4)
-	 G1.AddNode(5)
-	 
-	 G1.AddEdge(1,3)
-	 G1.AddEdge(3,5)
-	 G1.AddEdge(1,5)
-	 
-	 for NI in G1.Nodes():
-	 	print "node: %d, out-degree %d, in-degree %d" % ( NI.GetId(), NI.GetOutDeg(), NI.GetInDeg())
-	 
-	 snap.DelZeroDegNodes(G1)
-	 
-	 for NI in G1.Nodes():
-	 print "node: %d, out-degree %d, in-degree %d" % ( NI.GetId(), NI.GetOutDeg(), NI.GetInDeg())
-	 
-	 G1 = snap.TNEANet.New()
-	 G1.AddNode(1)
-	 G1.AddNode(2)
-	 G1.AddNode(3)
-	 G1.AddNode(4)
-	 G1.AddNode(5)
-	 
-	 G1.AddEdge(1,3)
-	 G1.AddEdge(3,5)
-	 G1.AddEdge(1,5)
-	 
-	 for NI in G1.Nodes():
-	 	print "node: %d, out-degree %d, in-degree %d" % ( NI.GetId(), NI.GetOutDeg(), NI.GetInDeg())
-	 
-	 snap.DelZeroDegNodes(G1)
-	 
-	 for NI in G1.Nodes():
-	 	print "node: %d, out-degree %d, in-degree %d" % ( NI.GetId(), NI.GetOutDeg(), NI.GetInDeg())
+    import snap
+
+
+    ### Directed Graph ###
+    Graph = snap.GenRndGnm(snap.PNGraph, 100, 10)
+
+    for NI in Graph.Nodes():
+      if NI.GetOutDeg() + NI.GetInDeg() == 0:
+        print "Node %d has degree 0." % NI.GetId()
+
+    # Delete zero degree nodes
+    snap.DelZeroDegNodes(Graph)
+
+    print "0-degree nodes deleted."
+    for NI in Graph.Nodes():
+      if N.GetOutDeg() + N.GetInDeg() == 0:
+        print "Node %d has degree 0." % N.GetId()
+
+    
+    ### Undirected Graph ###
+    Graph = snap.GenRndGnm(snap.PUNGraph, 100, 10)
+
+    for NI in Graph.Nodes():
+      if NI.GetOutDeg() + NI.GetInDeg() == 0:
+        print "Node %d has degree 0." % NI.GetId()
+
+    # Delete zero degree nodes
+    snap.DelZeroDegNodes(Graph)
+
+    print "0-degree nodes deleted."
+    for NI in Graph.Nodes():
+      if N.GetOutDeg() + N.GetInDeg() == 0:
+        print "Node %d has degree 0." % N.GetId()
+
+
+    ### Network ###
+    Graph = snap.GenRndGnm(snap.PNEANet, 100, 10)
+
+    for NI in Graph.Nodes():
+      if NI.GetOutDeg() + NI.GetInDeg() == 0:
+        print "Node %d has degree 0." % NI.GetId()
+
+    # Delete zero degree nodes
+    snap.DelZeroDegNodes(Graph)
+
+    print "0-degree nodes deleted."
+    for NI in Graph.Nodes():
+      if N.GetOutDeg() + N.GetInDeg() == 0:
+        print "Node %d has degree 0." % N.GetId()
 	 
 	 

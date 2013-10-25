@@ -18,65 +18,57 @@ Return value:
 
 - None
 
-The following example shows how to delete nodes in
+The following example shows how to delete nodes from
 :class:`TNGraph`, :class:`TUNGraph`, and :class:`TNEANet`::
 
     import snap
     
-    G1 = snap.TNGraph.New()
-    G1.AddNode(1)
-    G1.AddNode(3)
-    G1.AddNode(5)
-    G1.AddNode(32)
-    G1.AddNode(2)
+
+    ### Directed Graph ###
+    Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
     
-    G1.AddEdge(1,5)
-    G1.AddEdge(5,1)
-    G1.AddEdge(5,32)
-    G1.AddEdge(3,5)
-    G1.AddEdge(32,5)
-    G1.AddEdge(3,2)
+    # Create vector of nodes to delete
+    Vec = snap.TIntV()
+    for i in range(10):
+        Vec.Add(i)
+
+    # Delete nodes in Vec from Graph
+    snap.DelNodes(Graph, Vec)
+
+    for NI in Vec:
+        if Graph.IsNode(NI):
+            print "Node %d found in graph." % NI
+
     
-    v = snap.TIntV()
-    v.Add(2)
-    snap.DelNodes(G1,v)
-    for NI in G1.Nodes():
-    	print "node: %d, out-degree %d, in-degree %d" % ( NI.GetId(), NI.GetOutDeg(), NI.GetInDeg())
+
+    ### Undirected Graph ###
+    Graph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
     
-    G2 = snap.TUNGraph.New()
-    G2.AddNode(1)
-    G2.AddNode(3)
-    G2.AddNode(5)
-    G2.AddNode(32)
-    G2.AddNode(2)
+    # Create vector of nodes to delete
+    Vec = snap.TIntV()
+    for i in range(10):
+        Vec.Add(i)
+
+    # Delete nodes in Vec from Graph
+    snap.DelNodes(Graph, Vec)
+
+    for NI in Vec:
+        if Graph.IsNode(NI):
+            print "Node %d found in graph." % NI
+
+
+
+    ### Network ###
+    Graph = snap.GenRndGnm(snap.PNEANet, 100, 1000)
     
-    G2.AddEdge(1,5)
-    G2.AddEdge(5,32)
-    G2.AddEdge(3,5)
-    G2.AddEdge(3,2)
-    
-    v = snap.TIntV()
-    v.Add(2)
-    snap.DelNodes(G2,v)
-    for NI in G2.Nodes():
-    	print "node: %d, out-degree %d, in-degree %d" % ( NI.GetId(), NI.GetOutDeg(), NI.GetInDeg())
-    	
-    G3 = snap.TNEANet.New()
-    G3.AddNode(1)
-    G3.AddNode(3)
-    G3.AddNode(5)
-    G3.AddNode(32)
-    G3.AddNode(2)
-    
-    G3.AddEdge(1,5)
-    G3.AddEdge(5,1)
-    G3.AddEdge(5,32)
-    G3.AddEdge(3,5)
-    G3.AddEdge(32,5)
-    G3.AddEdge(3,2)
-    
-    v = snap.TIntV()
-    v.Add(2)
-    snap.DelNodes(G3,v)
-    for NI in G3.Nodes():
-	print "node: %d, out-degree %d, in-degree %d" % ( NI.GetId(), NI.GetOutDeg(), NI.GetInDeg())
+    # Create vector of nodes to delete
+    Vec = snap.TIntV()
+    for i in range(10):
+        Vec.Add(i)
+
+    # Delete nodes in Vec from Graph
+    snap.DelNodes(Graph, Vec)
+
+    for NI in Vec:
+        if Graph.IsNode(NI):
+            print "Node %d found in graph." % NI

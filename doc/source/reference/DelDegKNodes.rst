@@ -1,7 +1,6 @@
 DelDegKNodes
 ''''''''''''
 
-
 .. function:: DelDegKNodes(Graph, OutDegK, InDegK)
 
 Removes all nodes of out-degree *OutDegK* and all nodes of in-degree *InDegK* from *Graph*. 
@@ -27,29 +26,64 @@ The following example shows how to remove nodes with out-degree *OutDegK* or in-
 
     import snap
 
-    Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
-	for N in Graph.Nodes():
-	  If (N.GetOutDeg() == 3 and N.GetInDeg() == 2)
-	    print "Node: %d, Out-degree %d, In-degree %d" % (N.GetId(), N.GetOutDeg(), N.GetInDeg())
-	snap.DelDegKNodes(Graph, 3, 2)
-	for N in Graph.Nodes():
-	  If (N.GetOutDeg() == 3 and N.GetInDeg() == 2)
-	    print "Node: %d, Out-degree %d, In-degree %d" % (N.GetId(), N.GetOutDeg(), N.GetInDeg())
+    ### Directed Graph ###
+    Graph = snap.GenRndGnm(snap.PNGraph, 100, 10)
 
-    Graph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
-	for N in Graph.Nodes():
-	  If (N.GetOutDeg() == 3 and N.GetInDeg() == 2)
-	    print "Node: %d, Out-degree %d, In-degree %d" % (N.GetId(), N.GetOutDeg(), N.GetInDeg())
-	snap.DelDegKNodes(Graph, 3, 2)
-	for N in Graph.Nodes():
-	  If (N.GetOutDeg() == 3 and N.GetInDeg() == 2)
-	    print "Node: %d, Out-degree %d, In-degree %d" % (N.GetId(), N.GetOutDeg(), N.GetInDeg())
+    for NI in Graph.Nodes():
+      if NI.GetOutDeg() == 1:
+        print "Node %d has out-degree 1." % NI.GetId()
+      if NI.GetInDeg() == 1:
+        print "Node %d has in-degree 1." % NI.GetId()
 
-    Graph = snap.GenRndGnm(snap.PNEANet, 100, 1000)
-	for N in Graph.Nodes():
-	  If (N.GetOutDeg() == 3 and N.GetInDeg() == 2)
-	    print "Node: %d, Out-degree %d, In-degree %d" % (N.GetId(), N.GetOutDeg(), N.GetInDeg())
-	snap.DelDegKNodes(Graph, 3, 2)
-	for N in Graph.Nodes():
-	  If (N.GetOutDeg() == 3 and N.GetInDeg() == 2)
-	    print "Node: %d, Out-degree %d, In-degree %d" % (N.GetId(), N.GetOutDeg(), N.GetInDeg())  
+
+    # Delete nodes with in degree 1 or out degree 1
+    snap.DelDegKNodes(Graph, 1, 1)
+
+    print "Deleted nodes with in-degree 1 or out-degree 1."
+    for NI in Graph.Nodes():
+      if NI.GetOutDeg() == 1:
+        print "Node %d has out-degree 1." % NI.GetId()
+      if NI.GetInDeg() == 1:
+        print "Node %d has in-degree 1." % NI.GetId()
+
+    
+    ### Undirected Graph ###
+    Graph = snap.GenRndGnm(snap.PUNGraph, 100, 10)
+
+    for NI in Graph.Nodes():
+      if NI.GetOutDeg() == 1:
+        print "Node %d has out-degree 1." % NI.GetId()
+      if NI.GetInDeg() == 1:
+        print "Node %d has in-degree 1." % NI.GetId()
+
+
+    # Delete nodes with in degree 1 or out degree 1
+    snap.DelDegKNodes(Graph, 1, 1)
+
+    print "Deleted nodes with in-degree 1 or out-degree 1."
+    for NI in Graph.Nodes():
+      if NI.GetOutDeg() == 1:
+        print "Node %d has out-degree 1." % NI.GetId()
+      if NI.GetInDeg() == 1:
+        print "Node %d has in-degree 1." % NI.GetId()
+
+
+    ### Network ###
+    Graph = snap.GenRndGnm(snap.PNEANet, 100, 10)
+
+    for NI in Graph.Nodes():
+      if NI.GetOutDeg() == 1:
+        print "Node %d has out-degree 1." % NI.GetId()
+      if NI.GetInDeg() == 1:
+        print "Node %d has in-degree 1." % NI.GetId()
+
+
+    # Delete nodes with in degree 1 or out degree 1
+    snap.DelDegKNodes(Graph, 1, 1)
+
+    print "Deleted nodes with in-degree 1 or out-degree 1."
+    for NI in Graph.Nodes():
+      if NI.GetOutDeg() == 1:
+        print "Node %d has out-degree 1." % NI.GetId()
+      if NI.GetInDeg() == 1:
+        print "Node %d has in-degree 1." % NI.GetId()
