@@ -1,7 +1,17 @@
 #
 # Makefile for SWIG processing of SNAP Python
 #	Use this Makefile to compile SNAP Python from scratch
+#
+# Build instructions for Mac OS X and Linux:
+#		make
+#		make dist
 # 
+# Build instructions for Windows:
+#	- run swig in Cygwin to generate snap_wrap.cxx and snap.py
+#		make swig-win
+#	- build Snappy solution in Visual Studio to generate _snap.pyd
+#	- run setup.py in Cygwin to generate the package
+#		make dist-win
 
 # set the path to your SNAP directory here
 GITDIR = ../../snap
@@ -33,7 +43,10 @@ install: setup.py snap.py _snap.so
 	sudo python setup.py install
 
 dist: setup.py snap.py _snap.so
+	cp MANIFEST.nx MANIFEST
 	python setup.py sdist
+
+swig-win: snap_wrap.cxx
 
 install-win: setup.py snap.py _snap.pyd
 	/cygdrive/c/Python27/python.exe setup.py install
