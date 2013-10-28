@@ -1,13 +1,10 @@
 GetNodesAtHop
 '''''''''''''
-.. note::
-
-    This page is a draft and under revision.
 
 
 .. function:: GetNodesAtHop(Graph, StartNId, Hop, NIdV, IsDir)
 
-Finds IDs of all nodes that are at distance Hop from node StartNId.
+Finds the node ids of all the nodes that are at distance *Hop* from node *StartNId* and stores them in *NIdV*. The function returns the number of nodes found.
 
 Parameters:
 
@@ -15,47 +12,43 @@ Parameters:
     A Snap.py graph or a network
 
 - *StartNId*: int (input)
-    Starting node ID 
-    PageRank scores. Keys are node IDs, values are computed PageRank scores.
+    Starting node id
 
 - *Hop*: int (input)
-    Integer specifying from how many hops away from the start node another node should
-    be to be included in the return. 
+    Distance from the starting node.
 
-- *NIdV*: TIntV (output)
-    NIds of nodes Hop distance away from StartNId. Values are node ID ints.
+- *NIdV*: TIntV, a vector of ints (output)
+    Node ids of nodes *Hop* distance away from *StartNId*. Values are node id ints.
 
 - *IsDir*: bool (input)
     Boolean specifying whether the graph is directed. False: ignore edge directions and consider edges/paths as undirected (in case they are directed).
 
 Return value:
 
-- integer detailing how many nodes were found
+- int:
+    The number of nodes at distance *Hop* from *StartNId*
 
 
 The following example shows how to get a vector of nodes at hop distance
-2 away from start node 1 using GetNodesAtHop for nodes in
+2 away from start node 1 for nodes in
 :class:`TNGraph`, :class:`TUNGraph`, and :class:`TNEANet`::
 
     import snap
-    from snap import *
 
     Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
     NodeVec = snap.TIntV()
-    GetNodesAtHop(Graph, 1, 2, NodeVec, True)
+    snap.GetNodesAtHop(Graph, 1, 2, NodeVec, True)
     for item in NodeVec:
         print item
 
     Graph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
     NodeVec = snap.TIntV()
-    GetNodesAtHop(Graph, 1, 2, NodeVec, True)
+    snap.GetNodesAtHop(Graph, 1, 2, NodeVec, True)
     for item in NodeVec:
         print item
 
     Graph = snap.GenRndGnm(snap.PNEANet, 100, 1000)
     NodeVec = snap.TIntV()
-    GetNodesAtHop(Graph, 1, 2, NodeVec, True)
+    snap.GetNodesAtHop(Graph, 1, 2, NodeVec, True)
     for item in NodeVec:
         print item
-
-

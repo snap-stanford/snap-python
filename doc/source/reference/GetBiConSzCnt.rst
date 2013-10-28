@@ -1,21 +1,19 @@
 GetBiConSzCnt
 '''''''''''''
-.. note::
-
-    This page is a draft and under revision.
 
 
 .. function:: GetBiConSzCnt(Graph, SzCntV)
 
-Returns a distribution of bi-connected component sizes.
+Returns a distribution of bi-connected component sizes.  A bi-connected component is a maximal subgraph with no articulation points.
+
 
 Parameters:
 
-- *Graph*: Undirected graph (input)
+- *Graph*: undirected graph (input)
     A Snap.py undirected graph
 
-- *SzCntV*: Vector of integer pairs (output)
-    A set of pairs (number of nodes in the bi-component, number of such components)
+- *SzCntV*: TIntPrV, a vector of (int, int) pairs (output)
+    A vector of pairs (number of nodes in the bi-component, number of such components)
 
 Return value:
 
@@ -33,4 +31,4 @@ distribution in :class:`PUNGraph`::
 
     snap.GetBiConSzCnt(Graph, szCntV)
     for item in szCntV:
-        print "{} {}".format(item.GetVal1(), item.GetVal2())
+        print "%d, %d" % (item.GetVal1(), item.GetVal2())

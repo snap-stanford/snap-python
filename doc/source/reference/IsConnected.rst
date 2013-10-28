@@ -1,13 +1,9 @@
 IsConnected
 '''''''''''
-.. note::
-
-    This page is a draft and under revision.
-
 
 .. function:: IsConnected(Graph)
 
-Tests whether the *Graph* is (weakly) connected.
+Tests whether *Graph* is (weakly) connected.
 
 Parameters:
 
@@ -16,10 +12,10 @@ Parameters:
 
 Return value:
 
-- True: If the *Graph* is (weakly) connected
-- False: If the *Graph* is not connected
+- boolean:
+    Returns True if the *Graph* is (weakly) connected, False otherwise
 
-The following example shows how to use IsConnected for nodes in
+The following example shows how to use :func:`IsConnected` for nodes in
 :class:`TNGraph`, :class:`TUNGraph`, and :class:`TNEANet`::
 
     import snap

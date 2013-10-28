@@ -1,36 +1,34 @@
 CommunityCNM
 ''''''''''''
-.. note::
-
-    This page is a draft and under revision.
 
 
 .. function:: CommunityCNM (Graph, CmtyV)
 
-Clauset-Newman-Moore community detection method for large networks. At every step of the algorithm two communities that contribute maximum positive value to global modularity are merged. See: Finding community structure in very large networks, A. Clauset, M.E.J. Newman, C. Moore, 2004
+Uses the Clauset-Newman-Moore community detection method for large networks. At every step of the algorithm two communities that contribute maximum positive value to global modularity are merged. Fills *CmtyV* with all the communities detected and returns the modularity of the network.
 
 Parameters:
 
-* Graph: PUNGraph (input)
-  A Snap.py PUNGraph or a network
+- Graph: undirected graph (input)
+    A Snap.py undirected graph
 
-* CmtyV: vector of CnComs (vector of vector of integers) (output)
-  A vector of all the communities that are detected by the CNM method. Each community is represented as a vector of node IDs.
+- CmtyV: TCnComV, a vector of connected component (output)
+    A vector of all the communities that are detected by the CNM method. Each community is represented as a vector of node IDs
 
 Return value:
 
-* Float: The modularity of the network.
+- float:
+    The modularity of the network
 
-The following example shows how to get all the communities detected in a given graph::
+The following example shows how to detect communities using CNM algorithm in :class:`TUNGraph`::
 
-  import snap
+    import snap
 
-  Graph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
-  CmtyV = snap.TCnComV()
-  QModularity = CommunityCNM(Graph, CmtyV)
-  print "The communities are as follows: "
-  for Cmty in CmtyV:
-    print "Community: "
-    for NI in Cmty:
-      print NI
-  print "The modularity of the network is ", QModularity
+    Graph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
+    CmtyV = snap.TCnComV()
+    modularity = snap.CommunityCNM(Graph, CmtyV)
+    for Cmty in CmtyV:
+        print "Community: "
+        for NI in Cmty:
+            print NI
+    print "The modularity of the network is %f" % modularity
+ 

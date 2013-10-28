@@ -1,13 +1,10 @@
 GetNodeEcc
 '''''''''''
-.. note::
-
-    This page is a draft and under revision.
 
 
 .. function:: GetNodeEcc(Graph, NId, IsDir = False)
 
-Returns node Eccentricity, the largest shortest-path distance from the node *NId* to any other node in the *Graph*.
+Returns node eccentricity, the largest shortest-path distance from the node *NId* to any other node in the *Graph*.
 
 Parameters:
 

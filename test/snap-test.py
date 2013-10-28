@@ -18,6 +18,14 @@ class SnapPythonTest(unittest.TestCase):
         self.UnDirGraphStar = snap.GenStar(snap.PUNGraph, self.num_nodes)
         self.NetStar = snap.GenStar(snap.PNEANet, self.num_nodes)
 
+        # Graph With Self Edges
+        self.DirGraphSelfEdge = snap.GenRndGnm(snap.PNGraph, 10, 20)
+        self.DirGraphSelfEdge.AddEdge(0, 0)
+        self.UnDirGraphSelfEdge = snap.GenRndGnm(snap.PUNGraph, 10, 20)
+        self.UnDirGraphSelfEdge.AddEdge(0, 0)
+        self.NetSelfEdge = snap.GenRndGnm(snap.PNEANet, 10, 20)
+        self.NetSelfEdge.AddEdge(0, 0)
+
     def test_CntInDegNodes(self):
         # Directed graph
         num_nodes = snap.CntInDegNodes(self.DirGraphFull, self.num_nodes-1)
@@ -349,9 +357,48 @@ class SnapPythonTest(unittest.TestCase):
 
     def test_DelSelfEdges(self):
         # Directed Graph
+        Graph_Copy = self.DirGraphSelfEdge
+        snap.DelSelfEdges(Graph_Copy)
+        for node in Graph_Copy.Nodes():
+            self.assertFalse(Graph_Copy.IsEdge(node.GetId(), node.GetId()))
+
         # Undirected Graph
+        Graph_Copy = self.UnDirGraphSelfEdge
+        snap.DelSelfEdges(Graph_Copy)
+        for node in Graph_Copy.Nodes():
+            self.assertFalse(Graph_Copy.IsEdge(node.GetId(), node.GetId()))
+
         # Network
-        pass
+        Graph_Copy = self.NetSelfEdge
+        snap.DelSelfEdges(Graph_Copy)
+        for node in Graph_Copy.Nodes():
+            self.assertFalse(Graph_Copy.IsEdge(node.GetId(), node.GetId()))
+
+    def test_DelNodes(self):
+        # Directed Graph
+        Graph_Copy = self.DirGraphFull
+        DelNodes = snap.TIntV()
+        DelNodes.Add(0)
+        snap.DelNodes(Graph_Copy, DelNodes)
+        for node in DelNodes:
+            self.assertFalse(Graph_Copy.IsNode(node))
+
+        # Undirected Graph
+        Graph_Copy = self.UnDirGraphFull
+        DelNodes = snap.TIntV()
+        DelNodes.Add(0)
+        snap.DelNodes(Graph_Copy, DelNodes)
+        for node in DelNodes:
+            self.assertFalse(Graph_Copy.IsNode(node))
+
+        # Network
+        Graph_Copy = self.NetFull
+        DelNodes = snap.TIntV()
+        DelNodes.Add(0)
+        snap.DelNodes(Graph_Copy, DelNodes)
+        for node in DelNodes:
+            self.assertFalse(Graph_Copy.IsNode(node))
+
 
 if __name__ == '__main__':
   unittest.main()
