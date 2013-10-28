@@ -22,11 +22,14 @@ GLIBDIR = $(GITDIR)/$(GLIB)
 include $(GITDIR)/Makefile.config
 include ../Makefile.config
 
+CXXFLAGS += -DSW_SNAPPY
+SWIGFLAGS += -D_CMPWARN -D__stdcall -DSW_SNAPPY
+
 all: snap.py _snap.so
 
 snap_wrap.cxx: snap.i snap_types.i tvec.i pneanet.i pungraph.i pngraph.i pgraph.i \
 	snapswig.h snap_types.h printgraph.h goodgraph.cpp
-	swig -python -c++ -w302,312,317,325,362,383,384,389,401,503,508,509 -O -D_CMPWARN -I$(SNAPDIR) -I$(GLIBDIR) snap.i
+	swig $(SWIGFLAGS) -python -c++ -w302,312,317,325,362,383,384,389,401,503,508,509 -O -I$(SNAPDIR) -I$(GLIBDIR) snap.i
 
 snap_wrap.o: snap_wrap.cxx
 	g++ $(CXXFLAGS) -c snap_wrap.cxx -I$(SNAPDIR) -I$(GLIBDIR)  -I/usr/include/python2.6 -I/usr/include/python2.7
@@ -35,7 +38,7 @@ Snap.o:
 	$(CC) $(CXXFLAGS) -c $(SNAPDIR)/Snap.cpp -I$(SNAPDIR) -I$(GLIBDIR)
 
 _snap.so: snap_wrap.o Snap.o
-	g++ $(LDFLAGS) $(CXXFLAGS) snap_wrap.o Snap.o $(LIBS) -o _snap.so
+	g++ $(LDFLAGS) -o _snap.so snap_wrap.o Snap.o $(LIBS)
 
 snap.py: snap_wrap.cxx
 

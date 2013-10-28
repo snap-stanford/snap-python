@@ -6,7 +6,7 @@
 #define SNAP_ALL 0
 
 %pythoncode %{
-Version = "0.8.2"
+Version = "0.8.3"
 %}
 
 %module snap
@@ -89,18 +89,15 @@ Version = "0.8.2"
 
 %include "snap_types.i"
 
-//%include exception.i
-//
-//%exception {
-//    try {
-//        $action
-//    }
-//    catch (int i) {
-//        printf("*** CATCH %d\n", i);
-//        PyErr_SetString(PyExc_IndexError,"index out-of-bounds");
-//        SWIG_exception(SWIG_UnknownError,"Unknown exception");
-//    }
-//}
+%include exception.i
+
+%exception {
+    try {
+        $action
+    } catch (PExcept Except) {
+        SWIG_exception(SWIG_UnknownError,Except->GetMsgStr().CStr());
+    }
+}
 
 #define GLib_UNIX
 // glib-core
@@ -109,7 +106,7 @@ Version = "0.8.2"
 %include "dt.h"
 %include "fl.h"
 //%include "tm.h"
-//%include "ut.h"
+%include "ut.h"
 
 // SNAP Library
 // snap-core
