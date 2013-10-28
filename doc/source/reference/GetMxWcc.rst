@@ -1,14 +1,10 @@
 GetMxWcc
 '''''''''''
-.. note::
-
-    This page is a draft and under revision.
 
 
 .. function:: PGraph GetMxWcc(Graph)
 
-Get a graph representing the largest weakly connected component on an input ＊Graph＊.
-A directed/undirected graph is connected if there exist an undirected path between any pair of nodes.
+Returns a graph representing the largest weakly connected component in ＊Graph＊.
 
 Parameters:
 
@@ -17,21 +13,32 @@ Parameters:
 
 Return value:
 
-- *PGraph*: graph (output)
-	A graph representing the largest weakly connected component on an input ＊Graph＊.
+- graph
+	A Snap.py graph or a network representing the largest weakly connected component in ＊Graph＊.
 
-For more info see: http://en.wikipedia.org/wiki/Connected_component_(graph_theory)
 
-The following example shows how to get a vector of bridge edges in
+The following example shows how to get the largest weakly connected component in
 :class:`TNGraph`, :class:`TUNGraph`, and :class:`TNEANet`::
 
     import snap
 
+
+    # Directed Graph
     Graph = snap.GenRndGnm(snap.PNGraph, 100, 500)
     PGraph = snap.GetMxWcc(Graph)
+    for edge in PGraph.Edges():
+      print "(%d, %d)" % (edge.GetSrcNId(), edge.GetDstNId())
     
+
+    # Undirected Graph
     Graph = snap.GenRndGnm(snap.PUNGraph, 100, 500)
     PGraph = snap.GetMxWcc(Graph)
+    for edge in PGraph.Edges():
+      print "(%d, %d)" % (edge.GetSrcNId(), edge.GetDstNId())
 
+
+    # Network
     Graph = snap.GenRndGnm(snap.PNEANet, 100, 500)
     PGraph = snap.GetMxWcc(Graph)
+    for edge in PGraph.Edges():
+      print "(%d, %d)" % (edge.GetSrcNId(), edge.GetDstNId())

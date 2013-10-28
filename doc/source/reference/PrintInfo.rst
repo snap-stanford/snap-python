@@ -1,14 +1,9 @@
 PrintInfo
 '''''''''''
-.. note::
-
-    This page is a draft and under revision.
-
 
 .. function:: PrintInfo(Graph, Desc="", OutFNm="", Fast=True)
 
-Prints some basic information about *Graph* to standard output or to a file on name *OutFNm*.
-More expensive information is computed when *Fast* is False.
+Prints some basic information about *Graph* to standard output or to a file on name *OutFNm*. More expensive information is computed when *Fast* is False.
 
 Parameters:
 
@@ -33,9 +28,24 @@ standard output for random graphs of type :class:`TNGraph`, :class:`TUNGraph`, a
 
     import snap
 
-    for graph_type in [snap.PNGraph, snap.PUNGraph, snap.PNEANet]:
-        graph = snap.GenRndGnm(graph_type, 10000, 1000)
-        prefix = "Python type %s" % graph_type
-        output_file = ""
-        fast = False
-        snap.PrintInfo(graph, prefix, output_file, fast)
+    # Options used for each type of graph
+    output_file = ""
+    fast = False
+
+
+    # Directed Graph
+    Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
+    prefix = "Python type PNGraph"
+    snap.PrintInfo(Graph, prefix, output_file, fast)
+
+
+    # Undirected Graph
+    Graph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
+    prefix = "Python type PUNGraph"
+    snap.PrintInfo(Graph, prefix, output_file, fast)
+
+
+    # Network
+    Graph = snap.GenRndGnm(snap.PNEANet, 100, 1000)
+    prefix = "Python type PNEANet"
+    snap.PrintInfo(Graph, prefix, output_file, fast)
