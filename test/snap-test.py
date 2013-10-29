@@ -26,6 +26,16 @@ class SnapPythonTest(unittest.TestCase):
         self.NetSelfEdge = snap.GenRndGnm(snap.PNEANet, 10, 20)
         self.NetSelfEdge.AddEdge(0, 0)
 
+        # Graph With Multiple Zero-Degree Nodes
+        self.DirGraphZeroDegree = snap.GenRndGnm(snap.PNGraph, 10, 1)
+        self.UnDirGraphZeroDegree = snap.GenRndGnm(snap.PUNGraph, 10, 1)
+        self.NetZeroDegree = snap.GenRndGnm(snap.PNEANet, 10, 1)
+
+        # Trees
+        self.DirTree = snap.GenTree(snap.PNGraph, 3, 3)
+        self.UnDirTree = snap.GenTree(snap.PUNGraph, 3, 3)
+        self.NetTree = snap.GenTree(snap.PNEANet, 3, 3)
+
     def test_CntInDegNodes(self):
         # Directed graph
         num_nodes = snap.CntInDegNodes(self.DirGraphFull, self.num_nodes-1)
@@ -398,6 +408,68 @@ class SnapPythonTest(unittest.TestCase):
         snap.DelNodes(Graph_Copy, DelNodes)
         for node in DelNodes:
             self.assertFalse(Graph_Copy.IsNode(node))
+
+    def test_DelZeroDegNodes(self):
+        # Directed Graph
+        snap.DelZeroDegNodes(self.DirGraphZeroDegree)
+        for NI in self.DirGraphZeroDegree.Nodes():
+            self.assertNotEqual(0, NI.GetOutDeg() + NI.GetInDeg())
+
+        # Undirected Graph
+        snap.DelZeroDegNodes(self.UnDirGraphZeroDegree)
+        for NI in self.UnDirGraphZeroDegree.Nodes():
+            self.assertNotEqual(0, NI.GetOutDeg() + NI.GetInDeg())
+
+        # Network
+        snap.DelZeroDegNodes(self.NetZeroDegree)
+        for NI in self.NetZeroDegree.Nodes():
+            self.assertNotEqual(0, NI.GetOutDeg() + NI.GetInDeg())
+
+    def test_DelDegKNodes(self):
+        # Directed Graph
+        snap.DelDegKNodes(self.DirGraphZeroDegree, 0, 0)
+        for NI in self.DirGraphZeroDegree.Nodes():
+            self.assertNotEqual(0, NI.GetOutDeg() + NI.GetInDeg())
+
+        # Undirected Graph
+        snap.DelDegKNodes(self.UnDirGraphZeroDegree, 0, 0)
+        for NI in self.UnDirGraphZeroDegree.Nodes():
+            self.assertNotEqual(0, NI.GetOutDeg() + NI.GetInDeg())
+
+        # Network
+        snap.DelDegKNodes(self.NetZeroDegree, 0, 0)
+        for NI in self.NetZeroDegree.Nodes():
+            self.assertNotEqual(0, NI.GetOutDeg() + NI.GetInDeg())
+
+    def test_IsTree(self):
+        # Directed Graph
+        expected_results = [True, 0]
+        results = snap.IsTree(self.DirTree)
+        self.assertEqual(expected_results, results)
+
+        # Undirected Graph
+        expected_results = [False, -1]
+        results = snap.IsTree(self.UnDirTree)
+        self.assertEqual(expected_results, results)
+
+        # Network
+        expected_results = [True, 0]
+        results = snap.IsTree(self.NetTree)
+        self.assertEqual(expected_results, results)
+
+    def test_GetTreeRootNId(self):
+        # Directed Graph
+        root_id = snap.GetTreeRootNId(self.DirTree)
+        self.assertEqual(0, root_id)
+
+        # Undirected Graph
+        root_id = snap.GetTreeRootNId(self.UnDirTree)
+        self.assertEqual(-1, root_id)
+
+        # Network
+        root_id = snap.GetTreeRootNId(self.NetTree)
+        self.assertEqual(0, root_id)
+
 
 
 if __name__ == '__main__':
