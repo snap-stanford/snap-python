@@ -10,7 +10,8 @@
 #	- run swig in Cygwin to generate snap_wrap.cxx and snap.py
 #		make swig-win
 #	- build Snappy solution in Visual Studio to generate _snap.pyd
-#	- run setup.py in Cygwin to generate the package
+#	- run setup.py in Cygwin to generate the package,
+#	  NOT OVER SSH, but locally
 #		make dist-win
 
 # set the path to your SNAP directory here
@@ -21,9 +22,6 @@ GLIBDIR = $(GITDIR)/$(GLIB)
 # include compilation parameters
 include $(GITDIR)/Makefile.config
 include ../Makefile.config
-
-CXXFLAGS += -DSW_SNAPPY
-SWIGFLAGS += -D_CMPWARN -D__stdcall -DSW_SNAPPY
 
 all: snap.py _snap.so
 
