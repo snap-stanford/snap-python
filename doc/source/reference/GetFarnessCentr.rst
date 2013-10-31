@@ -20,7 +20,7 @@ Return value:
 - float:
     The farness centrality of the node *NId* in *Graph*
 
-The following example shows the farness centrality for nodes in 
+The following example shows how to get the farness centrality for nodes in 
 :class:`TUNGraph`::
 
     import snap

@@ -1,30 +1,29 @@
 GetDegreeCentr
 ''''''''''''''
-.. note::
-
-    This page is a draft and under revision.
 
 
 .. function:: GetDegreeCentr(Graph, NId)
 
-Returns Degree centrality of a given node NId. Degree centrality of a node is defined as its degree/(N-1), where N is the number of nodes in the network.
+Returns Degree centrality of a given node *NId* in *Graph*. Degree centrality of a node is defined as its degree/(N-1), where N is the number of nodes in the network.
 
 Parameters:
 
-- *Graph*: graph (input)
-    A Snap.py graph or a network
+- *Graph*: undirected graph (input)
+    A Snap.py undirected graph
 
 - *NId*: int (input)
-    Id of the node whose degree centrality is to be returned
+    Node id
 
 Return value:
 
 - float
+    The degree centrality of the node *NId* in *Graph*
 
-The following example shows how to calculate Degree Centrality for nodes in :class:`TUNGraph`::
+The following example shows how to get the degree Centrality for nodes in :class:`TUNGraph`::
 
     import snap
 
-    Graph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
-    for node in Graph.Nodes():
-        print snap.GetDegreeCentr(Graph,node.GetId())
+    vGraph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
+    for vNodeIter in vGraph.Nodes():
+        print "%d %f" % (vNodeIter.GetId(), \
+                         snap.GetDegreeCentr(vGraph, vNodeIter.GetId()))
