@@ -1,7 +1,6 @@
 GetNodeEcc
 '''''''''''
 
-
 .. function:: GetNodeEcc(Graph, NId, IsDir = False)
 
 Returns node eccentricity, the largest shortest-path distance from the node *NId* to any other node in the *Graph*.
@@ -12,10 +11,10 @@ Parameters:
     A Snap.py graph or a network.
 
 - *NId*: int (output)
-    The id of targeted node.
+    Node id
 
 - *IsDir*: boolean (input)
-    Determines if *Graph* is treated as directed. i.e. False considers links as undirected (drop link directions).
+    Determines if *Graph* is treated as directed i.e. False considers links as undirected
 
 Return value:
 
