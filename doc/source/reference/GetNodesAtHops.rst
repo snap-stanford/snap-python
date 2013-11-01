@@ -18,13 +18,12 @@ Parameters:
     Vector of (hop distance, number of nodes at that distance) pairs
 
 - *IsDir*: boolean (input)
-    Boolean specifying whether the graph is directed. False: ignore edge directions and consider edges/paths as undirected (in case they are directed).
+    Boolean specifying whether the graph is directed. If false, edge directions are ignored and considered as undirected.
 
 Return value:
 
 - int
-    Number of different hop distances reachable from *StartNId* (including self-loop)
-
+    Number of different hop distances reachable from *StartNId*, including self-loops.
 
 The following example shows how to obtain number of nodes for each hop distance from node 1 in :class:`TNGraph`, :class:`TUNGraph`, and :class:`TNEANet`::
 

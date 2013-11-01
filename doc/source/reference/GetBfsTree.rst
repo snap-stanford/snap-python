@@ -1,13 +1,9 @@
 GetBfsTree
 '''''''''''''''
 
-
-Function Definition
-
-.. function:: GetBfsTree:: GetBfsTree(Graph, StartNId, FollowOut, FollowIn)
+.. function:: GetBfsTree(Graph, StartNId, FollowOut, FollowIn)
 
 Returns a directed Breadth-First-Search tree rooted at *StartNId*. The nodes in the tree correspond to those of *Graph*, and the edges represent the edges traversed by the breadth-first search on *Graph* starting from *StartNId*. The tree is created by traversing along out-links (parameter *FollowOut* = true) and/or in-links (parameter *FollowIn* = true). 
-
 
 Parameters:
 
@@ -15,18 +11,17 @@ Parameters:
     A Snap.py graph or a network
 
 - *StartNId*
-    Id of the root node of the BST
+    Id of the root node of the Breadth-First-Search tree
 
 - *FollowOut*
-    Boolean suggesting if the graph should be constructed by following the outward links.
+    Boolean specifying if the graph should be constructed by following the outward links
 
 - *FollowIn*
-    Boolean suggesting if the graph should be constructed by following inward links.
-
+    Boolean specifying if the graph should be constructed by following inward links
 
 Return value:
 
-- PNGraph:
+- PNGraph
     Graph whose nodes correspond to those of the original graph and whose edges represent the edges traversed by the breadth-first search.
 
 The following examples show how to use :func:`GetBfsTree` with graphs of type
