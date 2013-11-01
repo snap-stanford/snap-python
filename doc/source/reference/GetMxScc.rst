@@ -1,9 +1,9 @@
-GetMxSccs
-'''''''''
+GetMxScc
+''''''''
 
-.. function:: GetMxSccs (Graph)
+.. function:: GetMxScc(Graph)
 
-Returns a graph representing the largest strongly connected component in ＊Graph＊.
+Returns a graph representing the largest strongly connected component in *Graph*.
 
 Parameters:
 
@@ -13,7 +13,7 @@ Parameters:
 Return value:
 
 - graph
-    A Snap.py graph or a network representing the largest strongly connected component in ＊Graph＊.
+    A Snap.py graph or a network representing the largest strongly connected component in *Graph*.
 
 
 The following example shows how to get the largest strongly connected component in
@@ -21,24 +21,20 @@ The following example shows how to get the largest strongly connected component 
 
     import snap
 
-
     # Directed Graph
     Graph = snap.GenRndGnm(snap.PNGraph, 100, 500)
     PGraph = snap.GetMxScc(Graph)
     for edge in PGraph.Edges():
-      print "(%d, %d)" % (edge.GetSrcNId(), edge.GetDstNId())
-    
+        print "(%d, %d)" % (edge.GetSrcNId(), edge.GetDstNId())
 
     # Undirected Graph
     Graph = snap.GenRndGnm(snap.PUNGraph, 100, 500)
     PGraph = snap.GetMxScc(Graph)
     for edge in PGraph.Edges():
-      print "(%d, %d)" % (edge.GetSrcNId(), edge.GetDstNId())
-
+        print "(%d, %d)" % (edge.GetSrcNId(), edge.GetDstNId())
 
     # Network
     Graph = snap.GenRndGnm(snap.PNEANet, 100, 500)
     PGraph = snap.GetMxScc(Graph)
     for edge in PGraph.Edges():
-      print "(%d, %d)" % (edge.GetSrcNId(), edge.GetDstNId())
-
+        print "(%d, %d)" % (edge.GetSrcNId(), edge.GetDstNId())
