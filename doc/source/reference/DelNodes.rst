@@ -22,7 +22,6 @@ The following example shows how to delete nodes from
 :class:`TNGraph`, :class:`TUNGraph`, and :class:`TNEANet`::
 
     import snap
-    
 
     ### Directed Graph ###
     Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
@@ -39,8 +38,6 @@ The following example shows how to delete nodes from
         if Graph.IsNode(NI):
             print "Node %d found in graph." % NI
 
-    
-
     ### Undirected Graph ###
     Graph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
     
@@ -55,8 +52,6 @@ The following example shows how to delete nodes from
     for NI in Vec:
         if Graph.IsNode(NI):
             print "Node %d found in graph." % NI
-
-
 
     ### Network ###
     Graph = snap.GenRndGnm(snap.PNEANet, 100, 1000)

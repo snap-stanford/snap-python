@@ -22,7 +22,7 @@ Return value:
 For more info see: http://en.wikipedia.org/wiki/Biconnected_graph
 
 The following example shows how to calculate bi-connected component size
-distribution in :class:`PUNGraph`::
+distribution in :class:`TUNGraph`::
 
     import snap
 

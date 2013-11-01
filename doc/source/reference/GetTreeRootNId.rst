@@ -1,7 +1,6 @@
 GetTreeRootNId
 '''''''''''''''
 
-
 .. function:: GetTreeRootNId(Graph)
 
 If *Graph* is a tree, the function returns the root id of the tree. Otherwise, it returns -1.
@@ -23,21 +22,17 @@ The following example shows how to get the root node id in
 
     import snap
 
-
     # Directed Graph
     Graph = snap.GenTree(snap.PNGraph, 3, 3)
     root_id = snap.GetTreeRootNId(Graph)
     print "The graph has a root id: %d" % root_id
-
 
     # Undirected Graph
     Graph = snap.GenTree(snap.PUNGraph, 3, 3)
     root_id = snap.GetTreeRootNId(Graph)
     print "The graph has a root id: %d" % root_id
 
-
     # Network
     Graph = snap.GenTree(snap.PNEANet, 3, 3)
     root_id = snap.GetTreeRootNId(Graph)
     print "The graph has a root id: %d" % root_id
-    

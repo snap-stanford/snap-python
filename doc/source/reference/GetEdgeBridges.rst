@@ -1,7 +1,6 @@
 GetEdgeBridges
 ''''''''''''''
 
-
 .. function:: GetEdgeBridges(Graph, EdgeV)
 
     Returns the edge bridges in *Graph* in the vector *EdgeV*. An edge is a bridge if, when removed, increases the number of connected components.
@@ -29,7 +28,4 @@ The following example shows how to calculate number of bidirectional edges for
     EdgeV = snap.TIntPrV()
     snap.GetEdgeBridges(Graph, EdgeV)
     for edge in EdgeV:
-      print "(%d, %d)" % (edge.GetVal1(), edge.GetVal2())
-
-
-
+        print "(%d, %d)" % (edge.GetVal1(), edge.GetVal2())

@@ -1,7 +1,6 @@
 GetNodesAtHop
 '''''''''''''
 
-
 .. function:: GetNodesAtHop(Graph, StartNId, Hop, NIdV, IsDir)
 
 Finds the node ids of all the nodes that are at distance *Hop* from node *StartNId* and stores them in *NIdV*. The function returns the number of nodes found.
@@ -15,19 +14,18 @@ Parameters:
     Starting node id
 
 - *Hop*: int (input)
-    Distance from the starting node.
+    Distance from the starting node
 
 - *NIdV*: TIntV, a vector of ints (output)
-    Node ids of nodes *Hop* distance away from *StartNId*. Values are node id ints.
+    Node ids of nodes *Hop* distance away from *StartNId*.
 
 - *IsDir*: bool (input)
-    Boolean specifying whether the graph is directed. False: ignore edge directions and consider edges/paths as undirected (in case they are directed).
+    Boolean specifying whether the graph is directed. If false, edge directions are ignored and considered as undirected.
 
 Return value:
 
-- int:
+- int
     The number of nodes at distance *Hop* from *StartNId*
-
 
 The following example shows how to get a vector of nodes at hop distance
 2 away from start node 1 for nodes in

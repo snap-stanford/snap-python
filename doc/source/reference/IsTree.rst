@@ -1,5 +1,5 @@
-IsTree (Graph)
-'''''''''''''''''''
+IsTree
+''''''
 
 
 .. function:: IsTree(Graph)
@@ -26,24 +26,20 @@ The following example shows how to detect trees in
 
     import snap
 
-
     # Directed Graph
     Graph = snap.GenTree(snap.PNGraph, 3, 3)
     (is_tree, root_id) = snap.IsTree(Graph)
     print "The graph is a tree: %s " % is_tree
     print "The graph has a root id: %d" % root_id
     
-
     # Undirected Graph
     Graph = snap.GenTree(snap.PUNGraph, 3, 3)
     (is_tree, root_id) = snap.IsTree(Graph)
     print "The graph is a tree: %s " % is_tree
     print "The graph has a root id: %d" % root_id
 
-    
     # Network
     Graph = snap.GenTree(snap.PNEANet, 3, 3)
     (is_tree, root_id) = snap.IsTree(Graph)
     print "The graph is a tree: %s " % is_tree
     print "The graph has a root id: %d" % root_id
-

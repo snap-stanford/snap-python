@@ -1,7 +1,6 @@
 AddSelfEdges
 ''''''''''''
 
-
 .. function:: AddSelfEdges(Graph)
 
 Adds a self-edge for every node in *Graph*.
@@ -17,7 +16,7 @@ Return value:
 
 
 The following example shows how to add self edges to every node in
-:class:`PNGraph`, :class:`PUNGraph`, and :class:`PNEANet`::
+:class:`TNGraph`, :class:`TUNGraph`, and :class:`TNEANet`::
 
     import snap
 
@@ -38,9 +37,6 @@ The following example shows how to add self edges to every node in
             NumSelfEdges += 1
     print "Number of self edges: %d" % NumSelfEdges
 
-
-
-
     ### PUNGraph
     print "--- PUNGraph ---"
     Graph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
@@ -57,9 +53,6 @@ The following example shows how to add self edges to every node in
         if Graph.IsEdge(NI.GetId(),NI.GetId()): 
             NumSelfEdges += 1
     print "Number of self edges: %d" % NumSelfEdges
-
-
-
 
     ### PNEANet
     print "--- PNEANet ---"

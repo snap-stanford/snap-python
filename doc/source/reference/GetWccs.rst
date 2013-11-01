@@ -31,14 +31,12 @@ The following example shows how to calculate all weakly-connected components in
     for comp in Components:
         print "Size of component: %d" % comp.Len()
 
-
     # Undirected Graph
     Graph = snap.GenRndGnm(snap.PUNGraph, 1000, 50)
     Components = snap.TCnComV()
     snap.GetWccs(Graph, Components)
     for comp in Components:
         print "Size of component: %d" % comp.Len()
-
 
     # Network
     Graph = snap.GenRndGnm(snap.PNEANet, 1000, 300)

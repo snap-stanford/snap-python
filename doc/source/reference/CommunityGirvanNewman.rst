@@ -1,10 +1,9 @@
 CommunityGirvanNewman
 '''''''''''''''''''''
 
-
 .. function:: CommunityGirvanNewman(Graph, CmtyV)
 
-Uses the Girvan-Newman community detection algorithm based on Betweenness centrality on *Graph*. Fills *CmtyV* with all the communities detected and returns the modularity of the network.
+Uses the Girvan-Newman community detection algorithm based on betweenness centrality on *Graph*. Fills *CmtyV* with all the communities detected and returns the modularity of the network.
 
 Parameters:
 
