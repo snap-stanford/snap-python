@@ -1,36 +1,33 @@
 GenConfModel
 '''''''''''''''
-.. note::
 
-    This page is a draft and under revision.
+.. function:: GenConfModel(DegSeqV, Rnd=TInt::Rnd)
 
-
-.. function:: GenConfModel(DegSeqV, Rnd)
-
-Generates a random undirect graph with a given degree sequence.
-
-Generates a random undirect graph with a given degree sequence DegSeqV. Configuration model operates as follows. For each node N, of degree DeqSeqV[N] we create DeqSeqV[N] spokes (half-edges). We then pick two spokes at random, and connect the spokes endpoints. We continue this process until no spokes are left. Generally this generates a multigraph (i.e., spokes out of same nodes can be chosen multiple times).We ignore (discard) self-loops and multiple edges. Thus, the generated graph will only approximate follow the given degree sequence. The method is very fast!
+Generates a random undirected graph with the given degree sequence *DegSeqV*.
 
 Parameters:
 
-- *DegSeqV*: vector of ints of type TIntV (input)
-	The degree sequence vector.
+- *DegSeqV*: TIntV, a vector of ints (input)
+	The degree sequence vector
 
-- *Rnd*: a TRand type
-	Random number generator.
+- *Rnd*: TRnd (input)
+	Random number generator
 
 Return value:
 
-- Random undirect graph with degree sequence given by DegSeqV.
+- PUNGraph
+    Random undirected graph with degree sequence given by *DegSeqV*
 
-The following example generates a random unidirect graph with degree sequence 1, 2, 3::
+The following example generates a random unidirected graph with degree sequence 1, 2, 3::
 
-    from snap import *
+    import snap
 
-    DegSeqV = TIntV()
+    DegSeqV = snap.TIntV()
     DegSeqV.Add(1)
     DegSeqV.Add(2)
     DegSeqV.Add(3)
-    Rnd = TRnd()
+    Rnd = snap.TRnd()
 
-    GenConfModel(DegSeqV, Rnd)
+    Graph = snap.GenConfModel(DegSeqV, Rnd)
+    for edge in Graph.Edges():
+        print "%d, %d" % (edge.GetSrcNId(), edge.GetDstNId())

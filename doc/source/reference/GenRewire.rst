@@ -1,32 +1,37 @@
 GenRewire
 '''''''''''
-.. note::
 
-    This page is a draft and under revision.
+.. function:: GenRewire (Graph, NSwitch=100, Rnd=TInt::Rnd)
 
-
-.. function:: GenRewire (Graph, NSwitch=100, Rnd)
-
-Rewires a *graph* by randomly rewiring its edges while keeping the degrees the same.
+Rewires *Graph* by randomly rewiring its edges while keeping the degrees the same.
 
 Parameters:
 
-- *Graph*: graph (input)
-    A Snap.py graph
+- *Graph*: undirected graph (input)
+    A Snap.py undirected graph
 
-- *NSwitch*: 
+- *NSwitch*: int (input)
+    An integer that specifies the number of switches 
 
-- *Rnd*: seed for randomization
+- *Rnd*: TRnd (input)
+    Random number generator
 
 
 Return value:
 
-- PUNGraph 
+- PUNGraph
+    The rewired graph 
 
-The following example shows how to use this function for nodes in
+The following example shows how to use :func:`GenRewire` with nodes in
 :class:`TUNGraph`::
 
     import snap
 
     Graph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
-    GenRewire(Graph, 100, <TRnd>)
+    for edge in Graph.Edges():
+        print "%d, %d" % (edge.GetSrcNId(), edge.GetDstNId())
+
+    Rnd = snap.TRnd()
+    snap.GenRewire(Graph, 100, Rnd)
+    for edge in Graph.Edges():
+        print "%d, %d" % (edge.GetSrcNId(), edge.GetDstNId())

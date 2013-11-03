@@ -1,25 +1,22 @@
 GetKCoreEdges
 '''''''''''''
-.. note::
 
-    This page is a draft and under revision.
+.. function:: GetKCoreEdges(Graph, CoreIdSzV)
 
-
-.. function:: GetKCoreEdges(Graph, CoreIDSzV)
-
-Returns the number of edges in each core of order K (where K=0, 1, ...).
+Returns the number of edges in each core of order K (where K=0, 1, ...). Stores pairs (K, number of edges) in *CoreIdSzV*.
 
 Parameters:
 
 - *Graph*: graph (input)
     A Snap.py graph or a network
 
-- *CoreIDSzV*: a vector of int pairs (output)
-    The first number of every pair is the order K. The second number of every pair is the number of edges for the given order K.
+- *CoreIdSzV*: TIntPrV, a vector of (int, int) pairs (output)
+    A vector of (order, number of edges of the given order) pairs. 
 
 Return value:
 
-- Returns the current value of K. (This value increases by 1 for every valid call to GetNextCore(). After the highest valid value, resets to 0.)
+- int
+    The number of cores
 
 For more info see: http://en.wikipedia.org/wiki/Degeneracy_(graph_theory)#k-Cores
 

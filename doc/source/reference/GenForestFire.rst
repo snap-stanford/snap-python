@@ -1,9 +1,5 @@
 GenForestFire
 '''''''''''''
-.. note::
-
-    This page is a draft and under revision.
-
 
 .. function:: GenForestFire(Nodes, FwdProb, BckProb)
 
@@ -11,22 +7,24 @@ Generates a random Forest Fire, directed graph with given probabilities.
 
 Parameters:
 
-- *Nodes*: number of nodes (input)
+- *Nodes*: int (input)
     Number of nodes in the directed graph
 
-- *FwdProb*: forward probability (input)
+- *FwdProb*: float (input)
     Forward probability of an edge
 
-- *BckProb*: backward probability (input)
+- *BckProb*: float (input)
     Backward probability of an edge
 
 Return value:
 
-- *Graph*: returns a directed graph (PNGraph)
+- PNGraph
+    A directed graph generated using the Forest Fire model
 
-See below for example uses::
+The following example shows how to use :func:`GenForestFire`::
+	
+    import snap 
 
-    import snap
-
-    # creates a graph with 100 nodes, and forward and backward probabilities of .5
-    G0 = snap.GenForestFire(100, 0.5, 0.5)
+    Graph = snap.GenForestFire(100, 0.5, 0.5)
+    for edge in Graph.Edges():
+        print "%d, %d" % (edge.GetSrcNId(), edge.GetDstNId())
