@@ -1,15 +1,14 @@
 GenStar
 '''''''''''
-.. note::
 
-    This page is a draft and under revision.
-
-
-.. function:: GenStar (Nodes, IsDir=true)
+.. function:: GenStar (GraphType, Nodes, IsDir=true)
 
 Generates a graph with star topology. Node id 0 is in the center and then links to all other nodes.
 
 Parameters:
+
+- *GraphType*: class (input)
+    Type of graph to create. :class:`PNGraph`, :class:`PUNGraph`, or :class:`PNEANet`
 
 - *Nodes*: int (input)
     Number of nodes in the star graph, including the center node.
@@ -19,14 +18,21 @@ Parameters:
 
 Return value:
 
-- PGraph
+- graph
+    A Snap.py graph of the specified type
 
-The following example shows how to generate a star graph with five nodes using GenStar::
+The following example shows how to generate a star graph with five nodes using :func:`GenStar` for classes :class:`TNGraph`, :class:`TUNGraph`, and :class:`TNEANet`::
 
     import snap
 
-    StarGraph = snap.GenStar(snap.PNGraph, 5)
-    print StarGraph
-    for NI in StarGraph.Nodes():
-        for Id in NI.GetOutEdges():
-            print "edge (%d %d)" % (NI.GetId(), Id)
+    StarGraph = snap.GenStar(snap.PNGraph, 5, True)
+    for edge in StarGraph.Edges():
+        print "%d, %d" % (edge.GetSrcNId(), edge.GetDstNId())
+
+    StarGraph = snap.GenStar(snap.PUNGraph, 5, True)
+    for edge in StarGraph.Edges():
+        print "%d, %d" % (edge.GetSrcNId(), edge.GetDstNId())
+
+    StarGraph = snap.GenStar(snap.PNEANet, 5, True)
+    for edge in StarGraph.Edges():
+        print "%d, %d" % (edge.GetSrcNId(), edge.GetDstNId())

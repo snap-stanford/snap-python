@@ -1,9 +1,5 @@
 SaveEdgeList
 ''''''''''''
-.. note::
-
-    This page is a draft and under revision.
-
 
 .. function:: SaveEdgeList(Graph, Filename, Description)
 
@@ -11,17 +7,18 @@ Saves lists of edges from a given graph into a file.  Each line contains two col
 
 Parameters:
 
-- *Graph*: (input) A Snap.py graph or a network
+- *Graph*: graph (input) 
+    A Snap.py graph or a network
 
-- *Filename*: string
+- *Filename*: string (input)
 	- the name of the file to save the graph to
 	
-- *Description*: string
+- *Description*: string (input)
 	- an optional description that will be written to the top of the file in a commented section
 
 Return value: 
 
-- (none)
+- none
 
 The following example shows how to save edge lists with
 :class:`TNGraph`, :class:`TUNGraph`, and :class:`TNEANet`::

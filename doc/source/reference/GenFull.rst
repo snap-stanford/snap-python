@@ -1,37 +1,35 @@
 GenFull
 '''''''
-.. note::
 
-    This page is a draft and under revision.
-
-
-.. function:: GenFull(tspec, Nodes)
+.. function:: GenFull(GraphType, Nodes)
 
 Generates a complete graph on Nodes nodes. Graph has no self-loops.
 
 Parameters:
 
-- *tspec*: type (input)
-    The type of graph you want to generate, e.g. 
-    :class:`PNGraph`, :class:`PUNGraph`, and :class:`PNEANet`
+- *GraphType*: class (input)
+    Type of graph to create. :class:`PNGraph`, :class:`PUNGraph`, or :class:`PNEANet`
 
 - *Nodes*: int (input)
     The number of nodes used to generate the graph
 
 Return value:
 
-- *Graph*
+- graph
+    A Snap.py graph of the specified type
 
-The following example shows how to generate different types of fully connected graphs::
-
+The following example shows how to generate different types of fully connected graphs for classes :class:`TNGraph`, :class:`TUNGraph`, and :class:`TNEANet`::
 
     import snap
 
-    # Generate a complete directed graph with 5 nodes
     G1 = snap.GenFull(snap.PNGraph, 5)
+    for edge in G1.Edges():
+        print "%d, %d" % (edge.GetSrcNId(), edge.GetDstNId())
 
-    # Generate a complete undirected graph with 5 nodes
     G2 = snap.GenFull(snap.PUNGraph, 5)
+    for edge in G2.Edges():
+        print "%d, %d" % (edge.GetSrcNId(), edge.GetDstNId())
 
-    # Generate a complete directed network with 5 nodes
     N1 = snap.GenFull(snap.PNEANet, 5)
+    for edge in N1.Edges():
+        print "%d, %d" % (edge.GetSrcNId(), edge.GetDstNId())

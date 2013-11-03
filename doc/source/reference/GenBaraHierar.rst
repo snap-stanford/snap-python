@@ -1,11 +1,7 @@
 GenBaraHierar
 '''''''''''''
-.. note::
 
-    This page is a draft and under revision.
-
-
-.. function:: GenBaraHierar(Levels, IsDir)
+.. function:: GenBaraHierar(GraphType, Levels, IsDir)
 
 Generates a Ravasz-Barabasi deterministic scale-free graph.
 
@@ -20,6 +16,9 @@ Corners of the graph are recursively expanded with miniature copies of the base 
 
 Parameters:
 
+- *GraphType*: class (input)
+    Type of graph to create. :class:`PNGraph`, :class:`PUNGraph`, or :class:`PNEANet`
+
 - *Levels*: int (input)
     The number of expansions of the base graph. 
 
@@ -28,18 +27,24 @@ Parameters:
 
 Return value:
 
-- *GraphPt*: PGraph 
-    A newly created Ravasz-Barabasi Snap.py graph with the expansion level equal to *Levels*
+- graph
+    A Snap.py graph of the specified type
 
 For more information see: Hierarchical organization in complex networks. Ravasz and Barabasi. http://arxiv.org/abs/cond-mat/0206130
 
-The following example shows how to generate a Ravasz-Barabasi deterministic scale-free graph (in this case of level 100) using the GenBaraHierar function::
-
+The following example shows how to generate a Ravasz-Barabasi deterministic scale-free graph (in this case of level 100) using the :func:`GenBaraHierar` for classes :class:`TNGraph`, :class:`TUNGraph`, and :class:`TNEANet`::
     
     import snap
 
-    G1 = snap.GenBaraHierar(100, False)
+    Graph = snap.GenBaraHierar(snap.PNGraph, 3, True)
+    for edge in Graph.Edges():
+        print "%d, %d" % (edge.GetSrcNId(), edge.GetDstNId())
+    
+    Graph = snap.GenBaraHierar(snap.PUNGraph, 3, True)
+    for edge in Graph.Edges():
+        print "%d, %d" % (edge.GetSrcNId(), edge.GetDstNId())
 
-    for NI in G1.Nodes():
-        for Id in NI.GetOutEdges():
-            print "edge (%d %d)" % (NI.GetId(), Id)
+
+    Graph = snap.GenBaraHierar(snap.PNEANet, 3, True)
+    for edge in Graph.Edges():
+        print "%d, %d" % (edge.GetSrcNId(), edge.GetDstNId())

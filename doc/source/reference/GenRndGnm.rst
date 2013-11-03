@@ -1,9 +1,5 @@
 GenRndGnm
 '''''''''
-.. note::
-
-    This page is a draft and under revision.
-
 
 .. function:: GenRndGnm(GraphType, Nodes, Edges, IsDir=True, Rnd=TInt.Rnd)
 
@@ -11,30 +7,39 @@ Generates an Erdos-Renyi random graph of the specified *GraphType*, Computes the
 
 Parameters:
 
-- *GraphType*: class of graph
-    The class of Snap.py graph produced
+- *GraphType*: class (input)
+    Type of graph to create. :class:`PNGraph`, :class:`PUNGraph`, or :class:`PNEANet`
 
-- *Nodes*: an integer
-    Number of nodes in the generated graph.
+- *Nodes*: int (input)
+    Number of nodes in the generated graph
 
-- *Edges*: an integer
-    Number of edges in the genereated graph.
+- *Edges*: int (input)
+    Number of edges in the genereated graph
 
-- *IsDir*: a boolean
-    Whether the graph is directed.
+- *IsDir*: bool (input)
+    True for a directed graph, false for an undirected graph
 
-- *Rnd*: a random generator instance
-    The random generator instance used
+- *Rnd*: TRnd (input)
+    Random number generator 
 
 Return value:
 
-- A Snap.py graph of the relevant type.
+- graph
+    A Snap.py graph of the specified type
 
 The following example shows how to generate random graphs of types
 :class:`TNGraph`, :class:`TUNGraph`, and :class:`TNEANet`::
 
     import snap
 
-    Graph1 = snap.GenRndGnm(snap.PNGraph, 100, 1000)
-    Graph2 = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
-    Graph3 = snap.GenRndGnm(snap.PNEANet, 100, 1000)
+    Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
+    for edge in Graph.Edges():
+        print "%d, %d" % (edge.GetSrcNId(), edge.GetDstNId())
+
+    Graph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
+    for edge in Graph.Edges():
+        print "%d, %d" % (edge.GetSrcNId(), edge.GetDstNId())
+
+    Graph = snap.GenRndGnm(snap.PNEANet, 100, 1000)
+    for edge in Graph.Edges():
+        print "%d, %d" % (edge.GetSrcNId(), edge.GetDstNId())

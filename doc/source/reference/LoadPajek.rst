@@ -1,9 +1,5 @@
 LoadPajek
 '''''''''
-.. note::
-
-    This page is a draft and under revision.
-
 
 .. function:: PGraph LoadPajek(GraphType, InFNm)
 
@@ -22,8 +18,8 @@ Parameters:
     
 Return value:
 
-- PGraph
-    A graph of the specified type representing the Pajek data
+- graph
+    A Snap.py graph of the specified type representing the Pajek data
 
 For more information on the Pajek format see: http://pajek.imfm.si/doku.php
 
