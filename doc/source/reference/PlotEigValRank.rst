@@ -1,9 +1,9 @@
 PlotEigValRank
 ''''''''''''''
 
-.. function:: PlotEigValRank(Graph, NumEigenvalues, FNmPref, DescStr=snap.TStr())
+.. function:: PlotEigValRank(Graph, NumEigenvalues, FNmPref, DescStr)
 
-Plots the distribution of the ranks of the first *NumEigenvalues* eigenvalues of the undirected graph *Graph*.  The function creates three new files: 1) eigVal.*FNmPref*.plt (the plot), 2) eigVal.*FNPref*.eps (the plotting description), and 3) eigVal.*FNmPref*.tab (the tab separated plotting data).
+Plots the distribution of the ranks of the first *NumEigenvalues* eigenvalues of the undirected graph *Graph*.  The function creates three new files: 1) eigVal.<*FNmPref*>.plt (the plot), 2) eigVal.<*FNPref*>.eps (the plotting description), and 3) eigVal.<*FNmPref*>.tab (the tab separated plotting data).
 
 Parameters:
 
@@ -17,7 +17,7 @@ Parameters:
     File name preference for the plotted graph
 
 - *DescStr*: string (input)
-    Description of the graph. Default to file name preference
+    Description of the graph. The string should be non-empty.
 
 Return value:
 

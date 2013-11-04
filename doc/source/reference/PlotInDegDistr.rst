@@ -1,7 +1,7 @@
 PlotInDegDistr
 ''''''''''''''
 
-.. function:: PlotInDegDistr(Graph, FNmPref, DescStr=snap.TStr(), PlotCCdf=False, PowerFit=False)
+.. function:: PlotInDegDistr(Graph, FNmPref, DescStr, PlotCCdf=False, PowerFit=False)
 
 Plots the in-degree distribution of *Graph*.
 
@@ -14,7 +14,7 @@ Parameters:
     A string representing the preferred output file name
 
 - *DescStr*: string (input)
-    A string representing the title of the plot
+    Description of the graph. The string should be non-empty.
 
 - *PlotCCdf*: bool (input)
     Plots the distribution as a Complementary Cummulative distribution function

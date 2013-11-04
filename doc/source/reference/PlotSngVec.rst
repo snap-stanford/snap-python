@@ -1,9 +1,9 @@
 PlotSngVec
 ''''''''''
 
-.. function:: PlotSngVec(Graph, FNmPref, DescStr=snap.TStr())
+.. function:: PlotSngVec(Graph, FNmPref, DescStr)
 
-Ranks the values of the leading left singular vector of the graph adjacency matrix plots the first SngVals on a log-log chart. The function creates three new files: 1) sngVecL.*FNmPref*.plt (the plot), 2) sngVecL.*FNPref*.eps (the plotting description), and 3) sngVecL.*FNmPref*.tab (the tab separated plotting data).
+Ranks the values of the leading left singular vector of the graph adjacency matrix plots the first SngVals on a log-log chart. The function creates three new files: 1) sngVecL.<*FNmPref*>.plt (the plot), 2) sngVecL.<*FNPref*>.eps (the plotting description), and 3) sngVecL.<*FNmPref*>.tab (the tab separated plotting data).
 
 Parameters:
 
@@ -14,7 +14,7 @@ Parameters:
     A string representing the preferred output file name
 
 - *DescStr*: string (input)
-    A string representing the title of the plot
+    Description of the graph. The string should be non-empty.
 
 Return value:
 
@@ -34,3 +34,5 @@ Observations:
 * The C++ code seems to be set up to output both right and left vectors, but only generates the left
 * Function documentation specifies that only the first SngVals values will be plotted. Its not clear (to me) that this is the case, nor where this value is set, if at all it is
 * Its not clear (to me, encore...) how one sets the default output values (e.g., generate a png file or show directly in aqua vs eps) 
+
+***ADD TO STUDENT REPORTS**

@@ -1,9 +1,9 @@
 PlotInvParticipRat
 ''''''''''''''''''
 
-.. function:: PlotInvParticipRat(Graph, MaxEigVecs, TimeLimit, FNmPref, DescStr=snap.TStr())
+.. function:: PlotInvParticipRat(Graph, MaxEigVecs, TimeLimit, FNmPref, DescStr)
 
-Plots the inverse participation ratio. See Spectra of "real-world" graphs: Beyond the semicircle law by Farkas, Derenyi, Barabasi and Vicsek. The function creates three new files: 1) eigIPR.*FNmPref*.plt (the plot), 2) eigIPR.*FNPref*.eps (the plotting description), and 3) eigIPR.*FNmPref*.tab (the tab separated plotting data).
+Plots the inverse participation ratio. See Spectra of "real-world" graphs: Beyond the semicircle law by Farkas, Derenyi, Barabasi and Vicsek. The function creates three new files: 1) eigIPR.<*FNmPref*>.plt (the plot), 2) eigIPR.<*FNmPref*>.eps (the plotting description), and 3) eigIPR.<*FNmPref*>.tab (the tab separated plotting data).
 
 Parameters:
 
@@ -20,7 +20,7 @@ Parameters:
     File name preference for the plotted graph
 
 - *DescStr*: string (input)
-    Description of the graph. Default to file name preference
+    Description of the graph. The string should be non-empty.
   
 Return value:
 
