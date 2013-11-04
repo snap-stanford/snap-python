@@ -1,23 +1,19 @@
 GetSngVals
 '''''''''''
-.. note::
-
-    This page is a draft and under revision.
-
 
 .. function:: GetSngVals(Graph, SngVals, SngValV)
 
-Computes largest SngVals singular values of the adjacency matrix representing a directed Graph.
+Computes largest SngVals singular values of the adjacency matrix representing the directed graph *Graph*.
 
 Parameters:
 
-- *Graph*: PNGraph (input)
+- *Graph*: directed graph (input)
     A Snap.py directed graph
 
 - *SngVals*: int (input)
     number of singular valuesx
 
-- *SngValV*: TFltV (vector) of floats (output)
+- *SngValV*: TFltV, a vector of floats (output)
     Vector of singular values
 
 Return value:

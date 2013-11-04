@@ -1,15 +1,9 @@
 PlotEigValRank
 ''''''''''''''
-.. note::
-
-    This page is a draft and under revision.
-
 
 .. function:: PlotEigValRank(Graph, NumEigenvalues, NameSuffix, TitlePrefix)
 
-Plots the distribution of the ranks of the first *NumEigenvalues* eigenvalues of the undirected
-graph, *Graph*.  The plot files will be stored in the current working directory and will
-include the following:
+Plots the distribution of the ranks of the first *NumEigenvalues* eigenvalues of the undirected graph *Graph*.  The plot files will be stored in the current working directory and will include the following:
 
 * eigVal.<NameSuffix>.eps: an EPS file containing the rendered plot
 
@@ -30,23 +24,21 @@ The plot contained in the .eps file will have the following information included
 
 Parameters:
 
-- *Graph*: graph (input)
-    An undirected Snap.py graph
+- *Graph*: undirected graph (input)
+    An Snap.py undirected graph
 
 - *NumEigenvalues*: int (input)
     The plot will contain the ranks of the first *NumEigenvalues* eigenvalues' ranks
 
 - *NameSuffix*: string (input)
-    The filenames for all files created will start with eigVal.*NameSuffix*.
+    The filenames for all files created will start with eigVal.*NameSuffix*
 
 - *TitlePrefix*: string (input)
-    The plot title will start with *TitlePrefix*.
+    The plot title will start with *TitlePrefix*
 
 Return value:
 
 - None
-
-For more info see: http://en.wikipedia.org/wiki/Eigenvalues_and_eigenvectors
 
 The following example shows how to plot the eigenvalue rank distribution of
 an undirected graph of type :class:`TUNGraph`::
@@ -56,6 +48,6 @@ an undirected graph of type :class:`TUNGraph`::
     Graph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
 
     # Plot the ranks of the first 10 eigenvalues
-    # NOTE: Random graphs are likely to thwart the calculation of eigenvalues!
+    # NOTE: Random graphs are likely to thwart the calculation of eigenvalues
     snap.PlotEigValRank(Graph, 10, "example", "Random Graph Eigenvalue Rank")
 

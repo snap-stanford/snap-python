@@ -1,42 +1,34 @@
 GetInvParticipRat
 '''''''''''''''''
-.. note::
-
-    This page is a draft and under revision.
-
 
 .. function:: GetInvParticipRat(Graph, MaxEigVecs, TimeLimit, EigValIprV)
 
 Computes Inverse participation ratio of a given graph. See Spectra of
 "real-world" graphs: Beyond the semicircle law by Farkas, Derenyi, Barabasi
-and Vicsek [#]_.
-
-.. [#] http://arxiv.org/abs/cond-mat/0102335
+and Vicsek  URL: http://arxiv.org/abs/cond-mat/0102335
 
 Parameters:
 
 - *Graph*: undirected graph (input)
     A Snap.py undirected graph
 
-- *EigVecs*: integer (input)
+- *EigVecs*: int (input)
     Maximum number of eigenvectors to return
 
-- *TimeLimit*: integer (input)
+- *TimeLimit*: int (input)
     Maximum number seconds to search
 
-- *EigValIprV*: vector of float pairs (output)
+- *EigValIprV*: TFltPrV, a vector of (float, float) pairs (output)
     The output inverse participation ratios
-
-- *EigVecV*: vector of vector of floats (output)
-    The top eigenvectors
     
 Return value:
 
 - None
 
-The following example computes the top eigenvectors and prints them::
+The following example computes the inverse participation ratio for :class:`TNGraph`::
 
  import snap
+ 
  Graph = snap.TUNGraph.New()
  Graph.AddNode(1)
  Graph.AddNode(2)
