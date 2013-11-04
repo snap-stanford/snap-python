@@ -1,18 +1,14 @@
 PlotSngValDistr
 '''''''''''''''
-.. note::
 
-    This page is a draft and under revision.
+.. function:: PlotSngValDistr(Graph,SngVals, FNmPref, DescStr=snap.TStr())
 
-
-.. function:: PlotSngValDistr(Graph,SngVals, FNMPref, DescStr)
-
-Plots a histogram distribution of the top 2x *SngVals* singular values of the *Graph* adjacency matrix.
+Plots a histogram distribution of the top 2x *SngVals* singular values of the *Graph* adjacency matrix. The function creates three new files: 1) sngDistr.*FNmPref*.plt (the plot), 2) sngDistr.*FNPref*.eps (the plotting description), and 3) sngDistr.*FNmPref*.tab (the tab separated plotting data).
 
 Parameters:
 
-- *Graph*: graph (input)
-    A directed Snap.py graph
+- *Graph*: directed graph (input)
+    A Snap.py directed graph
 
 - *SngVals*: integer (input)
     Representing one half the desired number of singular values
@@ -26,15 +22,10 @@ Parameters:
 Return value:
 
 - None
-    The function creates three new files: 1) sngDist.FNmPref.eps (the plot), 2) sngDistr.FNPref.eps (the plotting description), and 3) sngDistr.FNmPref.tab (the tab separated plotting data)
 
-The following example shows how to use PlotSngValDistr on
-:class:`PNGraph`::
+The following example shows how to use :func:`PlotSngValDistr` for :class:`TNGraph`::
 
-        from snap import *
+        import snap
 
-        Graph = GenRndGnm(PNGraph, 100, 5000)
-        SngVals = 50
-        FNmPref = "TitleName"
-        DescStr = "Description"
-        PlotSngValDistr(Graph, SngVals,FNmPref, DescStr)
+        Graph = snap.GenRndGnm(snap.PNGraph, 100, 5000)
+        snap.PlotSngValDistr(Graph, 50, "title", "SngVal Distribution")

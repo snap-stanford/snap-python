@@ -1,26 +1,9 @@
 PlotEigValRank
 ''''''''''''''
 
-.. function:: PlotEigValRank(Graph, NumEigenvalues, NameSuffix, TitlePrefix)
+.. function:: PlotEigValRank(Graph, NumEigenvalues, FNmPref, DescStr=snap.TStr())
 
-Plots the distribution of the ranks of the first *NumEigenvalues* eigenvalues of the undirected graph *Graph*.  The plot files will be stored in the current working directory and will include the following:
-
-* eigVal.<NameSuffix>.eps: an EPS file containing the rendered plot
-
-* eigVal.<NameSuffix>.plt: a GNUplot file to (re)create the plot
-
-* eigVal.<NameSuffix>.tab: a GNUplot data file referenced by eigVal.*NameSuffix*.plt
-
-The .eps file can be manually recreated from the .plt and .tab files by running
-"gnuplot eigVal.<NameSuffix>.plt" from the directory where the files reside.
-
-The plot contained in the .eps file will have the following information included in the plot title:
-
-* *TitlePrefix*
-
-* The number of nodes and edges in *Graph*
-
-* The largest eigenvalue of *Graph*
+Plots the distribution of the ranks of the first *NumEigenvalues* eigenvalues of the undirected graph *Graph*.  The function creates three new files: 1) eigVal.*FNmPref*.plt (the plot), 2) eigVal.*FNPref*.eps (the plotting description), and 3) eigVal.*FNmPref*.tab (the tab separated plotting data).
 
 Parameters:
 
@@ -30,11 +13,11 @@ Parameters:
 - *NumEigenvalues*: int (input)
     The plot will contain the ranks of the first *NumEigenvalues* eigenvalues' ranks
 
-- *NameSuffix*: string (input)
-    The filenames for all files created will start with eigVal.*NameSuffix*
+- *FNmPref*: string (input)
+    File name preference for the plotted graph
 
-- *TitlePrefix*: string (input)
-    The plot title will start with *TitlePrefix*
+- *DescStr*: string (input)
+    Description of the graph. Default to file name preference
 
 Return value:
 
@@ -45,7 +28,7 @@ an undirected graph of type :class:`TUNGraph`::
 
     import snap
 
-    Graph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
+    Graph = snap.GenRndGnm(snap.PUNGraph, 100, 2000)
 
     # Plot the ranks of the first 10 eigenvalues
     # NOTE: Random graphs are likely to thwart the calculation of eigenvalues

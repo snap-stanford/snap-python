@@ -1,9 +1,5 @@
 PlotInDegDistr
 ''''''''''''''
-.. note::
-
-    This page is a draft and under revision.
-
 
 .. function:: PlotInDegDistr(Graph, FNmPref, DescStr=snap.TStr(), PlotCCdf=False, PowerFit=False)
 
@@ -14,11 +10,11 @@ Parameters:
 - *Graph*: graph (input)
     A Snap.py graph or a network
 
-- *FNmPref*: snap.TStr (input)
-    File name
+- *FNmPref*: string (input)
+    A string representing the preferred output file name
 
-- *DescStr*: snap.TStr (input)
-    Description string to be added to the plot title
+- *DescStr*: string (input)
+    A string representing the title of the plot
 
 - *PlotCCdf*: bool (input)
     Plots the distribution as a Complementary Cummulative distribution function
