@@ -11,10 +11,10 @@ Parameters:
     A Snap.py graph or a network
 
 - *Filename*: string (input)
-	- the name of the file to save the graph to
+    the name of the file to save the graph to
 	
 - *Description*: string (input)
-	- an optional description that will be written to the top of the file in a commented section
+    an optional description that will be written to the top of the file in a commented section
 
 Return value: 
 

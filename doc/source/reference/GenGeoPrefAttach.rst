@@ -1,7 +1,7 @@
 GenGeoPrefAttach
 ''''''''''''''''
 
-.. function:: GenGeoPrefAttach(NumNodes, NumEdges, Beta, Rnd=TInt::Rnd)
+.. function:: GenGeoPrefAttach(NumNodes, NumEdges, Beta, Rnd)
 
 Generate a random scale-free, undirected graph using the Geometric Preferential Attachment model by Flexman, Frieze and Vera.
 
@@ -16,7 +16,7 @@ Parameters:
 - *Beta*: float (input)
     The beta parameter for the Geometric Preferential Attachment model.  Controls the size of the radius that the algorithm will select nodes from within to which the given node will be connected to by an edge.  The value
     of *Beta* should be between 0 and 0.5, but may be any value.
-    The radius is calculated as :math:`r = n^{\beta - 1/2}\ln n`
+    The radius is calculated as :math:`r = n^{\beta - 1/2}\ln(n)`
 
 - *Rnd*: TRnd (input)
     Random number generator 

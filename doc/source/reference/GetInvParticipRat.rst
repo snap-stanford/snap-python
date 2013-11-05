@@ -45,5 +45,5 @@ The following example computes the inverse participation ratio for :class:`TNGra
  EigValIprV = snap.TFltPrV()
  snap.GetInvParticipRat(Graph, 20, 1000, EigValIprV)
  for x in EigValIprV:
-    print '%f, %f' % (x.GetVal1(), x.GetVal2())
+     print '%f, %f' % (x.GetVal1(), x.GetVal2())
 

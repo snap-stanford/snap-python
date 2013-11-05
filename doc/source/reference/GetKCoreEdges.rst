@@ -18,7 +18,7 @@ Return value:
 - int
     The number of cores
 
-For more info see: http://en.wikipedia.org/wiki/Degeneracy_(graph_theory)#k-Cores
+For more info see: http://en.wikipedia.org/wiki/Degeneracy_(graph_theory)%23KCores
 
 The following example shows how to get the number of edges for a given k-core in
 :class:`TNGraph`, :class:`TUNGraph`, and :class:`TNEANet`::

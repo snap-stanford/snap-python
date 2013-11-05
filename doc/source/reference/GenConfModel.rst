@@ -1,7 +1,7 @@
 GenConfModel
 '''''''''''''''
 
-.. function:: GenConfModel(DegSeqV, Rnd=TInt::Rnd)
+.. function:: GenConfModel(DegSeqV, Rnd)
 
 Generates a random undirected graph with the given degree sequence *DegSeqV*.
 

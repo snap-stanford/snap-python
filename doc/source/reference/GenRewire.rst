@@ -1,9 +1,9 @@
 GenRewire
 '''''''''''
 
-.. function:: GenRewire (Graph, NSwitch=100, Rnd=TInt::Rnd)
+.. function:: GenRewire (Graph, NSwitch, Rnd)
 
-Rewires *Graph* by randomly rewiring its edges while keeping the degrees the same.
+Rewires an undirected *Graph* by randomly rewiring its edges while keeping the degrees the same.
 
 Parameters:
 
@@ -15,7 +15,6 @@ Parameters:
 
 - *Rnd*: TRnd (input)
     Random number generator
-
 
 Return value:
 

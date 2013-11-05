@@ -1,9 +1,9 @@
 GenPrefAttach
 '''''''''''''
 
-.. function:: GenPrefAttach(Nodes, NodesOutDeg, Rnd=TInt::Rnd)
+.. function:: GenPrefAttach(Nodes, NodesOutDeg, Rnd)
 
-Generates a power-law degree distribution using Barabasi-Albert model of scale-free graphs.
+Generates an undirected graph with a power-law degree distribution using Barabasi-Albert model of scale-free graphs.
 
 Parameters: 
 
@@ -21,7 +21,7 @@ Return Value:
 - PUNGraph
 	An undirected graph representing the power-law degree distribution. 
 
-Barabasi-Albert model of scale-free graphs. The graph has power-law degree distribution. See: Emergence of scaling in random networks by Barabasi and Albert. URL: http://arxiv.org/abs/cond-mat/9910332
+The function implements a Barabasi-Albert model of scale-free graphs and generates graphs with a power-law degree distribution. See: Emergence of scaling in random networks by Barabasi and Albert. URL: http://arxiv.org/abs/cond-mat/9910332
 
 The following example shows how to use :func:`GenPrefAttach`::
 	

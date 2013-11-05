@@ -5,7 +5,7 @@ SaveMatlabSparseMtx
 
 Saves a graph in a MATLAB sparse matrix format.
 
-Each line contains a tuple of 3 values: <source node="" id>=""><tab><destination node="" id>=""><tab>1.
+Each line contains a tuple of 3 values: <source node id><tab><destination node id><tab>1.
 
 Parameters:
 

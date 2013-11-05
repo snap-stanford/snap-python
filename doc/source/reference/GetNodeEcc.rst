@@ -14,7 +14,7 @@ Parameters:
     Node id
 
 - *IsDir*: boolean (input)
-    Determines if *Graph* is treated as directed i.e. False considers links as undirected
+    Determines if *Graph* is treated as directed i.e. False considers links as undirected.
 
 Return value:
 

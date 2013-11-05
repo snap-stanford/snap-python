@@ -1,9 +1,9 @@
 GenDegSeq
 '''''''''
 
-.. function:: GenDegSeq(DegSeqV, Rnd=TInt::Rnd)
+.. function:: GenDegSeq(DegSeqV, Rnd)
 
-Generates a random graph with the exact degree sequence.
+Generates an undirected random graph with the exact degree sequence.
 
 Parameters:
 
@@ -17,8 +17,8 @@ Return value:
 
 - PUNGraph
 
-The following example shows how to generate a random :class:`TUNGraph` with exact
-degree sequence::
+The following example shows how to generate a random :class:`TUNGraph` with
+exact degree sequence::
 
     import snap
 
@@ -32,5 +32,5 @@ degree sequence::
     Graph = snap.GenDegSeq(DegSeqV, Rnd)
 
     for e in Graph.Edges():
-      print "edge (%d, %d)" % (e.GetSrcNId(), e.GetDstNId())
+        print "edge (%d, %d)" % (e.GetSrcNId(), e.GetDstNId())
 

@@ -3,7 +3,7 @@ GenRMatEpinions
 
 .. function:: GenRMatEpinions()
 
-Generates a R-Mat graph, with a synthetic copy of the Epinions social network.
+Generates an R-Mat directed graph, with a synthetic copy of the Epinions social network.
 
 Parameters:
 

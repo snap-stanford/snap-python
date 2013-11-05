@@ -1,9 +1,9 @@
 LoadPajek
 '''''''''
 
-.. function:: PGraph LoadPajek(GraphType, InFNm)
+.. function:: LoadPajek(GraphType, InFNm)
 
-Loads a (directed, undirected or multi) *GraphType* from Pajek .PAJ format file from
+Loads a *GraphType* from Pajek .PAJ format file from
 the filename in *InFNm*. Function supports both the 1 edge per line (<source>
 <destination> <weight>) as well as the 1 node per line (<source> <destination1>
 <destination2> ...) formats.

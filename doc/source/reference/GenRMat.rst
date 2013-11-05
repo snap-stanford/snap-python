@@ -1,9 +1,9 @@
 GenRMat
 '''''''
 
-.. function:: GenRMat(Nodes, Edges, A, B, C, Rnd=TInt::Rnd)
+.. function:: GenRMat(Nodes, Edges, A, B, C, Rnd)
 
-Generates a R-MAT graph using recursive descent into a 2x2 matrix [A,B; C, 1-(A+B+C)].
+Generates an R-MAT directed graph using recursive descent into a 2x2 matrix [A,B; C, 1-(A+B+C)].
 
 Parameters:
 

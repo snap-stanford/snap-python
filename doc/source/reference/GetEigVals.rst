@@ -3,24 +3,24 @@ GetEigVals
 
 .. function:: GetEigVals(Graph, EigVals, PEigV)
 
-Computes top EigVals eigenvalues of the adjacency matrix representing the given undirected graph *Graph*.
+Computes top *EigVals* eigenvalues of the adjacency matrix representing the given undirected graph *Graph*.
 
 Parameters:
 
 - *Graph*: undirected graph (input)
-  An undirected Snap.py graph.
+    An undirected Snap.py graph.
 
 - *EigVals*: int (input)
-  The number of eigenvalues 
+    The number of eigenvalues 
 
 - *PEigV* : TFltV, a vector of floats(output)
-  The eigen vector of floating point values
+    The eigenvector of floating point values
 
 Return value:
 
 - None
 
-The following example shows how to calcualte the top EigVals eigenvalues for :class:`TUNGraph`::
+The following example shows how to calcualte the top *EigVals* eigenvalues for :class:`TUNGraph`::
 
 	import snap
 

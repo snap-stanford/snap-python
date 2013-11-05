@@ -3,12 +3,12 @@ GenRndGnm
 
 .. function:: GenRndGnm(GraphType, Nodes, Edges, IsDir=True, Rnd=TInt.Rnd)
 
-Generates an Erdos-Renyi random graph of the specified *GraphType*, Computes the degree sequence vector for nodes in *Graph*. The degree sequence vector is stored in *DegV*.
+Generates an Erdos-Renyi random graph of the specified *GraphType*.
 
 Parameters:
 
 - *GraphType*: class (input)
-    Type of graph to create. :class:`PNGraph`, :class:`PUNGraph`, or :class:`PNEANet`
+    Type of graph to create: :class:`PNGraph`, :class:`PUNGraph`, or :class:`PNEANet`
 
 - *Nodes*: int (input)
     Number of nodes in the generated graph
