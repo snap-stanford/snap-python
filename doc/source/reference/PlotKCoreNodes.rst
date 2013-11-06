@@ -1,40 +1,35 @@
 PlotKCoreNodes
 ''''''''''''''
-.. note::
-
-    This page is a draft and under revision.
-
 
 .. function:: PlotKCoreNodes(Graph, FNmPref, DescStr)
 
-Plots the k-Core node-size distribution: Core k vs. number of nodes in k-core.
+Plots the k-core node-size distribution: core k vs. number of nodes in k-core. The function creates three new files: 1) coreNodes.<*FNmPref*>.plt (the plot), 2) coreNodes.<*FNPref*>.eps (the plotting description), and 3) coreNodes.<*FNmPref*>.tab (the tab separated plotting data).
+
 Parameters:
 
 - *Graph*: graph (input)
     A Snap.py graph or a network
 
-- *FNMPref*: TStr (input)
-    Additional string to append to the end of the output filename.
+- *FNmPref*: string (input)
+    A string representing the preferred output file name
 
-- *DescStr*: TStr (input)
-    Description String
+- *DescStr*: string (input)
+    Description of the graph. The string should be non-empty
 
 Return value:
 
 - None
 
-
-The following example shows how to calculate PageRank scores for nodes in
+The following example shows how to plot the k-core node-size distribution for
 :class:`TNGraph`, :class:`TUNGraph`, and :class:`TNEANet`::
 
     import snap
-    from snap import *
 
     Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
-    PlotKCoreNodes(Graph, "directed", "Directed")
+    snap.PlotKCoreNodes(Graph, "example", "Directed graph - k-core nodes")
     
     Graph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
-    PlotKCoreNodes(Graph, "undirected", "Undirected")
+    snap.PlotKCoreNodes(Graph, "example", "Undirected graph - k-core nodes")
 
     Graph = snap.GenRndGnm(snap.PNEANet, 100, 1000)
-    PlotKCoreNodes(Graph, "network", "Network")
+    snap.PlotKCoreNodes(Graph, "example", "Network - k-core nodes")

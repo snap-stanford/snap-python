@@ -1,24 +1,20 @@
 PlotShortPathDistr
 ''''''''''''''''''
-.. note::
 
-    This page is a draft and under revision.
+.. function:: PlotShortPathDistr(Graph, FNmPref, DescStr, TestNodes=TInt.Mx)
 
-
-.. function:: PlotShortPathDistr(Graph, FNmPref, DescStr = TStr(), int TestNodes = TInt.Mx)
-
-Plots the distribution of the shortest path lengths in *Graph*.  The implementation is based on BFS.
+Plots the distribution of the shortest path lengths in *Graph*. The implementation is based on BFS. The function creates three new files: 1) diam.<*FNmPref*>.plt (the plot), 2) diam.<*FNPref*>.eps (the plotting description), and 3) diam.<*FNmPref*>.tab (the tab separated plotting data).
 
 Parameters:
 
 - *Graph*: graph (input)
-    A Snap.py graph or a network.
+    A Snap.py graph or a network
 
-- *FNmPref*: TStr (input)
-    File name prefix.  The file name will be "diam.FNmPref.*".
+- *FNmPref*: string (input)
+    A string representing the preferred output file name
 
-- *DescStr*: TStr (input)
-    Description string. This will be the first part of the title of the graph.  If *DescStr* is an empty TStr (the default option), then *FNmPref* will be used instead.
+- *DescStr*: string (input)
+    Description of the graph. The string should be non-empty
 
 - *TestNodes*: int (input)
     Number of nodes from which to start BFS to count shortest path lengths.  If TestNodes is less than the total number of graph nodes, then the plot may only be an approximation of the distribution of the shortest path lengths.
@@ -27,17 +23,16 @@ Return value:
 
 - None
 
-The following example shows how to generate plots of the distribution of shortest path lengths for
-:class:`TNGraph`, :class:`TUNGraph`, and :class:`TNEANet`::
+The following example shows how to generate plots of the distribution of shortest path lengths for :class:`TNGraph`, :class:`TUNGraph`, and :class:`TNEANet`::
 
     import snap
     
     Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
-    snap.PlotShortPathDistr(Graph, "Directed_Random_100-1000")
+    snap.PlotShortPathDistr(Graph, "example", "Directed graph - shortest path")
     
     Graph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
-    snap.PlotShortPathDistr(Graph, "urand", "Undirected_Random_100-1000")
+    snap.PlotShortPathDistr(Graph, "example", "Undirected graph - shortest path")
     
     Graph = snap.GenRndGnm(snap.PNEANet, 100, 1000)
-    snap.PlotShortPathDistr(Graph, "net", "Network_100-1000", 50)
+    snap.PlotShortPathDistr(Graph, "example", "Network - shortest path")
     

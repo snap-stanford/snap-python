@@ -1,24 +1,20 @@
 PlotHops
 ''''''''
-.. note::
 
-    This page is a draft and under revision.
+.. function:: PlotHops(Graph, FNmPref, DescStr, IsDir=False, NApprox=32)
 
-
-.. function:: PlotHops(Graph, FNmPref, DescStr = snap.TStr(), IsDir = false, NApprox = 32)
-
-Plots the cumulative distribution of the shortest path lengths of a Graph. Implementation is based on ANF (Approximate Neighborhood Function).
+Plots the cumulative distribution of the shortest path lengths of *Graph*. The implementation is based on ANF (Approximate Neighborhood Function). The function creates three new files: 1) hop.<*FNmPref*>.plt (the plot), 2) hop.<*FNPref*>.eps (the plotting description), and 3) hop.<*FNmPref*>.tab (the tab separated plotting data).
 
 Parameters:
 
 - *Graph*: graph (input)
     A Snap.py graph or a network
 
-- *FNmFref*: string (input)
-    File name prefix for output graphics files
+- *FNmPref*: string (input)
+    A string representing the preferred output file name
 
 - *DescStr*: string (input)
-    Description string for the plot
+    Description of the graph. The string should be non-empty
 
 - *IsDir*: bool (input)
     Whether the input graph is directed or not
@@ -30,18 +26,15 @@ Return value:
 
 - None
 
-The following example shows how to plot the cumulative distribution of shortest path lengths
-for graphs of types :class:`TNGraph`, :class:`TUNGraph`, and :class:`TNEANet`::
+The following example shows how to plot the cumulative distribution of shortest path lengths for graphs of types :class:`TNGraph`, :class:`TUNGraph`, and :class:`TNEANet`::
 
     import snap
 
     Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
-    snap.PlotHops(Graph, "PNGraph", snap.TStr(), True, 1024)
+    snap.PlotHops(Graph, "example", "Directed graph - hops", True, 1024)
 
     Graph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
-    snap.PlotHops(Graph, "PUNGraph")
+    snap.PlotHops(Graph, "example", "Undirected graph - hops", False, 1024)
 
     Graph = snap.GenRndGnm(snap.PNEANet, 100, 1000)
-    snap.PlotHops(Graph, "PNEANet", "with some comments")
-    snap.PlotHops(Graph, "PNEANetDirected", "with some more comments", True)
-
+    snap.PlotHops(Graph, "example", "Network - hops", True, 1024)

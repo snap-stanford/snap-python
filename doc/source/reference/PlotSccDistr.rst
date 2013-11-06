@@ -1,43 +1,35 @@
 PlotSccDistr
 ''''''''''''
-.. note::
 
-    This page is a draft and under revision.
+.. function:: PlotSccDistr(Graph, FNmPref, DescStr)
 
-
-.. function:: PlotSccDistr(Graph, FNmPref, DescStr = '')
-
-Plots the distribution of sizes of strongly connected components of a *Graph*. Saves the resultant plot as a 'scc. *FNmPref* .png' image via GnuPlot.
+Plots the distribution of sizes of strongly connected components of *Graph*. The function creates three new files: 1) scc.<*FNmPref*>.plt (the plot), 2) scc.<*FNPref*>.eps (the plotting description), and 3) scc.<*FNmPref*>.tab (the tab separated plotting data).
 
 Parameters:
 
 - *Graph*: graph (input)
-    A Snap.py graph or a network.
+    A Snap.py graph or a network
 
 - *FNmPref*: string (input)
-    A short description to go into the filename of the plot.
+    A string representing the preferred output file name
 
 - *DescStr*: string (input)
-    A short description to go into the title of the plot. If left blank, or unspecified, will default to *FNmPref*.
-
+    Description of the graph. The string should be non-empty
 
 Return value:
 
 - None
-
-The following example shows how to obtain example plots using :class:`TNGraph`, :class:`TUNGraph`, and :class:`TNEANet`. A more meaningfull example using the http://snap.stanford.edu/data/wiki-Vote.html dataset is also shown::
+    
+The following example shows how to plot the distribution of sizes of strongly connected components for :class:`TNGraph`, :class:`TUNGraph`, and :class:`TNEANet`::
 
     import snap
 
-    Graph = snap.GenRndGnm(snap.PNGraph, 100, 100)
-    snap.PlotSccDistr(Graph,'ex1', 'PNGraph')
-    
-    Graph = snap.GenRndGnm(snap.PUNGraph, 100, 100)
-    snap.PlotSccDistr(Graph,'ex2', 'PUNGraph')
+    Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
+    snap.PlotSccDistr(Graph, "example", "Directed graph - scc distributaion")
 
-    Graph = snap.GenRndGnm(snap.PNEANet, 100, 100)
-    snap.PlotSccDistr(Graph,'ex3', 'PNEANet')
+    Graph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
+    snap.PlotSccDistr(Graph, "example", "Undirected graph - scc distribution")
 
-    wiki_votes = snap.LoadEdgeList(snap.PNGraph,'Wiki-Vote.txt',0,1)
-    snap.PlotSccDistr(wiki_votes,'ex_wiki', 'PNGraph')
+    Graph = snap.GenRndGnm(snap.PNEANet, 100, 1000)
+    snap.PlotSccDistr(Graph, "example", "Network - scc distribution")
 

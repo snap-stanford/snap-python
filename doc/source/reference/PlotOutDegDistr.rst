@@ -1,13 +1,10 @@
 PlotOutDegDistr
-'''''''''''''''
-.. note::
+''''''''''''''
 
-    This page is a draft and under revision.
+.. function:: PlotOutDegDistr(Graph, FNmPref, DescStr, PlotCCdf=False, PowerFit=False)
 
+Plots the out-degree distribution of *Graph*. The function creates three new files: 1) outDeg.<*FNmPref*>.plt (the plot), 2) outDeg.<*FNPref*>.eps (the plotting description), and 3) outDeg.<*FNmPref*>.tab (the tab separated plotting data).
 
-.. function:: PlotOutDegDistr(Graph, FNmPref, DescStr, PlotCCdf, PowerFit)
-
-Plots the out-degree distribution of a *Graph*.
 
 Parameters:
 
@@ -15,51 +12,30 @@ Parameters:
     A Snap.py graph or a network
 
 - *FNmPref*: string (input)
-    Name of the 3 files that are written to the current working directory.
-        outDeg.<FNmPref>.plt
-        outDeg.<FNmPref>.png
-        outDeg.<FNmPref>.tab
-        
-- *DescStr*: string (input)
-    User description or comment
-    
-- *PlotCCdf*: boolean (input)
-    Plots the distribution as a Complementary Cumulative Distribution Function (CCDF). 
+    A string representing the preferred output file name
 
-- *PowerFit*: boolean (input)
-    Fits a Power-Law to the distribution.
+- *DescStr*: string (input)
+    Description of the graph. The string should be non-empty
+
+- *PlotCCdf*: bool (input)
+    Plots the distribution as a Complementary Cummulative distribution function
+
+- *PowerFit*: bool (input)
+    Fits a Power-Law to the distribution
 
 Return value:
 
 - None
 
-The following example shows the out-degree distribution for nodes in
-:class:`TNGraph`, :class:`TUNGraph`, and :class:`TNEANet`::
+The following example shows how generate a plot of the out-degree distribution for :class:`TNGraph`, :class:`TUNGraph`, and :class:`TNEANet`::
 
     import snap
-    import os
 
-    if not os.path.exists("./output"):
-        os.makedirs("./output")
-    os.chdir("./output")
+    Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
+    snap.PlotOutDegDistr(Graph, "example", "Directed graph - out-degree Distribution")
 
-    vGraph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
-    snap.PlotOutDegDistr(vGraph, "test1a", "PlotCCdf=False, PowerFit=False", False, False)
-    snap.PlotOutDegDistr(vGraph, "test1b", "PlotCCdf=True, PowerFit=False", True, False)
-    snap.PlotOutDegDistr(vGraph, "test1c", "PlotCCdf=False, PowerFit=True", False, True)
-    snap.PlotOutDegDistr(vGraph, "test1d", "PlotCCdf=True, PowerFit=True", True, True)
+    Graph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
+    snap.PlotOutDegDistr(Graph, "example", "Undirected graph - out-degree Distribution")
 
-    vGraph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
-    snap.PlotOutDegDistr(vGraph, "test2a", "PlotCCdf=False, PowerFit=False", False, False)
-    snap.PlotOutDegDistr(vGraph, "test2b", "PlotCCdf=True, PowerFit=False", True, False)
-    snap.PlotOutDegDistr(vGraph, "test2c", "PlotCCdf=False, PowerFit=True", False, True)
-    snap.PlotOutDegDistr(vGraph, "test2d", "PlotCCdf=True, PowerFit=True", True, True)
-
-    vGraph = snap.GenRndGnm(snap.PNEANet, 100, 1000)
-    snap.PlotOutDegDistr(vGraph, "test3a", "PlotCCdf=False, PowerFit=False", False, False)
-    snap.PlotOutDegDistr(vGraph, "test3b", "PlotCCdf=True, PowerFit=False", True, False)
-    snap.PlotOutDegDistr(vGraph, "test3c", "PlotCCdf=False, PowerFit=True", False, True)
-    snap.PlotOutDegDistr(vGraph, "test3d", "PlotCCdf=True, PowerFit=True", True, True)
-
-    os.chdir("./..")
-
+    Graph = snap.GenRndGnm(snap.PNEANet, 100, 1000)
+    snap.PlotOutDegDistr(Graph, "example", "Network - out-degree Distribution")

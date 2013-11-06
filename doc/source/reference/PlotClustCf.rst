@@ -1,24 +1,20 @@
 PlotClustCf
 '''''''''''
-.. note::
 
-    This page is a draft and under revision.
+.. function:: PlotClustCf(Graph, FNmPref, DescStr)
 
-
-.. function:: PlotClustCf(Graph, FNmPref, DescStr = snap.TStr())
-
-Plots the distribution of clustering coefficient of a Graph.
+Plots the distribution of clustering coefficient of *Graph*. The function creates three new files: 1) ccf.<*FNmPref*>.plt (the plot), 2) ccf.<*FNPref*>.eps (the plotting description), and 3) ccf.<*FNmPref*>.tab (the tab separated plotting data).
 
 Parameters:
 
 - *Graph*: graph (input)
     A Snap.py graph or a network
 
-- *FNmFref*: string (input)
-    File name prefix for output graphics files
+- *FNmPref*: string (input)
+    A string representing the preferred output file name
 
 - *DescStr*: string (input)
-    Description string for the plot
+    Description of the graph. The string should be non-empty
 
 Return value:
 
@@ -30,11 +26,11 @@ for nodes in :class:`TNGraph`, :class:`TUNGraph`, and :class:`TNEANet`::
     import snap
 
     Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
-    snap.PlotClustCf(Graph, "PNGraph")
+    snap.PlotClustCf(Graph, "example", "Directed graph - clustering coefficient")
 
     Graph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
-    snap.PlotClustCf(Graph, "PUNGraph")
+    snap.PlotClustCf(Graph, "example", "Directed graph - clustering coefficient")
 
     Graph = snap.GenRndGnm(snap.PNEANet, 100, 1000)
-    snap.PlotClustCf(Graph, "PNEANet", "with some comments")
+    snap.PlotClustCf(Graph, "example", "Directed graph - clustering coefficient")
 

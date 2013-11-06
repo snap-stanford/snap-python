@@ -1,26 +1,34 @@
 PlotWccDistr
 ''''''''''''
-.. note::
 
-    This page is a draft and under revision.
+.. function:: PlotWccDistr(Graph, FNmPref, DescStr)
 
-
-.. function:: PlotWccDistr(Graph, path, description)
-
-Plots the distribution of sizes of weakly connected components of a Graph.
+Plots the distribution of sizes of weakly connected components of *Graph*. The function creates three new files: 1) wcc.<*FNmPref*>.plt (the plot), 2) wcc.<*FNPref*>.eps (the plotting description), and 3) wcc.<*FNmPref*>.tab (the tab separated plotting data).
 
 Parameters:
 
-- *Graph*: PNGraph (input)
-    The graph
+- *Graph*: graph (input)
+    A Snap.py graph or a network
 
-- *path*: str (input)
-    The path where the plot will be saved
+- *FNmPref*: string (input)
+    A string representing the preferred output file name
 
-- *description*: str (input)
-    The graph description to be included in the plot
+- *DescStr*: string (input)
+    Description of the graph. The string should be non-empty
+
+Return value:
+
+- None
     
-The following example shows how to plot the distribution of sizes of weakly connected components of a Graph::
+The following example shows how to plot the distribution of sizes of weakly connected components for :class:`TNGraph`, :class:`TUNGraph`, and :class:`TNEANet`::
 
-    G = sn.LoadEdgeList(sn.PNGraph, "/my/graph/path.txt")
-    snap.PlotWccDistr(G, "/my/plot/path", "graph description")
+    import snap
+
+    Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
+    snap.PlotWccDistr(Graph, "example", "Directed graph - wcc distributaion")
+
+    Graph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
+    snap.PlotWccDistr(Graph, "example", "Undirected graph - wcc distribution")
+
+    Graph = snap.GenRndGnm(snap.PNEANet, 100, 1000)
+    snap.PlotWccDistr(Graph, "example", "Network - wcc distribution")

@@ -1,45 +1,37 @@
 PlotKCoreEdges
-'''''''''''''''
-.. note::
+''''''''''''''
 
-    This page is a draft and under revision.
+.. function:: PlotKCoreEdges(Graph, FNmPref, DescStr)
 
+Plots the k-core edge-size distribution: core k vs. number of edges in k-core. The function creates three new files: 1) coreEdges.<*FNmPref*>.plt (the plot), 2) coreEdges.<*FNPref*>.eps (the plotting description), and 3) coreEdges.<*FNmPref*>.tab (the tab separated plotting data).
 
-.. function:: PlotKCoreEdges(Graph, FNmPref, DescStr="")
+Parameters:
 
-Plots the k-Core edge-size distribution: Core k vs. number of edges in k-core.
+- *Graph*: graph (input)
+    A Snap.py graph or a network
 
-Parameters
+- *FNmPref*: string (input)
+    A string representing the preferred output file name
 
-- Graph
-    A Snap.py graph or network.
+- *DescStr*: string (input)
+    Description of the graph. The string should be non-empty
+
+Return value:
+
+- None
+
+The following example shows how to plot the k-core edge-size distribution for
+:class:`TNGraph`, :class:`TUNGraph`, and :class:`TNEANet`::
+
+    import snap
+
+    Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
+    snap.PlotKCoreEdges(Graph, "example", "Directed graph - k-core edges")
     
-- FNmPref
-    Filename prefix. The generated file has the name "coreEdges.<FNmPref>.png".
+    Graph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
+    snap.PlotKCoreEdgees(Graph, "example", "Undirected graph - k-core edges")
 
-- DescStr
-    Optional description of plot, incorporated in the title of the plot. If left empty
-    the filename prefix is used instead.
-    
-Return Value
-
-- None (outputs plot to disk as png file)
-
-
-
-Source Code
-
-Plot KCore distribution for different types of graphs::
-
-    from snap import *
-    
-    G1 = GenRndGnm(PUNGraph, 100, 1000)
-    PlotKCoreEdges(G1, "UNKCore", "UNKCore Plot")
-    
-    G1 = GenRndGnm(PNGraph, 100, 1000)
-    PlotKCoreEdges(G1, "KCore", "KCore Plot")
-
-    G1 = GenRndGnm(PNEANet, 100, 1000)
-    PlotKCoreEdges(G1, "EAKCore", "EAKCore Plot")
+    Graph = snap.GenRndGnm(snap.PNEANet, 100, 1000)
+    snap.PlotKCoreEdges(Graph, "example", "Network - k-core edges")
 
 
