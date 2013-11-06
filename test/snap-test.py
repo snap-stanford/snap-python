@@ -470,7 +470,123 @@ class SnapPythonTest(unittest.TestCase):
         root_id = snap.GetTreeRootNId(self.NetTree)
         self.assertEqual(0, root_id)
 
+    def test_GetBfsTree(self):
+        # Directed Graph
+        pass
 
+    def test_GetNodesAtHop(self):
+        # Directed Graph
+        NodeVec = snap.TIntV()
+        num_nodes = snap.GetNodesAtHop(self.DirGraphStar, 0, 1, NodeVec, True)
+        self.assertEqual(self.num_nodes-1, num_nodes)
+
+        # Undirected Graph
+        NodeVec = snap.TIntV()
+        num_nodes = snap.GetNodesAtHop(self.UnDirGraphStar, 0, 1, NodeVec, False)
+        self.assertEqual(self.num_nodes-1, num_nodes)
+
+        # Network
+        NodeVec = snap.TIntV()
+        num_nodes = snap.GetNodesAtHop(self.NetStar, 0, 1, NodeVec, True)
+        self.assertEqual(self.num_nodes-1, num_nodes)
+
+    def test_GetNodesAtHops(self):
+        # Directed Graph
+        HopVec = snap.TIntPrV()
+        num_hops = snap.GetNodesAtHops(self.DirGraphStar, 0, HopVec, True)
+        self.assertEqual(2, num_hops)
+        for pair in HopVec:
+            if pair.Val1() == 0:
+                self.assertEqual(1, pair.Val2())
+            else:
+                self.assertEqual(1, pair.Val1())
+                self.assertEqual(self.num_nodes-1, pair.Val2())
+
+        # Undirected Graph
+        HopVec = snap.TIntPrV()
+        num_hops = snap.GetNodesAtHops(self.UnDirGraphStar, 0, HopVec, False)
+        self.assertEqual(2, num_hops)
+        for pair in HopVec:
+            if pair.Val1() == 0:
+                self.assertEqual(1, pair.Val2())
+            else:
+                self.assertEqual(1, pair.Val1())
+                self.assertEqual(self.num_nodes-1, pair.Val2())
+
+        # Network
+        HopVec = snap.TIntPrV()
+        num_hops = snap.GetNodesAtHops(self.NetStar, 0, HopVec, True)
+        self.assertEqual(2, num_hops)
+        for pair in HopVec:
+            if pair.Val1() == 0:
+                self.assertEqual(1, pair.Val2())
+            else:
+                self.assertEqual(1, pair.Val1())
+                self.assertEqual(self.num_nodes-1, pair.Val2())
+
+    def test_GetDegreeCentr(self):
+        # Undirected Graph
+        degree_center = snap.GetDegreeCentr(self.UnDirGraphStar, 0)
+        self.assertEqual(1, degree_center)
+
+    def test_GetFarnessCentr(self):
+        # Undirected Graph
+        farness_center = snap.GetFarnessCentr(self.UnDirGraphStar, 0)
+        self.assertEqual(1, farness_center)
+
+    def test_GetEigenVectorCentr(self):
+        # Undirected Graph
+        EigenVec = snap.TIntFltH()
+        snap.GetEigenVectorCentr(self.UnDirGraphStar, EigenVec)
+        for item in EigenVec:
+            self.assertTrue(0 < item.GetDat())
+
+    def test_GetNodeEcc(self):
+        # Directed Graph
+        node_ecc = snap.GetNodeEcc(self.DirGraphStar, 0, True)
+        self.assertEqual(1, node_ecc)
+
+        # Undirected Graph
+        node_ecc = snap.GetNodeEcc(self.UnDirGraphStar, 0, False)
+        self.assertEqual(1, node_ecc)
+
+        # Network
+        node_ecc = snap.GetNodeEcc(self.NetStar, 0, True)
+        self.assertEqual(1, node_ecc)
+
+    def test_GetHits(self):
+        # Directed Graph
+        NIdHubH = snap.TIntFltH()
+        NIdAuthH = snap.TIntFltH()
+        snap.GetHits(self.DirGraphFull, NIdHubH, NIdAuthH)
+        value = NIdHubH.GetDat(0)
+        for item in NIdHubH:
+            self.assertEqual(value, item.GetDat())
+        value = NIdAuthH.GetDat(0)
+        for item in NIdAuthH:
+            self.assertEqual(value, item.GetDat())
+
+        # Undirected Graph
+        NIdHubH = snap.TIntFltH()
+        NIdAuthH = snap.TIntFltH()
+        snap.GetHits(self.UnDirGraphFull, NIdHubH, NIdAuthH)
+        value = NIdHubH.GetDat(0)
+        for item in NIdHubH:
+            self.assertEqual(value, item.GetDat())
+        value = NIdAuthH.GetDat(0)
+        for item in NIdAuthH:
+            self.assertEqual(value, item.GetDat())
+
+        # Network
+        NIdHubH = snap.TIntFltH()
+        NIdAuthH = snap.TIntFltH()
+        snap.GetHits(self.NetFull, NIdHubH, NIdAuthH)
+        value = NIdHubH.GetDat(0)
+        for item in NIdHubH:
+            self.assertEqual(value, item.GetDat())
+        value = NIdAuthH.GetDat(0)
+        for item in NIdAuthH:
+            self.assertEqual(value, item.GetDat())
 
 if __name__ == '__main__':
   unittest.main()
