@@ -1,21 +1,17 @@
 GetTriadParticip
 ''''''''''''''''
-.. note::
-
-    This page is a draft and under revision.
-
 
 .. function:: GetTriadParticip(Graph, TriadCntV)
 
-Triangle Participation Ratio: For each node counts how many triangles it participates in and then returns a set of pairs (number of triangles, number of such nodes). Considers the graph as undirected.
+Triangle Participation Ratio: For each node counts how many triangles it participates in and then returns a vector of pairs (number of triangles, number of such nodes). Considers the graph as undirected.
 
 Parameters:
 
 - *Graph*: graph (input)
     A Snap.py graph or a network
 
-- *TriadCntV*: a vector of (integer, integer) pairs (output)
-    Pair (number of triangles, number of nodes)
+- *TriadCntV*: TIntPrV, a vector of (int, int) pairs (output)
+    Pairs of (number of triangles, number of nodes)
 
 Return value:
 
