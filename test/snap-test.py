@@ -36,6 +36,11 @@ class SnapPythonTest(unittest.TestCase):
         self.UnDirTree = snap.GenTree(snap.PUNGraph, 3, 3)
         self.NetTree = snap.GenTree(snap.PNEANet, 3, 3)
 
+        # Random
+        self.DirRand = snap.GenRndGnm(snap.PNGraph, 10, 20)
+        self.UnDirRand = snap.GenRndGnm(snap.PUNGraph, 10, 20)
+        self.NetRand = snap.GenRndGnm(snap.PNEANet, 10, 20)
+
     def test_CntInDegNodes(self):
         # Directed graph
         num_nodes = snap.CntInDegNodes(self.DirGraphFull, self.num_nodes-1)
@@ -808,6 +813,223 @@ class SnapPythonTest(unittest.TestCase):
         # Network
         sz = snap.GetMxSccSz(self.NetStar)
         self.assertEqual(1.0/self.num_nodes, sz)
+
+    def test_GetMxWcc(self):
+        # Directed Graph
+        subgraph = snap.GetMxWcc(self.DirGraphStar)
+        for node in self.DirGraphStar.Nodes():
+            self.assertTrue(subgraph.IsNode(node.GetId()))
+        for edge in self.DirGraphStar.Edges():
+            self.assertTrue(subgraph.IsEdge(edge.GetSrcNId(), edge.GetDstNId()))
+
+        # Undirected Graph
+        subgraph = snap.GetMxWcc(self.UnDirGraphStar)
+        for node in self.DirGraphStar.Nodes():
+            self.assertTrue(subgraph.IsNode(node.GetId()))
+        for edge in self.DirGraphStar.Edges():
+            self.assertTrue(subgraph.IsEdge(edge.GetSrcNId(), edge.GetDstNId()))
+
+        # Network
+        subgraph = snap.GetMxWcc(self.NetStar)
+        for node in self.DirGraphStar.Nodes():
+            self.assertTrue(subgraph.IsNode(node.GetId()))
+        for edge in self.DirGraphStar.Edges():
+            self.assertTrue(subgraph.IsEdge(edge.GetSrcNId(), edge.GetDstNId()))
+
+    def test_GetMxScc(self):
+        # Directed Graph
+        subgraph = snap.GetMxScc(self.DirGraphFull)
+        for node in self.DirGraphStar.Nodes():
+            self.assertTrue(subgraph.IsNode(node.GetId()))
+        for edge in self.DirGraphStar.Edges():
+            self.assertTrue(subgraph.IsEdge(edge.GetSrcNId(), edge.GetDstNId()))
+
+        # Undirected Graph
+        subgraph = snap.GetMxScc(self.UnDirGraphFull)
+        for node in self.DirGraphStar.Nodes():
+            self.assertTrue(subgraph.IsNode(node.GetId()))
+        for edge in self.DirGraphStar.Edges():
+            self.assertTrue(subgraph.IsEdge(edge.GetSrcNId(), edge.GetDstNId()))
+
+        # Network
+        subgraph = snap.GetMxScc(self.NetFull)
+        for node in self.DirGraphStar.Nodes():
+            self.assertTrue(subgraph.IsNode(node.GetId()))
+        for edge in self.DirGraphStar.Edges():
+            self.assertTrue(subgraph.IsEdge(edge.GetSrcNId(), edge.GetDstNId()))
+
+    def test_GetMxBiCon(self):
+        # Directed Graph
+        subgraph = snap.GetMxBiCon(self.DirGraphFull)
+        for node in self.DirGraphStar.Nodes():
+            self.assertTrue(subgraph.IsNode(node.GetId()))
+        for edge in self.DirGraphStar.Edges():
+            self.assertTrue(subgraph.IsEdge(edge.GetSrcNId(), edge.GetDstNId()))
+
+        # Undirected Graph
+        subgraph = snap.GetMxBiCon(self.UnDirGraphFull)
+        for node in self.DirGraphStar.Nodes():
+            self.assertTrue(subgraph.IsNode(node.GetId()))
+        for edge in self.DirGraphStar.Edges():
+            self.assertTrue(subgraph.IsEdge(edge.GetSrcNId(), edge.GetDstNId()))
+
+        # Network
+        subgraph = snap.GetMxBiCon(self.NetFull)
+        for node in self.DirGraphStar.Nodes():
+            self.assertTrue(subgraph.IsNode(node.GetId()))
+        for edge in self.DirGraphStar.Edges():
+            self.assertTrue(subgraph.IsEdge(edge.GetSrcNId(), edge.GetDstNId()))
+
+    def test_GetKCoreNodes(self):
+        # Directed Graph
+        CoreN = snap.TIntPrV()
+        result = snap.GetKCoreNodes(self.DirGraphStar, CoreN)
+        self.assertEqual(2, result)
+
+        # Undirected Graph
+        CoreN = snap.TIntPrV()
+        result = snap.GetKCoreNodes(self.UnDirGraphStar, CoreN)
+        self.assertEqual(2, result)
+
+        # Network
+        CoreN = snap.TIntPrV()
+        result = snap.GetKCoreNodes(self.NetStar, CoreN)
+        self.assertEqual(2, result)
+
+    def test_GetKCoreEdges(self):
+        # Directed Graph
+        CoreN = snap.TIntPrV()
+        result = snap.GetKCoreEdges(self.DirGraphStar, CoreN)
+        self.assertEqual(2, result)
+
+        # Undirected Graph
+        CoreN = snap.TIntPrV()
+        result = snap.GetKCoreEdges(self.UnDirGraphStar, CoreN)
+        self.assertEqual(2, result)
+
+        # Network
+        CoreN = snap.TIntPrV()
+        result = snap.GetKCoreEdges(self.NetStar, CoreN)
+        self.assertEqual(2, result)
+
+    def test_GenDegSeq(self):
+        DegSeqV = snap.TIntV()
+        DegSeqV.Add(3)
+        DegSeqV.Add(2)
+        DegSeqV.Add(1)
+        DegSeqV.Add(1)
+        DegSeqV.Add(1)
+        Graph = snap.GenDegSeq(DegSeqV)
+        count = 0
+        for n in Graph.Nodes():
+            count += 1
+        self.assertEqual(5, count)
+        count0 = 0
+        count1 = 0
+        count2 = 0
+        count3 = 0
+        count4 = 0
+        for e in Graph.Edges():
+            if e.GetSrcNId() == 0:
+                count0 += 1
+            if e.GetDstNId() == 0:
+                count0 += 1
+            if e.GetSrcNId() == 1:
+                count1 += 1
+            if e.GetDstNId() == 1:
+                count1 += 1
+            if e.GetSrcNId() == 2:
+                count2 += 1
+            if e.GetDstNId() == 2:
+                count2 += 1
+            if e.GetSrcNId() == 3:
+                count3 += 1
+            if e.GetDstNId() == 3:
+                count3 += 1
+            if e.GetSrcNId() == 4:
+                count4 += 1
+            if e.GetDstNId() == 4:
+                count4 += 1
+        self.assertEqual(3, count0)
+        self.assertEqual(2, count1)
+        self.assertEqual(1, count2)
+        self.assertEqual(1, count3)
+        self.assertEqual(1, count4)
+
+    def test_GenRewire(self):
+        Rewired = snap.GenRewire(self.UnDirRand)
+        for node in self.UnDirRand.Nodes():
+            for nodeR in Rewired.Nodes():
+                if node.GetId() == nodeR.GetId():
+                    self.assertEqual(node.GetOutDeg()+node.GetInDeg(), nodeR.GetOutDeg()+nodeR.GetInDeg())
+
+    def test_GenPrefAttach(self):
+        Graph = snap.GenPrefAttach(100, 10)
+        count = 0
+        for node in Graph.Nodes():
+            self.assertTrue(node.GetOutDeg() >= 10)
+            count += 1
+        self.assertEqual(100, count)
+
+    def test_GenGeoPrefAttach(self):
+        Graph = snap.GenGeoPrefAttach(100, 10, 0.25)
+        count = 0
+        for node in Graph.Nodes():
+            self.assertTrue(node.GetOutDeg() + node.GetInDeg() >= 10)
+            count += 1
+        self.assertEqual(100, count)
+
+    def test_GenForestFire(self):
+        Graph = snap.GenForestFire(100, 0.5, 0.5)
+        count = 0
+        for node in Graph.Nodes():
+            count += 1
+        self.assertEqual(100, count)
+
+    def test_GenRMat(self):
+        Graph = snap.GenRMat(10, 20, 0.25, 0.25, 0.25)
+        nodes = 0
+        edges = 0
+        for node in Graph.Nodes():
+            nodes += 1
+        for edge in Graph.Edges():
+            edges += 1
+        self.assertEqual(10, nodes)
+        self.assertEqual(20, edges)
+
+    def test_GenRMatEpinions(self):
+        pass
+
+    def test_GenStar(self):
+        # Directed Graph
+        Graph = self.DirGraphStar
+        for node in Graph.Nodes():
+            if node.GetId() == 0:
+                self.assertEqual(self.num_nodes-1, node.GetOutDeg())
+                self.assertEqual(0, node.GetInDeg())
+            else:
+                self.assertEqual(0, node.GetOutDeg())
+                self.assertEqual(1, node.GetInDeg())
+
+        # Undirected Graph
+        Graph = self.UnDirGraphStar
+        for node in Graph.Nodes():
+            if node.GetId() == 0:
+                self.assertEqual(self.num_nodes-1, node.GetOutDeg())
+                self.assertEqual(self.num_nodes-1, node.GetInDeg())
+            else:
+                self.assertEqual(1, node.GetOutDeg())
+                self.assertEqual(1, node.GetInDeg())
+
+        # Network
+        Graph = self.NetStar
+        for node in Graph.Nodes():
+            if node.GetId() == 0:
+                self.assertEqual(self.num_nodes-1, node.GetOutDeg())
+                self.assertEqual(0, node.GetInDeg())
+            else:
+                self.assertEqual(0, node.GetOutDeg())
+                self.assertEqual(1, node.GetInDeg())
 
 if __name__ == '__main__':
   unittest.main()
