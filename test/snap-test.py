@@ -588,5 +588,226 @@ class SnapPythonTest(unittest.TestCase):
         for item in NIdAuthH:
             self.assertEqual(value, item.GetDat())
 
+    def test_GetBiConSzCnt(self):
+        # Undirected Graph
+        szCntV = snap.TIntPrV()
+        snap.GetBiConSzCnt(self.UnDirGraphFull, szCntV)
+        for item in szCntV:
+            self.assertEqual(item.GetVal1(), self.num_nodes)
+            self.assertEqual(item.GetVal2(), 1)
+
+    def test_GetEdgeBridges(self):
+        # Undirected Graph
+        edges = snap.TIntPrV()
+        snap.GetEdgeBridges(self.UnDirGraphStar, edges)
+        count = 0
+        for edge in edges:
+            self.assertEqual(0, edge.GetVal1())
+            self.assertNotEqual(0, edge.GetVal2())
+            count+=1
+        self.assertEqual(9, count)
+
+    def test_Get1CnCom(self):
+        # Undirected Graph
+        components = snap.TCnComV()
+        snap.Get1CnCom(self.UnDirGraphStar, components)
+        num_comp = 0
+        comp_size = 0
+        for comp in components:
+            num_comp += 1
+            for node in comp:
+                comp_size += 1
+        self.assertEqual(1, num_comp)
+        self.assertEqual(self.num_nodes-1, comp_size)
+
+    def test_GetNodeWcc(self):
+        # Directed Graph
+        component = snap.TIntV()
+        snap.GetNodeWcc(self.DirGraphStar, 1, component)
+        sumNodes = 0
+        for node in component:
+            sumNodes += node
+        self.assertEqual((self.num_nodes - 1) * self.num_nodes / 2, sumNodes)
+
+        # Undirected Graph
+        component = snap.TIntV()
+        snap.GetNodeWcc(self.UnDirGraphStar, 1, component)
+        sumNodes = 0
+        for node in component:
+            sumNodes += node
+        self.assertEqual((self.num_nodes - 1) * self.num_nodes / 2, sumNodes)
+
+        # Network
+        component = snap.TIntV()
+        snap.GetNodeWcc(self.NetStar, 1, component)
+        sumNodes = 0
+        for node in component:
+            sumNodes += node
+        self.assertEqual((self.num_nodes - 1) * self.num_nodes / 2, sumNodes)
+
+    def test_isConnected(self):
+        # Directed Graph
+        self.assertTrue(snap.IsConnected(self.DirGraphStar))
+
+        # Undirected Graph
+        self.assertTrue(snap.IsConnected(self.UnDirGraphStar))
+
+        # Network
+        self.assertTrue(snap.IsConnected(self.NetStar))
+
+    def test_isWeaklyConn(self):
+        # Directed Graph
+        self.assertTrue(snap.IsWeaklyConn(self.DirGraphStar))
+
+        # Undirected Graph
+        self.assertTrue(snap.IsWeaklyConn(self.UnDirGraphStar))
+
+        # Network
+        self.assertTrue(snap.IsWeaklyConn(self.NetStar))
+
+    def test_GetWccSzCnt(self):
+        # Directed Graph
+        counts = snap.TIntPrV()
+        snap.GetWccSzCnt(self.DirGraphStar, counts)
+        for pair in counts:
+            self.assertEqual(self.num_nodes, pair.GetVal1())
+            self.assertEqual(1, pair.GetVal2())
+
+        # Undirected Graph
+        counts = snap.TIntPrV()
+        snap.GetWccSzCnt(self.UnDirGraphStar, counts)
+        for pair in counts:
+            self.assertEqual(self.num_nodes, pair.GetVal1())
+            self.assertEqual(1, pair.GetVal2())
+
+        # Network
+        counts = snap.TIntPrV()
+        snap.GetWccSzCnt(self.NetStar, counts)
+        for pair in counts:
+            self.assertEqual(self.num_nodes, pair.GetVal1())
+            self.assertEqual(1, pair.GetVal2())
+
+    def test_GetWccs(self):
+        # Directed Graph
+        components = snap.TCnComV()
+        snap.GetWccs(self.DirGraphStar, components)
+        num_comp = 0
+        comp_size = 0
+        for comp in components:
+            num_comp += 1
+            for node in comp:
+                comp_size += 1
+        self.assertEqual(1, num_comp)
+        self.assertEqual(self.num_nodes, comp_size)
+
+        # Undirected Graph
+        components = snap.TCnComV()
+        snap.GetWccs(self.UnDirGraphStar, components)
+        num_comp = 0
+        comp_size = 0
+        for comp in components:
+            num_comp += 1
+            for node in comp:
+                comp_size += 1
+        self.assertEqual(1, num_comp)
+        self.assertEqual(self.num_nodes, comp_size)
+
+        # Network
+        components = snap.TCnComV()
+        snap.GetWccs(self.NetStar, components)
+        num_comp = 0
+        comp_size = 0
+        for comp in components:
+            num_comp += 1
+            for node in comp:
+                comp_size += 1
+        self.assertEqual(1, num_comp)
+        self.assertEqual(self.num_nodes, comp_size)
+
+    def test_GetSccSzCnt(self):
+         # Directed Graph
+        counts = snap.TIntPrV()
+        snap.GetSccSzCnt(self.DirGraphFull, counts)
+        for pair in counts:
+            self.assertEqual(self.num_nodes, pair.GetVal1())
+            self.assertEqual(1, pair.GetVal2())
+
+        # Undirected Graph
+        counts = snap.TIntPrV()
+        snap.GetSccSzCnt(self.UnDirGraphFull, counts)
+        for pair in counts:
+            self.assertEqual(self.num_nodes, pair.GetVal1())
+            self.assertEqual(1, pair.GetVal2())
+
+        # Network
+        counts = snap.TIntPrV()
+        snap.GetSccSzCnt(self.NetFull, counts)
+        for pair in counts:
+            self.assertEqual(self.num_nodes, pair.GetVal1())
+            self.assertEqual(1, pair.GetVal2())
+
+    def test_GetSccs(self):
+        # Directed Graph
+        components = snap.TCnComV()
+        snap.GetSccs(self.DirGraphFull, components)
+        num_comp = 0
+        comp_size = 0
+        for comp in components:
+            num_comp += 1
+            for node in comp:
+                comp_size += 1
+        self.assertEqual(1, num_comp)
+        self.assertEqual(self.num_nodes, comp_size)
+
+        # Undirected Graph
+        components = snap.TCnComV()
+        snap.GetSccs(self.UnDirGraphFull, components)
+        num_comp = 0
+        comp_size = 0
+        for comp in components:
+            num_comp += 1
+            for node in comp:
+                comp_size += 1
+        self.assertEqual(1, num_comp)
+        self.assertEqual(self.num_nodes, comp_size)
+
+        # Network
+        components = snap.TCnComV()
+        snap.GetSccs(self.NetFull, components)
+        num_comp = 0
+        comp_size = 0
+        for comp in components:
+            num_comp += 1
+            for node in comp:
+                comp_size += 1
+        self.assertEqual(1, num_comp)
+        self.assertEqual(self.num_nodes, comp_size)
+
+    def test_GetMxWccSz(self):
+        # Directed Graph
+        sz = snap.GetMxWccSz(self.DirGraphStar)
+        self.assertEqual(1, sz)
+
+        # Undirected Graph
+        sz = snap.GetMxWccSz(self.UnDirGraphStar)
+        self.assertEqual(1, sz)
+
+        # Network
+        sz = snap.GetMxWccSz(self.NetStar)
+        self.assertEqual(1, sz)
+
+    def test_GetMxSccSz(self):
+        # Directed Graph
+        sz = snap.GetMxSccSz(self.DirGraphStar)
+        self.assertEqual(1.0/self.num_nodes, sz)
+
+        # Undirected Graph
+        sz = snap.GetMxSccSz(self.UnDirGraphStar)
+        self.assertEqual(1, sz)
+
+        # Network
+        sz = snap.GetMxSccSz(self.NetStar)
+        self.assertEqual(1.0/self.num_nodes, sz)
+
 if __name__ == '__main__':
   unittest.main()
