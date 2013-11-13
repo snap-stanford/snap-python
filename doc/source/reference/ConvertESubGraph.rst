@@ -1,13 +1,9 @@
 ConvertESubGraph
 ''''''''''''''''
-.. note::
 
-    This page is a draft and under revision.
+.. function:: ConvertESubGraph(GraphType, InGraph, EIdV, RenumberNodes=False)
 
-
-.. function:: OutGraph = ConvertESubGraph(InGraph, EIdV, RenumberNodes = false)
-
-Returns a subgraph of graph InGraph with EIdV edges with an optional node renumbering.
+Returns a subgraph of graph *InGraph* with *EIdV* edges with an optional node renumbering. The returned subgraph will have type *GraphType*.
 
 Parameters:
 

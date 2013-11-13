@@ -3,7 +3,7 @@ GetESubGraph
 
 .. function:: GetESubGraph(Graph, EIdV)
 
-Returns a subgraph of graph *Graph*. The resulting subgraph contains all the edges from *Graph*, which have edge IDs in the *EIdV* vector and all the nodes which connect to at least one edge in *EIdV*. Nodes and edges in the resulting subgraph have the same IDs as in *Graph*.
+Returns a subgraph of graph *Graph*. The resulting subgraph contains all the edges from *Graph* with edge IDs in *EIdV* and all the nodes that are connected by at least one edge in *EIdV*. Nodes and edges in the resulting subgraph have the same IDs as in *Graph*.
 
 Use this function for multi-graphs, where the edges have edge IDs (class TNEANet).
 
