@@ -19,5 +19,5 @@ Subgraphs and Graph Type Conversions
    GetSubTreeSz
    GetESubGraph
    GetRndSubGraph
-   GetRndSubGraph1
+   GetRndESubGraph
 

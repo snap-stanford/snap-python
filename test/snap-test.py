@@ -1031,5 +1031,12 @@ class SnapPythonTest(unittest.TestCase):
                 self.assertEqual(0, node.GetOutDeg())
                 self.assertEqual(1, node.GetInDeg())
 
+    def test_GenTree(self):
+        Graph = snap.GenTree(snap.PNGraph, 3, 3, True, False)
+        for node in Graph.Nodes():
+            count = 0
+        Graph = snap.GenTree(snap.PUNGraph, 3, 3, False, False)
+        Graph = snap.GenTree(snap.PNEANet, 3, 3, True, False)
+
 if __name__ == '__main__':
   unittest.main()
