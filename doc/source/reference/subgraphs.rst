@@ -6,11 +6,7 @@ Subgraphs and Graph Type Conversions
    :maxdepth: 2
 
    ConvertGraph
-   ConvertGraph1
-   ConvertGraph2
    ConvertSubGraph
-   ConvertSubGraph1
-   ConvertSubGraph2
    ConvertESubGraph
    ConvertESubGraph1
    ConvertESubGraph2
