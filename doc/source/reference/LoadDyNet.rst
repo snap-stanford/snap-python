@@ -32,12 +32,12 @@ The following example shows how to get PNGraph object for nodes in
     for EI in Gout.Edges():
         src = EI.GetSrcNId()
         dst = EI.GetDstNId()
-        f.write("\t<link source=" + str(src) + " target=" + str(dst) + "/> \n")
+        f.write("\t<link source='" + str(src) + "' target='" + str(dst) + "'/> \n")
     
     f.write("</network>\n")
     f.close()
     
     Gin = snap.LoadDyNet(fname)
     
-    if (Gin.getNodes() == Gout.getNodes()):
+    if (Gin.GetNodes() == Gout.GetNodes()):
         print ("true");
