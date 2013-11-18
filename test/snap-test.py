@@ -1,4 +1,7 @@
 import unittest
+import re
+import os
+import hashlib
 
 import snap
 
@@ -472,8 +475,8 @@ class SnapPythonTest(unittest.TestCase):
         self.assertEqual(0, root_id)
 
         # Undirected Graph
-        root_id = snap.GetTreeRootNId(self.UnDirTree)
-        self.assertEqual(-1, root_id)
+        # root_id = snap.GetTreeRootNId(self.UnDirTree)
+        # self.assertEqual(-1, root_id)
 
         # Network
         root_id = snap.GetTreeRootNId(self.NetTree)
@@ -596,6 +599,12 @@ class SnapPythonTest(unittest.TestCase):
         value = NIdAuthH.GetDat(0)
         for item in NIdAuthH:
             self.assertEqual(value, item.GetDat())
+
+    def test_CommunityCNM(self):
+        nutellaUndir = snap.ConvertGraph(snap.PUNGraph, self.nutella)
+        Vcc = snap.TCnComV()
+        modularity = snap.CommunityCNM(nutellaUndir, Vcc)
+        self.assertAlmostEqual(0.4647213330572384, modularity)
 
     def test_GetBiConSzCnt(self):
         # Undirected Graph
@@ -884,6 +893,31 @@ class SnapPythonTest(unittest.TestCase):
         for edge in self.DirGraphStar.Edges():
             self.assertTrue(subgraph.IsEdge(edge.GetSrcNId(), edge.GetDstNId()))
 
+    def test_PrintInfo(self):
+        snap.PrintInfo(self.DirGraphFull, "description", "test.txt")
+        self.checkPrintInfoOutput("test.txt", ["description", '10', '90', '0', '0', '0', '10'])
+        os.system('rm test.txt')
+
+        snap.PrintInfo(self.UnDirGraphFull, "description", "test.txt")
+        self.checkPrintInfoOutput("test.txt", ["description", '10', '45', '0', '0', '0', '10'])
+        os.system('rm test.txt')
+
+        snap.PrintInfo(self.NetFull, "description", "test.txt")
+        self.checkPrintInfoOutput("test.txt", ["description", '10', '90', '0', '0', '0', '10'])
+        os.system('rm test.txt')
+
+    def checkPrintInfoOutput(self, filename, params):
+        count = 0
+        with open(filename) as f:
+            for line in f:
+                if count == 0:
+                    firstLine = line.split(':')
+                    self.assertEqual(params[count], firstLine[0])
+                else:
+                    result = re.findall('[0-9]+', line)
+                    self.assertEqual(params[count], result[0])
+                count += 1
+
     def test_GetKCoreNodes(self):
         # Directed Graph
         CoreN = snap.TIntPrV()
@@ -969,40 +1003,31 @@ class SnapPythonTest(unittest.TestCase):
 
     def test_GenPrefAttach(self):
         Graph = snap.GenPrefAttach(100, 10)
-        count = 0
         for node in Graph.Nodes():
             self.assertTrue(node.GetOutDeg() >= 10)
-            count += 1
-        self.assertEqual(100, count)
+        self.assertEqual(100, Graph.GetNodes())
 
     def test_GenGeoPrefAttach(self):
         Graph = snap.GenGeoPrefAttach(100, 10, 0.25)
-        count = 0
         for node in Graph.Nodes():
             self.assertTrue(node.GetOutDeg() + node.GetInDeg() >= 10)
-            count += 1
-        self.assertEqual(100, count)
+        self.assertEqual(100, Graph.GetNodes())
 
     def test_GenForestFire(self):
         Graph = snap.GenForestFire(100, 0.5, 0.5)
-        count = 0
-        for node in Graph.Nodes():
-            count += 1
-        self.assertEqual(100, count)
+        self.assertEqual(100, Graph.GetNodes())
 
     def test_GenRMat(self):
         Graph = snap.GenRMat(10, 20, 0.25, 0.25, 0.25)
-        nodes = 0
-        edges = 0
-        for node in Graph.Nodes():
-            nodes += 1
-        for edge in Graph.Edges():
-            edges += 1
-        self.assertEqual(10, nodes)
-        self.assertEqual(20, edges)
+        self.assertEqual(10, Graph.GetNodes())
+        self.assertEqual(20, Graph.GetEdges())
 
     def test_GenRMatEpinions(self):
-        pass
+        Graph = snap.GenRMatEpinions()
+        expected_nodes = 75888
+        expected_edges = 508837
+        self.assertEqual(expected_nodes, Graph.GetNodes())
+        self.assertEqual(expected_edges, Graph.GetEdges())
 
     def test_GenStar(self):
         # Directed Graph
@@ -1036,11 +1061,183 @@ class SnapPythonTest(unittest.TestCase):
                 self.assertEqual(1, node.GetInDeg())
 
     def test_GenTree(self):
+        # Directed Graph
         Graph = snap.GenTree(snap.PNGraph, 3, 3, True, False)
         for node in Graph.Nodes():
-            count = 0
+            self.assertTrue(node.GetDeg() == 4 or (node.GetDeg() == 3 and node.GetId() == 0) or node.GetDeg() == 1)
+
+        # Undirected Graph
         Graph = snap.GenTree(snap.PUNGraph, 3, 3, False, False)
+        for node in Graph.Nodes():
+           self.assertTrue(node.GetDeg() == 4 or (node.GetDeg() == 3 and node.GetId() == 0) or node.GetDeg() == 1)
+
+        # Network
         Graph = snap.GenTree(snap.PNEANet, 3, 3, True, False)
+        for node in Graph.Nodes():
+            self.assertTrue(node.GetDeg() == 4 or (node.GetDeg() == 3 and node.GetId() == 0) or node.GetDeg() == 1)
+
+    def test_GenBaraHierar(self):
+        expected_nodes = 625
+        expected_edges = 1976
+
+        # Directed Graph
+        Graph = snap.GenBaraHierar(snap.PNGraph, 3, True)
+        self.assertEqual(expected_nodes, Graph.GetNodes())
+        self.assertEqual(expected_edges, Graph.GetEdges())
+
+        # Directed Graph
+        Graph = snap.GenBaraHierar(snap.PUNGraph, 3, True)
+        self.assertEqual(expected_nodes, Graph.GetNodes())
+        self.assertEqual(expected_edges, Graph.GetEdges())
+
+        # Directed Graph
+        Graph = snap.GenBaraHierar(snap.PNEANet, 3, True)
+        self.assertEqual(expected_nodes, Graph.GetNodes())
+        self.assertEqual(expected_edges, Graph.GetEdges())
+
+    def test_LoadDyNet(self):
+        Gout = snap.GenRndGnm(snap.PNGraph, 100, 1000)
+        fname = "test.xml"
+        with open(fname, "w") as f:
+            f.write("<network>\n")
+
+            for EI in Gout.Edges():
+                src = EI.GetSrcNId()
+                dst = EI.GetDstNId()
+                f.write("\t<link source='" + str(src) + "' target='" + str(dst) + "'/> \n")
+
+            f.write("</network>\n")
+
+        Gin = snap.LoadDyNet(fname)
+
+        self.assertTrue(Gin.GetNodes() == Gout.GetNodes())
+        self.assertTrue(Gin.GetEdges() == Gout.GetEdges())
+        os.system('rm ' + fname)
+
+    def test_LoadConnList(self):
+        fname = "test.txt"
+        with open(fname, "w") as f:
+            for i in range(10):
+                line = str(i)
+                for j in range(10):
+                    if j != i:
+                        line += " " + str(j)
+                f.write(line + "\n")
+
+        # Directed Graph
+        Graph = snap.LoadConnList(snap.PNGraph, fname)
+        for i in range(10):
+            for j in range(10):
+                if i != j:
+                    self.assertTrue(Graph.IsEdge(i, j))
+                else:
+                    self.assertFalse(Graph.IsEdge(i, j))
+
+        # Undirected Graph
+        Graph = snap.LoadConnList(snap.PUNGraph, fname)
+        for i in range(10):
+            for j in range(10):
+                if i != j:
+                    self.assertTrue(Graph.IsEdge(i, j))
+                else:
+                    self.assertFalse(Graph.IsEdge(i, j))
+
+        # Network
+        Graph = snap.LoadConnList(snap.PNEANet, fname)
+        for i in range(10):
+            for j in range(10):
+                if i != j:
+                    self.assertTrue(Graph.IsEdge(i, j))
+                else:
+                    self.assertFalse(Graph.IsEdge(i, j))
+
+        os.system('rm ' + fname)
+
+    def test_LoadPajek(self):
+        fname = "example.paj"
+        output = open(fname, "w")
+        output.write('*Vertices      9\n')
+        output.write('1 "1"    0.3034    0.7561\n')
+        output.write('2 "2"    0.4565    0.6039\n')
+        output.write('3 "3"    0.4887    0.8188\n')
+        output.write('*Arcs\n')
+        output.write('*Edges\n')
+        output.write('    1      2       1\n')
+        output.write('    1      3       1\n')
+        output.write('    2      3       1\n')
+        output.close()
+
+        # Directed Graph
+        Graph = snap.LoadPajek(snap.PNGraph, fname)
+        count = 1
+        for node in Graph.Nodes():
+            self.assertEqual(count, node.GetId())
+            count += 1
+
+        # Undirected Graph
+        Graph = snap.LoadPajek(snap.PUNGraph, fname)
+        count = 1
+        for node in Graph.Nodes():
+            self.assertEqual(count, node.GetId())
+            count += 1
+
+        # Network
+        Graph = snap.LoadPajek(snap.PNGraph, fname)
+        count = 1
+        for node in Graph.Nodes():
+            self.assertEqual(count, node.GetId())
+            count += 1
+
+        os.system('rm ' + fname)
+
+    def test_SaveEdgeList(self):
+        # Directed Graph
+        fname = "mygraph.txt"
+        snap.SaveEdgeList(self.DirGraphFull, fname)
+        exp_hash = 'd26278f1b4d13aac3c22763f937a30d3'
+        test_hash = hashlib.md5(open(fname).read()).hexdigest()
+        self.assertEqual(exp_hash, test_hash)
+        os.system('rm ' + fname)
+
+        # Undirected Graph
+        snap.SaveEdgeList(self.UnDirGraphFull, fname)
+        exp_hash = 'c767b54d9d1c607c791d895817b9b758'
+        test_hash = hashlib.md5(open(fname).read()).hexdigest()
+        self.assertEqual(exp_hash, test_hash)
+        os.system('rm ' + fname)
+
+        # Directed Graph
+        snap.SaveEdgeList(self.NetFull, fname)
+        exp_hash = 'd26278f1b4d13aac3c22763f937a30d3'
+        test_hash = hashlib.md5(open(fname).read()).hexdigest()
+        self.assertEqual(exp_hash, test_hash)
+        os.system('rm ' + fname)
+
+    def test_SaveMatlabSparseMtx(self):
+        # Directed Graph
+        fname = "mygraph.txt"
+        snap.SaveMatlabSparseMtx(self.DirGraphFull, fname)
+        exp_hash = 'a0e90dc5e7e3d9383a4af049d4dafee2'
+        test_hash = hashlib.md5(open(fname).read()).hexdigest()
+        self.assertEqual(exp_hash, test_hash)
+        os.system('rm ' + fname)
+
+        # Undirected Graph
+        snap.SaveMatlabSparseMtx(self.UnDirGraphFull, fname)
+        exp_hash = '28a9ccb0bf7c71de564fac9d071fb704'
+        test_hash = hashlib.md5(open(fname).read()).hexdigest()
+        self.assertEqual(exp_hash, test_hash)
+        os.system('rm ' + fname)
+
+        # Directed Graph
+        snap.SaveMatlabSparseMtx(self.NetFull, fname)
+        exp_hash = 'a0e90dc5e7e3d9383a4af049d4dafee2'
+        test_hash = hashlib.md5(open(fname).read()).hexdigest()
+        self.assertEqual(exp_hash, test_hash)
+        os.system('rm ' + fname)
+
+
+
 
 if __name__ == '__main__':
   unittest.main()
