@@ -4,6 +4,10 @@ import snap
 
 class SnapPythonTest(unittest.TestCase):
 
+    def __init__(self, *args, **kwargs):
+        self.nutella = snap.LoadEdgeList(snap.PNGraph, "data/p2p-Gnutella08.txt")
+        super(SnapPythonTest, self).__init__(*args, **kwargs)
+
     def setUp(self):
         # Defaults for creating graphs
         self.num_nodes = 10
