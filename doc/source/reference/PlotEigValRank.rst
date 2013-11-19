@@ -8,7 +8,7 @@ Plots the distribution of the ranks of the first *NumEigenvalues* eigenvalues of
 Parameters:
 
 - *Graph*: undirected graph (input)
-    An Snap.py undirected graph
+    A Snap.py undirected graph
 
 - *NumEigenvalues*: int (input)
     The plot will contain the ranks of the first *NumEigenvalues* eigenvalues' ranks

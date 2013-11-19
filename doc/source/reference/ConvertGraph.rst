@@ -14,7 +14,7 @@ Parameters:
     A Snap.py graph or a network
 
 - *RenumberNodes*: boolean (input)
-    Determines whether the node IDs are preserved or not. If False, then nodes in the resulting graph have the same node IDs as nodes in *InGraph*. If True, then nodes in the resulting graph are renumbered sequentially from 0 to N-1. By default, the nodes are not renumbered.
+    Determines whether the node IDs are preserved or not. If False, then nodes in the resulting graph have the same node IDs as nodes in *InGraph*. If True, then nodes in the resulting graph are renumbered sequentially from 0 to N-1, where N is the number of nodes. By default, the nodes are not renumbered.
 
 Return value:
 

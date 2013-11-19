@@ -1,9 +1,9 @@
 GetRndESubGraph
-''''''''''''''
+'''''''''''''''
 
 .. function:: GetRndESubGraph(Graph, numEdges)
 
-Randomly selects numNodes nodes from the input graph and returns an induced graph on those nodes.
+Randomly selects *numEdges* nodes from the input graph and returns an induced graph on those nodes.
 
 Parameters:
 

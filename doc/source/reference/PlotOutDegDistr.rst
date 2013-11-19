@@ -1,5 +1,5 @@
 PlotOutDegDistr
-''''''''''''''
+'''''''''''''''
 
 .. function:: PlotOutDegDistr(Graph, FNmPref, DescStr, PlotCCdf=False, PowerFit=False)
 

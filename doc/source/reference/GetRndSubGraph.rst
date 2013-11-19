@@ -3,7 +3,7 @@ GetRndSubGraph
 
 .. function:: GetRndSubGraph(Graph, numNodes)
 
-Randomly selects numNodes nodes from the input graph and returns an induced graph on those nodes.
+Randomly selects *numNodes* nodes from the input graph and returns an induced graph on those nodes.
 
 Parameters:
 
