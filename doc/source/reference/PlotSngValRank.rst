@@ -3,7 +3,7 @@ PlotSngValRank
 
 .. function:: PlotSngValRank(Graph, SngVals, FNmPref, DescStr)
 
-Plots the rank distribution of singular values of the Graph adjacency matrix. Plots first *SngVals* values. The function creates three new files: 1) sngVal.<*FNmPref*>.plt (the plot), 2) sngVal.<*FNPref*>.eps (the plotting description), and 3) sngVal.<*FNmPref*>.tab (the tab separated plotting data).
+Plots the rank distribution of singular values of the Graph adjacency matrix. Plots first *SngVals* values. The function creates three new files: 1) sngVal.<*FNmPref*>.plt (the commands used to create the plot), 2) sngVal.<*FNPref*>.png (the plot), and 3) sngVal.<*FNmPref*>.tab (the plotting data).
 
 Parameters:
 

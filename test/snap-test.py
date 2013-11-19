@@ -1,7 +1,8 @@
-import unittest
-import re
-import os
+# coding: utf-8
 import hashlib
+import os
+import re
+import unittest
 
 import snap
 
@@ -1195,21 +1196,21 @@ class SnapPythonTest(unittest.TestCase):
         fname = "mygraph.txt"
         snap.SaveEdgeList(self.DirGraphFull, fname)
         exp_hash = 'd26278f1b4d13aac3c22763f937a30d3'
-        test_hash = hashlib.md5(open(fname).read()).hexdigest()
+        test_hash = hashlib.md5(open(fname, 'rb').read()).hexdigest()
         self.assertEqual(exp_hash, test_hash)
         os.system('rm ' + fname)
 
         # Undirected Graph
         snap.SaveEdgeList(self.UnDirGraphFull, fname)
         exp_hash = 'c767b54d9d1c607c791d895817b9b758'
-        test_hash = hashlib.md5(open(fname).read()).hexdigest()
+        test_hash = hashlib.md5(open(fname, 'rb').read()).hexdigest()
         self.assertEqual(exp_hash, test_hash)
         os.system('rm ' + fname)
 
         # Directed Graph
         snap.SaveEdgeList(self.NetFull, fname)
         exp_hash = 'd26278f1b4d13aac3c22763f937a30d3'
-        test_hash = hashlib.md5(open(fname).read()).hexdigest()
+        test_hash = hashlib.md5(open(fname, 'rb').read()).hexdigest()
         self.assertEqual(exp_hash, test_hash)
         os.system('rm ' + fname)
 
@@ -1218,24 +1219,345 @@ class SnapPythonTest(unittest.TestCase):
         fname = "mygraph.txt"
         snap.SaveMatlabSparseMtx(self.DirGraphFull, fname)
         exp_hash = 'a0e90dc5e7e3d9383a4af049d4dafee2'
-        test_hash = hashlib.md5(open(fname).read()).hexdigest()
+        test_hash = hashlib.md5(open(fname, 'rb').read()).hexdigest()
         self.assertEqual(exp_hash, test_hash)
         os.system('rm ' + fname)
 
         # Undirected Graph
         snap.SaveMatlabSparseMtx(self.UnDirGraphFull, fname)
         exp_hash = '28a9ccb0bf7c71de564fac9d071fb704'
-        test_hash = hashlib.md5(open(fname).read()).hexdigest()
+        test_hash = hashlib.md5(open(fname, 'rb').read()).hexdigest()
         self.assertEqual(exp_hash, test_hash)
         os.system('rm ' + fname)
 
         # Directed Graph
         snap.SaveMatlabSparseMtx(self.NetFull, fname)
         exp_hash = 'a0e90dc5e7e3d9383a4af049d4dafee2'
-        test_hash = hashlib.md5(open(fname).read()).hexdigest()
+        test_hash = hashlib.md5(open(fname, 'rb').read()).hexdigest()
         self.assertEqual(exp_hash, test_hash)
         os.system('rm ' + fname)
 
+    def test_GetSngVals(self):
+        SngVals = 4
+        SngValV = snap.TFltV()
+        snap.GetSngVals(self.DirGraphFull, SngVals, SngValV)
+        count = 0
+        for item in SngValV:
+            if count == 0:
+                self.assertAlmostEqual(self.num_nodes-1, item)
+            else:
+                self.assertAlmostEqual(1, item)
+            count += 1
+
+    def test_GetEigVals(self):
+        Graph = snap.GenStar(snap.PUNGraph, 50)
+        NumEigVals = 2
+        EigValV = snap.TFltV()
+        snap.GetEigVals(Graph, NumEigVals, EigValV)
+        count = 0
+        for item in EigValV:
+            if count == 0:
+                self.assertAlmostEqual(7.0, item)
+            else:
+                self.assertAlmostEqual(-7.0, item)
+            count += 1
+        self.assertEqual(2, count)
+
+    def test_GetInvParticipRate(self):
+        Graph = snap.TUNGraph.New()
+        Graph.AddNode(1)
+        Graph.AddNode(2)
+        Graph.AddNode(3)
+        Graph.AddNode(4)
+        Graph.AddNode(5)
+        Graph.AddNode(6)
+        Graph.AddEdge(1, 2)
+        Graph.AddEdge(2, 3)
+        Graph.AddEdge(3, 5)
+        Graph.AddEdge(4, 6)
+        Graph.AddEdge(4, 1)
+
+        expected = [[-1.246980, 0.214286],[0.445042, 0.214286],[1.801938, 0.214286]]
+        EigValIprV = snap.TFltPrV()
+        snap.GetInvParticipRat(Graph, 10, 1000, EigValIprV)
+        count = 0
+        for x in EigValIprV:
+            self.assertAlmostEqual(expected[count][0], x.GetVal1(), 5)
+            self.assertAlmostEqual(expected[count][1], x.GetVal2(), 5)
+            count += 1
+
+    def test_GetKCore(self):
+        # Directed Graph
+        k = self.num_nodes - 1
+        KCore = snap.GetKCore(self.DirGraphFull, k)
+        self.assertEqual(self.num_nodes, KCore.GetNodes())
+
+        # Undirected Graph
+        k = self.num_nodes - 1
+        KCore = snap.GetKCore(self.UnDirGraphFull, k)
+        self.assertEqual(self.num_nodes, KCore.GetNodes())
+
+        # Network
+        k = self.num_nodes - 1
+        KCore = snap.GetKCore(self.NetFull, k)
+        self.assertEqual(self.num_nodes, KCore.GetNodes())
+
+    def test_PlotEigValRank(self):
+        Graph = snap.GenStar(snap.PUNGraph, 20)
+        NumEigVals = 2
+        fname = 'test'
+        desc = 'test'
+        plt = 'eigVal.' + fname + '.plt'
+        png = 'eigVal.' + fname + '.png'
+        tab = 'eigVal.' + fname + '.tab'
+        snap.PlotEigValRank(Graph, NumEigVals, fname, desc)
+
+        self.assertTrue(os.path.isfile(plt))
+        os.system('grep -v "^#" ' + plt + '  > test.plt')
+        exp_hash = 'ef72edda8cb99b77d91d7bbba5d0602c'
+        act_hash = hashlib.md5(open('test.plt', 'rb').read()).hexdigest()
+        self.assertEqual(exp_hash, act_hash)
+        os.system('rm test.plt')
+        os.system('rm ' + plt)
+
+        self.assertTrue(os.path.isfile(png))
+        os.system('grep -v "^#" ' + png + '  > test.png')
+        exp_hash = '88e8150cca4d8b102e69e48f4f75bbc8'
+        act_hash = hashlib.md5(open('test.png', 'rb').read()).hexdigest()
+        self.assertEqual(exp_hash, act_hash)
+        os.system('rm test.png')
+        os.system('rm ' + png)
+
+        self.assertTrue(os.path.isfile(tab))
+        os.system('grep -v "^#" ' + tab + '  > test.tab')
+        exp_hash = '74c9e40a9c5254c36f3808524f42b3d8'
+        act_hash = hashlib.md5(open('test.tab', 'rb').read()).hexdigest()
+        os.system('rm test.tab')
+        os.system('rm ' + tab)
+        self.assertEqual(exp_hash, act_hash)
+
+    def test_PlotEigValDistr(self):
+        Graph = snap.GenStar(snap.PUNGraph, 20)
+        NumEigVals = 2
+        fname = 'test'
+        desc = 'test'
+        plt = 'eigDistr.' + fname + '.plt'
+        png = 'eigDistr.' + fname + '.png'
+        tab = 'eigDistr.' + fname + '.tab'
+        snap.PlotEigValDistr(Graph, NumEigVals, fname, desc)
+
+        self.assertTrue(os.path.isfile(plt))
+        os.system('grep -v "^#" ' + plt + '  > test.plt')
+        exp_hash = '87176190c43582a4a84af19d369fa5cd'
+        act_hash = hashlib.md5(open('test.plt', 'rb').read()).hexdigest()
+        self.assertEqual(exp_hash, act_hash)
+        os.system('rm test.plt')
+        os.system('rm ' + plt)
+
+        self.assertTrue(os.path.isfile(png))
+        os.system('grep -v "^#" ' + png + '  > test.png')
+        exp_hash = 'a620e5ca09dd447b4229850227678056'
+        act_hash = hashlib.md5(open('test.png', 'rb').read()).hexdigest()
+        self.assertEqual(exp_hash, act_hash)
+        os.system('rm test.png')
+        os.system('rm ' + png)
+
+        self.assertTrue(os.path.isfile(tab))
+        os.system('grep -v "^#" ' + tab + '  > test.tab')
+        exp_hash = 'e6af369e84c82eea2fc1ae422d64f171'
+        act_hash = hashlib.md5(open('test.tab', 'rb').read()).hexdigest()
+        os.system('rm test.tab')
+        os.system('rm ' + tab)
+        self.assertEqual(exp_hash, act_hash)
+
+    def test_PlotInvParticipRat(self):
+        Graph = self.UnDirGraphStar
+        NumEigVals = 3
+        TimeLimit = 5
+        fname = 'test'
+        desc = 'test'
+        plt = 'eigIPR.' + fname + '.plt'
+        png = 'eigIPR.' + fname + '.png'
+        tab = 'eigIPR.' + fname + '.tab'
+        snap.PlotInvParticipRat(Graph, NumEigVals, TimeLimit, fname, desc)
+
+        self.assertTrue(os.path.isfile(plt))
+        os.system('grep -v "^#" ' + plt + '  > test.plt')
+        exp_hash = 'dc188265d1db138f4be76f08f9db322a'
+        act_hash = hashlib.md5(open('test.plt', 'rb').read()).hexdigest()
+        self.assertEqual(exp_hash, act_hash)
+        os.system('rm test.plt')
+        os.system('rm ' + plt)
+
+        self.assertTrue(os.path.isfile(png))
+        os.system('grep -v "^#" ' + png + '  > test.png')
+        exp_hash = 'b518c4e4a1b0af4de529961986198127'
+        act_hash = hashlib.md5(open('test.png', 'rb').read()).hexdigest()
+        self.assertEqual(exp_hash, act_hash)
+        os.system('rm test.png')
+        os.system('rm ' + png)
+
+        self.assertTrue(os.path.isfile(tab))
+        os.system('grep -v "^#" ' + tab + '  > test.tab')
+        exp_hash = '303939e032d64c7f1e3d201a3bb3629e'
+        act_hash = hashlib.md5(open('test.tab', 'rb').read()).hexdigest()
+        os.system('rm test.tab')
+        os.system('rm ' + tab)
+        self.assertEqual(exp_hash, act_hash)
+
+    def test_PlotSngValRank(self):
+        Graph = self.DirGraphFull
+        SngVals = 3
+        fname = 'test'
+        desc = 'test'
+        plt = 'sngVal.' + fname + '.plt'
+        png = 'sngVal.' + fname + '.png'
+        tab = 'sngVal.' + fname + '.tab'
+        snap.PlotSngValRank(Graph, SngVals, fname, desc)
+
+        self.assertTrue(os.path.isfile(plt))
+        os.system('grep -v "^#" ' + plt + '  > test.plt')
+        exp_hash = '4386c5925a85cc716c4f37080754abb3'
+        act_hash = hashlib.md5(open('test.plt', 'rb').read()).hexdigest()
+        self.assertEqual(exp_hash, act_hash)
+        os.system('rm test.plt')
+        os.system('rm ' + plt)
+
+        self.assertTrue(os.path.isfile(png))
+        os.system('grep -v "^#" ' + png + '  > test.png')
+        exp_hash = 'c4d688e2e38f3a7df07067ee1c92ab64'
+        act_hash = hashlib.md5(open('test.png', 'rb').read()).hexdigest()
+        self.assertEqual(exp_hash, act_hash)
+        os.system('rm test.png')
+        os.system('rm ' + png)
+
+        self.assertTrue(os.path.isfile(tab))
+        os.system('grep -v "^#" ' + tab + '  > test.tab')
+        exp_hash = 'bc0edcc3dd69677930bb37316e3bdddf'
+        act_hash = hashlib.md5(open('test.tab', 'rb').read()).hexdigest()
+        os.system('rm test.tab')
+        os.system('rm ' + tab)
+        self.assertEqual(exp_hash, act_hash)
+
+    def test_PlotSngValDistr(self):
+        Graph = self.DirGraphFull
+        SngVals = 3
+        fname = 'test'
+        desc = 'test'
+        plt = 'sngDistr.' + fname + '.plt'
+        png = 'sngDistr.' + fname + '.png'
+        tab = 'sngDistr.' + fname + '.tab'
+        snap.PlotSngValDistr(Graph, SngVals, fname, desc)
+
+        self.assertTrue(os.path.isfile(plt))
+        os.system('grep -v "^#" ' + plt + '  > test.plt')
+        exp_hash = '0970fd3b510846ea89a846c221112c48'
+        act_hash = hashlib.md5(open('test.plt', 'rb').read()).hexdigest()
+        self.assertEqual(exp_hash, act_hash)
+        os.system('rm test.plt')
+        os.system('rm ' + plt)
+
+        self.assertTrue(os.path.isfile(png))
+        os.system('grep -v "^#" ' + png + '  > test.png')
+        exp_hash = '61a7195efc4864225c38f389e89c641e'
+        act_hash = hashlib.md5(open('test.png', 'rb').read()).hexdigest()
+        self.assertEqual(exp_hash, act_hash)
+        os.system('rm test.png')
+        os.system('rm ' + png)
+
+        self.assertTrue(os.path.isfile(tab))
+        os.system('grep -v "^#" ' + tab + '  > test.tab')
+        exp_hash = '8683dabf0f9d787609dc1be1867f31a5'
+        act_hash = hashlib.md5(open('test.tab', 'rb').read()).hexdigest()
+        os.system('rm test.tab')
+        os.system('rm ' + tab)
+        self.assertEqual(exp_hash, act_hash)
+
+    def test_PlotInDegDistr(self):
+        # Directed Graph
+        Graph = self.DirGraphFull
+        fname = 'test'
+        desc = 'test'
+        plt = 'inDeg.' + fname + '.plt'
+        png = 'inDeg.' + fname + '.png'
+        tab = 'inDeg.' + fname + '.tab'
+        snap.PlotInDegDistr(Graph, fname, desc)
+
+        self.assertTrue(os.path.isfile(plt))
+        os.system('grep -v "^#" ' + plt + '  > test.plt')
+        exp_hash = 'd9b3e3a929cdf399e121cea2f4602d5c'
+        act_hash = hashlib.md5(open('test.plt', 'rb').read()).hexdigest()
+        self.assertEqual(exp_hash, act_hash)
+        os.system('rm test.plt')
+        os.system('rm ' + plt)
+
+        self.assertTrue(os.path.isfile(png))
+        os.system('grep -v "^#" ' + png + '  > test.png')
+        exp_hash = '3a7a729d393a0ba37d455c67dacd8510'
+        act_hash = hashlib.md5(open('test.png', 'rb').read()).hexdigest()
+        self.assertEqual(exp_hash, act_hash)
+        os.system('rm test.png')
+        os.system('rm ' + png)
+
+        self.assertTrue(os.path.isfile(tab))
+        os.system('grep -v "^#" ' + tab + '  > test.tab')
+        exp_hash = 'b3fd1f8e8d03274bc4c6b7d63dda8ac6'
+        act_hash = hashlib.md5(open('test.tab', 'rb').read()).hexdigest()
+        os.system('rm test.tab')
+        os.system('rm ' + tab)
+        self.assertEqual(exp_hash, act_hash)
+
+    def test_PlotOutDegDistr(self):
+        # Directed Graph
+        Graph = self.DirGraphFull
+        fname = 'test'
+        desc = 'test'
+        plt = 'outDeg.' + fname + '.plt'
+        png = 'outDeg.' + fname + '.png'
+        tab = 'outDeg.' + fname + '.tab'
+        snap.PlotOutDegDistr(Graph, fname, desc)
+
+        self.assertTrue(os.path.isfile(plt))
+        os.system('grep -v "^#" ' + plt + '  > test.plt')
+        exp_hash = 'e92a163bcada36d02e15d3dc8af89adf'
+        act_hash = hashlib.md5(open('test.plt', 'rb').read()).hexdigest()
+        self.assertEqual(exp_hash, act_hash)
+        os.system('rm test.plt')
+        os.system('rm ' + plt)
+
+        self.assertTrue(os.path.isfile(png))
+        os.system('grep -v "^#" ' + png + '  > test.png')
+        exp_hash = '03a7e7d530235143bf3a0ad09df30d5d'
+        act_hash = hashlib.md5(open('test.png', 'rb').read()).hexdigest()
+        self.assertEqual(exp_hash, act_hash)
+        os.system('rm test.png')
+        os.system('rm ' + png)
+
+        self.assertTrue(os.path.isfile(tab))
+        os.system('grep -v "^#" ' + tab + '  > test.tab')
+        exp_hash = 'b3fd1f8e8d03274bc4c6b7d63dda8ac6'
+        act_hash = hashlib.md5(open('test.tab', 'rb').read()).hexdigest()
+        os.system('rm test.tab')
+        os.system('rm ' + tab)
+        self.assertEqual(exp_hash, act_hash)
+
+    def test_PlotWccDistr(self):
+        # Directed Graph
+        Graph = self.DirGraphFull
+        fname = 'test'
+        desc = 'test'
+        plt = 'wcc.' + fname + '.plt'
+        png = 'wcc.' + fname + '.png'
+        tab = 'wcc.' + fname + '.tab'
+        snap.PlotWccDistr(Graph, fname, desc)
+
+        self.assertTrue(os.path.isfile(plt))
+
+
+        self.assertTrue(os.path.isfile(png))
+
+
+        self.assertTrue(os.path.isfile(tab))
 
 
 

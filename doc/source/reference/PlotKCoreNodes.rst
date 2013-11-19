@@ -3,7 +3,7 @@ PlotKCoreNodes
 
 .. function:: PlotKCoreNodes(Graph, FNmPref, DescStr)
 
-Plots the k-core node-size distribution: core k vs. number of nodes in k-core. The function creates three new files: 1) coreNodes.<*FNmPref*>.plt (the plot), 2) coreNodes.<*FNPref*>.eps (the plotting description), and 3) coreNodes.<*FNmPref*>.tab (the tab separated plotting data).
+Plots the k-core node-size distribution: core k vs. number of nodes in k-core. The function creates three new files: 1) coreNodes.<*FNmPref*>.plt (the commands used to create the plot), 2) coreNodes.<*FNPref*>.png (the plot), and 3) coreNodes.<*FNmPref*>.tab (the plotting data).
 
 Parameters:
 

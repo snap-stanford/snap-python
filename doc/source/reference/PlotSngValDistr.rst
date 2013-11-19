@@ -3,7 +3,7 @@ PlotSngValDistr
 
 .. function:: PlotSngValDistr(Graph,SngVals, FNmPref, DescStr)
 
-Plots a histogram distribution of the top 2x *SngVals* singular values of the *Graph* adjacency matrix. The function creates three new files: 1) sngDistr.<*FNmPref*>.plt (the plot), 2) sngDistr.<*FNPref*>.eps (the plotting description), and 3) sngDistr.<*FNmPref*>.tab (the tab separated plotting data).
+Plots a histogram distribution of the top 2x *SngVals* singular values of the *Graph* adjacency matrix. The function creates three new files: 1) sngDistr.<*FNmPref*>.plt (the commands used to create the plot), 2) sngDistr.<*FNPref*>.png (the plot), and 3) sngDistr.<*FNmPref*>.tab (the plotting data).
 
 Parameters:
 

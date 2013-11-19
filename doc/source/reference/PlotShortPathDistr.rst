@@ -3,7 +3,7 @@ PlotShortPathDistr
 
 .. function:: PlotShortPathDistr(Graph, FNmPref, DescStr, TestNodes=TInt.Mx)
 
-Plots the distribution of the shortest path lengths in *Graph*. The implementation is based on BFS. The function creates three new files: 1) diam.<*FNmPref*>.plt (the plot), 2) diam.<*FNPref*>.eps (the plotting description), and 3) diam.<*FNmPref*>.tab (the tab separated plotting data).
+Plots the distribution of the shortest path lengths in *Graph*. The implementation is based on BFS. The function creates three new files: 1) diam.<*FNmPref*>.plt (the commands used to create the plot), 2) diam.<*FNPref*>.png (the plot), and 3) diam.<*FNmPref*>.tab (the plotting data).
 
 Parameters:
 

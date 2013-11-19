@@ -3,7 +3,7 @@ PlotSccDistr
 
 .. function:: PlotSccDistr(Graph, FNmPref, DescStr)
 
-Plots the distribution of sizes of strongly connected components of *Graph*. The function creates three new files: 1) scc.<*FNmPref*>.plt (the plot), 2) scc.<*FNPref*>.eps (the plotting description), and 3) scc.<*FNmPref*>.tab (the tab separated plotting data).
+Plots the distribution of sizes of strongly connected components of *Graph*. The function creates three new files: 1) scc.<*FNmPref*>.plt (the commands used to create the plot), 2) scc.<*FNPref*>.png (the plot), and 3) scc.<*FNmPref*>.tab (the plotting data).
 
 Parameters:
 
