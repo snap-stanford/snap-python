@@ -8,8 +8,8 @@ Determines if *Graph* is a connected tree. The function returns a (boolean, int)
 
 Parameters:
 
-- *Graph*: (input) 
-    A Snap.py graph or a network
+- *Graph*: directed graph (input) 
+    A Snap.py directed graph or a network
 
 
 Return value: 
@@ -22,18 +22,12 @@ Return value:
 
 
 The following example shows how to detect trees in 
-:class:`TNGraph`, :class:`TUNGraph`, and :class:`TNEANet`::
+:class:`TNGraph` and :class:`TNEANet`::
 
     import snap
 
     # Directed Graph
     Graph = snap.GenTree(snap.PNGraph, 3, 3)
-    (is_tree, root_id) = snap.IsTree(Graph)
-    print "The graph is a tree: %s " % is_tree
-    print "The graph has a root id: %d" % root_id
-    
-    # Undirected Graph
-    Graph = snap.GenTree(snap.PUNGraph, 3, 3)
     (is_tree, root_id) = snap.IsTree(Graph)
     print "The graph is a tree: %s " % is_tree
     print "The graph has a root id: %d" % root_id

@@ -7,8 +7,8 @@ If *Graph* is a tree, the function returns the root id of the tree. Otherwise, i
 
 Parameters:
 
-- *Graph*: graph (input)
-    A Snap.py graph or a network
+- *Graph*: directed graph (input)
+    A Snap.py directed graph or a network
 
 
 Return value:
@@ -18,17 +18,12 @@ Return value:
 
 
 The following example shows how to get the root node id in
-:class:`TNGraph`, :class:`TUNGraph`, and :class:`TNEANet`::
+:class:`TNGraph` and :class:`TNEANet`::
 
     import snap
 
     # Directed Graph
     Graph = snap.GenTree(snap.PNGraph, 3, 3)
-    root_id = snap.GetTreeRootNId(Graph)
-    print "The graph has a root id: %d" % root_id
-
-    # Undirected Graph
-    Graph = snap.GenTree(snap.PUNGraph, 3, 3)
     root_id = snap.GetTreeRootNId(Graph)
     print "The graph has a root id: %d" % root_id
 
