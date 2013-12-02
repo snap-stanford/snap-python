@@ -7,10 +7,12 @@ import unittest
 
 import snap
 
+PATH_TO_GNUTELLA = "data/p2p-Gnutella08.txt"
+
 class SnapPythonTest(unittest.TestCase):
 
     def __init__(self, *args, **kwargs):
-        self.nutella = snap.LoadEdgeList(snap.PNGraph, "data/p2p-Gnutella08.txt")
+        self.gnutella = snap.LoadEdgeList(snap.PNGraph, PATH_TO_GNUTELLA)
         super(SnapPythonTest, self).__init__(*args, **kwargs)
 
     def setUp(self):
@@ -49,6 +51,34 @@ class SnapPythonTest(unittest.TestCase):
         self.DirRand = snap.GenRndGnm(snap.PNGraph, 10, 20)
         self.UnDirRand = snap.GenRndGnm(snap.PUNGraph, 10, 20)
         self.NetRand = snap.GenRndGnm(snap.PNEANet, 10, 20)
+
+
+
+    #### Helper Functions for Tests ####
+
+    def checkPlotHash(self, gen_file, exp_hash):
+        test_file = 'test.txt'
+        self.assertTrue(os.path.isfile(gen_file))
+        os.system('grep -v "^#" ' + gen_file + '  > ' + test_file)
+        act_hash = hashlib.md5(open(test_file, 'rb').read()).hexdigest()
+        self.assertEqual(exp_hash, act_hash)
+        os.system('rm ' + test_file)
+
+    def checkPrintInfoOutput(self, filename, params):
+        count = 0
+        with open(filename) as f:
+            for line in f:
+                if count == 0:
+                    firstLine = line.split(':')
+                    self.assertEqual(params[count], firstLine[0])
+                else:
+                    result = re.findall('[0-9]+', line)
+                    self.assertEqual(params[count], result[0])
+                count += 1
+
+
+
+    #### Tests ####
 
     def test_CntInDegNodes(self):
         # Directed graph
@@ -620,9 +650,9 @@ class SnapPythonTest(unittest.TestCase):
         self.assertAlmostEqual(exp_val, act_val)
 
     def test_CommunityCNM(self):
-        nutellaUndir = snap.ConvertGraph(snap.PUNGraph, self.nutella)
+        gnutellaUndir = snap.ConvertGraph(snap.PUNGraph, self.gnutella)
         Vcc = snap.TCnComV()
-        modularity = snap.CommunityCNM(nutellaUndir, Vcc)
+        modularity = snap.CommunityCNM(gnutellaUndir, Vcc)
         self.assertAlmostEqual(0.4647213330572384, modularity)
 
     def test_GetBiConSzCnt(self):
@@ -924,19 +954,6 @@ class SnapPythonTest(unittest.TestCase):
         snap.PrintInfo(self.NetFull, "description", "test.txt")
         self.checkPrintInfoOutput("test.txt", ["description", '10', '90', '0', '0', '0', '10'])
         os.system('rm test.txt')
-
-    def checkPrintInfoOutput(self, filename, params):
-        """Helper function used to test the output of PrintInfo."""
-        count = 0
-        with open(filename) as f:
-            for line in f:
-                if count == 0:
-                    firstLine = line.split(':')
-                    self.assertEqual(params[count], firstLine[0])
-                else:
-                    result = re.findall('[0-9]+', line)
-                    self.assertEqual(params[count], result[0])
-                count += 1
 
     def test_GetKCoreNodes(self):
         # Directed Graph
@@ -1979,16 +1996,6 @@ class SnapPythonTest(unittest.TestCase):
         for pair in TriadCntV:
             self.assertEqual(exp_num_tri, pair.Val1())
             self.assertEqual(self.num_nodes, pair.Val2)
-
-
-
-    def checkPlotHash(self, gen_file, exp_hash):
-        test_file = 'test.txt'
-        self.assertTrue(os.path.isfile(gen_file))
-        os.system('grep -v "^#" ' + gen_file + '  > ' + test_file)
-        act_hash = hashlib.md5(open(test_file, 'rb').read()).hexdigest()
-        self.assertEqual(exp_hash, act_hash)
-        os.system('rm ' + test_file)
 
 
 
