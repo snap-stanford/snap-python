@@ -1,5 +1,6 @@
 # coding: utf-8
 import hashlib
+import math
 import os
 import re
 import unittest
@@ -475,8 +476,27 @@ class SnapPythonTest(unittest.TestCase):
         self.assertEqual(0, root_id)
 
     def test_GetBfsTree(self):
+        start_node = 0
+        follow_out = True
+        follow_in = False
+
         # Directed Graph
-        pass
+        BfsTree = snap.GetBfsTree(self.DirGraphFull, start_node, follow_out, follow_in)
+        self.assertEqual(self.num_nodes - 1, BfsTree.GetEdges())
+        for end_node in range(1, self.num_nodes-1):
+            self.assertTrue(BfsTree.IsEdge(start_node, end_node))
+
+        # Undirected Graph
+        BfsTree = snap.GetBfsTree(self.UnDirGraphFull, start_node, follow_out, follow_in)
+        self.assertEqual(self.num_nodes - 1, BfsTree.GetEdges())
+        for end_node in range(1, self.num_nodes-1):
+            self.assertTrue(BfsTree.IsEdge(start_node, end_node))
+
+        # Network
+        BfsTree = snap.GetBfsTree(self.NetFull, start_node, follow_out, follow_in)
+        self.assertEqual(self.num_nodes - 1, BfsTree.GetEdges())
+        for end_node in range(1, self.num_nodes-1):
+            self.assertTrue(BfsTree.IsEdge(start_node, end_node))
 
     def test_GetNodesAtHop(self):
         # Directed Graph
@@ -591,6 +611,13 @@ class SnapPythonTest(unittest.TestCase):
         value = NIdAuthH.GetDat(0)
         for item in NIdAuthH:
             self.assertEqual(value, item.GetDat())
+
+    def test_CommunityGirvanNewman(self):
+        exp_val = 0.013763332493491244
+        Graph = snap.GenPrefAttach(100, 10)
+        Vec = snap.TCnComV()
+        act_val = snap.CommunityGirvanNewman(Graph, Vec)
+        self.assertAlmostEqual(exp_val, act_val)
 
     def test_CommunityCNM(self):
         nutellaUndir = snap.ConvertGraph(snap.PUNGraph, self.nutella)
@@ -955,37 +982,14 @@ class SnapPythonTest(unittest.TestCase):
         for n in Graph.Nodes():
             count += 1
         self.assertEqual(5, count)
-        count0 = 0
-        count1 = 0
-        count2 = 0
-        count3 = 0
-        count4 = 0
-        for e in Graph.Edges():
-            if e.GetSrcNId() == 0:
-                count0 += 1
-            if e.GetDstNId() == 0:
-                count0 += 1
-            if e.GetSrcNId() == 1:
-                count1 += 1
-            if e.GetDstNId() == 1:
-                count1 += 1
-            if e.GetSrcNId() == 2:
-                count2 += 1
-            if e.GetDstNId() == 2:
-                count2 += 1
-            if e.GetSrcNId() == 3:
-                count3 += 1
-            if e.GetDstNId() == 3:
-                count3 += 1
-            if e.GetSrcNId() == 4:
-                count4 += 1
-            if e.GetDstNId() == 4:
-                count4 += 1
-        self.assertEqual(3, count0)
-        self.assertEqual(2, count1)
-        self.assertEqual(1, count2)
-        self.assertEqual(1, count3)
-        self.assertEqual(1, count4)
+        count = [0, 0, 0, 0, 0]
+        for node in Graph.Nodes():
+            count[node.GetId()] = node.GetInDeg()
+        self.assertEqual(3, count[0])
+        self.assertEqual(2, count[1])
+        self.assertEqual(1, count[2])
+        self.assertEqual(1, count[3])
+        self.assertEqual(1, count[4])
 
     def test_GenRewire(self):
         Rewired = snap.GenRewire(self.UnDirRand)
@@ -1539,6 +1543,444 @@ class SnapPythonTest(unittest.TestCase):
         os.system('rm ' + png)
         self.checkPlotHash(tab, 'ead5104c0c23279add2652356fe836e4')
         os.system('rm ' + tab)
+
+    def test_PlotClustCf(self):
+        fname = 'test'
+        desc = 'test'
+        plt = 'ccf.' + fname + '.plt'
+        png = 'ccf.' + fname + '.png'
+        tab = 'ccf.' + fname + '.tab'
+
+        # Directed Graph
+        Graph = self.DirGraphFull
+        snap.PlotClustCf(Graph, fname, desc)
+
+        self.checkPlotHash(plt, '410a506a1947bb433e269906b7d5acfb')
+        os.system('rm ' + plt)
+        self.checkPlotHash(png, '634a0518b0ee9db6c712ade205e089a2')
+        os.system('rm ' + png)
+        self.checkPlotHash(tab, '5e08cd594354ee12d733c98ffbb888c4')
+        os.system('rm ' + tab)
+
+        # Undirected Graph
+        Graph = self.UnDirGraphFull
+        snap.PlotClustCf(Graph, fname, desc)
+
+        self.checkPlotHash(plt, 'dcb27db0f17b47fc4f5e326bc535434a')
+        os.system('rm ' + plt)
+        self.checkPlotHash(png, '634a0518b0ee9db6c712ade205e089a2')
+        os.system('rm ' + png)
+        self.checkPlotHash(tab, '0350d2154b877f0ae9415ea4d7e07f07')
+        os.system('rm ' + tab)
+
+        # Network
+        Graph = self.NetFull
+        snap.PlotClustCf(Graph, fname, desc)
+
+        self.checkPlotHash(plt, '410a506a1947bb433e269906b7d5acfb')
+        os.system('rm ' + plt)
+        self.checkPlotHash(png, '634a0518b0ee9db6c712ade205e089a2')
+        os.system('rm ' + png)
+        self.checkPlotHash(tab, '5e08cd594354ee12d733c98ffbb888c4')
+        os.system('rm ' + tab)
+
+    def test_PlotHops(self):
+        fname = 'test'
+        desc = 'test'
+        plt = 'hop.' + fname + '.plt'
+        png = 'hop.' + fname + '.png'
+        tab = 'hop.' + fname + '.tab'
+        NApprox = 1024
+
+        # Directed Graph
+        Graph = self.DirGraphFull
+        isDir = True
+        snap.PlotHops(Graph, fname, desc, isDir, NApprox)
+
+        self.assertTrue(os.path.isfile(plt))
+        os.system('rm ' + plt)
+        self.checkPlotHash(png, '7558cfcb4b34e02fdda090fe2ebdeb03')
+        os.system('rm ' + png)
+        self.assertTrue(os.path.isfile(tab))
+        os.system('rm ' + tab)
+
+        # Undirected Graph
+        Graph = self.UnDirGraphFull
+        isDir = False
+        snap.PlotHops(Graph, fname, desc, isDir, NApprox)
+
+        self.assertTrue(os.path.isfile(plt))
+        os.system('rm ' + plt)
+        self.checkPlotHash(png, '7558cfcb4b34e02fdda090fe2ebdeb03')
+        os.system('rm ' + png)
+        self.assertTrue(os.path.isfile(tab))
+        os.system('rm ' + tab)
+
+        # Network
+        Graph = self.NetFull
+        isDir = True
+        snap.PlotHops(Graph, fname, desc, isDir, NApprox)
+
+        self.assertTrue(os.path.isfile(plt))
+        os.system('rm ' + plt)
+        self.checkPlotHash(png, '7558cfcb4b34e02fdda090fe2ebdeb03')
+        os.system('rm ' + png)
+        self.assertTrue(os.path.isfile(tab))
+        os.system('rm ' + tab)
+
+    def test_PlotShortPathDistr(self):
+        fname = 'test'
+        desc = 'test'
+        plt = 'diam.' + fname + '.plt'
+        png = 'diam.' + fname + '.png'
+        tab = 'diam.' + fname + '.tab'
+
+        # Directed Graph
+        Graph = self.DirGraphFull
+        snap.PlotShortPathDistr(Graph, fname, desc)
+
+        self.checkPlotHash(plt, 'a1127b6c5b3bdf9cecf0acfb8f6601a6')
+        os.system('rm ' + plt)
+        self.checkPlotHash(png, 'ceaaab603196866102afa52042d33b15')
+        os.system('rm ' + png)
+        self.checkPlotHash(tab, '9b31a3d74e08ba09fb560dd2cfbf8e59')
+        os.system('rm ' + tab)
+
+        # Undirected Graph
+        Graph = self.UnDirGraphFull
+        snap.PlotShortPathDistr(Graph, fname, desc)
+
+        self.checkPlotHash(plt, '77122e76a58641cb3346031286c3ec63')
+        os.system('rm ' + plt)
+        self.checkPlotHash(png, 'ceaaab603196866102afa52042d33b15')
+        os.system('rm ' + png)
+        self.checkPlotHash(tab, '9b31a3d74e08ba09fb560dd2cfbf8e59')
+        os.system('rm ' + tab)
+
+        # Network
+        Graph = self.NetFull
+        snap.PlotShortPathDistr(Graph, fname, desc)
+
+        self.checkPlotHash(plt, 'a1127b6c5b3bdf9cecf0acfb8f6601a6')
+        os.system('rm ' + plt)
+        self.checkPlotHash(png, 'ceaaab603196866102afa52042d33b15')
+        os.system('rm ' + png)
+        self.checkPlotHash(tab, '9b31a3d74e08ba09fb560dd2cfbf8e59')
+        os.system('rm ' + tab)
+
+    def test_PlotKCoreNodes(self):
+        fname = 'test'
+        desc = 'test'
+        plt = 'coreNodes.' + fname + '.plt'
+        png = 'coreNodes.' + fname + '.png'
+        tab = 'coreNodes.' + fname + '.tab'
+
+        # Directed Graph
+        Graph = self.DirGraphFull
+        snap.PlotKCoreNodes(Graph, fname, desc)
+
+        self.checkPlotHash(plt, '727347069c3ab8793ae7e0c88408f210')
+        os.system('rm ' + plt)
+        self.checkPlotHash(png, 'c4ffb2358ff82930b8832cbe1d5d3ecd')
+        os.system('rm ' + png)
+        self.checkPlotHash(tab, '1b1750d5304a4f2fbb19ab8919be8e27')
+        os.system('rm ' + tab)
+
+        # Undirected Graph
+        Graph = self.UnDirGraphFull
+        snap.PlotKCoreNodes(Graph, fname, desc)
+
+        self.checkPlotHash(plt, '4642b5d2de23960e8ca5d53a819a1f78')
+        os.system('rm ' + plt)
+        self.checkPlotHash(png, 'c4ffb2358ff82930b8832cbe1d5d3ecd')
+        os.system('rm ' + png)
+        self.checkPlotHash(tab, '6a1db7740949f594b7cc3917ec65f4d9')
+        os.system('rm ' + tab)
+
+        # Network
+        Graph = self.NetFull
+        snap.PlotKCoreNodes(Graph, fname, desc)
+
+        self.checkPlotHash(plt, '727347069c3ab8793ae7e0c88408f210')
+        os.system('rm ' + plt)
+        self.checkPlotHash(png, 'c4ffb2358ff82930b8832cbe1d5d3ecd')
+        os.system('rm ' + png)
+        self.checkPlotHash(tab, '1b1750d5304a4f2fbb19ab8919be8e27')
+        os.system('rm ' + tab)
+
+    def test_PlotKCoreEdges(self):
+        fname = 'test'
+        desc = 'test'
+        plt = 'coreEdges.' + fname + '.plt'
+        png = 'coreEdges.' + fname + '.png'
+        tab = 'coreEdges.' + fname + '.tab'
+
+        # Directed Graph
+        Graph = self.DirGraphFull
+        snap.PlotKCoreEdges(Graph, fname, desc)
+
+        self.checkPlotHash(plt, '7ad35cfc8d4f8234d615fc7c98619b39')
+        os.system('rm ' + plt)
+        self.checkPlotHash(png, '6fab2c397c5b4ab0b740d4a5adf4171a')
+        os.system('rm ' + png)
+        self.checkPlotHash(tab, '7c22771f72c0bbe0c5ac5fa7c97928eb')
+        os.system('rm ' + tab)
+
+        # Undirected Graph
+        Graph = self.UnDirGraphFull
+        snap.PlotKCoreEdges(Graph, fname, desc)
+
+        self.checkPlotHash(plt, '25cef89279ee7ab43e841f09e54d3106')
+        os.system('rm ' + plt)
+        self.checkPlotHash(png, '6fab2c397c5b4ab0b740d4a5adf4171a')
+        os.system('rm ' + png)
+        self.checkPlotHash(tab, '13f4612f2cec666a421b39d18ae7afb6')
+        os.system('rm ' + tab)
+
+        # Network
+        Graph = self.NetFull
+        snap.PlotKCoreEdges(Graph, fname, desc)
+
+        self.checkPlotHash(plt, '7ad35cfc8d4f8234d615fc7c98619b39')
+        os.system('rm ' + plt)
+        self.checkPlotHash(png, '6fab2c397c5b4ab0b740d4a5adf4171a')
+        os.system('rm ' + png)
+        self.checkPlotHash(tab, '7c22771f72c0bbe0c5ac5fa7c97928eb')
+        os.system('rm ' + tab)
+
+    def test_GetESubGraph(self):
+        EIdV = snap.TIntV()
+        for edge in self.NetStar.Edges():
+            EIdV.Add(edge.GetId())
+        ESubGraph = snap.GetESubGraph(self.NetStar, EIdV)
+        for node in self.NetStar.Nodes():
+            self.assertTrue(ESubGraph.IsNode(node.GetId()))
+        for edge in self.NetStar.Edges():
+            self.assertTrue(ESubGraph.IsEdge(edge.GetSrcNId(), edge.GetDstNId()))
+
+    def test_ConvertGraph(self):
+        # Directed to Undirected
+        UnDirStar = snap.ConvertGraph(snap.PUNGraph, self.DirGraphStar)
+        for node in self.DirGraphStar.Nodes():
+            self.assertTrue(UnDirStar.IsNode(node.GetId()))
+        self.assertEqual(UnDirStar.GetNodes(), self.DirGraphStar.GetNodes())
+        for edge in self.DirGraphStar.Edges():
+            self.assertTrue(UnDirStar.IsEdge(edge.GetSrcNId(), edge.GetDstNId()))
+            self.assertTrue(UnDirStar.IsEdge(edge.GetDstNId(), edge.GetSrcNId()))
+        self.assertEqual(UnDirStar.GetEdges(), self.DirGraphStar.GetEdges())
+
+        # Directed to Network
+        NetStar = snap.ConvertGraph(snap.PNEANet, self.DirGraphStar)
+        for node in self.DirGraphStar.Nodes():
+            self.assertTrue(NetStar.IsNode(node.GetId()))
+        self.assertEqual(NetStar.GetNodes(), self.DirGraphStar.GetNodes())
+        for edge in self.DirGraphStar.Edges():
+            self.assertTrue(NetStar.IsEdge(edge.GetSrcNId(), edge.GetDstNId()))
+        self.assertEqual(NetStar.GetEdges(), self.DirGraphStar.GetEdges())
+
+        # Undirected to Directed
+        DirStar = snap.ConvertGraph(snap.PNGraph, self.UnDirGraphStar)
+        for node in self.UnDirGraphStar.Nodes():
+            self.assertTrue(DirStar.IsNode(node.GetId()))
+        self.assertEqual(DirStar.GetNodes(), self.UnDirGraphStar.GetNodes())
+        for edge in self.UnDirGraphStar.Edges():
+            self.assertTrue(DirStar.IsEdge(edge.GetSrcNId(), edge.GetDstNId()))
+            self.assertTrue(DirStar.IsEdge(edge.GetDstNId(), edge.GetSrcNId()))
+        self.assertEqual(DirStar.GetEdges(), self.UnDirGraphStar.GetEdges()*2)
+
+        # Undirected to Network
+        NetStar = snap.ConvertGraph(snap.PNEANet, self.UnDirGraphStar)
+        for node in self.UnDirGraphStar.Nodes():
+            self.assertTrue(NetStar.IsNode(node.GetId()))
+        self.assertEqual(NetStar.GetNodes(), self.UnDirGraphStar.GetNodes())
+        for edge in self.UnDirGraphStar.Edges():
+            self.assertTrue(NetStar.IsEdge(edge.GetSrcNId(), edge.GetDstNId()))
+            self.assertTrue(NetStar.IsEdge(edge.GetDstNId(), edge.GetSrcNId()))
+        self.assertEqual(NetStar.GetEdges(), self.UnDirGraphStar.GetEdges()*2)
+
+        # Network to Undirected
+        UnDirStar = snap.ConvertGraph(snap.PUNGraph, self.NetStar)
+        for node in self.NetStar.Nodes():
+            self.assertTrue(UnDirStar.IsNode(node.GetId()))
+        self.assertEqual(UnDirStar.GetNodes(), self.NetStar.GetNodes())
+        for edge in self.NetStar.Edges():
+            self.assertTrue(UnDirStar.IsEdge(edge.GetSrcNId(), edge.GetDstNId()))
+            self.assertTrue(UnDirStar.IsEdge(edge.GetDstNId(), edge.GetSrcNId()))
+        self.assertEqual(UnDirStar.GetEdges(), self.NetStar.GetEdges())
+
+        # Network to Directed
+        DirStar = snap.ConvertGraph(snap.PNGraph, self.NetStar)
+        for node in self.NetStar.Nodes():
+            self.assertTrue(DirStar.IsNode(node.GetId()))
+        self.assertEqual(DirStar.GetNodes(), self.NetStar.GetNodes())
+        for edge in self.NetStar.Edges():
+            self.assertTrue(DirStar.IsEdge(edge.GetSrcNId(), edge.GetDstNId()))
+        self.assertEqual(DirStar.GetEdges(), self.NetStar.GetEdges())
+
+    def test_ConvertSubGraph(self):
+        ListNodes = snap.TIntV()
+        for x in range(self.num_nodes):
+            ListNodes.Add(x)
+
+        # Directed to Undirected
+        UnDirStar = snap.ConvertSubGraph(snap.PUNGraph, self.DirGraphStar, ListNodes)
+        for node in self.DirGraphStar.Nodes():
+            self.assertTrue(UnDirStar.IsNode(node.GetId()))
+        self.assertEqual(UnDirStar.GetNodes(), self.DirGraphStar.GetNodes())
+        for edge in self.DirGraphStar.Edges():
+            self.assertTrue(UnDirStar.IsEdge(edge.GetSrcNId(), edge.GetDstNId()))
+            self.assertTrue(UnDirStar.IsEdge(edge.GetDstNId(), edge.GetSrcNId()))
+        self.assertEqual(UnDirStar.GetEdges(), self.DirGraphStar.GetEdges())
+
+        # Directed to Network
+        NetStar = snap.ConvertSubGraph(snap.PNEANet, self.DirGraphStar, ListNodes)
+        for node in self.DirGraphStar.Nodes():
+            self.assertTrue(NetStar.IsNode(node.GetId()))
+        self.assertEqual(NetStar.GetNodes(), self.DirGraphStar.GetNodes())
+        for edge in self.DirGraphStar.Edges():
+            self.assertTrue(NetStar.IsEdge(edge.GetSrcNId(), edge.GetDstNId()))
+        self.assertEqual(NetStar.GetEdges(), self.DirGraphStar.GetEdges())
+
+        # Undirected to Directed
+        DirStar = snap.ConvertSubGraph(snap.PNGraph, self.UnDirGraphStar, ListNodes)
+        for node in self.UnDirGraphStar.Nodes():
+            self.assertTrue(DirStar.IsNode(node.GetId()))
+        self.assertEqual(DirStar.GetNodes(), self.UnDirGraphStar.GetNodes())
+        for edge in self.UnDirGraphStar.Edges():
+            self.assertTrue(DirStar.IsEdge(edge.GetSrcNId(), edge.GetDstNId()))
+            self.assertTrue(DirStar.IsEdge(edge.GetDstNId(), edge.GetSrcNId()))
+        self.assertEqual(DirStar.GetEdges(), self.UnDirGraphStar.GetEdges()*2)
+
+        # Undirected to Network
+        NetStar = snap.ConvertSubGraph(snap.PNEANet, self.UnDirGraphStar, ListNodes)
+        for node in self.UnDirGraphStar.Nodes():
+            self.assertTrue(NetStar.IsNode(node.GetId()))
+        self.assertEqual(NetStar.GetNodes(), self.UnDirGraphStar.GetNodes())
+        for edge in self.UnDirGraphStar.Edges():
+            self.assertTrue(NetStar.IsEdge(edge.GetSrcNId(), edge.GetDstNId()))
+            self.assertTrue(NetStar.IsEdge(edge.GetDstNId(), edge.GetSrcNId()))
+        self.assertEqual(NetStar.GetEdges(), self.UnDirGraphStar.GetEdges()*2)
+
+        # Network to Undirected
+        UnDirStar = snap.ConvertSubGraph(snap.PUNGraph, self.NetStar, ListNodes)
+        for node in self.NetStar.Nodes():
+            self.assertTrue(UnDirStar.IsNode(node.GetId()))
+        self.assertEqual(UnDirStar.GetNodes(), self.NetStar.GetNodes())
+        for edge in self.NetStar.Edges():
+            self.assertTrue(UnDirStar.IsEdge(edge.GetSrcNId(), edge.GetDstNId()))
+            self.assertTrue(UnDirStar.IsEdge(edge.GetDstNId(), edge.GetSrcNId()))
+        self.assertEqual(UnDirStar.GetEdges(), self.NetStar.GetEdges())
+
+        # Network to Directed
+        DirStar = snap.ConvertSubGraph(snap.PNGraph, self.NetStar, ListNodes)
+        for node in self.NetStar.Nodes():
+            self.assertTrue(DirStar.IsNode(node.GetId()))
+        self.assertEqual(DirStar.GetNodes(), self.NetStar.GetNodes())
+        for edge in self.NetStar.Edges():
+            self.assertTrue(DirStar.IsEdge(edge.GetSrcNId(), edge.GetDstNId()))
+        self.assertEqual(DirStar.GetEdges(), self.NetStar.GetEdges())
+
+    def test_GetRndSubGraph(self):
+        exp_nodes = 10
+
+        # Directed Graph
+        Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
+        subGraph = snap.GetRndSubGraph(Graph, exp_nodes)
+        self.assertEqual(exp_nodes, subGraph.GetNodes())
+        for node in subGraph.Nodes():
+            self.assertTrue(Graph.IsNode(node.GetId()))
+        for edge in subGraph.Edges():
+            self.assertTrue(Graph.IsEdge(edge.GetSrcNId(), edge.GetDstNId()))
+            self.assertTrue(Graph.IsNode(edge.GetSrcNId()))
+            self.assertTrue(Graph.IsNode(edge.GetDstNId()))
+
+        # Undirected Graph
+        Graph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
+        subGraph = snap.GetRndSubGraph(Graph, exp_nodes)
+        self.assertEqual(exp_nodes, subGraph.GetNodes())
+        for node in subGraph.Nodes():
+            self.assertTrue(Graph.IsNode(node.GetId()))
+        for edge in subGraph.Edges():
+            self.assertTrue(Graph.IsEdge(edge.GetSrcNId(), edge.GetDstNId()))
+            self.assertTrue(Graph.IsNode(edge.GetSrcNId()))
+            self.assertTrue(Graph.IsNode(edge.GetDstNId()))
+
+        # Directed Graph
+        Graph = snap.GenRndGnm(snap.PNEANet, 100, 1000)
+        subGraph = snap.GetRndSubGraph(Graph, exp_nodes)
+        self.assertEqual(exp_nodes, subGraph.GetNodes())
+        for node in subGraph.Nodes():
+            self.assertTrue(Graph.IsNode(node.GetId()))
+        for edge in subGraph.Edges():
+            self.assertTrue(Graph.IsEdge(edge.GetSrcNId(), edge.GetDstNId()))
+            self.assertTrue(Graph.IsNode(edge.GetSrcNId()))
+            self.assertTrue(Graph.IsNode(edge.GetDstNId()))
+
+    def test_GetRndESubGraph(self):
+        exp_edges = 10
+
+        # Directed Graph
+        Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
+        subGraph = snap.GetRndESubGraph(Graph, exp_edges)
+        self.assertEqual(exp_edges, subGraph.GetEdges())
+        for node in subGraph.Nodes():
+            self.assertTrue(Graph.IsNode(node.GetId()))
+            self.assertTrue(node.GetInDeg() + node.GetOutDeg() > 0)
+        for edge in subGraph.Edges():
+            self.assertTrue(Graph.IsEdge(edge.GetSrcNId(), edge.GetDstNId()))
+
+        # Network
+        Graph = snap.GenRndGnm(snap.PNEANet, 100, 1000)
+        subGraph = snap.GetRndESubGraph(Graph, exp_edges)
+        self.assertEqual(exp_edges, subGraph.GetEdges())
+        for node in subGraph.Nodes():
+            self.assertTrue(Graph.IsNode(node.GetId()))
+            self.assertTrue(node.GetInDeg() + node.GetOutDeg() > 0)
+        for edge in subGraph.Edges():
+            self.assertTrue(Graph.IsEdge(edge.GetSrcNId(), edge.GetDstNId()))
+
+    def test_GetTriadEdges(self):
+        # Directed Graph
+        exp_triad_edges = self.DirGraphFull.GetEdges()
+        act_triad_edges = snap.GetTriadEdges(self.DirGraphFull)
+        self.assertEqual(exp_triad_edges, act_triad_edges)
+
+        # Unirected Graph
+        exp_triad_edges = self.UnDirGraphFull.GetEdges()
+        act_triad_edges = snap.GetTriadEdges(self.UnDirGraphFull)
+        self.assertEqual(exp_triad_edges, act_triad_edges)
+
+        # Network
+        exp_triad_edges = self.NetFull.GetEdges()
+        act_triad_edges = snap.GetTriadEdges(self.NetFull)
+        self.assertEqual(exp_triad_edges, act_triad_edges)
+
+    def test_GetTriadParticip(self):
+        f = math.factorial
+        exp_num_tri = f(self.num_nodes-1)/f(2)/f(self.num_nodes-3)
+
+        # Directed Graph
+        TriadCntV = snap.TIntPrV()
+        snap.GetTriadParticip(self.DirGraphFull, TriadCntV)
+        for pair in TriadCntV:
+            self.assertEqual(exp_num_tri, pair.Val1())
+            self.assertEqual(self.num_nodes, pair.Val2)
+
+        # Undirected Graph
+        TriadCntV = snap.TIntPrV()
+        snap.GetTriadParticip(self.UnDirGraphFull, TriadCntV)
+        for pair in TriadCntV:
+            self.assertEqual(exp_num_tri, pair.Val1())
+            self.assertEqual(self.num_nodes, pair.Val2)
+
+        # Directed Graph
+        TriadCntV = snap.TIntPrV()
+        snap.GetTriadParticip(self.NetFull, TriadCntV)
+        for pair in TriadCntV:
+            self.assertEqual(exp_num_tri, pair.Val1())
+            self.assertEqual(self.num_nodes, pair.Val2)
+
+
 
     def checkPlotHash(self, gen_file, exp_hash):
         test_file = 'test.txt'
