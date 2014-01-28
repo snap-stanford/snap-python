@@ -593,7 +593,7 @@ class SnapPythonTest(unittest.TestCase):
         EigenVec = snap.TIntFltH()
         snap.GetEigenVectorCentr(self.UnDirGraphStar, EigenVec)
         for item in EigenVec:
-            self.assertTrue(0 < item.GetDat())
+            self.assertTrue(0 < EigenVec[item])
 
     def test_GetNodeEcc(self):
         # Directed Graph
@@ -615,10 +615,10 @@ class SnapPythonTest(unittest.TestCase):
         snap.GetHits(self.DirGraphFull, NIdHubH, NIdAuthH)
         value = NIdHubH.GetDat(0)
         for item in NIdHubH:
-            self.assertEqual(value, item.GetDat())
+            self.assertEqual(value, NIdHubH[item])
         value = NIdAuthH.GetDat(0)
         for item in NIdAuthH:
-            self.assertEqual(value, item.GetDat())
+            self.assertEqual(value, NIdAuthH[item])
 
         # Undirected Graph
         NIdHubH = snap.TIntFltH()
@@ -626,10 +626,10 @@ class SnapPythonTest(unittest.TestCase):
         snap.GetHits(self.UnDirGraphFull, NIdHubH, NIdAuthH)
         value = NIdHubH.GetDat(0)
         for item in NIdHubH:
-            self.assertEqual(value, item.GetDat())
+            self.assertEqual(value, NIdHubH[item])
         value = NIdAuthH.GetDat(0)
         for item in NIdAuthH:
-            self.assertEqual(value, item.GetDat())
+            self.assertEqual(value, NIdAuthH[item])
 
         # Network
         NIdHubH = snap.TIntFltH()
@@ -637,10 +637,10 @@ class SnapPythonTest(unittest.TestCase):
         snap.GetHits(self.NetFull, NIdHubH, NIdAuthH)
         value = NIdHubH.GetDat(0)
         for item in NIdHubH:
-            self.assertEqual(value, item.GetDat())
+            self.assertEqual(value, NIdHubH[item])
         value = NIdAuthH.GetDat(0)
         for item in NIdAuthH:
-            self.assertEqual(value, item.GetDat())
+            self.assertEqual(value, NIdAuthH[item])
 
     def test_CommunityGirvanNewman(self):
         exp_val = 0.013763332493491244
