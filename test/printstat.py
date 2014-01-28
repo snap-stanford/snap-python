@@ -4,7 +4,7 @@
 import os
 import sys
 
-sys.path.append("../swig")
+sys.path.insert(0,"../swig")
 
 import snap
 
@@ -17,9 +17,8 @@ if __name__ == '__main__':
     gname = sys.argv[1]
     header = sys.argv[2]
 
-    tname = snap.TStr(gname)
     tlabel = snap.TStr(os.path.splitext(gname)[0])
     theader = snap.TStr(header)
 
-    g = snap.LoadEdgeList(tname, 0, 1)
+    g = snap.LoadEdgeList(snap.PNGraph, gname, 0, 1)
     snap.PrintGraphStatTable(g,tlabel,theader)
