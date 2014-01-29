@@ -1,6 +1,7 @@
 GetMxWcc
 '''''''''''
 
+
 .. function:: GetMxWcc(Graph)
 
 Returns a graph representing the largest weakly connected component in *Graph*.

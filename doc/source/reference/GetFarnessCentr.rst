@@ -17,7 +17,7 @@ Parameters:
 
 Return value:
 
-- float:
+- float
     The farness centrality of the node *NId* in *Graph*
 
 The following example shows how to get the farness centrality for nodes in 

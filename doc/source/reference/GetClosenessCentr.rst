@@ -1,38 +1,30 @@
 GetClosenessCentr
 '''''''''''''''''
-.. note::
-
-    This page is a draft and under revision.
 
 
 .. function:: GetClosenessCentr(Graph, NId)
 
-.. note::
-
-    This function is not yet supported.
-
-
-Returns Closeness centrality of a given node specified by NId parameter. Closeness centrality of a node is defined as 1/FarnessCentrality.
+Returns closeness centrality of a given node *NId* in *Graph*. Closeness centrality is equal to 1/farness centrality.
 
 Parameters:
 
-- *Graph*: graph (input)
-    A Snap.py graph or a network
+- *Graph*: undirected graph (input)
+    A Snap.py undirected graph
 
 - *NId*: int (input)
-    Valid Node ID in Graph
+    Node id
 
 Return value:
 
-- Closeness centrality as a float value
+- float
+    The closeness centrality of the node *NId* in *Graph*
 
-For more info about Farness Centrality see :func:'GetFarnessCentr'
-
-The following example shows how to get the Closeness Centrality for a node in
+The following example shows how to get the closeness centrality for nodes in 
 :class:`TUNGraph`::
 
     import snap
 
-    Graph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
-    ctr = snap.GetClosenessCentr(Graph, 5)
-    print ctr
+    vGraph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
+    for vNodeIter in vGraph.Nodes():
+        print "%d %f" % (vNodeIter.GetId(), \
+                         snap.GetClosenessCentr(vGraph, vNodeIter.GetId()))
