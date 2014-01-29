@@ -588,6 +588,11 @@ class SnapPythonTest(unittest.TestCase):
         farness_center = snap.GetFarnessCentr(self.UnDirGraphStar, 0)
         self.assertEqual(1, farness_center)
 
+    def test_GetClosenessCentr(self):
+        # Undirected Graph
+        closeness_center = snap.GetClosenessCentr(self.UnDirGraphStar, 0)
+        self.assertEqual(1, closeness_center)
+
     def test_GetEigenVectorCentr(self):
         # Undirected Graph
         EigenVec = snap.TIntFltH()
@@ -654,6 +659,20 @@ class SnapPythonTest(unittest.TestCase):
         Vcc = snap.TCnComV()
         modularity = snap.CommunityCNM(gnutellaUndir, Vcc)
         self.assertAlmostEqual(0.4647213330572384, modularity)
+
+    def test_GetModularity(self):
+        V = snap.TIntV()
+        for i in range(5):
+            V.Add(i)
+
+        val = snap.GetModularity(self.DirGraphFull, V)
+        self.assertAlmostEqual(0.04861111111111111, val)
+
+        val = snap.GetModularity(self.UnDirGraphFull, V)
+        self.assertAlmostEqual(-0.027777777777777776, val)
+
+        val = snap.GetModularity(self.NetFull, V)
+        self.assertAlmostEqual(0.04861111111111111, val)
 
     def test_GetBiConSzCnt(self):
         # Undirected Graph
