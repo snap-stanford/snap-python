@@ -34,7 +34,7 @@ while not Iter.IsEnd():
     Iter.Next()
 
 for item in Hash:
-    print item.GetKey(), item.GetDat()
+    print item, Hash[item]
 
 print "---------- 2 ---------"
 
@@ -54,5 +54,5 @@ h.AddDat(3,"four")
 print "h[3] =", h.GetDat(3)
 
 for item in h:
-    print item.GetKey(), item.GetDat()
+    print item, h[item]
 
