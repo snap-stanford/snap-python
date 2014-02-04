@@ -5,6 +5,10 @@ namespace TSnap {
 typedef TVec<TInt, int> TIntV;
 typedef TVec<TIntV, int> TIntIntVV;
 typedef THash<TInt, TVec< TInt, int> > TIntIntVH;
+
+typedef TVec<TIntIntVV, int16> TIntVVV;
+typedef THash<TInt, TVec<TIntV, int16> > TIntVVH;
+
 //typedef THash<TInt, TInt> TIntH;
 
 void SeedRandom() {

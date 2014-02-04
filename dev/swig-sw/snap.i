@@ -42,6 +42,9 @@
 %ignore TVec<TVec<TInt, int>, int>::Add;
 %ignore TVec<TVec<TInt, int>, int>::AddMerged;
 
+%ignore TIntVVV::Add;
+%ignore TIntVVV::AddMerged;
+
 %ignore THash< TInt, TVec< TInt, int > >::AddDat;
 %ignore THash< TInt, TVec< TInt, int > >::HashPrimeT;
 %ignore THash< TInt, TVec< TInt, int > >::AddDatId;
@@ -49,6 +52,10 @@
 %ignore THash< TInt, TInt, TDefaultHashFunc<TInt> >::HashPrimeT;
 %ignore THash< TInt, TInt, TDefaultHashFunc<TInt> >::AddDatId;
 %ignore THash< TInt, TInt>::HashPrimeT;
+
+%ignore TIntVVH::AddDat;
+%ignore TIntVVH::HashPrimeT;
+%ignore TIntVVH::AddDatId;
 
 #define GLib_UNIX
 %include "bd.h"
