@@ -201,7 +201,7 @@
 %template(ConvertSubGraph_PNEANet_PNEANet) TSnap::ConvertSubGraph <PNEANet, PNEANet>;
 %template(ConvertSubGraph_PNEANet_PNGraph) TSnap::ConvertSubGraph <PNEANet, PNGraph>;
 %template(ConvertSubGraph_PNEANet_PUNGraph) TSnap::ConvertSubGraph <PNEANet, PUNGraph>;
-%template(ConvertESubGraph_PNEANet_PNEANet) TSnap::ConvertESubGraph <PNGraph, PNEANet>;
+%template(ConvertESubGraph_PNEANet_PNEANet) TSnap::ConvertESubGraph <PNEANet, PNEANet>;
 %template(GetSubGraph_PNEANet) TSnap::GetSubGraph<PNEANet>;
 %template(GetESubGraph_PNEANet) TSnap::GetESubGraph<PNEANet>;
 %template(GetRndSubGraph_PNEANet) TSnap::GetRndSubGraph<PNEANet>;
