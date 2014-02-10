@@ -39,23 +39,23 @@
 
 //%ignore TNGraphNodeI::TNGNodeI;
 
-%ignore TVec<TVec<TInt, int>, int>::Add;
+%ignore TVec<TVec<TInt, int>, int>::Add; //TIntIntVV
 %ignore TVec<TVec<TInt, int>, int>::AddMerged;
 
-%ignore TIntVVV::Add;
-%ignore TIntVVV::AddMerged;
+%ignore TVec< TVec< TVec< TInt, int >, int >, int>::Add; //TIntVVV
+%ignore TVec< TVec< TVec< TInt, int >, int >, int>::AddMerged;
 
-%ignore THash< TInt, TVec< TInt, int > >::AddDat;
+%ignore THash< TInt, TVec< TInt, int > >::AddDat; //TIntIntVH
 %ignore THash< TInt, TVec< TInt, int > >::HashPrimeT;
 %ignore THash< TInt, TVec< TInt, int > >::AddDatId;
+
+%ignore THash< TInt, TVec< TVec< TInt, int >, int > >::AddDat; //TIntVVH
+%ignore THash< TInt, TVec< TVec< TInt, int >, int > >::HashPrimeT;
+%ignore THash< TInt, TVec< TVec< TInt, int >, int > >::AddDatId;
 
 %ignore THash< TInt, TInt, TDefaultHashFunc<TInt> >::HashPrimeT;
 %ignore THash< TInt, TInt, TDefaultHashFunc<TInt> >::AddDatId;
 %ignore THash< TInt, TInt>::HashPrimeT;
-
-%ignore TIntVVH::AddDat;
-%ignore TIntVVH::HashPrimeT;
-%ignore TIntVVH::AddDatId;
 
 #define GLib_UNIX
 %include "bd.h"
@@ -131,8 +131,13 @@
 };
 
 %template(TIntV) TVec< TInt, int >;
+
 %template(TIntIntVV) TVec< TVec< TInt, int >, int >;
+%template(TIntVVV) TVec< TVec< TVec< TInt, int >, int >, int>;
+
 %template(TIntIntVH) THash< TInt, TVec< TInt, int > >;
+%template(TIntVVH) THash< TInt, TVec< TVec< TInt, int >, int > >;
+
 %template(TIntH) THash<TInt, TInt>;
 %template(TIntHI) THashKeyDatI < TInt, TInt >;
 
