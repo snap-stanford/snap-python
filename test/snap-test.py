@@ -528,6 +528,22 @@ class SnapPythonTest(unittest.TestCase):
         for end_node in range(1, self.num_nodes-1):
             self.assertTrue(BfsTree.IsEdge(start_node, end_node))
 
+    def test_GetSubTreeSz(self):
+        # Directed Graph
+        results = snap.GetSubTreeSz(self.DirTree, 0, True, True)
+        exp_results = [40, 40, 3]
+        self.assertEqual(exp_results, results)
+
+        # Undirected Graph
+        results = snap.GetSubTreeSz(self.UnDirTree, 0, True, True)
+        exp_results = [40, 40, 3]
+        self.assertEqual(exp_results, results)
+
+        # Network
+        results = snap.GetSubTreeSz(self.NetTree, 0, True, True)
+        exp_results = [40, 40, 3]
+        self.assertEqual(exp_results, results)
+
     def test_GetNodesAtHop(self):
         # Directed Graph
         NodeVec = snap.TIntV()
@@ -674,6 +690,25 @@ class SnapPythonTest(unittest.TestCase):
         val = snap.GetModularity(self.NetFull, V)
         self.assertAlmostEqual(0.04861111111111111, val)
 
+    def test_GetEdgesInOut(self):
+        V = snap.TIntV()
+        V.Add(0)
+
+        # Directed Graph
+        result = snap.GetEdgesInOut(self.DirGraphFull, V)
+        exp_results = [0, 9]
+        self.assertEqual(exp_results, result)
+
+        # Undirected Graph
+        result = snap.GetEdgesInOut(self.UnDirGraphFull, V)
+        exp_results = [0, 9]
+        self.assertEqual(exp_results, result)
+
+        # Network
+        result = snap.GetEdgesInOut(self.NetFull, V)
+        exp_results = [0, 9]
+        self.assertEqual(exp_results, result)
+
     def test_GetBiConSzCnt(self):
         # Undirected Graph
         szCntV = snap.TIntPrV()
@@ -681,6 +716,16 @@ class SnapPythonTest(unittest.TestCase):
         for item in szCntV:
             self.assertEqual(item.GetVal1(), self.num_nodes)
             self.assertEqual(item.GetVal2(), 1)
+
+    def test_GetBiCon(self):
+        # Undirected Graph
+        CnComs = snap.TCnComV()
+        snap.GetBiCon(self.UnDirGraphFull, CnComs)
+        nodeId = 0
+        for CnCom in CnComs:
+            for node in CnCom:
+              self.assertEqual(nodeId, node)
+              nodeId += 1 
 
     def test_GetEdgeBridges(self):
         # Undirected Graph
@@ -705,6 +750,25 @@ class SnapPythonTest(unittest.TestCase):
                 comp_size += 1
         self.assertEqual(1, num_comp)
         self.assertEqual(self.num_nodes-1, comp_size)
+
+    def test_GetMxBiCon(self):
+        # Directed Graph
+        Graph = snap.GetMxBiCon(self.DirGraphFull)
+        self.assertEqual(self.DirGraphFull.GetNodes(), Graph.GetNodes())
+        self.assertEqual(self.DirGraphFull.GetEdges(), Graph.GetEdges())
+        self.assertEqual(type(self.DirGraphFull), type(Graph))
+
+        # Undirected Graph
+        Graph = snap.GetMxBiCon(self.UnDirGraphFull)
+        self.assertEqual(self.UnDirGraphFull.GetNodes(), Graph.GetNodes())
+        self.assertEqual(self.UnDirGraphFull.GetEdges(), Graph.GetEdges())
+        self.assertEqual(type(self.UnDirGraphFull), type(Graph))
+
+        # Network
+        Graph = snap.GetMxBiCon(self.NetFull)
+        self.assertEqual(self.NetFull.GetNodes(), Graph.GetNodes())
+        self.assertEqual(self.NetFull.GetEdges(), Graph.GetEdges())
+        self.assertEqual(type(Graph), type(self.NetFull))
 
     def test_GetNodeWcc(self):
         # Directed Graph

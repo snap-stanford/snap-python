@@ -10,7 +10,6 @@ Parameters:
 - *Graph*: graph (input)
     A Snap.py graph or a network
 
-
 Return value:
 
 - graph
