@@ -124,6 +124,7 @@ Version = "0.8.4"
 %include "gio.h"
 %include "gviz.h"
 %include "hash.h"
+%include "shash.h"
 %include "kcore.h"
 %include "ggen.h"
 %include "subgraph.h"
@@ -512,6 +513,10 @@ Version = "0.8.4"
 //%template(TTmStrPrV) TVec<TTmStrPr>;
 //%template(TStrTmPrV) TVec<TStrTmPr>;
 
+// ??
+
+%template(TIntSet) THashSet<TInt>;
+
 //----------
 
 // SWIG conversion C++ code
@@ -525,6 +530,7 @@ Version = "0.8.4"
 /* Vector and hash interface */
 %include "tvec.i"
 %include "thash.i"
+%include "thashset.i"
 
 /* Graph and network interface */
 %include "pneanet.i"
