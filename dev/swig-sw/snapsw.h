@@ -29,7 +29,9 @@ void SeedRandom() {
 	IPid = (long int) getpid();
 
 	RSeed = ITime * IPid;
-	srand48(RSeed);
+//	srand48(RSeed);
+    //TODO (smacke): revert this when done debugging
+    srand48(0);
 }
 
 void Randomize(TIntV& Vec) {
