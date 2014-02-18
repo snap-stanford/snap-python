@@ -180,12 +180,12 @@ void ensureCapacity(TVec<T> &vec, unsigned int size) {
     // if this is the first time we add something to this entry
     // then reserve some memory
     if (vec.Len()==0) {
-    	int newSize = nextPowerOf2(size+1);
+    	unsigned int newSize = nextPowerOf2(size+1);
         vec.Reserve(newSize, newSize);
     } else {
         // otherwise, check to see if we still don't have enough space
         // if not, make more
-        int x = vec.Len();
+        unsigned int x = vec.Len();
         if (x <= size) {
             while (x <= size) x *= 2;
             vec.Reserve(x, x);
