@@ -200,8 +200,7 @@ void ensureCapacity(TVec<T> &vec, unsigned int size) {
  */
 void AssignRndTask64(const TIntV &NodeDegrees, TIntVVV &Tasks, const long long base, const int seg_bits) {
 
-	assert(NodeDegrees.Len() % seg_bits == 0);
-	assert(base % seg_bits == 0);
+//	assert(NodeDegrees.Len() % seg_bits == 0);
 
 	// distribute stubs randomly to tasks
 	for (int i = 0; i < NodeDegrees.Len(); i++) {
