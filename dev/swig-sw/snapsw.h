@@ -180,7 +180,7 @@ void ensureCapacity(TVec<T> &vec, unsigned int size) {
     // if this is the first time we add something to this entry
     // then reserve some memory
     if (vec.Len()==0) {
-    	int newSize = nextPowerOf2(size);
+    	int newSize = nextPowerOf2(size+1);
         vec.Reserve(newSize, newSize);
     } else {
         // otherwise, check to see if we still don't have enough space
@@ -206,12 +206,13 @@ void AssignRndTask64(const TIntV &NodeDegrees, TIntVVV &Tasks, const long long b
 	// distribute stubs randomly to tasks
 	for (int i = 0; i < NodeDegrees.Len(); i++) {
 		int degree = NodeDegrees[i].Val;
-		int high_order = leading(base,seg_bits) + leading(i,seg_bits);
+		long long nodeId = base + i;
+		int high_order = leading(nodeId, seg_bits);
 		for (int j = 0; j < degree; j++) {
 			int t = (long) (drand48() * Tasks.Len());
 			// make sure this TIntIntVV has enough space
 			ensureCapacity(Tasks[t], high_order);
-			Tasks[t][high_order].Add(trailing(i,seg_bits));
+			Tasks[t][high_order].Add(trailing(nodeId, seg_bits));
 		}
 	}
 }
