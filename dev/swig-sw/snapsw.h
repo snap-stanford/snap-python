@@ -226,12 +226,12 @@ void AddVec64(TIntIntVV &vecA, const TIntIntVV &vecB) {
 /**
  * samples from a ragged table, using some extra structures for bookkeeping
  */
-int GetRandomStub64(TIntIntVV &stubs, TIntV &stubsRemainingInSegment, int &totalStubsRemaining, int seg_bits) {
+int64 GetRandomStub64(TIntIntVV &stubs, TIntV &stubsRemainingInSegment, int &totalStubsRemaining, int seg_bits) {
 	assert(totalStubsRemaining > 0);
 	int randomStubIndex = (long)(drand48() * totalStubsRemaining);
 	totalStubsRemaining--;
 	int stubsSeen=0;
-	for (int i=0; i<stubs.Len(); i++) {
+	for (int64 i=0; i<stubs.Len(); i++) {
 		int prevSeen = stubsSeen;
 		stubsSeen += stubsRemainingInSegment[i].Val;
 		if (stubsSeen > randomStubIndex) {
@@ -239,7 +239,7 @@ int GetRandomStub64(TIntIntVV &stubs, TIntV &stubsRemainingInSegment, int &total
 			int stub = stubs[i][stubIndexWithinSegment].Val;
 			// now move this stub to the end so that it won't be selected again
 			stubsRemainingInSegment[i]--;
-			stubs[i].Swap(stubIndexWithinSegment, stubsRemainingInSegment[i].Val);
+			stubs[i].Swap(stubIndexWithinSegment, stubsRemainingInSegment[i].Val - 1); // this isn't prone to off-by-one errors at all!
 			return (i<<seg_bits) + stub;
 		}
 	}
@@ -256,8 +256,8 @@ void AssignRandomEdges64(TIntIntVV &stubs, TIntVVV &Tasks, int tsize, int seg_bi
 	}
 	assert(totalStubsRemaining%2==0); // we'd better have an even # of stubs
 	while (totalStubsRemaining > 0) {
-		int stubA = GetRandomStub64(stubs, stubsRemainingInSegment, totalStubsRemaining, seg_bits);
-		int stubB = GetRandomStub64(stubs, stubsRemainingInSegment, totalStubsRemaining, seg_bits);
+		int64 stubA = GetRandomStub64(stubs, stubsRemainingInSegment, totalStubsRemaining, seg_bits);
+		int64 stubB = GetRandomStub64(stubs, stubsRemainingInSegment, totalStubsRemaining, seg_bits);
 
 		int taskId = stubA / tsize;
 		// make sure we have enough room there
