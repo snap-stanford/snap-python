@@ -210,7 +210,7 @@ void AssignRndTask64(const TIntV &NodeDegrees, TIntVVV &Tasks, const long long b
 		for (int j = 0; j < degree; j++) {
 			int t = (long) (drand48() * Tasks.Len());
 			// make sure this TIntIntVV has enough space
-			ensureCapacity(Tasks[t], high_order);
+			ensureCapacity(Tasks[t], high_order+1);
 			Tasks[t][high_order].Add(trailing(nodeId, seg_bits));
 		}
 	}
