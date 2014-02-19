@@ -1,7 +1,7 @@
 GetAnf
 '''''''''''
 
-.. function:: GetAnf(Graph, SrcNId, DistNbrsV, MxDist, IsDir, Napprox = 32)
+.. function:: GetAnf(Graph, SrcNId, DistNbrsV, MxDist, IsDir, Napprox=32)
 
 Approximate neighborhood function of a node. Returns the (approximate) number of nodes reachable from *SrcNId* in less than *MxDist* hops.
 
@@ -20,8 +20,8 @@ Parameters:
 - *MxDist*: int (input)
     Maximum number of hops the algorithm spreads from SrcNId
     
-- *isDir*: bool (input)
-    Whether to treat the links as directed or undirected
+- *IsDir*: boolean (input)
+    Indicates whether the edges should be considered directed or undirected.
 
 - *Napprox*: int (input)
     Quality of approximation. See the ANF paper.

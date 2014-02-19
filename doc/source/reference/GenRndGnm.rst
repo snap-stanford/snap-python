@@ -1,7 +1,7 @@
 GenRndGnm
 '''''''''
 
-.. function:: GenRndGnm(GraphType, Nodes, Edges, IsDir=True, Rnd=TInt.Rnd)
+.. function:: GenRndGnm(GraphType, Nodes, Edges, IsDir=True, Rnd=TRnd)
 
 Generates an Erdos-Renyi random graph of the specified *GraphType*.
 
@@ -16,8 +16,8 @@ Parameters:
 - *Edges*: int (input)
     Number of edges in the genereated graph
 
-- *IsDir*: bool (input)
-    True for a directed graph, false for an undirected graph
+- *IsDir*: boolean (input)
+    Indicates whether to consider the edges as directed or undirected. Defaults to directed. 
 
 - *Rnd*: TRnd (input)
     Random number generator 

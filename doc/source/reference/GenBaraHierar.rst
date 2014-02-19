@@ -1,7 +1,7 @@
 GenBaraHierar
 '''''''''''''
 
-.. function:: GenBaraHierar(GraphType, Levels, IsDir)
+.. function:: GenBaraHierar(GraphType, Levels, IsDir=True)
 
 Generates a Ravasz-Barabasi deterministic scale-free graph.
 
@@ -21,8 +21,8 @@ Parameters:
 - *Levels*: int (input)
     The number of expansions of the base graph. 
 
-- *IsDir*: bool (input)
-    if false: ignore edge directions and consider edges/paths as undirected.
+- *IsDir*: boolean (input)
+    Indicates whether the edges should be directed or undirected. Defaults to directed. 
 
 Return value:
 

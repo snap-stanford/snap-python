@@ -11,7 +11,7 @@ Parameters:
     Class of output graph -- one of `PNGraph`, `PNEANet`, or `PUNGraph`
 
 - *InGraph*: graph (input)
-    A Snap.py graph or a network
+    A Snap.py graph or network
 
 - *RenumberNodes*: boolean (input)
     Determines whether the node IDs are preserved or not. If False, then nodes in the resulting graph have the same node IDs as nodes in *InGraph*. If True, then nodes in the resulting graph are renumbered sequentially from 0 to N-1, where N is the number of nodes. By default, the nodes are not renumbered.

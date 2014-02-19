@@ -1,7 +1,6 @@
 CntUniqBiDirEdges
 '''''''''''''''''
 
-
 .. function:: CntUniqBiDirEdges(Graph)
 
 Returns the number of unique bidirectional edges in the graph *Graph*.

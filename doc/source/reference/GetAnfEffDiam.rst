@@ -1,15 +1,8 @@
 GetAnfEffDiam
 '''''''''''''
-.. note::
-
-    This page is a draft and under revision.
-
 
 .. function:: GetAnfEffDiam(Graph, IsDir, Percentile, NApprox)
 
-.. note::
-
-    This function is not yet supported.
 
 Returns a given *Percentile* of the shortest path length distribution of a *Graph* (based on a single run of ANF of approximation quality *NApprox*)
 
@@ -19,19 +12,18 @@ Parameters:
     A Snap.py graph or a network
 
 - *IsDir*: boolean (input)
-    Use false to consider links as undirected
+    Indicates whether the edges should be considered directed or undirected.
 
 - *Percentile*: float (input)
     Percentile of the shortest path length distribution of a Graph
 
 - *NApprox*: int (input)
-    Quality of approximation. See the ANF paper.
+    Quality of approximation. Should be a multiple of 8.
 
 Return value:
 
 - float
-
-References CalcEffDiam() and GetGraphAnf()
+    the given *Percentile* of the shortest path length distribution
 
 The following example shows how to use this function 
 with graphs :class:`TNGraph`, :class:`TUNGraph`, and :class:`TNEANet`::

@@ -21,7 +21,7 @@ Parameters:
 
 Return value:
 
-- PUNGraph
+- :class:`PUNGraph`
 
 The following example shows how to generate random graphs with control
 over the aforementioned attributes::

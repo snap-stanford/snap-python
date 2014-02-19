@@ -1,7 +1,6 @@
 Get1CnCom
 '''''''''''
 
-
 .. function:: Get1CnCom(Graph, Cn1ComV)
 
 Returns 1-components: maximal connected components of that can be disconnected from the *Graph* by removing a single edge.

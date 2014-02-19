@@ -1,7 +1,6 @@
 CntUniqUndirEdges
 '''''''''''''''''
 
-
 .. function:: CntUniqUndirEdges(Graph)
 
 Returns the number of unique undirected edges in the graph *Graph*. 

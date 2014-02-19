@@ -1,25 +1,19 @@
 GenSmallWorld
 '''''''''''''
-.. note::
 
-    This page is a draft and under revision.
+.. function:: GenSmallWorld(Nodes, NodeOutDeg, RewireProb, Rnd=TRnd)
 
-
-.. function:: PUNGraph GenSmallWorld(Nodes, NodeOutDeg, RewireProb, Rnd=TInt::Rnd)
-
-Generates and returns a random small-world graph using the Watts-Strogatz model.
-
-Generates a small-world graph using the Watts-Strogatz model. We assume a circle where each node creates links to NodeOutDeg other nodes. See: Collective dynamics of 'small-world' networks. Watts and Strogatz. URL: http://research.yahoo.com/files/w_s_NATURE_0.pdf
+Generates and returns a random small-world graph using the Watts-Strogatz model. We assume a circle where each node creates links to *NodeOutDeg* other nodes.
 
 Parameters:
 
 - *Nodes*: int (input)
-    Represents the desired number of nodes in the output graph
+    The number of nodes desired
 
 - *NodeOutDeg*: int (input)
-	Indicates the average out-degree of a node prior to the Watts-Strogatz rewiring procedure
+    The out degree of each node desired. Since the generated graph is undirected, the out degree for each node, on average, will be twice this value.
 
-- *RewireProb*: double (input)
+- *RewireProb*: float (input)
 	Represents the probability that an edge will be rewired
 
 - *Rnd*: TRnd (input)
@@ -27,8 +21,10 @@ Parameters:
 
 Return value:
 
-- :class:`PUNGraph` (output)
+- :class:`PUNGraph`
     A Snap.py undirected graph
+
+See: Collective dynamics of 'small-world' networks. Watts and Strogatz. URL: http://research.yahoo.com/files/w_s_NATURE_0.pdf
 
 The following example shows how to generate a small-world graph for various values of *RewireProb*::
 

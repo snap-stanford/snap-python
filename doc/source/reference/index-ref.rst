@@ -7,6 +7,9 @@ Contents:
    :maxdepth: 1
 
    introduction
+   basic
+   datastructs
+   graphs
    generators
    io
    degree

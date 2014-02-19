@@ -1,7 +1,7 @@
 GenRMat
 '''''''
 
-.. function:: GenRMat(Nodes, Edges, A, B, C, Rnd)
+.. function:: GenRMat(Nodes, Edges, A, B, C, Rnd=TRnd)
 
 Generates an R-MAT directed graph using recursive descent into a 2x2 matrix [A,B; C, 1-(A+B+C)].
 
@@ -27,7 +27,7 @@ Parameters:
 
 Return value:
 
-- PNGraph
+- :class:`PNGraph`
     A directed R-MAT graph
 
 For more info see: "R-MAT Generator: A Recursive Model for Graph Mining." D. Chakrabarti, Y. Zhan and C. Faloutsos, in SIAM Data Mining 2004. URL: http://www.cs.cmu.edu/~deepay/mywww/papers/siam04.pdf

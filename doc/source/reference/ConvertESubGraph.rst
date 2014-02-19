@@ -7,10 +7,13 @@ Returns a subgraph of graph *InGraph* with *EIdV* edges with an optional node re
 
 Parameters:
 
-- *Graph*: graph (input)
-    A Snap.py graph or a network
+- *GraphType*: graph class (input)
+    Class of output graph -- one of `PNGraph`, `PNEANet`, or `PUNGraph`
 
-- *EIdV*: a vector of ints (input)
+- *InGraph*: network (input)
+    A Snap.py network
+
+- *EIdV*: TIntV, a vector of ints (input)
     Edge IDs that will be included in the subgraph 
 
 - *RenumberNodes*: boolean (input)
@@ -18,34 +21,23 @@ Parameters:
 
 Return value:
 
-- *OutGraph*: graph (output)
-    A snap.py graph - the subgraph of InGraph
+- graph
+    A snap.py graph of type *GraphType* with *EIdV* edges from the original graph *InGraph*
 
 The following example shows how to create a subgraph for nodes in 
 :class:`TNGraph`, :class:`TUNGraph`, and :class:`TNEANet`::
 
     import snap
 
-    Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
-    Some_Edges = snap.TIntV()
-    Some_Edges.Add(Graph.Edges().next().GetId())
-    Some_Edges.Add(Graph.Edges().next().GetId())
-    Sub_Graph = ConvertESubGraph(Graph, Some_Edges, false)
-    for EI in Sub_Graph.Edges():
-        print "edge (%d, %d)" % (EI.GetSrcNId(), EI.GetDstNId())
-    
-    Graph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
-    Some_Edges = snap.TIntV()
-    Some_Edges.Add(Graph.Edges().next().GetId())
-    Some_Edges.Add(Graph.Edges().next().GetId())
-    Sub_Graph = ConvertESubGraph(Graph, Some_Edges, false)
-    for EI in Sub_Graph.Edges():
-        print "edge (%d, %d)" % (EI.GetSrcNId(), EI.GetDstNId())
-    
     Graph = snap.GenRndGnm(snap.PNEANet, 100, 1000)
-    Some_Edges = snap.TIntV()
-    Some_Edges.Add(Graph.Edges().next().GetId())
-    Some_Edges.Add(Graph.Edges().next().GetId())
-    Sub_Graph = ConvertESubGraph(Graph, Some_Edges, false)
+    V = snap.TIntV()
+    for i in range(100):
+      V.Add(i)
+
+    Sub_Graph = snap.ConvertESubGraph(snap.PNGraph, Graph, V, False)
+    for EI in Sub_Graph.Edges():
+        print "edge (%d, %d)" % (EI.GetSrcNId(), EI.GetDstNId())
+
+    Sub_Graph = snap.ConvertESubGraph(snap.PUNGraph, Graph, V, False)
     for EI in Sub_Graph.Edges():
         print "edge (%d, %d)" % (EI.GetSrcNId(), EI.GetDstNId())

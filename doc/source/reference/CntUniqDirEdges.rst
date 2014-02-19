@@ -1,7 +1,6 @@
 CntUniqDirEdges
 '''''''''''''''
 
-
 .. function:: CntUniqDirEdges(Graph)
 
 Returns the number of unique directed edges in the graph *Graph*.

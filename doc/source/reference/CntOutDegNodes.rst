@@ -1,7 +1,6 @@
 CntOutDegNodes
 '''''''''''''''''''
 
-
 .. function:: CntOutDegNodes(Graph, NodeOutDeg)
 
 Returns the number of nodes in *Graph* with out-degree *NodeOutDeg*.

@@ -1,7 +1,7 @@
 GenRewire
 '''''''''''
 
-.. function:: GenRewire (Graph, NSwitch, Rnd)
+.. function:: GenRewire (Graph, NSwitch, Rnd=TRnd)
 
 Rewires an undirected *Graph* by randomly rewiring its edges while keeping the degrees the same.
 
@@ -18,7 +18,7 @@ Parameters:
 
 Return value:
 
-- PUNGraph
+- :class:`PUNGraph`
     The rewired graph 
 
 The following example shows how to use :func:`GenRewire` with nodes in

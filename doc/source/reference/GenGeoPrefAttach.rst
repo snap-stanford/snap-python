@@ -1,7 +1,7 @@
 GenGeoPrefAttach
 ''''''''''''''''
 
-.. function:: GenGeoPrefAttach(NumNodes, NumEdges, Beta, Rnd)
+.. function:: GenGeoPrefAttach(NumNodes, NumEdges, Beta, Rnd=TRnd)
 
 Generate a random scale-free, undirected graph using the Geometric Preferential Attachment model by Flexman, Frieze and Vera.
 
@@ -23,7 +23,7 @@ Parameters:
 
 Return Value: 
     
-- PUNGraph
+- :class:`PUNGraph`
     An undirected graph generated using the Geometric Preferential Attachment model
 
 For more information see: A geometric preferential attachment model of networks by Flexman, Frieze and Vera. WAW 2004. URL: http://math.cmu.edu/~af1p/Texfiles/GeoWeb.pdf

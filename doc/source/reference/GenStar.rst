@@ -14,7 +14,7 @@ Parameters:
     Number of nodes in the star graph, including the center node.
 
 - *IsDir*: boolean (input)
-    Indicates whether the star graph is directed or undirected. Defaults to directed. 
+    Indicates whether the edges should be directed or undirected. Defaults to directed. 
 
 Return value:
 

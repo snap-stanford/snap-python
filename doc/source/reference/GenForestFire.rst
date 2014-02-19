@@ -18,7 +18,7 @@ Parameters:
 
 Return value:
 
-- PNGraph
+- :class:`PNGraph`
     A directed graph generated using the Forest Fire model
 
 The following example shows how to use :func:`GenForestFire`::

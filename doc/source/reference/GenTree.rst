@@ -16,8 +16,8 @@ Parameters:
 - *Levels*: int (input)
     Number of levels of the tree
 
-- *IsDir*: bool (input)
-    True for a directed graph, false for an undirected graph
+- *IsDir*: boolean (input)
+    Indicates whether the edges should be directed or undirected. Defaults to directed. 
 
 - *ChildPointsToParent*: bool (input)
     True if children should point to their parents. Only applies to directed graphs.

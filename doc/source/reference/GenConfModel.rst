@@ -1,7 +1,7 @@
 GenConfModel
 '''''''''''''''
 
-.. function:: GenConfModel(DegSeqV, Rnd)
+.. function:: GenConfModel(DegSeqV, Rnd=TRnd)
 
 Generates a random undirected graph with the given degree sequence *DegSeqV*.
 
@@ -15,7 +15,7 @@ Parameters:
 
 Return value:
 
-- PUNGraph
+- :class:`PUNGraph`
     Random undirected graph with degree sequence given by *DegSeqV*
 
 The following example generates a random unidirected graph with degree sequence 1, 2, 3::

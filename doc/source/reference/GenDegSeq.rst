@@ -1,7 +1,7 @@
 GenDegSeq
 '''''''''
 
-.. function:: GenDegSeq(DegSeqV, Rnd)
+.. function:: GenDegSeq(DegSeqV, Rnd=TRnd)
 
 Generates an undirected random graph with the exact degree sequence.
 
@@ -15,7 +15,7 @@ Parameters:
 
 Return value:
 
-- PUNGraph
+- :class:`PUNGraph`
 
 The following example shows how to generate a random :class:`TUNGraph` with
 exact degree sequence::
