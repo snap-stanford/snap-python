@@ -9,7 +9,7 @@ import sys
 f_header     = "def %s(tspec, *args):" 
 f_consbody   = "    if tspec == %-8s: return %s_%s(*args)"
 f_funcbody   = "    if type(tspec) == %-8s: return %s_%s(tspec, *args)"
-f_end        = "    return None" 
+f_end        = "    raise TypeError('First argument has invalid type')" 
 
 def gendispatch(item, df):
     flist = df[item]["cpp"]
