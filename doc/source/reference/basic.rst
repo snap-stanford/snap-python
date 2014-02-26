@@ -384,7 +384,7 @@ TStr
         Removes the trailing whitespace from the contents of the TStr and returns the resulting
         Python str.
 
-      .. describe:: GetTrunc()
+     .. describe:: GetTrunc()
 
         Returns a Python str with all the whitespace removed from the end of the contents of the
         TStr.
@@ -450,7 +450,7 @@ TStr
         Returns the substring right of the last instance of char ch in the TStr.
 
      .. describe:: Mid(start)
-                   Mind(start, numChars)
+                   Mid(start, numChars)
 
         Returns the Python str starting at position start containing at most numChars characters.
         If numChars is not specified, it returns the substring starting at position start to the
@@ -601,7 +601,7 @@ TStr
         Returns a bool indicating whether the content of the string is just whitespace.
 
 
-   Below is some code demonstrating the use of the TFlt type:
+   Below is some code demonstrating the use of the TStr type:
 
       >>> s = snap.TStr('Welcome to Snap.py!')
       >>> print s.CStr()
