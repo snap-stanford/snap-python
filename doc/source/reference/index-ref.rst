@@ -8,8 +8,6 @@ Contents:
 
    introduction
    basic
-   datastructs
-   graphs
    generators
    io
    degree
