@@ -2192,6 +2192,18 @@ def zeroLowOrderBits(*args):
   return _snap.zeroLowOrderBits(*args)
 zeroLowOrderBits = _snap.zeroLowOrderBits
 
+def desegment(*args):
+  return _snap.desegment(*args)
+desegment = _snap.desegment
+
+def desegmentRandomizedEdges(*args):
+  return _snap.desegmentRandomizedEdges(*args)
+desegmentRandomizedEdges = _snap.desegmentRandomizedEdges
+
+def segment(*args):
+  return _snap.segment(*args)
+segment = _snap.segment
+
 def FillVec(*args):
   return _snap.FillVec(*args)
 FillVec = _snap.FillVec
@@ -2207,6 +2219,10 @@ GetDegrees = _snap.GetDegrees
 def IncVal(*args):
   return _snap.IncVal(*args)
 IncVal = _snap.IncVal
+
+def GetMemSize64(*args):
+  return _snap.GetMemSize64(*args)
+GetMemSize64 = _snap.GetMemSize64
 
 def AssignRndTask(*args):
   return _snap.AssignRndTask(*args)

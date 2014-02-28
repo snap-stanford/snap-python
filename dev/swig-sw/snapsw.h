@@ -1,5 +1,10 @@
 #include <time.h>
 #include <cassert>
+#include <cstdio>
+#include <climits>
+//#include <sys/types.h>
+//#include <sys/stat.h>
+#include <fcntl.h>
 
 namespace TSnap {
 
@@ -13,9 +18,6 @@ typedef THash<TInt, TIntIntVV> TIntVVH;
 // vector of hashes
 typedef TVec<THash<TInt,TInt>, int> TIntIntHV;
 
-//typedef TVec<TIntIntVH, int> TIntVHV;
-
-//typedef THash<TInt, TInt> TIntH;
 
 // TODO (smacke): It makes a whole lot of sense to define
 // types for offset'd and segment'd containers
@@ -105,12 +107,74 @@ int leading(int64 val, int seg_bits) {
 }
 
 int trailing(int64 val, int seg_bits) {
-	return val & ((1<<seg_bits)-1);
+	return int(val & ((1<<seg_bits)-1));
 }
 
-int zeroLowOrderBits(int64 val, int seg_bits) {
+int64 zeroLowOrderBits(int64 val, int seg_bits) {
 //	return v & ~((1<<b)-1);
-	return leading(val, seg_bits) << seg_bits;
+	return leading(val, seg_bits) << int64(seg_bits);
+}
+
+template<typename T>
+void ensureCapacity(TVec<T> &vec, unsigned int size) {
+    size++; // make sure we will actually be able to index vec at size
+    int cap = vec.Reserved();
+
+    // if this is the first time we add something to this entry
+    // then reserve some memory
+    if (vec.Len()==0) {
+    	unsigned int newSize = nextPowerOf2(size);
+        cap = max(newSize, cap);
+        vec.Reserve(newSize, cap);
+    } else {
+        // otherwise, check to see if we still don't have enough space
+        // if not, make more
+        unsigned int x = vec.Len();
+        if (x < size) {
+            while (x < size) x *= 2;
+            cap = max(x, cap);
+            vec.Reserve(x, cap);
+        }
+    }
+}
+
+// helper function for debugging
+// converts a segmented vector into a nonsegmented one
+TIntV desegment(TIntIntVV& segmented, int seg_bits) {
+    TIntV desegmented;
+    for (int64 seg=0; seg<segmented.Len(); seg++) {
+        for (TIntV::TIter it = segmented[seg].BegI(); it != segmented[seg].EndI(); ++it) {
+            desegmented.Add((seg<<seg_bits) + *it);
+        }
+    }
+    return desegmented;
+}
+
+// helper function for debugging
+// given a TIntVVV created by AssignRandomEdges64, it creates the unsegmented equivalent
+TIntIntVV desegmentRandomizedEdges(TIntVVV& segmented, int seg_bits, int tsize) {
+    TIntIntVV desegmented(segmented.Len());
+    for (int i=0; i<segmented.Len(); i++) {
+        TIntV onetask;
+        int task_leading = leading(i*tsize,seg_bits) << seg_bits;
+        for (int seg=0; seg<segmented[i].Len(); seg++) {
+            for (int j=0; j<segmented[i][seg].Len(); j+=2) {
+                onetask.Add(task_leading + segmented[i][seg][j]);
+                onetask.Add((seg<<seg_bits) + segmented[i][seg][j+1]);
+            }
+        }
+        desegmented[i] = onetask;
+    }
+    return desegmented;
+}
+
+TIntIntVV segment(TIntV& unsegmented, int seg_bits) {
+    TIntIntVV segmented;
+    for (TIntV::TIter it = unsegmented.BegI(); it != unsegmented.EndI(); ++it) {
+        ensureCapacity(segmented, leading(*it, seg_bits));
+        segmented[leading(*it, seg_bits)].Add(trailing(*it, seg_bits));
+    }
+    return segmented;
 }
 
 void FillVec(TIntV &Vec, int val) {
@@ -149,6 +213,14 @@ void IncVal(TIntV& Nodes, int disp) {
 	}
 }
 
+int64 GetMemSize64(TIntIntVV& Vec64) {
+  int64 total=2*sizeof(int);
+  for (int i=0; i<Vec64.Len(); i++) {
+    total += Vec64.GetVal(i).GetMemSize();
+  }
+  return total;
+}
+
 
 void AssignRndTask(const TIntV& Nodes, TIntIntVV& Tasks) {
 	int i;
@@ -175,49 +247,32 @@ void AssignRndTask(const TIntV& Nodes, TIntIntVV& Tasks) {
 	}
 }
 
-template<typename T>
-void ensureCapacity(TVec<T> &vec, unsigned int size) {
-    // if this is the first time we add something to this entry
-    // then reserve some memory
-    if (vec.Len()==0) {
-    	unsigned int newSize = nextPowerOf2(size+1);
-        vec.Reserve(newSize, newSize);
-    } else {
-        // otherwise, check to see if we still don't have enough space
-        // if not, make more
-        unsigned int x = vec.Len();
-        if (x <= size) {
-            while (x <= size) x *= 2;
-            vec.Reserve(x, x);
-        }
-    }
-}
-
 
 /*
  * Given knowledge of the degree of each node in the graph, offset from "base",
  * this function generates stubs and assigns them to tasks randomly.
  */
-void AssignRndTask64(const TIntV &NodeDegrees, TIntVVV &Tasks, const long long base, const int seg_bits) {
+void AssignRndTask64(const TIntV &NodeDegrees, TIntVVV &Tasks, const int64 base, const int seg_bits) {
 
 //	assert(NodeDegrees.Len() % seg_bits == 0);
 
 	// distribute stubs randomly to tasks
 	for (int i = 0; i < NodeDegrees.Len(); i++) {
 		int degree = NodeDegrees[i].Val;
-		long long nodeId = base + i;
+		int64 nodeId = base + i;
 		int high_order = leading(nodeId, seg_bits);
+//        printf("add %d of %ld to %d tasks\n", degree, nodeId, Tasks.Len());
 		for (int j = 0; j < degree; j++) {
 			int t = (long) (drand48() * Tasks.Len());
 			// make sure this TIntIntVV has enough space
-			ensureCapacity(Tasks[t], high_order+1);
+			ensureCapacity(Tasks[t], high_order);
 			Tasks[t][high_order].Add(trailing(nodeId, seg_bits));
 		}
 	}
 }
 
 void AddVec64(TIntIntVV &vecA, const TIntIntVV &vecB) {
-	ensureCapacity(vecA, vecB.Len());
+	ensureCapacity(vecA, vecB.Len()-1);
 	for (int i=0; i<vecB.Len(); i++) {
 		vecA[i].AddV(vecB[i]);
 	}
@@ -226,20 +281,30 @@ void AddVec64(TIntIntVV &vecA, const TIntIntVV &vecB) {
 /**
  * samples from a ragged table, using some extra structures for bookkeeping
  */
-int64 GetRandomStub64(TIntIntVV &stubs, TIntV &stubsRemainingInSegment, int &totalStubsRemaining, int seg_bits) {
+int64 GetRandomStub64(TIntIntVV &stubs, TIntV &stubsRemainingInSegment, int64 &totalStubsRemaining, int seg_bits) {
 	assert(totalStubsRemaining > 0);
-	int randomStubIndex = (long)(drand48() * totalStubsRemaining);
+	int64 randomStubIndex;
+
+    // if we need a ton O random bits
+    // TODO (smacke): is this biased????
+    if (totalStubsRemaining > INT_MAX) {
+        randomStubIndex = ((((int64)lrand48()) << 32LL) + lrand48()) % totalStubsRemaining;
+    } else {
+        randomStubIndex = (int64)(drand48() * totalStubsRemaining);
+    }
+
 	totalStubsRemaining--;
-	int stubsSeen=0;
+	int64 stubsSeen=0;
 	for (int64 i=0; i<stubs.Len(); i++) {
-		int prevSeen = stubsSeen;
+		int64 prevSeen = stubsSeen;
 		stubsSeen += stubsRemainingInSegment[i].Val;
+        // keep going until we exceed threshold -- at this point, we sample
 		if (stubsSeen > randomStubIndex) {
-			int stubIndexWithinSegment = randomStubIndex - prevSeen;
+			int stubIndexWithinSegment = (int)(randomStubIndex - prevSeen);
 			int stub = stubs[i][stubIndexWithinSegment].Val;
 			// now move this stub to the end so that it won't be selected again
 			stubsRemainingInSegment[i]--;
-			stubs[i].Swap(stubIndexWithinSegment, stubsRemainingInSegment[i].Val - 1); // this isn't prone to off-by-one errors at all!
+			stubs[i].Swap(stubIndexWithinSegment, stubsRemainingInSegment[i].Val); // this isn't prone to off-by-one errors at all!
 			return (i<<seg_bits) + stub;
 		}
 	}
@@ -247,21 +312,29 @@ int64 GetRandomStub64(TIntIntVV &stubs, TIntV &stubsRemainingInSegment, int &tot
 	return -1;
 }
 
+//int Snopen(char *fname) {
+//    return open(fname, O_CREAT | O_RDWR | O_TRUNC, 0644);
+//}
+
 void AssignRandomEdges64(TIntIntVV &stubs, TIntVVV &Tasks, int tsize, int seg_bits) {
 	TIntV stubsRemainingInSegment(stubs.Len());
-	int totalStubsRemaining = 0;
+	int64 totalStubsRemaining = 0;
 	for (int i=0; i<stubs.Len(); i++) {
 		stubsRemainingInSegment[i] = stubs[i].Len();
 		totalStubsRemaining += stubs[i].Len();
 	}
-	assert(totalStubsRemaining%2==0); // we'd better have an even # of stubs
-	while (totalStubsRemaining > 0) {
+	while (totalStubsRemaining > 1) {
+//        printf("%d remaining\n", totalStubsRemaining);
+//        printf("about to get random stubs\n");
 		int64 stubA = GetRandomStub64(stubs, stubsRemainingInSegment, totalStubsRemaining, seg_bits);
 		int64 stubB = GetRandomStub64(stubs, stubsRemainingInSegment, totalStubsRemaining, seg_bits);
+//        printf("done getting random stubs\n");
 
-		int taskId = stubA / tsize;
+		int taskId = (int)(stubA / tsize);
 		// make sure we have enough room there
+//        printf("about to ensure capacity\n");
 		ensureCapacity(Tasks[taskId], leading(stubB, seg_bits));
+//        printf("done ensuring capacity\n");
 
 		/*
 		 * This next part is kind of weird. We need to keep the two stubs together,
@@ -272,15 +345,19 @@ void AssignRandomEdges64(TIntIntVV &stubs, TIntVVV &Tasks, int tsize, int seg_bi
 		 * the segment size to be a multiple of "range".
 		 */
 
+//        printf("about to add stubs\n");
 		Tasks[taskId][leading(stubB, seg_bits)].Add(trailing(stubA, seg_bits));
 		Tasks[taskId][leading(stubB, seg_bits)].Add(trailing(stubB, seg_bits));
+//        printf("done adding stubs\n");
 
-		taskId = stubB / tsize;
+		taskId = (int)(stubB / tsize);
 		ensureCapacity(Tasks[taskId], leading(stubA, seg_bits));
 
 		// again, the weird part
+//        printf("about to add stubs round 2\n");
 		Tasks[taskId][leading(stubA, seg_bits)].Add(trailing(stubB, seg_bits));
 		Tasks[taskId][leading(stubA, seg_bits)].Add(trailing(stubA, seg_bits));
+//        printf("done adding stubs round 2\n");
 	}
 }
 
@@ -339,6 +416,8 @@ void GetAdjLists(const TIntV& Edges, TIntIntVH& AdjLists) {
 
 /*
  * Creates an adjacency list out of segmented edge table.
+ * NOTE: the reason this works is that the leading bits of the
+ *       first node in the edge (Node1) are determined by this task.
  */
 void GetAdjLists64(const TIntIntVV &Edges, TIntVVH &AdjLists) {
 	for (int seg=0; seg<Edges.Len(); seg++) {
@@ -367,7 +446,7 @@ void GetNeighborhood(const TIntV& Nodes, const TIntIntVH& AdjLists, TIntV& Hood)
 
 	// create a union of all neighbors
 	for (i = 0; i < NumNodes; i++) {
-		Node = Nodes.GetVal(i).Val; // TODO (smacke): why not just Nodes[i]?
+		Node = Nodes.GetVal(i).Val;
 		Neighbors = AdjLists.GetDat(Node);
 		NumNeighbors = Neighbors.Len();
 		for (j = 0; j < NumNeighbors; j++) {
@@ -380,24 +459,32 @@ void GetNeighborhood(const TIntV& Nodes, const TIntIntVH& AdjLists, TIntV& Hood)
 	HashHood.GetKeyV(Hood);
 }
 
-void GetNeighborhood64(const TIntV &Nodes, const TIntVVH &AdjLists, TIntIntVV Hood) {
+void GetNeighborhood64(const TIntV &Nodes, const TIntVVH &AdjLists, TIntIntVV &Hood) {
 	TIntIntHV HashHood;
 	// not segmented since this task is responsible for
 	// low-order bits of all incoming nodes
 	for (int i=0; i<Nodes.Len(); i++) {
+//        bool found=false;
 		int Node = Nodes[i].Val;
-		if (!AdjLists.IsKey(Node)) continue; // don't seg fault of node has no neighbors
+		if (!AdjLists.IsKey(Node)) {
+            printf("no neighbors for node %d\n", Node);
+            continue; // don't seg fault if node has no neighbors
+        }
 		TIntIntVV Neighbors = AdjLists.GetDat(Node);
-		ensureCapacity(HashHood, Neighbors.Len());
+		ensureCapacity(HashHood, Neighbors.Len()-1);
 		for (int seg=0; seg<Neighbors.Len(); seg++) {
 			for (int j=0; j<Neighbors[seg].Len(); j++) {
 				int Neighbor = Neighbors[seg][j].Val;
 				HashHood[seg].AddDat(Neighbor,0); // we are using this as a set
+//                found=true;
 			}
 		}
+//        if (!found) {
+//            printf("no neighbors for node %d after going through all segments!\n", Node);
+//        }
 	}
 
-	ensureCapacity(Hood, HashHood.Len());
+	ensureCapacity(Hood, HashHood.Len()-1);
 	for (int seg=0; seg<HashHood.Len(); seg++) {
 		HashHood[seg].GetKeyV(Hood[seg]);
 	}
@@ -493,7 +580,7 @@ void Nodes2Tasks1(const TIntV& Nodes, TIntIntVV& Tasks, int tsize) {
 
 void Nodes2Tasks64(const TIntIntVV &Nodes, TIntIntVV &Tasks, int tsize, int seg_bits) {
 	for (int seg=0; seg<Nodes.Len(); seg++) {
-		int64 base = (int64)seg << seg_bits;
+		int64 base = ((int64)seg) << seg_bits;
 		for (int node_i=0; node_i<Nodes[seg].Len(); node_i++) {
 			int node = Nodes[seg][node_i];
 			int TaskId = int(((base + node) / tsize));
