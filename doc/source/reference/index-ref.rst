@@ -8,6 +8,7 @@ Contents:
 
    introduction
    basic
+   graphs
    generators
    io
    degree
