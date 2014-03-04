@@ -2,9 +2,6 @@
 #include <cassert>
 #include <cstdio>
 #include <climits>
-//#include <sys/types.h>
-//#include <sys/stat.h>
-#include <fcntl.h>
 
 namespace TSnap {
 
@@ -111,7 +108,6 @@ int trailing(int64 val, int seg_bits) {
 }
 
 int64 zeroLowOrderBits(int64 val, int seg_bits) {
-//	return v & ~((1<<b)-1);
 	return leading(val, seg_bits) << int64(seg_bits);
 }
 
@@ -312,9 +308,6 @@ int64 GetRandomStub64(TIntIntVV &stubs, TIntV &stubsRemainingInSegment, int64 &t
 	return -1;
 }
 
-//int Snopen(char *fname) {
-//    return open(fname, O_CREAT | O_RDWR | O_TRUNC, 0644);
-//}
 
 void AssignRandomEdges64(TIntIntVV &stubs, TIntVVV &Tasks, int tsize, int seg_bits) {
 	TIntV stubsRemainingInSegment(stubs.Len());
