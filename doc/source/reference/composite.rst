@@ -838,6 +838,21 @@ Hash sets contain keys are of the same type. Specific keys can be accessed throu
         Reduces the capacity of the memory used to hold the hash set to match its size.
 
 
+   Below is a list of static functions supported by the THashSet class:
+
+     .. describe:: GetSet(Key1)
+                   GetSet(Key1, Key2)
+                   GetSet(Key1, Key2, Key3)
+                   GetSet(Key1, Key2, Key3, Key4)
+                   GetSet(Key1, Key2, Key3, Key4, Key5)
+                   GetSet(Key1, Key2, Key3, Key4, Key5, Key6)
+                   GetSet(Key1, Key2, Key3, Key4, Key5, Key6, Key7)
+                   GetSet(Key1, Key2, Key3, Key4, Key5, Key6, Key7, Key8)
+                   GetSet(Key1, Key2, Key3, Key4, Key5, Key6, Key7, Key8, Key9)
+
+        Returns a hash set with the given keys.
+
+
    Below is some code demonstrating the use of the THash type:
 
       >>> hs = snap.TIntSet()
