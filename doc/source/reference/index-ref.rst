@@ -8,6 +8,7 @@ Contents:
 
    introduction
    basic
+   composite
    generators
    io
    degree
