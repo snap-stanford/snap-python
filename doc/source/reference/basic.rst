@@ -15,7 +15,7 @@ TInt
            TInt(val)
 
    Returns a new TInt initialized with the value specified by optional parameter
-   val. If no value is given, the TInt object is initialized with the default value 0.
+   *val*. If no value is given, the TInt object is initialized with the default value 0.
    In Snap.py, TInt is automatically converted to Python type :class:`int`.
 
    Below is a list of public functions supported by the TInt class:
@@ -37,29 +37,31 @@ TInt
 
      .. describe::  Abs(val)
 
-        A static method that returns the absolute value of val, an int.
+        A static method that returns the absolute value of *val*, an int.
 
      .. describe:: GetHexStr(val)
 
-        A static method that returns a string with the hexidecimal representation of int val.
+        A static method that returns a string with the hexidecimal representation of int *val*.
 
      .. describe:: GetInRng(val, min, max)
 
-        A static method that returns int val if it is between min and max. If val is smaller
-        than min, it returns min. If val is larger than max, it returns max.
+        A static method that returns int *val* if it is between *min* and *max*. If 
+        *val* is smaller than *min*, it returns *min*. If *val* is larger than *max*, 
+        it returns *max*.
 
      .. describe:: GetKiloStr(val)
 
-        A static method that returns the int val as a kilo-formatted string. If val is less 
-        than 1000, it returns val as a string. If val is greater than or equal to 1000, it
-        returns a string in form of 'x.yK', where x is some digit from 1-9 and y from 0-9.
+        A static method that returns the int *val* as a kilo-formatted string. If *val*
+        is less than 1000, it returns *val* as a string. If *val* is greater than or 
+        equal to 1000, it returns a string in form of 'x.yK', where x is some digit
+        from 1-9 and y from 0-9.
 
      .. describe:: GetMegaStr(val)
 
-        A static method that returns the int val as a mega-formatted string. If val is less
-        than 1000000, it returns the equivalent of GetKiloStr(val). If val is greater than
-        or equal to 1000000, it returns a string in the form of 'x.yM', where x is some
-        digit from 1-9 and y from 0-9.
+        A static method that returns the int *val* as a mega-formatted string. If
+        *val* is less than 1000000, it returns the equivalent of *GetKiloStr(val)*. 
+        If *val* is greater than or equal to 1000000, it returns a string in the form
+        of 'x.yM', where x is some digit from 1-9 and y from 0-9.
 
      .. describe:: GetMn(val1, val2)
                    GetMn(val1, val2, val3)
@@ -75,21 +77,22 @@ TInt
 
      .. describe:: GetRnd(range=0)
 
-        A static method that returns a random int between 0 and range-1, inclusive. If a range 
-        value of 0 is specified, it returns a random int between 0 and INT_MAX. The default
-        value of range is 0.
+        A static method that returns a random int between 0 and *range*-1, inclusive.
+        If a *range* value of 0 is specified, it returns a random int between 0 and
+        INT_MAX. The default value of *range* is 0.
 
      .. describe:: IsEven(val)
 
-        A static method that returns a bool indicating whether val is even.
+        A static method that returns a bool indicating whether *val* is even.
 
      .. describe:: IsOdd(val)
 
-        A static method that returns a bool indicating whether val is odd.
+        A static method that returns a bool indicating whether *val* is odd.
 
      .. describe:: Sign(val)
 
-        A static method that returns 1 if val > 0, -1 if val < 0, and 0 if val == 0.
+        A static method that returns 1 if *val* > 0, -1 if *val* < 0, and 0 if
+        *val* == 0.
 
 
    A single public attribute is offered by the TInt class:
@@ -165,7 +168,8 @@ TFlt
 
      .. describe:: IsNan()
 
-        Returns a bool indicating whether the value stored in the TFlt is NaN - not a number.
+        Returns a bool indicating whether the value stored in the TFlt is NaN - not a
+        number.
 
      .. describe:: IsNum()
 
@@ -176,33 +180,33 @@ TFlt
 
      .. describe::  Abs(val)
 
-        A static method that returns the absolute value of val, a float.
+        A static method that returns the absolute value of *val*, a float.
 
      .. describe:: GetInRng(val, min, max)
 
-        A static method that returns float val if it is between min and max. If val is smaller
-        than min, it returns min. If val is larger than max, it returns max.
+        A static method that returns float *val* if it is between *min* and *max*. 
+        If *val* is smaller than *min*, it returns *min*. If *val* is larger than 
+        *max*, it returns *max*.
 
      .. describe:: GetKiloStr(val)
 
-        A static method that returns the float val as a kilo-formatted string. If val is less 
-        than 1000, it rounds val to the nearest int, and returns it as a string. If val is 
-        greater than or equal to 1000, it returns a string in form of 'x.yK', where x is some 
-        digit from 1-9 and y from 0-9.
+        A static method that returns the float *val* as a kilo-formatted string. If
+        *val* is less than 1000, it rounds *val* to the nearest int, and returns it
+        as a string. If *val* is greater than or equal to 1000, it returns a string in form of 'x.yK', where x is some digit from 1-9 and y from 0-9.
 
      .. describe:: GetMegaStr(val)
 
-        A static method that returns the float val as a mega-formatted string. If val is less
-        than 1000000, it returns the equivalent of GetKiloStr(val). If val is greater than
-        or equal to 1000000, it returns a string in the form of 'x.yM', where x is some
-        digit from 1-9 and y from 0-9.
+        A static method that returns the float *val* as a mega-formatted string. If 
+        *val* is less than 1000000, it returns the equivalent of *GetKiloStr(val)*. 
+        If *val* is greater than or equal to 1000000, it returns a string in the form of 
+        'x.yM', where x is some digit from 1-9 and y from 0-9.
 
      .. describe:: GetGigaStr(val)
 
-        A static method that returns the float val as a giga-formatted string. If val is less
-        than 1000000000, it returns the equivalent of GetMegaStr(val). If val is greater than
-        or equal to 1000000000, it returns a string in the form of 'x.yG', where x is some
-        digit from 1-9 and y from 0-9.
+        A static method that returns the float *val* as a giga-formatted string. If
+        *val* is less than 1000000000, it returns the equivalent of *GetMegaStr(val)*.
+        If *val* is greater than or equal to 1000000000, it returns a string in the 
+        form of 'x.yG', where x is some digit from 1-9 and y from 0-9.
 
      .. describe:: GetMn(val1, val2)
                    GetMn(val1, val2, val3)
@@ -222,23 +226,26 @@ TFlt
 
      .. describe:: IsNum(val)
 
-        A static method that returns a bool indicating whether val is a valid numner.
+        A static method that returns a bool indicating whether *val* is a valid numner.
 
      .. describe:: IsNaN(val)
 
-        A static method that returns a bool indicating whether val is NaN, not a number.
+        A static method that returns a bool indicating whether *val* is NaN, not a
+        number.
 
      .. describe:: Sign(val)
 
-        A static method that returns 1 if val > 0, -1 if val < 0, and 0 if val == 0.
+        A static method that returns 1 if *val* > 0, -1 if *val* < 0, and 0 if
+        *val* == 0.
 
      .. describe:: Round(val)
 
-        A static method that returns val rounded to the nearest int.
+        A static method that returns *val* rounded to the nearest int.
 
      .. describe:: Eq6(val1, val2)
 
-        A static method that returns whether val1 and val2 are equal to 6 decimal places.
+        A static method that returns whether *val1* and *val2* are equal to 6 decimal
+        places.
 
 
    A single public attribute is offered by the TFlt class:
@@ -298,7 +305,7 @@ TStr
            TStr(str)
 
    Returns a new TStr initialized with the value specified by optional parameter
-   str. If no value is given, the TStr object is initialized with the empty string.
+   *str*. If no value is given, the TStr object is initialized with the empty string.
    In Snap.py, TStr is automatically converted to Python type :class:`str`.
 
    Below is a list of functions supported by the TStr class:
@@ -313,11 +320,11 @@ TStr
 
      .. describe:: PutCh(ChN, Ch)
 
-        Replaces the character at position ChN with character Ch.
+        Replaces the character at position *ChN* with character *Ch*.
 
      .. describe:: GetCh(ChN)
 
-        Returns the character at position ChN.
+        Returns the character at position *ChN*.
 
      .. describe:: LastCh()
 
@@ -350,12 +357,12 @@ TStr
 
      .. describe:: CmpI(str)
 
-        Compares the TStr to the parameter str, of type TStr, character by character. Returns a 
-        positive number if the TStr is greater than str and vice versa.
+        Compares the TStr to the parameter *str*, of type TStr, character by character.
+        Returns a positive number if the TStr is greater than *str* and vice versa.
 
      .. describe:: Eql(str)
 
-        Returns a bool indicating whether the TStr is equal to the TStr str.
+        Returns a bool indicating whether the TStr is equal to the TStr *str*.
 
      .. describe:: IsLc()
 
@@ -367,8 +374,8 @@ TStr
 
      .. describe:: GetLc()
 
-        Returns a Python str with the contents of the TStr converted to lowercase. The contents
-        of the original TStr are left unchanged.
+        Returns a Python str with the contents of the TStr converted to lowercase. The 
+        contents of the original TStr are left unchanged.
 
      .. describe:: ToCap()
 
@@ -411,115 +418,121 @@ TStr
      .. describe:: GetSubStr(start)
                    GetSubStr(start, end)
 
-        Returns a substring starting at position start and ending at position end. The substring
-        includes the character at position end. If end is not specified, the end position is 
-        assumed to be the last character in the string.
+        Returns a substring starting at position *start* and ending at position *end*, 
+        inclusive. If *end* is not specified, the end position is assumed to be the 
+        last character in the string.
 
      .. describe:: InsStr(pos, str)
 
-        Inserts the contents of the string str (either a Python str or a TStr) into the TStr
-        at position pos.
+        Inserts the contents of the string *str* (either a Python str or a TStr) into
+        the TStr at position *pos*.
 
      .. describe:: DelChAll(ch)
 
-        Deletes all instances of the char ch from the TStr.
+        Deletes all instances of the char *ch* from the TStr.
 
      .. describe:: DelSubStr(start, end)
 
-        Deletes the substring starting at position start and ending at position end from the TStr.
+        Deletes the substring starting at position *start* and ending at position 
+        *end* from the TStr.
 
      .. describe:: DelStr(str)
 
-        Deletes the first instance of str found in the TStr. Returns a bool indicating whether
-        anything was deleted.
+        Deletes the first instance of *str* found in the TStr. Returns a bool 
+        indicating whether anything was deleted.
 
      .. describe:: LeftOf(ch)
 
-        Returns the substring left of the first instance of char ch in the TStr.
+        Returns the substring left of the first instance of char *ch* in the TStr.
 
      .. describe:: LeftOfLast(ch)
 
-        Returns the substring left of the last instance of char ch in the TStr.
+        Returns the substring left of the last instance of char *ch* in the TStr.
 
      .. describe:: RightOf(ch)
 
-        Returns the substring right of the first instance of char ch in the TStr.
+        Returns the substring right of the first instance of char *ch* in the TStr.
 
      .. describe:: RightOfLast(ch)
 
-        Returns the substring right of the last instance of char ch in the TStr.
+        Returns the substring right of the last instance of char *ch* in the TStr.
 
      .. describe:: Mid(start)
                    Mid(start, numChars)
 
-        Returns the Python str starting at position start containing at most numChars characters.
-        If numChars is not specified, it returns the substring starting at position start to the
-        end of the string.
+        Returns the Python str starting at position *start* containing at most
+        *numChars* characters. If *numChars* is not specified, it returns the 
+        substring starting at position *start* to the end of the string.
 
      .. describe:: Left(start)
 
-        Returns the substring starting at position 0 to start-1.
+        Returns the substring starting at position 0 to *start*-1.
 
      .. describe:: Right(start)
 
-        Returns the substring starting at position start to the end of the string.
+        Returns the substring starting at position *start* to the end of the string.
 
      .. describe:: Slice(start, numChars)
 
-        Returns a substring of the string starting at position start containing numChars 
-        characters.
+        Returns a substring of the string starting at position *start* containing 
+        *numChars* characters.
 
      .. describe:: CountCh(ch, start=0)
 
-        Returns the number of times ch appears in the string, starting at position start.
+        Returns the number of times *ch* appears in the string, starting at position 
+        *start*.
 
      .. describe:: SearchCh(ch, start=0)
 
-        Searches the string for the character ch starting at position 0 and returns the index at 
-        which ch was found or -1 if it was not found.
+        Searches the string for the character *ch* starting at position *start* and 
+        returns the index at which *ch* was found or -1 if it was not found.
 
      .. describe:: SearchChBack(ch, start=-1)
 
-        Searches the string for the character ch starting at position start and going backward. 
-        Returns the index at which the character was found or -1. A start value of -1 indicates 
-        that the method should start searching at the end of the string.
+        Searches the string for the character *ch* starting at position *start* and 
+        going backward. Returns the index at which the character was found or -1. A 
+        *start* value of -1 indicates that the method should start searching at the 
+        end of the string.
 
      .. describe:: SearchStr(str, start=0)
 
-        Searches the string for the substring str starting at position 0 and returns the index at 
-        which str was found or -1 if it was not found.
+        Searches the string for the substring *str* starting at position *start* and
+        returns the index at which str was found or -1 if it was not found.
 
      .. describe:: IsChIn(ch)
 
-        Returns a bool indicating whether the character ch is in the string.
+        Returns a bool indicating whether the character *ch* is in the string.
 
      .. describe:: IsPrefix(prefix)
 
-        Returns a bool indicating whether prefix is a prefix of the string.
+        Returns a bool indicating whether *prefix* is a prefix of the string.
 
      .. describe:: IsSuffix(suffix)
 
-        Returns a bool indicating whether suffix is a suffix of the string.
+        Returns a bool indicating whether *suffix* is a suffix of the string.
 
      .. describe:: ChangeCh(orig, repl, start)
 
-        Looks for the first instance of the character orig starting at index start and replaces 
-        it with the character repl. Returns the index of the character replaced.
+        Looks for the first instance of the character *orig* starting at index *start*
+        and replaces it with the character *repl*. Returns the index of the character 
+        replaced.
 
      .. describe:: ChangeChAll(orig, repl, start)
 
-        Looks for the all instances of the character orig starting at index start and replaces 
-        them with the character repl. Returns the number of character replaced.
+        Looks for the all instances of the character *orig* starting at index *start*
+        and replaces them with the character *repl*. Returns the number of character 
+        replaced.
 
      .. describe:: ChangeStr(orig, repl, start)
 
-        Looks for the first instance of the string orig starting at index start and replaces 
-        it with the string repl. Returns the starting index of the string replaced.
+        Looks for the first instance of the string *orig* starting at index *start*
+        and replaces it with the string *repl*. Returns the starting index of the 
+        string replaced.
 
      .. describe:: ChangeStrAll(orig, repl, start)
 
-        Looks for the all instances of the string orig starting at index start and replaces 
-        them with the string repl. Returns the number of replacements done.
+        Looks for the all instances of the string *orig* starting at index *start* and
+        replaces them with the string *repl*. Returns the number of replacements done.
 
      .. describe:: Reverse()
 
