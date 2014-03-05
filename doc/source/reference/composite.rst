@@ -453,7 +453,7 @@ TVec objects.
 THash
 =====
 
-Hash tables contain values of the same type. Each value has a user provided key associated with it. All the keys are of the same type. Table values can be accessed or changed either their keys. New values can be added as `(key, value)` pairs. All objects classified as THash objects have access to the following methods.
+Hash tables contain values of the same type. Each value has a user provided key associated with it. All the keys are of the same type. Table values can be accessed or changed through their keys. New values can be added as `(key, value)` pairs. All objects classified as THash objects have access to the following methods.
 
 .. class:: THash()
            THash(ExpectVals)
@@ -526,8 +526,155 @@ Hash tables contain values of the same type. Each value has a user provided key 
 
         Returns an iterator starting at the node with key value *Key*.
 
+     .. describe:: Clr(DoDel=True, NoDelLim=-1, ResetDat=True)
 
-   Below is a list of static functions supported by the THash class:
+        Clears the contents of the hash table.
 
+     .. describe:: Empty()
+
+        Returns a boolean indicating whether the hash table is empty.
+
+     .. describe:: Len()
+
+        Returns the the number of key-value pairs in the hash table.
+
+     .. describe:: GetPorts()
+
+        Returns the number of ports.
+
+     .. describe:: IsAutoSize()
+
+        Returns whether it is auto-size?
+
+     .. describe:: GetMxKeyIds()
+
+        Returns the first key id that is larger than all those currently stored in the 
+        hash table.
+
+     .. describe:: GetReservedKeyIds()
+
+        Returns the size of the allocated storage capacity for the hash table.
+
+     .. describe:: IsKeyIdEqKeyN()
+
+        Returns a boolean whether there have been any gaps in the key ids, which can occur if a key is deleted and the hash table has not been defraged.
+
+     .. describe:: AddKey(Key)
+
+        Adds key *Key* to the hash table and returns the key id.
+
+     .. describe:: AddDatId(Key)
+
+        Adds a key-value mapping to the hash table, using *Key* as the key and the key id of *Key* as the value. The value is then returned.
+
+     .. describe:: AddDat(Key)
+
+        Adds a key-value mapping to the hash table, using *Key* as the key and the default value for the datatype as the value (i.e. for TInt values, the default value would be 0) if *Key* was not already in the hash table. If *Key* was already in the hash table, the value remains unchaned. The value is then returned.
+
+     .. describe:: AddDat(Key, Dat)
+
+        Adds a key-value mapping to the hash table, using *Key* as the key and *Dat* as the value. The value, *Dat*, is then returned.
+
+     .. describe:: DelKey(Key)
+
+        Removes the mapping using *Key* as the key from the hash table. Raises an exception if *Key* is not a key in the hash table.
+
+     .. describe:: DelIfKey(Key)
+
+        Removes the mapping using *Key* as the key from the hash table if it exists. Returns a boolean indicating whether *Key* was a key in the hash table.
+
+     .. describe:: DelKeyId(KeyId)
+
+        Removes the mapping using the key with id *KeyId* from the hash table. Raises an exception if *KeyId* is not a valid id for a key in the hash table.
+
+     .. describe:: DelKeyIdV(KeyIdV)
+
+        Removes all the mappings that use a key with an id in *KeyIdV* from the hash table. Raises an exception if one of the key ids in *KeyIdV* is not a valid id for a key in the hash table.
+
+     .. describe:: GetKey(KeyId)
+
+        Returns the key with id *KeyId*.
+
+     .. describe:: GetKeyId(Key)
+
+        Returns the key id for key *Key*.
+
+     .. describe:: GetRndKeyId(Rnd)
+
+        Get an index of a random element. If the hash table has many deleted keys, this may take a long time. 
+
+     .. describe:: GetRndKeyId (Rnd, EmptyFrac)
+
+        Get an index of a random element. If the hash table has many deleted keys, defrag the hash table first. 
+
+     .. describe:: IsKey(Key)
+
+        Returns a bool indicating whether *Key* is a key in the hash table.
+
+     .. describe:: IsKey(Key, KeyId)
+
+        Returns a bool indicating whether *Key* is a key in the hash table with id *KeyId*.
+
+     .. describe:: IsKeyId(KeyId)
+
+        Returns a bool indicating whether there is a key in the hash table with id *KeyId*.
+
+     .. describe:: GetDat(Key)
+
+        Returns the value in the hash table that *Key* maps to.
+
+     .. describe:: FFirstKeyId()
+
+        Returns -1, which is 1 less than the smallest possible key id, 0.
+
+     .. describe:: GetKeyV(KeyV)
+
+        Adds all the keys in the hash table to the vector *KeyV*.
+
+     .. describe:: GetDatV(DatV)
+
+        Adds all the values/data in the hash table to the vector *DatV*.
+
+     .. describe:: GetKeyDatPrV(KeyDatPrV)
+
+        Adds all the key-value pairs (as TPair objects) to the vector *KeyDatPrV*.
+
+     .. describe:: GetDatKeyPrV(DatKeyPrV)
+
+        Adds all the value-key pairs (as TPair objects) to the vector *DatKeyPrV*.
+
+     .. describe:: Swap(Hash)
+
+        Swaps the contents of this hash table with those of *Hash*.
+
+     .. describe:: Defrag()
+
+        Defrags the hash table.
+
+     .. describe:: Pack()
+
+        Reduces the capacity of the memory used to hold the hash table to match its size.
+
+     .. describe:: Sort(CmpKey, Asc)
+
+        Sorts the hash table. If *CmpKey* is True, it sorts based on keys rather than values.
+
+     .. describe:: SortKey(Asc)
+
+        Sorts the hash table based on keys.
+
+     .. describe:: SortDat(Asc)
+
+        Sorts the hash table based on the values.
 
    Below is some code demonstrating the use of the THash type:
+
+      >>> h1 = snap.TIntH()
+      >>> for i in range(10):
+      ...     h1[i] = i + 1
+      ...
+      >>> h2 = snap.TIntH(h1)
+      >>> del h2[0]
+      >>> h1.Swap(h2)
+      >>> h1.IsKey(0)
+      False
