@@ -12,11 +12,11 @@ be of different types. All of the following methods are available for objects th
 classified as TPair objects. 
 
 .. class:: TPair()
-           TPair(val1, val2)
+           TPair(Val1, Val2)
 
    
-   Createsa TPair object consisting of the two values, if provided. If *val1* and
-   *val2* are not given, the default value for each of their respective types is used.
+   Creates a TPair object consisting of the two values, if provided. If *Val1* and
+   *Val2* are not given, the default value for each of their respective types is used.
 
    The TPair constructor cannot be directly used. To create a TPair object, the correct
    constructor must be chosen, which indicates the types of both the values in the pair.
@@ -120,27 +120,27 @@ TVec objects.
 
    The following public functions are supported by the TVec class:
 
-     .. describe:: v[index]
+     .. describe:: V[Index]
 
-        Returns the value at index *index* in vector *v*.
+        Returns the value at index *Index* in vector *v*.
 
-     .. describe:: v[index] = value
+     .. describe:: V[Index] = Value
 
-        Set ``v[index]`` to *value*.
+        Set ``V[Index]`` to *Value*.
 
-     .. describe:: del v[index]
+     .. describe:: del V[Index]
 
         Removes the value at index *index* from the vector.
 
-     .. describe:: val in v
+     .. describe:: Val in V
 
-        Return ``True`` if *val* is a value stored in vector *v*, else ``False``.
+        Return ``True`` if *Val* is a value stored in vector *V*, else ``False``.
 
-     .. describe:: val not in v
+     .. describe:: Val not in V
 
-        Equivalent to ``not val in v``.
+        Equivalent to ``not Val in V``.
 
-     .. iter(v)
+     .. iter(V)
 
         Returns an iterator over all the values in the vector.
 
@@ -156,18 +156,18 @@ TVec objects.
 
         Returns the secondary hash code for the vector.
 
-     .. describe:: Gen(NumVals)
-                   Gen(MxVals, NumVals)
+     .. describe:: Gen(Vals)
+                   Gen(MxVals, Vals)
 
-        Resizes the vector to hold *NumVals* and initializes each position in the vector 
+        Resizes the vector to hold *Vals* and initializes each position in the vector 
         with the default value for the given type of the vector (i.e. 0 for TInt). If 
         *MxVals* is provided, the function reserves enough memory for *MxVals* values in 
         the vector.
 
      .. describe:: Reserve(MxVals)
-                   Reserve(MxVals, NumVals)
+                   Reserve(MxVals, Vals)
 
-        Reserves enough memory for *MxVals* values in the vector. If *NumVals* is 
+        Reserves enough memory for *MxVals* values in the vector. If *Vals* is 
         provided, it resizes the vector to hold *NumVals* and initializes each position 
         in the vector with the default value for the given type of the vector.
 
@@ -175,23 +175,23 @@ TVec objects.
 
         Clears the contents of the vector.
 
-     .. describe:: Trunc(NumVals=-1)
+     .. describe:: Trunc(Vals=-1)
 
-        Truncates the vector to length *NumVals*. If *NumVals* is not given, the vector 
+        Truncates the vector to length *NumVals*. If *Vals* is not given, the vector 
         is left unchanged.
 
      .. describe:: Pack()
 
         The vector reduces its capacity (frees memory) to match its size. 
 
-     .. describe:: MoveFrom(vec)
+     .. describe:: MoveFrom(Vec)
 
-        Moves all the data from *vec* into the current vector and changes its capacity to
-        match that of *vec*. The contents and capacity of vec are cleared in the process.
+        Moves all the data from *Vec* into the current vector and changes its capacity to
+        match that of *Vec*. The contents and capacity of vec are cleared in the process.
 
-     .. describe:: Swap(vec)
+     .. describe:: Swap(Vec)
 
-        Swaps the contents and the capacity of the current vector with *vec*.
+        Swaps the contents and the capacity of the current vector with *Vec*.
 
      .. describe:: Empty()
 
@@ -218,89 +218,89 @@ TVec objects.
         Returns the second to last element in the vector.
 
      .. describe:: Add()
-        describe:: Add(val)
-        describe:: Add(val, capInc)
+        describe:: Add(Val)
+        describe:: Add(Val, ResizeLen)
 
-        Appends *val* to the end of the vector. If *val* is not specified, it adds an 
+        Appends *Val* to the end of the vector. If *val* is not specified, it adds an 
         element with the default value for the given type of the vector. Returns the 
-        index at which the value was appended. If *capInc* is provided, it increases the 
-        capacity of the vector by *capInc*. 
+        index at which the value was appended. If *ResizeLen* is given, it increases the 
+        capacity of the vector by *ResizeLen*. 
 
-     .. describe:: AddV(vec)
+     .. describe:: AddV(ValV)
 
-        Appends the contents of the vector *vec* onto the vector. Returns the index of 
+        Appends the contents of the vector *ValV* onto the vector. Returns the index of 
         the last element in the vector.
 
-     .. describe:: AddSorted(val, isAsc=True)
+     .. describe:: AddSorted(Val, Asc=True)
 
-        Adds *val* to a sorted vector. If *isAsc* is True, the vector is sorted in 
+        Adds *Val* to a sorted vector. If *Asc* is True, the vector is sorted in 
         ascending order.
 
-     .. describe:: AddBackSorted(val, isAsc)
+     .. describe:: AddBackSorted(Val, Asc)
 
-        Adds *val* to a sorted vector. If *isAsc* is True, the vector is sorted in 
+        Adds *Val* to a sorted vector. If *Asc* is True, the vector is sorted in 
         ascending order.
 
-     .. describe:: AddMerged(val)
+     .. describe:: AddMerged(Val)
 
-        Adds element *val* to a sorted vector only if the element *val* is not already 
+        Adds element *Val* to a sorted vector only if the element *val* is not already 
         in the vector. Returns the index at which *val* was inserted or -1.
 
-     .. describe:: AddVMerged(vec)
+     .. describe:: AddVMerged(ValV)
 
-        Adds elements of *vec* to a sorted vector only if a particular element is not 
+        Adds elements of *ValV* to a sorted vector only if a particular element is not 
         already in the vector. Returns the new length of the vector.
 
-     .. describe:: AddUnique(val)
+     .. describe:: AddUnique(Val)
 
-        Adds element *val* to a vector only if the element *val* is not already in the 
+        Adds element *Val* to a vector only if the element *val* is not already in the 
         vector. Returns the index at which *val* was inserted or -1.
 
-     .. describe:: GetVal(index)
+     .. describe:: GetVal(ValN)
 
-        Returns the value at index *index*.
+        Returns the value at index *ValN*.
 
-     .. describe:: SetVal(index, newVal)
+     .. describe:: SetVal(ValN, Val)
 
-        Sets the value of the element at index *index* to *newVal*.
+        Sets the value of the element at index *ValN* to *Val*.
 
-     .. describe:: GetSubValV(start, end, vec)
+     .. describe:: GetSubValV(BValN, EValN, vec)
 
-        Fills *vec* with the elements at positions *start* to *end*, inclusive, in this 
+        Fills *ValV* with the elements at positions *BValN* to *EValN*, inclusive, in this 
         vector.
 
-     .. describe:: Ins(index, val)
+     .. describe:: Ins(ValN, Val)
 
-        Inserts the value *val* into the vector before the element at position *index*.
+        Inserts the value *Val* into the vector before the element at position *ValN*.
 
-     .. describe:: Del(index)
+     .. describe:: Del(ValN)
 
-        Deletes the value at index *index*.
+        Deletes the value at index *ValN*.
 
-     .. describe:: Del(start, end)
+     .. describe:: Del(MnValN, MxValN)
 
-        Deletes all elements from index *start* to *end*, inclusive.
+        Deletes all elements from index *MnValN* to *MxValN*, inclusive.
 
      .. describe:: DelLast()
 
         Deletes the last element in the vector.
 
-     .. describe:: DelIfIn(val)
+     .. describe:: DelIfIn(Val)
 
         Deletes the first instance of value *val* from the vector. Returns a boolean 
-        indicating whether *val* was found in the vector.
+        indicating whether *Val* was found in the vector.
 
-     .. describe:: DelAll(val)
+     .. describe:: DelAll(Val)
 
-        Deletes all occurrences of *val* from the vector.
+        Deletes all occurrences of *Val* from the vector.
 
-     .. describe:: PutAll(val)
+     .. describe:: PutAll(Val)
 
-        Sets all elements of the vector to value *val*. 
+        Sets all elements of the vector to value *Val*. 
 
-     .. describe:: Swap(index1, index2)
+     .. describe:: Swap(ValN1, ValN2)
 
-        Swaps elements at positions *index1* and *index2*. 
+        Swaps elements at positions *ValN1* and *ValN2*. 
 
      .. describe:: NextPerm()
 
@@ -308,114 +308,114 @@ TVec objects.
         indicating whether the previous permutation is different from the original 
         permutation.
 
-     .. describe:: GetPivotValN(index1, index2)
+     .. describe:: GetPivotValN(LValN, RValN)
 
-        Picks three random elements at positions *index1*...*index2* and returns the 
+        Picks three random elements at positions *LValN*...*RValN* and returns the 
         index of the middle one. 
 
-     .. describe:: BSort(mnLValN, mxRValN, isAsc)
+     .. describe:: BSort(MnLValN, MxRValN, Asc)
 
-        Bubble sorts values in the portion of the vector starting at *mnLVal* and ending 
-        at *MxRValN*. If *isAsc* is True, it sorts the vector in ascending order.
+        Bubble sorts values in the portion of the vector starting at *MnLVal* and ending 
+        at *MxRValN*. If *Asc* is True, it sorts the vector in ascending order.
 
-     .. describe:: ISort(mnLValN, mxRValN, isAsc)
+     .. describe:: ISort(MnLValN, MxRValN, Asc)
 
-        Insertion sorts the values in the portion of the vector starting at *mnLVal* and 
-        ending at *MxRValN*. If *isAsc* is True, it sorts the vector in ascending order.
+        Insertion sorts the values in the portion of the vector starting at *MnLVal* and 
+        ending at *MxRValN*. If *Asc* is True, it sorts the vector in ascending order.
 
-     .. describe:: Partition(mnLValN, mxRValN, isAsc)
+     .. describe:: Partition(MnLValN, MxRValN, Asc)
 
-        Partitions the values in the portion of the vector starting at *mnLVal* and 
-        ending at *MxRValN*. If *isAsc* is True, it partitions using ascending order.
+        Partitions the values in the portion of the vector starting at *MnLVal* and 
+        ending at *MxRValN*. If *Asc* is True, it partitions using ascending order.
 
-     .. describe:: QSort(mnLValN, mxRValN, isAsc)
+     .. describe:: QSort(MnLValN, MxRValN, Asc)
 
-        Quick sorts the values in the portion of the vector starting at *mnLVal* and 
-        ending at *MxRValN*. If *isAsc* is True, it sorts the vector in ascending order.
+        Quick sorts the values in the portion of the vector starting at *MnLVal* and 
+        ending at *MxRValN*. If *Asc* is True, it sorts the vector in ascending order.
 
-     .. describe:: Sort(isAsc)
+     .. describe:: Sort(Asc)
 
-        Sorts the vector. If *isAsc* is True, it sorts it in ascending order.
+        Sorts the vector. If *Asc* is True, it sorts it in ascending order.
 
-     .. describe:: IsSorted(isAsc)
+     .. describe:: IsSorted(Asc)
 
-        Checks whether the vector is sorted in ascending (if *isAsc*=True) or 
-        descending (if *isAsc*=False) order. 
+        Checks whether the vector is sorted in ascending (if *Asc* == True) or 
+        descending (if *Asc* == False) order. 
 
-     .. describe:: Shuffle(rnd)
+     .. describe:: Shuffle(Rnd)
 
-        Shuffles the contents of the vector in random order, using the TRnd object *rnd*.
+        Shuffles the contents of the vector in random order, using the TRnd object *Rnd*.
 
      .. describe:: Reverse()
 
         Reverses the contents of the vector.
 
-     .. describe:: Reverse(start, end)
+     .. describe:: Reverse(LValN, RValN)
 
         Reverses the order of elements in the portion of the vector starting at index 
-        *start* and ending at *end*.
+        *LValN* and ending at *RValN*.
 
      .. describe:: Merge()
 
         Sorts the vector and only keeps a single element of each value. 
 
-     .. describe:: Intrs(vec)
+     .. describe:: Intrs(ValV)
 
-        Updates this vector with the intersection of this vector with *vec*. 
+        Updates this vector with the intersection of this vector with *ValV*. 
 
-     .. describe:: Union(vec)
+     .. describe:: Union(ValV)
 
-        Updates this vector with the union of this vector with *vec*.
+        Updates this vector with the union of this vector with *ValV*.
 
-     .. describe:: Diff(vec)
+     .. describe:: Diff(ValV)
 
-        Updates this vector with the difference of this vector with *vec*.
+        Updates this vector with the difference of this vector with *ValV*.
 
-     .. describe:: Intrs(vec, dst)
+     .. describe:: Intrs(ValV, DstValV)
 
-        *dst* is the intersection of vectors this and *vec*.  
+        *DstValV* is the intersection of vectors this and *ValV*.  
 
-     .. describe:: Union(vec, dst)
+     .. describe:: Union(ValV, DstValV)
 
-        *dst* is the union of vectors this and *vec*. 
+        *DstValV* is the union of vectors this and *ValV*. 
 
-     .. describe:: Diff(vec, dst)
+     .. describe:: Diff(ValV, DstValV)
 
-        *dst* is the difference of vectors this and *vec*. 
+        *DstValV* is the difference of vectors this and *ValV*. 
 
-     .. describe:: IntrsLen(vec)
+     .. describe:: IntrsLen(ValV)
 
-        Returns the lenght of the intersection of this vector with *vec*. 
+        Returns the length of the intersection of this vector with *ValV*. 
 
-     .. describe:: UnionLen(vec)
+     .. describe:: UnionLen(ValV)
 
-        Returns the length of the union of this vector with *vec*.
+        Returns the length of the union of this vector with *ValV*.
 
-     .. describe:: Count(val)
+     .. describe:: Count(Val)
 
-        Returns the number of times *val* appears in the vector.
+        Returns the number of times *Val* appears in the vector.
 
-     .. describe:: SearchBin(val)
+     .. describe:: SearchBin(Val)
 
-        Returns the index of an element with value *val* or -1.
+        Returns the index of an element with value *Val* or -1.
 
-     .. describe:: SearchForw(val, start=0)
+     .. describe:: SearchForw(Val, BValN=0)
 
-        Returns the index of an element with value *val* or -1. Starts looking at
-        index *start*.
+        Returns the index of an element with value *Val* or -1. Starts looking at
+        index *BValN*.
 
-     .. describe:: SearchBack(val)
+     .. describe:: SearchBack(Val)
 
-        Returns the index of an element wiht value *val* or -1.
+        Returns the index of an element wiht value *Val* or -1.
 
-     .. describe:: SearchForw(vec, start=0)
+     .. describe:: SearchVForw(ValV, BValN=0)
 
-        Returns the starting position of vector *vec* or -1. Starts looking at
-        index *start*.
+        Returns the starting position of vector *ValV* or -1. Starts looking at
+        index *BValN*.
 
-     .. describe:: IsIn(val)
+     .. describe:: IsIn(Val)
 
-        Returns a bool checking whether element *val* is a member of the vector. 
+        Returns a bool checking whether element *Val* is a member of the vector. 
 
      .. describe:: GetMxValN()
 
@@ -423,15 +423,15 @@ TVec objects.
 
    Below is a list of static functions supported by the TVec class:
 
-     .. describe:: GetV(val1)
-                   GetV(val1, val2)
-                   GetV(val1, val2, val3)
-                   GetV(val1, val2, val3, val4)
-                   GetV(val1, val2, val3, val4, val5)
-                   GetV(val1, val2, val3, val4, val5, val6)
-                   GetV(val1, val2, val3, val4, val5, val6, val7)
-                   GetV(val1, val2, val3, val4, val5, val6, val7, val8)
-                   GetV(val1, val2, val3, val4, val5, val6, val7, val8, val9)
+     .. describe:: GetV(Val1)
+                   GetV(Val1, Val2)
+                   GetV(Val1, Val2, Val3)
+                   GetV(Val1, Val2, Val3, Val4)
+                   GetV(Val1, Val2, Val3, Val4, Val5)
+                   GetV(Val1, Val2, Val3, Val4, Val5, Val6)
+                   GetV(Val1, Val2, Val3, Val4, Val5, Val6, Val7)
+                   GetV(Val1, Val2, Val3, Val4, Val5, Val6, Val7, Val8)
+                   GetV(Val1, Val2, Val3, Val4, Val5, Val6, Val7, Val8, Val9)
 
         Returns a vector with the given values.
 
@@ -486,27 +486,27 @@ Hash tables contain values of the same type. Each value has a user provided key 
 
    The following public functions are supported by the THash class:
 
-     .. describe:: h[key]
+     .. describe:: H[Key]
 
-        Returns the item of *h* with key *key*.
+        Returns the item of *H* with key *Key*.
 
-     .. describe:: h[key] = value
+     .. describe:: H[Key] = Value
 
-        Set ``h[key]`` to *value*.
+        Set ``H[Key]`` to *Value*.
 
-     .. describe:: del h[key]
+     .. describe:: del H[Key]
 
-        Removes ``h[key]`` from *h*.
+        Removes ``H[Key]`` from *H*.
 
-     .. describe:: key in h
+     .. describe:: Key in H
 
-        Return ``True`` if *key* is a key in hash table *h*, else ``False``.
+        Return ``True`` if *Key* is a key in hash table *H*, else ``False``.
 
-     .. describe:: key not in h
+     .. describe:: Key not in H
 
-        Equivalent to ``not key in h``.
+        Equivalent to ``not Key in H``.
 
-     .. iter(h)
+     .. iter(H)
 
         Returns an iterator over all the keys in the hash table.
 
@@ -522,9 +522,9 @@ Hash tables contain values of the same type. Each value has a user provided key 
 
         Returns an iterator to the end of the hash table.
 
-     .. describe:: GetI(key)
+     .. describe:: GetI(Key)
 
-        Returns an iterator starting at the node with key value *key*.
+        Returns an iterator starting at the node with key value *Key*.
 
 
    Below is a list of static functions supported by the THash class:
