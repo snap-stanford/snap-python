@@ -1,5 +1,5 @@
 Basic Types
-````````````
+```````````
 
 Basic types in SNAP are :class:`TInt`, :class:`TFlt`, and :class:`TStr`, which
 in Snap.py are automatically converted to Python types

@@ -6,7 +6,7 @@ SNAPVER = 2.x
 
 # set the path to your SNAP directory here
 #GITDIR = ../Snap-$(SNAPVER)
-GITDIR = ../snap
+GITDIR = ../../snap
 SNAPDIR = $(GITDIR)/$(SNAP)
 GLIBDIR = $(GITDIR)/$(GLIB)
 

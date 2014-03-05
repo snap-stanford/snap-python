@@ -9,6 +9,7 @@ Contents:
    introduction
    basic
    composite
+   graphs
    generators
    io
    degree
