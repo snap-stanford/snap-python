@@ -456,7 +456,7 @@ THash
 Hash tables contain values of the same type. Each value has a user provided key associated with it. All the keys are of the same type. Table values can be accessed or changed through their keys. New values can be added as `(key, value)` pairs. All objects classified as THash objects have access to the following methods.
 
 .. class:: THash()
-           THash(ExpectVals)
+           THash(ExpectVals, AutoSizeP=False)
            THash(Hash)
 
    
@@ -601,19 +601,15 @@ Hash tables contain values of the same type. Each value has a user provided key 
 
      .. describe:: GetRndKeyId(Rnd)
 
-        Get an index of a random element. If the hash table has many deleted keys, this may take a long time. 
+        Get the index of a random key. If the hash table has many deleted keys, this may take a long time. 
 
      .. describe:: GetRndKeyId (Rnd, EmptyFrac)
 
-        Get an index of a random element. If the hash table has many deleted keys, defrag the hash table first. 
+        Get the index of a random key. If the hash table has many deleted keys, defrag the hash table first. 
 
      .. describe:: IsKey(Key)
 
         Returns a bool indicating whether *Key* is a key in the hash table.
-
-     .. describe:: IsKey(Key, KeyId)
-
-        Returns a bool indicating whether *Key* is a key in the hash table with id *KeyId*.
 
      .. describe:: IsKeyId(KeyId)
 
@@ -678,3 +674,179 @@ Hash tables contain values of the same type. Each value has a user provided key 
       >>> h1.Swap(h2)
       >>> h1.IsKey(0)
       False
+
+
+
+THashSet
+========
+
+Hash sets contain keys are of the same type. Specific keys can be accessed through their key ids. New values can be added to the hash set only if they are unique. All objects classified as THash objects have access to the following methods.
+
+.. class:: THashSet()
+           THashSet(ExpectVals, AutoSizeP=False)
+           THashSet(KeyV)
+
+   
+   Creates a THashSet object with a capacity of *ExpectVals*, if specified.  If *KeyV* is provided, which should hold the same type of object the hash set holds, a hash set with the unique values in the vector is created.
+
+   The THashSet constructor cannot be directly used. To create a THashSet object, the correct constructor must be chosen, which indicates the type of the key in the hash set. Hash set types in Snap.py and SNAP use a naming convention of being named
+   as `<key_type_name>`, followed by `Set`. For example, a hash set 
+   with integer key is named :class:`TIntSet`.
+
+
+   To illustrate, the following examples show how to create a THashSet with each of the
+   constructors::
+
+      >>> snap.TIntSet()
+      >>> snap.TIntSet(5)
+      >>> v = snap.TIntV()
+      >>> for i in range(5):
+      ...     v.Add(i)
+      ...     v.Add(i)
+      ...
+      >>> hs = snap.TIntSet(v)
+      >>> for key in hs:
+      ...     print key
+      ...
+      0
+      1
+      2
+      3
+      4
+
+   The following public functions are supported by the THashSet class:
+
+     .. describe:: Key in HS
+
+        Return ``True`` if *Key* is a key in hash set *HS*, else ``False``.
+
+     .. describe:: Key not in HS
+
+        Equivalent to ``not Key in HS``.
+
+     .. iter(H)
+
+        Returns an iterator over all the keys in the hash table.
+
+     .. describe:: GetMemUsed()
+
+        Returns the size of the hash set in bytes.
+
+     .. describe:: Gen(ExpVals)
+
+        Clears the hash table and resizes it with a capacity of at least *ExpVals*.
+
+     .. describe:: Clr()
+
+        Clears the contents of the hash set.
+
+     .. describe:: Empty()
+
+        Returns a bool indicating whether the hash set is empty.
+
+     .. describe:: Len()
+
+        Returns the number of keys in the hash set.
+
+     .. describe:: GetPorts()
+
+        Returns the number of ports.
+
+     .. describe:: IsAutoSize()
+
+        Returns a bool indicating whether it is auto size.
+
+     .. describe:: GetMxKeyIds()
+
+        Returns the first key id that is larger than all those currently stored in the 
+        hash set.
+
+     .. describe:: GetReservedKeyIds()
+
+        Returns the size of the allocated storage capacity for the hash set.
+
+     .. describe:: IsKeyIdEqKeyN()
+
+        Returns a boolean whether there have been any gaps in the key ids, which can occur if a key is deleted and the hash set has not been defraged.
+
+     .. describe:: AddKey(Key)
+
+        Adds key *Key* to the hash set, if it not already in the hash set, and returns the key id.
+
+     .. describe:: AddKeyV(KeyV)
+
+        Adds each key in *KeyV* not already in the hash set to the hash set.
+
+     .. describe:: DelKey(Key)
+
+        Removes *Key* from the hash set. Raises an exception if *Key* is not a key in the hash set.
+
+     .. describe:: DelIfKey(Key)
+
+        Removes *Key* from the hash set. Returns a boolean indicating whether *Key* was a key in the hash set.
+
+     .. describe:: DelKeyId(KeyId)
+
+        Removes the key with id *KeyId* from the hash set. Raises an exception if *KeyId* is not a valid id for a key in the hash set.
+
+     .. describe:: DelKeyIdV(KeyIdV)
+
+        Removes all the keys with an id in *KeyIdV* from the hash set. Raises an exception if one of the key ids in *KeyIdV* is not a valid id for a key in the hash set.
+
+     .. describe:: GetKey(KeyId)
+
+        Returns the key with id *KeyId*.
+
+     .. describe:: GetKeyId(Key)
+
+        Returns the key id for key *Key*.
+
+     .. describe:: GetRndKeyId(Rnd)
+
+        Get an index of a random key. If the hash set has many deleted keys, this may take a long time. 
+
+     .. describe:: IsKey(Key)
+
+        Returns a bool indicating whether *Key* is a key in the hash set.
+
+     .. describe:: IsKeyId(KeyId)
+
+        Returns a bool indicating whether there is a key in the hash table with id *KeyId*.
+
+     .. describe:: GetDat(Key)
+
+        Returns the value in the hash table that *Key* maps to.
+
+     .. describe:: FFirstKeyId()
+
+        Returns -1, which is 1 less than the smallest possible key id, 0.
+
+     .. describe:: GetKeyV(KeyV)
+
+        Adds all the keys in the hash table to the vector *KeyV*.
+
+     .. describe:: Swap(Set)
+
+        Swaps the contents of this hash set with those of *Set*.
+
+     .. describe:: Defrag()
+
+        Defrags the hash set.
+
+     .. describe:: Pack()
+
+        Reduces the capacity of the memory used to hold the hash set to match its size.
+
+
+   Below is some code demonstrating the use of the THash type:
+
+      >>> hs = snap.TIntSet()
+      >>> for i in range(30):
+      ...     hs.AddKey(i)
+      ...
+      >>> hs.IsKey(0)
+      True
+      >>> v = snap.TIntV()
+      >>> hs.GetKeyV(v)
+
+
