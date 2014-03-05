@@ -28,6 +28,8 @@ class IterHash:
         return self
 
     def next(self):
+        if self.hash.Len() == 0:
+            raise StopIteration
         if not self.iter:
             self.iter = self.hash.BegI()
             if not self.iter:
