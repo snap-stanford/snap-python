@@ -14,26 +14,26 @@ TInt
 .. class:: TInt()
            TInt(val)
 
-   Returns a new TInt initialized with the value specified by optional parameter
-   *val*. If no value is given, the TInt object is initialized with the default value 0.
-   In Snap.py, TInt is automatically converted to Python type :class:`int`.
+   Returns a new :class:`TInt` initialized with the value specified by optional parameter
+   *val*. If no value is given, the :class:`TInt` object is initialized with the default value 0.
+   In Snap.py, :class:`TInt` is automatically converted to Python type :class:`int`.
 
-   Below is a list of public functions supported by the TInt class:
+   Below is a list of public functions supported by the :class:`TInt` class:
 
      .. describe:: GetMemUsed()
 
-        Returns the size of the TInt object in bytes.
+        Returns the size in bytes.
 
      .. describe:: GetPrimHashCd()
 
-        Returns the value stored in the TInt.
+        Returns the value stored in the int.
 
      .. describe:: GetSecHashCd()
 
-        Returns the value stored in the TInt divided by 0x10.
+        Returns the value stored in the int divided by 0x10.
 
 
-   Below is a list of static functions supported by the TInt class:
+   Below is a list of static functions supported by the :class:`TInt` class:
 
      .. describe::  Abs(val)
 
@@ -95,15 +95,15 @@ TInt
         *val* == 0.
 
 
-   A single public attribute is offered by the TInt class:
+   A single public attribute is offered by the :class:`TInt` class:
 
      .. describe:: Val
 
-        A member of the TInt object of type int that gives the value the TInt holds. Supports 
+        A member of the :class:`TInt` object of type int that gives the value the int holds. Supports 
         =, +=, -=, *=, and /= operators.
 
 
-   A few static public attributes are offered by the TInt class:
+   A few static public attributes are offered by the :class:`TInt` class:
 
      .. data:: Mn
 
@@ -148,35 +148,35 @@ TFlt
 .. class:: TFlt()
            TFlt(val)
 
-   Returns a new TFlt initialized with the value specified by optional parameter
-   val. If no value is given, the TFlt object is initialized with the default value 0.
-   In Snap.py, TFlt is automatically converted to Python type :class:`float`.
+   Returns a new :class:`TFlt` initialized with the value specified by optional parameter
+   val. If no value is given, the :class:`TFlt` object is initialized with the default value 0.
+   In Snap.py, :class:`TFlt` is automatically converted to Python type :class:`float`.
 
-   Below is a list of public functions supported by the TFlt class:
+   Below is a list of public functions supported by the :class:`TFlt` class:
 
      .. describe:: GetMemUsed()
 
-        Returns the size of the TFlt object in bytes.
+        Returns the size in bytes.
 
      .. describe:: GetPrimHashCd()
 
-        Returns the primary hash code for the TFlt object.
+        Returns the primary hash code for the float object.
 
      .. describe:: GetSecHashCd()
 
-        Returns the secondary hash code for the TFlt object.
+        Returns the secondary hash code for the float object.
 
      .. describe:: IsNan()
 
-        Returns a bool indicating whether the value stored in the TFlt is NaN - not a
+        Returns a bool indicating whether the float is NaN - not a
         number.
 
      .. describe:: IsNum()
 
-        Returns a bool indicating whether the value stored in the TFlt is a valid number.
+        Returns a bool indicating whether the float is a valid number.
 
 
-   Below is a list of static functions supported by the TFlt class:
+   Below is a list of static functions supported by the :class:`TFlt` class:
 
      .. describe::  Abs(val)
 
@@ -248,23 +248,23 @@ TFlt
         places.
 
 
-   A single public attribute is offered by the TFlt class:
+   A single public attribute is offered by the :class:`TFlt` class:
 
      .. describe:: Val
 
-        A member of the TFlt object of type int that gives the value the TFlt holds. Supports 
+        A member of the :class:`TFlt` object of type int that gives the value. Supports 
         =, +=, -=, *=, and /= operators.
 
 
-   A few static public attributes are offered by the TInt class:
+   A few static public attributes are offered by the :class:`TFlt` class:
 
      .. data:: Mn
 
-        The minimum value of a TFlt, equivalent to -DBL_MAX in C++.
+        The minimum value of a :class:`TFlt`, equivalent to -DBL_MAX in C++.
 
      .. data:: Mx
 
-        The maximum value of a TFlt, equivalent to DBL_MAX in C++.
+        The maximum value of a :class:`TFlt`, equivalent to DBL_MAX in C++.
 
      .. data:: NInf
 
@@ -276,7 +276,7 @@ TFlt
 
      .. data:: Eps
 
-        The epsilon value for the TFlt, equal to 1e-16.
+        The epsilon value for the :class:`TFlt`, equal to 1e-16.
 
      .. data:: EpsHalf
 
@@ -287,9 +287,9 @@ TFlt
         The TRnd object used in methods such as GetRnd.
 
 
-   Below is some code demonstrating the use of the TFlt type:
+   Below is some code demonstrating the use of the :class:`TFlt` type:
 
-      >>> f = snap.TInt(9.874)
+      >>> f = snap.TFlt(9.874)
       >>> print f.Val
       9.874
       >>> f.Val = 2.1
@@ -304,19 +304,19 @@ TStr
 .. class:: TStr()
            TStr(str)
 
-   Returns a new TStr initialized with the value specified by optional parameter
-   *str*. If no value is given, the TStr object is initialized with the empty string.
-   In Snap.py, TStr is automatically converted to Python type :class:`str`.
+   Returns a new :class:`TStr` initialized with the value specified by optional parameter
+   *str*. If no value is given, the :class:`TStr` object is initialized with the empty string.
+   In Snap.py, :class:`TStr` is automatically converted to Python type :class:`str`.
 
-   Below is a list of functions supported by the TStr class:
+   Below is a list of functions supported by the :class:`TStr` class:
 
      .. describe:: GetMemUsed()
 
-        Returns the size of the TStr object in bytes.
+        Returns the size in bytes.
 
      .. describe:: CStr()
 
-        Returns the TStr as a c-string, which is converted to a python str.
+        Returns the string as a c-string, which is converted to a python :class:`str`.
 
      .. describe:: PutCh(ChN, Ch)
 
@@ -332,7 +332,7 @@ TStr
 
      .. describe:: Clr()
 
-        Sets the TStr to the empty string.
+        Sets the string to the empty string.
 
      .. describe:: Len()
 
@@ -348,21 +348,21 @@ TStr
 
      .. describe:: ToUc()
 
-        Coverts the contents of the TStr to uppercase and returns the str.
+        Coverts the contents of the string to uppercase and returns the resulting string.
 
      .. describe:: GetUc()
 
-        Returns a Python str with the contents of the TStr converted to uppercase. The contents
-        of the original TStr are left unchanged.
+        Returns a Python :class:`str` with the contents of the string converted to uppercase. The contents
+        of the original string are left unchanged.
 
      .. describe:: CmpI(str)
 
-        Compares the TStr to the parameter *str*, of type TStr, character by character.
-        Returns a positive number if the TStr is greater than *str* and vice versa.
+        Compares the string to the parameter *str*, of type :class:`TStr`, character by character.
+        Returns a positive number if the string is greater than *str* and vice versa.
 
      .. describe:: Eql(str)
 
-        Returns a bool indicating whether the TStr is equal to the TStr *str*.
+        Returns a bool indicating whether the string is equal to the :class:`TStr` *str*.
 
      .. describe:: IsLc()
 
@@ -370,50 +370,49 @@ TStr
 
      .. describe:: ToLc()
 
-        Coverts the contents of the TStr to lowercase and returns the str.
+        Coverts the contents of the string to lowercase and returns the str.
 
      .. describe:: GetLc()
 
-        Returns a Python str with the contents of the TStr converted to lowercase. The 
-        contents of the original TStr are left unchanged.
+        Returns a Python :class:`str` with the contents of the string converted to lowercase. The 
+        contents of the original string are left unchanged.
 
      .. describe:: ToCap()
 
-        Returns a Python str with the first letter of the contents of the TStr capitalized.
+        Returns a Python :class:`str` with the first letter of the contents of the string capitalized.
 
      .. describe:: GetCap()
 
-        Capitalizes the first letter of the contents of the TStr and returns the resulting
-        Python str.
+        Capitalizes the first letter of the contents of the string and returns the resulting
+        Python :class:`str`.
 
      .. describe:: ToTrunc()
 
-        Removes the trailing whitespace from the contents of the TStr and returns the resulting
-        Python str.
+        Removes the trailing whitespace from the contents of the string and returns the resulting
+        Python :class:`str`.
 
      .. describe:: GetTrunc()
 
-        Returns a Python str with all the whitespace removed from the end of the contents of the
-        TStr.
+        Returns a Python :class:`str` with all the whitespace removed from the end of the contents of the string.
 
      .. describe:: ToHex()
 
-        Converts the contents of the TStr to hex and returns the resulting value.
+        Converts the string to hex and returns the resulting value.
 
      .. describe:: GetHex()
 
-        Returns the contents of the TStr converted to hex as a Python str. The contents of the
-        original TStr are left unchanged.
+        Returns the string converted to hex as a Python str. The contents of the
+        original string are left unchanged.
 
      .. describe:: FromHex()
 
-        Converts the contents of the TStr from hex to the original string and returns the
+        Converts the string from hex to the original string and returns the
         resulting value.
 
      .. describe:: GetFromHex()
 
-        Returns the contents of the TStr converted from hex as a Python str. The contents of the
-        original TStr are left unchanged.
+        Returns the string converted from hex as a Python str. The contents of the
+        original string are left unchanged.
 
      .. describe:: GetSubStr(start)
                    GetSubStr(start, end)
@@ -424,38 +423,38 @@ TStr
 
      .. describe:: InsStr(pos, str)
 
-        Inserts the contents of the string *str* (either a Python str or a TStr) into
-        the TStr at position *pos*.
+        Inserts the contents of *str* (either a Python :class:`str` or a :class:`TStr`) into
+        the string at position *pos*.
 
      .. describe:: DelChAll(ch)
 
-        Deletes all instances of the char *ch* from the TStr.
+        Deletes all instances of the char *ch* from the string.
 
      .. describe:: DelSubStr(start, end)
 
         Deletes the substring starting at position *start* and ending at position 
-        *end* from the TStr.
+        *end* from the string.
 
      .. describe:: DelStr(str)
 
-        Deletes the first instance of *str* found in the TStr. Returns a bool 
+        Deletes the first instance of *str* found in the string. Returns a bool 
         indicating whether anything was deleted.
 
      .. describe:: LeftOf(ch)
 
-        Returns the substring left of the first instance of char *ch* in the TStr.
+        Returns the substring left of the first instance of char *ch* in the string.
 
      .. describe:: LeftOfLast(ch)
 
-        Returns the substring left of the last instance of char *ch* in the TStr.
+        Returns the substring left of the last instance of char *ch* in the string.
 
      .. describe:: RightOf(ch)
 
-        Returns the substring right of the first instance of char *ch* in the TStr.
+        Returns the substring right of the first instance of char *ch* in the string.
 
      .. describe:: RightOfLast(ch)
 
-        Returns the substring right of the last instance of char *ch* in the TStr.
+        Returns the substring right of the last instance of char *ch* in the string.
 
      .. describe:: Mid(start)
                    Mid(start, numChars)
@@ -536,15 +535,15 @@ TStr
 
      .. describe:: Reverse()
 
-        Returns a Python string with the contents of the TStr reveresed.
+        Returns a Python string with the string reversed.
 
      .. describe:: GetPrimHashCd()
 
-        Returns the primary hash code for the TStr.
+        Returns the primary hash code for the string.
 
      .. describe:: GetSecHashCd()
 
-        Returns the secondary hash code for the TStr.
+        Returns the secondary hash code for the string.
 
      .. describe:: IsInt()
 
@@ -614,7 +613,7 @@ TStr
         Returns a bool indicating whether the content of the string is just whitespace.
 
 
-   Below is some code demonstrating the use of the TStr type:
+   Below is some code demonstrating the use of the :class:`TStr` type:
 
       >>> s = snap.TStr('Welcome to Snap.py!')
       >>> print s.CStr()
@@ -625,6 +624,6 @@ TStr
 .. note::
  
    Do not use an empty string literal “” in Python, if a Snap.py
-   function parameter is of type TStr. SNAP handling of TStr(“”)
+   function parameter is of type :class:`TStr`. SNAP handling of TStr(“”)
    is not compatible with Python, so an empty string literal will cause
    an error.
