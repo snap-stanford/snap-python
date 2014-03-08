@@ -571,95 +571,153 @@ TNEANet
 
    :class:`TNEANet` methods for attributes are the following:
 
-     .. describe:: BegNAIntI(AttrName)
+     .. describe:: AddIntAttrN(Attr)
+                   AddFltAttrN(Attr)
+                   AddStrAttrN(Attr)
 
-        Returns an integer attribute iterator of the attribute
-        named *AttrName* referring to the first node.
+        Defines a new integer, float or string node attribute, respectively.
 
-     .. describe:: EndNAIntI(AttrName)
+     .. describe:: AddIntAttrE(Attr)
+                   AddFltAttrE(Attr)
+                   AddStrAttrE(Attr)
 
-        Returns an integer attribute iterator of the attribute
-        named *AttrName* referring to the past-the-end node.
+        Defines a new integer, float or string edge attribute, respectively.
 
-     .. describe:: GetNAIntI(AttrName, NId)
+     .. describe:: DelAttrN(Attr)
 
-        Returns an integer attribute iterator of the attribute
-        named *AttrName* referring to the node with node ID *NId*.
+        Deletes node attribute *Attr*.
 
-     .. describe:: BegNAFltI(AttrName)
+     .. describe:: DelAttrE(Attr)
 
-        Returns a float attribute iterator of the attribute
-        named *AttrName* referring to the first node.
+        Deletes edge attribute *Attr*.
 
-     .. describe:: EndNAFltI(AttrName)
+     .. describe:: AddIntAttrDatN(NodeI, Value, Attr)
+                   AddFltAttrDatN(NodeI, Value, Attr)
+                   AddStrAttrDatN(NodeI, Value, Attr)
 
-        Returns a float attribute iterator of the attribute
-        named *AttrName* referring to the past-the-end node.
+        Sets the value of attribute named *Attr* for the node referred to
+        by node iterator *NodeI* to *Value*.
+        *Value* is an integer, a float, or a string, respectively.
 
-     .. describe:: GetNAFltI(AttrName, NId)
+     .. describe:: AddIntAttrDatN(NId, Value, Attr)
+                   AddFltAttrDatN(NId, Value, Attr)
+                   AddStrAttrDatN(NId, Value, Attr)
 
-        Returns a float attribute iterator of the attribute
-        named *AttrName* referring to the node with node ID *NId*.
+        Sets the value of attribute named *Attr* for the node with
+        node id *NId* to *Value*.
+        *Value* is an integer, a float, or a string, respectively.
 
-     .. describe:: BegNAStrI(AttrName)
+     .. describe:: AddIntAttrDatE(EdgeI, Value, Attr)
+                   AddFltAttrDatE(EdgeI, Value, Attr)
+                   AddStrAttrDatE(EdgeI, Value, Attr)
 
-        Returns a string attribute iterator of the attribute
-        named *AttrName* referring to the first node.
+        Sets the value of attribute named *Attr* for the edge referred to
+        by edge iterator *EdgeI* to *Value*.
+        *Value* is an integer, a float, or a string, respectively.
 
-     .. describe:: EndNAStrI(AttrName)
+     .. describe:: AddIntAttrDatE(EId, Value, Attr)
+                   AddFltAttrDatE(EId, Value, Attr)
+                   AddStrAttrDatE(EId, Value, Attr)
 
-        Returns a string attribute iterator of the attribute
-        named *AttrName* referring to the past-the-end node.
+        Sets the value of attribute named *Attr* for the edge with
+        edge id *EId* to *Value*.
+        *Value* is an integer, a float, or a string, respectively.
 
-     .. describe:: GetNAStrI(AttrName, NId)
+     .. describe:: GetIntAttrDatN(NodeI, Attr)
+                   GetFltAttrDatN(NodeI, Attr)
+                   GetStrAttrDatN(NodeI, Attr)
 
-        Returns a string attribute iterator of the attribute
-        named *AttrName* referring to the node with node ID *NId*.
+        Returns the value of attribute named *Attr* for the node referred to
+        by node iterator *NodeI**.
+        Result is an integer, a float, or a string, respectively.
 
-     .. describe:: BegEAIntI(AttrName)
+     .. describe:: GetIntAttrDatN(NId, Attr)
+                   GetFltAttrDatN(NId, Attr)
+                   GetStrAttrDatN(NId, Attr)
 
-        Returns an integer attribute iterator of the attribute
-        named *AttrName* referring to the first edge.
+        Returns the value of attribute named *Attr* for the node with
+        node id *NId*.
+        Result is an integer, a float, or a string, respectively.
 
-     .. describe:: EndEAIntI(AttrName)
+     .. describe:: GetIntAttrDatE(EdgeI, Attr)
+                   GetFltAttrDatE(EdgeI, Attr)
+                   GetStrAttrDatE(EdgeI, Attr)
 
-        Returns an integer attribute iterator of the attribute
-        named *AttrName* referring to the past-the-end edge.
+        Returns the value of attribute named *Attr* for the edge referred to
+        by edge iterator *EdgeI**.
+        Result is an integer, a float, or a string, respectively.
 
-     .. describe:: GetEAIntI(AttrName, EId)
+     .. describe:: GetIntAttrDatE(EId, Attr)
+                   GetFltAttrDatE(EId, Attr)
+                   GetStrAttrDatE(EId, Attr)
 
-        Returns an integer attribute iterator of the attribute
-        named *AttrName* referring to the edge with edge ID *EId*.
+        Returns the value of attribute named *Attr* for the edge with
+        edge id *EId*.
+        Result is an integer, a float, or a string, respectively.
 
-     .. describe:: BegEAFltI(AttrName)
+     .. describe:: BegNAIntI(Attr)
+                   BegNAFltI(Attr)
+                   BegNAStrI(Attr)
 
-        Returns a float attribute iterator of the attribute
-        named *AttrName* referring to the first edge.
+        Returns an integer, float, or string attribute iterator, respectively,
+        of the attribute named *Attr* referring to the first node.
 
-     .. describe:: EndEAFltI(AttrName)
+     .. describe:: EndNAIntI(Attr)
+                   EndNAFltI(Attr)
+                   EndNAStrI(Attr)
 
-        Returns a float attribute iterator of the attribute
-        named *AttrName* referring to the past-the-end edge.
+        Returns an integer, float, or string attribute iterator, respectively,
+        of the attribute named *Attr* referring to the past-the-end node.
 
-     .. describe:: GetEAFltI(AttrName, EId)
+     .. describe:: GetNAIntI(Attr, NId)
+                   GetNAFltI(Attr, NId)
+                   GetNAStrI(Attr, NId)
 
-        Returns a float attribute iterator of the attribute
-        named *AttrName* referring to the edge with edge ID *EId*.
+        Returns an integer, float, or string attribute iterator, respectively,
+        of the attribute named *Attr* referring to the node
+        with node ID *NId*.
 
-     .. describe:: BegEAStrI(AttrName)
+     .. describe:: BegEAIntI(Attr)
+                   BegEAFltI(Attr)
+                   BegEAStrI(Attr)
 
-        Returns a string attribute iterator of the attribute
-        named *AttrName* referring to the first edge.
+        Returns an integer, float, or string attribute iterator, respectively,
+        of the attribute named *Attr* referring to the first edge.
 
-     .. describe:: EndEAStrI(AttrName)
+     .. describe:: EndEAIntI(Attr)
+                   EndEAFltI(Attr)
+                   EndEAStrI(Attr)
 
-        Returns a string attribute iterator of the attribute
-        named *AttrName* referring to the past-the-end edge.
+        Returns an integer, float, or string attribute iterator, respectively,
+        of the attribute named *Attr* referring to the past-the-end edge.
 
-     .. describe:: GetEAStrI(AttrName, EId)
+     .. describe:: GetEAIntI(Attr, EId)
+                   GetEAFltI(Attr, EId)
+                   GetEAStrI(Attr, EId)
 
-        Returns a string attribute iterator of the attribute
-        named *AttrName* referring to the edge with edge ID *EId*.
+        Returns an integer, float, or string attribute iterator, respectively,
+        of the attribute named *Attr* referring to the edge
+        with edge ID *EId*.
+
+     .. describe:: DelAttrDatN(NodeI, Attr)
+
+        Deletes the value of attribute named *Attr* for the node referred to
+        by node iterator *NodeI*.
+
+     .. describe:: DelAttrDatN(NId, Attr)
+
+        Deletes the value of attribute named *Attr* for the node with
+        node ID *NId*.
+
+     .. describe:: DelAttrDatE(EdgeI, Attr)
+
+        Deletes the value of attribute named *Attr* for the edge referred to
+        by edge iterator *EdgeI*.
+
+     .. describe:: DelAttrDatE(EId, Attr)
+
+        Deletes the value of attribute named *Attr* for the edge with
+        edge ID *EId*.
 
    Below is some code demonstrating the use of the :class:`TNEANet` class:
 
