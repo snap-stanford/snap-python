@@ -2192,6 +2192,10 @@ def zeroLowOrderBits(*args):
   return _snap.zeroLowOrderBits(*args)
 zeroLowOrderBits = _snap.zeroLowOrderBits
 
+def randRange64(*args):
+  return _snap.randRange64(*args)
+randRange64 = _snap.randRange64
+
 def desegment(*args):
   return _snap.desegment(*args)
 desegment = _snap.desegment
