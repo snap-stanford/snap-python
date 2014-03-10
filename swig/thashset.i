@@ -6,6 +6,9 @@
 def getitem_hashset(self, i):
     return self.GetSetKey(i)
 
+def delitem_hashset(self, i):
+    self.DelKey(i)
+
 def contains_hashset(self, key):
     return self.IsKey(key)
 

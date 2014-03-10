@@ -516,6 +516,7 @@ Version = "0.8.5"
 // ??
 
 %template(TIntSet) THashSet<TInt>;
+%template(TIntHSI) THashSetKeyI <TInt>;
 
 //----------
 

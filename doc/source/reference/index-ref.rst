@@ -10,6 +10,7 @@ Contents:
    basic
    composite
    graphs
+   streams
    generators
    io
    degree

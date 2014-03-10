@@ -13,10 +13,11 @@ classified as TPair objects.
 
 .. class:: TPair()
            TPair(Val1, Val2)
+           TPair(SIn)
 
    
    Creates a TPair object consisting of the two values, if provided. If *Val1* and
-   *Val2* are not given, the default value for each of their respective types is used.
+   *Val2* are not given, the default value for each of their respective types is used. If *SIn* is provided, the pair of values are loaded from the binary stream *SIn*.
 
    The TPair constructor cannot be directly used. To create a TPair object, the correct
    constructor must be chosen, which indicates the types of both the values in the pair.
@@ -24,6 +25,8 @@ classified as TPair objects.
    the first object in the pair, the `<type_name_2>` for the second object in the pair 
    (without the `T`), and finally a `V`. If `<type_name_1>` and `<type_name_2>` are the 
    same, then the TPair type will be the `<type_name>` and finally a `V`.
+
+   The following :class:`TPair` types are supported: :class:`TIntPr`, :class`TFltPr`, :class:'TIntStrPr', :class:`TBoolFltPr`, :class:`TIntBoolPr`, :class:`TIntUInt64Pr`, :class:`TIntIntPrPr`, :class:`TIntIntVPr`, :class:`TIntFltPr`, :class:`TIntStrVPr`, :class:`TIntPrIntPr`, :class:`TUIntUIntPr`, :class:`TUIntIntPr`, :class:`TUInt64IntPr`, :class:`TUInt64Pr`, :class:`TUint64FltPr`, :class:`TUInt64StrPr`, :class:`TFltIntPr`, :class:`TFltUInt64Pr`, :class:`TFltStrPr`, :class:`TAscFltIntPr`, :class:`TAscFltPr`, :class:`TAscFltStrPr`, :class:`TStrIntPr`, :class:`TStrFltPr`, :class:`TStrPr`, :class:`TStrStrVPr`, :class:`TStrVIntPr`, :class:`TIntStrPrPr`, and :class:`TFltStrPrPr`.
 
    To illustrate, the following examples all return a TPair of two ints (TInts) with both
    values set to 0::
@@ -33,6 +36,14 @@ classified as TPair objects.
       >>> snap.TIntPr()
 
    The following public functions are supported by the TPair class:
+
+     .. describe:: Load(SIn)
+
+        Loads the pair from a binary stream *SIn*. 
+
+     .. describe:: Save(SOut)
+
+        Saves the pair to a binary stream *SOut*. 
 
      .. describe:: GetMemUsed()
 
@@ -92,18 +103,21 @@ TVec objects.
            TVec(NumVals)
            TVec(MxVals, NumVals)
            TVec(Vec)
+           TVec(SIn)
 
    
-   Creates a TVec object of size *NumVals*, if specified. It *MxVals* is given, enough
+   Creates a :class:`TVec` object of size *NumVals*, if specified. It *MxVals* is given, enough
    memory to store *MxVals* will be reserved. MxVals must be larger than *NumVals*. If
-   *Vec* - a TVec of the same type - is given, the values from *Vec* are copied into the
-   new TVec.
+   *Vec* - a :class:`TVec` of the same type - is given, the values from *Vec* are copied into the
+   new :class:`TVec`. It *SIn* is provided, the contents of the vector are loaded from the binary stream *SIn*.
 
-   The TVec constructor cannot be directly used. To create a TVec object, the correct
-   constructor must be chosen, which indicates the type stored in the TVec.
+   The :class:`TVec` constructor cannot be directly used. To create a :class:`TVec` object, the correct
+   constructor must be chosen, which indicates the type stored in the :class:`TVec`.
    Vector types in Snap.py and SNAP use a naming convention of being named as 
    `<type_name>`, followed by `V`. For example, a vector of integers is named
-   :class:`TIntV`. 
+   :class:`TIntV`.
+
+   The following :class:`TVec` types are supported: :class:`TIntV`, :class:`TFltV`, :class:`TIntPrV`, :class:`TFltPrV`, :class:`TIntTrV`, :class:`TIntFltKdV`, :class:`TBoolV`, :class:`TChV`, :class:`TUChV`, :class:`TUIntV`, :class:`TUInt64V`, :class:`TSFltV`, :class:`TAscFltV`, :class:`TStrV`, :class:`TChAV`, :class:`TIntQuV`, :class:`TFltTrV`, :class:`TIntKdV`, :class:`TUChIntPrV`, :class:`TUChUInt64PrV`, :class:`TIntUInt64PrV`, :class:`TIntUInt64KdV`, :class:`TIntFltPrV`, :class:`TIntFltPrKdV`, :class:`TFltIntPrV`, :class:`TFltUInt64PrV`, :class:`TFltStrPrV`, :class:`TAscFltStrPrV`, :class:`TIntStrPrV`, :class:`TIntIntStrTrV`, :class:`TIntIntFltTrV`, :class:`TIntFltIntTrV`, :class:`TIntStrIntTrV`, :class:`TIntKdV`, :class:`TUIntIntKdV`, :class:`TIntPrFltKdV`, :class:`TIntStrKdV`, :class:`TIntStrPrPrV`, :class:`TIntStrVPrV`, :class:`TIntIntVIntTrV`, :class:`TUInt64IntPrV`, :class:`TUInt64FltPrV`, :class:`TUInt64StrPrV`, :class:`TUInt64IntKdV`, :class:`TUInt64FltKdV`, :class:`TUInt64StrKdV`, :class:`TFltBoolKdV`, :class:`TFltIntKdV`, :class:`TFltUInt64KdV`, :class:`TFltIntPrKdV`, :class:`TFltKdV`, :class:`TFltStrKdV`, :class:`TFltStrPrPrV`, :class:`TFltIntIntTrV`, :class:`TFltFltStrTrV`, :class:`TAscFltIntPrV`, :class:`TAscFltIntKdV`, :class:`TStrPrV`, :class:`TStrIntPrV`, :class:`TStrIntKdV`, :class:`TStrFltKdV`, :class:`TStrAscFltKdV`, :class:`TStrTrV`, :class:`TStrQuV`, :class:`TStrFltFltTrV`, :class:`TStrStrIntTrV`, :class:`TStrKdV`, :class:`TStrStrVPrV`, :class:`TStrVIntPrV`, :class:`TFltIntIntIntQuV`, :class:`TIntStrIntIntQuV`, and :class:`TIntIntPrPrV`.
 
    To illustrate, the following examples show how to create a TVec with each of the
    constructors::
@@ -143,6 +157,26 @@ TVec objects.
      .. iter(V)
 
         Returns an iterator over all the values in the vector.
+
+     .. describe:: GetV(Val1)
+                   GetV(Val1, Val2)
+                   GetV(Val1, Val2, Val3)
+                   GetV(Val1, Val2, Val3, Val4)
+                   GetV(Val1, Val2, Val3, Val4, Val5)
+                   GetV(Val1, Val2, Val3, Val4, Val5, Val6)
+                   GetV(Val1, Val2, Val3, Val4, Val5, Val6, Val7)
+                   GetV(Val1, Val2, Val3, Val4, Val5, Val6, Val7, Val8)
+                   GetV(Val1, Val2, Val3, Val4, Val5, Val6, Val7, Val8, Val9)
+
+        Returns a vector with the given values.
+
+     .. describe:: Load(SIn)
+
+        Loads a graph from a binary stream *SIn* and returns a pointer to it. 
+
+     .. describe:: Save(SOut)
+
+        Saves the graph to a binary stream *SOut*. 
 
      .. describe:: GetMemUsed()
 
@@ -421,19 +455,6 @@ TVec objects.
 
         Returns the position of the largest element in the vector. 
 
-   Below is a list of static functions supported by the TVec class:
-
-     .. describe:: GetV(Val1)
-                   GetV(Val1, Val2)
-                   GetV(Val1, Val2, Val3)
-                   GetV(Val1, Val2, Val3, Val4)
-                   GetV(Val1, Val2, Val3, Val4, Val5)
-                   GetV(Val1, Val2, Val3, Val4, Val5, Val6)
-                   GetV(Val1, Val2, Val3, Val4, Val5, Val6, Val7)
-                   GetV(Val1, Val2, Val3, Val4, Val5, Val6, Val7, Val8)
-                   GetV(Val1, Val2, Val3, Val4, Val5, Val6, Val7, Val8, Val9)
-
-        Returns a vector with the given values.
 
 
    Below is some code demonstrating the use of the TVec type:
@@ -458,18 +479,21 @@ Hash tables contain values of the same type. Each value has a user provided key 
 .. class:: THash()
            THash(ExpectVals, AutoSizeP=False)
            THash(Hash)
+           THash(SIn)
 
    
-   Creates a THash object with a capacity of *ExpectVals*, if specified.  If *Hash* - a
-   THash of the same type - is given, the values from *Hash* are copied into the
-   new THash.
+   Creates a :class:`THash` object with a capacity of *ExpectVals*, if specified.  If *Hash* - a
+   :class:`THash` of the same type - is given, the values from *Hash* are copied into the
+   new :class:`THash`. If *SIn* is provided, the contents of the hash table are loaded from the binary stream *SIn*.
 
-   The THash constructor cannot be directly used. To create a THash object, the correct
-   constructor must be chosen, which indicates the types of the key and value in the THash. Hash table types in Snap.py and SNAP use a naming convention of being named
+   The :class:`THash` constructor cannot be directly used. To create a :class:`THash` object, the correct
+   constructor must be chosen, which indicates the types of the key and value in the :class:`THash`. Hash table types in Snap.py and SNAP use a naming convention of being named
    as `<key_type_name><value_type_name>`, followed by `H`. For example, a hash table 
    with integer key and string values is named :class:`TIntStrH`. If `<key_type_name>` 
    and `<value_type_name>` have the same type, only one type name might be used, such 
    as :class:`TIntH`.
+
+   The following :class:`THash` types are supported: :class:`TIntH`, :class:`TIntIntH`, :class:`TIntFltH`, :class:`TIntStrH`, :class:`TIntPrFltH`, :class:`TUInt64H`, :class:`TIntBoolH`, :class:`TIntUInt64H`, :class:`TIntIntVH`, :class:`TIntIntHH`, :class:`TIntFltPrH`, :class:`TIntFltTrH`, :class:`TIntFltVH`, :class:`TIntStrVH`, :class:`TIntIntPrH`, :class:`TIntIntPrVH`, :class:`TUInt64StrVH`, :class:`TIntPrIntH`, :class:`TIntPrIntVH`, :class:`TItPrIntPrVH`, :class:`TIntTrIntH`, :class:`TIntVIntH`, :class:`TUIntH`, :class:`TIntPrIntH`, :class:`TIntPrIntVH`, :class:`TIntTrFltH`, :class:`TIntPrStrH`, :class:`TIntPrStrVH`, :class:`TIntStrPrIntH`, :class:`TFltFltH`, :class:`TStrH`, :class:`TStrBoolH`, :class:`TStrIntH`, :class:`TStrIntPrH`, :class:`TStrIntVH`, :class:`TStrUInt64H`, :class:`TStrUInt64VH`, :class:`TStrIntPrVH`, :class:`TStrFltH`, :class:`TStrFltVH`, :class:`TStrStrH`, :class:`TStrStrPrH`, :class:`TStrStrVH`, :class:`TStrStrPrVH`, :class:`TStrStrKdVH`, :class:`TStrIntFltPrH`, :class:`TStrStrIntPrVH`, :class:`TStrStrIntKdVH`, :class:`TStrPrBoolH`, :class:`TStrPrIntH`, :class:`TStrPrFltH`, :class:`TStrPrStrH`, :class:`TStrPrStrVH`, :class:`TStrTrIntH`, :class:`TStrIntPrIntH`, :class:`TStrVH`, :class:`TStrVIntVH`, :class:`TStrVStrH`, and :class:`TStrVStrVH`.
 
 
    To illustrate, the following examples show how to create a THash with each of the
@@ -509,6 +533,14 @@ Hash tables contain values of the same type. Each value has a user provided key 
      .. iter(H)
 
         Returns an iterator over all the keys in the hash table.
+
+     .. describe:: Load(SIn)
+
+        Loads the hash table from a binary stream *SIn*. 
+
+     .. describe:: Save(SOut)
+
+        Saves the hash table to a binary stream *SOut*. 
 
      .. describe:: GetMemUsed()
 
@@ -685,13 +717,16 @@ Hash sets contain keys are of the same type. Specific keys can be accessed throu
 .. class:: THashSet()
            THashSet(ExpectVals, AutoSizeP=False)
            THashSet(KeyV)
+           THashSet(SIn)
 
    
-   Creates a THashSet object with a capacity of *ExpectVals*, if specified.  If *KeyV* is provided, which should hold the same type of object the hash set holds, a hash set with the unique values in the vector is created.
+   Creates a :class:`THashSet` object with a capacity of *ExpectVals*, if specified.  If *KeyV* is provided, which should hold the same type of object the hash set holds, a hash set with the unique values in the vector is created. If *SIn* is provided, the contents of the hash set are loaded from the binary stream *SIn*.
 
-   The THashSet constructor cannot be directly used. To create a THashSet object, the correct constructor must be chosen, which indicates the type of the key in the hash set. Hash set types in Snap.py and SNAP use a naming convention of being named
+   The :class:`THashSet` constructor cannot be directly used. To create a :class:`THashSet` object, the correct constructor must be chosen, which indicates the type of the key in the hash set. Hash set types in Snap.py and SNAP use a naming convention of being named
    as `<key_type_name>`, followed by `Set`. For example, a hash set 
    with integer key is named :class:`TIntSet`.
+
+   The only :class:`THashSet` currently supported is :class:`TIntSet`.
 
 
    To illustrate, the following examples show how to create a THashSet with each of the
@@ -726,7 +761,27 @@ Hash sets contain keys are of the same type. Specific keys can be accessed throu
 
      .. iter(H)
 
-        Returns an iterator over all the keys in the hash table.
+        Returns an iterator over all the keys in the hash set.
+
+     .. describe:: GetSet(Key1)
+                   GetSet(Key1, Key2)
+                   GetSet(Key1, Key2, Key3)
+                   GetSet(Key1, Key2, Key3, Key4)
+                   GetSet(Key1, Key2, Key3, Key4, Key5)
+                   GetSet(Key1, Key2, Key3, Key4, Key5, Key6)
+                   GetSet(Key1, Key2, Key3, Key4, Key5, Key6, Key7)
+                   GetSet(Key1, Key2, Key3, Key4, Key5, Key6, Key7, Key8)
+                   GetSet(Key1, Key2, Key3, Key4, Key5, Key6, Key7, Key8, Key9)
+
+        Returns a hash set with the given keys.
+
+     .. describe:: Load(SIn)
+
+        Loads the hash set from a binary stream *SIn*. 
+
+     .. describe:: Save(SOut)
+
+        Saves the hash set to a binary stream *SOut*. 
 
      .. describe:: GetMemUsed()
 
@@ -734,7 +789,7 @@ Hash sets contain keys are of the same type. Specific keys can be accessed throu
 
      .. describe:: Gen(ExpVals)
 
-        Clears the hash table and resizes it with a capacity of at least *ExpVals*.
+        Clears the hash set and resizes it with a capacity of at least *ExpVals*.
 
      .. describe:: Clr()
 
@@ -836,21 +891,6 @@ Hash sets contain keys are of the same type. Specific keys can be accessed throu
      .. describe:: Pack()
 
         Reduces the capacity of the memory used to hold the hash set to match its size.
-
-
-   Below is a list of static functions supported by the THashSet class:
-
-     .. describe:: GetSet(Key1)
-                   GetSet(Key1, Key2)
-                   GetSet(Key1, Key2, Key3)
-                   GetSet(Key1, Key2, Key3, Key4)
-                   GetSet(Key1, Key2, Key3, Key4, Key5)
-                   GetSet(Key1, Key2, Key3, Key4, Key5, Key6)
-                   GetSet(Key1, Key2, Key3, Key4, Key5, Key6, Key7)
-                   GetSet(Key1, Key2, Key3, Key4, Key5, Key6, Key7, Key8)
-                   GetSet(Key1, Key2, Key3, Key4, Key5, Key6, Key7, Key8, Key9)
-
-        Returns a hash set with the given keys.
 
 
    Below is some code demonstrating the use of the THash type:
