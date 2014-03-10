@@ -16,26 +16,34 @@ classified as TPair objects.
            TPair(SIn)
 
    
-   Creates a TPair object consisting of the two values, if provided. If *Val1* and
-   *Val2* are not given, the default value for each of their respective types is used. If *SIn* is provided, the pair of values are loaded from the binary stream *SIn*.
+   Creates a :class:`TPair` object consisting of the two values, if provided. If *Val1* and
+   *Val2* are not given, the default value for each of their respective types is used.
+   If *SIn* is provided, the pair of values are loaded from the binary stream *SIn*.
 
-   The TPair constructor cannot be directly used. To create a TPair object, the correct
+   The :class:`TPair` constructor cannot be directly called. To create a :class:`TPair` object, the correct
    constructor must be chosen, which indicates the types of both the values in the pair.
    The naming convention for the constructor/type is as follows: the `<type_name_1>` of
    the first object in the pair, the `<type_name_2>` for the second object in the pair 
-   (without the `T`), and finally a `V`. If `<type_name_1>` and `<type_name_2>` are the 
-   same, then the TPair type will be the `<type_name>` and finally a `V`.
+   (without the `T`), and finally a `Pr`. If `<type_name_1>` and `<type_name_2>` are the 
+   same, then the TPair type will be the `<type_name>` and finally a `Pr`.
 
-   The following :class:`TPair` types are supported: :class:`TIntPr`, :class`TFltPr`, :class:'TIntStrPr', :class:`TBoolFltPr`, :class:`TIntBoolPr`, :class:`TIntUInt64Pr`, :class:`TIntIntPrPr`, :class:`TIntIntVPr`, :class:`TIntFltPr`, :class:`TIntStrVPr`, :class:`TIntPrIntPr`, :class:`TUIntUIntPr`, :class:`TUIntIntPr`, :class:`TUInt64IntPr`, :class:`TUInt64Pr`, :class:`TUint64FltPr`, :class:`TUInt64StrPr`, :class:`TFltIntPr`, :class:`TFltUInt64Pr`, :class:`TFltStrPr`, :class:`TAscFltIntPr`, :class:`TAscFltPr`, :class:`TAscFltStrPr`, :class:`TStrIntPr`, :class:`TStrFltPr`, :class:`TStrPr`, :class:`TStrStrVPr`, :class:`TStrVIntPr`, :class:`TIntStrPrPr`, and :class:`TFltStrPrPr`.
+   The following :class:`TPair` types are supported: :class:`TIntPr`, :class`TFltPr`, 
+   :class:'TIntStrPr', :class:`TBoolFltPr`, :class:`TIntBoolPr`, :class:`TIntUInt64Pr`, 
+   :class:`TIntIntPrPr`, :class:`TIntIntVPr`, :class:`TIntFltPr`, :class:`TIntStrVPr`, 
+   :class:`TIntPrIntPr`, :class:`TUIntUIntPr`, :class:`TUIntIntPr`, :class:`TUInt64IntPr`, 
+   :class:`TUInt64Pr`, :class:`TUint64FltPr`, :class:`TUInt64StrPr`, :class:`TFltIntPr`, 
+   :class:`TFltUInt64Pr`, :class:`TFltStrPr`, :class:`TAscFltIntPr`, :class:`TAscFltPr`, 
+   :class:`TAscFltStrPr`, :class:`TStrIntPr`, :class:`TStrFltPr`, :class:`TStrPr`, 
+   :class:`TStrStrVPr`, :class:`TStrVIntPr`, :class:`TIntStrPrPr`, and :class:`TFltStrPrPr`.
 
-   To illustrate, the following examples all return a TPair of two ints (TInts) with both
+   To illustrate, the following examples all return a :class:`TPair` of two ints (TInts) with both
    values set to 0::
 
       >>> snap.TIntPr(0, 0)
       >>> snap.TIntPr(snap.TInt(0), snap.TInt(0))
       >>> snap.TIntPr()
 
-   The following public functions are supported by the TPair class:
+   The following public functions are supported by the :class:`TPair` class:
 
      .. describe:: Load(SIn)
 
@@ -80,7 +88,7 @@ classified as TPair objects.
         SNAP.py types rather than Python types.
 
 
-   Below is some code demonstrating the use of the TPair type:
+   Below is some code demonstrating the use of the :class:`TPair` type:
 
       >>> pr = snap.TIntPr(10, 15)
       >>> print pr.Val1.Val
@@ -111,16 +119,32 @@ TVec objects.
    *Vec* - a :class:`TVec` of the same type - is given, the values from *Vec* are copied into the
    new :class:`TVec`. It *SIn* is provided, the contents of the vector are loaded from the binary stream *SIn*.
 
-   The :class:`TVec` constructor cannot be directly used. To create a :class:`TVec` object, the correct
+   The :class:`TVec` constructor cannot be directly called. To create a :class:`TVec` object, the correct
    constructor must be chosen, which indicates the type stored in the :class:`TVec`.
    Vector types in Snap.py and SNAP use a naming convention of being named as 
    `<type_name>`, followed by `V`. For example, a vector of integers is named
    :class:`TIntV`.
 
-   The following :class:`TVec` types are supported: :class:`TIntV`, :class:`TFltV`, :class:`TIntPrV`, :class:`TFltPrV`, :class:`TIntTrV`, :class:`TIntFltKdV`, :class:`TBoolV`, :class:`TChV`, :class:`TUChV`, :class:`TUIntV`, :class:`TUInt64V`, :class:`TSFltV`, :class:`TAscFltV`, :class:`TStrV`, :class:`TChAV`, :class:`TIntQuV`, :class:`TFltTrV`, :class:`TIntKdV`, :class:`TUChIntPrV`, :class:`TUChUInt64PrV`, :class:`TIntUInt64PrV`, :class:`TIntUInt64KdV`, :class:`TIntFltPrV`, :class:`TIntFltPrKdV`, :class:`TFltIntPrV`, :class:`TFltUInt64PrV`, :class:`TFltStrPrV`, :class:`TAscFltStrPrV`, :class:`TIntStrPrV`, :class:`TIntIntStrTrV`, :class:`TIntIntFltTrV`, :class:`TIntFltIntTrV`, :class:`TIntStrIntTrV`, :class:`TIntKdV`, :class:`TUIntIntKdV`, :class:`TIntPrFltKdV`, :class:`TIntStrKdV`, :class:`TIntStrPrPrV`, :class:`TIntStrVPrV`, :class:`TIntIntVIntTrV`, :class:`TUInt64IntPrV`, :class:`TUInt64FltPrV`, :class:`TUInt64StrPrV`, :class:`TUInt64IntKdV`, :class:`TUInt64FltKdV`, :class:`TUInt64StrKdV`, :class:`TFltBoolKdV`, :class:`TFltIntKdV`, :class:`TFltUInt64KdV`, :class:`TFltIntPrKdV`, :class:`TFltKdV`, :class:`TFltStrKdV`, :class:`TFltStrPrPrV`, :class:`TFltIntIntTrV`, :class:`TFltFltStrTrV`, :class:`TAscFltIntPrV`, :class:`TAscFltIntKdV`, :class:`TStrPrV`, :class:`TStrIntPrV`, :class:`TStrIntKdV`, :class:`TStrFltKdV`, :class:`TStrAscFltKdV`, :class:`TStrTrV`, :class:`TStrQuV`, :class:`TStrFltFltTrV`, :class:`TStrStrIntTrV`, :class:`TStrKdV`, :class:`TStrStrVPrV`, :class:`TStrVIntPrV`, :class:`TFltIntIntIntQuV`, :class:`TIntStrIntIntQuV`, and :class:`TIntIntPrPrV`.
+   The following :class:`TVec` types are supported: :class:`TIntV`, :class:`TFltV`, :class:`TIntPrV`,
+    :class:`TFltPrV`, :class:`TIntTrV`, :class:`TIntFltKdV`, :class:`TBoolV`, :class:`TChV`,
+    :class:`TUChV`, :class:`TUIntV`, :class:`TUInt64V`, :class:`TSFltV`, :class:`TAscFltV`, 
+    :class:`TStrV`, :class:`TChAV`, :class:`TIntQuV`, :class:`TFltTrV`, :class:`TIntKdV`, 
+    :class:`TUChIntPrV`, :class:`TUChUInt64PrV`, :class:`TIntUInt64PrV`, :class:`TIntUInt64KdV`, 
+    :class:`TIntFltPrV`, :class:`TIntFltPrKdV`, :class:`TFltIntPrV`, :class:`TFltUInt64PrV`, 
+    :class:`TFltStrPrV`, :class:`TAscFltStrPrV`, :class:`TIntStrPrV`, :class:`TIntIntStrTrV`, 
+    :class:`TIntIntFltTrV`, :class:`TIntFltIntTrV`, :class:`TIntStrIntTrV`, :class:`TIntKdV`, 
+    :class:`TUIntIntKdV`, :class:`TIntPrFltKdV`, :class:`TIntStrKdV`, :class:`TIntStrPrPrV`, 
+    :class:`TIntStrVPrV`, :class:`TIntIntVIntTrV`, :class:`TUInt64IntPrV`, :class:`TUInt64FltPrV`, 
+    :class:`TUInt64StrPrV`, :class:`TUInt64IntKdV`, :class:`TUInt64FltKdV`, :class:`TUInt64StrKdV`, 
+    :class:`TFltBoolKdV`, :class:`TFltIntKdV`, :class:`TFltUInt64KdV`, :class:`TFltIntPrKdV`, 
+    :class:`TFltKdV`, :class:`TFltStrKdV`, :class:`TFltStrPrPrV`, :class:`TFltIntIntTrV`, 
+    :class:`TFltFltStrTrV`, :class:`TAscFltIntPrV`, :class:`TAscFltIntKdV`, :class:`TStrPrV`, 
+    :class:`TStrIntPrV`, :class:`TStrIntKdV`, :class:`TStrFltKdV`, :class:`TStrAscFltKdV`, 
+    :class:`TStrTrV`, :class:`TStrQuV`, :class:`TStrFltFltTrV`, :class:`TStrStrIntTrV`, 
+    :class:`TStrKdV`, :class:`TStrStrVPrV`, :class:`TStrVIntPrV`, :class:`TFltIntIntIntQuV`, 
+    :class:`TIntStrIntIntQuV`, and :class:`TIntIntPrPrV`.
 
-   To illustrate, the following examples show how to create a TVec with each of the
-   constructors::
+   To illustrate, the following examples show how to create a :class:`TVec`::
 
       >>> snap.TIntV()
       >>> snap.TIntV(5)
@@ -132,7 +156,10 @@ TVec objects.
       ...
       1
 
-   The following public functions are supported by the TVec class:
+   :class:`TVec` offers iterators of type :class:`TInt` for fast access through the vector.
+   The :class:`TInt` returned by any iterator method represents the value at a given index in the vector.
+
+   The following public functions are supported by the :class:`TVec` class:
 
      .. describe:: V[Index]
 
@@ -250,6 +277,18 @@ TVec objects.
      .. describe:: LastLast()
 
         Returns the second to last element in the vector.
+
+     .. describe:: BegI()
+
+        Returns an iterator pointing to the first element in the vector. 
+
+     .. describe:: EndI()
+
+        Returns an iterator referring to the past-the-end element in the vector. 
+
+     .. describe:: GetI(ValN)
+
+        Returns an iterator an element at position *ValN*. 
 
      .. describe:: Add()
         describe:: Add(Val)
@@ -457,7 +496,7 @@ TVec objects.
 
 
 
-   Below is some code demonstrating the use of the TVec type:
+   Below is some code demonstrating the use of the :class:`TVec` type:
 
       >>> vec1 = snap.TIntV.GetV(1, 2, 3, 4, 5, 6, 7, 8, 9)
       >>> vec1.IsIn(5)
@@ -486,7 +525,7 @@ Hash tables contain values of the same type. Each value has a user provided key 
    :class:`THash` of the same type - is given, the values from *Hash* are copied into the
    new :class:`THash`. If *SIn* is provided, the contents of the hash table are loaded from the binary stream *SIn*.
 
-   The :class:`THash` constructor cannot be directly used. To create a :class:`THash` object, the correct
+   The :class:`THash` constructor cannot be directly called. To create a :class:`THash` object, the correct
    constructor must be chosen, which indicates the types of the key and value in the :class:`THash`. Hash table types in Snap.py and SNAP use a naming convention of being named
    as `<key_type_name><value_type_name>`, followed by `H`. For example, a hash table 
    with integer key and string values is named :class:`TIntStrH`. If `<key_type_name>` 
@@ -496,7 +535,7 @@ Hash tables contain values of the same type. Each value has a user provided key 
    The following :class:`THash` types are supported: :class:`TIntH`, :class:`TIntIntH`, :class:`TIntFltH`, :class:`TIntStrH`, :class:`TIntPrFltH`, :class:`TUInt64H`, :class:`TIntBoolH`, :class:`TIntUInt64H`, :class:`TIntIntVH`, :class:`TIntIntHH`, :class:`TIntFltPrH`, :class:`TIntFltTrH`, :class:`TIntFltVH`, :class:`TIntStrVH`, :class:`TIntIntPrH`, :class:`TIntIntPrVH`, :class:`TUInt64StrVH`, :class:`TIntPrIntH`, :class:`TIntPrIntVH`, :class:`TItPrIntPrVH`, :class:`TIntTrIntH`, :class:`TIntVIntH`, :class:`TUIntH`, :class:`TIntPrIntH`, :class:`TIntPrIntVH`, :class:`TIntTrFltH`, :class:`TIntPrStrH`, :class:`TIntPrStrVH`, :class:`TIntStrPrIntH`, :class:`TFltFltH`, :class:`TStrH`, :class:`TStrBoolH`, :class:`TStrIntH`, :class:`TStrIntPrH`, :class:`TStrIntVH`, :class:`TStrUInt64H`, :class:`TStrUInt64VH`, :class:`TStrIntPrVH`, :class:`TStrFltH`, :class:`TStrFltVH`, :class:`TStrStrH`, :class:`TStrStrPrH`, :class:`TStrStrVH`, :class:`TStrStrPrVH`, :class:`TStrStrKdVH`, :class:`TStrIntFltPrH`, :class:`TStrStrIntPrVH`, :class:`TStrStrIntKdVH`, :class:`TStrPrBoolH`, :class:`TStrPrIntH`, :class:`TStrPrFltH`, :class:`TStrPrStrH`, :class:`TStrPrStrVH`, :class:`TStrTrIntH`, :class:`TStrIntPrIntH`, :class:`TStrVH`, :class:`TStrVIntVH`, :class:`TStrVStrH`, and :class:`TStrVStrVH`.
 
 
-   To illustrate, the following examples show how to create a THash with each of the
+   To illustrate, the following examples show how to create a :class:`THash` with each of the
    constructors::
 
       >>> snap.TIntH()
@@ -508,7 +547,10 @@ Hash tables contain values of the same type. Each value has a user provided key 
       ...
       5 5
 
-   The following public functions are supported by the THash class:
+   :class:`THash` offers iterators of type :class:`THashKeyDatI` for fast access through
+   the hash table.
+
+   The following public functions are supported by the :class:`THash` class:
 
      .. describe:: H[Key]
 
@@ -695,7 +737,7 @@ Hash tables contain values of the same type. Each value has a user provided key 
 
         Sorts the hash table based on the values.
 
-   Below is some code demonstrating the use of the THash type:
+   Below is some code demonstrating the use of the :class:`THash` type:
 
       >>> h1 = snap.TIntH()
       >>> for i in range(10):
@@ -708,6 +750,64 @@ Hash tables contain values of the same type. Each value has a user provided key 
       False
 
 
+THashKeyDatI
+============
+
+An iterator over the values in a :class:`THash` object.
+
+.. class:: THashKeyDatI()
+           THashKeyDatI(HashKeyDatI)
+
+   Creates a :class:`THashKeyDatI` iterator object. The contents of *HashKeyDatI*, if provided,
+   will be copied into the iterator.
+
+   The :class:`THashKeyDatI` constructor cannot be directly called. To create a :class:`THashKeyDatI` object,
+   the correct constructor must be chosen, which indicates the types of the key and value. Hash table
+   iterator types in Snap.py and SNAP use a naming convention of being named
+   as `<key_type_name><value_type_name>`, followed by `HI`. For example, a hash table iterator
+   with integer key and string values is named :class:`TIntStrHI`. If `<key_type_name>` 
+   and `<value_type_name>` have the same type, only one type name might be used, such 
+   as :class:`TIntHI`.
+
+   The following iterator types are currently supported: :class:`TIntHI`, :class:`TIntIntHI`, :class:`TIntFltHI`, :class:`TIntStrHI`, :class:`TIntPrFltHI`, :class:`TUInt64HI`, :class:`TIntBoolHI`, :class:`TIntUint64HI`, :class:`TIntIntVHI`, :class:`TIntIntHHI`, :class:`TIntFltPrHI`, :class:`TIntFltTrHI`, :class:`TIntFltVHI`, :class:`TIntStrVHI`, :class:`TIntIntPrHI`, :class:`TIntIntPrVHI`, :class:`TUInt64StrVHI`, :class:`TIntPrIntHI`, :class:`TIntPrIntVHI`, :class:`TIntPrIntPrVHI`, :class:`TIntTrIntHI`, :class:`TIntVIntHI`, :class:`TUIntHI`, :class:`TIntPrIntHI`, :class:`TIntPrIntVHI`, :class:`TIntTrFltHI`, :class:`TIntPrStrHI`, :class:`TIntPrStrVHI`, :class:`TIntStrPrIntHI`, :class:`TFltFltHI`, :class:`TStrHI`, :class:`TStrBoolHI`, :class:`TStrIntHI`, :class:`TStrIntPrHI`, :class:`TStrIntVHI`, :class:`TStrUInt64HI`, :class:`TStrUInt64VHI`, :class:`TStrIntPrVHI`, :class:`TStrFltHI`, :class:`TStrFltVHI`, :class:`TStrStrHI`, :class:`TStrStrPrHI`, :class:`TStrStrVHI`, :class:`TStrStrPrVHI`, :class:`TStrStrKdVHI`, :class:`TStrIntFltPrHI`, :class:`TStrStrIntPrVHI`, :class:`TStrStrIntKdVHI`, :class:`TStrPrBoolHI`, :class:`TStrPrIntHI`, :class:`TStrPrFltHI`, :class:`TStrPrStrHI`, :class:`TStrPrStrVHI`, :class:`TStrTrIntHI`, :class:`TStrIntPrIntHI`, :class:`TStrVHI`, :class:`TStrVStrHI`, :class:`TStrVStrVHI`, :class:`THI`
+
+   The following public functions are supported by the :class:`THashKeyDatI` class:
+
+     .. describe:: Next()
+
+        Returns an iterator starting at the next key-value pair in the :class:`THash`.
+
+     .. describe:: IsEmpty()
+
+        Returns a bool indicating whether the iterator is empty.
+
+     .. describe:: IsEnd()
+
+        Returns a bool indicating whether the end of the iterator has been reached.
+
+     .. describe:: GetKey()
+
+        Get the key for the key-value pair at the current position in the iterator.
+
+     .. describe:: GetDat()
+
+        Get the value for the key-value pair at the current position in the iterator.
+
+   Below is some code demonstrating the use of the :class:`THash` type:
+
+      >>> h1 = snap.TIntH()
+      >>> for i in range(5):
+      ...     h1[i] = i + 1
+      ...
+      >>> it = h1.BegI()
+      >>> while not it.IsEnd():
+      >>>     print it.GetKey(), it.GetDat()
+      >>>     it = it.Next()
+      0 1
+      1 2
+      2 3
+      3 4
+      4 5
 
 THashSet
 ========
@@ -722,14 +822,14 @@ Hash sets contain keys are of the same type. Specific keys can be accessed throu
    
    Creates a :class:`THashSet` object with a capacity of *ExpectVals*, if specified.  If *KeyV* is provided, which should hold the same type of object the hash set holds, a hash set with the unique values in the vector is created. If *SIn* is provided, the contents of the hash set are loaded from the binary stream *SIn*.
 
-   The :class:`THashSet` constructor cannot be directly used. To create a :class:`THashSet` object, the correct constructor must be chosen, which indicates the type of the key in the hash set. Hash set types in Snap.py and SNAP use a naming convention of being named
+   The :class:`THashSet` constructor cannot be directly called. To create a :class:`THashSet` object, the correct constructor must be chosen, which indicates the type of the key in the hash set. Hash set types in Snap.py and SNAP use a naming convention of being named
    as `<key_type_name>`, followed by `Set`. For example, a hash set 
    with integer key is named :class:`TIntSet`.
 
    The only :class:`THashSet` currently supported is :class:`TIntSet`.
 
 
-   To illustrate, the following examples show how to create a THashSet with each of the
+   To illustrate, the following examples show how to create a :class:`THashSet` with each of the
    constructors::
 
       >>> snap.TIntSet()
@@ -749,7 +849,9 @@ Hash sets contain keys are of the same type. Specific keys can be accessed throu
       3
       4
 
-   The following public functions are supported by the THashSet class:
+   For fast access through the hashset, iterators of type :class:`THashSetKeyI` are provided.
+
+   The following public functions are supported by the :class:`THashSet` class:
 
      .. describe:: Key in HS
 
@@ -903,5 +1005,39 @@ Hash sets contain keys are of the same type. Specific keys can be accessed throu
       True
       >>> v = snap.TIntV()
       >>> hs.GetKeyV(v)
+
+
+THashSetKeyI
+============
+
+An iterator over the values in a :class:`THashSet` object.
+
+.. class:: THashSetKeyI()
+           THashSetKeyI(SetKeyI)
+
+   Creates a :class:`THashSetKeyI` iterator object. The contents of *SetKeyI*, if provided,
+   will be copied into the iterator.
+
+   The :class:`THashSetKeyI` constructor cannot be directly called. To create a :class:`THashSetKeyI` object,
+   the correct constructor must be chosen, which indicates the type of the key in the hash set iterator. Hash set iterator types in Snap.py and SNAP use a naming convention of being named
+   as `<key_type_name>`, followed by `HSI`. For example, a hash set iterator
+   with integer key is named :class:`TIntHSI`.
+
+   The following iterator types are currently supported: :class:`TIntHSI`.
+
+   The following public functions are supported by the :class:`THashSetKeyI` class:
+
+     .. describe:: GetKey()
+
+        Get the key at the current position in the iterator.
+
+   Below is some code demonstrating the use of the :class:`THash` type:
+
+      >>> hs1 = snap.TIntSet()
+      >>> hs1.AddKey(0)
+      >>> it = hs1.BegI()
+      >>> print it.GetKey()
+      0
+
 
 
