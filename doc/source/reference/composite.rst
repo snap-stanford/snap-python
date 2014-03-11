@@ -618,7 +618,7 @@ Hash tables contain values of the same type. Each value has a user provided key 
 
      .. describe:: IsAutoSize()
 
-        Returns whether it is auto-size?
+        Returns whether it is auto-size, meaning the hash table can be resized.
 
      .. describe:: GetMxKeyIds()
 
@@ -707,11 +707,19 @@ Hash tables contain values of the same type. Each value has a user provided key 
 
      .. describe:: GetKeyDatPrV(KeyDatPrV)
 
-        Adds all the key-value pairs (as TPair objects) to the vector *KeyDatPrV*.
+        Adds all the key-value pairs (as :class:`TPair` objects) to the vector *KeyDatPrV*.
 
      .. describe:: GetDatKeyPrV(DatKeyPrV)
 
-        Adds all the value-key pairs (as TPair objects) to the vector *DatKeyPrV*.
+        Adds all the value-key pairs (as :class:`TPair` objects) to the vector *DatKeyPrV*.
+
+     .. describe:: GetKeyDatKdV(KeyDatKdV)
+
+        Adds all the key-value pairs (as :class:`TKeyDat` objects) to the vector *KeyDatKdV*.
+
+     .. describe:: GetDatKeyKdV(DatKeyKdV)
+
+        Adds all the value-key pairs (as :class:`TKeyDat` objects) to the vector *DatKeyKdV*.
 
      .. describe:: Swap(Hash)
 
@@ -748,6 +756,53 @@ Hash tables contain values of the same type. Each value has a user provided key 
       >>> h1.Swap(h2)
       >>> h1.IsKey(0)
       False
+
+TKeyDat
+============
+
+Object used to represent the key-value pairs in a :class:`THash` object.
+
+.. class:: TKeyDat()
+           TKeyDat (KeyDat)
+           TKeyDat (Key)
+           TKeyDat(Key, Dat)
+           TKeyDat(SIn)
+   Creates a :class:`TKeyDat` object. If *KeyDat* is provided, which is of type :class:`TKeyDat`, its contents will be copied into the newly created object. If *Key* and/or *Dat* are provided, the key for :class:`TKeyDat` will be set to *Key* and the value will be set to *Dat*. If *SIn* is provided, the contents of the :class:`TKeyDat` will be read from the stream.
+
+
+   The :class:`TKeyDat` constructor cannot be directly called. To create a :class:`TKeyDat` object, the correct
+   constructor must be chosen, which indicates the types of the key and value in the :class:`TKeyDat`. Key-value pair types in Snap.py and SNAP use a naming convention of being named
+   as `<key_type_name><value_type_name>`, followed by `Kd`. For example, a hash table 
+   with integer key and string values is named :class:`TIntStrKd`. If `<key_type_name>` 
+   and `<value_type_name>` have the same type, only one type name might be used, such 
+   as :class:`TIntKd`.
+
+   The following :class:`TKeyDat` types are supported: :class:`TIntKd`, :class:`TIntUInt64Kd`, :class:`TIntPrFltKdKd`, :class:`TIntFltPrKd`, :class:`TIntSFltKd`, :class:`TIntStrKd`, :class:`TUIntIntKd`, :class:`TUIntKd`, :class:`TUInt64IntKd`, :class:`TUInt64FltKd`, :class:`TUInt64StrKd`, :class:`TFltBoolKd`, :class:`TFltIntKd`, :class:`TFltUInt64Kd`, :class:`TFltIntPrKd`, :class:`TFltUIntKd`, :class:`TFltKd`, :class:`TFltStrKd`, :class:`TFltBoolKd`, :class:`TFloatIntBoolPrKd`, :class:`TAscFltIntKd`, :class:`TStrBoolKd`, :class:`TStrIntKd`, :class:`TStrFltKd`, :class:`TStrAscFltKd`, :class:`TStrKd`, and :class:`TIntFltKd`.
+
+   The following public functions are supported by the :class:`TKeyDat` class:
+
+     .. describe:: Save(SOut)
+
+        Saves the contents to the binary stream *SOut*
+
+     .. describe:: GetPrimHashCd()
+
+        Returns the primary hash code.
+
+     .. describe:: GetSecHashCd()
+
+        Returns the secondary hash code.
+
+   The following public attributes are available:
+
+     .. describe:: Key
+
+        The key in the key-value pair. Currently does not support assignment.
+
+     .. describe:: Dat
+
+        The value in the key-value pair. Currently does not support assignment.
+
 
 
 THashKeyDatI
@@ -911,7 +966,7 @@ Hash sets contain keys are of the same type. Specific keys can be accessed throu
 
      .. describe:: IsAutoSize()
 
-        Returns a bool indicating whether it is auto size.
+        Returns a bool indicating whether it is auto-size, meaning the hash set can be resized.
 
      .. describe:: GetMxKeyIds()
 
