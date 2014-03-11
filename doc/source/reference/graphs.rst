@@ -587,9 +587,13 @@ TNEANet
    group of methods deal with graph structure which includes nodes and edges.
    The second group of methods deal with node and edge attributes.
 
-   :class:`TNEANet` provides iterators for fast traversal of nodes and edges.
-   Iterator classes are :class:`TNEANetNodeI` for iterating over nodes and
-   :class:`TNEANetEdgeI` for iterating over edges.
+   :class:`TNEANet` provides iterators for fast traversal of nodes, edges
+   and attributes.
+   Iterator classes are :class:`TNEANetNodeI` for iterating over nodes,
+   :class:`TNEANetEdgeI` for iterating over edges, and
+   :class:`TNEANetAIntI`, :class:`TNEANetAFltI`, :class:`TNEANetAStrI`
+   for iterating over integer, float or string attributes, respectively.
+   Attribute iterators can operate over attributes for nodes or edges.
 
    :class:`TNEANet` methods for graph structure are the following:
 
@@ -978,7 +982,6 @@ TNEANetNodeI
 
         Tests whether node with ID *NId* is a neighbor of the current node.
 
-
 TNEANetEdgeI
 ============
 
@@ -1009,4 +1012,31 @@ TNEANetEdgeI
       .. describe:: GetDstNId()
 
         Returns the ID of the destination node of the edge.
+
+TNEANetAIntI, TNEANetAFltI, TNEANetAStrI
+========================================
+
+.. class:: TNEANetAIntI()
+           TNEANetAFltI()
+           TNEANetAStrI()
+
+    Returns a new integer, float or string attribute iterator
+    for :class:`TNEANet`. Normally, these objects are not created directly,
+    but obtained via a call to the graph class :class:`TNEANet` method,
+    such as :meth:`BegNAIntI()`, which returns an integer node iterator, or
+    :meth:`BegEAFltI()`, which returns a float edge iterator.
+
+    Attribute iterators provide the following methods:
+
+      .. describe:: Next()
+
+        Moves the iterator to the next node or edge in the graph.
+
+      .. describe:: GetDat()
+
+        Returns an attribute of the node or edge.
+
+      .. describe:: IsDeleted()
+
+        Returns true if the attribute has been deleted.
 

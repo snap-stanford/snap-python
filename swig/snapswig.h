@@ -167,7 +167,7 @@ public:
 
 typedef TIntV::TIter TIntVecIter;
 
-/// Node/Edge Attr iterator. Iterate through all node for one attr value.
+/// Node/edge integer attribute iterator. Iterates through all nodes/edges for one integer attribute.
 class TNEANetAIntI {
 private:
   TNEANet::TAIntI IntAI;
@@ -192,7 +192,7 @@ public:
 
 typedef TStrV::TIter TStrVecIter;
 
-/// Node/Edge Attr iterator. Iterate through all node for one attr value.
+/// Node/edge string attribute iterator. Iterates through all nodes/edges for one string attribute.
 class TNEANetAStrI {
 private:
   TNEANet::TAStrI StrAI;
@@ -218,7 +218,7 @@ public:
 
 typedef TFltV::TIter TFltVecIter;
 
-/// Node/Edge Attr iterator. Iterate through all node for one attr value.
+/// Node/edge float attribute iterator. Iterates through all nodes/edges for one float attribute.
 class TNEANetAFltI {
 private:
   TNEANet::TAFltI FltAI;
