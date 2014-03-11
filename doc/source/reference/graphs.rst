@@ -25,6 +25,10 @@ TUNGraph
    node takes constant time and accessing any edge takes logarithmic time
    in the node degree. 
 
+   :class:`TUNGraph` provides iterators for fast traversal of nodes and edges.
+   Iterator classes are :class:`TUNGraphNodeI` for iterating over nodes and
+   :class:`TUNGraphEdgeI` for iterating over edges.
+
    :class:`TUNGraph` provides the following methods:
 
      .. describe:: New()
@@ -189,6 +193,90 @@ TUNGraph
       >>> print G1.GetEdges()
       2
 
+TUNGraphNodeI
+=============
+
+.. class:: TUNGraphNodeI()
+
+    Returns a new node iterator for :class:`TUNGraph`. Normally, these
+    objects are not created directly,
+    but obtained via a call to the graph class :class:`TUNGraph` method,
+    such as :meth:`BegNI()`, that returns a node iterator.
+
+    :class:`TUNGraphNodeI` provides the following methods:
+
+      .. describe:: Next()
+
+        Moves the iterator to the next node in the graph.
+
+      .. describe:: GetId()
+
+        Returns node ID of the current node.
+
+      .. describe:: GetDeg()
+                    GetInDeg()
+                    GetOutDeg()
+
+        Returns degree of the current node. Since the graph is undirected,
+        all three  methods return the same value.
+
+      .. describe:: GetInNId(NodeN)
+
+        Returns ID of *NodeN*-th in-node (the node pointing to the current node).
+
+      .. describe:: GetOutNId(NodeN)
+
+        Returns ID of *NodeN*-th out-node (the node the current node points to).
+
+      .. describe:: GetNbrNId(NodeN)
+
+        Returns ID of *NodeN*-th neighboring node. 
+
+      .. describe:: IsInNId(NId)
+
+        Tests whether node with ID *NId* points to the current node.
+
+      .. describe:: IsOutNId(NId)
+
+        Tests whether the current node points to node with ID *NId*. 
+
+      .. describe:: IsNbrNId(NId)
+
+        Tests whether node with ID *NId* is a neighbor of the current node.
+
+TUNGraphEdgeI
+=============
+
+.. class:: TUNGraphEdgeI()
+
+    Returns a new edge iterator for :class:`TUNGraph`. Normally, these
+    objects are not created directly,
+    but obtained via a call to the graph class :class:`TUNGraph` method,
+    such as :meth:`BegEI()`, that returns an edge iterator.
+
+    :class:`TUNGraphEdgeI` provides the following methods:
+
+      .. describe:: Next()
+
+        Moves the iterator to the next edge in the graph.
+
+      .. describe:: GetId()
+
+        Always returns -1 for :class:`TUNGraph`, since edges
+        do not have explicit IDs.
+
+      .. describe:: GetSrcNId()
+
+        Returns the ID of the source node of the edge.
+        Since the graph is undirected,
+        this is the node with a smaller ID of the edge endpoints.
+
+      .. describe:: GetDstNId()
+
+        Returns the ID of the destination node of the edge.
+        Since the graph is undirected,
+        this is the node with a greater ID of the edge endpoints.
+
 TNGraph
 =======
 
@@ -210,7 +298,11 @@ TNGraph
    lists. This means adding a node takes constant time, while adding an edge
    takes linear time (since adjacency list is kept sorted) in the node
    degree. Accessing an arbitrary node takes constant time and accessing
-   any edge takes logarithmic time in the node degree. 
+   any edge takes logarithmic time in the node degree.
+
+   :class:`TNGraph` provides iterators for fast traversal of nodes and edges.
+   Iterator classes are :class:`TNGraphNodeI` for iterating over nodes and
+   :class:`TNGraphEdgeI` for iterating over edges.
 
    :class:`TNGraph` provides the following methods:
 
@@ -380,6 +472,91 @@ TNGraph
       >>> print G2.GetEdges()
       2
 
+TNGraphNodeI
+============
+
+.. class:: TNGraphNodeI()
+
+    Returns a new node iterator for :class:`TNGraph`. Normally, these
+    objects are not created directly,
+    but obtained via a call to the graph class :class:`TNGraph` method,
+    such as :meth:`BegNI()`, that returns a node iterator.
+
+    :class:`TNGraphNodeI` provides the following methods:
+
+      .. describe:: Next()
+
+        Moves the iterator to the next node in the graph.
+
+      .. describe:: GetId()
+
+        Returns node ID of the current node.
+
+      .. describe:: GetDeg()
+
+        Returns degree of the current node, the sum of in-degree and out-degree.
+
+      .. describe:: GetInDeg()
+
+        Returns in-degree of the current node.
+
+      .. describe:: GetOutDeg()
+
+        Returns out-degree of the current node.
+
+      .. describe:: GetInNId(NodeN)
+
+        Returns ID of *NodeN*-th in-node (the node pointing to the current node).
+
+      .. describe:: GetOutNId(NodeN)
+
+        Returns ID of *NodeN*-th out-node (the node the current node points to).
+
+      .. describe:: GetNbrNId(NodeN)
+
+        Returns ID of *NodeN*-th neighboring node. 
+
+      .. describe:: IsInNId(NId)
+
+        Tests whether node with ID *NId* points to the current node.
+
+      .. describe:: IsOutNId(NId)
+
+        Tests whether the current node points to node with ID *NId*. 
+
+      .. describe:: IsNbrNId(NId)
+
+        Tests whether node with ID *NId* is a neighbor of the current node.
+
+TNGraphEdgeI
+============
+
+.. class:: TNGraphEdgeI()
+
+    Returns a new edge iterator for :class:`TNGraph`. Normally, these
+    objects are not created directly,
+    but obtained via a call to the graph class :class:`TNGraph` method,
+    such as :meth:`BegEI()`, that returns an edge iterator.
+
+    :class:`TNGraphEdgeI` provides the following methods:
+
+      .. describe:: Next()
+
+        Moves the iterator to the next edge in the graph.
+
+      .. describe:: GetId()
+
+        Always returns -1 for :class:`TNGraph`, since edges
+        do not have explicit IDs.
+
+      .. describe:: GetSrcNId()
+
+        Returns the ID of the source node of the edge.
+
+      .. describe:: GetDstNId()
+
+        Returns the ID of the destination node of the edge.
+
 TNEANet
 =======
 
@@ -409,6 +586,14 @@ TNEANet
    Methods for :class:`TNEANet` are presented in two groups. The first
    group of methods deal with graph structure which includes nodes and edges.
    The second group of methods deal with node and edge attributes.
+
+   :class:`TNEANet` provides iterators for fast traversal of nodes, edges
+   and attributes.
+   Iterator classes are :class:`TNEANetNodeI` for iterating over nodes,
+   :class:`TNEANetEdgeI` for iterating over edges, and
+   :class:`TNEANetAIntI`, :class:`TNEANetAFltI`, :class:`TNEANetAStrI`
+   for iterating over integer, float or string attributes, respectively.
+   Attribute iterators can operate over attributes for nodes or edges.
 
    :class:`TNEANet` methods for graph structure are the following:
 
@@ -740,4 +925,118 @@ TNEANet
       3
       >>> print G3.GetEdges()
       3
+
+TNEANetNodeI
+============
+
+.. class:: TNEANetNodeI()
+
+    Returns a new node iterator for :class:`TNEANet`. Normally, these
+    objects are not created directly,
+    but obtained via a call to the network class :class:`TNEANet` method,
+    such as :meth:`BegNI()`, that returns a node iterator.
+
+    :class:`TNEANetNodeI` provides the following methods:
+
+      .. describe:: Next()
+
+        Moves the iterator to the next node in the graph.
+
+      .. describe:: GetId()
+
+        Returns node ID of the current node.
+
+      .. describe:: GetDeg()
+
+        Returns degree of the current node, the sum of in-degree and out-degree.
+
+      .. describe:: GetInDeg()
+
+        Returns in-degree of the current node.
+
+      .. describe:: GetOutDeg()
+
+        Returns out-degree of the current node.
+
+      .. describe:: GetInNId(NodeN)
+
+        Returns ID of *NodeN*-th in-node (the node pointing to the current node).
+
+      .. describe:: GetOutNId(NodeN)
+
+        Returns ID of *NodeN*-th out-node (the node the current node points to).
+
+      .. describe:: GetNbrNId(NodeN)
+
+        Returns ID of *NodeN*-th neighboring node. 
+
+      .. describe:: IsInNId(NId)
+
+        Tests whether node with ID *NId* points to the current node.
+
+      .. describe:: IsOutNId(NId)
+
+        Tests whether the current node points to node with ID *NId*. 
+
+      .. describe:: IsNbrNId(NId)
+
+        Tests whether node with ID *NId* is a neighbor of the current node.
+
+TNEANetEdgeI
+============
+
+.. class:: TNEANetEdgeI()
+
+    Returns a new edge iterator for :class:`TNEANet`. Normally, these
+    objects are not created directly,
+    but obtained via a call to the graph class :class:`TNEANet` method,
+    such as :meth:`BegEI()`, that returns an edge iterator.
+
+    :class:`TNEANetEdgeI` provides the following methods:
+
+      .. describe:: Next()
+
+        Moves the iterator to the next edge in the graph.
+
+      .. describe:: GetId()
+
+        
+
+        Always returns -1 for :class:`TNGraph`, since edges
+        do not have explicit IDs.
+
+      .. describe:: GetSrcNId()
+
+        Returns the ID of the source node of the edge.
+
+      .. describe:: GetDstNId()
+
+        Returns the ID of the destination node of the edge.
+
+TNEANetAIntI, TNEANetAFltI, TNEANetAStrI
+========================================
+
+.. class:: TNEANetAIntI()
+           TNEANetAFltI()
+           TNEANetAStrI()
+
+    Returns a new integer, float or string attribute iterator
+    for :class:`TNEANet`. Normally, these objects are not created directly,
+    but obtained via a call to the graph class :class:`TNEANet` method,
+    such as :meth:`BegNAIntI()`, which returns an integer node iterator, or
+    :meth:`BegEAFltI()`, which returns a float edge iterator.
+
+    Attribute iterators provide the following methods:
+
+      .. describe:: Next()
+
+        Moves the iterator to the next node or edge in the graph.
+
+      .. describe:: GetDat()
+
+        Returns an attribute of the node or edge.
+
+      .. describe:: IsDeleted()
+
+        Returns true if the attribute has been deleted.
 
