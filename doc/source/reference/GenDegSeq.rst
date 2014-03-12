@@ -3,19 +3,21 @@ GenDegSeq
 
 .. function:: GenDegSeq(DegSeqV, Rnd=TRnd)
 
-Generates an undirected random graph with the exact degree sequence.
+Generates an undirected random graph with the exact degree sequence given by *DegSeqV*.
 
 Parameters:
 
-- *DegSeqV*: TIntV (input)
+- *DegSeqV*: TIntV, a vector of ints (input)
     The desired degree sequence, sorted in descending order.
 
 - *Rnd*: TRnd (input)
-    Random number generator
+    Random number generator.
 
 Return value:
 
-- :class:`PUNGraph`
+- undirected graph
+    A Snap.py undirected graph generated with the degree sequence given by *DegSeqV*.
+
 
 The following example shows how to generate a random :class:`TUNGraph` with
 exact degree sequence::
@@ -29,8 +31,8 @@ exact degree sequence::
     DegSeqV.Add(1)
     DegSeqV.Add(1)
     Rnd = snap.TRnd()
-    Graph = snap.GenDegSeq(DegSeqV, Rnd)
+    UGraph = snap.GenDegSeq(DegSeqV, Rnd)
 
-    for e in Graph.Edges():
-        print "edge (%d, %d)" % (e.GetSrcNId(), e.GetDstNId())
+    for EI in UGraph.Edges():
+        print "edge: (%d, %d)" % (EI.GetSrcNId(), EI.GetDstNId())
 

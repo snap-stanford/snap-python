@@ -8,7 +8,7 @@ Removes all the self-edges from *Graph*.
 Parameters:
 
 - *Graph*: graph (input)
-    A Snap.py graph or network
+    A Snap.py graph or network.
 
 Return value:
 
@@ -20,56 +20,32 @@ The following example shows how to delete self-edges in
 
     import snap
 
-    ### PNGraph
-    print "--- PNGraph ---"
     Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
-    Graph.AddEdge(1,1)
-
-    # Print initial self-edges
-    print "Self-edges in initial graph: "
+    snap.AddSelfEdges(Graph)
     for NI in Graph.Nodes():
         if Graph.IsEdge(NI.GetId(),NI.GetId()): 
             print "Self-edge on node %d" % NI.GetId()
-
-    # Remove self-edges
     snap.DelSelfEdges(Graph)
-    print "Deleted self-edges"
     for NI in Graph.Nodes():
         if Graph.IsEdge(NI.GetId(),NI.GetId()): 
             print "Self-edge on node %d" % NI.GetId()
 
-    ### PUNGraph
-    print "--- PUNGraph ---"
-    Graph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
-    Graph.AddEdge(1,1)
-
-    # Print initial self-edges
-    print "Self-edges in initial graph: "
-    for NI in Graph.Nodes():
-        if Graph.IsEdge(NI.GetId(),NI.GetId()): 
+    UGraph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
+    snap.AddSelfEdges(UGraph)
+    for NI in UGraph.Nodes():
+        if UGraph.IsEdge(NI.GetId(),NI.GetId()): 
+            print "Self-edge on node %d" % NI.GetId()
+    snap.DelSelfEdges(UGraph)
+    for NI in UGraph.Nodes():
+        if UGraph.IsEdge(NI.GetId(),NI.GetId()): 
             print "Self-edge on node %d" % NI.GetId()
 
-    # Remove self-edges
-    snap.DelSelfEdges(Graph)
-    print "Deleted self-edges"
-    for NI in Graph.Nodes():
-        if Graph.IsEdge(NI.GetId(),NI.GetId()): 
+    Network = snap.GenRndGnm(snap.PNGraph, 100, 1000)
+    snap.AddSelfEdges(Network)
+    for NI in Network.Nodes():
+        if Network.IsEdge(NI.GetId(),NI.GetId()): 
             print "Self-edge on node %d" % NI.GetId()
-
-    ### PNEANet
-    print "--- PNEANet ---"
-    Graph = snap.GenRndGnm(snap.PNEANet, 100, 1000)
-    Graph.AddEdge(1,1)
-
-    # Print initial self-edges
-    print "Self-edges in initial graph: "
-    for NI in Graph.Nodes():
-        if Graph.IsEdge(NI.GetId(),NI.GetId()): 
-            print "Self-edge on node %d" % NI.GetId()
-
-    # Remove self-edges
-    snap.DelSelfEdges(Graph)
-    print "Deleted self-edges"
-    for NI in Graph.Nodes():
-        if Graph.IsEdge(NI.GetId(),NI.GetId()): 
+    snap.DelSelfEdges(Network)
+    for NI in Network.Nodes():
+        if Network.IsEdge(NI.GetId(),NI.GetId()): 
             print "Self-edge on node %d" % NI.GetId()

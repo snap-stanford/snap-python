@@ -8,48 +8,44 @@ Returns an induced subgraph of graph *InGraph* with *NIdV* nodes with an optiona
 Parameters:
 
 - *GraphType*: graph class (input)
-    Class of output graph -- one of `PNGraph`, `PNEANet`, or `PUNGraph`
+    Class of output graph -- one of :class:`PNGraph`, :class:`PNEANet`, or :class:`PUNGraph`.
 
 - *InGraph*: graph (input)
-    A Snap.py graph or a network
+    A Snap.py graph or a network.
 
 - *NIdV*: TIntV, a vector of ints (input)
-    The vector of node ids that will be included in the induced subgraph.
+    Node IDs that will be included in the subgraph.
 
-- *RenumberNodes*: Boolean (input)
+- *RenumberNodes*: boolean (input)
     Determines whether the node IDs are preserved or not. If False, then nodes in the resulting graph have the same node IDs as nodes in *InGraph*. If True, then nodes in the resulting graph are renumbered sequentially from 0 to N-1, where N is the number of nodes. By default, the nodes are not renumbered.
 
 Return value:
 
 - graph
-    A graph of type *GraphType* that is a subgraph of *InGraph*
+    A snap.py graph of type *GraphType* with *NIdV* nodes from the original graph *InGraph*.
     
-The following example shows how to convert a SubGraph in
-:class:`TNGraph`::
+    
+The following example shows how to convert a subgraph between the different types of graphs::
 
     import snap
 
-    Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
-    List = snap.TIntV.GetV(1, 4, 9, 16, 25, 36)
-    G2 = snap.ConvertSubGraph(snap.PUNGraph, Graph, List)
-    for EI in G2.Edges():
-        print "edge: (%d, %d)" % (EI.GetSrcNId(), EI.GetDstNId())
-    for NI in G2.Nodes():
-        print "node: ", NI.GetId()
-        
-    Graph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
-    List = snap.TIntV.GetV(1, 2, 3, 5, 8, 13)
-    G2 = snap.ConvertSubGraph(snap.PNGraph, Graph, List)
-    for EI in G2.Edges():
-        print "edge: (%d, %d)" % (EI.GetSrcNId(), EI.GetDstNId())
-    for NI in G2.Nodes():
-        print "node: ", NI.GetId()
+    V = snap.TIntV()
+    for i in range(10):
+        V.Add(i)
 
-    Graph = snap.GenRndGnm(snap.PNEANet, 100, 1000)
-    List = snap.TIntV.GetV(1,3,6,10,15,21)
-    G2 = snap.ConvertSubGraph(snap.PNGraph, Graph, List, True)
-    for EI in G2.Edges():
-        print "edge: (%d, %d)" % (EI.GetSrcNId(), EI.GetDstNId())
-    for NI in G2.Nodes():
-        print "node: ", NI.GetId()
+    GIn = snap.GenRndGnm(snap.PNGraph, 100, 1000)
+    GOut = snap.ConvertSubGraph(snap.PUNGraph, GIn, V)
+    for NI in GOut.Nodes():
+        print "node: %d" % NI.GetId()
+
+    GIn = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
+    GOut = snap.ConvertSubGraph(snap.PNEANet, GIn, V)
+    for NI in GOut.Nodes():
+        print "node: %d" % NI.GetId()
+
+    GIn = snap.GenRndGnm(snap.PNEANet, 100, 1000)
+    GOut = snap.ConvertSubGraph(snap.PNGraph, GIn, V)
+    for NI in GOut.Nodes():
+        print "node: %d" % NI.GetId()
+        
   

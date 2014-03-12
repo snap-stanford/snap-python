@@ -3,33 +3,32 @@ CntEdgesToSet
 
 .. function:: CntEdgesToSet(Graph, NId, NodeSet)
 
-Counts the number of edges between the given node with node id *NId* and the given set of nodes *NodeSet* in the provided graph *Graph*.
+Counts the number of edges between the given node with node id *NId* and the given set of nodes *NodeSet* in the provided graph *Graph*. If *Graph* is a directed graph, this function will return edges occurring in both directions between the given *NId* and *NodeSet*.
 
 Parameters:
 
 - *Graph*: graph (input)
-	A Snap.py graph or network
+	A Snap.py graph or network.
 
 - *NId*: int (input)
-	The node id of the source node
+	The node id of the source node.
 
 - *NodeSet*: TIntSet, a set of ints (input)
-	The set of destination node ids
+	The set of destination node ids.
 
 Return Value:
 
 - int
-    The number of edges from node with id *NId* to nodes in the set *NodeSet*
+    The number of edges from node with id *NId* to nodes in the set *NodeSet*.
 
-If Graph is a directed graph, this function will return edges occurring in both directions between the given NId and NodeSet.
 
 The following example shows how to use :func:`CntEdgesToSet` with :class:`TNGraph`, :class:`TUNGraph`, and :class:`TNEANet`::
 
 	import snap
 
 	NodeSet = snap.TIntSet()
-	for Id in range(1,50):
-		NodeSet.AddKey(Id)
+	for NI in range(1,50):
+		NodeSet.AddKey(NI)
 	NodeId = 65
 
 	Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)

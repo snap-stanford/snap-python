@@ -8,58 +8,29 @@ Removes all the zero-degree nodes from *Graph*.
 Parameters:
 
 - *Graph*: graph (input and output)
-    A Snap.py graph or a network
+    A Snap.py graph or a network.
 
 Return value:
 
 - None
+
 
 The following example shows how to delete all zero-degree nodes from 
 :class:`TNGraph`, :class:`TUNGraph`, and :class:`TNEANet`::
 
     import snap
 
-    ### Directed Graph ###
-    Graph = snap.GenRndGnm(snap.PNGraph, 100, 10)
-
-    for NI in Graph.Nodes():
-        if NI.GetOutDeg() + NI.GetInDeg() == 0:
-            print "Node %d has degree 0." % NI.GetId()
-
-    # Delete zero degree nodes
+    Graph = snap.GenRndGnm(snap.PNGraph, 100, 0)
+    print "Number of nodes in directed graph: %d" % (Graph.GetNodes())
     snap.DelZeroDegNodes(Graph)
+    print "Number of nodes in directed graph after delete: %d" % Graph.GetNodes()
 
-    print "0-degree nodes deleted."
-    for NI in Graph.Nodes():
-        if N.GetOutDeg() + N.GetInDeg() == 0:
-            print "Node %d has degree 0." % N.GetId()
-    
-    ### Undirected Graph ###
-    Graph = snap.GenRndGnm(snap.PUNGraph, 100, 10)
+    UGraph = snap.GenRndGnm(snap.PUNGraph, 100, 0)
+    print "Number of nodes in undirected graph: %d" % (UGraph.GetNodes())
+    snap.DelZeroDegNodes(UGraph)
+    print "Number of nodes in undirected graph after delete: %d" % UGraph.GetNodes()
 
-    for NI in Graph.Nodes():
-        if NI.GetOutDeg() + NI.GetInDeg() == 0:
-            print "Node %d has degree 0." % NI.GetId()
-
-    # Delete zero degree nodes
-    snap.DelZeroDegNodes(Graph)
-
-    print "0-degree nodes deleted."
-    for NI in Graph.Nodes():
-        if N.GetOutDeg() + N.GetInDeg() == 0:
-            print "Node %d has degree 0." % N.GetId()
-
-    ### Network ###
-    Graph = snap.GenRndGnm(snap.PNEANet, 100, 10)
-
-    for NI in Graph.Nodes():
-        if NI.GetOutDeg() + NI.GetInDeg() == 0:
-            print "Node %d has degree 0." % NI.GetId()
-
-    # Delete zero degree nodes
-    snap.DelZeroDegNodes(Graph)
-
-    print "0-degree nodes deleted."
-    for NI in Graph.Nodes():
-        if N.GetOutDeg() + N.GetInDeg() == 0:
-            print "Node %d has degree 0." % N.GetId()
+    Network = snap.GenRndGnm(snap.PNEANet, 100, 0)
+    print "Number of nodes in network: %d" % (Network.GetNodes())
+    snap.DelZeroDegNodes(Network)
+    print "Number of nodes in network after delete: %d" % Network.GetNodes()

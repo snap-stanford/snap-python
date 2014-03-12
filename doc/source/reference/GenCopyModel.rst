@@ -10,23 +10,23 @@ neighbor of v.
 Parameters:
 
 - *Nodes*: int (input)
-    Number of nodes in the generated graph
+    Number of nodes in the generated graph.
 
 - *Beta*: float (input)
-    Probability used in the generating process
+    Probability used in the generating process.
 
 - *Rnd*: TRnd (input)
-	Random number generator
+	Random number generator.
 
 Return value:
 
-- :class:`PNGraph`
-    Directed graph generated using the Copying Model.
+- directed graph
+    A Snap.py directed graph generated using the Copying Model.
 
 
 The following example shows how to generate a :class:`TNGraph` using GenCopyModel::
 
     import snap
 
-    result = snap.GenCopyModel(20, 0.4, snap.TRnd())
-    print "Resulting Graph: Nodes %d, Edges %d" % (result.GetNodes(), result.GetEdges())
+    Graph = snap.GenCopyModel(20, 0.4, snap.TRnd())
+    print "Resulting Graph: Nodes %d, Edges %d" % (Graph.GetNodes(), Graph.GetEdges())

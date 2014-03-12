@@ -1,9 +1,5 @@
 GetDegSeqV
 ''''''''''
-.. note::
-
-    This page is a draft and under revision.
-
 
 .. function:: GetDegSeqV(Graph, InDegV, OutDegV)
 
@@ -14,10 +10,10 @@ Parameters:
 - *Graph*: graph (input)
     A Snap.py graph or a network
 
-- *InDegV*: TIntV, a vector of int values (output)
+- *InDegV*: TIntV, a vector of ints (output)
     In-degree sequence vector
 
-- *OutDegV*: TIntV, a vector of int values (output)
+- *OutDegV*: TIntV, a vector of ints (output)
     Out-degree sequence vector
 
 Return Value:
