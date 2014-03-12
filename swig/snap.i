@@ -3,10 +3,10 @@
 //   PNEANet, PUNGraph, PNGraph are supported,
 //     along with standard SNAP functions.
 
-#define SNAP_ALL 0
+#define SNAP_ALL 1
 
 %pythoncode %{
-Version = "0.8.5"
+Version = "1.0"
 %}
 
 %module snap
