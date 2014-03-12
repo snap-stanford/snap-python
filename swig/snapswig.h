@@ -46,7 +46,6 @@ public:
   bool operator < (const TNGraphEdgeI& EdgeI) const { return EI < EdgeI.EI; }
   bool operator == (const TNGraphEdgeI& EdgeI) const { return EI == EdgeI.EI; }
   /// Always returns -1, since edges do not have explicit IDs.
-Gets edge ID. Always returns -1 since only edges in multigraphs have explicit IDs.
   int GetId() const { return EI.GetId(); }
   /// Returns the ID of the source node of the edge.
   int GetSrcNId() const { return EI.GetSrcNId(); }
@@ -101,7 +100,7 @@ public:
   TUNGraphEdgeI& Next() { EI++; return *this; }
   bool operator < (const TUNGraphEdgeI& EdgeI) const { return EI < EdgeI.EI; }
   bool operator == (const TUNGraphEdgeI& EdgeI) const { return EI == EdgeI.EI; }
-  /// Gets edge ID. Always returns -1 since only edges in multigraphs have explicit IDs.
+  /// Always returns -1, since edges do not have explicit IDs.
   int GetId() const { return EI.GetId(); }
   /// Returns the ID of the source node of the edge. Since the graph is undirected this is the node with smaller ID of the edge endpoints.
   int GetSrcNId() const { return EI.GetSrcNId(); }
@@ -157,7 +156,7 @@ public:
   TNEANetEdgeI& Next() { EI++; return *this; }
   bool operator < (const TNEANetEdgeI& EdgeI) const { return EI < EdgeI.EI; }
   bool operator == (const TNEANetEdgeI& EdgeI) const { return EI == EdgeI.EI; }
-  /// Returns edge ID.
+  /// Returns edge ID. Only multigraphs have explicit edge IDs.
   int GetId() const { return EI.GetId(); }
   /// Returns the ID of the source node of the edge.
   int GetSrcNId() const { return EI.GetSrcNId(); }
