@@ -16,7 +16,7 @@ Parameters:
 - *MxDist*: int (input)
     Maximum number of hops the algorithm takes between pairs.
 
-- *IsDir*: boolean (input)
+- *IsDir*: bool (input)
     Indicates whether the edges should be considered directed or undirected.
 
 - *NApprox*: int (input)

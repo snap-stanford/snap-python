@@ -19,7 +19,7 @@ Parameters:
 - *MxDist*: int (input)
     Maximum number of hops the algorithm spreads from *SrcNId*.
     
-- *IsDir*: boolean (input)
+- *IsDir*: bool (input)
     Indicates whether the edges should be considered directed or undirected.
 
 - *Napprox*: int (input)

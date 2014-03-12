@@ -16,26 +16,27 @@ Uses the entire graph (all edges) to measure the shortest path lengths but repor
 Parameters:
 
 - *Graph*: graph (input)
-    A Snap.py graph or a network
+    A Snap.py graph or a network.
 
 - *NTestNodes*: int (input)
-    Number of starting nodes for calculating path lengths
+    Number of starting nodes for calculating path lengths.
 
 - *SubGraphNIdV*: TIntV - vector of ints (input)
-    List of nodes in the subgraph for which the path lengths will be reported
+    List of nodes in the subgraph for which the path lengths will be reported.
 
-- *IsDir*: boolean (input)
-    If false, ignores edge directions and considers edges to be undirected
+- *IsDir*: bool (input)
+    Indicates whether the edges should be considered directed or undirected.
 
-- *EffDiam*: double (output)
-    90-th percentile approximation of the diameter of SubGraphNIdV, equal to the average shortest path length
+- *EffDiam*: float (output)
+    90-th percentile approximation of the diameter of SubGraphNIdV, equal to the average shortest path length.
 
 - *FullDiam*: int (output)
-    The maximal shortest path found from the sampled nodes, used to approximate the full diameter of the graph
+    The maximal shortest path found from the sampled nodes, used to approximate the full diameter of the graph.
 
 Return value:
 
-- 90th-percentile approximation for the average shortest path length among the nodes in SubGraphNIdV (float)
+- float
+    90th-percentile approximation for the average shortest path length among the nodes in SubGraphNIdV.
 
 Notes:
 

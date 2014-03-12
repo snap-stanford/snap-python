@@ -1,51 +1,49 @@
 GetCmnNbrs
 ''''''''''
-.. note::
-
-    This page is a draft and under revision.
-
 
 .. function:: GetCmnNbrs(Graph, NId1, NId2, NbrV)
 
-Computes the number of shared neighbors between a pair of nodes NId1 and NId2. The node ID of the neighbors are stored in *NbrV*.
+Computes the number of shared neighbors between a pair of nodes *NId1* and *NId2*. The node ids of the neighbors are stored in *NbrV*.
 
 Parameters:
 
 - *Graph*: graph (input)
-    A Snap.py graph or a network
+    A Snap.py graph or a network.
 
 - *NId1*: int (input)
-    Node ID of first node
+    Node id of the first node.
 
 - *NId2*: int (input)
-    Node ID of second node
+    Node id of the second node.
 
-- *NbrV*: vector of int (output)
+- *NbrV*: TIntV, vector of int (output)
     Shared neighbors between the two nodes. Neighbors are node IDs.
 
 Return value:
 
 - int
-    Number of shared neighbors between the two nodes.
+    The number of common neighbors between the pair of nodes.
 
 The following example shows how to find the shared neighbors of two nodes in :class:`TNGraph`, :class:`TUNGraph`, and :class:`TNEANet`::
 
     import snap
 
-    graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
-    neighbors = snap.TIntV()
-    numNbr = snap.GetCmnNbrs(graph, 0, 1, neighbors)
-    print numNbr
-    print [neighbor for neighbor in neighbors]
+    import snap
 
-    graph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
-    neighbors = snap.TIntV()
-    numNbr = snap.GetCmnNbrs(graph, 0, 1, neighbors)
-    print numNbr
-    print [neighbor for neighbor in neighbors]
+    Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
+    Nbrs = snap.TIntV()
+    snap.GetCmnNbrs(Graph, 1, 10, Nbrs)
+    for NId in Nbrs:
+        print "node: %d" % %NId
 
-    graph = snap.GenRndGnm(snap.PNEANet, 100, 1000)
-    neighbors = snap.TIntV()
-    numNbr = snap.GetCmnNbrs(graph, 0, 1, neighbors)
-    print numNbr
-    print [neighbor for neighbor in neighbors]
+    UGraph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
+    Nbrs = snap.TIntV()
+    snap.GetCmnNbrs(UGraph, 1, 10, Nbrs)
+    for NId in Nbrs:
+        print "node: %d" % %NId
+
+    Network = snap.GenRndGnm(snap.PNEANet, 100, 1000)
+    Nbrs = snap.TIntV()
+    snap.GetCmnNbrs(Network, 1, 10, Nbrs)
+    for NId in Nbrs:
+        print "node: %d" % %NId

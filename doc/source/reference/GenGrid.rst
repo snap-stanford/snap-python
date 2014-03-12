@@ -16,7 +16,7 @@ Parameters:
 - *Cols*: int (input)
     Specifies number of columns for graph.
 
-- *IsDir*: boolean (input)
+- *IsDir*: bool (input)
     Indicates whether the edges should be directed or undirected. Defaults to directed. 
 
 Return value:

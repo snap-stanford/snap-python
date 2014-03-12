@@ -21,7 +21,7 @@ Parameters:
 - *Levels*: int (input)
     The number of expansions of the base graph. 
 
-- *IsDir*: boolean (input)
+- *IsDir*: bool (input)
     Indicates whether the edges should be directed or undirected. Defaults to directed. 
 
 Return value:

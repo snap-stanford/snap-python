@@ -13,7 +13,7 @@ Parameters:
 - *PowerExp*: float (input)
     Power exponent, which must be greater than 1.
 
-- *ConfModel*: boolean (input)
+- *ConfModel*: bool (input)
     Whether the method uses the Configuration model.
 
 - *Rnd*: TRnd (input)

@@ -16,7 +16,7 @@ Parameters:
 - *Levels*: int (input)
     Number of levels of the tree.
 
-- *IsDir*: boolean (input)
+- *IsDir*: bool (input)
     Indicates whether the edges should be directed or undirected. Defaults to directed. 
 
 - *ChildPointsToParent*: bool (input)

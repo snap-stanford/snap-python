@@ -8,24 +8,25 @@ Finds the node ids of all the nodes that are at distance *Hop* from node *StartN
 Parameters:
 
 - *PGraph*: graph (input)
-    A Snap.py graph or a network
+    A Snap.py graph or a network.
 
 - *StartNId*: int (input)
-    Starting node id
+    Starting node id.
 
 - *Hop*: int (input)
-    Distance from the starting node
+    Distance from the starting node.
 
 - *NIdV*: TIntV, a vector of ints (output)
     Node ids of nodes *Hop* distance away from *StartNId*.
 
 - *IsDir*: bool (input)
-    Boolean specifying whether the graph is directed. If false, edge directions are ignored and considered as undirected.
+    Indicates whether the edges should be considered directed or undirected.
 
 Return value:
 
 - int
-    The number of nodes at distance *Hop* from *StartNId*
+    The number of nodes at distance *Hop* from *StartNId*.
+
 
 The following example shows how to get a vector of nodes at hop distance
 2 away from start node 1 for nodes in
@@ -39,14 +40,14 @@ The following example shows how to get a vector of nodes at hop distance
     for item in NodeVec:
         print item
 
-    Graph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
+    UGraph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
     NodeVec = snap.TIntV()
-    snap.GetNodesAtHop(Graph, 1, 2, NodeVec, True)
+    snap.GetNodesAtHop(UGraph, 1, 2, NodeVec, True)
     for item in NodeVec:
         print item
 
-    Graph = snap.GenRndGnm(snap.PNEANet, 100, 1000)
+    Network = snap.GenRndGnm(snap.PNEANet, 100, 1000)
     NodeVec = snap.TIntV()
-    snap.GetNodesAtHop(Graph, 1, 2, NodeVec, True)
+    snap.GetNodesAtHop(Network, 1, 2, NodeVec, True)
     for item in NodeVec:
         print item

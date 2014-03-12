@@ -8,21 +8,22 @@ Returns a directed Breadth-First-Search tree rooted at *StartNId*. The nodes in 
 Parameters:
 
 - *Graph*
-    A Snap.py graph or a network
+    A Snap.py graph or a network.
 
 - *StartNId*
-    Id of the root node of the Breadth-First-Search tree
+    Id of the root node of the Breadth-First-Search tree.
 
 - *FollowOut*
-    Boolean specifying if the graph should be constructed by following the outward links
+    A bool specifying if the graph should be constructed by following the outward links.
 
 - *FollowIn*
-    Boolean specifying if the graph should be constructed by following inward links
+    A bool specifying if the graph should be constructed by following inward links.
 
 Return value:
 
-- PNGraph
-    Graph whose nodes correspond to those of the original graph and whose edges represent the edges traversed by the breadth-first search.
+- directed graph
+    A Snap.py directed graph whose nodes correspond to those of the original graph and whose edges represent the edges traversed by the breadth-first search.
+
 
 The following examples show how to use :func:`GetBfsTree` with graphs of type
 :class:`TNGraph`, :class:`TUNGraph`, and :class:`TNEANet`::
@@ -34,12 +35,12 @@ The following examples show how to use :func:`GetBfsTree` with graphs of type
     for EI in BfsTree.Edges():
         print "Edge from %d to %d in generated tree." % (EI.GetSrcNId(), EI.GetDstNId())
 
-    Graph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
-    BfsTree = snap.GetBfsTree(Graph, 1, True, False)
+    UGraph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
+    BfsTree = snap.GetBfsTree(UGraph, 1, True, False)
     for EI in BfsTree.Edges():
         print "Edge from %d to %d in generated tree." % (EI.GetSrcNId(), EI.GetDstNId())
 
-    Graph = snap.GenRndGnm(snap.PNEANet, 100, 1000)
-    BfsTree = snap.GetBfsTree(Graph, 1, True, False)
+    Network = snap.GenRndGnm(snap.PNEANet, 100, 1000)
+    BfsTree = snap.GetBfsTree(Network, 1, True, False)
     for EI in BfsTree.Edges():
         print "Edge from %d to %d in generated tree." % (EI.GetSrcNId(), EI.GetDstNId())

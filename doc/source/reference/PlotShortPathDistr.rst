@@ -8,13 +8,13 @@ Plots the distribution of the shortest path lengths in *Graph*. The implementati
 Parameters:
 
 - *Graph*: graph (input)
-    A Snap.py graph or a network
+    A Snap.py graph or a network.
 
 - *FNmPref*: string (input)
-    A string representing the preferred output file name
+    A string representing the preferred output file name.
 
 - *DescStr*: string (input)
-    Description of the graph. The string should be non-empty
+    Description of the graph. The string should be non-empty.
 
 - *TestNodes*: int (input)
     Number of nodes from which to start BFS to count shortest path lengths.  If TestNodes is less than the total number of graph nodes, then the plot may only be an approximation of the distribution of the shortest path lengths.
@@ -30,9 +30,9 @@ The following example shows how to generate plots of the distribution of shortes
     Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
     snap.PlotShortPathDistr(Graph, "example", "Directed graph - shortest path")
     
-    Graph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
-    snap.PlotShortPathDistr(Graph, "example", "Undirected graph - shortest path")
+    UGraph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
+    snap.PlotShortPathDistr(UGraph, "example", "Undirected graph - shortest path")
     
-    Graph = snap.GenRndGnm(snap.PNEANet, 100, 1000)
-    snap.PlotShortPathDistr(Graph, "example", "Network - shortest path")
+    Network = snap.GenRndGnm(snap.PNEANet, 100, 1000)
+    snap.PlotShortPathDistr(Network, "example", "Network - shortest path")
     

@@ -7,6 +7,10 @@ GetNodeTriads
 
 .. function:: GetNodeTriads(Graph, NId, GroupSet)
 
+.. note::
+
+    This function is not yet supported.
+
 Returns the number of closed triads a node *NId* participates in. OR, if the parameter *GroupSet* is included, returns the number of triads between *NId* and a subset of its neighbors (given by *GroupSet*). Considers *Graph* to be undirected.
 
 Parameters:

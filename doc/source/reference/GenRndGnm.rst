@@ -16,7 +16,7 @@ Parameters:
 - *Edges*: int (input)
     Number of edges in the genereated graph.
 
-- *IsDir*: boolean (input)
+- *IsDir*: bool (input)
     Indicates whether to consider the edges as directed or undirected. Defaults to directed. 
 
 - *Rnd*: TRnd (input)

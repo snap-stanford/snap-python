@@ -9,19 +9,19 @@ Plots the out-degree distribution of *Graph*. The function creates three new fil
 Parameters:
 
 - *Graph*: graph (input)
-    A Snap.py graph or a network
+    A Snap.py graph or a network.
 
 - *FNmPref*: string (input)
-    A string representing the preferred output file name
+    A string representing the preferred output file name.
 
 - *DescStr*: string (input)
-    Description of the graph. The string should be non-empty
+    Description of the graph. The string should be non-empty.
 
 - *PlotCCdf*: bool (input)
-    Plots the distribution as a Complementary Cummulative distribution function
+    Plots the distribution as a Complementary Cummulative distribution function.
 
 - *PowerFit*: bool (input)
-    Fits a Power-Law to the distribution
+    Fits a Power-Law to the distribution.
 
 Return value:
 
@@ -34,8 +34,8 @@ The following example shows how generate a plot of the out-degree distribution f
     Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
     snap.PlotOutDegDistr(Graph, "example", "Directed graph - out-degree Distribution")
 
-    Graph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
-    snap.PlotOutDegDistr(Graph, "example", "Undirected graph - out-degree Distribution")
+    UGraph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
+    snap.PlotOutDegDistr(UGraph, "example", "Undirected graph - out-degree Distribution")
 
-    Graph = snap.GenRndGnm(snap.PNEANet, 100, 1000)
-    snap.PlotOutDegDistr(Graph, "example", "Network - out-degree Distribution")
+    Network = snap.GenRndGnm(snap.PNEANet, 100, 1000)
+    snap.PlotOutDegDistr(Network, "example", "Network - out-degree Distribution")
