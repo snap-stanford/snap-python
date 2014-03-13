@@ -8,17 +8,18 @@ Plots the k-core edge-size distribution: core k vs. number of edges in k-core. T
 Parameters:
 
 - *Graph*: graph (input)
-    A Snap.py graph or a network
+    A Snap.py graph or a network.
 
 - *FNmPref*: string (input)
-    A string representing the preferred output file name
+    A string representing the preferred output file name.
 
 - *DescStr*: string (input)
-    Description of the graph. The string should be non-empty
+    Description of the graph. The string should be non-empty.
 
 Return value:
 
 - None
+
 
 The following example shows how to plot the k-core edge-size distribution for
 :class:`TNGraph`, :class:`TUNGraph`, and :class:`TNEANet`::
@@ -28,10 +29,10 @@ The following example shows how to plot the k-core edge-size distribution for
     Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
     snap.PlotKCoreEdges(Graph, "example", "Directed graph - k-core edges")
     
-    Graph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
-    snap.PlotKCoreEdgees(Graph, "example", "Undirected graph - k-core edges")
+    UGraph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
+    snap.PlotKCoreEdgees(UGraph, "example", "Undirected graph - k-core edges")
 
-    Graph = snap.GenRndGnm(snap.PNEANet, 100, 1000)
-    snap.PlotKCoreEdges(Graph, "example", "Network - k-core edges")
+    Network = snap.GenRndGnm(snap.PNEANet, 100, 1000)
+    snap.PlotKCoreEdges(Network, "example", "Network - k-core edges")
 
 

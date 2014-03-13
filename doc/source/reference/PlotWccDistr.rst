@@ -8,13 +8,13 @@ Plots the distribution of sizes of weakly connected components of *Graph*. The f
 Parameters:
 
 - *Graph*: graph (input)
-    A Snap.py graph or a network
+    A Snap.py graph or a network.
 
 - *FNmPref*: string (input)
-    A string representing the preferred output file name
+    A string representing the preferred output file name.
 
 - *DescStr*: string (input)
-    Description of the graph. The string should be non-empty
+    Description of the graph. The string should be non-empty.
 
 Return value:
 
@@ -27,8 +27,8 @@ The following example shows how to plot the distribution of sizes of weakly conn
     Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
     snap.PlotWccDistr(Graph, "example", "Directed graph - wcc distributaion")
 
-    Graph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
-    snap.PlotWccDistr(Graph, "example", "Undirected graph - wcc distribution")
+    UGraph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
+    snap.PlotWccDistr(UGraph, "example", "Undirected graph - wcc distribution")
 
-    Graph = snap.GenRndGnm(snap.PNEANet, 100, 1000)
-    snap.PlotWccDistr(Graph, "example", "Network - wcc distribution")
+    Network = snap.GenRndGnm(snap.PNEANet, 100, 1000)
+    snap.PlotWccDistr(Network, "example", "Network - wcc distribution")

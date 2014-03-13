@@ -8,15 +8,16 @@ Generates a random undirected graph with the given degree sequence *DegSeqV*.
 Parameters:
 
 - *DegSeqV*: TIntV, a vector of ints (input)
-	The degree sequence vector
+	The degree sequence vector.
 
 - *Rnd*: TRnd (input)
-	Random number generator
+	Random number generator.
 
 Return value:
 
-- :class:`PUNGraph`
-    Random undirected graph with degree sequence given by *DegSeqV*
+- undirected graph
+    A random Snap.py undirected graph with degree sequence given by *DegSeqV*.
+
 
 The following example generates a random unidirected graph with degree sequence 1, 2, 3::
 
@@ -28,6 +29,6 @@ The following example generates a random unidirected graph with degree sequence 
     DegSeqV.Add(3)
     Rnd = snap.TRnd()
 
-    Graph = snap.GenConfModel(DegSeqV, Rnd)
-    for edge in Graph.Edges():
-        print "%d, %d" % (edge.GetSrcNId(), edge.GetDstNId())
+    UGraph = snap.GenConfModel(DegSeqV, Rnd)
+    for EI in UGraph.Edges():
+        print "edge: (%d, %d)" % (EI.GetSrcNId(), EI.GetDstNId())

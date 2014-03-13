@@ -1,15 +1,7 @@
 GetBfsEffDiam
 '''''''''''''
-.. note::
 
-    This page is a draft and under revision.
-
-
-.. function:: GetBfsEffDiam(Graph, NTestNodes, IsDir = false) 
-
-.. note::
-
-    This function is not yet supported.
+.. function:: GetBfsEffDiam(Graph, NTestNodes, IsDir=False) 
 
 Returns the (approximation of the) Effective Diameter (90-th percentile of the distribution of shortest path lengths) of a graph (by performing BFS from NTestNodes random starting nodes).
 
@@ -19,14 +11,14 @@ Parameters:
     A Snap.py graph or a network.
 
 - *NTestNodes*: int (input)
-    Number of random nodes from which to start BFS.
+    The number of random start nodes to use in the BFS used to calculate the graph diameter and effective diameter.
 
 - *IsDir*: bool (input)
-    false: ignore edge directions and consider edges/paths as undirected (in case they are directed).
+    Indicates whether the edges should be considered directed or undirected.
 
 Return value:
 
-- *EffDiam*
+- float
     The (approximation of the) Effective Diameter of a graph.
 
 The following example shows how to calculate BfsEffDiam for nodes in

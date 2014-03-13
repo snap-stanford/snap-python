@@ -1,23 +1,20 @@
 GetNodeWcc
 ''''''''''
 
-
 .. function:: GetNodeWcc(Graph, NId, CnCom)
 
 Returns (via output parameter *CnCom*) all nodes that are in the same connected component as node *NId*.
 
-
 Parameters:
 
 - *Graph*: graph (input)
-    A Snap.py graph or a network
+    A Snap.py graph or a network.
 
 - *NId*: int (input)
-    A node id
+    A node id in *Graph*.
 
 - *CnCom*: TIntV, a vector of ints (output)
-    All nodes that are in the same weakly connected component as *NId*
-
+    All nodes that are in the same weakly connected component as *NId*.
 
 Return value:
 
@@ -37,17 +34,17 @@ The following example shows how to get the nodes in the same connected component
         print CnCom
 
 
-    Graph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
+    UGraph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
     CnCom = snap.TIntV()
-    snap.GetNodeWcc(Graph, 0, CnCom)
+    snap.GetNodeWcc(UGraph, 0, CnCom)
     print "Nodes in the same connected component as node 0:"
     for node in CnCom:
         print CnCom
 
 
-    Graph = snap.GenRndGnm(snap.PNEANet, 100, 1000)
+    Network = snap.GenRndGnm(snap.PNEANet, 100, 1000)
     CnCom = snap.TIntV()
-    snap.GetNodeWcc(Graph, 0, CnCom)
+    snap.GetNodeWcc(Network, 0, CnCom)
     print "Nodes in the same connected component as node 0:"
     for node in CnCom:
         print CnCom

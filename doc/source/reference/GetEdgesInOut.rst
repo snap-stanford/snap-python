@@ -1,18 +1,17 @@
 GetEdgesInOut
 '''''''''''''
 
-.. function:: GetEdgesInOut (Graph, NIdV, EdgesIn, EdgesOut)
-
+.. function:: GetEdgesInOut (Graph, NIdV)
 
 Returns the number of reciprocal edges between the nodes in *NIdV* and the number of edges between the nodes in *NIdV* and the rest of the graph.
 
 Parameters:
 
 - *Graph*: graph (input)
-    A Snap.py graph or a network
+    A Snap.py graph or a network.
 
 - *NIdV*: TIntV, a vector of ints (input)
-    A vector of node IDs
+    A vector of node IDs.
 
 Return value:
 
@@ -29,14 +28,14 @@ The following example shows how to use :func:`GetEdgesInOut' with
         Nodes.Add(nodeId)
 
     Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
-    results = snap.GetEdgesInOut(Graph, Nodes, edges_in, edges_out)
+    results = snap.GetEdgesInOut(Graph, Nodes)
     print "EdgesIn: %s EdgesOut: %s" % (results[0], results[1])
 
-    Graph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
-    results = snap.GetEdgesInOut(Graph, Nodes, edges_in, edges_out)
+    UGraph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
+    results = snap.GetEdgesInOut(UGraph, Nodes)
     print "EdgesIn: %s EdgesOut: %s" % (results[0], results[1])
 
-    Graph = snap.GenRndGnm(snap.PNEANet, 100, 1000)
-    results = snap.GetEdgesInOut(Graph, Nodes, edges_in, edges_out)
+    Network = snap.GenRndGnm(snap.PNEANet, 100, 1000)
+    results = snap.GetEdgesInOut(Network, Nodes)
     print "EdgesIn: %s EdgesOut: %s" % (results[0], results[1])
 

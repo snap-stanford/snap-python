@@ -1,8 +1,11 @@
 
 GetBfsEffDiam
-*************
+`````````````
+.. note::
 
-.. function:: double GetBfsEffDiam(Graph, NTestNode, IsDir, EffDiam, FullDiam, AvgSPL)
+    This page is a draft and under revision.
+
+.. function:: GetBfsEffDiam(Graph, NTestNode, IsDir, EffDiam, FullDiam, AvgSPL)
 
 .. note::
 
@@ -10,37 +13,35 @@ GetBfsEffDiam
 
 Returns the approximation of the effective diameter, the diameter, and
 the average shortest path length in a graph. Does this by performing
-BFS from NTestNodes random starting nodes.
+BFS from *NTestNodes* random starting nodes.
 
 Parameters:
 
-* *Graph*: graph (input)
+- *Graph*: graph (input)
+    A Snap.py graph or a network.
 
-     A Snap.py graph or a network
+- *NTestNodes*: int (input)
+    The number of random start nodes to use in the BFS used to calculate the graph diameter and effective diameter.
 
-* "NTestNode*: int
+- *IsDir*: bool (input)
+    Indicates whether the edges should be considered directed or undirected.
 
-     Node to start BFS from
+- *EffDiam*: float (output)
 
-* *IsDir*: bool (input)
+     The effective diameter.
 
-     Whether the graph is directed
+- *FullDam*: int (output)
 
-* *EffDiam*: float (output)
+     The diameter.
 
-     The effective diameter
+- *AvgSPL*: float (output)
 
-* *FullDam*: int (output)
-
-     The diameter
-
-* *AvgSPL*: float (output)
-
-     Average Shortest Path length
+     Average Shortest Path length.
 
 Return value:
 
-* the effective diameter
+- float
+    The effective diameter of the graph (same value as EffDiam)
 
 .. note::
 

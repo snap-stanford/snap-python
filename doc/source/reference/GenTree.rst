@@ -7,16 +7,16 @@ Generates a tree graph of *Levels* levels with every parent having *Fanout* chil
 
 Parameters:
 
-- *GraphType*: class (input)
-    Type of graph to create. :class:`PNGraph`, :class:`PUNGraph`, or :class:`PNEANet`
+- *GraphType*: graph class (input)
+    Class of output graph -- one of :class:`PNGraph`, :class:`PNEANet`, or :class:`PUNGraph`.
 
 - *Fanout*: int (input)
-    Number of children of each parent node
+    Number of children of each parent node.
 
 - *Levels*: int (input)
-    Number of levels of the tree
+    Number of levels of the tree.
 
-- *IsDir*: boolean (input)
+- *IsDir*: bool (input)
     Indicates whether the edges should be directed or undirected. Defaults to directed. 
 
 - *ChildPointsToParent*: bool (input)
@@ -25,25 +25,23 @@ Parameters:
 Return Value:
 
 - graph
-    A Snap.py graph of the specified type
+    A Snap.py graph of the specified type.
+
 
 The following examples shows how to generate a tree graph for classes :class:`TNGraph`, :class:`TUNGraph`, and :class:`TNEANet`::
 
     import snap
 
-    # A directed graph with 3 levels, fanout 3, and children pointing to their parents
     Graph = snap.GenTree(snap.PNGraph, 3, 3)
-    for edge in Graph.Edges():
-        print "%d, %d" % (edge.GetSrcNId(), edge.GetDstNId())
+    for EI in Graph.Edges():
+        print "edge: (%d, %d)" % (EI.GetSrcNId(), EI.GetDstNId())
     
-    # An undirected graph with 3 levels and fanout 3
-    Graph = snap.GenTree(snap.PUNGraph, 3, 3)
-    for edge in Graph.Edges():
-        print "%d, %d" % (edge.GetSrcNId(), edge.GetDstNId())
+    UGraph = snap.GenTree(snap.PUNGraph, 3, 3)
+    for EI in UGraph.Edges():
+        print "edge: (%d, %d)" % (EI.GetSrcNId(), EI.GetDstNId())
 
-    # A directed network with 3 levels, fanout 3, and children pointing to their parents
-    Graph = snap.GenTree(snap.PNEANet, 3, 3)
-    for edge in Graph.Edges():
-        print "%d, %d" % (edge.GetSrcNId(), edge.GetDstNId())
+    Network = snap.GenTree(snap.PNEANet, 3, 3)
+    for EI in Network.Edges():
+        print "edge: (%d, %d)" % (EI.GetSrcNId(), EI.GetDstNId())
 
     

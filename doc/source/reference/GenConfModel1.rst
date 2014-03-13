@@ -5,17 +5,15 @@ GenConfModel
 
 Generate a random undirected graph using (approximately) the same node degrees as in *Graph* using the configuration model.
 
-
 Parameters:
 
 - *Graph*: undirected graph (input)
-    A Snap.py undirected graph
+    A Snap.py undirected graph.
 
 Return value:
 
-- :class:`PUNGraph`
-    The randomly generated graph 
-
+- undirected graph
+    A random Snap.py undirected graph with the approximate degree sequence as in *Graph*.
 
 
 The following example shows how to generate a random undirected graph of the same node degrees in
@@ -24,10 +22,10 @@ The following example shows how to generate a random undirected graph of the sam
     import snap
 
     Graph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
-    for node in Graph.Nodes:
-        print node.GetId(), node.GetDeg()
+    for NI in Graph.Nodes():
+        print NI.GetId(), node.GetDeg()
 
     G1 = snap.GenConfModel(Graph)
-    for node in G1.Nodes:
-        print node.GetId(), node.GetDeg()
+    for NI in G1.Nodes():
+        print NI.GetId(), NI.GetDeg()
 

@@ -17,15 +17,14 @@ Return value:
 
 - None
 
-See http://en.wikipedia.org/wiki/Bridge_(graph_theory)
 
 The following example shows how to calculate number of bidirectional edges for
 :class:`TNGraph` and :class:`TNEANet`::
 
     import snap
 
-    Graph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
+    UGraph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
     EdgeV = snap.TIntPrV()
-    snap.GetEdgeBridges(Graph, EdgeV)
+    snap.GetEdgeBridges(UGraph, EdgeV)
     for edge in EdgeV:
-        print "(%d, %d)" % (edge.GetVal1(), edge.GetVal2())
+        print "edge: (%d, %d)" % (edge.GetVal1(), edge.GetVal2())

@@ -3,20 +3,21 @@ GetRndESubGraph
 
 .. function:: GetRndESubGraph(Graph, numEdges)
 
-Randomly selects *numEdges* nodes from the input graph and returns an induced graph on those nodes.
+Randomly selects *numEdges* edges from the input graph *Graph* and returns a subgraph on those edges.
 
 Parameters:
 
 - *Graph*: graph (input)
-    A Snap.py graph or a network
+    A Snap.py graph or a network.
 
 - *numEdges*: int (input)
-    Number of edges desired in the output graph
+    Number of edges desired in the output graph.
 
 Return value:
 
 - graph
-    The induced sub-graph
+    The induced sub-graph.
+
 
 The following example shows how to get a random subgraph with 10 edges from a graph of type
 :class:`TNGraph`, :class:`TUNGraph`, or :class:`TNEANet`::
@@ -26,8 +27,8 @@ The following example shows how to get a random subgraph with 10 edges from a gr
     Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
     subGraph = snap.GetRndESubGraph(Graph, 10)
 
-    Graph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
-    subGraph = snap.GetRndESubGraph(Graph, 10)
+    UGraph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
+    subUGraph = snap.GetRndESubGraph(UGraph, 10)
 
-    Graph = snap.GenRndGnm(snap.PNEANet, 100, 1000)
-    subGraph = snap.GetRndESubGraph(Graph, 10)
+    Network = snap.GenRndGnm(snap.PNEANet, 100, 1000)
+    subNetwork = snap.GetRndESubGraph(Network, 10)

@@ -1,7 +1,6 @@
 GetSccs
 '''''''
 
-
 .. function:: GetSccs (Graph, CnComV)
 
 Returns all strongly connected components in *Graph*.
