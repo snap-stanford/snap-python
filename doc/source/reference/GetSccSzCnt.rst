@@ -18,7 +18,7 @@ Return Value:
 - None
 
 
-The following example shows how to get the distribution of weakly connected component sizes in
+The following example shows how to get the distribution of strongly-connected component sizes in
 :class:`TNGraph`, :class:`TUNGraph`, and :class:`TNEANet`::
 
 	import snap

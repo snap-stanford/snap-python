@@ -5,7 +5,11 @@ GetSubGraph
     This page is a draft and under revision.
 
 
-.. function:: GetSubGraph(Graph, NIdV)
+.. function:: GetSubGraph(Graph, NIdV, RenumberNodes=False)
+
+.. note::
+
+    This function is not yet supported.
 
 Returns the subgraph of *Graph* induced by the nodes in *NIdV*.
 
@@ -16,6 +20,9 @@ Parameters:
 
 - *NIdV*: TIntV (input)
     Node ID vector.  The subgraph consists of all nodes in *NIdV* and the edges between nodes in *NIdV*.
+
+- *RenumberNodes*: boolean (input)
+    Whether the node IDs are preserved or not.
 
 Return value:
 

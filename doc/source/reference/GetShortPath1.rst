@@ -12,23 +12,25 @@ Returns the length of the shortest path from node SrcNId to all other nodes in t
 Parameters:
 
 - *Graph*: graph (input)
-    A Snap.py graph or a network
+    A Snap.py graph or a network.
 
-- *SrcNId*: integer (input)
-    ID of the Source node.
+- *SrcNId*: int (input)
+    Node id for source node.
 
-- *NIdToDistH*: hash table with integer keys and values (output)
-    Maps node ID to shortest path distance. Only contains nodes that are reachable from SrcNId.
+- *NIdToDistH*: TIntH, a hash table with integer keys and values (output)
+    Maps node id to shortest path distance. Only contains nodes that are reachable from *SrcNId*.
 
-- *IsDir*: boolean (input)
-    False: ignore edge directions and consider edges/paths as undirected (in case they are directed).
+- *IsDir*: bool (input)
+    Indicates whether the edges should be considered directed or undirected.
 
-- *MaxDist*: integer (input)
-    Maximum number of hops that BFS expands to. This is helpful for speeding-up the code if one in interested only in nodes less than MaxDist away from SrcNId.
+- *MaxDist*: int (input)
+    Maximum number of hops that BFS expands to. This is helpful for speeding-up the code if one in interested only in nodes less than *MaxDist* away from *SrcNId*.
 
 Return value:
 
-- Integer value. Length of the shortest path from SrcNId to all other nodes.
+- int
+    The length of the shortest path from *SrcNId* to all other nodes.
+
 
 The following example shows how to calculate the length of the shortest path in
 :class:`TNGraph`, :class:`TUNGraph`, and :class:`TNEANet`::

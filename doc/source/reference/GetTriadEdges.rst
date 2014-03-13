@@ -8,7 +8,7 @@ Counts the number of edges that participate in at least one triad. Considers the
 Parameters:
 
 - *Graph*: graph (input)
-    A Snap.py graph or a network
+    A Snap.py graph or a network.
 
 - *SampleEdges*: int (input)
     If *SampleEdges* is not equal to -1, then compute triads only for a random sample of *SampleEdges* edges. Useful for approximate but quick computations.
@@ -27,10 +27,10 @@ The following example shows how to calculate the number of edges in triads for n
     NumTriadEdges = snap.GetTriadEdges(Graph)
     print NumTriadEdges
 
-    Graph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
-    NumTriadEdges = snap.GetTriadEdges(Graph)
+    UGraph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
+    NumTriadEdges = snap.GetTriadEdges(UGraph)
     print NumTriadEdges
 
-    Graph = snap.GenRndGnm(snap.PNEANet, 100, 1000)
-    NumTriadEdges = snap.GetTriadEdges(Graph)
+    Network = snap.GenRndGnm(snap.PNEANet, 100, 1000)
+    NumTriadEdges = snap.GetTriadEdges(Network)
     print NumTriadEdges

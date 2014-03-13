@@ -10,18 +10,19 @@ the filename in *InFNm*. Function supports both the 1 edge per line (<source>
 
 Parameters:
 
-- *GraphType*
-    The expected type of graph (undirected, directed, multi)
+- *GraphType*: graph class (input)
+    Class of output graph -- one of :class:`PNGraph`, :class:`PNEANet`, or :class:`PUNGraph`.
 
-- *InFNm*
-    Filename of source Pajek .PAJ file.
+- *InFNm*: string (input)
+    Filename with the description of the graph edges.
     
 Return value:
 
 - graph
-    A Snap.py graph of the specified type representing the Pajek data
+    A Snap.py graph or a network represented by the *InFNm* of type *GraphType*.
 
 For more information on the Pajek format see: http://pajek.imfm.si/doku.php
+
 
 The following example shows how to load a Pajek file::
 
@@ -41,11 +42,14 @@ The following example shows how to load a Pajek file::
    output.close()
 
    Graph = snap.LoadPajek(snap.PNGraph, 'example.paj')
-   print '%s' % ', '.join(str(x.GetId()) for x in Graph.Nodes())
+   for NI in Graph.Nodes():
+       print NI.GetId()
 
-   Graph = snap.LoadPajek(snap.PUNGraph, 'example.paj')
-   print '%s' % ', '.join(str(x.GetId()) for x in Graph.Nodes())
+   UGraph = snap.LoadPajek(snap.PUNGraph, 'example.paj')
+   for NI in UGraph.Nodes():
+       print NI.GetId()
 
-   Graph = snap.LoadPajek(snap.PNEANet, 'example.paj')
-   print '%s' % ', '.join(str(x.GetId()) for x in Graph.Nodes())
+   Network = snap.LoadPajek(snap.PNEANet, 'example.paj')
+   for NI in Network.Nodes():
+       print NI.GetId()
 

@@ -5,17 +5,24 @@ GetTriads
     This page is a draft and under revision.
 
 
-.. function:: GetTriads(Graph, NIdCOTriadV, SampleNodes = -1)
+.. function:: GetTriads (Graph, ClosedTriadsX, OpenTriadsX, SampleNodes)
+
+.. note::
+
+    This function is not yet supported.
 
 Computes the number of open and closed triads for every node in *Graph*. Considers the graph as undirected.
 
 Parameters:
 
 - *Graph*: graph (input)
-    A Snap.py graph or a network
+    A Snap.py graph or a network.
 
-- *NIdCOTriadV*: a vector of (integer, integer, integer) triplets (output)
-    Triple (node id, open triads: number of pairs of node's neighbors that are not connected, closed triads: number of pairs of node's neighbors that are connected between themselves).
+- *ClosedTriadsX*: int (output)
+    The number of closed triads.
+
+- *OpenTriadsX*: int (output)
+    The number of open triads.
 
 - *SampleNodes*: integer (input)
     If !=-1 then compute triads only for a random sample of SampleNodes nodes. Useful for approximate but quick computations.
@@ -30,19 +37,4 @@ The following example shows how to compute the number of open and closed triads 
     import snap
 
     Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
-    TriadV = snap.TIntTrV()
-    snap.GetTriads(Graph, TriadV)
-    for triple in TriadV:
-        print triple.Val1(), triple.Val2(), triple.Val3()
-
-    Graph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
-    TriadV = snap.TIntTrV()
-    snap.GetTriads(Graph, TriadV)
-    for triple in TriadV:
-        print triple.Val1(), triple.Val2(), triple.Val3()
-
-    Graph = snap.GenRndGnm(snap.PNEANet, 100, 1000)
-    TriadV = snap.TIntTrV()
-    snap.GetTriads(Graph, TriadV)
-    for triple in TriadV:
-        print triple.Val1(), triple.Val2(), triple.Val3()
+    snap.GetTriads(Graph)

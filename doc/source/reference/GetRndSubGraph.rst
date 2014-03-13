@@ -25,11 +25,11 @@ The following example shows how to get a random subgraph of size 10 from a graph
     import snap
 
     Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
-    subGraph = snap.GetRndSubGraph(Graph,10)
+    SubGraph = snap.GetRndSubGraph(Graph,10)
 
     UGraph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
-    subUGraph = snap.GetRndSubGraph(UGraph,10)
+    SubUGraph = snap.GetRndSubGraph(UGraph,10)
 
     Network = snap.GenRndGnm(snap.PNEANet, 100, 1000)
-    subNetwork = snap.GetRndSubGraph(Network,10)
+    SubNetwork = snap.GetRndSubGraph(Network,10)
 

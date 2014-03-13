@@ -1,9 +1,5 @@
 SavePajek
 '''''''''
-.. note::
-
-    This page is a draft and under revision.
-
 
 .. function:: SavePajek (Graph, OutFNm, NIdColorH, NIdLabelH, EIdColorH)
 
@@ -12,41 +8,50 @@ Saves a graph in a Pajek .NET format.
 Parameters:
 
 - *Graph*: graph (input)
-    A Snap.py graph or a network
+    A Snap.py graph or a network.
 
 - *OutFNm*: string (input)
-    Desired filename for output. This function will create a new file if one does not exist or smash an already existing file with this name.
-
-- *NIdColorH*: a hash of int keys and string color names (input)
+    Specifies output filename of Pajek formatted graph.
+    
+- *NIdColorH*: TIntStrH, a hash table of int keys and string values (input)
     Maps node ids to node colors. Default node color is Red.
 
-- *NIdLabelH*: a hash of int keys and string labels (input)
+- *NIdLabelH*: TIntStrH, a hash table of int keys and string values (input)
     Maps node ids to node string labels.
 
-- *EIdColorH*: a hash of int keys and string color names (input)
-    Maps edge ids to node colors. Default edge color is Black.
+- *EIdColorH*: TIntStrH, a hash table of int keys and string values (input)
+    Maps edge ids to node colors. Default edge color is black.
 
 Return value:
 
 - None
 
-For more info see: http://vlado.fmf.uni-lj.si/pub/networks/pajek/doc/pajekman.pdf
+For additional information see http://vlado.fmf.uni-lj.si/pub/networks/pajek/doc/pajekman.pdf
 
-The following example shows how to use this function in Python::
-    
+
+The following example saves the graph in the Pajek format in: 
+:class:`TNGraph`, :class:`TUNGraph`, and :class:`TNEANet`::
+
     import snap
-    Graph = snap.GenRndGnm(snap.PNGraph, 3, 4)
-    nodeColors = snap.TIntStrH()
-    nodeColors.AddDat(1, "Red")
-    nodeColors.AddDat(2, "Green")
-    nodeColors.AddDat(3, "Blue")
-    nodeLabels = snap.TIntStrH()
-    nodeLabels.AddDat(1, "Home")
-    nodeLabels.AddDat(2, "Work")
-    nodeLabels.AddDat(3, "School")
-    edgeColors = snap.TIntStrH()
-    edgeColors.AddDat(1, "Red")
-    edgeColors.AddDat(2, "Black")
-    edgeColors.AddDat(3, "Green")
-    edgeColors.AddDat(4, "Blue")
-    snap.SavePajek(Graph, "graphFile.txt", nodeColors, nodeLabels, edgeColors)
+
+    NIdColorH = snap.TIntStrH()
+    for i in range(100):
+        if i % 2 == 0:
+            NIdColorH[i] = "red"
+        else:
+            NIdColorH[i] = "blue"
+    NIdLabelH = snap.TIntStrH()
+    for i in range(100):
+        NIdLabelH[i] = str(i)
+    EIdColorH = snap.TIntStrH()
+    for i in range(1000):
+        EIdColorH[i] = "red"
+
+    Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
+    snap.SavePajek(Graph, "Pajek_Graph1.out", NIdColorH, NIdLabelH, EIdColorH)
+        
+    UGraph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
+    snap.SavePajek(UGraph, "Pajek_Graph2.out", NIdColorH, NIdLabelH, EIdColorH)
+    
+    Network = snap.GenRndGnm(snap.PNEANet, 100, 1000)
+    snap.SavePajek(Network, "Pajek_Graph3.out", NIdColorH, NIdLabelH, EIdColorH)

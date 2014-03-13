@@ -1,7 +1,7 @@
 GetNodesAtHops
 ''''''''''''''
 
-.. function:: GetNodesAtHops (Graph, StartNId, HopCntV, IsDir = False)
+.. function:: GetNodesAtHops (Graph, StartNId, HopCntV, IsDir=False)
 
 Fills *HopCntV* with pairs (hop distance from *StartNId*, number of nodes at that hop distance). The function returns the number of different hop distances reachable from *StartNId*.
 

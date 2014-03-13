@@ -106,8 +106,7 @@ TInt
 
      .. describe:: Val
 
-        A member of the :class:`TInt` object of type int that gives the value the int holds. Supports 
-        =, +=, -=, *=, and /= operators.
+        A member of the :class:`TInt` object of type int that gives the value the int holds.
 
 
    A few static public attributes are offered by the :class:`TInt` class:
@@ -258,8 +257,7 @@ TFlt
 
      .. describe:: Val
 
-        A member of the :class:`TFlt` object of type int that gives the value. Supports 
-        =, +=, -=, *=, and /= operators.
+        A member of the :class:`TFlt` object of type int that gives the value.
 
 
    A few static public attributes are offered by the :class:`TFlt` class:

@@ -1,42 +1,33 @@
 LoadEdgeListStr 
 '''''''''''''''
-.. note::
 
-    This page is a draft and under revision.
+.. function:: Graph LoadEdgeListStr (GraphType, InFNm, SrcColId=0, DstColId=1)
 
+Loads a (directed, undirected or multi) graph from a text file *InFNm* with 1 edge per line (whitespace separated columns, int node ids).
 
-.. function:: Graph LoadEdgeListStr (GraphType, InFNm, SrcColId = 0, DstColId = 1)
-
-.. note::
-
-    This function is not yet supported.
-
-Loads a (directed, undirected or multi) graph from a text file InFNm with 1 edge per line (whitespace separated columns, arbitrary string node ids).
-
-Loads the format saved by SaveEdgeList(), where node IDs are strings.
-
-SrcColId and DstColId are column indexes of source/destination (string) node ids. This means there is one edge per line and node IDs can be arbitrary STRINGs. Note that the mapping of node names to ids is discarded.
+*InFNm* is a whitespace separated file of several columns: ... <source node name> ... <destination node name> ... Since the function assumes each line of the file encodes a single edge and a line in the file can have more than 2 columns, *SrcColId* and *DstColId* must be provided to indicate which column gives the source and which column gives the destination of the edge. The node ids given in the file can be arbitrary strings. Note that the mapping of node names to ids is discarded.
 
 Parameters:
 
-- *GraphType*: graph type (input)
-    One of: PNGraph (directed graph), PUNGraph (undirected graph), PNEANet (directed network)
+- *GraphType*: graph class (input)
+    Class of output graph -- one of :class:`PNGraph`, :class:`PNEANet`, or :class:`PUNGraph`.
 
 - *InFNm*: string (input)
-    Name of text file
+    Filename with the description of the graph edges.
 
 - *SrcColId*: int (input)
-    Column index of source (string) node ids
+    The column number in the file, which contains the node id representing the source vertex.
 
 - *DstColId*: int (input)
-    Column index of destination (string) node ids
+    The column number in the file, which contains the node id representing the destination vertex.
 
 Return value:
 
-- *Graph*: graph
-    A Snap.py graph or a network
+- graph
+    A Snap.py graph or a network represented by the *InFNm* of type *GraphType*.
 
-The following example shows how to load the following from a text file where node IDs are strings: :class:`TNGraph`, :class:`TUNGraph`, and :class:`TNEANet`::
+
+The following example shows how to load the following from a text file, wiki-vote.txt from http://snap.stanford.edu/data/wiki-Vote.html, where node IDs are strings: :class:`TNGraph`, :class:`TUNGraph`, and :class:`TNEANet`::
 
     import snap
 

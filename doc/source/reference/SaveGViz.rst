@@ -1,37 +1,33 @@
 SaveGViz
 ''''''''
-.. note::
-
-    This page is a draft and under revision.
-
 
 .. function:: SaveGViz(Graph, OutFNm, Desc, NodeLabels, NIdColorH)
 
-Computes the PageRank score of every node in *Graph*. The scores are stored in *PRankH*.
+Saves *Graph* to the .DOT file format used by GraphViz. Use ".dot" as file extension for *OutFNm*.
 
 Parameters:
 
 - *Graph*: graph (input)
-    A Snap.py graph or a network
+    A Snap.py graph or a network.
 
 - *OutFNm*: string (input)
-    Name of the output file
+    Name of the output file.
 
 - *Desc*: string (input)
-    Desc of the Graph
+    Description of the Graph.
 
 - *NodeLabels*: bool (input)
-    True: Show the node lables 
-	False: Hide the node lables
+    Indicates whether to show the node labels.
 
-- *NIdColorH*: int string Hash (input)
-    Hash Table containing color for each node with NId as Key and Color as Value
+- *NIdColorH*: TIntStrH, a hash table with int keys and string values (input)
+    Maps node ids to node colors (see GraphViz documentation for more details).
 
 Return value:
 
 - None
 
-For more info about Graph Viz see: http://www.graphviz.org
+For more info about Graph Viz see: http://www.graphviz.org.
+
 
 The following example shows how to save graphs of following types for GraphViz
 :class:`TNGraph`, :class:`TUNGraph`, and :class:`TNEANet`::
@@ -45,11 +41,11 @@ The following example shows how to save graphs of following types for GraphViz
     H.AddDat(4, "red")
 
     Graph = snap.GenRndGnm(snap.PNGraph, 4, 6)
-    snap.SaveGViz(Graph, "Graph.gv", "Directed Random Graph", True, H)
+    snap.SaveGViz(Graph, "Graph1.dot", "Directed Random Graph", True, H)
 
-    Graph = snap.GenRndGnm(snap.PUNGraph, 4, 6)
-    snap.SaveGViz(Graph, "Graph.gv", "Undirected Random Graph", True, H)
+    UGraph = snap.GenRndGnm(snap.PUNGraph, 4, 6)
+    snap.SaveGViz(UGraph, "Graph2.dot", "Undirected Random Graph", True, H)
 
-    Graph = snap.GenRndGnm(snap.PNEANet, 4, 6)
-    snap.SaveGViz(Graph, "Graph.gv", "Directed Random Graph with Attributes", True, H)
+    Network = snap.GenRndGnm(snap.PNEANet, 4, 6)
+    snap.SaveGViz(Network, "Graph3.dot", "Directed Random Network with Attributes", True, H)
 

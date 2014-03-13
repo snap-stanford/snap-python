@@ -25,10 +25,10 @@ classified as TPair objects.
    The naming convention for the constructor/type is as follows: the `<type_name_1>` of
    the first object in the pair, the `<type_name_2>` for the second object in the pair 
    (without the `T`), and finally a `Pr`. If `<type_name_1>` and `<type_name_2>` are the 
-   same, then the TPair type will be the `<type_name>` and finally a `Pr`.
+   same, then the :class:`TPair` type will be the `<type_name>` and finally a `Pr`.
 
-   The following :class:`TPair` types are supported: :class:`TIntPr`, :class`TFltPr`, 
-   :class:'TIntStrPr', :class:`TBoolFltPr`, :class:`TIntBoolPr`, :class:`TIntUInt64Pr`, 
+   The following :class:`TPair` types are supported: :class:`TIntPr`, :class:`TFltPr`, 
+   :class:`TIntStrPr`, :class:`TBoolFltPr`, :class:`TIntBoolPr`, :class:`TIntUInt64Pr`, 
    :class:`TIntIntPrPr`, :class:`TIntIntVPr`, :class:`TIntFltPr`, :class:`TIntStrVPr`, 
    :class:`TIntPrIntPr`, :class:`TUIntUIntPr`, :class:`TUIntIntPr`, :class:`TUInt64IntPr`, 
    :class:`TUInt64Pr`, :class:`TUint64FltPr`, :class:`TUInt64StrPr`, :class:`TFltIntPr`, 
@@ -36,8 +36,7 @@ classified as TPair objects.
    :class:`TAscFltStrPr`, :class:`TStrIntPr`, :class:`TStrFltPr`, :class:`TStrPr`, 
    :class:`TStrStrVPr`, :class:`TStrVIntPr`, :class:`TIntStrPrPr`, and :class:`TFltStrPrPr`.
 
-   To illustrate, the following examples all return a :class:`TPair` of two ints (TInts) with both
-   values set to 0::
+   To illustrate, the following examples all return a :class:`TIntPr` with both values set to 0::
 
       >>> snap.TIntPr(0, 0)
       >>> snap.TIntPr(snap.TInt(0), snap.TInt(0))
@@ -105,7 +104,7 @@ TVec
 Vectors are sequences of values of the same type. Existing vector values can be accessed 
 or changed by their index in the sequence. New values can be added at the end of a 
 vector. All of the following methods are available for objects that are classified as
-TVec objects. 
+:class:`TVec` objects. 
 
 .. class:: TVec()
            TVec(NumVals)
@@ -125,17 +124,7 @@ TVec objects.
    `<type_name>`, followed by `V`. For example, a vector of integers is named
    :class:`TIntV`.
 
-   The following :class:`TVec` types are supported: :class:`TIntV`, :class:`TFltV`, :class:`TIntPrV`,
-    :class:`TFltPrV`, :class:`TIntTrV`, :class:`TIntFltKdV`, :class:`TBoolV`, :class:`TChV`,
-    :class:`TUChV`, :class:`TUIntV`, :class:`TUInt64V`, :class:`TSFltV`, :class:`TAscFltV`, 
-    :class:`TStrV`, :class:`TChAV`, :class:`TIntQuV`, :class:`TFltTrV`, :class:`TIntKdV`, 
-    :class:`TUChIntPrV`, :class:`TUChUInt64PrV`, :class:`TIntUInt64PrV`, :class:`TIntUInt64KdV`, 
-    :class:`TIntFltPrV`, :class:`TIntFltPrKdV`, :class:`TFltIntPrV`, :class:`TFltUInt64PrV`, 
-    :class:`TFltStrPrV`, :class:`TAscFltStrPrV`, :class:`TIntStrPrV`, :class:`TIntIntStrTrV`, 
-    :class:`TIntIntFltTrV`, :class:`TIntFltIntTrV`, :class:`TIntStrIntTrV`, :class:`TIntKdV`, 
-    :class:`TUIntIntKdV`, :class:`TIntPrFltKdV`, :class:`TIntStrKdV`, :class:`TIntStrPrPrV`, 
-    :class:`TIntStrVPrV`, :class:`TIntIntVIntTrV`, :class:`TUInt64IntPrV`, :class:`TUInt64FltPrV`, 
-    :class:`TUInt64StrPrV`, :class:`TUInt64IntKdV`, :class:`TUInt64FltKdV`, :class:`TUInt64StrKdV`, 
+   The following :class:`TVec` types are supported: :class:`TIntV`, :class:`TFltV`, :class:`TIntPrV`, :class:`TFltPrV`, :class:`TIntTrV`, :class:`TIntFltKdV`, :class:`TBoolV`, :class:`TChV`, :class:`TUChV`, :class:`TUIntV`, :class:`TUInt64V`, :class:`TSFltV`, :class:`TAscFltV`, :class:`TStrV`, :class:`TChAV`, :class:`TIntQuV`, :class:`TFltTrV`, :class:`TIntKdV`, :class:`TUChIntPrV`, :class:`TUChUInt64PrV`, :class:`TIntUInt64PrV`, :class:`TIntUInt64KdV`, :class:`TIntFltPrV`, :class:`TIntFltPrKdV`, :class:`TFltIntPrV`, :class:`TFltUInt64PrV`, :class:`TFltStrPrV`, :class:`TAscFltStrPrV`, :class:`TIntStrPrV`, :class:`TIntIntStrTrV`, :class:`TIntIntFltTrV`, :class:`TIntFltIntTrV`, :class:`TIntStrIntTrV`, :class:`TIntKdV`, :class:`TUIntIntKdV`, :class:`TIntPrFltKdV`, :class:`TIntStrKdV`, :class:`TIntStrPrPrV`, :class:`TIntStrVPrV`, :class:`TIntIntVIntTrV`, :class:`TUInt64IntPrV`, :class:`TUInt64FltPrV`, :class:`TUInt64StrPrV`, :class:`TUInt64IntKdV`, :class:`TUInt64FltKdV`, :class:`TUInt64StrKdV`, 
     :class:`TFltBoolKdV`, :class:`TFltIntKdV`, :class:`TFltUInt64KdV`, :class:`TFltIntPrKdV`, 
     :class:`TFltKdV`, :class:`TFltStrKdV`, :class:`TFltStrPrPrV`, :class:`TFltIntIntTrV`, 
     :class:`TFltFltStrTrV`, :class:`TAscFltIntPrV`, :class:`TAscFltIntKdV`, :class:`TStrPrV`, 
@@ -513,7 +502,7 @@ TVec objects.
 THash
 =====
 
-Hash tables contain values of the same type. Each value has a user provided key associated with it. All the keys are of the same type. Table values can be accessed or changed through their keys. New values can be added as `(key, value)` pairs. All objects classified as THash objects have access to the following methods.
+Hash tables contain values of the same type. Each value has a user provided key associated with it. All the keys are of the same type. Table values can be accessed or changed through their keys. New values can be added as `(key, value)` pairs. All objects classified as :class:`THash` objects have access to the following methods.
 
 .. class:: THash()
            THash(ExpectVals, AutoSizeP=False)
@@ -758,7 +747,7 @@ Hash tables contain values of the same type. Each value has a user provided key 
       False
 
 TKeyDat
-============
+=======
 
 Object used to represent the key-value pairs in a :class:`THash` object.
 

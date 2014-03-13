@@ -9,16 +9,16 @@ levels) by following in-links and/or out-links of node *StartNId*.
 Parameters:
 
 - *Graph*: graph (input)
-    A Snap.py graph or a network
+    A Snap.py graph or a network.
 
 - *StartNId*: int (input)
-    Starting node
+    Starting node id.
 
 - *FollowOut*: bool (input)
-    Whether to follow out-links
+    Whether to follow out-links.
 
 - *FollowIn*: bool (input)
-    Whether to follow in-links
+    Whether to follow in-links.
 
 Return value:
 
@@ -34,10 +34,10 @@ The following example shows how to get the size of the tree starting at node 0 w
     results = snap.GetSubTreeSz(Graph, 0, True, True)
     print "Size %d, Depth %d" % (results[0], results[2])
 
-    Graph = snap.GenTree(snap.PUNGraph, 3, 3)
-    results = snap.GetSubTreeSz(Graph, 0, True, True)
+    UGraph = snap.GenTree(snap.PUNGraph, 3, 3)
+    results = snap.GetSubTreeSz(UGraph, 0, True, True)
     print "Size %d, Depth %d" % (results[0], results[2])
 
-    Graph = snap.GenTree(snap.PNEANet, 3, 3)
-    results = snap.GetSubTreeSz(Graph, 0, True, True)
+    Network = snap.GenTree(snap.PNEANet, 3, 3)
+    results = snap.GetSubTreeSz(Network, 0, True, True)
     print "Size %d, Depth %d" % (results[0], results[2])

@@ -1,10 +1,10 @@
 File Streams
 ````````````
 
-The file streams offered by SNAP.py are :class:`TFOut`, which is used for file writing and :class:`TFIn', which is used for file reading.
+The file streams offered by SNAP.py are :class:`TFOut`, which is used for file writing and :class:`TFIn`, which is used for file reading.
 
 TFOut
-====
+=====
 
 .. class:: TFOut(FNm)
 

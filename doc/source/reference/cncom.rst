@@ -10,7 +10,6 @@ Connected Components
    GetWccs
    GetWccSzCnt
    GetMxBiCon
-   GetMxBiCon1
    GetMxScc
    GetMxSccSz
    GetMxWcc
