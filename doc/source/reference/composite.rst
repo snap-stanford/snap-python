@@ -2,14 +2,12 @@ Composite Types
 ````````````````
 
 Composite types in SNAP are :class:`TPair`, :class:`TVec`, :class:`THash`, and 
-:class:`TSet`.
+:class:`THashSet`.
 
 TPair
 =====
 
-The name TPair refers to a general data structure that consists of two values, which can 
-be of different types. All of the following methods are available for objects that are 
-classified as TPair objects. 
+The name :class:`TPair` refers to a general data structure that consists of two values, which can be of different types. All of the following methods are available for objects that are classified as :class:`TPair` objects. 
 
 .. class:: TPair()
            TPair(Val1, Val2)
@@ -22,10 +20,10 @@ classified as TPair objects.
 
    The :class:`TPair` constructor cannot be directly called. To create a :class:`TPair` object, the correct
    constructor must be chosen, which indicates the types of both the values in the pair.
-   The naming convention for the constructor/type is as follows: the `<type_name_1>` of
-   the first object in the pair, the `<type_name_2>` for the second object in the pair 
+   The naming convention is as follows: `<type_name_1>` of
+   the first object in the pair, `<type_name_2>` for the second object in the pair 
    (without the `T`), and finally a `Pr`. If `<type_name_1>` and `<type_name_2>` are the 
-   same, then the :class:`TPair` type will be the `<type_name>` and finally a `Pr`.
+   same, then the name may be condensed to `<type_name>` followed by `Pr`.
 
    The following :class:`TPair` types are supported: :class:`TIntPr`, :class:`TFltPr`, 
    :class:`TIntStrPr`, :class:`TBoolFltPr`, :class:`TIntBoolPr`, :class:`TIntUInt64Pr`, 
@@ -54,37 +52,33 @@ classified as TPair objects.
 
      .. describe:: GetMemUsed()
 
-        Returns the size of the TPair object in bytes.
+        Returns the size of the :class:`TPair` object in bytes.
 
      .. describe:: GetVal1()
 
-        Returns the first value in the TPair.
+        Returns the first value in the :class:`TPair`.
 
      .. describe:: GetVal2()
 
-        Returns the second value in the TPair.
+        Returns the second value in the :class:`TPair`.
 
      .. describe:: GetPrimHashCd()
 
-        Returns an int hash code using the primary hash codes of the two values in the
-        pair.
+        Returns the primary hash code, which is computed using the primary hash codes of the two values in the pair.
 
      .. describe:: GetSecHashCd()
 
-        Returns an int hash code using the secondary hash codes of the two values in the
-        pair.
+        Returns the secondary hash code, which is computed using the secondary hash codes of the two values in the pair.
 
    The following public attributes are available:
 
      .. describe:: Val1
 
-        The first value in the pair. Supports assignment, which requires the use of 
-        SNAP.py types rather than Python types.
+        The first value in the pair. Supports assignment, which requires the use of Snap.py types rather than Python types.
 
      .. describe:: Val2
 
-        The second value in the pair. Supports assignment, which requires the use of 
-        SNAP.py types rather than Python types.
+        The second value in the pair. Supports assignment, which requires the use of Snap.py types rather than Python types.
 
 
    Below is some code demonstrating the use of the :class:`TPair` type:
@@ -93,7 +87,7 @@ classified as TPair objects.
       >>> print pr.Val1.Val
       10
       >>> pr.Val1 = snap.TInt(21)
-      >>> print pr.Val1.Val
+      >>> print pr.GetVal1()
       21
       >>> pr.GetPrimHashCd()
       687
@@ -124,14 +118,7 @@ vector. All of the following methods are available for objects that are classifi
    `<type_name>`, followed by `V`. For example, a vector of integers is named
    :class:`TIntV`.
 
-   The following :class:`TVec` types are supported: :class:`TIntV`, :class:`TFltV`, :class:`TIntPrV`, :class:`TFltPrV`, :class:`TIntTrV`, :class:`TIntFltKdV`, :class:`TBoolV`, :class:`TChV`, :class:`TUChV`, :class:`TUIntV`, :class:`TUInt64V`, :class:`TSFltV`, :class:`TAscFltV`, :class:`TStrV`, :class:`TChAV`, :class:`TIntQuV`, :class:`TFltTrV`, :class:`TIntKdV`, :class:`TUChIntPrV`, :class:`TUChUInt64PrV`, :class:`TIntUInt64PrV`, :class:`TIntUInt64KdV`, :class:`TIntFltPrV`, :class:`TIntFltPrKdV`, :class:`TFltIntPrV`, :class:`TFltUInt64PrV`, :class:`TFltStrPrV`, :class:`TAscFltStrPrV`, :class:`TIntStrPrV`, :class:`TIntIntStrTrV`, :class:`TIntIntFltTrV`, :class:`TIntFltIntTrV`, :class:`TIntStrIntTrV`, :class:`TIntKdV`, :class:`TUIntIntKdV`, :class:`TIntPrFltKdV`, :class:`TIntStrKdV`, :class:`TIntStrPrPrV`, :class:`TIntStrVPrV`, :class:`TIntIntVIntTrV`, :class:`TUInt64IntPrV`, :class:`TUInt64FltPrV`, :class:`TUInt64StrPrV`, :class:`TUInt64IntKdV`, :class:`TUInt64FltKdV`, :class:`TUInt64StrKdV`, 
-    :class:`TFltBoolKdV`, :class:`TFltIntKdV`, :class:`TFltUInt64KdV`, :class:`TFltIntPrKdV`, 
-    :class:`TFltKdV`, :class:`TFltStrKdV`, :class:`TFltStrPrPrV`, :class:`TFltIntIntTrV`, 
-    :class:`TFltFltStrTrV`, :class:`TAscFltIntPrV`, :class:`TAscFltIntKdV`, :class:`TStrPrV`, 
-    :class:`TStrIntPrV`, :class:`TStrIntKdV`, :class:`TStrFltKdV`, :class:`TStrAscFltKdV`, 
-    :class:`TStrTrV`, :class:`TStrQuV`, :class:`TStrFltFltTrV`, :class:`TStrStrIntTrV`, 
-    :class:`TStrKdV`, :class:`TStrStrVPrV`, :class:`TStrVIntPrV`, :class:`TFltIntIntIntQuV`, 
-    :class:`TIntStrIntIntQuV`, and :class:`TIntIntPrPrV`.
+   The following :class:`TVec` types are supported: :class:`TIntV`, :class:`TFltV`, :class:`TIntPrV`, :class:`TFltPrV`, :class:`TIntTrV`, :class:`TIntFltKdV`, :class:`TBoolV`, :class:`TChV`, :class:`TUChV`, :class:`TUIntV`, :class:`TUInt64V`, :class:`TSFltV`, :class:`TAscFltV`, :class:`TStrV`, :class:`TChAV`, :class:`TIntQuV`, :class:`TFltTrV`, :class:`TUChIntPrV`, :class:`TUChUInt64PrV`, :class:`TIntUInt64PrV`, :class:`TIntUInt64KdV`, :class:`TIntFltPrV`, :class:`TIntFltPrKdV`, :class:`TFltIntPrV`, :class:`TFltUInt64PrV`, :class:`TFltStrPrV`, :class:`TAscFltStrPrV`, :class:`TIntStrPrV`, :class:`TIntIntStrTrV`, :class:`TIntIntFltTrV`, :class:`TIntFltIntTrV`, :class:`TIntStrIntTrV`, :class:`TIntKdV`, :class:`TUIntIntKdV`, :class:`TIntPrFltKdV`, :class:`TIntStrKdV`, :class:`TIntStrPrPrV`, :class:`TIntStrVPrV`, :class:`TIntIntVIntTrV`, :class:`TUInt64IntPrV`, :class:`TUInt64FltPrV`, :class:`TUInt64StrPrV`, :class:`TUInt64IntKdV`, :class:`TUInt64FltKdV`, :class:`TUInt64StrKdV`, :class:`TFltBoolKdV`, :class:`TFltIntKdV`, :class:`TFltUInt64KdV`, :class:`TFltIntPrKdV`, :class:`TFltKdV`, :class:`TFltStrKdV`, :class:`TFltStrPrPrV`, :class:`TFltIntIntTrV`, :class:`TFltFltStrTrV`, :class:`TAscFltIntPrV`, :class:`TAscFltIntKdV`, :class:`TStrPrV`, :class:`TStrIntPrV`, :class:`TStrIntKdV`, :class:`TStrFltKdV`, :class:`TStrAscFltKdV`, :class:`TStrTrV`, :class:`TStrQuV`, :class:`TStrFltFltTrV`, :class:`TStrStrIntTrV`, :class:`TStrKdV`, :class:`TStrStrVPrV`, :class:`TStrVIntPrV`, :class:`TFltIntIntIntQuV`, :class:`TIntStrIntIntQuV`, and :class:`TIntIntPrPrV`.
 
    To illustrate, the following examples show how to create a :class:`TVec`::
 
@@ -227,7 +214,7 @@ vector. All of the following methods are available for objects that are classifi
 
      .. describe:: Trunc(Vals=-1)
 
-        Truncates the vector to length *NumVals*. If *Vals* is not given, the vector 
+        Truncates the vector to length *Vals*. If *Vals* is not given, the vector 
         is left unchanged.
 
      .. describe:: Pack()
@@ -237,7 +224,7 @@ vector. All of the following methods are available for objects that are classifi
      .. describe:: MoveFrom(Vec)
 
         Moves all the data from *Vec* into the current vector and changes its capacity to
-        match that of *Vec*. The contents and capacity of vec are cleared in the process.
+        match that of *Vec*. The contents and capacity of *Vec* are cleared in the process.
 
      .. describe:: Swap(Vec)
 
@@ -280,10 +267,10 @@ vector. All of the following methods are available for objects that are classifi
         Returns an iterator an element at position *ValN*. 
 
      .. describe:: Add()
-        describe:: Add(Val)
-        describe:: Add(Val, ResizeLen)
+                   Add(Val)
+                   Add(Val, ResizeLen)
 
-        Appends *Val* to the end of the vector. If *val* is not specified, it adds an 
+        Appends *Val* to the end of the vector. If *Val* is not specified, it adds an 
         element with the default value for the given type of the vector. Returns the 
         index at which the value was appended. If *ResizeLen* is given, it increases the 
         capacity of the vector by *ResizeLen*. 
@@ -372,7 +359,7 @@ vector. All of the following methods are available for objects that are classifi
 
      .. describe:: GetPivotValN(LValN, RValN)
 
-        Picks three random elements at positions *LValN*...*RValN* and returns the 
+        Picks three random elements at positions *LValN* ... *RValN* and returns the 
         index of the middle one. 
 
      .. describe:: BSort(MnLValN, MxRValN, Asc)
@@ -406,7 +393,7 @@ vector. All of the following methods are available for objects that are classifi
 
      .. describe:: Shuffle(Rnd)
 
-        Shuffles the contents of the vector in random order, using the TRnd object *Rnd*.
+        Shuffles the contents of the vector in random order, using the :class:`TRnd` object *Rnd*.
 
      .. describe:: Reverse()
 
@@ -521,7 +508,7 @@ Hash tables contain values of the same type. Each value has a user provided key 
    and `<value_type_name>` have the same type, only one type name might be used, such 
    as :class:`TIntH`.
 
-   The following :class:`THash` types are supported: :class:`TIntH`, :class:`TIntIntH`, :class:`TIntFltH`, :class:`TIntStrH`, :class:`TIntPrFltH`, :class:`TUInt64H`, :class:`TIntBoolH`, :class:`TIntUInt64H`, :class:`TIntIntVH`, :class:`TIntIntHH`, :class:`TIntFltPrH`, :class:`TIntFltTrH`, :class:`TIntFltVH`, :class:`TIntStrVH`, :class:`TIntIntPrH`, :class:`TIntIntPrVH`, :class:`TUInt64StrVH`, :class:`TIntPrIntH`, :class:`TIntPrIntVH`, :class:`TItPrIntPrVH`, :class:`TIntTrIntH`, :class:`TIntVIntH`, :class:`TUIntH`, :class:`TIntPrIntH`, :class:`TIntPrIntVH`, :class:`TIntTrFltH`, :class:`TIntPrStrH`, :class:`TIntPrStrVH`, :class:`TIntStrPrIntH`, :class:`TFltFltH`, :class:`TStrH`, :class:`TStrBoolH`, :class:`TStrIntH`, :class:`TStrIntPrH`, :class:`TStrIntVH`, :class:`TStrUInt64H`, :class:`TStrUInt64VH`, :class:`TStrIntPrVH`, :class:`TStrFltH`, :class:`TStrFltVH`, :class:`TStrStrH`, :class:`TStrStrPrH`, :class:`TStrStrVH`, :class:`TStrStrPrVH`, :class:`TStrStrKdVH`, :class:`TStrIntFltPrH`, :class:`TStrStrIntPrVH`, :class:`TStrStrIntKdVH`, :class:`TStrPrBoolH`, :class:`TStrPrIntH`, :class:`TStrPrFltH`, :class:`TStrPrStrH`, :class:`TStrPrStrVH`, :class:`TStrTrIntH`, :class:`TStrIntPrIntH`, :class:`TStrVH`, :class:`TStrVIntVH`, :class:`TStrVStrH`, and :class:`TStrVStrVH`.
+   The following :class:`THash` types are supported: :class:`TIntH`, :class:`TIntIntH`, :class:`TIntFltH`, :class:`TIntStrH`, :class:`TIntPrFltH`, :class:`TUInt64H`, :class:`TIntBoolH`, :class:`TIntUInt64H`, :class:`TIntIntVH`, :class:`TIntIntHH`, :class:`TIntFltPrH`, :class:`TIntFltTrH`, :class:`TIntFltVH`, :class:`TIntStrVH`, :class:`TIntIntPrH`, :class:`TIntIntPrVH`, :class:`TUInt64StrVH`, :class:`TIntPrIntH`, :class:`TIntPrIntPrVH`, :class:`TIntTrIntH`, :class:`TIntVIntH`, :class:`TUIntH`, :class:`TIntPrIntVH`, :class:`TIntTrFltH`, :class:`TIntPrStrH`, :class:`TIntPrStrVH`, :class:`TIntStrPrIntH`, :class:`TFltFltH`, :class:`TStrH`, :class:`TStrBoolH`, :class:`TStrIntH`, :class:`TStrIntPrH`, :class:`TStrIntVH`, :class:`TStrUInt64H`, :class:`TStrUInt64VH`, :class:`TStrIntPrVH`, :class:`TStrFltH`, :class:`TStrFltVH`, :class:`TStrStrH`, :class:`TStrStrPrH`, :class:`TStrStrVH`, :class:`TStrStrPrVH`, :class:`TStrStrKdVH`, :class:`TStrIntFltPrH`, :class:`TStrStrIntPrVH`, :class:`TStrStrIntKdVH`, :class:`TStrPrBoolH`, :class:`TStrPrIntH`, :class:`TStrPrFltH`, :class:`TStrPrStrH`, :class:`TStrPrStrVH`, :class:`TStrTrIntH`, :class:`TStrIntPrIntH`, :class:`TStrVH`, :class:`TStrVIntVH`, :class:`TStrVStrH`, and :class:`TStrVStrVH`.
 
 
    To illustrate, the following examples show how to create a :class:`THash` with each of the
@@ -632,7 +619,7 @@ Hash tables contain values of the same type. Each value has a user provided key 
 
      .. describe:: AddDat(Key)
 
-        Adds a key-value mapping to the hash table, using *Key* as the key and the default value for the datatype as the value (i.e. for TInt values, the default value would be 0) if *Key* was not already in the hash table. If *Key* was already in the hash table, the value remains unchaned. The value is then returned.
+        Adds a key-value mapping to the hash table, using *Key* as the key and the default value for the datatype as the value (i.e. for :class:`TInt` values, the default value would be 0) if *Key* was not already in the hash table. If *Key* was already in the hash table, the value remains unchanged. The value is then returned.
 
      .. describe:: AddDat(Key, Dat)
 
@@ -684,7 +671,7 @@ Hash tables contain values of the same type. Each value has a user provided key 
 
      .. describe:: FFirstKeyId()
 
-        Returns -1, which is 1 less than the smallest possible key id, 0.
+        Returns 1 less than the smallest key id.
 
      .. describe:: GetKeyV(KeyV)
 
@@ -756,6 +743,8 @@ Object used to represent the key-value pairs in a :class:`THash` object.
            TKeyDat (Key)
            TKeyDat(Key, Dat)
            TKeyDat(SIn)
+
+
    Creates a :class:`TKeyDat` object. If *KeyDat* is provided, which is of type :class:`TKeyDat`, its contents will be copied into the newly created object. If *Key* and/or *Dat* are provided, the key for :class:`TKeyDat` will be set to *Key* and the value will be set to *Dat*. If *SIn* is provided, the contents of the :class:`TKeyDat` will be read from the stream.
 
 
@@ -813,7 +802,7 @@ An iterator over the values in a :class:`THash` object.
    and `<value_type_name>` have the same type, only one type name might be used, such 
    as :class:`TIntHI`.
 
-   The following iterator types are currently supported: :class:`TIntHI`, :class:`TIntIntHI`, :class:`TIntFltHI`, :class:`TIntStrHI`, :class:`TIntPrFltHI`, :class:`TUInt64HI`, :class:`TIntBoolHI`, :class:`TIntUint64HI`, :class:`TIntIntVHI`, :class:`TIntIntHHI`, :class:`TIntFltPrHI`, :class:`TIntFltTrHI`, :class:`TIntFltVHI`, :class:`TIntStrVHI`, :class:`TIntIntPrHI`, :class:`TIntIntPrVHI`, :class:`TUInt64StrVHI`, :class:`TIntPrIntHI`, :class:`TIntPrIntVHI`, :class:`TIntPrIntPrVHI`, :class:`TIntTrIntHI`, :class:`TIntVIntHI`, :class:`TUIntHI`, :class:`TIntPrIntHI`, :class:`TIntPrIntVHI`, :class:`TIntTrFltHI`, :class:`TIntPrStrHI`, :class:`TIntPrStrVHI`, :class:`TIntStrPrIntHI`, :class:`TFltFltHI`, :class:`TStrHI`, :class:`TStrBoolHI`, :class:`TStrIntHI`, :class:`TStrIntPrHI`, :class:`TStrIntVHI`, :class:`TStrUInt64HI`, :class:`TStrUInt64VHI`, :class:`TStrIntPrVHI`, :class:`TStrFltHI`, :class:`TStrFltVHI`, :class:`TStrStrHI`, :class:`TStrStrPrHI`, :class:`TStrStrVHI`, :class:`TStrStrPrVHI`, :class:`TStrStrKdVHI`, :class:`TStrIntFltPrHI`, :class:`TStrStrIntPrVHI`, :class:`TStrStrIntKdVHI`, :class:`TStrPrBoolHI`, :class:`TStrPrIntHI`, :class:`TStrPrFltHI`, :class:`TStrPrStrHI`, :class:`TStrPrStrVHI`, :class:`TStrTrIntHI`, :class:`TStrIntPrIntHI`, :class:`TStrVHI`, :class:`TStrVStrHI`, :class:`TStrVStrVHI`, :class:`THI`
+   The following iterator types are currently supported: :class:`TIntHI`, :class:`TIntIntHI`, :class:`TIntFltHI`, :class:`TIntStrHI`, :class:`TIntPrFltHI`, :class:`TUInt64HI`, :class:`TIntBoolHI`, :class:`TIntUint64HI`, :class:`TIntIntVHI`, :class:`TIntIntHHI`, :class:`TIntFltPrHI`, :class:`TIntFltTrHI`, :class:`TIntFltVHI`, :class:`TIntStrVHI`, :class:`TIntIntPrHI`, :class:`TIntIntPrVHI`, :class:`TUInt64StrVHI`, :class:`TIntPrIntVHI`, :class:`TIntPrIntPrVHI`, :class:`TIntTrIntHI`, :class:`TIntVIntHI`, :class:`TUIntHI`, :class:`TIntPrIntHI`, :class:`TIntPrIntVHI`, :class:`TIntTrFltHI`, :class:`TIntPrStrHI`, :class:`TIntPrStrVHI`, :class:`TIntStrPrIntHI`, :class:`TFltFltHI`, :class:`TStrHI`, :class:`TStrBoolHI`, :class:`TStrIntHI`, :class:`TStrIntPrHI`, :class:`TStrIntVHI`, :class:`TStrUInt64HI`, :class:`TStrUInt64VHI`, :class:`TStrIntPrVHI`, :class:`TStrFltHI`, :class:`TStrFltVHI`, :class:`TStrStrHI`, :class:`TStrStrPrHI`, :class:`TStrStrVHI`, :class:`TStrStrPrVHI`, :class:`TStrStrKdVHI`, :class:`TStrIntFltPrHI`, :class:`TStrStrIntPrVHI`, :class:`TStrStrIntKdVHI`, :class:`TStrPrBoolHI`, :class:`TStrPrIntHI`, :class:`TStrPrFltHI`, :class:`TStrPrStrHI`, :class:`TStrPrStrVHI`, :class:`TStrTrIntHI`, :class:`TStrIntPrIntHI`, :class:`TStrVHI`, :class:`TStrVStrHI`, :class:`TStrVStrVHI`, :class:`THI`
 
    The following public functions are supported by the :class:`THashKeyDatI` class:
 
@@ -837,7 +826,7 @@ An iterator over the values in a :class:`THash` object.
 
         Get the value for the key-value pair at the current position in the iterator.
 
-   Below is some code demonstrating the use of the :class:`THash` type:
+   Below is some code demonstrating the use of the :class:`THashKeyDatI` type:
 
       >>> h1 = snap.TIntH()
       >>> for i in range(5):
@@ -856,7 +845,7 @@ An iterator over the values in a :class:`THash` object.
 THashSet
 ========
 
-Hash sets contain keys are of the same type. Specific keys can be accessed through their key ids. New values can be added to the hash set only if they are unique. All objects classified as THash objects have access to the following methods.
+Hash sets contain keys are of the same type. Specific keys can be accessed through their key ids. New values can be added to the hash set only if they are unique. All objects classified as :class:`THashSet` objects have access to the following methods.
 
 .. class:: THashSet()
            THashSet(ExpectVals, AutoSizeP=False)
@@ -1020,7 +1009,7 @@ Hash sets contain keys are of the same type. Specific keys can be accessed throu
 
      .. describe:: FFirstKeyId()
 
-        Returns -1, which is 1 less than the smallest possible key id, 0.
+        Returns 1 less than the smallest key id.
 
      .. describe:: GetKeyV(KeyV)
 
@@ -1039,7 +1028,7 @@ Hash sets contain keys are of the same type. Specific keys can be accessed throu
         Reduces the capacity of the memory used to hold the hash set to match its size.
 
 
-   Below is some code demonstrating the use of the THash type:
+   Below is some code demonstrating the use of the :class:`THashSet` type:
 
       >>> hs = snap.TIntSet()
       >>> for i in range(30):
@@ -1075,7 +1064,7 @@ An iterator over the values in a :class:`THashSet` object.
 
         Get the key at the current position in the iterator.
 
-   Below is some code demonstrating the use of the :class:`THash` type:
+   Below is some code demonstrating the use of the :class:`THashSetKeyI` type:
 
       >>> hs1 = snap.TIntSet()
       >>> hs1.AddKey(0)
