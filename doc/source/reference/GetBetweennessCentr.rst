@@ -19,6 +19,10 @@ Parameters:
 - *NodeFrac*: float (input)
     Quality of the approximation. NodeFrac=1.0 gives exact betweenness values.
 
+Return Value:
+
+- None
+
 See "A Faster Algorithm for Betweenness Centrality", Ulrik Brandes, Journal of Mathematical Sociology, 2001, and "Centrality Estimation in Large Networks", Urlik Brandes and Christian Pich, 2006 for more details. 
 
 

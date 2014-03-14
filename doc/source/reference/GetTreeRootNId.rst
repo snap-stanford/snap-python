@@ -12,7 +12,7 @@ Parameters:
 
 Return value:
 
-- int: 
+- int 
     If *Graph* is a tree, the node id of the root. Otherwise, -1 is returned.
 
 
