@@ -7,10 +7,10 @@ Generates an undirected random graph with the exact degree sequence given by *De
 
 Parameters:
 
-- *DegSeqV*: TIntV, a vector of ints (input)
+- *DegSeqV*: :class:`TIntV`, a vector of ints (input)
     The desired degree sequence, sorted in descending order.
 
-- *Rnd*: TRnd (input)
+- *Rnd*: :class:`TRnd` (input)
     Random number generator.
 
 Return value:

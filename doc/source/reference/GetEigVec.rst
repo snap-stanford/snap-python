@@ -10,7 +10,7 @@ Parameters:
 - *Graph*: undirected graph (input)
     A Snap.py undirected graph.
 
-- *EigVecV*: TFltV, a vector of floats (output)
+- *EigVecV*: :class:`TFltV`, a vector of floats (output)
     A leading eigenvector of the adjacency matrix representing the given *Graph*.
 
 Return value:

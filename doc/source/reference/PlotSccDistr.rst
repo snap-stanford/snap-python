@@ -19,7 +19,8 @@ Parameters:
 Return value:
 
 - None
-    
+  
+  
 The following example shows how to plot the distribution of sizes of strongly connected components for :class:`TNGraph`, :class:`TUNGraph`, and :class:`TNEANet`::
 
     import snap

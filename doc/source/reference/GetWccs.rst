@@ -10,7 +10,7 @@ Parameters:
 - *Graph*: graph (input)
     A Snap.py graph or a network.
 
-- *CnComV*: TCnComV, a vector of connected components (output)
+- *CnComV*: :class:`TCnComV`, a vector of connected components (output)
     Vector of all weakly-connected components. Each component consists of a TIntV vector of node ids.
 
 Return value:

@@ -16,7 +16,7 @@ Parameters:
 - *Hop*: int (input)
     Distance from the starting node.
 
-- *NIdV*: TIntV, a vector of ints (output)
+- *NIdV*: :class:`TIntV`, a vector of ints (output)
     Node ids of nodes *Hop* distance away from *StartNId*.
 
 - *IsDir*: bool (input)

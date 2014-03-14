@@ -570,7 +570,7 @@ Hash tables contain values of the same type. Each value has a user provided key 
 
      .. describe:: EndI()
 
-        Returns an iterator to the end of the hash table.
+        Returns an iterator to the past-the-end element of the hash table.
 
      .. describe:: GetI(Key)
 
@@ -786,7 +786,7 @@ Object used to represent the key-value pairs in a :class:`THash` object.
 THashKeyDatI
 ============
 
-An iterator over the values in a :class:`THash` object.
+An iterator over the values in a :class:`THash` object. Normally, these objects are not created directly, but via a call to the hash table class :class:`THash` method, such as :func:`BegI`.
 
 .. class:: THashKeyDatI()
            THashKeyDatI(HashKeyDatI)
@@ -802,7 +802,7 @@ An iterator over the values in a :class:`THash` object.
    and `<value_type_name>` have the same type, only one type name might be used, such 
    as :class:`TIntHI`.
 
-   The following iterator types are currently supported: :class:`TIntHI`, :class:`TIntIntHI`, :class:`TIntFltHI`, :class:`TIntStrHI`, :class:`TIntPrFltHI`, :class:`TUInt64HI`, :class:`TIntBoolHI`, :class:`TIntUint64HI`, :class:`TIntIntVHI`, :class:`TIntIntHHI`, :class:`TIntFltPrHI`, :class:`TIntFltTrHI`, :class:`TIntFltVHI`, :class:`TIntStrVHI`, :class:`TIntIntPrHI`, :class:`TIntIntPrVHI`, :class:`TUInt64StrVHI`, :class:`TIntPrIntVHI`, :class:`TIntPrIntPrVHI`, :class:`TIntTrIntHI`, :class:`TIntVIntHI`, :class:`TUIntHI`, :class:`TIntPrIntHI`, :class:`TIntPrIntVHI`, :class:`TIntTrFltHI`, :class:`TIntPrStrHI`, :class:`TIntPrStrVHI`, :class:`TIntStrPrIntHI`, :class:`TFltFltHI`, :class:`TStrHI`, :class:`TStrBoolHI`, :class:`TStrIntHI`, :class:`TStrIntPrHI`, :class:`TStrIntVHI`, :class:`TStrUInt64HI`, :class:`TStrUInt64VHI`, :class:`TStrIntPrVHI`, :class:`TStrFltHI`, :class:`TStrFltVHI`, :class:`TStrStrHI`, :class:`TStrStrPrHI`, :class:`TStrStrVHI`, :class:`TStrStrPrVHI`, :class:`TStrStrKdVHI`, :class:`TStrIntFltPrHI`, :class:`TStrStrIntPrVHI`, :class:`TStrStrIntKdVHI`, :class:`TStrPrBoolHI`, :class:`TStrPrIntHI`, :class:`TStrPrFltHI`, :class:`TStrPrStrHI`, :class:`TStrPrStrVHI`, :class:`TStrTrIntHI`, :class:`TStrIntPrIntHI`, :class:`TStrVHI`, :class:`TStrVStrHI`, :class:`TStrVStrVHI`, :class:`THI`
+   The following iterator types are currently supported: :class:`TIntHI`, :class:`TIntIntHI`, :class:`TIntFltHI`, :class:`TIntStrHI`, :class:`TIntPrFltHI`, :class:`TUInt64HI`, :class:`TIntBoolHI`, :class:`TIntUint64HI`, :class:`TIntIntVHI`, :class:`TIntIntHHI`, :class:`TIntFltPrHI`, :class:`TIntFltTrHI`, :class:`TIntFltVHI`, :class:`TIntStrVHI`, :class:`TIntIntPrHI`, :class:`TIntIntPrVHI`, :class:`TUInt64StrVHI`, :class:`TIntPrIntPrVHI`, :class:`TIntTrIntHI`, :class:`TIntVIntHI`, :class:`TUIntHI`, :class:`TIntPrIntHI`, :class:`TIntPrIntVHI`, :class:`TIntTrFltHI`, :class:`TIntPrStrHI`, :class:`TIntPrStrVHI`, :class:`TIntStrPrIntHI`, :class:`TFltFltHI`, :class:`TStrHI`, :class:`TStrBoolHI`, :class:`TStrIntHI`, :class:`TStrIntPrHI`, :class:`TStrIntVHI`, :class:`TStrUInt64HI`, :class:`TStrUInt64VHI`, :class:`TStrIntPrVHI`, :class:`TStrFltHI`, :class:`TStrFltVHI`, :class:`TStrStrHI`, :class:`TStrStrPrHI`, :class:`TStrStrVHI`, :class:`TStrStrPrVHI`, :class:`TStrStrKdVHI`, :class:`TStrIntFltPrHI`, :class:`TStrStrIntPrVHI`, :class:`TStrStrIntKdVHI`, :class:`TStrPrBoolHI`, :class:`TStrPrIntHI`, :class:`TStrPrFltHI`, :class:`TStrPrStrHI`, :class:`TStrPrStrVHI`, :class:`TStrTrIntHI`, :class:`TStrIntPrIntHI`, :class:`TStrVHI`, :class:`TStrVStrHI`, and :class:`TStrVStrVHI`.
 
    The following public functions are supported by the :class:`THashKeyDatI` class:
 
@@ -921,6 +921,14 @@ Hash sets contain keys are of the same type. Specific keys can be accessed throu
      .. describe:: GetMemUsed()
 
         Returns the size of the hash set in bytes.
+
+     .. describe:: BegI()
+
+        Returns an iterator pointing to the first element in the hash set. 
+
+     .. describe:: EndI()
+
+        Returns an iterator referring to the past-the-end element in the hash set. 
 
      .. describe:: Gen(ExpVals)
 
@@ -1043,7 +1051,7 @@ Hash sets contain keys are of the same type. Specific keys can be accessed throu
 THashSetKeyI
 ============
 
-An iterator over the values in a :class:`THashSet` object.
+An iterator over the values in a :class:`THashSet` object. Normally, these objects are not created directly, but via a call to the hash table class :class:`THashSet` method, such as :func:`BegI`.
 
 .. class:: THashSetKeyI()
            THashSetKeyI(SetKeyI)

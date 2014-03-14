@@ -10,7 +10,7 @@ Parameters:
 - *Graph*: graph (input)
     A Snap.py graph or a network.
 
-- *TriadCntV*: TIntPrV, a vector of (int, int) pairs (output)
+- *TriadCntV*: :class:`TIntPrV`, a vector of (int, int) pairs (output)
     Pairs of (number of triangles, number of nodes).
 
 Return value:

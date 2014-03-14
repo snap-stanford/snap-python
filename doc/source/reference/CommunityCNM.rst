@@ -10,7 +10,7 @@ Parameters:
 - *Graph*: undirected graph (input)
     A Snap.py undirected graph.
 
-- *CmtyV*: TCnComV, a vector of connected components (output)
+- *CmtyV*: :class:`TCnComV`, a vector of connected components (output)
     A vector of all the communities that are detected by the CNM method. Each community is represented as a vector of node IDs.
 
 Return value:

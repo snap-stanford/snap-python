@@ -44,7 +44,6 @@ The following example shows how to generate a Ravasz-Barabasi deterministic scal
     for EI in UGraph.Edges():
         print "edge: (%d, %d)" % (EI.GetSrcNId(), EI.GetDstNId())
 
-
     Network = snap.GenBaraHierar(snap.PNEANet, 3, True)
     for EI in Network.Edges():
         print "edge: (%d, %d)" % (EI.GetSrcNId(), EI.GetDstNId())

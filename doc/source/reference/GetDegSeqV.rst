@@ -10,7 +10,7 @@ Parameters:
 - *Graph*: graph (input)
     A Snap.py graph or a network.
 
-- *DegV*: TIntV, a vector of ints (output)
+- *DegV*: :class:`TIntV`, a vector of ints (output)
     A vector containing the degree for each node in the graph.
 
 Return value:

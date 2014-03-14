@@ -13,7 +13,7 @@ Parameters:
 - *NId*: int (input)
     A node id in *Graph*.
 
-- *CnCom*: TIntV, a vector of ints (output)
+- *CnCom*: :class:`TIntV`, a vector of ints (output)
     All nodes that are in the same weakly connected component as *NId*.
 
 Return value:

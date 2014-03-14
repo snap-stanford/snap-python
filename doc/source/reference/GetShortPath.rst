@@ -3,7 +3,7 @@ GetShortPath
 
 .. function:: GetShortPath(Graph, SrcNId, DstNId, IsDir=False)
 
-Returns the length of the shortest path from node SrcNId to node DstNId.
+Returns the length of the shortest path from node *SrcNId* to node *DstNId*.
 
 Parameters:
 

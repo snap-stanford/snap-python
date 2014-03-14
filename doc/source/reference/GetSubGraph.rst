@@ -3,15 +3,15 @@ GetSubGraph
 
 .. function:: GetSubGraph(Graph, NIdV)
 
-Returns an induced subgraph of an undirected graph *Graph* with *NIdV* nodes with an optional node renumbering.
+Returns an induced subgraph of an undirected graph *Graph* with *NIdV* nodes.
 
 Parameters:
 
 - *Graph*: graph (input)
     A Snap.py graph or a network.
 
-- *NIdV*: a vector of int keys (input)
-    Graph nodes. Keys are node IDs.
+- *NIdV*: :class:`TIntV`, a vector of ints (input)
+    Vector of node ids to be included in the graph.
 
 Return value:
 

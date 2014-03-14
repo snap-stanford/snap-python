@@ -10,7 +10,7 @@ Parameters:
 - *Graph*: graph (input)
     A Snap.py graph or a network.
 
-- *NIdV*: TIntV, vector of ints (input)
+- *NIdV*: :class:`TIntV`, vector of ints (input)
     A vector of node ids to be deleted from *Graph*.
 
 Return value:
@@ -25,7 +25,7 @@ The following example shows how to delete nodes from
 
     V = snap.TIntV()
     for i in range(10):
-        Vec.Add(i)
+        V.Add(i)
 
     Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
     snap.DelNodes(Graph, V)

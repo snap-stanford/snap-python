@@ -13,7 +13,7 @@ Parameters:
 - *SngVals*: int (input)
     The number of singular values to compute.
 
-- *SngValV*: TFltV, a vector of floats (output)
+- *SngValV*: :class:`TFltV`, a vector of floats (output)
     The vector of singular values.
 
 Return value:

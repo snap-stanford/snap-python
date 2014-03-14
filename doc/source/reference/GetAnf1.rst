@@ -10,7 +10,7 @@ Parameters:
 - *Graph*: graph (input)
     A Snap.py graph or a network.
     
-- *DistNbrsV*: TIntFltKd, a vector of (int, float) pairs (output)
+- *DistNbrsV*: :class:`TIntFltKd`, a vector of (int, float) pairs (output)
     Maps between the distance H (in hops) and the number of nodes reachable in <= H hops.
 
 - *MxDist*: int (input)

@@ -10,7 +10,7 @@ Parameters:
 - *Graph*: graph (input)
     A Snap.py graph or a network.
 
-- *DegToCCfV*: TFltPrV, a vector of float pairs (output)
+- *DegToCCfV*: :class:`TFltPrV`, a vector of float pairs (output)
     Vector of (degree, avg. clustering coefficient of nodes of that degree) pairs.
 
 - *SampleNodes*: int (input)
@@ -42,7 +42,7 @@ The following example shows how to compute the clustering coefficient distributi
     for pair in CfVec:
         print "degree: %d, clustering coefficient: %f" % (pair.GetVal1(), pair.GetVal2())
     
-    Network = snap.GenRndGnm(snap.PNEANetGraph, 100, 1000)
+    Network = snap.GenRndGnm(snap.PNEANet, 100, 1000)
     CfVec = snap.TFltPrV()
     Cf = snap.GetClustCf(Network, CfVec, -1)
     print "Average Clustering Coefficient: %f" % (Cf)

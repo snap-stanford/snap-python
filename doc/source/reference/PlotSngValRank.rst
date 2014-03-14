@@ -23,6 +23,7 @@ Return value:
 
 - None
 
+
 The following example shows how to plot the rank distribution of singular values of the Graph adjacency matrix for :class:`TNGraph`::
 
     import snap

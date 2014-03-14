@@ -32,14 +32,14 @@ The following example shows how to calculate BfsEffDiam for nodes in
     EffDiam = snap.GetBfsEffDiam(Graph, NTestNodes, IsDir)
     print EffDiam
 
-    Graph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
+    UGraph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
     NTestNodes = 10
     IsDir = False
-    EffDiam = snap.GetBfsEffDiam(Graph, NTestNodes, IsDir)
+    EffDiam = snap.GetBfsEffDiam(UGraph, NTestNodes, IsDir)
     print EffDiam
 
-    Graph = snap.GenRndGnm(snap.PNEANet, 100, 1000)
+    Network = snap.GenRndGnm(snap.PNEANet, 100, 1000)
     NTestNodes = 10
     IsDir = False
-    EffDiam = snap.GetBfsEffDiam(Graph, NTestNodes, IsDir)
+    EffDiam = snap.GetBfsEffDiam(Network, NTestNodes, IsDir)
     print EffDiam

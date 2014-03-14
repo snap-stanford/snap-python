@@ -10,7 +10,7 @@ Parameters:
 - *Graph*: graph (input)
     A Snap.py graph or a network.
 
-- *CoreIdSzV*: TIntPrV, a vector of (int, int) pairs (output)
+- *CoreIdSzV*: :class:`TIntPrV`, a vector of (int, int) pairs (output)
     A vector of (order, number of edges of the given order) pairs. 
 
 Return value:

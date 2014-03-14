@@ -9,9 +9,9 @@ The result is stored in *NIdInDegV*, a vector of pairs (node id, node in degree)
 Parameters:
 
 - *Graph*: graph (input)
-	A Snap.py graph or a network/
+	A Snap.py graph or a network.
 
-- *NIdInDegV*: TIntPrV, a vector or (int, int) pairs (output)
+- *NIdInDegV*: :class:`TIntPrV`, a vector or (int, int) pairs (output)
 	A vector of (node id, node in-degree) pairs.
 
 Return value:

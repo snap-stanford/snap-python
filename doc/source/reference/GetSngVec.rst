@@ -11,10 +11,10 @@ Parameters:
 - *Graph*: directed graph (input)
     A Snap.py directed graph.
 
-- *LeftSV*: TFltV, a vector of floats (output)
+- *LeftSV*: :class:`TFltV`, a vector of floats (output)
     The left singular vector.
 
-- *RightSV*: TFltV, a vector of floats (output)
+- *RightSV*: :class:`TFltV`, a vector of floats (output)
     The right singular vector.
 
 Return value:

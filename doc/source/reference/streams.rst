@@ -1,7 +1,7 @@
 File Streams
 ````````````
 
-The file streams offered by SNAP.py are :class:`TFOut`, which is used for file writing and :class:`TFIn`, which is used for file reading.
+The file streams offered by SNAP.py are :class:`TFOut`, which is used for file writing, and :class:`TFIn`, which is used for file reading.
 
 TFOut
 =====
@@ -10,7 +10,7 @@ TFOut
 
    Creates a :class:`TFOut` object that can be used to write the contents of the file specified by the path *FNm*. If a file with name *FNm* does not already exist, it creates a new file. If a file with name *FNm* exists, its contents will be overwritten.
 
-   Below is a list of functions supported by the :class:`TFIn` class:
+   Below is a list of functions supported by the :class:`TFOut` class:
 
      .. describe:: PutCh(Ch)
 
@@ -36,8 +36,7 @@ TFIn
 
 .. class:: TFIn(FNm)
 
-   Creates a :class:`TFIn` object that can be used to read the contents of the file specified by the path *FNm*. Raises the exception :class:`RuntimeError` if a file
-   with name *FNm* cannot be found.
+   Creates a :class:`TFIn` object that can be used to read the contents of the file specified by the path *FNm*. Raises the exception :class:`RuntimeError` if a file with name *FNm* cannot be found.
 
    Below is a list of functions supported by the :class:`TFIn` class:
 

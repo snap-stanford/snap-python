@@ -19,7 +19,7 @@ Parameters:
 - *IsDir*: bool (input)
     Indicates whether to consider the edges as directed or undirected. Defaults to directed. 
 
-- *Rnd*: TRnd (input)
+- *Rnd*: :class:`TRnd` (input)
     Random number generator.
 
 Return value:

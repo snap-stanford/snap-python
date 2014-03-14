@@ -16,7 +16,7 @@ Parameters:
 - *NSwitch*: int (input)
     Average number of switches to make per edge. More switches means a more random graph.
 
-- *Rnd*: TRnd (input)
+- *Rnd*: :class:`TRnd` (input)
     Random number generator.
 
 Return value:
@@ -30,9 +30,8 @@ over the aforementioned attributes::
 
     import snap
 
-    UGraph = snap.GenRndDegK(1000, 10) # Default randomness
+    UGraph = snap.GenRndDegK(1000, 10)
 
-    # Confirm expected behavior
     DegToCntV = snap.TIntPrV()
     snap.GetDegCnt(UGraph, DegToCntV)
     for item in DegToCntV:

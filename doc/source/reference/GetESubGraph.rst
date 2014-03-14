@@ -10,7 +10,7 @@ Parameters:
 - *Graph*: network (input)
     A Snap.py network.
 
-- *EIdV*: TIntV, a vector of ints (input)
+- *EIdV*: :class:`TIntV`, a vector of ints (input)
     A vector of edge IDs in graph.
 
 Return value:

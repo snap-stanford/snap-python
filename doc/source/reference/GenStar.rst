@@ -35,5 +35,5 @@ The following example shows how to generate a star graph with five nodes using :
         print "edge: (%d, %d)" % (EI.GetSrcNId(), EI.GetDstNId())
 
     Network = snap.GenStar(snap.PNEANet, 5, True)
-    for EI in StarGraph.Edges():
+    for EI in Network.Edges():
         print "edge: (%d, %d)" % (EI.GetSrcNId(), EI.GetDstNId())

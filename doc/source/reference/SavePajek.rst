@@ -26,10 +26,10 @@ The following example shows how to create a Pajek files for nodes in
     import snap
 
     Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
-	snap.SavePajek(Graph, "Pajek_Graph1.out")
+    snap.SavePajek(Graph, "Pajek_Graph1.out")
         
     UGraph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
-	snap.SavePajek(UGraph, "Pajek_Graph2.out")
+    snap.SavePajek(UGraph, "Pajek_Graph2.out")
     
     Network = snap.GenRndGnm(snap.PNEANet, 100, 1000)
     snap.SavePajek(Network, "Pajek_Graph3.out")

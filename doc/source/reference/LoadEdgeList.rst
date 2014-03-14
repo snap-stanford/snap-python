@@ -27,17 +27,17 @@ Return value:
     A Snap.py graph or a network represented by the *InFNm* of type *GraphType*.
 
 
-The following example shows how to load a small file representing a directed graph::
+The following example shows how to load a small file representing a graph::
 
     import snap;
 
     Graph = snap.LoadEdgeList(snap.PNGraph, "toy_graph", 0, 1)
     Graph.Dump()
 
-    UGraph = snap.LoadEdgeList(snap.PNGraph, "toy_graph", 0, 1)
+    UGraph = snap.LoadEdgeList(snap.PUNGraph, "toy_graph", 0, 1)
     UGraph.Dump()
 
-    Network = snap.LoadEdgeList(snap.PNGraph, "toy_graph", 0, 1)
+    Network = snap.LoadEdgeList(snap.PNEANet, "toy_graph", 0, 1)
     Network.Dump()
 
 

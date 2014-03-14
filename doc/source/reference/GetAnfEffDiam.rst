@@ -29,11 +29,11 @@ with graphs :class:`TNGraph`, :class:`TUNGraph`, and :class:`TNEANet`::
 
     import snap
 
-	Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000) 
-	snap.GetAnfEffDiam(Graph, False, 0.9, 16)
+    Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000) 
+    snap.GetAnfEffDiam(Graph, False, 0.9, 16)
 
-	UGraph = snap.GenRndGnm(snap.PUNGraph, 100, 1000) 
-	snap.GetAnfEffDiam(UGraph, False, 0.9, 16)
-	
-	Network = snap.GenRndGnm(snap.PNEANet, 100, 1000) 
-	snap.GetAnfEffDiam(Network, False, 0.9, 16)
+    UGraph = snap.GenRndGnm(snap.PUNGraph, 100, 1000) 
+    snap.GetAnfEffDiam(UGraph, False, 0.9, 16)
+ 
+    Network = snap.GenRndGnm(snap.PNEANet, 100, 1000) 
+    snap.GetAnfEffDiam(Network, False, 0.9, 16)

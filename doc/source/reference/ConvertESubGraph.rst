@@ -13,7 +13,7 @@ Parameters:
 - *InGraph*: network (input)
     A Snap.py network.
 
-- *EIdV*: TIntV, a vector of ints (input)
+- *EIdV*: :class:`TIntV`, a vector of ints (input)
     Edge IDs that will be included in the subgraph.
 
 - *RenumberNodes*: bool (input)

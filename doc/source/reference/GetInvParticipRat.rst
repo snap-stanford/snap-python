@@ -16,7 +16,7 @@ Parameters:
 - *TimeLimit*: int (input)
     Maximum number seconds to search.
 
-- *EigValIprV*: TFltPrV, a vector of (float, float) pairs (output)
+- *EigValIprV*: :class:`TFltPrV`, a vector of (float, float) pairs (output)
     The output inverse participation ratios.
     
 Return value:

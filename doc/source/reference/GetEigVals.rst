@@ -13,7 +13,7 @@ Parameters:
 - *EigVals*: int (input)
     The number of eigenvalues.
 
-- *PEigV*: TFltV, a vector of floats (output)
+- *PEigV*: :class:`TFltV`, a vector of floats (output)
     The eigenvector of floating point values.
 
 Return value:

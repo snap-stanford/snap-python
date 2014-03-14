@@ -10,7 +10,7 @@ Parameters:
 - *InGraph*: undirected graph (input)
     A Snap.py undirected graph.
 
-- *ArtNIdV*: TIntV, a vector of ints (output)
+- *ArtNIdV*: :class:`TIntV`, a vector of ints (output)
     The node ids of the articulation points in the grpah *InGraph*.
 
 Return value:

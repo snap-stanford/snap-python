@@ -11,7 +11,7 @@ Parameters:
 - *Graph*: graph (input)
     A Snap.py graph or a network.
 
-- *NIdOutDegV*: TIntPrV, a vector of (int, int) pairs (output)
+- *NIdOutDegV*: :class:`TIntPrV`, a vector of (int, int) pairs (output)
     A vector of (node id, node out degree) pairs.
 
 Return value:

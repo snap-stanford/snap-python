@@ -9,8 +9,8 @@ Contents:
    introduction
    basic
    composite
-   graphs
    streams
+   graphs
    generators
    io
    degree

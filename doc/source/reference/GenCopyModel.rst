@@ -4,7 +4,7 @@ GenCopyModel
 .. function:: GenCopyModel (Nodes, Beta, Rnd=TRnd)
 
 Generates a random scale-free network with *Nodes* nodes using the Copying Model. The generating process operates as follows: Node u is added to a graph, it selects a random 
-node v, and with probability *Beta* it links to v, with 1-Beta links u links to 
+node v, and with probability *Beta* it links to v, with 1 - *Beta* links u links to 
 neighbor of v. 
 
 Parameters:
@@ -15,7 +15,7 @@ Parameters:
 - *Beta*: float (input)
     Probability used in the generating process.
 
-- *Rnd*: TRnd (input)
+- *Rnd*: :class:`TRnd` (input)
 	Random number generator.
 
 Return value:
@@ -24,7 +24,7 @@ Return value:
     A Snap.py directed graph generated using the Copying Model.
 
 
-The following example shows how to generate a :class:`TNGraph` using GenCopyModel::
+The following example shows how to generate a :class:`TNGraph` using :func:`GenCopyModel`::
 
     import snap
 

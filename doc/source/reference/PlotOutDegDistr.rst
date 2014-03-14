@@ -27,6 +27,7 @@ Return value:
 
 - None
 
+
 The following example shows how generate a plot of the out-degree distribution for :class:`TNGraph`, :class:`TUNGraph`, and :class:`TNEANet`::
 
     import snap
