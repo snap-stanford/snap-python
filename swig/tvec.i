@@ -338,7 +338,6 @@ TAscFltIntPrV.__getitem__ = getitem
 TAscFltIntPrV.__setitem__ = setitem
 TAscFltIntPrV.__iter__ = itervec
 TCnCom.__len__ = len
-TCnCom.__delitem__ = delitem
 TAscFltIntKdV.__getitem__ = getitem
 TAscFltIntKdV.__setitem__ = setitem
 TAscFltIntKdV.__iter__ = itervec
