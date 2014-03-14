@@ -64,13 +64,13 @@ TInt
 
      .. describe:: GetMn(val1, val2)
                    GetMn(val1, val2, val3)
-                   GetMn(val1, val2, val3)
+                   GetMn(val1, val2, val3, val4)
 
         A static method that returns the minimum of the ints passed in as parameters.
 
      .. describe:: GetMx(val1, val2)
                    GetMx(val1, val2, val3)
-                   GetMx(val1, val2, val3)
+                   GetMx(val1, val2, val3, val4)
 
         A static method that returns the maximum of the ints passed in as parameters.
 
@@ -133,9 +133,9 @@ TInt
 
      .. data:: Rnd
 
-        The TRnd object used in methods such as GetRnd.
+        The TRnd object used in methods such as :function:`GetRnd`.
 
-   Below is some code demonstrating the use of the TInt type:
+   Below is some code demonstrating the use of the :class:`TInt` type:
 
       >>> i = snap.TInt(10)
       >>> print i.Val
@@ -203,13 +203,13 @@ TFlt
 
      .. describe:: GetMn(val1, val2)
                    GetMn(val1, val2, val3)
-                   GetMn(val1, val2, val3)
+                   GetMn(val1, val2, val3, val4)
 
         A static method that returns the minimum of the floats passed in as parameters.
 
      .. describe:: GetMx(val1, val2)
                    GetMx(val1, val2, val3)
-                   GetMx(val1, val2, val3)
+                   GetMx(val1, val2, val3, val4)
 
         A static method that returns the maximum of the floats passed in as parameters.
 
@@ -288,7 +288,7 @@ TFlt
 
      .. data:: Rnd
 
-        The TRnd object used in methods such as GetRnd.
+        The :class:`TRnd` object used in methods such as :func:`GetRnd`.
 
 
    Below is some code demonstrating the use of the :class:`TFlt` type:
@@ -406,12 +406,12 @@ TStr
 
      .. describe:: GetFromHex()
 
-        Returns the string converted from hex as a Python str. The contents of the
+        Returns the string converted from hex as a Python :class:`str`. The contents of the
         original string are left unchanged.
 
      .. describe:: GetHex()
 
-        Returns the string converted to hex as a Python str. The contents of the
+        Returns the string converted to hex as a Python :class:`str`. The contents of the
         original string are left unchanged.
 
      .. describe:: GetHexInt()
@@ -558,17 +558,17 @@ TStr
      .. describe:: Mid(start)
                    Mid(start, numChars)
 
-        Returns the Python str starting at position *start* containing at most
+        Returns the Python :class:`str` starting at position *start* containing at most
         *numChars* characters. If *numChars* is not specified, it returns the 
         substring starting at position *start* to the end of the string.
 
-     .. describe:: PutCh(ChN, Ch)
+     .. describe:: PutCh(pos, ch)
 
-        Replaces the character at position *ChN* with character *Ch*.
+        Replaces the character at position *pos* with character *ch*.
 
      .. describe:: Reverse()
 
-        Returns a Python string with the string reversed.
+        Returns a Python :class:`str` with the string reversed.
 
      .. describe:: Right(start)
 
@@ -614,7 +614,7 @@ TStr
 
      .. describe:: ToLc()
 
-        Coverts the contents of the string to lowercase and returns the str.
+        Coverts the contents of the string to lowercase and returns the resulting string.
 
      .. describe:: ToTrunc()
 
