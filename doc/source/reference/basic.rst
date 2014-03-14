@@ -133,7 +133,7 @@ TInt
 
      .. data:: Rnd
 
-        The TRnd object used in methods such as :function:`GetRnd`.
+        The TRnd object used in methods such as :func:`GetRnd`.
 
    Below is some code demonstrating the use of the :class:`TInt` type:
 

@@ -1,5 +1,5 @@
-Snap.py Manual
---------------
+Snap.py Reference Manual
+------------------------
 
 Contents:
 
@@ -9,8 +9,8 @@ Contents:
    introduction
    basic
    composite
-   graphs
    streams
+   graphs
    generators
    io
    degree
@@ -31,9 +31,7 @@ Contents:
 .. # classes
 .. # util
 
-
 .. note::
 
-  Thank you to Stanford University class of CS224W 2013 for help with this documentation.
-
+  Thank you to Stanford University class of CS224W 2013 for help with this document.
 

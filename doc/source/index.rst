@@ -9,7 +9,3 @@ Contents:
    tutorial/index-tut
    reference/index-ref
 
-.. note::
-
-  Thank you CS224W class of 2013 for your help with this documentation.
-
