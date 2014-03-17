@@ -21,7 +21,7 @@ Parameters:
 - *DstColId*: int (input)
     The column number in the file, which contains the node id representing the destination vertex.
 
-- *StrToNIdH*: TStrIntH, a hash table with string keys and int values (output)
+- *StrToNIdH*: :class:`TStrIntH`, a hash table with string keys and int values (output)
     Contains the mapping of strings to node ids.
 
 
@@ -31,7 +31,7 @@ Return value:
     A Snap.py graph or a network represented by the *InFNm* of type *GraphType*.
 
 
-The following example shows how to load the following from a text file, wiki-vote.txt from http://snap.stanford.edu/data/wiki-Vote.html, where node IDs are strings: :class:`TNGraph`, :class:`TUNGraph`, and :class:`TNEANet`::
+The following example shows how to load the following from a text file, wiki-vote.txt from http://snap.stanford.edu/data/wiki-Vote.html, where node IDs are strings::
 
     import snap
 

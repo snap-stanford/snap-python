@@ -10,7 +10,7 @@ Parameters:
 - *Graph*: undirected graph (input)
     A Snap.py undirected graph.
 
-- *SzCntV*: TIntPrV, a vector of (int, int) pairs (output)
+- *SzCntV*: :class:`TIntPrV`, a vector of (int, int) pairs (output)
     A vector of pairs (number of nodes in the 1-component, number of such components).
 
 Return value:

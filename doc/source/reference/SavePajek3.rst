@@ -13,13 +13,13 @@ Parameters:
 - *OutFNm*: string (input)
     Specifies output filename of Pajek formatted graph.
     
-- *NIdColorH*: TIntStrH, a hash table of int keys and string values (input)
+- *NIdColorH*: :class:`TIntStrH`, a hash table of int keys and string values (input)
     Maps node ids to node colors. Default node color is Red.
 
-- *NIdLabelH*: TIntStrH, a hash table of int keys and string values (input)
+- *NIdLabelH*: :class:`TIntStrH`, a hash table of int keys and string values (input)
     Maps node ids to node string labels.
 
-- *EIdColorH*: TIntStrH, a hash table of int keys and string values (input)
+- *EIdColorH*: :class:`TIntStrH`, a hash table of int keys and string values (input)
     Maps edge ids to node colors. Default edge color is black.
 
 Return value:

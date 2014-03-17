@@ -20,6 +20,7 @@ Return value:
 
 - None
 
+
 The following example shows how to plot the k-core node-size distribution for
 :class:`TNGraph`, :class:`TUNGraph`, and :class:`TNEANet`::
 

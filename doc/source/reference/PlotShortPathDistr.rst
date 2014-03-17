@@ -23,6 +23,7 @@ Return value:
 
 - None
 
+
 The following example shows how to generate plots of the distribution of shortest path lengths for :class:`TNGraph`, :class:`TUNGraph`, and :class:`TNEANet`::
 
     import snap

@@ -10,7 +10,7 @@ Parameters:
 - *Graph*: graph (input)
 	A Snap.py graph or a network.
 
-- *WccSzCnt*: TIntPrV, a vector of (int, int) pairs (output)
+- *WccSzCnt*: :class:`TIntPrV`, a vector of (int, int) pairs (output)
     Vector of pairs (number of nodes in the component, number of such components).
 
 Return Value:

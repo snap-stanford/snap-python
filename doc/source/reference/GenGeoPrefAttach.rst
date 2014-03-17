@@ -18,7 +18,7 @@ Parameters:
     of *Beta* should be between 0 and 0.5, but may be any value.
     The radius is calculated as r = n^{\beta - 1/2}\ln(n).
 
-- *Rnd*: TRnd (input)
+- *Rnd*: :class:`TRnd` (input)
     Random number generator .
 
 Return Value: 
@@ -29,7 +29,7 @@ Return Value:
 For more information see: A geometric preferential attachment model of networks by Flexman, Frieze and Vera. WAW 2004. URL: http://math.cmu.edu/~af1p/Texfiles/GeoWeb.pdf
 
 
-The following example shows how to generate an undirected graph of type :class:`TUNGraph`::
+The following example shows how to generate a random scale-free, undirected graph of type :class:`TUNGraph` using the Geometric Preferential Attachment::
 
     import snap
 

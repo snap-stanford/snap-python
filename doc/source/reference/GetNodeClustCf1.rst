@@ -10,7 +10,7 @@ Parameters:
 - *Graph*: graph (input)
     A Snap.py graph or a network.
 
-- *NIdCCfH*: TIntFltH, a hash table of int keys and float values (output)
+- *NIdCCfH*: :class:`TIntFltH`, a hash table of int keys and float values (output)
     Clustering Coefficients. Keys are node IDs, values are the node's computed clustering coefficients.
 
 Return value:

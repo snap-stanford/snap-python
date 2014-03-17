@@ -10,7 +10,7 @@ Parameters:
 - *Graph*: undirected graph (input)
     A Snap.py undirected graph
 
-- *NIdEigenH*: TIntFltH, a hash table of int keys and float values (output)
+- *NIdEigenH*: :class:`TIntFltH`, a hash table of int keys and float values (output)
     Hash table mapping node ids to their corresponding eigenvector centrality values.
 
 - *Eps*: float (input)

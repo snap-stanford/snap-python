@@ -16,7 +16,7 @@ Parameters:
 - *RewireProb*: float (input)
 	Represents the probability that an edge will be rewired.
 
-- *Rnd*: TRnd (input)
+- *Rnd*: :class:`TRnd` (input)
     Random number generator.
 
 Return value:

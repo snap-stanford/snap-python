@@ -22,7 +22,7 @@ Parameters:
 - *NodeLabels*: bool (input)
     Whether or not the nodes in image have labels associated with them.
     
-- *NIdColorH*: TIntStrH, a hash table with int keys and string values (input)
+- *NIdColorH*: :class:`TIntStrH`, a hash table with int keys and string values (input)
     Maps node ids to node colors (see GraphViz documentation for more details).
 
 Return value:

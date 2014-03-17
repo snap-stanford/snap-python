@@ -1,7 +1,7 @@
 LoadConnListStr
 '''''''''''''''
 
-.. function:: PGraph LoadConnListStr(GraphType, InFNm, StrToNIdH)
+.. function:: LoadConnListStr(GraphType, InFNm, StrToNIdH)
 
 Loads a (directed, undirected, or multi) graph from a text file, *InFNm*, with 1 node and all its edges in a single line.
 
@@ -18,7 +18,7 @@ Parameters:
 - *InFNm*: string (input)
     Filename with the description of the graph nodes and edges.
 
-- *StrToNIdH*: TStrIntH, a hash table of string keys and int values (output)
+- *StrToNIdH*: :class:`TStrIntH`, a hash table of string keys and int values (output)
     Stores the mapping from node names to node ids.
 
 Return value:
@@ -28,6 +28,8 @@ Return value:
 
 
 The following example shows how to load each of the graph types from a file named "test.dat"::
+
+    import snap
 
     H = snap.TStrIntH()
     snap.LoadConnListStr(snap.PNGraph, "test.dat", H)

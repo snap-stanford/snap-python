@@ -1,9 +1,5 @@
 GetShortPath
 ''''''''''''
-.. note::
-
-    This page is a draft and under revision.
-
 
 .. function:: GetShortPath(Graph, SrcNId, NIdToDistH, IsDir=false, MaxDist=TInt::Mx)
 
@@ -17,7 +13,7 @@ Parameters:
 - *SrcNId*: int (input)
     Node id for source node.
 
-- *NIdToDistH*: TIntH, a hash table with integer keys and values (output)
+- *NIdToDistH*: :class:`TIntH`, a hash table with integer keys and values (output)
     Maps node id to shortest path distance. Only contains nodes that are reachable from *SrcNId*.
 
 - *IsDir*: bool (input)
@@ -39,22 +35,22 @@ The following example shows how to calculate the length of the shortest path in
 
     Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
     NIdToDistH = snap.TIntH()
-    shortestPath = snap.GetShortPath(Graph,10, NIdToDistH)
+    shortestPath = snap.GetShortPath(Graph, 10, NIdToDistH)
     for item in NIdToDistH:
-        print item.GetKey(), item.GetDat()
+        print item, NIdToDistH[item]
     print shortestPath
 
-    Graph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
+    UGraph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
     NIdToDistH = snap.TIntH()
-    shortestPath = snap.GetShortPath(Graph,10, NIdToDistH)
+    shortestPath = snap.GetShortPath(UGraph, 10, NIdToDistH)
     for item in NIdToDistH:
-        print item.GetKey(), item.GetDat()
+        print item, NIdToDistH[item]
     print shortestPath
 
-    Graph = snap.GenRndGnm(snap.PNEANet, 100, 1000)
+    Network = snap.GenRndGnm(snap.PNEANet, 100, 1000)
     NIdToDistH = snap.TIntH()
-    shortestPath = snap.GetShortPath(Graph,10, NIdToDistH)
+    shortestPath = snap.GetShortPath(Network, 10, NIdToDistH)
     for item in NIdToDistH:
-        print item.GetKey(), item.GetDat()
+        print item, NIdToDistH[item]
     print shortestPath
 

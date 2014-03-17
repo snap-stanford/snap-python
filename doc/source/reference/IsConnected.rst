@@ -12,7 +12,7 @@ Parameters:
 
 Return value:
 
-- bool:
+- bool
     Returns True if the *Graph* is (weakly) connected, False otherwise.
 
 The following example shows how to use :func:`IsConnected` for nodes in

@@ -1,7 +1,7 @@
 ConvertGraph
 ''''''''''''
 
-.. function:: ConvertGraph(GraphType, InGraph, RenumberNodes=false)
+.. function:: ConvertGraph(GraphType, InGraph, RenumberNodes=False)
 
 Converts *InGraph* to a graph of type *GraphType* with an optional node renumbering. The resulting graph will have type *GraphType*. Node and edge data is not copied, but it is shared by input and output graphs.
 

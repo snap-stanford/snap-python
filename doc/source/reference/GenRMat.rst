@@ -22,7 +22,7 @@ Parameters:
 - *C*: float (input)
     Probability of an edge falling into the C partition in the R-MAT model.
 
-- *Rnd*: TRnd (input)
+- *Rnd*: :class:`TRnd` (input)
     Random number generator .
 
 Return value:

@@ -11,10 +11,10 @@ Parameters
 - *Graph*: graph (input)
     A Snap.py graph or a network.
     
-- *NIdHubH*: TIntFltH, a hash table of int keys and float values (output)
+- *NIdHubH*: :class:`TIntFltH`, a hash table of int keys and float values (output)
     The keys are the node ids and the values are the hub scores as outputed by the HITS algorithm.
 
-- *NIdAuthH*: TIntFltH, a hash table of int keys and float values (output)
+- *NIdAuthH*: :class:`TIntFltH`, a hash table of int keys and float values (output)
     The keys are the node ids and the values are the authority scores as outputed by the HITS algorithm.   
 
 - *MaxIter*: int (input)

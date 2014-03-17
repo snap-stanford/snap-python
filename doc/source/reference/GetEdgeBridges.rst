@@ -10,7 +10,7 @@ Parameters:
 - *Graph*: undirected graph (input)
     A Snap.py undirected graph.
 
-- *EdgeV*: TIntPrV, a vector of (int, int) pairs (output)
+- *EdgeV*: :class:`TIntPrV`, a vector of (int, int) pairs (output)
     The bride edges of the graph. Each edge is represented by a node id pair.
 
 Return value:

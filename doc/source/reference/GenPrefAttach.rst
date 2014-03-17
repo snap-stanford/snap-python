@@ -13,7 +13,7 @@ Parameters:
 - *NodeOutDeg*: int (input)
 	The out degree of each node desired.
 
-- *Rnd*: TRnd (input)
+- *Rnd*: :class:`TRnd` (input)
 	Random number generator.
 
 Return Value: 

@@ -13,7 +13,7 @@ Parameters:
 - *SrcNId*: int (input)
     The node id for the starting node.
     
-- *DistNbrsV*: TIntFltKdV, a vector of (integer, float) pairs (output)
+- *DistNbrsV*: :class:`TIntFltKdV`, a vector of (integer, float) pairs (output)
     Maps between the distance H (in hops) and the number of nodes reachable in <= H hops.
 
 - *MxDist*: int (input)

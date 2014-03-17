@@ -10,7 +10,7 @@ Parameters:
 - *Graph*: undirected graph (input)
     An undirected Snap.py graph.
 
-- *Cn1ComV*: TCnComV, a vector of connected components (output)
+- *Cn1ComV*: :class:`TCnComV`, a vector of connected components (output)
     The vector of 1-components, each of which consists of a vector of node ids.
 
 Return Value:
@@ -28,5 +28,5 @@ The following example shows how to get the 1-components with
     snap.Get1CnCom(UGraph, CnComs)
 
     for CnCom in CnComs:
-        for NI in component:
+        for NI in CnCom:
             print NI

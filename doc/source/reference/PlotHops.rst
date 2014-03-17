@@ -19,7 +19,7 @@ Parameters:
 - *IsDir*: bool (input)
     Whether the input graph is directed or not.
 
-- *NApprox*: integer (input)
+- *NApprox*: int (input)
     Number of ANF approximations, must be a multiple of eight. The larger this value is, the more accurate the distribution is.
 
 Return value:

@@ -10,6 +10,9 @@
 #	- run swig in Cygwin to generate snap_wrap.cxx and snap.py
 #		make swig-win
 #	- build Snappy solution in Visual Studio to generate _snap.pyd
+#		- open snappy-VS12
+#		- add VC++ include path for snap-core, glib-core
+#		- build
 #	- run setup.py in Cygwin to generate the package,
 #	  NOT OVER SSH, but locally
 #		make dist-win

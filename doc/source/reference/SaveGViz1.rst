@@ -16,7 +16,7 @@ Parameters:
 - *Desc*: string (input)
     Description of the Graph.
 
-- *NIdLabelH*: TIntStrH, a hash table with int keys and string values (input)
+- *NIdLabelH*: :class:`TIntStrH`, a hash table with int keys and string values (input)
     Maps node ids to node string labels.
     
 Return value:
@@ -26,8 +26,8 @@ Return value:
 For more info about Graph Viz see: http://www.graphviz.org.
 
 
-The following example shows how to save for
-:class:`TNGraph`, :class:`TUNGraph`, and :class:`TNEANet`::
+The following example shows how to save graphs of types
+:class:`TNGraph`, :class:`TUNGraph`, and :class:`TNEANet` for GraphViz::
 
     import snap
 

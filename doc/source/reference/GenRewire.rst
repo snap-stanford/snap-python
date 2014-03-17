@@ -13,7 +13,7 @@ Parameters:
 - *NSwitch*: int (input)
     An integer that specifies the number of switches.
 
-- *Rnd*: TRnd (input)
+- *Rnd*: :class:`TRnd` (input)
     Random number generator.
 
 Return value:

@@ -19,7 +19,7 @@ Parameters:
 - *NodeLabels*: bool (input)
     Indicates whether to show the node labels.
 
-- *NIdColorH*: TIntStrH, a hash table with int keys and string values (input)
+- *NIdColorH*: :class:`TIntStrH`, a hash table with int keys and string values (input)
     Maps node ids to node colors (see GraphViz documentation for more details).
 
 Return value:
@@ -29,8 +29,8 @@ Return value:
 For more info about Graph Viz see: http://www.graphviz.org.
 
 
-The following example shows how to save graphs of following types for GraphViz
-:class:`TNGraph`, :class:`TUNGraph`, and :class:`TNEANet`::
+The following example shows how to save graphs of types
+:class:`TNGraph`, :class:`TUNGraph`, and :class:`TNEANet` for GraphViz::
 
     import snap
 

@@ -10,7 +10,7 @@ Parameters:
 - *Graph*: undirected graph (input)
     A Snap.py undirected graph.
 
-- *BiCnComV*: TCnComV, a vector of connected components (output)
+- *BiCnComV*: :class:`TCnComV`, a vector of connected components (output)
     A vector of bi-connected components. Each component is defined by the IDs of its member nodes.  
 
 Return value:
@@ -26,6 +26,6 @@ The following example shows how to print out representations of the bi-connected
     V = snap.TCnComV()
     snap.GetBiCon(UGraph, V)
     for CnCom in V:
-      for NI in CnCom.NIdV:
+      for NI in CnCom:
         print NI
       print "---------------"

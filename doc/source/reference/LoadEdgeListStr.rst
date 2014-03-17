@@ -1,7 +1,7 @@
 LoadEdgeListStr 
 '''''''''''''''
 
-.. function:: Graph LoadEdgeListStr (GraphType, InFNm, SrcColId=0, DstColId=1)
+.. function:: LoadEdgeListStr(GraphType, InFNm, SrcColId=0, DstColId=1)
 
 Loads a (directed, undirected or multi) graph from a text file *InFNm* with 1 edge per line (whitespace separated columns, int node ids).
 
@@ -27,15 +27,15 @@ Return value:
     A Snap.py graph or a network represented by the *InFNm* of type *GraphType*.
 
 
-The following example shows how to load the following from a text file, wiki-vote.txt from http://snap.stanford.edu/data/wiki-Vote.html, where node IDs are strings: :class:`TNGraph`, :class:`TUNGraph`, and :class:`TNEANet`::
+The following example shows how to load the following from a text file, wiki-vote.txt from http://snap.stanford.edu/data/wiki-Vote.html, where node IDs are strings::
 
     import snap
 
     G = snap.LoadEdgeListStr(snap.PNGraph, "Wiki-Vote.txt", 0, 1)
-    print "Number of Nodes:", G.GetNodes()
+    print "Number of Nodes: %d" % G.GetNodes()
 
     G = snap.LoadEdgeListStr(snap.PUNGraph, "Wiki-Vote.txt", 0, 1)
-    print "Number of Nodes:", G.GetNodes()
+    print "Number of Nodes: %d" % G.GetNodes()
 
     G = snap.LoadEdgeListStr(snap.PNEANet, "Wiki-Vote.txt", 0, 1)
-    print "Number of Nodes:", G.GetNodes()
+    print "Number of Nodes: %d" % G.GetNodes()

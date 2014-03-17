@@ -16,7 +16,7 @@ Parameters:
 - *ConfModel*: bool (input)
     Whether the method uses the Configuration model.
 
-- *Rnd*: TRnd (input)
+- *Rnd*: :class:`TRnd` (input)
     Random number generator.
 
 Return value:

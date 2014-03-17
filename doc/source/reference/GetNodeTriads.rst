@@ -29,9 +29,9 @@ The following example shows the number of triads for nodes in
     
     UGraph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
     for NI in UGraph.Nodes():
-        print '%d %d' % (NI.GetId(), snap.GetNodeTriads(Graph, NI.GetId()))
+        print '%d %d' % (NI.GetId(), snap.GetNodeTriads(UGraph, NI.GetId()))
 
     Network = snap.GenRndGnm(snap.PNEANet, 100, 1000)
     for NI in Network.Nodes():
-        print '%d %d' % (NI.GetId(), snap.GetNodeTriads(Graph, NI.GetId()))
+        print '%d %d' % (NI.GetId(), snap.GetNodeTriads(Network, NI.GetId()))
 

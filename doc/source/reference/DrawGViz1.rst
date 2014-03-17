@@ -1,9 +1,5 @@
 DrawGViz
 '''''''''''
-.. note::
-
-    This page is a draft and under revision.
-
 
 .. function:: DrawGViz(Graph, Layout, PltFNm, Desc, NodeLabelH)
 
@@ -23,7 +19,7 @@ Parameters:
 - *Desc*: string (input)
     A string describing the visualization.
     
-- *NodeLabelH*: TIntStrH, a hash table of int keys and string values (input)
+- *NodeLabelH*: :class:`TIntStrH`, a hash table of int keys and string values (input)
     Maps node ids to node labels.
 
 Return value:
@@ -33,7 +29,8 @@ Return value:
 
 The following example shows how to draw the graph for :class:`TNGraph`, :class:`TUNGraph`, and :class:`TNEANet`::
 
-    from snap
+    import snap
+    
     Graph = snap.GenRndGnm(snap.PNGraph, 10, 50)
     labels = snap.TIntStrH()
     for NI in Graph.Nodes():

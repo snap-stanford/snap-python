@@ -23,6 +23,7 @@ Return value:
 
 - None
 
+
 The following example shows how to use :func:`PlotSngValDistr` for :class:`TNGraph`::
 
         import snap

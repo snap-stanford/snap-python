@@ -13,7 +13,7 @@ Parameters:
 - *StartNId*: int (input)
     Starting node id.
 
-- *HopCntV*: TIntPrV, a vector of (int, int) pairs (output)
+- *HopCntV*: :class:`TIntPrV`, a vector of (int, int) pairs (output)
     Vector of (hop distance, number of nodes at that distance) pairs.
 
 - *IsDir*: bool (input)
@@ -37,7 +37,7 @@ The following example shows how to obtain number of nodes for each hop distance 
 
     UGraph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
     NodeVec = snap.TIntPrV()
-    snap.GetNodesAtHops(UGraph, 1, NodeVec, True)
+    snap.GetNodesAtHops(UGraph, 1, NodeVec, False)
     for item in NodeVec:
         print "%d, %d" % (item.GetVal1(), item.GetVal2())
 
