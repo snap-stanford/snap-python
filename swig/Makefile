@@ -58,6 +58,7 @@ install-win: setup.py snap.py _snap.pyd
 dist-win: setup.py snap.py _snap.pyd
 	cp MANIFEST.win MANIFEST
 	/cygdrive/c/Python27/python.exe setup.py sdist
+	chmod 0644 swig/dist/*.zip
 
 clean:
 	rm -f *.o *_wrap.cxx _*.so *.pyc snap.py _snap.*
