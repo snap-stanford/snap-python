@@ -2953,11 +2953,6 @@ class SnapPythonTest(unittest.TestCase):
         SubGraph = snap.ConvertESubGraph(snap.PNEANet, self.NetFull, V)
         self.assertEqual(SubGraph.GetEdges(), V.Len())
 
-
-
-
-
-
-
 if __name__ == '__main__':
   unittest.main()
+

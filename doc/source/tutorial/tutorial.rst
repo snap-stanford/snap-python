@@ -148,8 +148,8 @@ Below are the most commonly used hash table operations:
 
 - print all values in a table using an iterator
 
-  >>> for item in h:
-  >>>     print item.GetKey(), item.GetDat()
+  >>> for key in h:
+  >>>     print key, h[key]
   5 five
   3 four
   9 nine
