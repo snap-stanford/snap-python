@@ -39,8 +39,8 @@ print "h[3] =", h.GetDat(3)
 h.AddDat(3,"four")
 print "h[3] =", h.GetDat(3)
 
-for item in h:
-    print item.GetKey(), item.GetDat()
+for key in h:
+    print key, h[key]
 
 print "----- pair ----- "
 
