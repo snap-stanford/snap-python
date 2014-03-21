@@ -124,11 +124,11 @@ Below are the most commonly used hash table operations:
 
 - add a value to the table. 5 values are added below:
 
-  >>> h.AddDat(5,"five")
-  >>> h.AddDat(3,"three")
-  >>> h.AddDat(9,"nine")
-  >>> h.AddDat(6,"six")
-  >>> h.AddDat(1,"one")
+  >>> h[5] = "five"
+  >>> h[3] = "three"
+  >>> h[9] = "nine"
+  >>> h[6] = "six"
+  >>> h[1] = "one"
 
 - get the number of values in the table:
 
@@ -137,13 +137,13 @@ Below are the most commonly used hash table operations:
 
 - get a value for a specific key
 
-  >>> print "h[3] =", h.GetDat(3)
+  >>> print "h[3] =", h[3]
   h[3] = three
 
 - change a value at a specific key
 
-  >>> h.AddDat(3,"four")
-  >>> print "h[3] =", h.GetDat(3)
+  >>> h[3] = "four"
+  >>> print "h[3] =", h[3]
   h[3] = four
 
 - print all values in a table using an iterator

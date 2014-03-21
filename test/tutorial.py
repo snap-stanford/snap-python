@@ -26,18 +26,18 @@ print "----- hash table ----- "
 
 h = snap.TIntStrH()
 
-h.AddDat(5,"five")
-h.AddDat(3,"three")
-h.AddDat(9,"nine")
-h.AddDat(6,"six")
-h.AddDat(1,"one")
+h[5] = "five"
+h[3] = "three"
+h[9] = "nine"
+h[6] = "six"
+h[1] = "one"
 
 print h.Len()
 
-print "h[3] =", h.GetDat(3)
+print "h[3] =", h[3]
 
-h.AddDat(3,"four")
-print "h[3] =", h.GetDat(3)
+h[3] = "four"
+print "h[3] =", h[3]
 
 for key in h:
     print key, h[key]
