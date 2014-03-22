@@ -3,7 +3,7 @@
 //   PNEANet, PUNGraph, PNGraph are supported,
 //     along with standard SNAP functions.
 
-#define SNAP_ALL 1
+#define SNAP_ALL 0
 
 %pythoncode %{
 Version = "1.0"
@@ -14,6 +14,7 @@ Version = "1.0"
 %{
 
 #include "Snap.h"
+#include "cliques.h"
  
 /* #include "Engine.h" */
 #include "snapswig.h"
@@ -131,6 +132,7 @@ Version = "1.0"
 %include "util.h"
 %include "triad.h"
 %include "statplot.h"
+%include "cliques.h"
 
 // SNAP type definitions
 
@@ -148,6 +150,7 @@ Version = "1.0"
 %template(TIntTrV) TVec<TIntTr>;
 %template(TIntFltKdV) TVec<TIntFltKd>;
 %template(TIntStrPr) TPair<TInt, TStr>;
+%template(TIntIntVV) TVec< TVec< TInt, int >, int >;
 
 #if SNAP_ALL
 //%template(TBoolChPr) TPair<TBool, TCh>;
