@@ -42,8 +42,17 @@ Snap.o:
 cliques.o: 
 	$(CC) $(CXXFLAGS) -c $(SNAPADVDIR)/cliques.cpp -I$(SNAPDIR) -I$(SNAPADVDIR) -I$(GLIBDIR)
 
-_snap.so: snap_wrap.o Snap.o cliques.o
-	g++ $(LDFLAGS) -o _snap.so snap_wrap.o Snap.o cliques.o $(LIBS)
+agm.o: 
+	$(CC) $(CXXFLAGS) -c $(SNAPADVDIR)/agm.cpp -I$(SNAPDIR) -I$(SNAPADVDIR) -I$(GLIBDIR)
+
+agmfast.o: 
+	$(CC) $(CXXFLAGS) -c $(SNAPADVDIR)/agmfast.cpp -I$(SNAPDIR) -I$(SNAPADVDIR) -I$(GLIBDIR)
+
+agmfit.o: 
+	$(CC) $(CXXFLAGS) -c $(SNAPADVDIR)/agmfit.cpp -I$(SNAPDIR) -I$(SNAPADVDIR) -I$(GLIBDIR)
+
+_snap.so: snap_wrap.o Snap.o cliques.o agm.o agmfast.o agmfit.o
+	g++ $(LDFLAGS) -o _snap.so snap_wrap.o Snap.o cliques.o agm.o agmfast.o agmfit.o $(LIBS)
 
 snap.py: snap_wrap.cxx
 

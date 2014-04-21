@@ -6,7 +6,7 @@
 #define SNAP_ALL 0
 
 %pythoncode %{
-Version = "1.0"
+Version = "1.0.2"
 %}
 
 %module snap
@@ -15,6 +15,9 @@ Version = "1.0"
 
 #include "Snap.h"
 #include "cliques.h"
+#include "agm.h"
+#include "agmfast.h"
+#include "agmfit.h"
  
 /* #include "Engine.h" */
 #include "snapswig.h"
@@ -133,6 +136,9 @@ Version = "1.0"
 %include "triad.h"
 %include "statplot.h"
 %include "cliques.h"
+%include "agm.h"
+%include "agmfast.h"
+%include "agmfit.h"
 
 // SNAP type definitions
 
