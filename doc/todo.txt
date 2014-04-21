@@ -1,8 +1,11 @@
 Proposed Features
 Apr 21, 2014
 
+- Add the iterator methods Nodes() and Edges() to the tutorial text
+
 - Convenience methods for graph density and for reversing a directed graph
   (I took a look at the C++ version manual and they don't exist there either)
+
 - A python egg to be able to install the module locally (like with
   easy_install --user with pypi packages)
 
