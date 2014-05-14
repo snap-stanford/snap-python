@@ -3,7 +3,7 @@
 //
 
 /*
-  Instanstiates templates from SNAP for inclusion in RINGO.
+  Instantiates templates from SNAP for inclusion in RINGO.
   Note in Vim, this replaces SNAP Template headers:
  
  :%s#^template.*<class PGraph> \S* \([^(]*\).*#%template(\1) TSnap::\1<PNEANet>;#gc
