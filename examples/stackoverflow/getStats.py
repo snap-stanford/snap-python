@@ -33,35 +33,35 @@ if __name__ == '__main__':
 
     print "\n# of different in-degrees", InDegCntV.Len()
     for item in InDegCntV:
-        print "%d nodes with in-degree %d" % (item.GetVal2(), item.GetVal1())
+        print "in-degree %d, number of nodes %d" % (item.GetVal1(), item.GetVal2())
 
     OutDegCntV = snap.TIntPrV()
     snap.GetOutDegCnt(G, OutDegCntV)
 
     print "\n# of different out-degrees", OutDegCntV.Len()
     for item in OutDegCntV:
-        print "%d nodes with out-degree %d" % (item.GetVal2(), item.GetVal1())
+        print "out-degree %d, number of nodes %d" % (item.GetVal1(), item.GetVal2())
 
     PRankH = snap.TIntFltH()
     snap.GetPageRank(G, PRankH)
     #for item in PRankH:
     #    print item, PRankH[item]
 
-    slist = sorted(PRankH, key = lambda key: float(PRankH[key]), reverse = True)
+    slist = sorted(PRankH, key = lambda key: PRankH[key], reverse = True)
     print "\ntop 10 experts by PageRank"
     for item in slist[:10]:
-            print item,PRankH[item]
+        print "id %7s, pagerank %.6f" % (item, PRankH[item])
 
     NIdHubH = snap.TIntFltH()
     NIdAuthH = snap.TIntFltH()
     snap.GetHits(G, NIdHubH, NIdAuthH)
-    slist = sorted(NIdAuthH, key = lambda key: float(NIdAuthH[key]), reverse = True)
+    slist = sorted(NIdAuthH, key = lambda key: NIdAuthH[key], reverse = True)
     print "\ntop 10 experts by Hits"
     for item in slist[:10]:
-        print item, NIdAuthH[item]
+        print "id %7s, authority rank %.6f" % (item, NIdAuthH[item])
 
-    slist = sorted(NIdHubH, key = lambda key: float(NIdHubH[key]), reverse = True)
+    slist = sorted(NIdHubH, key = lambda key: NIdHubH[key], reverse = True)
     print "\ntop 10 learners by Hits"
     for item in slist[:10]:
-        print item, NIdHubH[item]
+        print "id %7s, hub rank %.6f" % (item, NIdHubH[item])
 
