@@ -1,7 +1,7 @@
 #
 #	Makefile for running 
 #
-PYTHON=env PYTHONPATH=../swig
+PYTHON=env PYTHONPATH=../swig python
 
 all: tneanet epinions
 
@@ -9,7 +9,7 @@ epinions:
 	$(PYTHON) printstat.py data/p2p-Gnutella08.txt epinions
 
 tneanet:
-	$(PYTHON) python tneanet.py 
+	$(PYTHON) tneanet.py 
 
 clean:
 	rm -f test.graph *.txt *.html
