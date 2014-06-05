@@ -94,7 +94,7 @@ def benchmark_ngraph(Graph):
     results['deg_gte_%d_percent' % degree] = percent_deg
 
   # Check for over-weighted nodes
-  results['max_degree'] = snap.MxDegree_PNGraph(Graph)
+  results['max_degree'] = snap.GetMxDegNId(Graph)
 
   num = snap.NodesGTEDegree_PNGraph(Graph, results['max_degree'])
   results['max_degree_num'] = num
@@ -155,9 +155,9 @@ def benchmark_neanet(Graph):
   num = snap.NodesGTEDegree(Graph, results['max_degree'])
   results['max_degree_num'] = num
   
-  results['max_wcc_percent'] = snap.MxWccSz(Graph) \
+  results['max_wcc_percent'] = snap.GetMxWccSz(Graph) \
     / results['num_nodes']
-  results['max_scc_percent'] = snap.MxSccSz(Graph).GetNodes() \
+  results['max_scc_percent'] = snap.GetMxSccSz(Graph).GetNodes() \
     / results['num_nodes']
   
   return results
@@ -174,13 +174,19 @@ def generate_graph(NNodes, NEdges, Model, Type, Rnd):
     
   if Model == 'rand_ungraph':
     # GnRndGnm returns error, so manually generate
-    Graph = snap.GenRndGnm_PUNGraph(NNodes, NEdges, 0)
+    #Graph = snap.GenRndGnm_PUNGraph(NNodes, NEdges, 0)
+    Graph = snap.GenRndGnm(snap.PUNGraph, NNodes, NEdges, 0)
 
   elif Model == 'rand_ngraph':
-    Graph = snap.GenRndGnm_PNGraph(NNodes, NEdges, 1)
+    #Graph = snap.GenRndGnm_PNGraph(NNodes, NEdges, 1)
+    Graph = snap.GenRndGnm(snap.PNGraph, NNodes, NEdges, 1)
       
   elif Model == 'rand_neanet':
-    Graph = snap.GenRndGnm(NNodes, NEdges, 1)
+    print "1", NNodes, NEdges
+    #Graph = snap.GenRndGnm_PNEANet(NNodes, NEdges, 1)
+    Graph = snap.GenRndGnm(snap.PNEANet, NNodes, NEdges, 1)
+    print "2"
+    print "3", Graph.GetNodes(), Graph.GetEdges()
 
   elif Model == 'syn_neanet':
     Graph = snap.GenSyntheticGraph(NNodes, NEdges/NNodes,
