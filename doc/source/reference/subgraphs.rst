@@ -8,8 +8,6 @@ Subgraphs and Graph Type Conversions
    ConvertGraph
    ConvertSubGraph
    ConvertESubGraph
-   ConvertESubGraph1
-   ConvertESubGraph2
    GetSubGraph
    GetSubGraph1
    GetSubTreeSz

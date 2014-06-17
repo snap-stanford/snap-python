@@ -1,42 +1,36 @@
 SaveEdgeList
 ''''''''''''
 
-.. function:: SaveEdgeList(Graph, Filename, Description)
+.. function:: SaveEdgeList(Graph, Filename, Description="")
 
-Saves lists of edges from a given graph into a file.  Each line contains two columns and encodes a single edge.
+Saves lists of edges from a given graph into a file.  Each line contains two columns and encodes a single edge. Creates a file named *Filename*.
 
 Parameters:
 
 - *Graph*: graph (input) 
-    A Snap.py graph or a network
+    A Snap.py graph or a network.
 
 - *Filename*: string (input)
-    the name of the file to save the graph to
+    The name of the file to save the graph to.
 	
 - *Description*: string (input)
-    an optional description that will be written to the top of the file in a commented section
+    An optional description that will be written to the top of the file in a commented section.
 
 Return value: 
 
-- none
+- None
+
 
 The following example shows how to save edge lists with
 :class:`TNGraph`, :class:`TUNGraph`, and :class:`TNEANet`::
 
     import snap
 
-    g = snap.TNGraph.New()
+    Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
+    snap.SaveEdgeList(Graph, 'mygraph.txt')
 
-    g.AddNode(1)
-    g.AddNode(2)
-    g.AddEdge(1,2)
-    g.AddNode(3)
-    g.AddEdge(1,3)
+    UGraph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
+    snap.SaveEdgeList(UGraph, 'undirected_mygraph.txt')
 
-    snap.SaveEdgeList(g, 'mygraph.txt')
-
-    ug = snap.ConvertGraph(snap.PUNGraph, g)
-    snap.SaveEdgeList(ug, 'unordered_mygraph.txt')
-
-    nw = snap.ConvertGraph(snap.PNEANet, g)
-    snap.SaveEdgeList(nw, 'network_mygraph.txt')
+    Network = snap.GenRndGnm(snap.PNEANet, 100, 1000)
+    snap.SaveEdgeList(Network, 'network_mygraph.txt')

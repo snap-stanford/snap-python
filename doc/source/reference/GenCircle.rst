@@ -1,67 +1,42 @@
 GenCircle
 '''''''''
-.. note::
 
-    This page is a draft and under revision.
+.. function:: GenCircle(GraphType, Nodes, OutDegree, IsDir=True)
 
-
-.. function:: GenCircle(Type, NumNodes, OutDegree, IsDirected = true)
-
-Generate a circular graph with *NumNodes* nodes.  The generated graph will have an edge from each node to
-the subsequent *OutDegree* nodes.
-
-If Type is `snap.PUNGraph`, the *IsDirected* parameter is ignored.  If Type is `snap.PNGraph`
-or `snap.PNEANet`, the *IsDirected* parameter controls whether a reciprocal edge is
-created.  If *IsDirected* is `False`, then a reciprocal edge will be created for every edge added to the graph.
-If *IsDirected* is `True`, then the graph will only contain edges from each node to the subsequent
-*OutDegree* nodes.
+Generate a circular graph of type *GraphType* with *Nodes* nodes.  The generated graph will have an edge from each node to the subsequent *OutDegree* nodes.
 
 Parameters:
 
-- *Type*: snap.PGraph (input)
-    The type of the graph to be generated
+- *GraphType*: graph class (input)
+    Class of output graph -- one of :class:`PNGraph`, :class:`PNEANet`, or :class:`PUNGraph`.
 
-- *NumNodes*: int (input)
-    The number of nodes to be created in the graph
+- *Nodes*: int (input)
+    Number of nodes in the generated graph.
 
 - *OutDegree*: int (input)
     The number of edges to be added to each node.  This number does not include reciprocal edges.
 
-- *IsDirected*: boolean (input)
-    Whether the generated graph should be directed. (Optional)
+- *IsDir*: bool (input)
+    Indicates whether the edges should be directed or undirected. Defaults to directed. 
 
 Return value:
 
-- `snap.TGraph`: the generated graph
+- graph
+    A Snap.py graph of the specified type.
 
-The following example shows how to generate a circular graph::
+
+The following example shows how to generate circular graphs for classes :class:`TNGraph`, :class:`TUNGraph`, and :class:`TNEANet`::
 
     import snap
 
-    # Create a new directed graph
-    g = snap.GenCircle(snap.PNGraph, 100, 10)
+    Graph = snap.GenCircle(snap.PNGraph, 100, 10)
+    for EI in Graph.Edges():
+        print "edge: (%d, %d)" % (EI.GetSrcNId(), EI.GetDstNId())
 
-    # Create a new undirected graph
-    u = snap.GenCircle(snap.PUNGraph, 100, 10)
+    UGraph = snap.GenCircle(snap.PUNGraph, 100, 10)
+    for EI in UGraph.Edges():
+        print "edge: (%d, %d)" % (EI.GetSrcNId(), EI.GetDstNId())
 
-    # Create a new directed network
-    n = snap.GenCircle(snap.PNEANet, 100, 10)
-
-Notes:
-
-There is an off-by-one bug in the C++ code that causes the reciprocal edges to point to the wrong nodes.
-For example:
-
->>> g = snap.GenCircle(snap.PNGraph, 3, 1, False)
->>> for n in g.Nodes():
-...   for e in n.GetOutEdges():
-...     print "%d -> %d" % (n.GetId(), e)
-... 
-0 -> 0
-0 -> 1
-1 -> 1
-1 -> 2
-2 -> 0
-2 -> 2
-
-The self edges in this graph should instead be reciprocal edges to the previous node in the circle.
+    Network = snap.GenCircle(snap.PNEANet, 100, 10)
+    for EI in Network.Edges():
+        print "edge: (%d, %d)" % (EI.GetSrcNId(), EI.GetDstNId())

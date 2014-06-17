@@ -1,7 +1,6 @@
 CntUniqBiDirEdges
 '''''''''''''''''
 
-
 .. function:: CntUniqBiDirEdges(Graph)
 
 Returns the number of unique bidirectional edges in the graph *Graph*.
@@ -9,7 +8,7 @@ Returns the number of unique bidirectional edges in the graph *Graph*.
 Parameters:
 
 - *Graph*: graph (input)
-    A Snap.py graph or a network
+    A Snap.py graph or a network.
 
 Return value:
 
@@ -23,13 +22,13 @@ The following example shows how to calculate the number of unique bidirectional 
     import snap
 
     Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
-    count = snap.CntUniqBiDirEdges(Graph)
-    print "Directed Graph: Count of unique bidirectional edges is %d" % count
+    Count = snap.CntUniqBiDirEdges(Graph)
+    print "Directed Graph: Count of unique bidirectional edges is %d" % Count
 
-    Graph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
-    count = snap.CntUniqBiDirEdges(Graph)
-    print "Undirected Graph: Count of unique bidirectional edges is %d" % count
+    UGraph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
+    Count = snap.CntUniqBiDirEdges(UGraph)
+    print "Undirected Graph: Count of unique bidirectional edges is %d" % Count
 
-    Graph = snap.GenRndGnm(snap.PNEANet, 100, 1000)
-    count = snap.CntUniqBiDirEdges(Graph)
-    print "Network Graph: Count of unique bidirectional edges is %d" % count
+    Network = snap.GenRndGnm(snap.PNEANet, 100, 1000)
+    Count = snap.CntUniqBiDirEdges(Network)
+    print "Network Graph: Count of unique bidirectional edges is %d" % Count

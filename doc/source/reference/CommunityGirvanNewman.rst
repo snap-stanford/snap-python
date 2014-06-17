@@ -8,23 +8,24 @@ Uses the Girvan-Newman community detection algorithm based on betweenness centra
 Parameters:
 
 - *Graph*: undirected graph (input)
-    A Snap.py undirected graph
+    A Snap.py undirected graph.
 
-- *CmtyV*: TCnComV, a vector of connected component (output)
-    A vector of all the communities that are detected by the Girvan-Newman method. Each community is represented as a vector of node ids
+- *CmtyV*: :class:`TCnComV`, a vector of connected components (output)
+    A vector of all the communities that are detected by the Girvan-Newman method. Each community is represented as a vector of node ids.
 
 Return value:
 
-- float:
-    The modularity of the network
+- float
+    The modularity of the network.
+
 
 The following example shows how to detect communities using Girvan-Newman algorithm in :class:`TUNGraph`::
 
     import snap
 
-    Graph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
+    UGraph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
     CmtyV = snap.TCnComV()
-    modularity = snap.CommunityGirvanNewman(Graph, CmtyV)
+    modularity = snap.CommunityGirvanNewman(UGraph, CmtyV)
     for Cmty in CmtyV:
         print "Community: "
         for NI in Cmty:

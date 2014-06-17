@@ -1,9 +1,5 @@
 GetBiCon
 ''''''''
-.. note::
-
-    This page is a draft and under revision.
-
 
 .. function:: GetBiCon(Graph, BiCnComV)
 
@@ -11,26 +7,25 @@ Returns all bi-connected components of a Graph.
 
 Parameters:
 
-- *Graph*: graph (input)
-    A Snap.py graph or network.
+- *Graph*: undirected graph (input)
+    A Snap.py undirected graph.
 
-- *BiCnComV*: TCnComV (output)
+- *BiCnComV*: :class:`TCnComV`, a vector of connected components (output)
     A vector of bi-connected components. Each component is defined by the IDs of its member nodes.  
 
 Return value:
 
 - None
 
-The following example shows how to print out representations of the bi-connected components of a :class:`TUNGraph`, but would work with any other type of Snap.py graph or network as well.::
+
+The following example shows how to print out representations of the bi-connected components of a :class:`TUNGraph`::
 
     import snap
 
-    Graph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
-    v = snap.TCnComV()
-    
-    snap.GetBiCon(Graph, v)
-
-    for com in v:
-      for nodeID in com.NIdV:
-        print nodeID
+    UGraph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
+    V = snap.TCnComV()
+    snap.GetBiCon(UGraph, V)
+    for CnCom in V:
+      for NI in CnCom:
+        print NI
       print "---------------"

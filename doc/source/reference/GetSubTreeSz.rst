@@ -1,57 +1,43 @@
 GetSubTreeSz
 ''''''''''''
-.. note::
 
-    This page is a draft and under revision.
-
-
-.. function:: GetSubTreeSz(Graph, StartNId, FollowOut, FollowIn, TreeSz, TreeDepth)
-
-.. note::
-
-    This function is not yet supported.
+.. function:: GetSubTreeSz(Graph, StartNId, FollowOut, FollowIn)
 
 Returns the BFS tree size (number of nodes) and depth (number of
-levels) by following in-links (parameter FollowIn = true) and/or
-out-links (parameter FollowOut = true) of node StartNId.
+levels) by following in-links and/or out-links of node *StartNId*.
 
 Parameters:
 
 - *Graph*: graph (input)
-    The desired degree sequence, sorted in descending order.
+    A Snap.py graph or a network.
 
-- *StartNId*: integer (input)
-    Starting node
+- *StartNId*: int (input)
+    Starting node id.
 
-- *FollowOut*: boolean (input)
-    Whether to follow out-links
+- *FollowOut*: bool (input)
+    Whether to follow out-links.
 
-- *FollowIn*: boolean (input)
-    Whether to follow in-links
-
-- *TreeSz*: integer (output)
-    Number of nodes in the tree
-
-- *TreeDepth*: integer (output)
-    Number of levels in the tree
+- *FollowIn*: bool (input)
+    Whether to follow in-links.
 
 Return value:
 
-- Number of nodes in the tree (same as TreeSz)
+- tuple
+    The tuple is of size 3 and consists of the number of nodes in the tree (twice), and the number of levels in the tree.
 
-This function is not yet implemented, but it might work like this::
+The following example shows how to get the size of the tree starting at node 0 with
+:class:`TNGraph`, :class:`TUNGraph`, and :class:`TNEANet`::
 
     import snap
 
-    G = snap.TNGraph.New()
-    for i in range(5):
-    G.AddNode(i)
-    G.AddEdge(0,1)
-    G.AddEdge(0,2)
-    G.AddEdge(2,3)
-    G.AddEdge(2,4)
+    Graph = snap.GenTree(snap.PNGraph, 3, 3)
+    results = snap.GetSubTreeSz(Graph, 0, True, True)
+    print "Size %d, Depth %d" % (results[0], results[2])
 
-    TreeSz = snap.TInt()
-    TreeDepth = snap.TInt()
-    snap.GetSubTreeSz(G, 0, True, False, TreeSz, TreeDepth)
-    print "Size %d, Depth %d" % (TreeSz, TreeDepth)
+    UGraph = snap.GenTree(snap.PUNGraph, 3, 3)
+    results = snap.GetSubTreeSz(UGraph, 0, True, True)
+    print "Size %d, Depth %d" % (results[0], results[2])
+
+    Network = snap.GenTree(snap.PNEANet, 3, 3)
+    results = snap.GetSubTreeSz(Network, 0, True, True)
+    print "Size %d, Depth %d" % (results[0], results[2])

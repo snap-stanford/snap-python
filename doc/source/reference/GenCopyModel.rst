@@ -1,37 +1,32 @@
 GenCopyModel
 ''''''''''''
-.. note::
 
-    This page is a draft and under revision.
+.. function:: GenCopyModel (Nodes, Beta, Rnd=TRnd)
 
-
-.. function:: GenCopyModel (Nodes, Beta, Rnd=TInt::Rnd)
-
-Generates a random scale-free network using the Copying Model. The generating 
-process operates as follows: Node u is added to a graph, it selects a random 
-node v, and with probability Beta it links to v, with 1-Beta links u links to 
+Generates a random scale-free network with *Nodes* nodes using the Copying Model. The generating process operates as follows: Node u is added to a graph, it selects a random 
+node v, and with probability *Beta* it links to v, with 1 - *Beta* links u links to 
 neighbor of v. 
 
 Parameters:
 
 - *Nodes*: int (input)
-    Number of nodes
+    Number of nodes in the generated graph.
 
-- *Beta*: double (input)
-    Probability used in the generating process
+- *Beta*: float (input)
+    Probability used in the generating process.
 
-- *Rnd*: TRnd (input)
-    Random number generator
+- *Rnd*: :class:`TRnd` (input)
+	Random number generator.
 
 Return value:
 
-- PNGraph
+- directed graph
+    A Snap.py directed graph generated using the Copying Model.
 
-For more info see http://snap.stanford.edu/class/cs224w-readings/kumar00stochastic.pdf
 
-The following example shows how to generate a network using GenCopyModel::
+The following example shows how to generate a :class:`TNGraph` using :func:`GenCopyModel`::
 
     import snap
 
-    result = snap.GenCopyModel(20, 0.4, snap.TRnd())
-    print "resulting graph: Nodes %d, Edges %d" % (result.GetNodes(), result.GetEdges())
+    Graph = snap.GenCopyModel(20, 0.4, snap.TRnd())
+    print "Resulting Graph: Nodes %d, Edges %d" % (Graph.GetNodes(), Graph.GetEdges())

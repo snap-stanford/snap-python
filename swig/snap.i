@@ -6,7 +6,7 @@
 #define SNAP_ALL 0
 
 %pythoncode %{
-Version = "0.8.5"
+Version = "1.0.2"
 %}
 
 %module snap
@@ -14,6 +14,10 @@ Version = "0.8.5"
 %{
 
 #include "Snap.h"
+#include "cliques.h"
+#include "agm.h"
+#include "agmfast.h"
+#include "agmfit.h"
  
 /* #include "Engine.h" */
 #include "snapswig.h"
@@ -124,12 +128,17 @@ Version = "0.8.5"
 %include "gio.h"
 %include "gviz.h"
 %include "hash.h"
+%include "shash.h"
 %include "kcore.h"
 %include "ggen.h"
 %include "subgraph.h"
 %include "util.h"
 %include "triad.h"
 %include "statplot.h"
+%include "cliques.h"
+%include "agm.h"
+%include "agmfast.h"
+%include "agmfit.h"
 
 // SNAP type definitions
 
@@ -147,6 +156,7 @@ Version = "0.8.5"
 %template(TIntTrV) TVec<TIntTr>;
 %template(TIntFltKdV) TVec<TIntFltKd>;
 %template(TIntStrPr) TPair<TInt, TStr>;
+%template(TIntIntVV) TVec< TVec< TInt, int >, int >;
 
 #if SNAP_ALL
 //%template(TBoolChPr) TPair<TBool, TCh>;
@@ -512,6 +522,11 @@ Version = "0.8.5"
 //%template(TTmStrPrV) TVec<TTmStrPr>;
 //%template(TStrTmPrV) TVec<TStrTmPr>;
 
+// ??
+
+%template(TIntSet) THashSet<TInt>;
+%template(TIntHSI) THashSetKeyI <TInt>;
+
 //----------
 
 // SWIG conversion C++ code
@@ -525,6 +540,7 @@ Version = "0.8.5"
 /* Vector and hash interface */
 %include "tvec.i"
 %include "thash.i"
+%include "thashset.i"
 
 /* Graph and network interface */
 %include "pneanet.i"

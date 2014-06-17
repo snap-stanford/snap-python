@@ -8,21 +8,21 @@ Returns degree centrality of a given node *NId* in *Graph*. Degree centrality of
 Parameters:
 
 - *Graph*: undirected graph (input)
-    A Snap.py undirected graph
+    A Snap.py undirected graph.
 
 - *NId*: int (input)
-    Node id
+    A node id in *Graph*.
 
 Return value:
 
 - float
-    The degree centrality of the node *NId* in *Graph*
+    The degree centrality of the node *NId* in *Graph*.
 
 The following example shows how to get the degree centrality for nodes in :class:`TUNGraph`::
 
     import snap
 
-    vGraph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
-    for vNodeIter in vGraph.Nodes():
-        print "%d %f" % (vNodeIter.GetId(), \
-                         snap.GetDegreeCentr(vGraph, vNodeIter.GetId()))
+    UGraph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
+    for NI in UGraph.Nodes():
+        DegCentr = snap.GetDegreeCentr(UGraph, NI.GetId())
+        print "node: %d centrality: %f" % (NI.GetId(), DegCentr)

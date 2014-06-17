@@ -1,7 +1,6 @@
 GetDegCnt
 '''''''''''''''
 
-
 .. function:: GetDegCnt(Graph, DegToCntV)
 
 Computes a degree histogram: a vector of pairs (degree, number of nodes of such degree). The results are stored in *DegToCntV*.
@@ -9,9 +8,9 @@ Computes a degree histogram: a vector of pairs (degree, number of nodes of such 
 Parameters:
 
 - *Graph*: graph (input)
-    A Snap.py graph or a network
+    A Snap.py graph or a network.
 
-- *DegToCntV*: TIntPrV, a vector of (int, int) pairs (output)
+- *DegToCntV*: :class:`TIntPrV`, a vector of (int, int) pairs (output)
     A vector of (degree, number of nodes of such degree) pairs.
 
 Return Value:
@@ -27,16 +26,16 @@ The following examples shows how to obtain the degree histogram for nodes in :cl
     DegToCntV = snap.TIntPrV()
     snap.GetDegCnt(Graph, DegToCntV)
     for item in DegToCntV:
-        print "%d nodes with degree %d" % (item.GetVal1(), item.GetVal2())
+        print "%d nodes with degree %d" % (item.GetVal2(), item.GetVal1())
 
-    Graph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
+    UGraph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
     DegToCntV = snap.TIntPrV()
-    snap.GetDegCnt(Graph, DegToCntV)
+    snap.GetDegCnt(UGraph, DegToCntV)
     for item in DegToCntV:
-        print "%d nodes with degree %d" % (item.GetVal1(), item.GetVal2())
+        print "%d nodes with degree %d" % (item.GetVal2(), item.GetVal1())
 
-    Graph = snap.GenRndGnm(snap.PNEANet, 100, 1000)
+    Network = snap.GenRndGnm(snap.PNEANet, 100, 1000)
     DegToCntV = snap.TIntPrV()
-    snap.GetDegCnt(Graph, DegToCntV)
+    snap.GetDegCnt(Network, DegToCntV)
     for item in DegToCntV:
-        print "%d nodes with degree %d" % (item.GetVal1(), item.GetVal2())
+        print "%d nodes with degree %d" % (item.GetVal2(), item.GetVal1())

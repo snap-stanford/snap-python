@@ -30,9 +30,10 @@ Parameters:
 - *SampleNodes*: int (input)
     If !=-1 then compute clustering coefficient only for a random sample of SampleNodes nodes
 
-Return value: (float)
+Return value:
 
-- The average clustering coefficient
+- float
+    The average clustering coefficient
 
 For more info see: http://en.wikipedia.org/wiki/Watts_and_Strogatz_model
 

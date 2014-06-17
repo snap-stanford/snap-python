@@ -16,7 +16,7 @@ from distutils.core import setup, Extension
 #   determine package parameters:
 #       snap-py version, python version, os version, architecture
 #
-snappy_version = "0.8.5"
+snappy_version = "1.0"
 
 # snap-py version
 snap_version = "dev"

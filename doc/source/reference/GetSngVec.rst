@@ -1,29 +1,21 @@
 GetSngVec
 '''''''''
-.. note::
-
-    This page is a draft and under revision.
-
 
 .. function:: GetSngVec(Graph, LeftSV, RightSV)
-
-.. note::
-
-    This function is not yet supported.
 
 Computes the leading left and right singular vectors of the adjacency matrix
 representing a directed Graph.
 
 Parameters:
 
-- *Graph*: graph (input)
-    A Snap.py directed graph
+- *Graph*: directed graph (input)
+    A Snap.py directed graph.
 
-- *LeftSV*: vector of floats (output)
-    The left singular vector
+- *LeftSV*: :class:`TFltV`, a vector of floats (output)
+    The left singular vector.
 
-- *RightSV*: vector of floats (output)
-    The right singular vector
+- *RightSV*: :class:`TFltV`, a vector of floats (output)
+    The right singular vector.
 
 Return value:
 
@@ -42,9 +34,9 @@ vectors::
     snap.GetSngVec(Graph, LeftSV, RightSV)
 
     print "Left singular vector:"
-    for v in LeftSV:
-      print v
+    for item in LeftSV:
+      print item
 
     print "Right singular vector:"
-    for v in RightSV:
-      print v
+    for item in RightSV:
+      print item

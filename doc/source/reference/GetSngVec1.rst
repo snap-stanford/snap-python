@@ -7,12 +7,16 @@ GetSngVec
 
 .. function:: GetSngVec(Graph, SngVecs, SngValV, LeftSV, RightSV)
 
+.. note::
+
+    This function is not yet supported.
+
 Computes the singular values and left and right singular vectors of the adjacency matrix representing a directed Graph.
 
 Parameters:
 
 - *Graph*: graph (input)
-    A Snap.py graph or a network
+    A Snap.py graph or a network.
 
 - SngVecs: int (input)
     The number of singular values/vectors to compute

@@ -1,60 +1,44 @@
 LoadEdgeList
 ''''''''''''
-.. note::
-
-    This page is a draft and under revision.
-
 
 .. function:: LoadEdgeList(GraphType, InFNm, SrcColId, DstColId)
 
-    |  Loads a (directed, undirected or multi) graph from a text file InFNm with 1 edge per line (whitespace separated columns, integer node ids).
+Loads a (directed, undirected or multi) graph from a text file *InFNm* with 1 edge per line (whitespace separated columns, int node ids).
 
-    |  Loads the format saved by SaveEdgeList()
-
-    |  Whitespace separated file of several columns: ... <source node id> ... <destination node id> ...
-    |  SrcColId and DstColId are column indexes of source/destination (integer!) node ids.
-    |  This means there is one edge per line and node IDs are assumed to be integers.
-
+*InFNm* is a whitespace separated file of several columns: ... <source node id> ... <destination node id> ... Since the function assumes each line of the file encodes a single edge and a line in the file can have more than 2 columns, *SrcColId* and *DstColId* must be provided to indicate which column gives the source and which column gives the destination of the edge.
 
 Parameters:
 
-- *GraphType*: Type of the graph (input)
-    |  Possible values are :
-    |  :class:`PUNGraph` for Undirected Graphs
-    |  :class:`PNGraph`  for Directed   Graphs
-    |  :class:`PNEANet`  for Directed Node-Edge Networks
+- *GraphType*: graph class (input)
+    Class of output graph -- one of :class:`PNGraph`, :class:`PNEANet`, or :class:`PUNGraph`.
 
-- *InFNm*: a string containing the file name (input)
-    The file name of the file which contains the edges
+- *InFNm*: string (input)
+    Filename with the description of the graph edges.
 
-- *SrcColId*: Source column number  (input)
-    |  The column number in the file, which contains the node id representing the source vertex
+- *SrcColId*: int (input)
+    The column number in the file, which contains the node id representing the source vertex.
 
-- *DstColId*: Destination column number  (input)
-    |  The column number in the file, which contains the node id representing the destination vertex
+- *DstColId*: int (input)
+    The column number in the file, which contains the node id representing the destination vertex.
 
 Return value:
 
-- A Snap.py graph or a network represented by the InFNm of type "GraphType"
+- graph
+    A Snap.py graph or a network represented by the *InFNm* of type *GraphType*.
 
 
-**Example:**
-
-The following example shows how to load a small file representing a directed graph::
+The following example shows how to load a small file representing a graph::
 
     import snap;
 
-    #Load Directed Graph
     Graph = snap.LoadEdgeList(snap.PNGraph, "toy_graph", 0, 1)
     Graph.Dump()
 
-    #Load Undirected Graph
-    Graph = snap.LoadEdgeList(snap.PNGraph, "toy_graph", 0, 1)
-    Graph.Dump()
+    UGraph = snap.LoadEdgeList(snap.PUNGraph, "toy_graph", 0, 1)
+    UGraph.Dump()
 
-    #Load Node Edge Network
-    Graph = snap.LoadEdgeList(snap.PNGraph, "toy_graph", 0, 1)
-    Graph.Dump()
+    Network = snap.LoadEdgeList(snap.PNEANet, "toy_graph", 0, 1)
+    Network.Dump()
 
 
 An example file is given below (toy_graph) ::

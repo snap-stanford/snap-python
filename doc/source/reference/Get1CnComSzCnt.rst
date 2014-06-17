@@ -1,37 +1,30 @@
 Get1CnComSzCnt
 ''''''''''''''
-.. note::
-
-    This page is a draft and under revision.
-
 
 .. function:: Get1CnComSzCnt (Graph, SzCntV)
 
-Distribution of sizes of 1-components, maximal number of components that can be disconnected from the Graph by removing a single edge.
+Returns a distribution of sizes of 1-components: maximal connected components of that can be disconnected from the *Graph* by removing a single edge.
 
 Parameters:
 
-- *Graph*: PUNGraph - undirected graph (input)
-    A Snap.py undirected graph (PUNGraph)
+- *Graph*: undirected graph (input)
+    A Snap.py undirected graph.
 
-- *SzCntV*: TIntPrV vector of (int, int) pairs (output)
-    Hop count vector
+- *SzCntV*: :class:`TIntPrV`, a vector of (int, int) pairs (output)
+    A vector of pairs (number of nodes in the 1-component, number of such components).
 
 Return value:
 
 - None
 
-We find such components as follows: Find all bridge edges, remove them from the Graph, find largest component K and add back all bridges that do not touch K. Now, find the connected components of this graph.
 
 The following example shows how to get distribution of sizes of 1-components in  :class:`TUNGraph`::
 
     import snap
 
-    # generate random graph
-    Graph = snap.GenRndGnm(snap.PUNGraph, 1000, 1000)
-    # initialize size count vector of pairs (int, int)
-    SzCntV = snap.TIntPrV()
-    snap.Get1CnComSzCnt(Graph, SzCntV)
+    UGraph = snap.GenRndGnm(snap.PUNGraph, 100, 100)
+    szCntV = snap.TIntPrV()
 
-    for item in SzCntV:
-        print item.Val1(), item.Val2()
+    snap.Get1CnComSzCnt(UGraph, szCntV)
+    for item in szCntV:
+        print "%d, %d" % (item.GetVal1(), item.GetVal2())

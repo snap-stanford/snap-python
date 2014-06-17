@@ -7,6 +7,10 @@ GetEigVec
 
 .. function:: GetEigVec(Graph, EigVecs, EigValV, EigVecV)
 
+.. note::
+
+    This function is not yet supported.
+
 Computes top EigVecs eigenvalues and eigenvectors of the adjacency matrix representing a given undirected Graph.
 
 Parameters:
@@ -17,10 +21,10 @@ Parameters:
 - *EigVecs*: int (input)
     Rank of eigenvalues and eigenvectors that should be outputted.
 
-- *EigValV*: TFlt (output)
+- *EigValV*: TFltV, a vector of floats (output)
     Eigenvalues.
 
-- *EigVecV*: TFltV (output)
+- *EigVecV*: TVec<TFltV> (output)
     Eigenvectors.
 
 Return value:

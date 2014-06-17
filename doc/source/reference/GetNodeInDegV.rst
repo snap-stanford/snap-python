@@ -1,7 +1,6 @@
 GetNodeInDegV
 '''''''''''''''
 
-
 .. function:: GetNodeInDegV(Graph, NIdInDegV)
 
 Computes the in-degree for every node in *Graph*. 
@@ -10,9 +9,9 @@ The result is stored in *NIdInDegV*, a vector of pairs (node id, node in degree)
 Parameters:
 
 - *Graph*: graph (input)
-	A Snap.py graph or a network
+	A Snap.py graph or a network.
 
-- *NIdInDegV*: TIntPrV, a vector or (int, int) pairs (output)
+- *NIdInDegV*: :class:`TIntPrV`, a vector or (int, int) pairs (output)
 	A vector of (node id, node in-degree) pairs.
 
 Return value:
@@ -30,14 +29,14 @@ The following example shows how to use :func:`GetNodeInDegV` with nodes in :clas
     for item in InDegV:
         print "node ID %d: in-degree %d" % (item.GetVal1(), item.GetVal2())
 
-    Graph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
+    UGraph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
     InDegV = snap.TIntPrV()
-    snap.GetNodeInDegV(Graph, InDegV)
+    snap.GetNodeInDegV(UGraph, InDegV)
     for item in InDegV:
         print "node ID %d: in-degree %d" % (item.GetVal1(), item.GetVal2())
 
-    Graph = snap.GenRndGnm(snap.PNEANet, 100, 1000)
+    Network = snap.GenRndGnm(snap.PNEANet, 100, 1000)
     InDegV = snap.TIntPrV()
-    snap.GetNodeInDegV(Graph, InDegV)
+    snap.GetNodeInDegV(Network, InDegV)
     for item in InDegV:
         print "node ID %d: in-degree %d" % (item.GetVal1(), item.GetVal2())

@@ -7,6 +7,10 @@ GetNodeTriads
 
 .. function:: GetNodeTriads(Graph, NId, GroupSet, InGroupEdges, InOutGroupEdges, OutGroupEdges)
 
+.. note::
+
+    This function is not yet supported.
+
 Returns the number of triads between a node NId and a subset of its neighbors GroupSet
 
 Parameters:

@@ -8,17 +8,18 @@ Computes *SngVals* largest singular values of the adjacency matrix representing 
 Parameters:
 
 - *Graph*: directed graph (input)
-    A Snap.py directed graph
+    A Snap.py directed graph.
 
 - *SngVals*: int (input)
-    number of singular values
+    The number of singular values to compute.
 
-- *SngValV*: TFltV, a vector of floats (output)
-    Vector of singular values
+- *SngValV*: :class:`TFltV`, a vector of floats (output)
+    The vector of singular values.
 
 Return value:
 
 - None
+
 
 The following example shows how to calculate singular values for :class:`TNGraph`::
 

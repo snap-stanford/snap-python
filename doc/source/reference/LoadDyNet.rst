@@ -7,15 +7,16 @@ Loads a directed network in the DyNetML format. Loads only the first network in 
 
 Parameters:
 
-- *FNm*: string (input)
-    File name
+- *InFNm*: string (input)
+    Filename with the description of the graph.
 
 Return value:
 
-- PNGraph
-    A directed Snap.py graph
+- directed graph
+    A directed Snap.py graph.
 
 For more info, see ORA Network Analysis Data (http://www.casos.cs.cmu.edu/computational_tools/data2.php) 
+
 
 The following example shows how to get PNGraph object for nodes in
 :class:`TNGraph`::
@@ -23,13 +24,13 @@ The following example shows how to get PNGraph object for nodes in
     import snap
     import sys
     
-    Gout = snap.GenRndGnm(snap.PNGraph, 100, 1000)
+    GOut = snap.GenRndGnm(snap.PNGraph, 100, 1000)
     
     fname = "test.xml"
     f = open(fname, "w")
     f.write("<network>\n")
     
-    for EI in Gout.Edges():
+    for EI in GOut.Edges():
         src = EI.GetSrcNId()
         dst = EI.GetDstNId()
         f.write("\t<link source='" + str(src) + "' target='" + str(dst) + "'/> \n")
@@ -37,7 +38,7 @@ The following example shows how to get PNGraph object for nodes in
     f.write("</network>\n")
     f.close()
     
-    Gin = snap.LoadDyNet(fname)
+    GIn = snap.LoadDyNet(fname)
     
-    if (Gin.GetNodes() == Gout.GetNodes()):
-        print ("true");
+    if (GIn.GetNodes() == GOut.GetNodes()):
+        print ("true")

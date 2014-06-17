@@ -5,7 +5,7 @@ GetTriads
     This page is a draft and under revision.
 
 
-.. function:: GetTriads(Graph, NIdCOTriadV, SampleNodes = -1)
+.. function:: GetTriads(Graph, NIdCOTriadV, SampleNodes=-1)
 
 .. note::
 

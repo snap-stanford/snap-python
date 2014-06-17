@@ -16,24 +16,24 @@ Returns the (approximation of the) Effective Diameter and the Diameter of Graph 
 Parameters:
 
 - *Graph*: graph (input)
-    A Snap.py graph or a network
+    A Snap.py graph or a network.
 
-- NTestNodes: int (input)
-    The number of random start nodes to use in the BFS used to calculate the graph diameter and effective diameter
+- *NTestNodes*: int (input)
+    The number of random start nodes to use in the BFS used to calculate the graph diameter and effective diameter.
 
-- IsDir: boolean (input)
-    false: ignore edge directions and consider edges/paths as undirected(in case they are directed)
-    true: consider edges/paths as directed
+- *IsDir*: bool (input)
+    Indicates whether the edges should be considered directed or undirected.
 
-- EffDiam: float (output)
-    The computed effective diameter will be stored in EffDiam
+- *EffDiam: float* (output)
+    The computed effective diameter will be stored in EffDiam.
 
 - FullDiam: float (output)
-    The computed full diameter will be stored in FullDiam
+    The computed full diameter will be stored in FullDiam.
 
 Return value:
 
-- The effective diameter of the graph (same value as EffDiam)
+- float
+    The effective diameter of the graph (same value as EffDiam)
 
 The following example shows how to fetch the in-degrees for nodes in
 :class:`TNGraph`, :class:`TUNGraph`, and :class:`TNEANet`::

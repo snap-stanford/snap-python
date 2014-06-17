@@ -8,23 +8,24 @@ Plots the cumulative distribution of the shortest path lengths of *Graph*. The i
 Parameters:
 
 - *Graph*: graph (input)
-    A Snap.py graph or a network
+    A Snap.py graph or a network.
 
 - *FNmPref*: string (input)
-    A string representing the preferred output file name
+    A string representing the preferred output file name.
 
 - *DescStr*: string (input)
-    Description of the graph. The string should be non-empty
+    Description of the graph. The string should be non-empty.
 
 - *IsDir*: bool (input)
-    Whether the input graph is directed or not
+    Whether the input graph is directed or not.
 
-- *NApprox*: integer (input)
+- *NApprox*: int (input)
     Number of ANF approximations, must be a multiple of eight. The larger this value is, the more accurate the distribution is.
 
 Return value:
 
 - None
+
 
 The following example shows how to plot the cumulative distribution of shortest path lengths for graphs of types :class:`TNGraph`, :class:`TUNGraph`, and :class:`TNEANet`::
 
@@ -33,8 +34,8 @@ The following example shows how to plot the cumulative distribution of shortest 
     Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
     snap.PlotHops(Graph, "example", "Directed graph - hops", True, 1024)
 
-    Graph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
-    snap.PlotHops(Graph, "example", "Undirected graph - hops", False, 1024)
+    UGraph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
+    snap.PlotHops(UGraph, "example", "Undirected graph - hops", False, 1024)
 
-    Graph = snap.GenRndGnm(snap.PNEANet, 100, 1000)
-    snap.PlotHops(Graph, "example", "Network - hops", True, 1024)
+    Network = snap.GenRndGnm(snap.PNEANet, 100, 1000)
+    snap.PlotHops(Network, "example", "Network - hops", True, 1024)

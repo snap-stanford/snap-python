@@ -20,7 +20,7 @@ for i in range(0, v.Len()):
 
 print "--------- 3"
 for i in range(0, v.Len()):
-    print v.GetVal(i)
+    print "__getval__", v.GetVal(i), v[i]
 
 print "--------- 4"
 v = snap.TIntV()
@@ -34,7 +34,10 @@ v.Add(5)
 print v.Len()
 print v[2]
 
-v.SetVal(2, 2*v[2])
+v.SetVal(3, 2*v[2])
+v[4] = 2*v[2]
+print "__setval__", v[3], v[4]
+
 print v[2]
 
 for item in v:

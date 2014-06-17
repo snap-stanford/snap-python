@@ -8,13 +8,13 @@ Plots the rank distribution of singular values of the Graph adjacency matrix. Pl
 Parameters:
 
 - *Graph*: directed graph (input)
-    A Snap.py directed graph
+    A Snap.py directed graph.
 
 - *SngVals*: int (input)
-    Number of largest singular values to plot
+    Number of largest singular values to plot.
 
 - *FNmPref*: string (input)
-    File name preference for the plotted graph
+    File name preference for the plotted graph.
 
 - *DescStr*: string (input)
     Description of the graph. The string should be non-empty.
@@ -23,9 +23,10 @@ Return value:
 
 - None
 
+
 The following example shows how to plot the rank distribution of singular values of the Graph adjacency matrix for :class:`TNGraph`::
 
     import snap
 
-    graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
-    snap.PlotSngValRank(graph, 100, "filename", "Singular Value Distribution")
+    Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
+    snap.PlotSngValRank(Graph, 100, "filename", "Singular Value Distribution")
