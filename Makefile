@@ -4,6 +4,8 @@
 
 .PHONY: swig test examples
 
+build: swig
+
 #all: swig-r swig-sw test examples
 all: swig test examples
 
