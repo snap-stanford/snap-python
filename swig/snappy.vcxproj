@@ -81,7 +81,7 @@
     <OutDir>$(SolutionDir)</OutDir>
     <TargetName>_snap</TargetName>
     <TargetExt>.pyd</TargetExt>
-    <IncludePath>S:\snap-core;S:\glib-core;$(IncludePath)</IncludePath>
+    <IncludePath>S:\snap-core;S:\glib-core;S:\snap-adv;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -152,6 +152,10 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\snap\snap-adv\agm.cpp" />
+    <ClCompile Include="..\..\snap\snap-adv\agmfast.cpp" />
+    <ClCompile Include="..\..\snap\snap-adv\agmfit.cpp" />
+    <ClCompile Include="..\..\snap\snap-adv\cliques.cpp" />
     <ClCompile Include="..\..\snap\snap-core\Snap.cpp" />
     <ClCompile Include="snap_wrap.cxx">
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|x64'">WIN32;NDEBUG;SW_SNAPPY;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
