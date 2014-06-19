@@ -13,12 +13,45 @@ import sys
 from distutils.core import setup, Extension
 
 #
-#   determine package parameters:
-#       snap-py version, python version, os version, architecture
+#   Snap.py version
 #
-snappy_version = "1.0"
+snappy_version = "1.0.4"
 
-# snap-py version
+def getdynpath():
+    '''
+    get the path for the Python dynamic library
+    '''
+ 
+    s = inspect.getfile(inspect)
+
+    newpath = None
+    if "anaconda" in s:
+        start = s.find("anaconda/lib")
+        if start > 0:
+            newpath = s[:start] + "anaconda/lib/" + "libpython2.7.dylib"
+    elif "Cellar" in s:
+        start = s.find("Python.framework")
+        if start > 0:
+            newpath = s[:start] + "Python.framework/Python"
+
+    return newpath
+    
+# is this a dry run
+dryrun = False
+if len(sys.argv) > 1  and  sys.argv[1] == "-n":
+    dryrun = True
+
+# is this a distribution build
+sdist = False
+if len(sys.argv) > 1  and  sys.argv[1] == "sdist":
+    sdist = True
+
+#
+#   determine package parameters:
+#       package version, python version, os version, architecture
+#
+
+# snap version
 snap_version = "dev"
 try:
     f = open("Version","r")
@@ -116,11 +149,31 @@ for p in sys.path:
         user_install = os.path.join(p[:n],instdir)
         break
 
-#print "swubuntu", swubuntu
-#print "pkg_version", pkg_version
-#print "obj_name", obj_name
-#print "user_install", user_install
-#sys.exit(0)
+# if Mac OS X, get a path for the Python dynamic library
+dynlib_path = None
+if uname[0] == "Darwin":
+    dynlib_path = getdynpath()
+
+if dryrun:
+    print "swubuntu", swubuntu
+    print "pkg_version", pkg_version
+    print "obj_name", obj_name
+    print "user_install", user_install
+    if dynlib_path:
+        print "dynlib_path", dynlib_path
+    sys.exit(0)
+
+# specify additional files for Mac OS X
+files = []
+if uname[0] == "Darwin"  and  sdist:
+    files = ["install_name_tool", "update_dynlib.sh"]
+
+#
+#   update the dynamic library path
+#
+if dynlib_path:
+    cmd = "./update_dynlib.sh " + dynlib_path
+    os.system(cmd)
 
 #
 #   setup configuration
@@ -130,6 +183,7 @@ setup (name = 'snap',
     py_modules  = ["snap"],
     #ext_modules = [snap_module],
     data_files  = [(user_install, [obj_name])],
+    scripts     = files,
     version     = pkg_version,
     author      = "snap.stanford.edu",
     description = """SNAP (Stanford Network Analysis Platform) Python""",

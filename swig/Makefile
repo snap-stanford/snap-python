@@ -60,7 +60,7 @@ install: setup.py snap.py _snap.so
 	sudo python setup.py install
 
 dist: setup.py snap.py _snap.so
-	cp MANIFEST.nx MANIFEST
+	cp $(MANIFEST) MANIFEST
 	python setup.py sdist
 
 swig-win: snap_wrap.cxx
@@ -69,7 +69,7 @@ install-win: setup.py snap.py _snap.pyd
 	/cygdrive/c/Python27/python.exe setup.py install
 
 dist-win: setup.py snap.py _snap.pyd
-	cp MANIFEST.win MANIFEST
+	cp $(MANIFEST) MANIFEST
 	/cygdrive/c/Python27/python.exe setup.py sdist
 	chmod 0644 dist/*.zip
 
