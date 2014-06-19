@@ -8,15 +8,16 @@ of Python. Most of the SNAP functionality is available via Snap.py in Python.
 
 This file contains a high-level description of changes in Snap.py releases.
 
-Release 2.3, Jun 16, 2014
+Release 1.1, Jun 16, 2014
 
+- updated C++ codebase to SNAP 2.3
+- added support for installation with Anaconda or Homebrew python on Mac
+- added StackOverflow example
 - added AGM related functionality for community detection
 - added clique percolation method for community detection
 - added a test program and data for clique percolation method for
   community detection
 - added OpenMP support
-- added StackOverflow example
-- added support for installation with Anaconda or Homebrew python on Mac
 - added more comprehensive tests
 - updated TVec and THash samples
 - added README.txt
@@ -25,5 +26,6 @@ Release 2.3, Jun 16, 2014
 
 Release 1.0, Mar 20, 2014
 
-initial public release of Snap.py
+- initial public release of Snap.py
+- included C++ codebase SNAP 2.2
 
