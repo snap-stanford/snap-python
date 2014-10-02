@@ -808,7 +808,7 @@ An iterator over the values in a :class:`THash` object. Normally, these objects 
 
      .. describe:: Next()
 
-        Returns an iterator starting at the next key-value pair in the :class:`THash`.
+        Updates the iterator to point to the next key-value pair in the :class:`THash`.
 
      .. describe:: IsEmpty()
 
@@ -835,7 +835,7 @@ An iterator over the values in a :class:`THash` object. Normally, these objects 
       >>> it = h1.BegI()
       >>> while not it.IsEnd():
       >>>     print it.GetKey(), it.GetDat()
-      >>>     it = it.Next()
+      >>>     it.Next()
       0 1
       1 2
       2 3
