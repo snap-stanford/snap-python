@@ -11,35 +11,34 @@ Parameters:
     A Snap.py graph or a network.
 
 - *Desc*: string (input)
-    Graph description.
+    Graph description. Do not provide an empty string "" for this parameter, it might cause your program to crash.
 
 - *OutFNm*: string (input)
-    Optional file name for output. By default or if specified as "", output is printed to stdout.
+    Optional file name for output. If not specified, output is printed to standard output. Do not provide an empty string "" for this parameter, it might cause your program to crash.
+
 
 - *Fast*: bool (input)
-    Optional flag specifing whether basic (True) or extended (False) statistics should be printed.
+    Optional flag specifing whether basic (True) or extended (False) statistics should be printed. Currently, it is not possible to have extended statistics printed out to standard output, since *OutFNm* must be non-empty, if specified.
 
 Return value:
 
 - None
 
 
-The following example shows how to output extensive graph statistics to
-standard output for random graphs of type :class:`TNGraph`, :class:`TUNGraph`, and :class:`TNEANet`::
+The following example shows how to calculate graph statistics
+for random graphs of type :class:`TNGraph`, :class:`TUNGraph`, and :class:`TNEANet`::
 
     import snap
 
-    output_file = ""
-    fast = False
-
+    # print extended statistics to file 'info-pngraph.txt'
     Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
-    prefix = "Python type PNGraph"
-    snap.PrintInfo(Graph, prefix, output_file, fast)
+    snap.PrintInfo(Graph, "Python type PNGraph", "info-pngraph.txt", False)
 
+    # print basic statistics to file 'info-pungraph.txt'
     UGraph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
-    prefix = "Python type PUNGraph"
-    snap.PrintInfo(UGraph, prefix, output_file, fast)
+    snap.PrintInfo(UGraph, "Python type PUNGraph", "info-pungraph.txt")
 
+    # print basic statistics to standard output
     Network = snap.GenRndGnm(snap.PNEANet, 100, 1000)
-    prefix = "Python type PNEANet"
-    snap.PrintInfo(Network, prefix, output_file, fast)
+    snap.PrintInfo(Network, "Python type PNEANet")
+
