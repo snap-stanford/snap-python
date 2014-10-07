@@ -1064,6 +1064,18 @@ An iterator over the values in a :class:`THashSet` object. Normally, these objec
 
    The following public functions are supported by the :class:`THashSetKeyI` class:
 
+     .. describe:: Next()
+
+        Updates the iterator to point to the next key-value pair in the :class:`THash`.
+
+     .. describe:: IsEmpty()
+
+        Returns a bool indicating whether the iterator is empty.
+
+     .. describe:: IsEnd()
+
+        Returns a bool indicating whether the end of the iterator has been reached.
+        
      .. describe:: GetKey()
 
         Get the key at the current position in the iterator.
