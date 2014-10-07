@@ -14,11 +14,11 @@ Parameters:
     Graph description. Do not provide an empty string "" for this parameter, it might cause your program to crash.
 
 - *OutFNm*: string (input)
-    Optional file name for output. If not specified, output is printed to standard output. Do not provide an empty string "" for this parameter, it might cause your program to crash.
+    Optional file name for output. If not specified, output is printed to standard output. Do not provide an empty string "" for this parameter, it might cause your program to crash. To print to standard output on Mac OS X or Linux, provide "/dev/stdout" as a file name. This method does not work on Windows.
 
 
 - *Fast*: bool (input)
-    Optional flag specifing whether basic (True) or extended (False) statistics should be printed. Currently, it is not possible to have extended statistics printed out to standard output, since *OutFNm* must be non-empty, if specified.
+    Optional flag specifing whether basic (True) or extended (False) statistics should be printed. Currently, it is not possible to have extended statistics printed out to standard output on Windows, since *OutFNm* must be non-empty, if specified.
 
 Return value:
 
