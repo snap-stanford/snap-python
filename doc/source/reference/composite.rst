@@ -1011,10 +1011,6 @@ Hash sets contain keys are of the same type. Specific keys can be accessed throu
 
         Returns a bool indicating whether there is a key in the hash table with id *KeyId*.
 
-     .. describe:: GetDat(Key)
-
-        Returns the value in the hash table that *Key* maps to.
-
      .. describe:: FFirstKeyId()
 
         Returns 1 less than the smallest key id.

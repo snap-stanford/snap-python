@@ -20,25 +20,19 @@ class IterHashSet:
     def __init__(self, hash):
         self.hash = hash
         self.vec = None
-        self.iter = None
-        self.count = 0
+        self.count = -1
 
     def __iter__(self):
         return self
 
     def next(self):
-        if not self.iter or not self.vec:
+        if not self.vec:
             self.vec = TIntV()
             self.hash.GetKeyV(self.vec)
-            self.count = 0
-
-        if self.count >= self.vec.Len():
-            raise StopIteration
-
-        self.iter = self.vec.GetVal(self.count)
-        self.count += 1
-     
-        return self.iter
+        if self.count + 1 < self.vec.Len():
+            self.count += 1
+            return self.vec[self.count]
+        raise StopIteration
 
 def iterhashset(self):
     return IterHashSet(self)
