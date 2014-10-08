@@ -151,7 +151,7 @@ vector. All of the following methods are available for objects that are classifi
 
      .. describe:: Val in V
 
-        Return ``True`` if *Val* is a value stored in vector *V*, else ``False``.
+        Returns ``True`` if *Val* is a value stored in vector *V*, else ``False``.
 
      .. describe:: Val not in V
 
@@ -542,7 +542,7 @@ Hash tables contain values of the same type. Each value has a user provided key 
 
      .. describe:: Key in H
 
-        Return ``True`` if *Key* is a key in hash table *H*, else ``False``.
+        Returns ``True`` if *Key* is a key in hash table *H*, else ``False``.
 
      .. describe:: Key not in H
 
@@ -888,7 +888,7 @@ Hash sets contain keys are of the same type. Specific keys can be accessed throu
 
      .. describe:: Key in HS
 
-        Return ``True`` if *Key* is a key in hash set *HS*, else ``False``.
+        Returns ``True`` if *Key* is a key in hash set *HS*, else ``False``.
 
      .. describe:: Key not in HS
 
@@ -1011,10 +1011,6 @@ Hash sets contain keys are of the same type. Specific keys can be accessed throu
 
         Returns a bool indicating whether there is a key in the hash table with id *KeyId*.
 
-     .. describe:: GetDat(Key)
-
-        Returns the value in the hash table that *Key* maps to.
-
      .. describe:: FFirstKeyId()
 
         Returns 1 less than the smallest key id.
@@ -1068,9 +1064,21 @@ An iterator over the values in a :class:`THashSet` object. Normally, these objec
 
    The following public functions are supported by the :class:`THashSetKeyI` class:
 
+     .. describe:: Next()
+
+        Updates the iterator to point to the next key-value pair in the :class:`THashSet`.
+
+     .. describe:: IsEmpty()
+
+        Returns ``True``, if the iterator is empty, else ``False``.
+
+     .. describe:: IsEnd()
+
+        Returns ``True``, if the end of the iterator has been reached, else ``False``.
+        
      .. describe:: GetKey()
 
-        Get the key at the current position in the iterator.
+        Returns the key at the current position in the iterator.
 
    Below is some code demonstrating the use of the :class:`THashSetKeyI` type:
 

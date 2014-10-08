@@ -19,25 +19,32 @@ def contains_hashset(self, key):
 class IterHashSet:
     def __init__(self, hash):
         self.hash = hash
-        self.vec = None
         self.iter = None
-        self.count = 0
 
     def __iter__(self):
         return self
 
     def next(self):
-        if not self.iter or not self.vec:
-            self.vec = TIntV()
-            self.hash.GetKeyV(self.vec)
-            self.count = 0
+        if self.hash.Len() == 0:
+            raise StopIteration
+        if not self.iter:
+            self.iter = self.hash.BegI()
+            if not self.iter:
+                raise StopIteration
+            if self.iter:
+                return self.iter.GetKey()
+            return self.iter
 
-        if self.count >= self.vec.Len():
+        if self.iter.IsEnd():
             raise StopIteration
 
-        self.iter = self.vec.GetVal(self.count)
-        self.count += 1
-     
+        self.iter.Next()
+
+        if self.iter.IsEnd():
+            raise StopIteration
+
+        if self.iter:
+            return self.iter.GetKey()
         return self.iter
 
 def iterhashset(self):
