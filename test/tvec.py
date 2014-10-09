@@ -3,7 +3,9 @@ import snap
 #v = TIntV.GetV(TInt(11),TInt(12),TInt(13),TInt(14),TInt(15))
 v = snap.TIntV.GetV(11,12,13,14,15)
 
-print v[2]
+print "length", v.Len()
+print "v[2]", v[2]
+
 
 try:
     print v[5]
