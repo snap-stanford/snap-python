@@ -249,7 +249,7 @@ def ManipulateNodeEdgeAttributes():
 
   print "Average: %i (should be 70)" % (total/NNodes)
 
-  # Test verticaliterator for edge
+  # Test vertical iterator for edge
   Graph.AddIntAttrDatE(3, 3*2, attr2)
   Graph.AddIntAttrDatE(55, 55*2, attr2)
   Graph.AddIntAttrDatE(705, 705*2, attr2)

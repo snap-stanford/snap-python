@@ -1000,10 +1000,7 @@ TNEANetEdgeI
 
       .. describe:: GetId()
 
-        
-
-        Always returns -1 for :class:`TNGraph`, since edges
-        do not have explicit IDs.
+        Returns edge ID. 
 
       .. describe:: GetSrcNId()
 
