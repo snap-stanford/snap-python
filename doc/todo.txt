@@ -1,8 +1,6 @@
 Proposed Features
 Apr 21, 2014
 
-- Add the iterator methods Nodes() and Edges() to the reference text
-
 - Remove AddNode(NodeI) from the reference text
 
 - Convenience methods for graph density and for reversing a directed graph

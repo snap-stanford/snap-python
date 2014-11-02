@@ -48,6 +48,10 @@ TUNGraph
 
         Saves the graph to a binary stream *SOut*. 
 
+     .. describe:: Nodes()
+
+        Returns a generator for the nodes in the graph.
+
      .. describe:: GetNodes()
 
         Returns the number of nodes in the graph. 
@@ -89,6 +93,10 @@ TUNGraph
      .. describe:: GetMxNId()
 
         Returns the maximum ID of a any node in the graph.
+
+     .. describe:: Edges()
+
+        Returns a generator for the edges in the graph.
 
      .. describe:: GetEdges()
 
@@ -323,6 +331,10 @@ TNGraph
 
         Saves the graph to a binary stream *SOut*. 
 
+     .. describe:: Nodes()
+
+        Returns a generator for the nodes in the graph.
+
      .. describe:: GetNodes()
 
         Returns the number of nodes in the graph. 
@@ -365,6 +377,10 @@ TNGraph
      .. describe:: GetMxNId()
 
         Returns the maximum ID of a any node in the graph.
+
+     .. describe:: Edges()
+
+        Returns a generator for the edges in the graph.
 
      .. describe:: GetEdges()
 
@@ -614,6 +630,10 @@ TNEANet
 
         Saves the graph to a binary stream *SOut*. 
 
+     .. describe:: Nodes()
+
+        Returns a generator for the nodes in the graph.
+
      .. describe:: GetNodes()
 
         Returns the number of nodes in the graph. 
@@ -656,6 +676,10 @@ TNEANet
      .. describe:: GetMxNId()
 
         Returns the maximum ID of a any node in the graph.
+
+     .. describe:: Edges()
+
+        Returns a generator for the edges in the graph.
 
      .. describe:: GetEdges()
 
