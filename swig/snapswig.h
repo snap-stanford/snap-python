@@ -10,6 +10,8 @@ public:
   TNGraphNodeI& Next() { NI++; return *this; }
   bool operator < (const TNGraphNodeI& NodeI) const { return NI < NodeI.NI; }
   bool operator == (const TNGraphNodeI& NodeI) const { return NI == NodeI.NI; }
+  /// Returns C++ node iterator.
+  TNGraph::TNodeI GetNI() const { return NI; }
   /// Returns ID of the current node.
   int GetId() const { return NI.GetId(); }
   /// Returns degree of the current node, the sum of in-degree and out-degree.
@@ -45,6 +47,8 @@ public:
   TNGraphEdgeI& Next() { EI++; return *this; }
   bool operator < (const TNGraphEdgeI& EdgeI) const { return EI < EdgeI.EI; }
   bool operator == (const TNGraphEdgeI& EdgeI) const { return EI == EdgeI.EI; }
+  /// Returns C++ edge iterator.
+  TNGraph::TEdgeI GetEI() const { return EI; }
   /// Always returns -1, since edges do not have explicit IDs.
   int GetId() const { return EI.GetId(); }
   /// Returns the ID of the source node of the edge.
@@ -65,6 +69,8 @@ public:
   TUNGraphNodeI& Next() { NI++; return *this; }
   bool operator < (const TUNGraphNodeI& NodeI) const { return NI < NodeI.NI; }
   bool operator == (const TUNGraphNodeI& NodeI) const { return NI == NodeI.NI; }
+  /// Returns C++ node iterator.
+  TUNGraph::TNodeI GetNI() const { return NI; }
   /// Returns ID of the current node.
   int GetId() const { return NI.GetId(); }
   /// Returns degree of the current node, the sum of in-degree and out-degree.
@@ -100,6 +106,8 @@ public:
   TUNGraphEdgeI& Next() { EI++; return *this; }
   bool operator < (const TUNGraphEdgeI& EdgeI) const { return EI < EdgeI.EI; }
   bool operator == (const TUNGraphEdgeI& EdgeI) const { return EI == EdgeI.EI; }
+  /// Returns C++ edge iterator.
+  TUNGraph::TEdgeI GetEI() const { return EI; }
   /// Always returns -1, since edges do not have explicit IDs.
   int GetId() const { return EI.GetId(); }
   /// Returns the ID of the source node of the edge. Since the graph is undirected this is the node with smaller ID of the edge endpoints.
@@ -120,6 +128,8 @@ public:
   TNEANetNodeI& Next() { NI++; return *this; }
   bool operator < (const TNEANetNodeI& NodeI) const { return NI < NodeI.NI; }
   bool operator == (const TNEANetNodeI& NodeI) const { return NI == NodeI.NI; }
+  /// Returns C++ node iterator.
+  TNEANet::TNodeI GetNI() const { return NI; }
   /// Returns ID of the current node.
   int GetId() const { return NI.GetId(); }
   /// Returns degree of the current node, the sum of in-degree and out-degree.
@@ -156,6 +166,8 @@ public:
   TNEANetEdgeI& Next() { EI++; return *this; }
   bool operator < (const TNEANetEdgeI& EdgeI) const { return EI < EdgeI.EI; }
   bool operator == (const TNEANetEdgeI& EdgeI) const { return EI == EdgeI.EI; }
+  /// Returns C++ edge iterator.
+  TNEANet::TEdgeI GetEI() const { return EI; }
   /// Returns edge ID. Only multigraphs have explicit edge IDs.
   int GetId() const { return EI.GetId(); }
   /// Returns the ID of the source node of the edge.

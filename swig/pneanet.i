@@ -11,6 +11,7 @@
 */
 
 %extend TNEANet {
+        // node iterator
         TNEANetNodeI BegNI() {
           return TNEANetNodeI($self->BegNI());
         }
@@ -21,7 +22,34 @@
           return TNEANetNodeI($self->GetNI(NId));
         }
 
+        // add node attribute value
+        int AddIntAttrDatN(const TNEANetNodeI& NI, const TInt& Value, const TStr& Attr) {
+          return $self->AddIntAttrDatN(NI.GetNI(), Value, Attr);
+        }
+        int AddFltAttrDatN(const TNEANetNodeI& NI, const TFlt& Value, const TStr& Attr) {
+          return $self->AddFltAttrDatN(NI.GetNI(), Value, Attr);
+        }
+        int AddStrAttrDatN(const TNEANetNodeI& NI, const TStr& Value, const TStr& Attr) {
+          return $self->AddStrAttrDatN(NI.GetNI(), Value, Attr);
+        }
+
+        // get node attribute value
+        TInt GetIntAttrDatN(const TNEANetNodeI& NI, const TStr& Attr) {
+          return $self->GetIntAttrDatN(NI.GetNI(), Attr);
+        }
+        TFlt GetFltAttrDatN(const TNEANetNodeI& NI, const TStr& Attr) {
+          return $self->GetFltAttrDatN(NI.GetNI(), Attr);
+        }
+        TStr GetStrAttrDatN(const TNEANetNodeI& NI, const TStr& Attr) {
+          return $self->GetStrAttrDatN(NI.GetNI(), Attr);
+        }
+
+        // delete node attribute value
+        int DelAttrDatN(const TNEANetNodeI& NI, const TStr& Attr) {
+          return $self->DelAttrDatN(NI.GetNI(), Attr);
+        }
   
+        // edge iterator
         TNEANetEdgeI BegEI() {
           return TNEANetEdgeI($self->BegEI());
         }
@@ -34,47 +62,74 @@
         TNEANetEdgeI GetEI(const int &SrcNId, const int &DstNId) {
           return TNEANetEdgeI($self->GetEI(SrcNId, DstNId));
         }
+
+        // add edge attributes value
+        int AddIntAttrDatE(const TNEANetEdgeI& EI, const TInt& Value, const TStr& Attr) {
+          return $self->AddIntAttrDatE(EI.GetEI(), Value, Attr);
+        }
+        int AddFltAttrDatE(const TNEANetEdgeI& EI, const TFlt& Value, const TStr& Attr) {
+          return $self->AddFltAttrDatE(EI.GetEI(), Value, Attr);
+        }
+        int AddStrAttrDatE(const TNEANetEdgeI& EI, const TStr& Value, const TStr& Attr) {
+          return $self->AddStrAttrDatE(EI.GetEI(), Value, Attr);
+        }
+
+        // get edge attribute value
+        TInt GetIntAttrDatE(const TNEANetEdgeI& EI, const TStr& Attr) {
+          return $self->GetIntAttrDatE(EI.GetEI(), Attr);
+        }
+        TFlt GetFltAttrDatE(const TNEANetEdgeI& EI, const TStr& Attr) {
+          return $self->GetFltAttrDatE(EI.GetEI(), Attr);
+        }
+        TStr GetStrAttrDatE(const TNEANetEdgeI& EI, const TStr& Attr) {
+          return $self->GetStrAttrDatE(EI.GetEI(), Attr);
+        }
+
+        // delete edge attribute value
+        int DelAttrDatE(const TNEANetEdgeI& EI, const TStr& Attr) {
+          return $self->DelAttrDatE(EI.GetEI(), Attr);
+        }
   
-        TNEANetAIntI BegNAIntI(const TStr& attr) {
-          return TNEANetAIntI($self->BegNAIntI(attr));
+        TNEANetAIntI BegNAIntI(const TStr& Attr) {
+          return TNEANetAIntI($self->BegNAIntI(Attr));
         }
-        TNEANetAIntI EndNAIntI(const TStr& attr) {
-          return TNEANetAIntI($self->EndNAIntI(attr));
-        }
-  
-        TNEANetAStrI BegNAStrI(const TStr& attr) {
-          return TNEANetAStrI($self->BegNAStrI(attr));
-        }
-        TNEANetAStrI EndNAStrI(const TStr& attr) {
-          return TNEANetAStrI($self->EndNAStrI(attr));
+        TNEANetAIntI EndNAIntI(const TStr& Attr) {
+          return TNEANetAIntI($self->EndNAIntI(Attr));
         }
   
-        TNEANetAFltI BegNAFltI(const TStr& attr) {
-          return TNEANetAFltI($self->BegNAFltI(attr));
+        TNEANetAStrI BegNAStrI(const TStr& Attr) {
+          return TNEANetAStrI($self->BegNAStrI(Attr));
         }
-        TNEANetAFltI EndNAFltI(const TStr& attr) {
-          return TNEANetAFltI($self->EndNAFltI(attr));
+        TNEANetAStrI EndNAStrI(const TStr& Attr) {
+          return TNEANetAStrI($self->EndNAStrI(Attr));
         }
   
-        TNEANetAIntI BegEAIntI(const TStr& attr) {
-          return TNEANetAIntI($self->BegEAIntI(attr));
+        TNEANetAFltI BegNAFltI(const TStr& Attr) {
+          return TNEANetAFltI($self->BegNAFltI(Attr));
         }
-        TNEANetAIntI EndEAIntI(const TStr& attr) {
-          return TNEANetAIntI($self->EndEAIntI(attr));
+        TNEANetAFltI EndNAFltI(const TStr& Attr) {
+          return TNEANetAFltI($self->EndNAFltI(Attr));
+        }
+  
+        TNEANetAIntI BegEAIntI(const TStr& Attr) {
+          return TNEANetAIntI($self->BegEAIntI(Attr));
+        }
+        TNEANetAIntI EndEAIntI(const TStr& Attr) {
+          return TNEANetAIntI($self->EndEAIntI(Attr));
         }
         
-        TNEANetAStrI BegEAStrI(const TStr& attr) {
-          return TNEANetAStrI($self->BegEAStrI(attr));
+        TNEANetAStrI BegEAStrI(const TStr& Attr) {
+          return TNEANetAStrI($self->BegEAStrI(Attr));
         }
-        TNEANetAStrI EndEAStrI(const TStr& attr) {
-          return TNEANetAStrI($self->EndEAStrI(attr));
+        TNEANetAStrI EndEAStrI(const TStr& Attr) {
+          return TNEANetAStrI($self->EndEAStrI(Attr));
         }
         
-        TNEANetAFltI BegEAFltI(const TStr& attr) {
-          return TNEANetAFltI($self->BegEAFltI(attr));
+        TNEANetAFltI BegEAFltI(const TStr& Attr) {
+          return TNEANetAFltI($self->BegEAFltI(Attr));
         }
-        TNEANetAFltI EndEAFltI(const TStr& attr) {
-          return TNEANetAFltI($self->EndEAFltI(attr));
+        TNEANetAFltI EndEAFltI(const TStr& Attr) {
+          return TNEANetAFltI($self->EndEAFltI(Attr));
         }
   
 };

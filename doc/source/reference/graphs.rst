@@ -841,7 +841,7 @@ TNEANet
                    GetStrAttrDatN(NodeI, Attr)
 
         Returns the value of attribute named *Attr* for the node referred to
-        by node iterator *NodeI**.
+        by node iterator *NodeI*.
         Result is an integer, a float, or a string, respectively.
 
      .. describe:: GetIntAttrDatN(NId, Attr)
@@ -857,7 +857,7 @@ TNEANet
                    GetStrAttrDatE(EdgeI, Attr)
 
         Returns the value of attribute named *Attr* for the edge referred to
-        by edge iterator *EdgeI**.
+        by edge iterator *EdgeI*.
         Result is an integer, a float, or a string, respectively.
 
      .. describe:: GetIntAttrDatE(EId, Attr)
