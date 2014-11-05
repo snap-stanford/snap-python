@@ -8,7 +8,7 @@
 #define SNAP_ALL 0
 
 %pythoncode %{
-Version = "1.2"
+Version = "1.2.0"
 %}
 
 %module snap
@@ -63,7 +63,7 @@ Version = "1.2"
 
 %ignore TNGraph::GetEI(int const&) const;
 %ignore TUNGraph::GetEI(int const&) const;
-%ignore TNEANet::GetEI(int const&) const;
+/* %ignore TNEANet::GetEI(int const&, int const&) const; */
 
 %ignore TVec<TVec<TInt, int>, int>::Add;
 %ignore TVec<TVec<TInt, int>, int>::AddMerged;

@@ -17,6 +17,9 @@
         TUNGraphEdgeI EndEI() {
                 return TUNGraphEdgeI($self->EndEI());
         }
+        TUNGraphEdgeI GetEI(const int &SrcNId, const int &DstNId) {
+          return TUNGraphEdgeI($self->GetEI(SrcNId, DstNId));
+        }
 };
 
 %pythoncode %{

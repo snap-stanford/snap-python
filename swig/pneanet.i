@@ -28,6 +28,12 @@
         TNEANetEdgeI EndEI() {
           return TNEANetEdgeI($self->EndEI());
         }
+        TNEANetEdgeI GetEI(const int &EId) {
+          return TNEANetEdgeI($self->GetEI(EId));
+        }
+        TNEANetEdgeI GetEI(const int &SrcNId, const int &DstNId) {
+          return TNEANetEdgeI($self->GetEI(SrcNId, DstNId));
+        }
   
         TNEANetAIntI BegNAIntI(const TStr& attr) {
           return TNEANetAIntI($self->BegNAIntI(attr));

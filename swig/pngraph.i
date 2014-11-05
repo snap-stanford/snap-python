@@ -17,6 +17,9 @@
         TNGraphEdgeI EndEI() {
                 return TNGraphEdgeI($self->EndEI());
         }
+        TNGraphEdgeI GetEI(const int &SrcNId, const int &DstNId) {
+          return TNGraphEdgeI($self->GetEI(SrcNId, DstNId));
+        }
 };
 
 %pythoncode %{

@@ -94,6 +94,14 @@ TUNGraph
 
         Returns the maximum ID of a any node in the graph.
 
+     .. describe:: GetRndNId()
+
+        Returns an ID of a random node in the graph. 
+
+     .. describe:: GetRndNI()
+
+        Returns a node interator referring to a random node in the graph. 
+
      .. describe:: Edges()
 
         Returns a generator for the edges in the graph.
@@ -137,14 +145,6 @@ TUNGraph
         Returns an edge iterator referring to edge between node IDs *SrcNId*
         and *DstNId* in the graph. Since this is an undirected graph
         *GetEI(SrcNId, DstNId)* has the same effect as *GetEI(DstNId, SrcNId)*.
-
-     .. describe:: GetRndNId()
-
-        Returns an ID of a random node in the graph. 
-
-     .. describe:: GetRndNI()
-
-        Returns a node interator referring to a random node in the graph. 
 
      .. describe:: Empty()
 
@@ -270,8 +270,8 @@ TUNGraphEdgeI
 
       .. describe:: GetId()
 
-        Always returns -1 for :class:`TUNGraph`, since edges
-        do not have explicit IDs.
+        Returns a tuple of (*SrcNId*, *DstNId*). No explicit edge IDs are
+        assigned to edges in :class:`TUNGraph`.
 
       .. describe:: GetSrcNId()
 
@@ -378,6 +378,14 @@ TNGraph
 
         Returns the maximum ID of a any node in the graph.
 
+     .. describe:: GetRndNId()
+
+        Returns an ID of a random node in the graph. 
+
+     .. describe:: GetRndNI()
+
+        Returns a node interator referring to a random node in the graph. 
+
      .. describe:: Edges()
 
         Returns a generator for the edges in the graph.
@@ -420,14 +428,6 @@ TNGraph
 
         Returns an edge iterator referring to edge between node IDs *SrcNId*
         and *DstNId* in the graph.
-
-     .. describe:: GetRndNId()
-
-        Returns an ID of a random node in the graph. 
-
-     .. describe:: GetRndNI()
-
-        Returns a node interator referring to a random node in the graph. 
 
      .. describe:: Empty()
 
@@ -562,8 +562,8 @@ TNGraphEdgeI
 
       .. describe:: GetId()
 
-        Always returns -1 for :class:`TNGraph`, since edges
-        do not have explicit IDs.
+        Returns a tuple of (*SrcNId*, *DstNId*). No explicit edge IDs are
+        assigned to edges in :class:`TNGraph`.
 
       .. describe:: GetSrcNId()
 
@@ -677,6 +677,14 @@ TNEANet
 
         Returns the maximum ID of a any node in the graph.
 
+     .. describe:: GetRndNId()
+
+        Returns an ID of a random node in the graph. 
+
+     .. describe:: GetRndNI()
+
+        Returns a node interator referring to a random node in the graph. 
+
      .. describe:: Edges()
 
         Returns a generator for the edges in the graph.
@@ -720,18 +728,14 @@ TNEANet
 
         Returns an edge iterator referring to the past-the-end edge in the graph.
 
+     .. describe:: GetEI(EId)
+
+        Returns an edge iterator referring to edge with ID *EId*.
+
      .. describe:: GetEI(SrcNId, DstNId)
 
         Returns an edge iterator referring to edge between node IDs *SrcNId*
         and *DstNId* in the graph.
-
-     .. describe:: GetRndNId()
-
-        Returns an ID of a random node in the graph. 
-
-     .. describe:: GetRndNI()
-
-        Returns a node interator referring to a random node in the graph. 
 
      .. describe:: Empty()
 
