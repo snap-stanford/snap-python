@@ -105,7 +105,7 @@ def ManipulateNodesEdges():
 
 def ManipulateNodeEdgeAttributes():
   '''
-    Test node attribute functionality
+    Test node, edge attribute functionality
   '''
 
   NNodes = 1000
