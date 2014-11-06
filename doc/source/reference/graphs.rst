@@ -780,9 +780,11 @@ TNEANet
    attributes of different types.
    Integer, float and string attributes are implemented.
    Each attribute type has its own method for a particular task.
-   Attributes are named via string names.
+   Attributes are named via string names. The sections below describe
+   methods for dealing with node attributes first, followed by methods for
+   edge attributes.
 
-   :class:`TNEANet` methods for attributes are the following:
+   :class:`TNEANet` methods for node attributes are the following:
 
      .. describe:: AddIntAttrN(Attr)
                    AddFltAttrN(Attr)
@@ -790,19 +792,9 @@ TNEANet
 
         Defines a new integer, float or string node attribute, respectively.
 
-     .. describe:: AddIntAttrE(Attr)
-                   AddFltAttrE(Attr)
-                   AddStrAttrE(Attr)
-
-        Defines a new integer, float or string edge attribute, respectively.
-
      .. describe:: DelAttrN(Attr)
 
         Deletes node attribute *Attr*.
-
-     .. describe:: DelAttrE(Attr)
-
-        Deletes edge attribute *Attr*.
 
      .. describe:: AddIntAttrDatN(NodeI, Value, Attr)
                    AddFltAttrDatN(NodeI, Value, Attr)
@@ -820,22 +812,6 @@ TNEANet
         node id *NId* to *Value*.
         *Value* is an integer, a float, or a string, respectively.
 
-     .. describe:: AddIntAttrDatE(EdgeI, Value, Attr)
-                   AddFltAttrDatE(EdgeI, Value, Attr)
-                   AddStrAttrDatE(EdgeI, Value, Attr)
-
-        Sets the value of attribute named *Attr* for the edge referred to
-        by edge iterator *EdgeI* to *Value*.
-        *Value* is an integer, a float, or a string, respectively.
-
-     .. describe:: AddIntAttrDatE(EId, Value, Attr)
-                   AddFltAttrDatE(EId, Value, Attr)
-                   AddStrAttrDatE(EId, Value, Attr)
-
-        Sets the value of attribute named *Attr* for the edge with
-        edge id *EId* to *Value*.
-        *Value* is an integer, a float, or a string, respectively.
-
      .. describe:: GetIntAttrDatN(NodeI, Attr)
                    GetFltAttrDatN(NodeI, Attr)
                    GetStrAttrDatN(NodeI, Attr)
@@ -850,22 +826,6 @@ TNEANet
 
         Returns the value of attribute named *Attr* for the node with
         node id *NId*.
-        Result is an integer, a float, or a string, respectively.
-
-     .. describe:: GetIntAttrDatE(EdgeI, Attr)
-                   GetFltAttrDatE(EdgeI, Attr)
-                   GetStrAttrDatE(EdgeI, Attr)
-
-        Returns the value of attribute named *Attr* for the edge referred to
-        by edge iterator *EdgeI*.
-        Result is an integer, a float, or a string, respectively.
-
-     .. describe:: GetIntAttrDatE(EId, Attr)
-                   GetFltAttrDatE(EId, Attr)
-                   GetStrAttrDatE(EId, Attr)
-
-        Returns the value of attribute named *Attr* for the edge with
-        edge id *EId*.
         Result is an integer, a float, or a string, respectively.
 
      .. describe:: BegNAIntI(Attr)
@@ -890,6 +850,60 @@ TNEANet
         of the attribute named *Attr* referring to the node
         with node ID *NId*.
 
+     .. describe:: DelAttrDatN(NodeI, Attr)
+
+        Deletes the value of attribute named *Attr* for the node referred to
+        by node iterator *NodeI*.
+
+     .. describe:: DelAttrDatN(NId, Attr)
+
+        Deletes the value of attribute named *Attr* for the node with
+        node ID *NId*.
+
+   :class:`TNEANet` methods for edge attributes are the following:
+
+     .. describe:: AddIntAttrE(Attr)
+                   AddFltAttrE(Attr)
+                   AddStrAttrE(Attr)
+
+        Defines a new integer, float or string edge attribute, respectively.
+
+     .. describe:: DelAttrE(Attr)
+
+        Deletes edge attribute *Attr*.
+
+     .. describe:: AddIntAttrDatE(EdgeI, Value, Attr)
+                   AddFltAttrDatE(EdgeI, Value, Attr)
+                   AddStrAttrDatE(EdgeI, Value, Attr)
+
+        Sets the value of attribute named *Attr* for the edge referred to
+        by edge iterator *EdgeI* to *Value*.
+        *Value* is an integer, a float, or a string, respectively.
+
+     .. describe:: AddIntAttrDatE(EId, Value, Attr)
+                   AddFltAttrDatE(EId, Value, Attr)
+                   AddStrAttrDatE(EId, Value, Attr)
+
+        Sets the value of attribute named *Attr* for the edge with
+        edge id *EId* to *Value*.
+        *Value* is an integer, a float, or a string, respectively.
+
+     .. describe:: GetIntAttrDatE(EdgeI, Attr)
+                   GetFltAttrDatE(EdgeI, Attr)
+                   GetStrAttrDatE(EdgeI, Attr)
+
+        Returns the value of attribute named *Attr* for the edge referred to
+        by edge iterator *EdgeI*.
+        Result is an integer, a float, or a string, respectively.
+
+     .. describe:: GetIntAttrDatE(EId, Attr)
+                   GetFltAttrDatE(EId, Attr)
+                   GetStrAttrDatE(EId, Attr)
+
+        Returns the value of attribute named *Attr* for the edge with
+        edge id *EId*.
+        Result is an integer, a float, or a string, respectively.
+
      .. describe:: BegEAIntI(Attr)
                    BegEAFltI(Attr)
                    BegEAStrI(Attr)
@@ -911,16 +925,6 @@ TNEANet
         Returns an integer, float, or string attribute iterator, respectively,
         of the attribute named *Attr* referring to the edge
         with edge ID *EId*.
-
-     .. describe:: DelAttrDatN(NodeI, Attr)
-
-        Deletes the value of attribute named *Attr* for the node referred to
-        by node iterator *NodeI*.
-
-     .. describe:: DelAttrDatN(NId, Attr)
-
-        Deletes the value of attribute named *Attr* for the node with
-        node ID *NId*.
 
      .. describe:: DelAttrDatE(EdgeI, Attr)
 
