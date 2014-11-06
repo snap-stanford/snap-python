@@ -587,26 +587,25 @@ def ManipulateAttributesIter():
     #Graph.AddStrAttrDatE(80, TStr("dont appear"), attr4) # should not show up
     Graph.AddStrAttrDatE(EI80, "dont appear", attr4) # should not show up
     EIdAttrName = TStrV()
-    #  Graph.AttrNameEI(EId, EIdAttrName)
+    Graph.AttrNameEI(EId, EIdAttrName)
     AttrLen = EIdAttrName.Len()
     for i in range(AttrLen):
-        print "Vertical Edge1: %i, Attr: %s" % (EId, EIdAttrName.GetI(i))
+        print "Vertical Edge1: %i, Attr: %s" % (EId, EIdAttrName.GetI(i)())
 
     Graph.DelAttrDatE(EId, attr2)
-    #Graph.AttrNameEI(EId, EIdAttrName)
+    Graph.AttrNameEI(EId, EIdAttrName)
     AttrLen = EIdAttrName.Len()
     for i in range(AttrLen):
-        print "Vertical Edge2 (no int) : %i, Attr: %s" % (EId, EIdAttrName.GetI(i))
+        print "Vertical Edge2 (no int) : %i, Attr: %s" % (EId, EIdAttrName.GetI(i)())
 
     Graph.AddIntAttrDatE(EId, 3*2, attr2)
     Graph.DelAttrE(attr1)
-    #Graph.AttrNameEI(EId, EIdAttrName)
+    Graph.AttrNameEI(EId, EIdAttrName)
     AttrLen = EIdAttrName.Len()
     for i in range(AttrLen):
         print "Vertical Edge3 (no str) : %i, Attr: %s" % (EId, EIdAttrName.GetI(i)())
 
     EIdAttrValue = TStrV()
-    #Graph.AttrValueEI(TInt(EId), EIdAttrValue)
     Graph.AttrValueEI(EId, EIdAttrValue)
     AttrLen = EIdAttrValue.Len()
     for i in range(AttrLen):

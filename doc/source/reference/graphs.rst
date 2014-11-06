@@ -860,6 +860,18 @@ TNEANet
         Deletes the value of attribute named *Attr* for the node with
         node ID *NId*.
 
+     .. describe:: AttrNameNI(NId, NameV)
+
+        Provides names of attributes for the node *NId*. Only attributes
+        with an assigned value are provided. Attribute names are returned
+        as strings in *NameV*, which must be of type *TStrV*.
+
+     .. describe:: AttrValueNI(NId, ValueV)
+
+        Provides values of attributes for the node *NId*. Only attributes
+        with an assigned value are provided. Attribute values are converted
+        to strings and returned in *ValueV*, which must be of type *TStrV*.
+
    :class:`TNEANet` methods for edge attributes are the following:
 
      .. describe:: AddIntAttrE(Attr)
@@ -935,6 +947,18 @@ TNEANet
 
         Deletes the value of attribute named *Attr* for the edge with
         edge ID *EId*.
+
+     .. describe:: AttrNameEI(EId, NameV)
+
+        Provides names of attributes for the edge *EId*. Only attributes
+        with an assigned value are provided. Attribute names are returned
+        as strings in *NameV*, which must be of type *TStrV*.
+
+     .. describe:: AttrValueEI(EId, ValueV)
+
+        Provides values of attributes for the edge *EId*. Only attributes
+        with an assigned value are provided. Attribute values are converted
+        to strings and returned in *ValueV*, which must be of type *TStrV*.
 
    Below is some code demonstrating the use of the :class:`TNEANet` class:
 
