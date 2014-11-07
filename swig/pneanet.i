@@ -44,6 +44,17 @@
           return $self->GetStrAttrDatN(NI.GetNI(), Attr);
         }
 
+        // get node attribute value by index
+        TInt GetIntAttrIndDatN(const TNEANetNodeI& NI, const int& index) {
+          return $self->GetIntAttrIndDatN(NI.GetNI(), index);
+        }
+        TFlt GetFltAttrIndDatN(const TNEANetNodeI& NI, const int& index) {
+          return $self->GetFltAttrIndDatN(NI.GetNI(), index);
+        }
+        TStr GetStrAttrIndDatN(const TNEANetNodeI& NI, const int& index) {
+          return $self->GetStrAttrIndDatN(NI.GetNI(), index);
+        }
+
         // delete node attribute value
         int DelAttrDatN(const TNEANetNodeI& NI, const TStr& Attr) {
           return $self->DelAttrDatN(NI.GetNI(), Attr);

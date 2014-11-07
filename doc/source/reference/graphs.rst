@@ -796,6 +796,10 @@ TNEANet
 
         Deletes node attribute *Attr*.
 
+     .. describe:: GetAttrIndN(Attr)
+
+        Returns the index of the value vector for node attribute *Attr*.
+
      .. describe:: AddIntAttrDatN(NodeI, Value, Attr)
                    AddFltAttrDatN(NodeI, Value, Attr)
                    AddStrAttrDatN(NodeI, Value, Attr)
@@ -866,11 +870,30 @@ TNEANet
         with an assigned value are provided. Attribute names are returned
         as strings in *NameV*, which must be of type *TStrV*.
 
+     .. describe:: IntAttrNameNI(NId, NameV)
+                   FltAttrNameNI(NId, NameV)
+                   StrAttrNameNI(NId, NameV)
+
+        Provides names of integer, float, or string attributes for the
+        node *NId*, respectively. Only attributes with an assigned value
+        are provided. Attribute names are returned as strings in *NameV*,
+        which must be of type *TStrV*.
+
      .. describe:: AttrValueNI(NId, ValueV)
 
         Provides values of attributes for the node *NId*. Only attributes
         with an assigned value are provided. Attribute values are converted
         to strings and returned in *ValueV*, which must be of type *TStrV*.
+
+     .. describe:: IntAttrValueNI(NId, ValueV)
+                   FltAttrValueNI(NId, ValueV)
+                   StrAttrValueNI(NId, ValueV)
+
+        Provides values of integer, float, or string attributes for the
+        node *NId*, respectively. Only attributes with an assigned value
+        are provided. Attribute values are returned as integers, floats, or
+        strings in *ValueV*, which must be of type *TIntV*, *TFltV*, or
+        *TStrV*, respectively.
 
    :class:`TNEANet` methods for edge attributes are the following:
 
@@ -883,6 +906,10 @@ TNEANet
      .. describe:: DelAttrE(Attr)
 
         Deletes edge attribute *Attr*.
+
+     .. describe:: GetAttrIndE(Attr)
+
+        Returns the index of the value vector for edge attribute *Attr*.
 
      .. describe:: AddIntAttrDatE(EdgeI, Value, Attr)
                    AddFltAttrDatE(EdgeI, Value, Attr)
