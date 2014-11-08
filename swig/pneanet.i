@@ -96,6 +96,17 @@
           return $self->GetStrAttrDatE(EI.GetEI(), Attr);
         }
 
+        // get edge attribute value by index
+        TInt GetIntAttrIndDatE(const TNEANetEdgeI& EI, const int& index) {
+          return $self->GetIntAttrIndDatE(EI.GetEI(), index);
+        }
+        TFlt GetFltAttrIndDatE(const TNEANetEdgeI& EI, const int& index) {
+          return $self->GetFltAttrIndDatE(EI.GetEI(), index);
+        }
+        TStr GetStrAttrIndDatE(const TNEANetEdgeI& EI, const int& index) {
+          return $self->GetStrAttrIndDatE(EI.GetEI(), index);
+        }
+
         // delete edge attribute value
         int DelAttrDatE(const TNEANetEdgeI& EI, const TStr& Attr) {
           return $self->DelAttrDatE(EI.GetEI(), Attr);

@@ -379,12 +379,11 @@ def ManipulateAttributesId():
             Graph.GetIntAttrDatE(EId, attr2),
             Graph.GetFltAttrDatE(EId, attr3))
 
-    EI = Graph.GetEI(EId)
-    print "EI  attributes: %i, %s %d %.2f" % (
-            EI.GetId(),
-            Graph.GetStrAttrDatE(EI, attr1),
-            Graph.GetIntAttrDatE(EI, attr2),
-            Graph.GetFltAttrDatE(EI, attr3))
+    print "ind attributes: %i, %s %d %.2f" % (
+            EId,
+            Graph.GetStrAttrIndDatE(EId, attr1idx),
+            Graph.GetIntAttrIndDatE(EId, attr2idx),
+            Graph.GetFltAttrIndDatE(EId, attr3idx))
 
     EIdAttrName = TStrV()
     EIdAttrValue = TStrV()
@@ -767,6 +766,26 @@ def ManipulateAttributesIter():
     Graph.AddFltAttrDatE(EI55, 3.41, attr3)
     #Graph.AddStrAttrDatE(80, TStr("dont appear"), attr4) # should not show up
     Graph.AddStrAttrDatE(EI80, "dont appear", attr4) # should not show up
+
+    attr1idx = Graph.GetAttrIndE(attr1)
+    attr2idx = Graph.GetAttrIndE(attr2)
+    attr3idx = Graph.GetAttrIndE(attr3)
+    attr4idx = Graph.GetAttrIndE(attr4)
+    print "Edge attribute indexes:  %s %d,   %s %d,   %s %d,   %s %d" % (
+            attr1, attr1idx, attr2, attr2idx, attr3, attr3idx, attr4, attr4idx)
+
+    EI = Graph.GetEI(EId)
+    print "EI  attributes: %i, %s %d %.2f" % (
+            EI.GetId(),
+            Graph.GetStrAttrDatE(EI, attr1),
+            Graph.GetIntAttrDatE(EI, attr2),
+            Graph.GetFltAttrDatE(EI, attr3))
+
+    print "ind attributes: %i, %s %d %.2f" % (
+            EI.GetId(),
+            Graph.GetStrAttrIndDatE(EI, attr1idx),
+            Graph.GetIntAttrIndDatE(EI, attr2idx),
+            Graph.GetFltAttrIndDatE(EI, attr3idx))
 
     EIdAttrName = TStrV()
     EIdAttrValue = TStrV()

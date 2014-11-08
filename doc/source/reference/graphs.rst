@@ -959,6 +959,22 @@ TNEANet
         edge id *EId*.
         Result is an integer, a float, or a string, respectively.
 
+     .. describe:: GetIntAttrIndDatE(EdgeI, Index)
+                   GetFltAttrIndDatE(EdgeI, Index)
+                   GetStrAttrIndDatE(EdgeI, Index)
+
+        Returns the value of attribute at *Index* for the edge referred to
+        by edge iterator *EdgeI*.
+        Result is an integer, a float, or a string, respectively.
+
+     .. describe:: GetIntAttrIndDatE(EId, Index)
+                   GetFltAttrIndDatE(EId, Index)
+                   GetStrAttrIndDatE(EId, Index)
+
+        Returns the value of attribute at *Index* for the edge with
+        edge id *EId*.
+        Result is an integer, a float, or a string, respectively.
+
      .. describe:: BegEAIntI(Attr)
                    BegEAFltI(Attr)
                    BegEAStrI(Attr)
