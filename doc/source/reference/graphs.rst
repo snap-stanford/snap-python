@@ -832,6 +832,22 @@ TNEANet
         node id *NId*.
         Result is an integer, a float, or a string, respectively.
 
+     .. describe:: GetIntAttrIndDatN(NodeI, Index)
+                   GetFltAttrIndDatN(NodeI, Index)
+                   GetStrAttrIndDatN(NodeI, Index)
+
+        Returns the value of attribute at *Index* for the node referred to
+        by node iterator *NodeI*.
+        Result is an integer, a float, or a string, respectively.
+
+     .. describe:: GetIntAttrIndDatN(NId, Index)
+                   GetFltAttrIndDatN(NId, Index)
+                   GetStrAttrIndDatN(NId, Index)
+
+        Returns the value of attribute at *Index* for the node with
+        node id *NId*.
+        Result is an integer, a float, or a string, respectively.
+
      .. describe:: BegNAIntI(Attr)
                    BegNAFltI(Attr)
                    BegNAStrI(Attr)
@@ -981,11 +997,37 @@ TNEANet
         with an assigned value are provided. Attribute names are returned
         as strings in *NameV*, which must be of type *TStrV*.
 
+     .. describe:: IntAttrNameEI(EId, NameV)
+                   FltAttrNameEI(EId, NameV)
+                   StrAttrNameEI(EId, NameV)
+
+        Provides names of integer, float, or string attributes for the
+        edge *EId*, respectively. Only attributes with an assigned value
+        are provided. Attribute names are returned as strings in *NameV*,
+        which must be of type *TStrV*.
+
      .. describe:: AttrValueEI(EId, ValueV)
 
         Provides values of attributes for the edge *EId*. Only attributes
         with an assigned value are provided. Attribute values are converted
         to strings and returned in *ValueV*, which must be of type *TStrV*.
+
+     .. describe:: IntAttrValueEI(EId, ValueV)
+                   FltAttrValueEI(EId, ValueV)
+                   StrAttrValueEI(EId, ValueV)
+
+        Provides values of integer, float, or string attributes for the
+        edge *EId*, respectively. Only attributes with an assigned value
+        are provided. Attribute values are returned as integers, floats, or
+        strings in *ValueV*, which must be of type *TIntV*, *TFltV*, or
+        *TStrV*, respectively.
+
+     .. describe:: AttrValueEI(EId, ValueV)
+
+        Provides values of attributes for the edge *EId*. Only attributes
+        with an assigned value are provided. Attribute values are converted
+        to strings and returned in *ValueV*, which must be of type *TStrV*.
+
 
    Below is some code demonstrating the use of the :class:`TNEANet` class:
 
