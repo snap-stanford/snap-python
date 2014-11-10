@@ -681,9 +681,9 @@ TNEANet
 
         Returns an ID of a random node in the graph. 
 
-     .. describe:: GetRndNI()
+     .. describe:: GetNIdV(NIdV)
 
-        Returns a node interator referring to a random node in the graph. 
+        Returns IDs of all the nodes in vector *NIdV*, which must be of type *TIntV*.
 
      .. describe:: Edges()
 
@@ -736,6 +736,14 @@ TNEANet
 
         Returns an edge iterator referring to edge between node IDs *SrcNId*
         and *DstNId* in the graph.
+
+     .. describe:: GetRndEId()
+
+        Returns an ID of a random edge in the graph. 
+
+     .. describe:: GetEIdV(EIdV)
+
+        Returns IDs of all the edges in vector *EIdV*, which must be of type *TIntV*.
 
      .. describe:: Empty()
 
@@ -880,6 +888,18 @@ TNEANet
         Deletes the value of attribute named *Attr* for the node with
         node ID *NId*.
 
+     .. describe:: IsAttrDeletedN(NId, Attr)
+
+        Returns true, if attribute *Attr* exists for node *NId* and 
+        has been deleted -- its value is set to default.
+
+     .. describe:: IsIntAttrDeletedN(NId, Attr)
+                   IsFltAttrDeletedN(NId, Attr)
+                   IsStrAttrDeletedN(NId, Attr)
+
+        Returns true, if integer, float, or string attribute *Attr* exists
+        for node *NId* and has been deleted -- its value is set to default.
+
      .. describe:: AttrNameNI(NId, NameV)
 
         Provides names of attributes for the node *NId*. Only attributes
@@ -1006,6 +1026,18 @@ TNEANet
 
         Deletes the value of attribute named *Attr* for the edge with
         edge ID *EId*.
+
+     .. describe:: IsAttrDeletedE(EId, Attr)
+
+        Returns true, if attribute *Attr* exists for edge *EId* and 
+        has been deleted -- its value is set to default.
+
+     .. describe:: IsIntAttrDeletedE(EId, Attr)
+                   IsFltAttrDeletedE(EId, Attr)
+                   IsStrAttrDeletedE(EId, Attr)
+
+        Returns true, if integer, float, or string attribute *Attr* exists
+        for edge *EId* and has been deleted -- its value is set to default.
 
      .. describe:: AttrNameEI(EId, NameV)
 

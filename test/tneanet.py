@@ -274,7 +274,21 @@ def ManipulateAttributesId():
     for i in range(AttrLen):
         print "Vertical Node16 (str): %i, Attr_Val: %s" % (NId, NIdStrAttrValue.GetI(i)())
 
+    print "DeletedN: %i, Attr: %s, %s" % (NId, attr1, Graph.IsAttrDeletedN(NId, attr1))
+    print "DeletedN: %i, Attr: %s, %s" % (NId, attr2, Graph.IsAttrDeletedN(NId, attr2))
+    print "DeletedN: %i, Attr: %s, %s" % (NId, attr3, Graph.IsAttrDeletedN(NId, attr3))
+    print "DeletedN: %i, Attr: %s, %s" % (NId, attr4, Graph.IsAttrDeletedN(NId, attr4))
+    print "DeletedN (str): %i, Attr: %s, %s" % (NId, attr1, Graph.IsStrAttrDeletedN(NId, attr1))
+    print "DeletedN (int): %i, Attr: %s, %s" % (NId, attr2, Graph.IsIntAttrDeletedN(NId, attr2))
+    print "DeletedN (flt): %i, Attr: %s, %s" % (NId, attr3, Graph.IsFltAttrDeletedN(NId, attr3))
+    print "DeletedN (str): %i, Attr: %s, %s" % (NId, attr4, Graph.IsStrAttrDeletedN(NId, attr4))
+    print "DeletedN (int): %i, Attr: %s, %s" % (NId, attr4, Graph.IsIntAttrDeletedN(NId, attr4))
+    print "DeletedN (flt): %i, Attr: %s, %s" % (NId, attr4, Graph.IsFltAttrDeletedN(NId, attr4))
+
     Graph.DelAttrDatN(NId, attr2)
+    print "DeletedN: %i, Attr: %s, %s" % (NId, attr2, Graph.IsAttrDeletedN(NId, attr2))
+    print "DeletedN (int): %i, Attr: %s, %s" % (NId, attr2, Graph.IsIntAttrDeletedN(NId, attr2))
+
     Graph.AttrNameNI(NId, NIdAttrName)
     AttrLen = NIdAttrName.Len()
     for i in range(AttrLen):
@@ -441,7 +455,21 @@ def ManipulateAttributesId():
     for i in range(AttrLen):
         print "Vertical Edge16 (str): %i, Attr_Val: %s" % (EId, EIdStrAttrValue.GetI(i)())
 
+    print "DeletedE: %i, Attr: %s, %s" % (EId, attr1, Graph.IsAttrDeletedE(EId, attr1))
+    print "DeletedE: %i, Attr: %s, %s" % (EId, attr2, Graph.IsAttrDeletedE(EId, attr2))
+    print "DeletedE: %i, Attr: %s, %s" % (EId, attr3, Graph.IsAttrDeletedE(EId, attr3))
+    print "DeletedE: %i, Attr: %s, %s" % (EId, attr4, Graph.IsAttrDeletedE(EId, attr4))
+    print "DeletedE (str): %i, Attr: %s, %s" % (EId, attr1, Graph.IsStrAttrDeletedE(EId, attr1))
+    print "DeletedE (int): %i, Attr: %s, %s" % (EId, attr2, Graph.IsIntAttrDeletedE(EId, attr2))
+    print "DeletedE (flt): %i, Attr: %s, %s" % (EId, attr3, Graph.IsFltAttrDeletedE(EId, attr3))
+    print "DeletedE (str): %i, Attr: %s, %s" % (EId, attr4, Graph.IsStrAttrDeletedE(EId, attr4))
+    print "DeletedE (int): %i, Attr: %s, %s" % (EId, attr4, Graph.IsIntAttrDeletedE(EId, attr4))
+    print "DeletedE (flt): %i, Attr: %s, %s" % (EId, attr4, Graph.IsFltAttrDeletedE(EId, attr4))
+
     Graph.DelAttrDatE(EId, attr2)
+    print "DeletedE: %i, Attr: %s, %s" % (EId, attr2, Graph.IsAttrDeletedE(EId, attr2))
+    print "DeletedE (int): %i, Attr: %s, %s" % (EId, attr2, Graph.IsIntAttrDeletedE(EId, attr2))
+
     Graph.AttrNameEI(EId, EIdAttrName)
     AttrLen = EIdAttrName.Len()
     for i in range(AttrLen):
