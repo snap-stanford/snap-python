@@ -78,6 +78,11 @@ TIntPrFltH.__setitem__ = setitem_hash
 TIntPrFltH.__delitem__ = delitem_hash
 TIntPrFltH.__len__ = len_hash
 TIntPrFltH.__iter__ = iterhash
+TStrIntH.__getitem__ = getitem_hash
+TStrIntH.__setitem__ = setitem_hash
+TStrIntH.__iter__ = iterhash
+TStrIntH.__delitem__ = delitem_hash
+TStrIntH.__len__ = len_hash
 %}
 
 
@@ -218,11 +223,6 @@ TStrBoolH.__setitem__ = setitem_hash
 TStrBoolH.__iter__ = iterhash
 TStrBoolH.__delitem__ = delitem_hash
 TStrBoolH.__len__ = len_hash
-TStrIntH.__getitem__ = getitem_hash
-TStrIntH.__setitem__ = setitem_hash
-TStrIntH.__iter__ = iterhash
-TStrIntH.__delitem__ = delitem_hash
-TStrIntH.__len__ = len_hash
 TStrIntPrH.__getitem__ = getitem_hash
 TStrIntPrH.__setitem__ = setitem_hash
 TStrIntPrH.__iter__ = iterhash

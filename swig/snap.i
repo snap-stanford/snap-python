@@ -365,6 +365,7 @@ Version = "1.2.2"
 %template(TIntFltH) THash<TInt, TFlt>;
 %template(TIntStrH) THash<TInt, TStr>;
 %template(TIntPrFltH) THash<TIntPr, TFlt>;
+%template(TStrIntH) THash<TStr, TInt>;
 
 // define keydat types
 %template(TIntHI) THashKeyDatI <TInt, TInt>;
@@ -372,6 +373,7 @@ Version = "1.2.2"
 %template(TIntFltHI) THashKeyDatI <TInt, TFlt>;
 %template(TIntStrHI) THashKeyDatI <TInt, TStr>;
 %template(TIntPrFltHI) THashKeyDatI <TIntPr, TFlt>;
+%template(TStrIntHI) THashKeyDatI <TStr, TInt>;
 
 #if SNAP_ALL
 // define hash types
@@ -405,7 +407,6 @@ Version = "1.2.2"
 %template(TFltFltH) THash<TFlt, TFlt>;
 %template(TStrH) THash<TStr, TInt>;
 %template(TStrBoolH) THash<TStr, TBool>;
-%template(TStrIntH) THash<TStr, TInt>;
 %template(TStrIntPrH) THash<TStr, TIntPr>;
 %template(TStrIntVH) THash<TStr, TIntV>;
 %template(TStrUInt64H) THash<TStr, TUInt64>;
@@ -438,7 +439,6 @@ Version = "1.2.2"
 //%template(TStrSH) TStrHash<TInt>;
 //%template(TStrIntSH) TStrHash<TInt>;
 //%template(TStrToIntVSH) TStrHash<TIntV>;
-#endif
 
 // define keydat types
 //%template(TChChHI) THashKeyDatI <TCh, TCh>;
@@ -472,7 +472,6 @@ Version = "1.2.2"
 %template(TFltFltHI) THashKeyDatI <TFlt, TFlt>;
 %template(TStrHI) THashKeyDatI <TStr, TInt>;
 %template(TStrBoolHI) THashKeyDatI <TStr, TBool>;
-%template(TStrIntHI) THashKeyDatI <TStr, TInt>;
 %template(TStrIntPrHI) THashKeyDatI <TStr, TIntPr>;
 %template(TStrIntVHI) THashKeyDatI <TStr, TIntV>;
 %template(TStrUInt64HI) THashKeyDatI <TStr, TUInt64>;
@@ -504,6 +503,7 @@ Version = "1.2.2"
 %template(TStrVStrVHI) THashKeyDatI <TStrV, TStrV>;
 //%template(TStrSHI) TStrHashKeyDatI <TInt>;
 //%template(TStrIntSHI) TStrHashKeyDatI <TInt>;
+#endif
 
 // dt.h
 
