@@ -31,7 +31,7 @@ The following example shows how to get the nodes in the same connected component
     snap.GetNodeWcc(Graph, 0, CnCom)
     print "Nodes in the same connected component as node 0:"
     for node in CnCom:
-        print CnCom
+        print node
 
 
     UGraph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
@@ -39,7 +39,7 @@ The following example shows how to get the nodes in the same connected component
     snap.GetNodeWcc(UGraph, 0, CnCom)
     print "Nodes in the same connected component as node 0:"
     for node in CnCom:
-        print CnCom
+        print node
 
 
     Network = snap.GenRndGnm(snap.PNEANet, 100, 1000)
@@ -47,4 +47,4 @@ The following example shows how to get the nodes in the same connected component
     snap.GetNodeWcc(Network, 0, CnCom)
     print "Nodes in the same connected component as node 0:"
     for node in CnCom:
-        print CnCom
+        print node
