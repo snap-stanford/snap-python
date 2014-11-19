@@ -20,7 +20,7 @@ Parameters:
     Node ids of nodes *Hop* distance away from *StartNId*.
 
 - *IsDir*: bool (input)
-    Indicates whether the edges should be considered directed or undirected.
+    Indicates whether the edges should be considered directed (True) or undirected (False).
 
 Return value:
 
@@ -42,7 +42,7 @@ The following example shows how to get a vector of nodes at hop distance
 
     UGraph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
     NodeVec = snap.TIntV()
-    snap.GetNodesAtHop(UGraph, 1, 2, NodeVec, True)
+    snap.GetNodesAtHop(UGraph, 1, 2, NodeVec, False)
     for item in NodeVec:
         print item
 

@@ -17,7 +17,7 @@ Parameters:
     Vector of (hop distance, number of nodes at that distance) pairs.
 
 - *IsDir*: bool (input)
-    Indicates whether the edges should be considered directed or undirected.
+    Indicates whether the edges should be considered directed (True) or undirected (False).
 
 Return value:
 
