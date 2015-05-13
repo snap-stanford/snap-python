@@ -1,5 +1,5 @@
-Snap.py 1.1 Release Notes
-Jun 2014
+Snap.py 1.2 Release Notes
+May 2015
 
 Snap.py is a Python interface for SNAP (Stanford Network Analysis Platform).
 SNAP is a general purpose, high performance system for analysis and
@@ -10,6 +10,45 @@ Snap.py provides performance benefits of SNAP, combined with flexibility
 of Python. Most of the SNAP functionality is available via Snap.py in Python.
 
 This file contains a high-level description of changes in Snap.py releases.
+
+Release 1.2, May 12, 2015
+
+- updated C++ codebase to SNAP 2.4
+- implemented and documented IsAttrDeletedN(), IsIntAttrDeletedN(),
+  IsFltAttrDeletedN(), IsStrAttrDeletedN(), IsAttrDeletedE(),
+  IsIntAttrDeletedE(), IsFltAttrDeletedE(), IsStrAttrDeletedE(),
+  GetNIdV(), GetEIdV(), GetRndEI()
+- implemented GetIntAttrIndDatE(), GetFtlAttrIndDatE(), GetStrAttrIndDatE()
+- implemented and documented GetAttrIndN(), GetAttrIndE(), IntAttrNameNI(),
+  FltAttrNameNI(), StrAttrNameNI(), IntAttrValueNI(), FltAttrValueNI(),
+  StrAttrValueNI(), GetIntAttrIndDatN(), GetFltAttrIndDatN(),
+  GetStrAttrIndDatN()
+- expanded the code for the TNEAnet.GetEI()
+- changed THashSet iterator to use THashSetKeyI
+- fixed redefinition of Python built-in len() function
+- fixed error with THashSet iterator
+- fixed the code and the documentation for GetEI() in graphs and networks
+- improved tneanet.py, fixed a few typos
+- added tests for empty strings and nested iterators over TIntSet()
+- added programs for the bug reports from CS224W
+- added a bug program for GenRndPowerLaw()
+- added a code that reproduces problem with LoadEdgeListStr()
+- configured short compilation
+- updated documentation and test program for AttrNameNI(), AttrValueNI(),
+  AttrNameEI(), AttrValueEI()
+- documented GetIntAttrIndDatN(), GetFtlAttrIndDatN(), GetStrAttrIndDatN(), 
+  IntAttrNameEI(), FltAttrNameEI(), StrAttrNameEI(), IntAttrValueEI(),
+  FltAttrValueEI(), StrAttrValueEI()
+- updated typo in the documentation for GetNodeWcc()
+- improved documentation for GetNodesAtHop() and GetNodesAtHops()
+- fixed typos in documentation for GetMxSccSz
+- fixed the documentation about the THashKeyDatI Next() iterator
+- fixed errors in reference manual for GetOutDegCnt and GetInDegCnt
+- fixed an small bug in the sample code for GetMxSccSz in the reference manual
+- split documentation on node and edge attribute methods for TNEANet
+- fixed documentation for TNEANetEdgeI.GetId()
+- improved the documentation and a test for the set iterator
+- improved documentation on PrintInfo()
 
 Release 1.1, Jun 16, 2014
 
