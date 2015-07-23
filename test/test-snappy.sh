@@ -9,9 +9,9 @@
 
 # TODO
 #   bug-328-cnm.py
-#   bug-384-deledge.py
 #   bug-509-load.py
 #   bug-585-genrndpowerlaw.py
+#   bug-20150706-pagerank.py
 scripts=(quick_test.py \
     cncom.py intro.py tutorial.py tneanet.py bfs.py attributes.py \
     test-tnodei.py test-io.py \
@@ -19,9 +19,10 @@ scripts=(quick_test.py \
     test-346-getei.py \
     test-356-getei.py \
     test-374-addstrattrdate.py \
+    test-384-deledge.py \
     test-582-getnodewcc.py \
     test-585-genrndpowerlaw.py \
-    bug-613-getbfstree.py \
+    test-613-getbfstree.py \
     snap-test.py) 
 
 for line in "${scripts[@]}"; do
