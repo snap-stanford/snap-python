@@ -12,6 +12,7 @@
 #	- build Snappy solution in Visual Studio to generate _snap.pyd
 #		- open snappy-VS12
 #		- add VC++ include path for snap-core, glib-core, snap-adv
+#		  (or 'subst S: <path_to_snap>')
 #		- build
 #	- run setup.py in Cygwin to generate the package,
 #	  NOT OVER SSH, but locally
