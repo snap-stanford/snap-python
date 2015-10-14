@@ -29,7 +29,7 @@ Return value:
 
 The following example shows how to load a small file representing a graph::
 
-    import snap;
+    import snap
 
     Graph = snap.LoadEdgeList(snap.PNGraph, "toy_graph", 0, 1)
     Graph.Dump()

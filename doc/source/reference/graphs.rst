@@ -931,6 +931,14 @@ TNEANet
         strings in *ValueV*, which must be of type *TIntV*, *TFltV*, or
         *TStrV*, respectively.
 
+     .. describe:: GetAttrNNames(IntAttrNames, FltAttrNames, StrAttrNames)
+
+        Fills *IntAttrNames* with the list of int node attribute names,
+        *FltAttrNames* with a list of float node attribute names, and 
+        *StrAttrNames* with a list of string node attribute names.
+        *IntAttrNames*, *FltAttrNames*, and *StrAttrNames* should all
+        be of type *TStrV*.
+
    :class:`TNEANet` methods for edge attributes are the following:
 
      .. describe:: AddIntAttrE(Attr)
@@ -1075,6 +1083,14 @@ TNEANet
         Provides values of attributes for the edge *EId*. Only attributes
         with an assigned value are provided. Attribute values are converted
         to strings and returned in *ValueV*, which must be of type *TStrV*.
+
+     .. describe:: GetAttrENames(IntAttrNames, FltAttrNames, StrAttrNames)
+
+        Fills *IntAttrNames* with the list of int edge attribute names,
+        *FltAttrNames* with a list of float edge attribute names, and 
+        *StrAttrNames* with a list of string edge attribute names.
+        *IntAttrNames*, *FltAttrNames*, and *StrAttrNames* should all
+        be of type *TStrV*.
 
 
    Below is some code demonstrating the use of the :class:`TNEANet` class:
