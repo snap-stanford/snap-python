@@ -98,10 +98,6 @@ TUNGraph
 
         Returns an ID of a random node in the graph. 
 
-     .. describe:: GetRndNI()
-
-        Returns a node interator referring to a random node in the graph. 
-
      .. describe:: Edges()
 
         Returns a generator for the edges in the graph.
@@ -381,10 +377,6 @@ TNGraph
      .. describe:: GetRndNId()
 
         Returns an ID of a random node in the graph. 
-
-     .. describe:: GetRndNI()
-
-        Returns a node interator referring to a random node in the graph. 
 
      .. describe:: Edges()
 
