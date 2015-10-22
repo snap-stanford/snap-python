@@ -366,6 +366,7 @@ Version = "1.2.2"
 %template(TIntStrH) THash<TInt, TStr>;
 %template(TIntPrFltH) THash<TIntPr, TFlt>;
 %template(TStrIntH) THash<TStr, TInt>;
+%template(TStrIntSH) TStrHash<TInt, TStrPool, TDefaultHashFunc<TStr> >;
 
 // define keydat types
 %template(TIntHI) THashKeyDatI <TInt, TInt>;
@@ -437,7 +438,6 @@ Version = "1.2.2"
 %template(TStrVStrH) THash<TStrV, TStr>;
 %template(TStrVStrVH) THash<TStrV, TStrV>;
 //%template(TStrSH) TStrHash<TInt>;
-//%template(TStrIntSH) TStrHash<TInt>;
 //%template(TStrToIntVSH) TStrHash<TIntV>;
 
 // define keydat types
