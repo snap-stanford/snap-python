@@ -26,6 +26,7 @@ scripts=(quick_test.py \
     test-582-getnodewcc.py \
     test-585-genrndpowerlaw.py \
     test-613-getbfstree.py \
+    test-vec-ops.py \
     snap-test.py) 
 
 for line in "${scripts[@]}"; do
