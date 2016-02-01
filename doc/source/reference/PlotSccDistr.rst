@@ -26,7 +26,7 @@ The following example shows how to plot the distribution of sizes of strongly co
     import snap
 
     Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
-    snap.PlotSccDistr(Graph, "example", "Directed graph - scc distributaion")
+    snap.PlotSccDistr(Graph, "example", "Directed graph - scc distribution")
 
     UGraph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
     snap.PlotSccDistr(UGraph, "example", "Undirected graph - scc distribution")
