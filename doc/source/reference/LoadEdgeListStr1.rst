@@ -37,3 +37,11 @@ The following example shows how to load the following from a text file, wiki-vot
 
     mapping = snap.TStrIntSH()
     G0 = snap.LoadEdgeListStr(snap.PNGraph, "wiki-Vote.txt", 0, 1, mapping)
+
+    # convert input string to node id
+    NodeId = mapping.GetKeyId("1065")
+    # convert node id to input string
+    NodeName = mapping.GetKey(NodeId)
+    print "name", NodeName
+    print "id  ", NodeId
+
