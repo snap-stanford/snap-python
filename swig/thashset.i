@@ -4,7 +4,7 @@
 # define __getitem__ for [] addressing
 #
 def getitem_hashset(self, i):
-    return self.GetSetKey(i)
+    return self.GetKey(i)
 
 def delitem_hashset(self, i):
     self.DelKey(i)
@@ -53,5 +53,7 @@ def iterhashset(self):
 
 TIntSet.__iter__ = iterhashset
 TIntSet.__contains__ = contains_hashset
+TIntSet.__getitem__ = getitem_hashset
+TIntSet.__delitem__ = delitem_hashset
 
 %}
