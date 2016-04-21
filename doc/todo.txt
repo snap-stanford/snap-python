@@ -1,5 +1,5 @@
 Proposed Features
-Apr 21, 2014
+Apr 20, 2016
 
 - Remove AddNode(NodeI) from the reference text
 
@@ -8,4 +8,10 @@ Apr 21, 2014
 
 - A python egg to be able to install the module locally (like with
   easy_install --user with pypi packages)
+
+- Build a graph from numpy edge list
+
+- Support cmake build system
+
+- Implement a method in TNEANet to return a list of edges between two nodes
 
