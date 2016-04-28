@@ -232,6 +232,14 @@ TUNGraphNodeI
 
         Returns ID of *NodeN*-th out-node (the node the current node points to).
 
+      .. describe:: GetInEdges()
+
+        Returns a generator over the in-nodes.
+
+      .. describe:: GetOutEdges()
+
+        Returns a generator over the out-nodes.
+
       .. describe:: GetNbrNId(NodeN)
 
         Returns ID of *NodeN*-th neighboring node. 
@@ -520,6 +528,14 @@ TNGraphNodeI
 
         Returns ID of *NodeN*-th out-node (the node the current node points to).
 
+      .. describe:: GetInEdges()
+
+        Returns a generator over the in-nodes.
+
+      .. describe:: GetOutEdges()
+
+        Returns a generator over the out-nodes.
+
       .. describe:: GetNbrNId(NodeN)
 
         Returns ID of *NodeN*-th neighboring node. 
@@ -703,10 +719,15 @@ TNEANet
 
      .. describe:: DelEdge(SrcNId, DstNId)
 
-        Deletes an edge from node IDs *SrcNId* to *DstNId* from the graph. 
+        Deletes all edges from node IDs *SrcNId* to *DstNId* from the graph. 
         If the edge from *SrcNId* to *DstNId* does not exist in the graph,
         function still completes. But the function throws an exception,
         if *SrcNId* or *DstNId* are not nodes in the graph. 
+
+    .. describe:: DelEdge(EId)
+
+        Deletes the edge with id *EId* from the graph. If the edge with id 
+        *EId* does not exist in the graph, the function throws an exception. 
 
      .. describe:: IsEdge(SrcNId, DstNId)
 
@@ -1146,6 +1167,14 @@ TNEANetNodeI
       .. describe:: GetOutNId(NodeN)
 
         Returns ID of *NodeN*-th out-node (the node the current node points to).
+
+      .. describe:: GetInEdges()
+
+        Returns a generator over the in-nodes.
+
+      .. describe:: GetOutEdges()
+
+        Returns a generator over the out-nodes.
 
       .. describe:: GetNbrNId(NodeN)
 
