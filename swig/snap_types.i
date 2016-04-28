@@ -60,6 +60,20 @@
   $result = PyInt_FromLong((long) ($1->Val));
 }
 
+%typecheck(SWIG_TYPECHECK_INTEGER)
+   int, short, long,
+   unsigned int, unsigned short, unsigned long,
+   signed char, unsigned char,
+   long long, unsigned long long,
+   const int &, const short &, const long &,
+   const unsigned int &, const unsigned short &, const unsigned long &,
+   const long long &, const unsigned long long &,
+   enum SWIGTYPE,
+         bool, const bool &, TInt, TInt&, const TInt, const TInt&
+{
+  $1 = (PyInt_Check($input) || PyLong_Check($input)) ? 1 : 0;
+}
+
 //
 // TFlt
 //
@@ -98,6 +112,13 @@
 
 %typemap(out) TFlt& {
   $result = PyFloat_FromDouble((double) ($1->Val));
+}
+
+%typecheck(SWIG_TYPECHECK_DOUBLE)
+  float, double,
+  const float &, const double &, TFlt, TFlt &, const TFlt, const TFlt&
+{
+  $1 = (PyFloat_Check($input) || PyInt_Check($input) || PyLong_Check($input)) ? 1 : 0;
 }
 
 //
@@ -148,6 +169,10 @@
 
 %typemap(out) TStr& {
   $result = PyString_FromString($1->CStr());
+}
+
+%typecheck(SWIG_TYPECHECK_STRING) char *, TStr, TStr&, const TStr, const TStr& {
+  $1 = PyString_Check($input) ? 1 : 0;
 }
 
 
