@@ -5,9 +5,9 @@
 
 include ./Makefile.config
 
-all: testSnap
+all: Snap.o
 
-Snap.o: *.h *.cpp
+Snap.o: *.h 
 	$(CC) -c $(CXXFLAGS) Snap.cpp -I$(CGLIB)
 
 lib: Snap.o
