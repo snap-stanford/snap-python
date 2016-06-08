@@ -5,7 +5,7 @@
 
 include ./Makefile.config
 
-all: Snap.o
+all: Snap.o snap.py _snap.so
 
 swig: snap.py _snap.so
 
