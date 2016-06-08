@@ -3,8 +3,6 @@
 //   PNEANet, PUNGraph, PNGraph are supported,
 //     along with standard SNAP functions.
 
-#define SNAP_ALL 0
-
 %pythoncode %{
 Version = "2.0.3-dev"
 %}
@@ -22,7 +20,10 @@ Version = "2.0.3-dev"
 
 %include "snap_types.i"
 
+%include exception.i
+
 #define GLib_UNIX
+
 %include "int.h"
 
 

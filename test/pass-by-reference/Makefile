@@ -5,7 +5,9 @@
 
 include ./Makefile.config
 
-all: Snap.o snap.py _snap.so
+all: Snap.o
+
+swig: snap.py _snap.so
 
 Snap.o: *.h 
 	$(CC) -c $(CXXFLAGS) Snap.cpp -I$(CGLIB)

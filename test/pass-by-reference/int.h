@@ -17,8 +17,8 @@ public:
   TInt& operator-=(const int& Int){Val-=Int; return *this;}
   TInt operator++(int){Val++; return *this;}
   TInt operator--(int){Val--; return *this;}
-  static int increment_value(TInt& ValX) {
-    ValX += 1;
+  int increment_value(int increment_by, TInt& ValX) {
+    ValX = Val + increment_by;
     return 0;
   }
 };

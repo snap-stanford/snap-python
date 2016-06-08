@@ -4,30 +4,13 @@
 //
 
 %include typemaps.i
-%apply int &OUTPUT { int& RootNIdX};
-%apply int &OUTPUT { int& TreeSzX};
-%apply int &OUTPUT { int& TreeDepthX};
-%apply double &OUTPUT { double& EffDiamX};
-%apply double &OUTPUT { double& AvgSPLX};
-%apply int &OUTPUT { int& FullDiamX};
-%apply int &OUTPUT { int& EdgesInX};
-%apply int &OUTPUT { int& EdgesOutX};
-//%apply int64 &OUTPUT { int64& ClosedTriadsX};
-//%apply int64 &OUTPUT { int64& OpenTriadsX};
-%apply int &OUTPUT { int& ClosedNTriadsX};
-%apply int &OUTPUT { int& OpenNTriadsX};
-%apply int &OUTPUT { int& InGroupEdgesX};
-%apply int &OUTPUT { int& InOutGroupEdgesX};
-%apply int &OUTPUT { int& OutGroupX};
+%apply int &OUTPUT { TInt& ValX};
 
 //
 // TInt
 //
 
 %typemap(in) TInt& {
-//%typemap(in) TInt & NId {
-  //TInt I = PyInt_AsLong($input);
-  //$1 = &I;
   $1 = new TInt(PyInt_AsLong($input));
 }
 
@@ -36,9 +19,6 @@
 }
 
 %typemap(in) const TInt& {
-//%typemap(in) const TInt& value {
-  //TInt I = PyInt_AsLong($input);
-  //$1 = &I;
   $1 = new TInt(PyInt_AsLong($input));
 }
 
@@ -47,14 +27,10 @@
 }
 
 %typemap(in) TInt {
-  //TInt I = PyInt_AsLong($input);
-  //$1 = I;
   $1 = TInt(PyInt_AsLong($input));
 }
 
 %typemap(in) TInt defaultValue {
-  //TInt I = PyInt_AsLong($input);
-  //$1 = I;
   $1 = TInt(PyInt_AsLong($input));
 }
 
