@@ -103,3 +103,7 @@ PUNGraph	GetSubGraph
 PUNGraph	GetESubGraph
 PUNGraph	GetRndSubGraph
 PUNGraph	GetRndESubGraph
+PUNGraph	GetBetweennessCentr
+PUNGraph	GetClosenessCentr
+PUNGraph	GetFarnessCentr
+PUNGraph	

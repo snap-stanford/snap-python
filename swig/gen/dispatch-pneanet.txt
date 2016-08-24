@@ -103,3 +103,7 @@ PNEANet	GetSubGraph
 PNEANet	GetESubGraph
 PNEANet	GetRndSubGraph
 PNEANet	GetRndESubGraph
+PNEANet	GetBetweennessCentr
+PNEANet	GetClosenessCentr
+PNEANet	GetFarnessCentr
+PNEANet	

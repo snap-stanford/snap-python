@@ -195,7 +195,9 @@
 %template(GetNodeEcc_PNEANet) TSnap::GetNodeEcc<PNEANet>;
 %template(GetPageRank_PNEANet) TSnap::GetPageRank<PNEANet>;
 %template(GetHits_PNEANet) TSnap::GetHits<PNEANet>;
-
+%template(GetBetweennessCentr_PNEANet) TSnap::GetBetweennessCentr<PNEANet>;
+%template(GetClosenessCentr_PNEANet) TSnap::GetClosenessCentr<PNEANet>;
+%template(GetFarnessCentr_PNEANet) TSnap::GetFarnessCentr<PNEANet>;
 
 // alg.h - PNEANet
 %template(CntInDegNodes_PNEANet) TSnap::CntInDegNodes<PNEANet>;

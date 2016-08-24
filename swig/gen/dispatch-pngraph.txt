@@ -103,3 +103,7 @@ PNGraph	GetSubGraph
 PNGraph	GetESubGraph
 PNGraph	GetRndSubGraph
 PNGraph	GetRndESubGraph
+PNGraph	GetBetweennessCentr
+PNGraph	GetClosenessCentr
+PNGraph	GetFarnessCentr
+PNGraph	

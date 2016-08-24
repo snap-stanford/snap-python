@@ -103,6 +103,10 @@ PUNGraph	GetSubGraph
 PUNGraph	GetESubGraph
 PUNGraph	GetRndSubGraph
 PUNGraph	GetRndESubGraph
+PUNGraph	GetBetweennessCentr
+PUNGraph	GetClosenessCentr
+PUNGraph	GetFarnessCentr
+PUNGraph	
 PNGraph	LoadEdgeList
 PNGraph	LoadEdgeListStr
 PNGraph	LoadConnList
@@ -208,6 +212,10 @@ PNGraph	GetSubGraph
 PNGraph	GetESubGraph
 PNGraph	GetRndSubGraph
 PNGraph	GetRndESubGraph
+PNGraph	GetBetweennessCentr
+PNGraph	GetClosenessCentr
+PNGraph	GetFarnessCentr
+PNGraph	
 PNEANet	LoadEdgeList
 PNEANet	LoadEdgeListStr
 PNEANet	LoadConnList
@@ -313,3 +321,7 @@ PNEANet	GetSubGraph
 PNEANet	GetESubGraph
 PNEANet	GetRndSubGraph
 PNEANet	GetRndESubGraph
+PNEANet	GetBetweennessCentr
+PNEANet	GetClosenessCentr
+PNEANet	GetFarnessCentr
+PNEANet	

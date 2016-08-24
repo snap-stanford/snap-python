@@ -604,9 +604,25 @@ class SnapPythonTest(unittest.TestCase):
         farness_center = snap.GetFarnessCentr(self.UnDirGraphStar, 0)
         self.assertEqual(1, farness_center)
 
+        # Directed Graph
+        farness_center = snap.GetFarnessCentr(self.DirGraphStar, 0)
+        self.assertEqual(1, farness_center)
+
+        # Network
+        farness_center = snap.GetFarnessCentr(self.NetStar, 0)
+        self.assertEqual(1, farness_center)
+
     def test_GetClosenessCentr(self):
         # Undirected Graph
         closeness_center = snap.GetClosenessCentr(self.UnDirGraphStar, 0)
+        self.assertEqual(1, closeness_center)
+
+        # Directed Graph
+        closeness_center = snap.GetClosenessCentr(self.DirGraphStar, 0)
+        self.assertEqual(1, closeness_center)
+
+        # Network
+        closeness_center = snap.GetClosenessCentr(self.NetStar, 0)
         self.assertEqual(1, closeness_center)
 
     def test_GetEigenVectorCentr(self):
@@ -2295,6 +2311,26 @@ class SnapPythonTest(unittest.TestCase):
     def test_GetBetweennessCentr(self):
         # Undirected Graph
         Graph = snap.GenFull(snap.PUNGraph, 10)
+        Nodes = snap.TIntFltH()
+        Edges = snap.TIntPrFltH()
+        snap.GetBetweennessCentr(Graph, Nodes, Edges, 1.0)
+        for node in Nodes:
+            self.assertAlmostEqual(0, Nodes[node])
+        for edge in Edges:
+            self.assertAlmostEqual(2, Edges[edge])
+
+        # Directed Graph
+        Graph = snap.GenFull(snap.PNGraph, 10)
+        Nodes = snap.TIntFltH()
+        Edges = snap.TIntPrFltH()
+        snap.GetBetweennessCentr(Graph, Nodes, Edges, 1.0)
+        for node in Nodes:
+            self.assertAlmostEqual(0, Nodes[node])
+        for edge in Edges:
+            self.assertAlmostEqual(2, Edges[edge])
+
+        # Network
+        Graph = snap.GenFull(snap.PNEANet, 10)
         Nodes = snap.TIntFltH()
         Edges = snap.TIntPrFltH()
         snap.GetBetweennessCentr(Graph, Nodes, Edges, 1.0)

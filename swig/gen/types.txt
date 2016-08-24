@@ -110,3 +110,7 @@ __func__	GetSubGraph
 __func__	GetESubGraph
 __func__	GetRndSubGraph
 __func__	GetRndESubGraph
+__func__	GetBetweennessCentr
+__func__	GetClosenessCentr
+__func__	GetFarnessCentr
+

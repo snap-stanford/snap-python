@@ -63,6 +63,9 @@ TUNGraphEdgeI.GetId = GetId
 %template(GetNodeEcc_PUNGraph) TSnap::GetNodeEcc<PUNGraph>;
 %template(GetPageRank_PUNGraph) TSnap::GetPageRank<PUNGraph>;
 %template(GetHits_PUNGraph) TSnap::GetHits<PUNGraph>;
+%template(GetBetweennessCentr_PUNGraph) TSnap::GetBetweennessCentr<PUNGraph>;
+%template(GetClosenessCentr_PUNGraph) TSnap::GetClosenessCentr<PUNGraph>;
+%template(GetFarnessCentr_PUNGraph) TSnap::GetFarnessCentr<PUNGraph>;
 
 // alg.h - PUNGraph
 %template(CntInDegNodes_PUNGraph) TSnap::CntInDegNodes<PUNGraph>;
