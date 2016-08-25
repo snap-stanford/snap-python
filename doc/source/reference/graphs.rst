@@ -98,10 +98,6 @@ TUNGraph
 
         Returns an ID of a random node in the graph. 
 
-     .. describe:: GetRndNI()
-
-        Returns a node interator referring to a random node in the graph. 
-
      .. describe:: Edges()
 
         Returns a generator for the edges in the graph.
@@ -235,6 +231,14 @@ TUNGraphNodeI
       .. describe:: GetOutNId(NodeN)
 
         Returns ID of *NodeN*-th out-node (the node the current node points to).
+
+      .. describe:: GetInEdges()
+
+        Returns a generator over the in-nodes.
+
+      .. describe:: GetOutEdges()
+
+        Returns a generator over the out-nodes.
 
       .. describe:: GetNbrNId(NodeN)
 
@@ -382,10 +386,6 @@ TNGraph
 
         Returns an ID of a random node in the graph. 
 
-     .. describe:: GetRndNI()
-
-        Returns a node interator referring to a random node in the graph. 
-
      .. describe:: Edges()
 
         Returns a generator for the edges in the graph.
@@ -527,6 +527,14 @@ TNGraphNodeI
       .. describe:: GetOutNId(NodeN)
 
         Returns ID of *NodeN*-th out-node (the node the current node points to).
+
+      .. describe:: GetInEdges()
+
+        Returns a generator over the in-nodes.
+
+      .. describe:: GetOutEdges()
+
+        Returns a generator over the out-nodes.
 
       .. describe:: GetNbrNId(NodeN)
 
@@ -711,10 +719,15 @@ TNEANet
 
      .. describe:: DelEdge(SrcNId, DstNId)
 
-        Deletes an edge from node IDs *SrcNId* to *DstNId* from the graph. 
+        Deletes all edges from node IDs *SrcNId* to *DstNId* from the graph. 
         If the edge from *SrcNId* to *DstNId* does not exist in the graph,
         function still completes. But the function throws an exception,
         if *SrcNId* or *DstNId* are not nodes in the graph. 
+
+    .. describe:: DelEdge(EId)
+
+        Deletes the edge with id *EId* from the graph. If the edge with id 
+        *EId* does not exist in the graph, the function throws an exception. 
 
      .. describe:: IsEdge(SrcNId, DstNId)
 
@@ -931,6 +944,14 @@ TNEANet
         strings in *ValueV*, which must be of type *TIntV*, *TFltV*, or
         *TStrV*, respectively.
 
+     .. describe:: GetAttrNNames(IntAttrNames, FltAttrNames, StrAttrNames)
+
+        Fills *IntAttrNames* with the list of int node attribute names,
+        *FltAttrNames* with a list of float node attribute names, and 
+        *StrAttrNames* with a list of string node attribute names.
+        *IntAttrNames*, *FltAttrNames*, and *StrAttrNames* should all
+        be of type *TStrV*.
+
    :class:`TNEANet` methods for edge attributes are the following:
 
      .. describe:: AddIntAttrE(Attr)
@@ -1076,6 +1097,14 @@ TNEANet
         with an assigned value are provided. Attribute values are converted
         to strings and returned in *ValueV*, which must be of type *TStrV*.
 
+     .. describe:: GetAttrENames(IntAttrNames, FltAttrNames, StrAttrNames)
+
+        Fills *IntAttrNames* with the list of int edge attribute names,
+        *FltAttrNames* with a list of float edge attribute names, and 
+        *StrAttrNames* with a list of string edge attribute names.
+        *IntAttrNames*, *FltAttrNames*, and *StrAttrNames* should all
+        be of type *TStrV*.
+
 
    Below is some code demonstrating the use of the :class:`TNEANet` class:
 
@@ -1138,6 +1167,14 @@ TNEANetNodeI
       .. describe:: GetOutNId(NodeN)
 
         Returns ID of *NodeN*-th out-node (the node the current node points to).
+
+      .. describe:: GetInEdges()
+
+        Returns a generator over the in-nodes.
+
+      .. describe:: GetOutEdges()
+
+        Returns a generator over the out-nodes.
 
       .. describe:: GetNbrNId(NodeN)
 

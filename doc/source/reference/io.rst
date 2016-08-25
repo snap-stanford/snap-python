@@ -12,6 +12,8 @@ Input and Output
    LoadEdgeListStr1
    LoadConnList
    LoadConnListStr
+   LoadEdgeListNet
+   SaveEdgeListNet
    SaveGViz
    SaveGViz1
    SaveMatlabSparseMtx
