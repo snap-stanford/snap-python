@@ -28,6 +28,10 @@ scripts=(quick_test.py \
     test-613-getbfstree.py \
     test-vec-ops.py \
     test-2015-18a-attr.py \
+    test-20160801-LoadConnListStr.py \
+    test-GetBetweennessCentr.py \
+    test-GetClosenessCentr.py \
+    test-GetFarnessCentr.py \
     snap-test.py) 
 
 for line in "${scripts[@]}"; do

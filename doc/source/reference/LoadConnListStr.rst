@@ -18,8 +18,9 @@ Parameters:
 - *InFNm*: string (input)
     Filename with the description of the graph nodes and edges.
 
-- *StrToNIdH*: :class:`TStrIntH`, a hash table of string keys and int values (output)
+- *StrToNIdH*: :class:`TStrIntSH`, a hash table of string keys and int values (output)
     Stores the mapping from node names to node ids.
+    Note that this is a special hash table for holding strings and has a different interface than the standard SNAP hash table. Use *GetDat(name)* to obtain a mapping from a node name to its node id.
 
 Return value:
 
@@ -27,15 +28,20 @@ Return value:
     A Snap.py graph of the specified type *GraphType*.
 
 
-The following example shows how to load each of the graph types from a file named "test.dat"::
+The following example shows how to load each of the graph types from a file named *test.dat*::
 
     import snap
 
-    H = snap.TStrIntH()
-    snap.LoadConnListStr(snap.PNGraph, "test.dat", H)
+    H = snap.TStrIntSH()
+    Graph = snap.LoadConnListStr(snap.PNGraph, "test.dat", H)
 
-    H = snap.TStrIntH()
-    snap.LoadConnListStr(snap.PNEANet, "test.dat", H)
+    H = snap.TStrIntSH()
+    UGraph = snap.LoadConnListStr(snap.PUNGraph, "test.dat", H)
 
-    H = snap.TStrIntH()
-    snap.LoadConnListStr(snap.PUNGraph, "test.dat", H)
+    H = snap.TStrIntSH()
+    Network = snap.LoadConnListStr(snap.PNEANet, "test.dat", H)
+
+A sample of *test.dat* is::
+
+    A B C
+    B C D
