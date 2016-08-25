@@ -1424,7 +1424,7 @@ class SnapPythonTest(unittest.TestCase):
         tab = 'eigVal.' + fname + '.tab'
         snap.PlotEigValRank(Graph, NumEigVals, fname, desc)
 
-        self.checkPlotHash(plt, 'ef72edda8cb99b77d91d7bbba5d0602c')
+        self.checkPlotHash(plt, 'c6ed3d548e47a32ab81b9d93fd5210fa')
         os.system('rm ' + plt)
         self.checkPlotHash(png, '88e8150cca4d8b102e69e48f4f75bbc8')
         os.system('rm ' + png)
@@ -1441,7 +1441,7 @@ class SnapPythonTest(unittest.TestCase):
         tab = 'eigDistr.' + fname + '.tab'
         snap.PlotEigValDistr(Graph, NumEigVals, fname, desc)
 
-        self.checkPlotHash(plt, '87176190c43582a4a84af19d369fa5cd')
+        self.checkPlotHash(plt, 'b22f6198cf212c27756b1edb4bed3508')
         os.system('rm ' + plt)
         self.checkPlotHash(png, 'a620e5ca09dd447b4229850227678056')
         os.system('rm ' + png)
@@ -1459,7 +1459,7 @@ class SnapPythonTest(unittest.TestCase):
         tab = 'eigIPR.' + fname + '.tab'
         snap.PlotInvParticipRat(Graph, NumEigVals, TimeLimit, fname, desc)
 
-        self.checkPlotHash(plt, 'dc188265d1db138f4be76f08f9db322a')
+        self.checkPlotHash(plt, '87de319e252341f359c6cf92aa9b7090')
         os.system('rm ' + plt)
         self.checkPlotHash(png, 'b518c4e4a1b0af4de529961986198127')
         os.system('rm ' + png)
@@ -1476,7 +1476,7 @@ class SnapPythonTest(unittest.TestCase):
         tab = 'sngVal.' + fname + '.tab'
         snap.PlotSngValRank(Graph, SngVals, fname, desc)
 
-        self.checkPlotHash(plt, '4386c5925a85cc716c4f37080754abb3')
+        self.checkPlotHash(plt, '3d94b5107efd76abb478b18995447c2c')
         os.system('rm ' + plt)
         self.checkPlotHash(png, 'c4d688e2e38f3a7df07067ee1c92ab64')
         os.system('rm ' + png)
@@ -1493,7 +1493,7 @@ class SnapPythonTest(unittest.TestCase):
         tab = 'sngDistr.' + fname + '.tab'
         snap.PlotSngValDistr(Graph, SngVals, fname, desc)
 
-        self.checkPlotHash(plt, '0970fd3b510846ea89a846c221112c48')
+        self.checkPlotHash(plt, '3c3dde0ffb43838943dcc5983baa5aa3')
         os.system('rm ' + plt)
         self.checkPlotHash(png, '61a7195efc4864225c38f389e89c641e')
         os.system('rm ' + png)
@@ -1511,7 +1511,7 @@ class SnapPythonTest(unittest.TestCase):
         Graph = self.DirGraphFull
         snap.PlotInDegDistr(Graph, fname, desc)
 
-        self.checkPlotHash(plt, 'd9b3e3a929cdf399e121cea2f4602d5c')
+        self.checkPlotHash(plt, '7f08086973d30d356eaa2e695e1a6fff')
         os.system('rm ' + plt)
         self.checkPlotHash(png, '3a7a729d393a0ba37d455c67dacd8510')
         os.system('rm ' + png)
@@ -1522,7 +1522,7 @@ class SnapPythonTest(unittest.TestCase):
         Graph = self.UnDirGraphFull
         snap.PlotInDegDistr(Graph, fname, desc)
 
-        self.checkPlotHash(plt, 'bf2d7db2d85cb861bb6f5ca5cb79031f')
+        self.checkPlotHash(plt, '9469cef95ca7701898d9da53fd83d3cf')
         os.system('rm ' + plt)
         self.checkPlotHash(png, '3a7a729d393a0ba37d455c67dacd8510')
         os.system('rm ' + png)
@@ -1533,7 +1533,7 @@ class SnapPythonTest(unittest.TestCase):
         Graph = self.NetFull
         snap.PlotInDegDistr(Graph, fname, desc)
 
-        self.checkPlotHash(plt, 'd9b3e3a929cdf399e121cea2f4602d5c')
+        self.checkPlotHash(plt, '7f08086973d30d356eaa2e695e1a6fff')
         os.system('rm ' + plt)
         self.checkPlotHash(png, '3a7a729d393a0ba37d455c67dacd8510')
         os.system('rm ' + png)
@@ -1551,7 +1551,7 @@ class SnapPythonTest(unittest.TestCase):
         Graph = self.DirGraphFull
         snap.PlotOutDegDistr(Graph, fname, desc)
 
-        self.checkPlotHash(plt, 'e92a163bcada36d02e15d3dc8af89adf')
+        self.checkPlotHash(plt, 'c0e03b616e4dc61331efb11d6ed6d3f6')
         os.system('rm ' + plt)
         self.checkPlotHash(png, '03a7e7d530235143bf3a0ad09df30d5d')
         os.system('rm ' + png)
@@ -1562,7 +1562,7 @@ class SnapPythonTest(unittest.TestCase):
         Graph = self.UnDirGraphFull
         snap.PlotOutDegDistr(Graph, fname, desc)
 
-        self.checkPlotHash(plt, 'ff92a479ebcbefcb4243b07ddd2fc487')
+        self.checkPlotHash(plt, '893e4d32769a7235bade506f4558559a')
         os.system('rm ' + plt)
         self.checkPlotHash(png, '03a7e7d530235143bf3a0ad09df30d5d')
         os.system('rm ' + png)
@@ -1573,7 +1573,7 @@ class SnapPythonTest(unittest.TestCase):
         Graph = self.NetFull
         snap.PlotOutDegDistr(Graph, fname, desc)
 
-        self.checkPlotHash(plt, 'e92a163bcada36d02e15d3dc8af89adf')
+        self.checkPlotHash(plt, 'c0e03b616e4dc61331efb11d6ed6d3f6')
         os.system('rm ' + plt)
         self.checkPlotHash(png, '03a7e7d530235143bf3a0ad09df30d5d')
         os.system('rm ' + png)
@@ -1591,7 +1591,7 @@ class SnapPythonTest(unittest.TestCase):
         Graph = self.DirGraphFull
         snap.PlotWccDistr(Graph, fname, desc)
 
-        self.checkPlotHash(plt, '7ccee4a88626c30869d632cc50d4c743')
+        self.checkPlotHash(plt, '376654f801519f5a89519c020cd0cecf')
         os.system('rm ' + plt)
         self.checkPlotHash(png, '3092ffd346709cbb0fb1210e39314c4c')
         os.system('rm ' + png)
@@ -1602,7 +1602,7 @@ class SnapPythonTest(unittest.TestCase):
         Graph = self.UnDirGraphFull
         snap.PlotWccDistr(Graph, fname, desc)
 
-        self.checkPlotHash(plt, 'e4650e97188f1abbf7276c36f0d3715a')
+        self.checkPlotHash(plt, '25f0e2f9efd05b483bd3498de485b525')
         os.system('rm ' + plt)
         self.checkPlotHash(png, '3092ffd346709cbb0fb1210e39314c4c')
         os.system('rm ' + png)
@@ -1613,7 +1613,7 @@ class SnapPythonTest(unittest.TestCase):
         Graph = self.NetFull
         snap.PlotWccDistr(Graph, fname, desc)
 
-        self.checkPlotHash(plt, '7ccee4a88626c30869d632cc50d4c743')
+        self.checkPlotHash(plt, '376654f801519f5a89519c020cd0cecf')
         os.system('rm ' + plt)
         self.checkPlotHash(png, '3092ffd346709cbb0fb1210e39314c4c')
         os.system('rm ' + png)
@@ -1631,7 +1631,7 @@ class SnapPythonTest(unittest.TestCase):
         Graph = self.DirGraphFull
         snap.PlotSccDistr(Graph, fname, desc)
 
-        self.checkPlotHash(plt, 'f717ce0536c1170e5e4dd65c747c45f8')
+        self.checkPlotHash(plt, 'f92d2c3b97156ff049ce64aaeada099c')
         os.system('rm ' + plt)
         self.checkPlotHash(png, '91fb4493d7a2e9fef7fc998607a94649')
         os.system('rm ' + png)
@@ -1642,7 +1642,7 @@ class SnapPythonTest(unittest.TestCase):
         Graph = self.UnDirGraphFull
         snap.PlotSccDistr(Graph, fname, desc)
 
-        self.checkPlotHash(plt, 'c73a492414e2dcf789ee0105d0bb67d9')
+        self.checkPlotHash(plt, '09bc574ab814ec9bd0fc5865529f513b')
         os.system('rm ' + plt)
         self.checkPlotHash(png, '91fb4493d7a2e9fef7fc998607a94649')
         os.system('rm ' + png)
@@ -1653,7 +1653,7 @@ class SnapPythonTest(unittest.TestCase):
         Graph = self.NetFull
         snap.PlotSccDistr(Graph, fname, desc)
 
-        self.checkPlotHash(plt, 'f717ce0536c1170e5e4dd65c747c45f8')
+        self.checkPlotHash(plt, 'f92d2c3b97156ff049ce64aaeada099c')
         os.system('rm ' + plt)
         self.checkPlotHash(png, '91fb4493d7a2e9fef7fc998607a94649')
         os.system('rm ' + png)
@@ -1671,7 +1671,7 @@ class SnapPythonTest(unittest.TestCase):
         Graph = self.DirGraphFull
         snap.PlotClustCf(Graph, fname, desc)
 
-        self.checkPlotHash(plt, '410a506a1947bb433e269906b7d5acfb')
+        self.checkPlotHash(plt, 'd3e9c7ce6e1c5792a663bd0ee1abeb04')
         os.system('rm ' + plt)
         self.checkPlotHash(png, '634a0518b0ee9db6c712ade205e089a2')
         os.system('rm ' + png)
@@ -1682,7 +1682,7 @@ class SnapPythonTest(unittest.TestCase):
         Graph = self.UnDirGraphFull
         snap.PlotClustCf(Graph, fname, desc)
 
-        self.checkPlotHash(plt, 'dcb27db0f17b47fc4f5e326bc535434a')
+        self.checkPlotHash(plt, 'f2d1d9456515a92700e922d213a82084')
         os.system('rm ' + plt)
         self.checkPlotHash(png, '634a0518b0ee9db6c712ade205e089a2')
         os.system('rm ' + png)
@@ -1693,7 +1693,7 @@ class SnapPythonTest(unittest.TestCase):
         Graph = self.NetFull
         snap.PlotClustCf(Graph, fname, desc)
 
-        self.checkPlotHash(plt, '410a506a1947bb433e269906b7d5acfb')
+        self.checkPlotHash(plt, 'd3e9c7ce6e1c5792a663bd0ee1abeb04')
         os.system('rm ' + plt)
         self.checkPlotHash(png, '634a0518b0ee9db6c712ade205e089a2')
         os.system('rm ' + png)
@@ -1755,7 +1755,7 @@ class SnapPythonTest(unittest.TestCase):
         Graph = self.DirGraphFull
         snap.PlotShortPathDistr(Graph, fname, desc)
 
-        self.checkPlotHash(plt, 'a1127b6c5b3bdf9cecf0acfb8f6601a6')
+        self.checkPlotHash(plt, 'dbd3b8f4b0c82637c204173997625600')
         os.system('rm ' + plt)
         self.checkPlotHash(png, 'ceaaab603196866102afa52042d33b15')
         os.system('rm ' + png)
@@ -1766,7 +1766,7 @@ class SnapPythonTest(unittest.TestCase):
         Graph = self.UnDirGraphFull
         snap.PlotShortPathDistr(Graph, fname, desc)
 
-        self.checkPlotHash(plt, '77122e76a58641cb3346031286c3ec63')
+        self.checkPlotHash(plt, 'b0e6ad4b3419c43ec4f4bac9ab9d74c7')
         os.system('rm ' + plt)
         self.checkPlotHash(png, 'ceaaab603196866102afa52042d33b15')
         os.system('rm ' + png)
@@ -1777,7 +1777,7 @@ class SnapPythonTest(unittest.TestCase):
         Graph = self.NetFull
         snap.PlotShortPathDistr(Graph, fname, desc)
 
-        self.checkPlotHash(plt, 'a1127b6c5b3bdf9cecf0acfb8f6601a6')
+        self.checkPlotHash(plt, 'dbd3b8f4b0c82637c204173997625600')
         os.system('rm ' + plt)
         self.checkPlotHash(png, 'ceaaab603196866102afa52042d33b15')
         os.system('rm ' + png)
@@ -1795,7 +1795,7 @@ class SnapPythonTest(unittest.TestCase):
         Graph = self.DirGraphFull
         snap.PlotKCoreNodes(Graph, fname, desc)
 
-        self.checkPlotHash(plt, '727347069c3ab8793ae7e0c88408f210')
+        self.checkPlotHash(plt, '8b47f5a7082e940e5b1a49f7a19bac1a')
         os.system('rm ' + plt)
         self.checkPlotHash(png, 'c4ffb2358ff82930b8832cbe1d5d3ecd')
         os.system('rm ' + png)
@@ -1806,7 +1806,7 @@ class SnapPythonTest(unittest.TestCase):
         Graph = self.UnDirGraphFull
         snap.PlotKCoreNodes(Graph, fname, desc)
 
-        self.checkPlotHash(plt, '4642b5d2de23960e8ca5d53a819a1f78')
+        self.checkPlotHash(plt, 'fd660ab9df8f84231ca61e6ad74b5a9f')
         os.system('rm ' + plt)
         self.checkPlotHash(png, 'c4ffb2358ff82930b8832cbe1d5d3ecd')
         os.system('rm ' + png)
@@ -1817,7 +1817,7 @@ class SnapPythonTest(unittest.TestCase):
         Graph = self.NetFull
         snap.PlotKCoreNodes(Graph, fname, desc)
 
-        self.checkPlotHash(plt, '727347069c3ab8793ae7e0c88408f210')
+        self.checkPlotHash(plt, '8b47f5a7082e940e5b1a49f7a19bac1a')
         os.system('rm ' + plt)
         self.checkPlotHash(png, 'c4ffb2358ff82930b8832cbe1d5d3ecd')
         os.system('rm ' + png)
@@ -1835,7 +1835,7 @@ class SnapPythonTest(unittest.TestCase):
         Graph = self.DirGraphFull
         snap.PlotKCoreEdges(Graph, fname, desc)
 
-        self.checkPlotHash(plt, '7ad35cfc8d4f8234d615fc7c98619b39')
+        self.checkPlotHash(plt, 'b2bcd1cbfadfa7280727163c0fc85854')
         os.system('rm ' + plt)
         self.checkPlotHash(png, '6fab2c397c5b4ab0b740d4a5adf4171a')
         os.system('rm ' + png)
@@ -1846,7 +1846,7 @@ class SnapPythonTest(unittest.TestCase):
         Graph = self.UnDirGraphFull
         snap.PlotKCoreEdges(Graph, fname, desc)
 
-        self.checkPlotHash(plt, '25cef89279ee7ab43e841f09e54d3106')
+        self.checkPlotHash(plt, 'ce0a125f61e5e00e58c639afa434b012')
         os.system('rm ' + plt)
         self.checkPlotHash(png, '6fab2c397c5b4ab0b740d4a5adf4171a')
         os.system('rm ' + png)
@@ -1857,7 +1857,7 @@ class SnapPythonTest(unittest.TestCase):
         Graph = self.NetFull
         snap.PlotKCoreEdges(Graph, fname, desc)
 
-        self.checkPlotHash(plt, '7ad35cfc8d4f8234d615fc7c98619b39')
+        self.checkPlotHash(plt, 'b2bcd1cbfadfa7280727163c0fc85854')
         os.system('rm ' + plt)
         self.checkPlotHash(png, '6fab2c397c5b4ab0b740d4a5adf4171a')
         os.system('rm ' + png)
