@@ -3,7 +3,8 @@ import snap
 tree = snap.GenTree(snap.PNGraph, 3, 5)
 print "nodes %d, edges %d" % (tree.GetNodes(), tree.GetEdges())
 
-result = snap.IsTree_PNGraph(tree)
+#result = snap.IsTree_PNGraph(tree)
+result = snap.IsTree(tree)
 print "IsTree %s" % (str(result))
 
 istree = result[0]
