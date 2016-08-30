@@ -11,7 +11,11 @@ Contents:
    composite
    streams
    graphs
+   table
+   multimodal
+   attr
    generators
+   conv
    io
    degree
    edges
