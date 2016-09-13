@@ -68,6 +68,7 @@ public:
   bool IsNbrNId(const int& NId) const { return NI.IsOutNId(NId) || NI.IsInNId(NId); }
 };
 
+#ifdef GCC_ATOMIC
 class TNGraphMPNodeI { 
 private:
   TNGraphMP::TNodeI NI;
@@ -101,6 +102,7 @@ public:
   /// Tests whether node with ID NId is a neighbor of the current node.
   bool IsNbrNId(const int& NId) const { return NI.IsOutNId(NId) || NI.IsInNId(NId); }
 };
+#endif // GCC_ATOMIC
 
 /// Edge iterator. Only forward iteration (operator++) is supported.
 class TNGraphEdgeI {
@@ -146,6 +148,7 @@ public:
   int GetDstNId() const { return EI.GetDstNId(); }
 };
 
+#ifdef GCC_ATOMIC
 /// Edge iterator. Only forward iteration (operator++) is supported.
 class TNGraphMPEdgeI {
 private:
@@ -166,6 +169,7 @@ public:
   /// Gets destination of an edge.
   int GetDstNId() const { return EI.GetDstNId(); }
 };
+#endif // GCC_ATOMIC
 
 class TUNGraphNodeI {
 private:
@@ -417,7 +421,7 @@ public:
 };
 
 
-
+#ifdef GCC_ATOMIC
 class TNEANetMPNodeI {
 private:
   TNEANetMP::TNodeI NI;
@@ -473,6 +477,7 @@ public:
   /// Gets destination of an edge. Since the graph is undirected this is the node with greater ID of the edge endpoints.
   int GetDstNId() const { return EI.GetDstNId(); }
 };
+#endif // GCC_ATOMIC
 
 
 class TModeNetNodeI {

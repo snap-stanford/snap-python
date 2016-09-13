@@ -660,8 +660,12 @@ Version = "2.0.0"
 %include "pungraph.i"
 %include "pdirnet.i"
 %include "pundirnet.i"
+
+#if GCC_ATOMIC
 %include "pngraphmp.i"
 %include "pneanetmp.i"
+#endif
+
 %include "pgraph.i"
 #ifndef NONUMPY
 %include "numpy_swig.i"
@@ -674,3 +678,4 @@ Version = "2.0.0"
 
 // note for operator renaming
 // %rename(Add) Vector3::operator +;
+

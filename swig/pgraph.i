@@ -1443,18 +1443,6 @@ PNGraph.Clr = Clr
 PNGraph.Empty = Empty
 PNGraph.Save = Save
 
-PNGraphMP.Nodes = Nodes
-PNGraphMP.Edges = Edges
-PNGraphMP.Clr = Clr
-PNGraphMP.Empty = Empty
-PNGraphMP.Save = Save
-
-PNEANetMP.Nodes = Nodes
-PNEANetMP.Edges = Edges
-PNEANetMP.Clr = Clr
-PNEANetMP.Empty = Empty
-PNEANetMP.Save = Save
-
 TNGraphNodeI.GetOutEdges = GetOutEdges
 TNGraphNodeI.GetInEdges = GetInEdges
 
@@ -1473,6 +1461,23 @@ TNEANetNodeI.GetInEdges = GetInEdges
 TModeNetNodeI.GetOutEdges = GetOutEdges
 TModeNetNodeI.GetInEdges = GetInEdges
 
+%}
+
+#if GCC_ATOMIC
+%pythoncode %{
+
+PNGraphMP.Nodes = Nodes
+PNGraphMP.Edges = Edges
+PNGraphMP.Clr = Clr
+PNGraphMP.Empty = Empty
+PNGraphMP.Save = Save
+
+PNEANetMP.Nodes = Nodes
+PNEANetMP.Edges = Edges
+PNEANetMP.Clr = Clr
+PNEANetMP.Empty = Empty
+PNEANetMP.Save = Save
+
 TNGraphMPNodeI.GetOutEdges = GetOutEdges
 TNGraphMPNodeI.GetInEdges = GetInEdges
 
@@ -1480,4 +1485,6 @@ TNEANetMPNodeI.GetOutEdges = GetOutEdges
 TNEANetMPNodeI.GetInEdges = GetInEdges
 
 %}
+#endif // GCC_ATOMIC
+
 
