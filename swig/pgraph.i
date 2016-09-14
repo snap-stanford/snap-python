@@ -1463,7 +1463,7 @@ TModeNetNodeI.GetInEdges = GetInEdges
 
 %}
 
-#if GCC_ATOMIC
+#ifdef GCC_ATOMIC
 %pythoncode %{
 
 PNGraphMP.Nodes = Nodes

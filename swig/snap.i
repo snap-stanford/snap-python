@@ -661,7 +661,7 @@ Version = "2.0.0"
 %include "pdirnet.i"
 %include "pundirnet.i"
 
-#if GCC_ATOMIC
+#ifdef GCC_ATOMIC
 %include "pngraphmp.i"
 %include "pneanetmp.i"
 #endif
