@@ -8,7 +8,7 @@
 #define SNAP_ALL 0
 
 %pythoncode %{
-Version = "1.3.1"
+Version = "3.0.0"
 %}
 
 %module snap
@@ -27,6 +27,7 @@ Version = "1.3.1"
 #include "printgraph.h"
 #include "snap_types.h"
 #include "goodgraph.cpp"
+#include "linkpred_swig.h"
 
 %}
 
@@ -46,7 +47,8 @@ Version = "1.3.1"
 %ignore TChA::LoadXml;
 %ignore TMem::LoadXml;
 
-%ignore GetStr;
+%ignore TInt::GetStr;
+%ignore TPair::GetStr;
 
 %ignore TFInOut;
 %ignore TFRnd;
@@ -88,10 +90,78 @@ Version = "1.3.1"
 %ignore TTm;
 %ignore HashPrimeT;
 
+%ignore TPair< TStr,TAttrType >::Load;
+%ignore TPair< TStr,TAttrType >::Save;
+%ignore TPair< TStr,TAttrType >::GetMemUsed;
+%ignore TPair< TStr,TAttrType >::GetPrimHashCd;
+%ignore TPair< TStr,TAttrType >::GetSecHashCd;
+%ignore TPair< TStr,TAttrType >::TPair(TSIn &);
+
+//%ignore TVec< TPair< TStr, TAttrType_ >, int >::Load;
+//%ignore TVec< TPair< TStr, TAttrType >, int >::Load;
+%ignore TVec< TPair< TStr,TAttrType > >::Load;
+%ignore TVec< TPair< TStr,TAttrType > >::Save;
+%ignore TVec< TPair< TStr,TAttrType > >::GetPrimHashCd;
+%ignore TVec< TPair< TStr,TAttrType > >::GetSecHashCd;
+//%ignore TVec< TPair< TStr,TAttrType > >::TVec(TSIn *);
+%ignore TVec< TPair< TStr,TAttrType > >::TVec(TSIn &);
+//%ignore Schema::Load;
+
+%ignore TVec<PNEANet>::Intrs;
+%ignore TVec<PNEANet>::IntrsLen;
+%ignore TVec<PNEANet>::AddSorted;
+%ignore TVec<PNEANet>::AddBackSorted;
+%ignore TVec<PNEANet>::AddMerged;
+%ignore TVec<PNEANet>::AddVMerged;
+%ignore TVec<PNEANet>::AddUnique;
+%ignore TVec<PNEANet>::SearchBack;
+%ignore TVec<PNEANet>::SearchBin;
+%ignore TVec<PNEANet>::SearchBinLeft;
+%ignore TVec<PNEANet>::SearchForw;
+%ignore TVec<PNEANet>::SearchVForw;
+%ignore TVec<PNEANet>::Merge;
+%ignore TVec<PNEANet>::Count;
+%ignore TVec<PNEANet>::Diff;
+%ignore TVec<PNEANet>::Union;
+%ignore TVec<PNEANet>::PrevPerm;
+%ignore TVec<PNEANet>::NextPerm;
+%ignore TVec<PNEANet>::DelAll;
+%ignore TVec<PNEANet>::DelIfIn;
+%ignore TVec<PNEANet>::GetPivotValN;
+%ignore TVec<PNEANet>::BSort;
+%ignore TVec<PNEANet>::ISort;
+%ignore TVec<PNEANet>::QSort;
+%ignore TVec<PNEANet>::Sort;
+%ignore TVec<PNEANet>::IsSorted;
+%ignore TVec<PNEANet>::IsIn;
+%ignore TVec<PNEANet>::IsInBin;
+%ignore TVec<PNEANet>::Partition;
+%ignore TVec<PNEANet>::operator<;
+%ignore TVec<PNEANet>::operator==;
+%ignore TVec<PNEANet>::operator!=;
+%ignore TVec<PNEANet>::GetPrimHashCd;
+%ignore TVec<PNEANet>::GetSecHashCd;
+%ignore TVec<PNEANet>::GetDat;
+%ignore TVec<PNEANet>::UnionLen;
+%ignore TVec<PNEANet>::GetAddDat;
+%ignore TVec<PNEANet>::GetMxValN;
+%ignore TVec<PNEANet>::CopyUniqueFrom;
+// TODO: maybe the line below could work
+//%rename("regex:/TVec<PNEANet>::(?!(GetVal|operator\[\]|Len))/$ignore/") "";
+
 // ignore all THash::AddDatId, MarkDelKey, MarkDelKeyId
 %ignore THash::AddDatId;
 %ignore THash::MarkDelKey;
 %ignore THash::MarkDelKeyId;
+
+// ignore overloaded methods for TTable row iterators
+%ignore TRowIterator::GetIntAttr(TInt) const;
+%ignore TRowIterator::GetFltAttr(TInt) const;
+%ignore TRowIterator::GetStrAttr(TInt) const;
+%ignore TRowIteratorWithRemove::GetNextIntAttr(TInt) const;
+%ignore TRowIteratorWithRemove::GetNextFltAttr(TInt) const;
+%ignore TRowIteratorWithRemove::GetNextStrAttr(TInt) const;
+
 
 // Python-C++ conversion typemaps
 
@@ -119,6 +189,21 @@ Version = "1.3.1"
 // SNAP Library
 // snap-core
 %include "gbase.h"
+%include "util.h"
+
+// representations
+%include "hash.h"
+%include "hashmp.h"
+%include "shash.h"
+%include "graph.h"
+%include "graphmp.h"
+%include "network.h"
+%include "mmnet.h"
+%include "networkmp.h"
+%include "table.h"
+%include "attr.h"
+
+// algorithms
 %include "alg.h"
 %include "anf.h"
 %include "bfsdfs.h"
@@ -126,13 +211,9 @@ Version = "1.3.1"
 %include "cmty.h"
 %include "cncom.h"
 %include "ff.h"
-%include "graph.h"
-%include "network.h"
 %include "gsvd.h"
 %include "gio.h"
 %include "gviz.h"
-%include "hash.h"
-%include "shash.h"
 %include "kcore.h"
 %include "ggen.h"
 %include "subgraph.h"
@@ -144,23 +225,32 @@ Version = "1.3.1"
 %include "agmfast.h"
 %include "agmfit.h"
 
+//%template(Schema) TVec< TPair< TStr, TAttrType> >;
+//%template(Schema) TVec< TPair< TStr, TAttrType_> >;
+
 // SNAP type definitions
+
+//%template(Schema) TVec<TPair<TStr, TInt> >;
 
 // ds.h
 
 %template(TIntPr) TPair<TInt, TInt>;
 %template(TFltPr) TPair<TFlt, TFlt>;
+%template(TStrIntPr) TPair<TStr, TInt>;
 %template(TIntTr) TTriple<TInt, TInt, TInt>;
 %template(TIntFltKd) TKeyDat<TInt, TFlt>;
 
 %template(TIntV) TVec<TInt>;
 %template(TFltV) TVec<TFlt>;
+%template(TStrV) TVec<TStr>;
 %template(TIntPrV) TVec<TIntPr>;
 %template(TFltPrV) TVec<TFltPr>;
+%template(TStrIntPrV) TVec<TStrIntPr>;
 %template(TIntTrV) TVec<TIntTr>;
 %template(TIntFltKdV) TVec<TIntFltKd>;
 %template(TIntStrPr) TPair<TInt, TStr>;
 %template(TIntIntVV) TVec< TVec< TInt, int >, int >;
+%template(PNEANetV) TVec<PNEANet>;
 
 #if SNAP_ALL
 //%template(TBoolChPr) TPair<TBool, TCh>;
@@ -410,6 +500,7 @@ Version = "1.3.1"
 %template(TFltFltH) THash<TFlt, TFlt>;
 %template(TStrH) THash<TStr, TInt>;
 %template(TStrBoolH) THash<TStr, TBool>;
+%template(TStrIntH) THash<TStr, TInt>;
 %template(TStrIntPrH) THash<TStr, TIntPr>;
 %template(TStrIntVH) THash<TStr, TIntV>;
 %template(TStrUInt64H) THash<TStr, TUInt64>;
@@ -440,6 +531,7 @@ Version = "1.3.1"
 %template(TStrVStrH) THash<TStrV, TStr>;
 %template(TStrVStrVH) THash<TStrV, TStrV>;
 //%template(TStrSH) TStrHash<TInt>;
+//%template(TStrIntSH) TStrHash<TInt>;
 //%template(TStrToIntVSH) TStrHash<TIntV>;
 
 // define keydat types
@@ -474,6 +566,7 @@ Version = "1.3.1"
 %template(TFltFltHI) THashKeyDatI <TFlt, TFlt>;
 %template(TStrHI) THashKeyDatI <TStr, TInt>;
 %template(TStrBoolHI) THashKeyDatI <TStr, TBool>;
+%template(TStrIntHI) THashKeyDatI <TStr, TInt>;
 %template(TStrIntPrHI) THashKeyDatI <TStr, TIntPr>;
 %template(TStrIntVHI) THashKeyDatI <TStr, TIntV>;
 %template(TStrUInt64HI) THashKeyDatI <TStr, TUInt64>;
@@ -526,7 +619,13 @@ Version = "1.3.1"
 //%template(TTmStrPrV) TVec<TTmStrPr>;
 //%template(TStrTmPrV) TVec<TStrTmPr>;
 
-// ??
+// table.h
+
+//%template(Schema) TVec<TPair<TStr, TAttrType> >;
+//typedef TStrIntPrV Schema;
+
+%template(TStrTAttrPr) TPair< TStr, TAttrType>;
+%template(Schema) TVec< TPair< TStr, TAttrType> >;
 
 %template(TIntSet) THashSet<TInt>;
 %template(TIntHSI) THashSetKeyI <TInt>;
@@ -538,6 +637,12 @@ Version = "1.3.1"
 %include "snapswig.h"
 %include "goodgraph.cpp"
 %include "printgraph.h"
+%include "linkpred_swig.h"
+%include "conv.h"
+
+%template(GetRndWalkRestart_PUNGraph) GetRndWalkRestart<PUNGraph>;
+%template(GetRndWalkRestart_PNGraph) GetRndWalkRestart<PNGraph>;
+%template(GetRndWalkRestart_PNEANet) GetRndWalkRestart<PNEANet>;
 
 /* Include other SWIG interface types here. */
 
@@ -548,9 +653,28 @@ Version = "1.3.1"
 
 /* Graph and network interface */
 %include "pneanet.i"
+%include "tmodenet.i"
+%include "tcrossnet.i"
+%include "pmmnet.i"
 %include "pngraph.i"
 %include "pungraph.i"
+%include "pdirnet.i"
+%include "pundirnet.i"
+
+#ifdef GCC_ATOMIC
+%include "pngraphmp.i"
+%include "pneanetmp.i"
+#endif
+
 %include "pgraph.i"
+#ifndef NONUMPY
+%include "numpy_swig.i"
+#endif
+
+/* table interface */
+%include "ptable.i"
+
+%template(PTable) TPt< TTable >;
 
 // note for operator renaming
 // %rename(Add) Vector3::operator +;

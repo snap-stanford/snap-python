@@ -194,10 +194,16 @@
 // centr.h - PNEANet
 %template(GetNodeEcc_PNEANet) TSnap::GetNodeEcc<PNEANet>;
 %template(GetPageRank_PNEANet) TSnap::GetPageRank<PNEANet>;
+%template(GetPageRank_v1_PNEANet) TSnap::GetPageRank_v1<PNEANet>;
 %template(GetHits_PNEANet) TSnap::GetHits<PNEANet>;
 %template(GetBetweennessCentr_PNEANet) TSnap::GetBetweennessCentr<PNEANet>;
 %template(GetClosenessCentr_PNEANet) TSnap::GetClosenessCentr<PNEANet>;
 %template(GetFarnessCentr_PNEANet) TSnap::GetFarnessCentr<PNEANet>;
+#ifdef _OPENMP
+%template(GetPageRankMP_PNEANet) TSnap::GetPageRankMP<PNEANet>;
+%template(GetHitsMP_PNEANet) TSnap::GetHitsMP<PNEANet>;
+#endif
+
 
 // alg.h - PNEANet
 %template(CntInDegNodes_PNEANet) TSnap::CntInDegNodes<PNEANet>;
@@ -300,6 +306,7 @@
 %template(GetTriadEdges_PNEANet) TSnap::GetTriadEdges<PNEANet>;
 %template(GetNodeTriads_PNEANet) TSnap::GetNodeTriads<PNEANet>;
 %template(GetTriadParticip_PNEANet) TSnap::GetTriadParticip<PNEANet>;
+%template(GetTriangleCnt_PNEANet) TSnap::GetTriangleCnt<PNEANet>;
 
 %template(GetCmnNbrs_PNEANet) TSnap::GetCmnNbrs<PNEANet>;
 //%template(GetLen2Paths_PNEANet) TSnap::GetLen2Paths<PNEANet>;
@@ -334,4 +341,15 @@
 %template(MxDegree_PNEANet) MxDegree<PNEANet>;
 %template(PercentMxWcc_PNEANet) PercentMxWcc<PNEANet>;
 %template(PercentMxScc_PNEANet) PercentMxScc<PNEANet>;
+
+// conv.h - PNEANet
+//%template(ToNetwork_PNEANet) TSnap::ToNetwork<PNEANet>;
+//%rename(ToNetwork_PNEANet) TSnap::ToNetwork<PNEANet>(PTable, const TStr &, const TStr &, TStrV  &, TAttrAggr);
+//TSnap::ToNetwork<PNEANet>(PTable, const TStr &, const TStr &, TStrV  &, TAttrAggr);
+%rename(ToNetwork_PNEANet) TSnap::ToNetwork<PNEANet>(PTable, const TStr &, const TStr &, TAttrAggr);
+TSnap::ToNetwork<PNEANet>(PTable, const TStr &, const TStr &, TAttrAggr);
+%rename(ToNetwork_PNEANet) TSnap::ToNetwork<PNEANet>(PTable, const TStr &, const TStr &, TVec<TStr,int> &, TAttrAggr);
+TSnap::ToNetwork<PNEANet>(PTable, const TStr &, const TStr &, TVec<TStr,int> &, TAttrAggr);
+%rename(ToNetwork_PNEANet) TSnap::ToNetwork<PNEANet>(PTable, const TStr &, const TStr &, TVec<TStr,int> &, PTable, const TStr &, TVec<TStr,int> &, TAttrAggr);
+TSnap::ToNetwork<PNEANet>(PTable, const TStr &, const TStr &, TVec<TStr,int> &, PTable, const TStr &, TVec<TStr,int> &, TAttrAggr);
 

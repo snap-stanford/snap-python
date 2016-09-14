@@ -23,6 +23,7 @@ GITDIR = ../../snap
 SNAPDIR = $(GITDIR)/$(SNAP)
 GLIBDIR = $(GITDIR)/$(GLIB)
 SNAPADVDIR = $(GITDIR)/$(SNAPADV)
+SNAPEXPDIR = $(GITDIR)/$(SNAPEXP)
 
 # include compilation parameters
 include $(GITDIR)/Makefile.config
@@ -30,12 +31,12 @@ include ../Makefile.config
 
 all: snap.py _snap.so
 
-snap_wrap.cxx: snap.i snap_types.i tvec.i pneanet.i pungraph.i pngraph.i pgraph.i \
+snap_wrap.cxx: snap.i snap_types.i tvec.i pneanet.i tmodenet.i tcrossnet.i pungraph.i pngraph.i pgraph.i pngraphmp.i pneanetmp.i\
 	snapswig.h snap_types.h printgraph.h goodgraph.cpp
 	swig $(SWIGFLAGS) -python -c++ -w302,312,317,325,362,383,384,389,401,503,508,509 -O -I$(SNAPDIR) -I$(SNAPADVDIR) -I$(GLIBDIR) snap.i
 
 snap_wrap.o: snap_wrap.cxx
-	g++ $(CXXFLAGS) -c snap_wrap.cxx -I$(SNAPDIR) -I$(SNAPADVDIR) -I$(GLIBDIR)  -I/usr/include/python2.6 -I/usr/include/python2.7
+	g++ $(CXXFLAGS) -c snap_wrap.cxx -I$(SNAPDIR) -I$(SNAPADVDIR) -I$(GLIBDIR) -I/usr/include/python2.6 -I/usr/include/python2.7 -I/usr/lib/python2.7/dist-packages/numpy/core/include
 
 Snap.o: 
 	$(CC) $(CXXFLAGS) -c $(SNAPDIR)/Snap.cpp -I$(SNAPDIR) -I$(SNAPADVDIR) -I$(GLIBDIR)

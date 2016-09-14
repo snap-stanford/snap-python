@@ -62,10 +62,15 @@ TUNGraphEdgeI.GetId = GetId
 // centr.h - PUNGraph
 %template(GetNodeEcc_PUNGraph) TSnap::GetNodeEcc<PUNGraph>;
 %template(GetPageRank_PUNGraph) TSnap::GetPageRank<PUNGraph>;
+%template(GetPageRank_v1_PUNGraph) TSnap::GetPageRank_v1<PUNGraph>;
 %template(GetHits_PUNGraph) TSnap::GetHits<PUNGraph>;
 %template(GetBetweennessCentr_PUNGraph) TSnap::GetBetweennessCentr<PUNGraph>;
 %template(GetClosenessCentr_PUNGraph) TSnap::GetClosenessCentr<PUNGraph>;
 %template(GetFarnessCentr_PUNGraph) TSnap::GetFarnessCentr<PUNGraph>;
+#ifdef _OPENMP
+%template(GetPageRankMP_PUNGraph) TSnap::GetPageRankMP<PUNGraph>;
+%template(GetHitsMP_PUNGraph) TSnap::GetHitsMP<PUNGraph>;
+#endif
 
 // alg.h - PUNGraph
 %template(CntInDegNodes_PUNGraph) TSnap::CntInDegNodes<PUNGraph>;
@@ -168,6 +173,7 @@ TUNGraphEdgeI.GetId = GetId
 %template(GetTriadEdges_PUNGraph) TSnap::GetTriadEdges<PUNGraph>;
 %template(GetNodeTriads_PUNGraph) TSnap::GetNodeTriads<PUNGraph>;
 %template(GetTriadParticip_PUNGraph) TSnap::GetTriadParticip<PUNGraph>;
+%template(GetTriangleCnt_PUNGraph) TSnap::GetTriangleCnt<PUNGraph>;
 
 %template(GetCmnNbrs_PUNGraph) TSnap::GetCmnNbrs<PUNGraph>;
 //%template(GetLen2Paths_PUNGraph) TSnap::GetLen2Paths<PUNGraph>;
@@ -202,4 +208,7 @@ TUNGraphEdgeI.GetId = GetId
 %template(MxDegree_PUNGraph) MxDegree<PUNGraph>;
 %template(PercentMxWcc_PUNGraph) PercentMxWcc<PUNGraph>;
 %template(PercentMxScc_PUNGraph) PercentMxScc<PUNGraph>;
+
+// conv.h - PUNGraph
+%template(ToGraph_PUNGraph) TSnap::ToGraph<PUNGraph>;
 

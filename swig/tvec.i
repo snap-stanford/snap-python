@@ -80,6 +80,16 @@ TCnCom.__setitem__ = setitem_vec
 TCnCom.__iter__ = itervec
 TCnCom.__len__ = len_vec
 TCnCom.__delitem__ = delitem_vec
+Schema.__getitem__ = getitem_vec
+Schema.__setitem__ = setitem_vec
+Schema.__iter__ = itervec
+Schema.__len__ = len_vec
+Schema.__delitem__ = delitem_vec
+PNEANetV.__getitem__ = getitem_vec
+PNEANetV.__setitem__ = setitem_vec
+PNEANetV.__iter__ = itervec
+PNEANetV.__len__ = len_vec
+PNEANetV.__delitem__ = delitem_vec
 %}
 
 #if SNAP_ALL
@@ -498,6 +508,11 @@ TStrV.__setitem__ = setitem_vec
 TStrV.__iter__ = itervec
 TStrV.__len__ = len_vec
 TStrV.__delitem__ = delitem_vec
+TIntStrStrTrV.__getitem__ = getitem
+TIntStrStrTrV.__setitem__ = setitem
+TIntStrStrTrV.__iter__ = itervec
+TIntStrStrTrV.__len__ = len
+TIntStrStrTrV.__delitem__ = delitem
 %}
 #endif
 

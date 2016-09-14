@@ -353,6 +353,11 @@ TStrVStrVH.__setitem__ = setitem_hash
 TStrVStrVH.__iter__ = iterhash
 TStrVStrVH.__delitem__ = delitem_hash
 TStrVStrVH.__len__ = len_hash
+TIntStrPrVH.__getitem__ = getitem_hash
+TIntStrPrVH.__setitem__ = setitem_hash
+TIntStrPrVH.__iter__ = iterhash
+TIntStrPrVH.__delitem__ = delitem_hash
+TIntStrPrVH.__len__ = len_hash
 %}
 #endif
 
