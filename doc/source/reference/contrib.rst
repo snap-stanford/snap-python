@@ -7,6 +7,7 @@ Contributors
 
 The following people contributed to the development of Snap.py (in
 alphabetical order):
+
  * Arijit Banerjee
  * Roger Chen
  * Jason Jong

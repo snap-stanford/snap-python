@@ -207,14 +207,19 @@ The following code shows example usage::
 Loads a mode, with name Name, into the PMMNet from the TTable. NCol specifies the node id column and NodeAttrV the node attributes.
 
 Parameters:
+
 - *Graph*: :class:`TMMNet` (input)
     The multimodal network to which we want to add the mode.
+
 - *Name*: string (input)
-    This specifies the name to use for the constructed :class:`TModeNet`
+    This specifies the name to use for the constructed :class:`TModeNet`.
+
 - *Table*: :class:`TTable` (input)
     The table from which we load the node ids.
+
 - *NCol*: string (input)
-    The column in the table which has the node ids
+    The column in the table which has the node ids.
+
 - *NodeAttrV*: TStrV (vector of strings)
     A vector of column names corresponding to node attributes.
 
@@ -250,20 +255,28 @@ The following code shows example usage::
 Loads a crossnet from Mode1 to Mode2, with name CrossName, into the PMMNet from the given TTable. SrcCol and DstCol specify the source and destination node id columns, and EdgeAttrV specifies the columns with edge attributs.
 
 Parameters:
+
 - *Graph*: :class:`TMMNet` (input)
     The multimodal network to which we want to add the mode.
+
 - *Mode1*: string (input)
-    This specifies the name of the source :class:`TModeNet`
+    This specifies the name of the source :class:`TModeNet`.
+
 - *Mode2*: string (input)
-    This specifies the name of the destination :class:`TModeNet`
+    This specifies the name of the destination :class:`TModeNet`.
+
 - *CrossName*: string (input)
-    This specifies the name to use for the constructed :class:`TCrossNet`
+    This specifies the name to use for the constructed :class:`TCrossNet`.
+
 - *Table*: :class:`TTable` (input)
-    The table from which we load the edges
+    The table from which we load the edges.
+
 - *SrcCol*: string (input)
     The column in the table which has the source node id of each edge.
+
 - *DstCol*: string (input)
     The column in the table which has the destination node id of each edge.
+
 - *EdgeAttrV*: TStrV (vector of strings)
     A vector of column names corresponding to edge attributes.
 

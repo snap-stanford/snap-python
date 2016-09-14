@@ -399,7 +399,7 @@ TTable
 
       .. describe:: GetNodeTable()
 
-         Extracts node TTable from :class:`PNEANet` *Network*, using :class:`TTableContext` *Context.
+         Extracts node TTable from :class:`PNEANet` *Network*, using :class:`TTableContext` *Context*.
 
       .. describe:: GetNumRows()
 

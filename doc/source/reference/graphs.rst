@@ -1557,6 +1557,7 @@ TUndirNet
      .. describe:: GetSAttrNameE(AttrId, Name, AttrType)
 
         Given the edge attribute id *AttrId*, get the attribute name.
+
    Below is some code demonstrating the use of the :class:`TUndirNet` class:
 
       >>> G1 = snap.TUndirNet.New()
