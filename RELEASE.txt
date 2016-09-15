@@ -1,5 +1,5 @@
-Snap.py 1.2 Release Notes
-May 2015
+Snap.py 3.0 Release Notes
+September 2016
 
 Snap.py is a Python interface for SNAP (Stanford Network Analysis Platform).
 SNAP is a general purpose, high performance system for analysis and
@@ -10,6 +10,41 @@ Snap.py provides performance benefits of SNAP, combined with flexibility
 of Python. Most of the SNAP functionality is available via Snap.py in Python.
 
 This file contains a high-level description of changes in Snap.py releases.
+
+Release 3.0, Sep 14, 2016
+
+- this is a major release with many new features
+- version number synced up with SNAP
+- updated C++ codebase to SNAP 3.0
+- added support for new classes: multimodal networks TMMNet, TModeNet,
+  TCrossNet, TDirNet, TUndirNet, TNGraphMP, TNEANetMP
+- included support for GetBetweennessCentr(), GetClosenessCentr(),
+  GetFarnessCentr() on TUNGraph(), TNGraph(), TNEANet()
+- implemented multithreaded execution of many operations on Linux and Mac OS X
+- extended test suite in snap-test.py
+- added a batch script for testing on Windows
+- fixed attributes in TNEANet and added a test
+- fixed edge iterators and added a test
+- fixed edge deletion in TNEANet and added a test
+- fixed LoadConnListStr() and added a test
+- fixed LoadEdgeListStr() and added a test
+- fixed GetBfsTree() and added a test
+- fixed GetBetweennessCentr() and added a test
+- fixed GetClosenessCentr() and added a test
+- fixed GetFarnessCentr() and added a test
+- fixed THashKeyDatI and added a test
+- added a test for vector operations
+- extended Makefile with support for new classes: multimodal networks TMMNet,
+  TModeNet, TCrossNet, TNGraphMP, TNEANetMP
+- added documentation for multimodal networks TMMNet
+- added documentation for tables TTable
+- added documentation for conversion of tables to graphs
+- added documentation for sparse attributes
+- added documentation for TUndirNet, TDirNet
+- added documentation for sparse attributes for TNEANet
+- fixed documentation for LoadConnListStr(), LoadEdgeListStr()
+- added GetDat() to documentation on THash
+- fixed a minor typo in documentation for PlotSccDistr()
 
 Release 1.2, May 12, 2015
 
