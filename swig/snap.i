@@ -5,7 +5,7 @@
 
 // set to 1 for release to include all the functions (long compile)
 // set to 0 for development to include limited functions (shorter compile)
-#define SNAP_ALL 0
+#define SNAP_ALL 1
 
 %pythoncode %{
 Version = "3.0.0"
@@ -370,6 +370,7 @@ Version = "3.0.0"
 %template(TIntIntFltTrV) TVec<TIntIntFltTr>;
 %template(TIntFltIntTrV) TVec<TIntFltIntTr>;
 %template(TIntStrIntTrV) TVec<TIntStrIntTr>;
+%template(TIntStrStrTrV) TVec<TIntStrStrTr>;
 %template(TIntKdV) TVec<TIntKd>;
 %template(TUIntIntKdV) TVec<TUIntIntKd>;
 %template(TIntPrFltKdV) TVec<TIntPrFltKd>;
@@ -486,6 +487,7 @@ Version = "3.0.0"
 %template(TIntStrVH) THash<TInt, TStrV>;
 %template(TIntIntPrH) THash<TInt, TIntPr>;
 %template(TIntIntPrVH) THash<TInt, TIntPrV>;
+%template(TIntStrPrVH) THash<TInt, TStrPrV>;
 %template(TUInt64StrVH) THash<TUInt64, TStrV>;
 %template(TIntPrIntH) THash<TIntPr, TInt>;
 %template(TIntPrIntVH) THash<TIntPr, TIntV>;
@@ -552,6 +554,7 @@ Version = "3.0.0"
 %template(TIntStrVHI) THashKeyDatI <TInt, TStrV>;
 %template(TIntIntPrHI) THashKeyDatI <TInt, TIntPr>;
 %template(TIntIntPrVHI) THashKeyDatI <TInt, TIntPrV>;
+%template(TIntStrPrVHI) THashKeyDatI <TInt, TStrPrV>;
 %template(TUInt64StrVHI) THashKeyDatI <TUInt64, TStrV>;
 %template(TIntPrIntHI) THashKeyDatI <TIntPr, TInt>;
 %template(TIntPrIntVHI) THashKeyDatI <TIntPr, TIntV>;
