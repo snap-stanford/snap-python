@@ -11,7 +11,11 @@ of Python. Most of the SNAP functionality is available via Snap.py in Python.
 
 This file contains a high-level description of changes in Snap.py releases.
 
-Release 3.0, Sep 14, 2016
+Release 3.0.1, Sep 28, 2016
+
+- improved setup.py for installations with Anaconda Python
+
+Release 3.0.0, Sep 14, 2016
 
 - this is a major release with many new features
 - version number synced up with SNAP
