@@ -5,6 +5,7 @@ setup.py file for SNAP (Stanford Network Analysis Platform) Python
     Linux version, generated on CentOS, tested on Ubuntu as well
 """
 
+import re
 import inspect
 import os
 import platform
@@ -25,10 +26,11 @@ def getdynpath():
     s = inspect.getfile(inspect)
 
     newpath = None
-    if "anaconda" in s:
-        start = s.find("anaconda/lib")
-        if start > 0:
-            newpath = s[:start] + "anaconda/lib/" + "libpython2.7.dylib"
+    if "conda" in s:
+        pattern = re.compile('[\w\d]+conda\/[\s\S]+\/lib\/')
+	found = pattern.search(s)
+        if found:
+            newpath = s[:found.end()] + "libpython2.7.dylib"
     elif "Cellar" in s:
         start = s.find("Python.framework")
         if start > 0:
