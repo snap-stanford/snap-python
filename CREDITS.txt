@@ -9,6 +9,7 @@ of Python. Most of the SNAP functionality is available via Snap.py in Python.
 
 The following people contributed to the development of Snap.py (in
 alphabetical order):
+Carlos Hernandez
 Jure Leskovec
 Stephen Macke
 Karthik Ramachandran
