@@ -93,7 +93,7 @@ if uname[0] == "Linux":
         w = content.split(" ")
         os_version = (w[0] + w[versionpos]).lower()
         if w[0] == "Ubuntu":
-	    swubuntu = True
+            swubuntu = True
     except:
         pass
 
