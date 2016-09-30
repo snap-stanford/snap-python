@@ -713,11 +713,11 @@ Hash tables contain values of the same type. Each value has a user provided key 
 
         Sorts the hash table. If *CmpKey* is True, it sorts based on keys rather than values.
 
-     .. describe:: SortKey(Asc)
+     .. describe:: SortByKey(Asc)
 
         Sorts the hash table based on keys.
 
-     .. describe:: SortDat(Asc)
+     .. describe:: SortByDat(Asc)
 
         Sorts the hash table based on the values.
 

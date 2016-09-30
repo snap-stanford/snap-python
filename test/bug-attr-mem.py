@@ -26,7 +26,7 @@ def readLoop(graph):
         NI.GetDat()
         NI.Next()       
     return graph
-   
+
 @profile
 def repeatChangeAttr(graph):
     for i in range(1,10):
