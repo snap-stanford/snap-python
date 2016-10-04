@@ -27,8 +27,8 @@ def getdynpath():
 
     newpath = None
     if "conda" in s:
-        pattern = re.compile('[\w\d]+conda\/[\s\S]+\/lib\/')
-	found = pattern.search(s)
+        pattern = re.compile('[\w\d]+conda[\s\S]+\/lib\/')
+        found = pattern.search(s)
         if found:
             newpath = s[:found.end()] + "libpython2.7.dylib"
     elif "Cellar" in s:
