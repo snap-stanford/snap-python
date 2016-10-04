@@ -237,7 +237,7 @@ Graph classes in SNAP:
 
 Network classes in SNAP:
 
-* :class:`TNEANet`: directed graphs like :class:`TNGraph` but with attributes for nodes and edges
+* :class:`TNEANet`: directed multigraphs (multiple directed edges between an ordered pair of nodes) with attributes for nodes and edges
 
 .. seealso::
 
