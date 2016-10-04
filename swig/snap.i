@@ -5,7 +5,7 @@
 
 // set to 1 for release to include all the functions (long compile)
 // set to 0 for development to include limited functions (shorter compile)
-#define SNAP_ALL 1
+#define SNAP_ALL 0
 
 %pythoncode %{
 Version = "3.0.1"
