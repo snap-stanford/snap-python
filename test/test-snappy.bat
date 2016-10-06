@@ -27,5 +27,6 @@ python test-20160801-LoadConnListStr.py
 python test-GetBetweennessCentr.py
 python test-GetClosenessCentr.py
 python test-GetFarnessCentr.py
+python test-pajek.py
 python snap-test.py
 

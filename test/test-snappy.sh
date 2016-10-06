@@ -32,6 +32,7 @@ scripts=(quick_test.py \
     test-GetBetweennessCentr.py \
     test-GetClosenessCentr.py \
     test-GetFarnessCentr.py \
+    test-pajek.py \
     snap-test.py) 
 
 for line in "${scripts[@]}"; do
