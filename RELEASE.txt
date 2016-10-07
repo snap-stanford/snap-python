@@ -11,6 +11,12 @@ of Python. Most of the SNAP functionality is available via Snap.py in Python.
 
 This file contains a high-level description of changes in Snap.py releases.
 
+Release 3.0.2, Oct  7, 2016
+
+- fixed a missing ToNetwork() function
+- fixed a few issues with documentation
+- further improved Anaconda Python handling in setup.py
+
 Release 3.0.1, Sep 28, 2016
 
 - improved setup.py for installations with Anaconda Python
