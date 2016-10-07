@@ -343,13 +343,14 @@
 %template(PercentMxScc_PNEANet) PercentMxScc<PNEANet>;
 
 // conv.h - PNEANet
-//%template(ToNetwork_PNEANet) TSnap::ToNetwork<PNEANet>;
+%template(ToNetwork_PNEANet) TSnap::ToNetwork<PNEANet>;
+
 //%rename(ToNetwork_PNEANet) TSnap::ToNetwork<PNEANet>(PTable, const TStr &, const TStr &, TStrV  &, TAttrAggr);
 //TSnap::ToNetwork<PNEANet>(PTable, const TStr &, const TStr &, TStrV  &, TAttrAggr);
-%rename(ToNetwork_PNEANet) TSnap::ToNetwork<PNEANet>(PTable, const TStr &, const TStr &, TAttrAggr);
-TSnap::ToNetwork<PNEANet>(PTable, const TStr &, const TStr &, TAttrAggr);
-%rename(ToNetwork_PNEANet) TSnap::ToNetwork<PNEANet>(PTable, const TStr &, const TStr &, TVec<TStr,int> &, TAttrAggr);
-TSnap::ToNetwork<PNEANet>(PTable, const TStr &, const TStr &, TVec<TStr,int> &, TAttrAggr);
-%rename(ToNetwork_PNEANet) TSnap::ToNetwork<PNEANet>(PTable, const TStr &, const TStr &, TVec<TStr,int> &, PTable, const TStr &, TVec<TStr,int> &, TAttrAggr);
-TSnap::ToNetwork<PNEANet>(PTable, const TStr &, const TStr &, TVec<TStr,int> &, PTable, const TStr &, TVec<TStr,int> &, TAttrAggr);
+//%rename(ToNetwork_PNEANet) TSnap::ToNetwork<PNEANet>(PTable, const TStr &, const TStr &, TAttrAggr);
+//TSnap::ToNetwork<PNEANet>(PTable, const TStr &, const TStr &, TAttrAggr);
+//%rename(ToNetwork_PNEANet) TSnap::ToNetwork<PNEANet>(PTable, const TStr &, const TStr &, TVec<TStr,int> &, TAttrAggr);
+//TSnap::ToNetwork<PNEANet>(PTable, const TStr &, const TStr &, TVec<TStr,int> &, TAttrAggr);
+//%rename(ToNetwork_PNEANet) TSnap::ToNetwork<PNEANet>(PTable, const TStr &, const TStr &, TVec<TStr,int> &, PTable, const TStr &, TVec<TStr,int> &, TAttrAggr);
+//TSnap::ToNetwork<PNEANet>(PTable, const TStr &, const TStr &, TVec<TStr,int> &, PTable, const TStr &, TVec<TStr,int> &, TAttrAggr);
 
