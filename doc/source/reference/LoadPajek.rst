@@ -34,7 +34,6 @@ The following example shows how to load a Pajek file::
       2 "2"    0.4565    0.6039
       3 "3"    0.4887    0.8188
    *Arcs
-   *Edges
        1      2       1
        1      3       1
        2      3       1

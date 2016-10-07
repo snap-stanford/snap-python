@@ -457,7 +457,7 @@ TTable
          Loads table from the input stream *SIn* using
          :class:`TTableContext` *Context*. Returns a :class:`PTable`.
 
-      .. describe:: LoadSS(Schema, InFNm, Context, Separator='\t', HasTitleLine=False)
+      .. describe:: LoadSS(Schema, InFNm, Context, Separator='\\t', HasTitleLine=False)
 
          Loads table from spread sheet (TSV, CSV, etc). *Schema* is a :class:`Schema` object,
          *InFNm* provides the input file name, *Context is a :class:`TTableContext`, *Separator*
