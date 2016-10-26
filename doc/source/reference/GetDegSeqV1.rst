@@ -21,7 +21,8 @@ Return Value:
 - None
 
 
-The following examples shows how to compute the in- and out-degree sequence vectors for nodes in :class:`TNGraph`, :class:`TUNGraph`, and :class:`TNEANet`::
+The following examples shows how to compute the in- and out-degree sequence vectors for nodes in :class:`TNGraph`, :class:`TUNGraph`, and :class:`TNEANet` (Note that the resulting vectors are not ordered by the node IDs, their elements can be in an arbitrary order. Nodes in the printout are just vector indexes.)::
+
 
     import snap
 

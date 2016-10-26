@@ -19,7 +19,7 @@ Return value:
 
 
 The following example shows how to compute the sequence vector for nodes in
-:class:`TNGraph`, :class:`TUNGraph`, and :class:`TNEANet`::
+:class:`TNGraph`, :class:`TUNGraph`, and :class:`TNEANet` (Note that the resulting vector is not ordered by the node IDs, its elements can be in an arbitrary order. Nodes in the printout are just vector indexes.)::
 
     import snap
 
