@@ -109,6 +109,9 @@ Version = "3.0.2"
 %ignore TVec< TPair< TStr,TAttrType > >::TVec(TSIn &);
 //%ignore Schema::Load;
 
+%ignore TVec<TIntH>::GetPrimHashCd;
+%ignore TVec<TIntH>::GetSecHashCd;
+
 %ignore TVec<PNEANet>::Intrs;
 %ignore TVec<PNEANet>::IntrsLen;
 %ignore TVec<PNEANet>::AddSorted;
@@ -539,6 +542,9 @@ Version = "3.0.2"
 //%template(TStrSH) TStrHash<TInt>;
 //%template(TStrIntSH) TStrHash<TInt>;
 //%template(TStrToIntVSH) TStrHash<TIntV>;
+
+// define vector types
+%template(WeightVH) TVec<TIntH>;
 
 // define keydat types
 //%template(TChChHI) THashKeyDatI <TCh, TCh>;

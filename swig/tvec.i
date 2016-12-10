@@ -513,6 +513,10 @@ TIntStrStrTrV.__setitem__ = setitem_vec
 TIntStrStrTrV.__iter__ = itervec
 TIntStrStrTrV.__len__ = len_vec
 TIntStrStrTrV.__delitem__ = delitem_vec
+WeightVH.__getitem__ = getitem_vec
+WeightVH.__setitem__ = setitem_vec
+WeightVH.__iter__ = itervec
+WeightVH.__len__ = len_vec
+WeightVH.__delitem__ = delitem_vec
 %}
 #endif
-
