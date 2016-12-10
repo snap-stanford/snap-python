@@ -20,8 +20,9 @@ Version = "3.0.2"
 #include "agm.h"
 #include "agmfast.h"
 #include "agmfit.h"
+#include "motifcluster.h"
 #include "n2v.h"
- 
+
 /* #include "Engine.h" */
 #include "snapswig.h"
 
@@ -225,6 +226,7 @@ Version = "3.0.2"
 %include "agm.h"
 %include "agmfast.h"
 %include "agmfit.h"
+%include "motifcluster.h"
 %include "n2v.h"
 
 //%template(Schema) TVec< TPair< TStr, TAttrType> >;
