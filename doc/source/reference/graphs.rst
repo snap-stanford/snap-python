@@ -100,7 +100,7 @@ TUNGraph
 
      .. describe:: GetRndNI()
 
-        Returns a node interator referring to a random node in the graph. 
+        Returns a node iterator referring to a random node in the graph. 
 
      .. describe:: Edges()
 
@@ -384,7 +384,7 @@ TNGraph
 
      .. describe:: GetRndNI()
 
-        Returns a node interator referring to a random node in the graph. 
+        Returns a node iterator referring to a random node in the graph. 
 
      .. describe:: Edges()
 
@@ -1431,7 +1431,7 @@ TUndirNet
 
      .. describe:: GetRndNI()
 
-        Returns a node interator referring to a random node in the graph. 
+        Returns a node iterator referring to a random node in the graph. 
 
      .. describe:: Empty()
 
@@ -1796,7 +1796,7 @@ TDirNet
 
      .. describe:: GetRndNI()
 
-        Returns a node interator referring to a random node in the graph. 
+        Returns a node iterator referring to a random node in the graph. 
 
      .. describe:: Empty()
 
