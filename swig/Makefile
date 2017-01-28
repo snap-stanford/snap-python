@@ -46,7 +46,7 @@ OBJS = $(addsuffix .o, cliques agm agmfast agmfit biasedrandomwalk motifcluster 
 $(OBJS): %.o:
 	$(CC) $(CXXFLAGS) -c $(SNAPADVDIR)/$*.cpp -I$(SNAPDIR) -I$(SNAPADVDIR) -I$(GLIBDIR)
 
-ifeq (, $(findstring -larpack, $(LDFLAGS)))
+ifeq (, $(findstring -larpack, $(LIBS)))
 _snap.so: $(filter-out motifcluster.o, $(OBJS))
 else
 _snap.so: $(OBJS)
