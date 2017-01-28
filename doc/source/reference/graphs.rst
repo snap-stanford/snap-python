@@ -384,7 +384,7 @@ TNGraph
 
      .. describe:: GetRndNI()
 
-        Returns a node interator referring to a random node in the graph. For this method to return different values on subsequent calls, the random generator must be seeded first, for example with TRnd.Randomize().
+        Returns a node iterator referring to a random node in the graph. For this method to return different values on subsequent calls, the random generator must be seeded first, for example with TRnd.Randomize().
 
      .. describe:: Edges()
 
@@ -1431,7 +1431,7 @@ TUndirNet
 
      .. describe:: GetRndNI()
 
-        Returns a node interator referring to a random node in the graph. For this method to return different values on subsequent calls, the random generator must be seeded first, for example with TRnd.Randomize().
+        Returns a node iterator referring to a random node in the graph. For this method to return different values on subsequent calls, the random generator must be seeded first, for example with TRnd.Randomize().
 
      .. describe:: Empty()
 
@@ -1796,7 +1796,7 @@ TDirNet
 
      .. describe:: GetRndNI()
 
-        Returns a node interator referring to a random node in the graph. For this method to return different values on subsequent calls, the random generator must be seeded first, for example with TRnd.Randomize().
+        Returns a node iterator referring to a random node in the graph. For this method to return different values on subsequent calls, the random generator must be seeded first, for example with TRnd.Randomize().
 
      .. describe:: Empty()
 

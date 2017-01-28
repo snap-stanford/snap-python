@@ -22,10 +22,10 @@ The following code shows how to calculate the relative size of the maximum weakl
   import snap
 
   Graph = snap.GenRndGnm(snap.PNGraph, 20, 10)
-  print 'Size WCC of Directed Graph: %d', snap.GetMxWccSz(Graph)
+  print 'Relative size of WCC in Directed Graph:', snap.GetMxWccSz(Graph)
 
   UGraph = snap.GenRndGnm(snap.PUNGraph, 20, 10)
-  print 'Size WCC of Undirected Graph: %d' % snap.GetMxWccSz(UGraph)
+  print 'Relative size of WCC in Undirected Graph:', snap.GetMxWccSz(UGraph)
 
   Network = snap.GenRndGnm(snap.PNEANet, 20, 10)
-  print 'Size WCC of Network: %d' % snap.GetMxWccSz(Network)
+  print 'Relative size of WCC in Network:', snap.GetMxWccSz(Network)

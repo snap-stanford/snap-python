@@ -14,7 +14,7 @@ Parameters:
     Hash table mapping node ids to their corresponding eigenvector centrality values.
 
 - *Eps*: float (input)
-    Epsilon (stop when accumulated difference in eigenvector centrality value for all nodes in an interation is less than epsilon).
+    Epsilon (stop when accumulated difference in eigenvector centrality value for all nodes in an iteration is less than epsilon).
 
 - *MaxIter*: int (input)
     Maximum number of iterations (stop when exceeding this number of iterations).
