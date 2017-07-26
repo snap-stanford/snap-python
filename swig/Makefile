@@ -19,6 +19,7 @@
 #		make dist-win
 
 # set the path to your SNAP directory here
+#GITDIR = ../../snap-dev
 GITDIR = ../../snap
 SNAPDIR = $(GITDIR)/$(SNAP)
 GLIBDIR = $(GITDIR)/$(GLIB)
