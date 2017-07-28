@@ -1,5 +1,5 @@
-Snap.py 3.0 Release Notes
-September 2016
+Snap.py 4.0 Release Notes
+July 2017
 
 Snap.py is a Python interface for SNAP (Stanford Network Analysis Platform).
 SNAP is a general purpose, high performance system for analysis and
@@ -10,6 +10,12 @@ Snap.py provides performance benefits of SNAP, combined with flexibility
 of Python. Most of the SNAP functionality is available via Snap.py in Python.
 
 This file contains a high-level description of changes in Snap.py releases.
+
+Release 4.0.0, Jul 28, 2017
+
+- updated C++ codebase to SNAP 4.0
+- added a test for TTable
+- minor updates in the documentation
 
 Release 3.0.2, Oct  7, 2016
 
