@@ -1,6 +1,7 @@
 import random
 import sys
-from snap import *
+
+import snap
 
 def PrintGStats(s, Graph):
     '''
@@ -16,7 +17,7 @@ def DefaultConstructor():
     Test the default constructor
     '''
 
-    Graph = TNEANet.New()
+    Graph = snap.TNEANet.New()
     PrintGStats("DefaultConstructor:Graph", Graph)
 
 def ManipulateNodesEdges():
@@ -28,7 +29,7 @@ def ManipulateNodesEdges():
     NEdges = 100000
     FName = "test.graph"
 
-    Graph = TNEANet.New()
+    Graph = snap.TNEANet.New()
     t = Graph.Empty()
 
     # create the nodes
@@ -83,14 +84,14 @@ def ManipulateNodesEdges():
     # save the graph
     print "graph type = ", type(Graph)
     #FOut = TFOut(TStr(FName))
-    FOut = TFOut(FName)
+    FOut = snap.TFOut(FName)
     Graph.Save(FOut)
     FOut.Flush()
 
     # load the graph
     #FIn = TFIn(TStr(FName))
-    FIn = TFIn(FName)
-    Graph2 = TNEANet(FIn)
+    FIn = snap.TFIn(FName)
+    Graph2 = snap.TNEANet(FIn)
     PrintGStats("ManipulateNodesEdges:Graph4" , Graph2)
 
     # remove all the nodes and edges
@@ -111,7 +112,7 @@ def ManipulateAttributesId():
     NNodes = 1000
     NEdges = 1000
   
-    Graph = TNEANet.New()
+    Graph = snap.TNEANet.New()
     t = Graph.Empty()
 
     # create the nodes
@@ -178,7 +179,7 @@ def ManipulateAttributesId():
     NI = Graph.BegNAFltI(attr3)
     NodeId = 0
     while NI < Graph.EndNAFltI(attr3):
-        if NI.GetDat() != TFlt.Mn:
+        if NI.GetDat() != snap.TFlt.Mn:
             print "Attribute2: %s, Node: %i, Val: %f" % (attr3, NodeId, NI.GetDat())
             #print "Attribute: %s, Node: %i, Val: %f" % (attr3(), NodeId, NI.GetDat())
         NodeId += 1
@@ -199,7 +200,7 @@ def ManipulateAttributesId():
     NI = Graph.BegNAStrI(attr1)
     NodeId = 0
     while NI < Graph.EndNAStrI(attr1):
-        if NI.GetDat() != TStr.GetNullStr():
+        if NI.GetDat() != snap.TStr.GetNullStr():
             print "Attribute3: %s, Node: %i, Val: %s" % (attr1, NodeId, NI.GetDat())
             #print "Attribute: %s, Node: %i, Val: %s" % (attr1(), NodeId, NI.GetDat())
         NodeId += 1
@@ -233,11 +234,11 @@ def ManipulateAttributesId():
             Graph.GetIntAttrIndDatN(NId, attr2idx),
             Graph.GetFltAttrIndDatN(NId, attr3idx))
 
-    NIdAttrName = TStrV()
-    NIdAttrValue = TStrV()
-    NIdIntAttrValue = TIntV()
-    NIdFltAttrValue = TFltV()
-    NIdStrAttrValue = TStrV()
+    NIdAttrName = snap.TStrV()
+    NIdAttrValue = snap.TStrV()
+    NIdIntAttrValue = snap.TIntV()
+    NIdFltAttrValue = snap.TFltV()
+    NIdStrAttrValue = snap.TStrV()
 
     Graph.AttrNameNI(NId, NIdAttrName)
     AttrLen = NIdAttrName.Len()
@@ -327,7 +328,7 @@ def ManipulateAttributesId():
     EdgeId = 0
     EI = Graph.BegEAIntI(attr2)
     while EI < Graph.EndEAIntI(attr2):
-        if EI.GetDat() != TInt.Mn:
+        if EI.GetDat() != snap.TInt.Mn:
             print "E Attribute1: %s, Edge: %i, Val: %i" % (
                 attr2, EdgeId, EI.GetDat())
             #% (attr2(), EdgeId, EI.GetDat())
@@ -364,7 +365,7 @@ def ManipulateAttributesId():
     EdgeId = 0
     EI = Graph.BegEAStrI(attr1)
     while EI < Graph.EndEAStrI(attr1):
-        if EI.GetDat() != TStr.GetNullStr():
+        if EI.GetDat() != snap.TStr.GetNullStr():
             print "E Attribute3: %s, Edge: %i, Val: %s" % (
                 attr1, EdgeId, EI.GetDat())
             #(attr1(), EdgeId, EI.GetDat())
@@ -399,16 +400,16 @@ def ManipulateAttributesId():
             Graph.GetIntAttrIndDatE(EId, attr2idx),
             Graph.GetFltAttrIndDatE(EId, attr3idx))
 
-    EIdAttrName = TStrV()
-    EIdAttrValue = TStrV()
-    EIdIntAttrValue = TIntV()
-    EIdFltAttrValue = TFltV()
-    EIdStrAttrValue = TStrV()
+    EIdAttrName = snap.TStrV()
+    EIdAttrValue = snap.TStrV()
+    EIdIntAttrValue = snap.TIntV()
+    EIdFltAttrValue = snap.TFltV()
+    EIdStrAttrValue = snap.TStrV()
 
     EdgeId = 0
     EI = Graph.BegEAIntI(attr2)
     while EI < Graph.EndEAIntI(attr2):
-        if EI.GetDat() != TInt.Mn:
+        if EI.GetDat() != snap.TInt.Mn:
             print "E Attribute1: %s, Edge: %i, Val: %i" % (
                 attr2, EdgeId, EI.GetDat())
             #% (attr2(), EdgeId, EI.GetDat())
@@ -510,7 +511,7 @@ def ManipulateAttributesIter():
     NNodes = 1000
     NEdges = 1000
   
-    Graph = TNEANet.New()
+    Graph = snap.TNEANet.New()
     t = Graph.Empty()
 
     # create the nodes
@@ -585,7 +586,7 @@ def ManipulateAttributesIter():
     NI = Graph.BegNAFltI(attr3)
     NodeId = 0
     while NI < Graph.EndNAFltI(attr3):
-        if NI.GetDat() != TFlt.Mn:
+        if NI.GetDat() != snap.TFlt.Mn:
             print "Attribute2: %s, Node: %i, Val: %f" % (attr3, NodeId, NI.GetDat())
             #print "Attribute: %s, Node: %i, Val: %f" % (attr3(), NodeId, NI.GetDat())
         NodeId += 1
@@ -609,7 +610,7 @@ def ManipulateAttributesIter():
     NI = Graph.BegNAStrI(attr1)
     NodeId = 0
     while NI < Graph.EndNAStrI(attr1):
-        if NI.GetDat() != TStr.GetNullStr():
+        if NI.GetDat() != snap.TStr.GetNullStr():
             print "Attribute3: %s, Node: %i, Val: %s" % (attr1, NodeId, NI.GetDat())
             #print "Attribute: %s, Node: %i, Val: %s" % (attr1(), NodeId, NI.GetDat())
         NodeId += 1
@@ -646,30 +647,30 @@ def ManipulateAttributesIter():
             Graph.GetIntAttrIndDatN(NI, attr2idx),
             Graph.GetFltAttrIndDatN(NI, attr3idx))
 
-    NIdAttrName = TStrV()
-    NIdAttrValue = TStrV()
-    NIdIntAttrValue = TIntV()
-    NIdFltAttrValue = TFltV()
-    NIdStrAttrValue = TStrV()
+    NIdAttrName = snap.TStrV()
+    NIdAttrValue = snap.TStrV()
+    NIdIntAttrValue = snap.TIntV()
+    NIdFltAttrValue = snap.TFltV()
+    NIdStrAttrValue = snap.TStrV()
 
     Graph.AttrNameNI(NId, NIdAttrName)
     AttrLen = NIdAttrName.Len()
     for i in range(AttrLen):
         print "Vertical Node1: %i, Attr: %s" % (NId, NIdAttrName.GetI(i)())
 
-    NIdAttrName = TStrV()
+    NIdAttrName = snap.TStrV()
     Graph.IntAttrNameNI(NId, NIdAttrName)
     AttrLen = NIdAttrName.Len()
     for i in range(AttrLen):
         print "Vertical Node11 (int): %i, Attr: %s" % (NId, NIdAttrName.GetI(i)())
 
-    NIdAttrName = TStrV()
+    NIdAttrName = snap.TStrV()
     Graph.FltAttrNameNI(NId, NIdAttrName)
     AttrLen = NIdAttrName.Len()
     for i in range(AttrLen):
         print "Vertical Node12 (flt): %i, Attr: %s" % (NId, NIdAttrName.GetI(i)())
 
-    NIdAttrName = TStrV()
+    NIdAttrName = snap.TStrV()
     Graph.StrAttrNameNI(NId, NIdAttrName)
     AttrLen = NIdAttrName.Len()
     for i in range(AttrLen):
@@ -733,7 +734,7 @@ def ManipulateAttributesIter():
     EdgeId = 0
     EI = Graph.BegEAIntI(attr2)
     while EI < Graph.EndEAIntI(attr2):
-        if EI.GetDat() != TInt.Mn:
+        if EI.GetDat() != snap.TInt.Mn:
             print "E Attribute1: %s, Edge: %i, Val: %i" % (
                 attr2, EdgeId, EI.GetDat())
             #% (attr2(), EdgeId, EI.GetDat())
@@ -777,7 +778,7 @@ def ManipulateAttributesIter():
     EdgeId = 0
     EI = Graph.BegEAStrI(attr1)
     while EI < Graph.EndEAStrI(attr1):
-        if EI.GetDat() != TStr.GetNullStr():
+        if EI.GetDat() != snap.TStr.GetNullStr():
             print "E Attribute3: %s, Edge: %i, Val: %s" % (
                 attr1, EdgeId, EI.GetDat())
             #(attr1(), EdgeId, EI.GetDat())
@@ -815,8 +816,8 @@ def ManipulateAttributesIter():
             Graph.GetIntAttrIndDatE(EI, attr2idx),
             Graph.GetFltAttrIndDatE(EI, attr3idx))
 
-    EIdAttrName = TStrV()
-    EIdAttrValue = TStrV()
+    EIdAttrName = snap.TStrV()
+    EIdAttrValue = snap.TStrV()
 
     Graph.AttrNameEI(EId, EIdAttrName)
     AttrLen = EIdAttrName.Len()
