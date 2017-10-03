@@ -96,11 +96,21 @@ TUNGraph
 
      .. describe:: GetRndNId()
 
-        Returns an ID of a random node in the graph. For this method to return different values on subsequent calls, the random generator must be seeded first, for example with TRnd.Randomize().
+        Returns an ID of a random node in the graph. For this method to return different values on subsequent program executions, the random generator must be seeded first, for example with *TRnd.Randomize()*. The example below shows how to use *Randomize()*. Omit the line with *Randomize()* or the *Rnd* parameter to *GetRndNId()* to get the same return values for different program executions:
+
+     .. code-block:: python
+
+        import snap
+        G = snap.GenFull(snap.PNEANet, 100)
+        Rnd = snap.TRnd(42)
+        Rnd.Randomize()
+        for i in range(0,10):
+            NId = G.GetRndNId(Rnd)
+            print NId
 
      .. describe:: GetRndNI()
 
-        Returns a node iterator referring to a random node in the graph. For this method to return different values on subsequent calls, the random generator must be seeded first, for example with TRnd.Randomize().
+        Returns a node iterator referring to a random node in the graph. For this method to return different values on subsequent program executions, the random generator must be seeded first, see the example under *TUNGraph.GetRndNId()*.
 
      .. describe:: Edges()
 
@@ -380,11 +390,11 @@ TNGraph
 
      .. describe:: GetRndNId()
 
-        Returns an ID of a random node in the graph. For this method to return different values on subsequent calls, the random generator must be seeded first, for example with TRnd.Randomize().
+        Returns an ID of a random node in the graph. For this method to return different values on subsequent program executions, the random generator must be seeded first, see the example under *TUNGraph.GetRndNId()*.
 
      .. describe:: GetRndNI()
 
-        Returns a node iterator referring to a random node in the graph. For this method to return different values on subsequent calls, the random generator must be seeded first, for example with TRnd.Randomize().
+        Returns a node iterator referring to a random node in the graph. For this method to return different values on subsequent program executions, the random generator must be seeded first, see the example under *TUNGraph.GetRndNId()*.
 
      .. describe:: Edges()
 
@@ -679,7 +689,7 @@ TNEANet
 
      .. describe:: GetRndNId()
 
-        Returns an ID of a random node in the graph. For this method to return different values on subsequent calls, the random generator must be seeded first, for example with TRnd.Randomize().
+        Returns an ID of a random node in the graph. For this method to return different values on program executions, the random generator must be seeded first, see the example under *TUNGraph.GetRndNId()*.
 
      .. describe:: GetNIdV(NIdV)
 
@@ -739,7 +749,7 @@ TNEANet
 
      .. describe:: GetRndEId()
 
-        Returns an ID of a random edge in the graph. For this method to return different values on subsequent calls, the random generator must be seeded first, for example with TRnd.Randomize().
+        Returns an ID of a random edge in the graph. For this method to return different values on subsequent program executions, the random generator must be seeded first, see the example under *TUNGraph.GetRndNId()*.
 
      .. describe:: GetEIdV(EIdV)
 
@@ -1427,11 +1437,11 @@ TUndirNet
 
      .. describe:: GetRndNId()
 
-        Returns an ID of a random node in the graph. For this method to return different values on subsequent calls, the random generator must be seeded first, for example with TRnd.Randomize().
+        Returns an ID of a random node in the graph. For this method to return different values on subsequent program executions, the random generator must be seeded first, see the example under *TUNGraph.GetRndNId()*.
 
      .. describe:: GetRndNI()
 
-        Returns a node iterator referring to a random node in the graph. For this method to return different values on subsequent calls, the random generator must be seeded first, for example with TRnd.Randomize().
+        Returns a node iterator referring to a random node in the graph. For this method to return different values on subsequent program executions, the random generator must be seeded first, see the example under *TUNGraph.GetRndNId()*.
 
      .. describe:: Empty()
 
@@ -1792,11 +1802,11 @@ TDirNet
 
      .. describe:: GetRndNId()
 
-        Returns an ID of a random node in the graph. For this method to return different values on subsequent calls, the random generator must be seeded first, for example with TRnd.Randomize().
+        Returns an ID of a random node in the graph. For this method to return different values on subsequent program executions, the random generator must be seeded first, see the example under *TUNGraph.GetRndNId()*.
 
      .. describe:: GetRndNI()
 
-        Returns a node iterator referring to a random node in the graph. For this method to return different values on subsequent calls, the random generator must be seeded first, for example with TRnd.Randomize().
+        Returns a node iterator referring to a random node in the graph. For this method to return different values on subsequent program executions, the random generator must be seeded first, see the example under *TUNGraph.GetRndNId()*.
 
      .. describe:: Empty()
 
