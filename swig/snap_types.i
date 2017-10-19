@@ -128,8 +128,9 @@
 }
 
 %typecheck(SWIG_TYPECHECK_DOUBLE)
-  float, double,
-  const float &, const double &, TFlt, TFlt &, const TFlt, const TFlt&
+  float, float &, const float, const float &,
+  double, double &, const double, const double &,
+  TFlt, TFlt &, const TFlt, const TFlt &
 {
   $1 = (PyFloat_Check($input) || PyInt_Check($input) || PyLong_Check($input)) ? 1 : 0;
 }

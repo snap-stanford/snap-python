@@ -8,7 +8,7 @@
 #define SNAP_ALL 0
 
 %pythoncode %{
-Version = "4.0.0"
+Version = "4.0.1"
 %}
 
 %module snap
@@ -162,7 +162,6 @@ Version = "4.0.0"
 %ignore TRowIteratorWithRemove::GetNextIntAttr(TInt) const;
 %ignore TRowIteratorWithRemove::GetNextFltAttr(TInt) const;
 %ignore TRowIteratorWithRemove::GetNextStrAttr(TInt) const;
-
 
 // Python-C++ conversion typemaps
 
@@ -470,6 +469,7 @@ Version = "4.0.0"
 %template(TIntStrHI) THashKeyDatI <TInt, TStr>;
 %template(TIntPrFltHI) THashKeyDatI <TIntPr, TFlt>;
 %template(TStrIntHI) THashKeyDatI <TStr, TInt>;
+%template(TIntFltVH) THash<TInt, TFltV>;
 
 #if SNAP_ALL
 // define hash types
@@ -483,7 +483,6 @@ Version = "4.0.0"
 %template(TIntIntHH) THash<TInt, TIntH>;
 %template(TIntFltPrH) THash<TInt, TFltPr>;
 %template(TIntFltTrH) THash<TInt, TFltTr>;
-%template(TIntFltVH) THash<TInt, TFltV>;
 %template(TIntStrVH) THash<TInt, TStrV>;
 %template(TIntIntPrH) THash<TInt, TIntPr>;
 %template(TIntIntPrVH) THash<TInt, TIntPrV>;
