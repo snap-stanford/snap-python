@@ -37,7 +37,7 @@ This code snippet shows how to load a :class:`TTable` object from a tab-separate
 
     outfile = "/path/to/output.bin"
     FOut = snap.TFOut(outfile)
-    table.save(FOut)
+    table.Save(FOut)
     FOut.Flush()
 
 The saved table can now be loaded from binary using::

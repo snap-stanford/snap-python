@@ -8,7 +8,7 @@
 #define SNAP_ALL 0
 
 %pythoncode %{
-Version = "4.0.1"
+Version = "4.0.2"
 %}
 
 %module snap
