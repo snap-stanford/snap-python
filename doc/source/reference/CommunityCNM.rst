@@ -8,7 +8,7 @@ Uses the Clauset-Newman-Moore community detection method for large networks. At 
 Parameters:
 
 - *Graph*: undirected graph (input)
-    A Snap.py undirected graph.
+    A Snap.py undirected graph. Make sure that *Graph* has no self-edges. If needed, use :meth:`DelSelfEdges`.
 
 - *CmtyV*: :class:`TCnComV`, a vector of connected components (output)
     A vector of all the communities that are detected by the CNM method. Each community is represented as a vector of node IDs.
