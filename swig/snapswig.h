@@ -20,6 +20,8 @@ public:
   int GetInDeg() const { return NI.GetInDeg(); }
   /// Returns out-degree of the current node.
   int GetOutDeg() const { return NI.GetOutDeg(); }
+  /// Sorts the adjacency lists of the current node.
+  void SortNIdV() { NI.SortNIdV(); }
   /// Returns ID of NodeN-th in-node (the node pointing to the current node). ##TNGraph::TNodeI::GetInNId
   int GetInNId(const int& NodeN) const { return NI.GetInNId(NodeN); }
   /// Returns ID of NodeN-th out-node (the node the current node points to). ##TNGraph::TNodeI::GetOutNId
@@ -54,6 +56,8 @@ public:
   int GetInDeg() const { return NI.GetInDeg(); }
   /// Returns out-degree of the current node.
   int GetOutDeg() const { return NI.GetOutDeg(); }
+  /// Sorts the adjacency lists of the current node.
+  void SortNIdV() { NI.SortNIdV(); }
   /// Returns ID of NodeN-th in-node (the node pointing to the current node). ##TDirNet::TNodeI::GetInNId
   int GetInNId(const int& NodeN) const { return NI.GetInNId(NodeN); }
   /// Returns ID of NodeN-th out-node (the node the current node points to). ##TDirNet::TNodeI::GetOutNId
@@ -89,6 +93,8 @@ public:
   int GetInDeg() const { return NI.GetInDeg(); }
   /// Returns out-degree of the current node.
   int GetOutDeg() const { return NI.GetOutDeg(); }
+  /// Sorts the adjacency lists of the current node.
+  void SortNIdV() { NI.SortNIdV(); }
   /// Returns ID of NodeN-th in-node (the node pointing to the current node). ##TNGraphMP::TNodeI::GetInNId
   int GetInNId(const int& NodeN) const { return NI.GetInNId(NodeN); }
   /// Returns ID of NodeN-th out-node (the node the current node points to). ##TNGraphMP::TNodeI::GetOutNId
@@ -193,6 +199,8 @@ public:
   int GetInDeg() const { return NI.GetInDeg(); }
   /// Returns out-degree of the current node.
   int GetOutDeg() const { return NI.GetOutDeg(); }
+  /// Sorts the adjacency lists of the current node.
+  void SortNIdV() { NI.SortNIdV(); }
   /// Returns ID of NodeN-th in-node (the node pointing to the current node). ##TUNGraph::TNodeI::GetInNId
   int GetInNId(const int& NodeN) const { return NI.GetInNId(NodeN); }
   /// Returns ID of NodeN-th out-node (the node the current node points to). ##TUNGraph::TNodeI::GetOutNId
@@ -227,6 +235,8 @@ public:
   int GetInDeg() const { return NI.GetInDeg(); }
   /// Returns out-degree of the current node.
   int GetOutDeg() const { return NI.GetOutDeg(); }
+  /// Sorts the adjacency lists of the current node.
+  void SortNIdV() { NI.SortNIdV(); }
   /// Returns ID of NodeN-th in-node (the node pointing to the current node). ##TUndirNet::TNodeI::GetInNId
   int GetInNId(const int& NodeN) const { return NI.GetInNId(NodeN); }
   /// Returns ID of NodeN-th out-node (the node the current node points to). ##TUndirNet::TNodeI::GetOutNId
@@ -318,6 +328,39 @@ public:
   bool IsOutNId(const int& NId) const { return NI.IsOutNId(NId); }
   /// Tests whether node with ID NId is a neighbor of the current node.
   bool IsNbrNId(const int& NId) const { return NI.IsOutNId(NId) || NI.IsInNId(NId); }
+
+  /// Returns ID of EdgeN-th in-edge.
+  int GetInEId(const int& EdgeN) const { return NI.GetInEId(EdgeN); }
+  /// Returns ID of EdgeN-th out-edge.
+  int GetOutEId(const int& EdgeN) const { return NI.GetOutEId(EdgeN); }
+  /// Returns ID of EdgeN-th in or out-edge.
+  int GetNbrEId(const int& EdgeN) const { return NI.GetNbrEId(EdgeN); }
+  /// Tests whether the edge with ID EId is an in-edge of current node.
+  bool IsInEId(const int& EId) const { return NI.IsInEId(EId); }
+  /// Tests whether the edge with ID EId is an out-edge of current node.
+  bool IsOutEId(const int& EId) const { return NI.IsOutEId(EId); }
+  /// Tests whether the edge with ID EId is an in or out-edge of current node.
+  bool IsNbrEId(const int& EId) const { return NI.IsInEId(EId) || NI.IsOutEId(EId); }
+  /// Gets vector of attribute names.
+  void GetAttrNames(TStrV& Names) const { NI.GetAttrNames(Names); }
+  /// Gets vector of attribute values.
+  void GetAttrVal(TStrV& Val) const { NI.GetAttrVal(Val); }
+  /// Gets vector of int attribute names.
+  void GetIntAttrNames(TStrV& Names) const { NI.GetIntAttrNames(Names); }
+  /// Gets vector of int attribute values.
+  void GetIntAttrVal(TIntV& Val) const { NI.GetIntAttrVal(Val); }
+  /// Gets vector of int attribute names.
+  void GetIntVAttrNames(TStrV& Names) const { NI.GetIntVAttrNames(Names); }
+  /// Gets vector of int attribute values.
+  void GetIntVAttrVal(TVec<TIntV>& Val) const { NI.GetIntVAttrVal(Val); }
+  /// Gets vector of str attribute names.
+  void GetStrAttrNames(TStrV& Names) const { NI.GetStrAttrNames(Names); }
+  /// Gets vector of str attribute values.
+  void GetStrAttrVal(TStrV& Val) const { NI.GetStrAttrVal(Val); }
+  /// Gets vector of flt attribute names.
+  void GetFltAttrNames(TStrV& Names) const { NI.GetFltAttrNames(Names); }
+  /// Gets vector of flt attribute values.
+  void GetFltAttrVal(TFltV& Val) const { NI.GetFltAttrVal(Val); }
 };
 
 /// Edge iterator. Only forward iteration (operator++) is supported.
@@ -454,6 +497,34 @@ public:
   bool IsOutNId(const int& NId) const { return NI.IsOutNId(NId); }
   /// Tests whether node with ID NId is a neighbor of the current node.
   bool IsNbrNId(const int& NId) const { return NI.IsOutNId(NId) || NI.IsInNId(NId); }
+  /// Returns ID of EdgeN-th in-edge.
+  int GetInEId(const int& EdgeN) const { return NI.GetInEId(EdgeN); }
+  /// Returns ID of EdgeN-th out-edge.
+  int GetOutEId(const int& EdgeN) const { return NI.GetOutEId(EdgeN); }
+  /// Returns ID of EdgeN-th in or out-edge.
+  int GetNbrEId(const int& EdgeN) const { return NI.GetNbrEId(EdgeN); }
+  /// Tests whether the edge with ID EId is an in-edge of current node.
+  bool IsInEId(const int& EId) const { return NI.IsInEId(EId); }
+  /// Tests whether the edge with ID EId is an out-edge of current node.
+  bool IsOutEId(const int& EId) const { return NI.IsOutEId(EId); }
+  /// Tests whether the edge with ID EId is an in or out-edge of current node.
+  bool IsNbrEId(const int& EId) const { return NI.IsInEId(EId) || NI.IsOutEId(EId); }
+  /// Gets vector of attribute names.
+  void GetAttrNames(TStrV& Names) const { NI.GetAttrNames(Names); }
+  /// Gets vector of attribute values.
+  void GetAttrVal(TStrV& Val) const { NI.GetAttrVal(Val); }
+  /// Gets vector of int attribute names.
+  void GetIntAttrNames(TStrV& Names) const { NI.GetIntAttrNames(Names); }
+  /// Gets vector of int attribute values.
+  void GetIntAttrVal(TIntV& Val) const { NI.GetIntAttrVal(Val); }
+  /// Gets vector of str attribute names.
+  void GetStrAttrNames(TStrV& Names) const { NI.GetStrAttrNames(Names); }
+  /// Gets vector of str attribute values.
+  void GetStrAttrVal(TStrV& Val) const { NI.GetStrAttrVal(Val); }
+  /// Gets vector of flt attribute names.
+  void GetFltAttrNames(TStrV& Names) const { NI.GetFltAttrNames(Names); }
+  /// Gets vector of flt attribute values.
+  void GetFltAttrVal(TFltV& Val) const { NI.GetFltAttrVal(Val); }
 };
 
 /// Edge iterator. Only forward iteration (operator++) is supported.
@@ -512,6 +583,38 @@ public:
   bool IsOutNId(const int& NId) const { return NI.IsOutNId(NId); }
   /// Tests whether node with ID NId is a neighbor of the current node.
   bool IsNbrNId(const int& NId) const { return NI.IsOutNId(NId) || NI.IsInNId(NId); }
+  /// Returns ID of EdgeN-th in-edge.
+  int GetInEId(const int& EdgeN) const { return NI.GetInEId(EdgeN); }
+  /// Returns ID of EdgeN-th out-edge.
+  int GetOutEId(const int& EdgeN) const { return NI.GetOutEId(EdgeN); }
+  /// Returns ID of EdgeN-th in or out-edge.
+  int GetNbrEId(const int& EdgeN) const { return NI.GetNbrEId(EdgeN); }
+  /// Tests whether the edge with ID EId is an in-edge of current node.
+  bool IsInEId(const int& EId) const { return NI.IsInEId(EId); }
+  /// Tests whether the edge with ID EId is an out-edge of current node.
+  bool IsOutEId(const int& EId) const { return NI.IsOutEId(EId); }
+  /// Tests whether the edge with ID EId is an in or out-edge of current node.
+  bool IsNbrEId(const int& EId) const { return NI.IsInEId(EId) || NI.IsOutEId(EId); }
+  /// Gets vector of attribute names.
+  void GetAttrNames(TStrV& Names) const { NI.GetAttrNames(Names); }
+  /// Gets vector of attribute values.
+  void GetAttrVal(TStrV& Val) const { NI.GetAttrVal(Val); }
+  /// Gets vector of int attribute names.
+  void GetIntAttrNames(TStrV& Names) const { NI.GetIntAttrNames(Names); }
+  /// Gets vector of int attribute values.
+  void GetIntAttrVal(TIntV& Val) const { NI.GetIntAttrVal(Val); }
+  /// Gets vector of int attribute names.
+  void GetIntVAttrNames(TStrV& Names) const { NI.GetIntVAttrNames(Names); }
+  /// Gets vector of int attribute values.
+  void GetIntVAttrVal(TVec<TIntV>& Val) const { NI.GetIntVAttrVal(Val); }
+  /// Gets vector of str attribute names.
+  void GetStrAttrNames(TStrV& Names) const { NI.GetStrAttrNames(Names); }
+  /// Gets vector of str attribute values.
+  void GetStrAttrVal(TStrV& Val) const { NI.GetStrAttrVal(Val); }
+  /// Gets vector of flt attribute names.
+  void GetFltAttrNames(TStrV& Names) const { NI.GetFltAttrNames(Names); }
+  /// Gets vector of flt attribute values.
+  void GetFltAttrVal(TFltV& Val) const { NI.GetFltAttrVal(Val); }
 };
 
 /// Edge iterator. Only forward iteration (operator++) is supported.
@@ -627,8 +730,6 @@ public:
   TCrossNetAFltI& operator++(int) { FltAI++; return *this; }
   //  friend class TCrossNet;
 };
-
-
 
 
 class TMMNetModeNetI {
