@@ -92,7 +92,7 @@ TUNGraph
 
      .. describe:: GetMxNId()
 
-        Returns the maximum ID of a any node in the graph.
+        Returns an ID that is larger than any node ID in the graph.
 
      .. describe:: GetRndNId()
 
@@ -386,7 +386,7 @@ TNGraph
 
      .. describe:: GetMxNId()
 
-        Returns the maximum ID of a any node in the graph.
+        Returns an ID that is larger than any node ID in the graph.
 
      .. describe:: GetRndNId()
 
@@ -685,7 +685,7 @@ TNEANet
 
      .. describe:: GetMxNId()
 
-        Returns the maximum ID of a any node in the graph.
+        Returns an ID that is larger than any node ID in the graph.
 
      .. describe:: GetRndNId()
 
@@ -1393,7 +1393,7 @@ TUndirNet
 
      .. describe:: GetMxNId()
 
-        Returns the maximum ID of a any node in the graph.
+        Returns an ID that is larger than any node ID in the graph.
 
      .. describe:: GetEdges()
 
@@ -1759,7 +1759,7 @@ TDirNet
 
      .. describe:: GetMxNId()
 
-        Returns the maximum ID of a any node in the graph.
+        Returns an ID that is larger than any node ID in the graph.
 
      .. describe:: GetEdges()
 
