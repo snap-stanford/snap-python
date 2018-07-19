@@ -22,8 +22,8 @@ Parameters:
 
 Return value:
 
-- tuple
-    The tuple is of size 3 and consists of the number of nodes in the tree (twice), and the number of levels in the tree.
+- list: [int, int, int]
+    The list is of size 3 and consists of the number of nodes in the tree (twice) and the number of levels in the tree.
 
 The following example shows how to get the size of the tree starting at node 0 with
 :class:`TNGraph`, :class:`TUNGraph`, and :class:`TNEANet`::

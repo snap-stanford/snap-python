@@ -1,74 +1,63 @@
 GetNodeTriads
-'''''''''''''
-.. note::
+'''''''''''''''
 
-    This page is a draft and under revision.
+.. function:: GetNodeTriads(Graph, NId, GroupSet)
 
-
-.. function:: int GetNodeTriads(Graph, NId, ClosedTriads, OpenTriads)
-
-.. note::
-
-    This function is not yet supported.
-
-Returns the number of Open and Closed triads that a node NId participates in.  Note that this function is currently overloaded in the C++ SNAP definition: there are other GetNodeTriads functions which take other arguments.  In addition, this function calls either GetNodeTriads_PNGraph, GetNodeTriads_PUNGraph, or GetNodeTriads_PNEANet (depending on the type of *Graph*), and none of these functions are defined (see below for error report).
-
-Considers the *Graph* as undirected.
+Returns the number of closed triads between a node *NId* and a subset of its neighbors in *GroupSet* as well as the number of triads for cases where neighbors are not in *GroupSet*.
+Considers *Graph* to be undirected.
 
 Parameters:
 
-- *Graph*: PGraph (input)
-    A Snap.py PGraph (considered as undirected)
+- *Graph*: graph (input)
+    A Snap.py graph or a network
 
 - *NId*: int (input)
-	The Id of the node of interest in *Graph*
+    NId of the node of interest
 
-- *ClosedTriads*: int (input)
-	Number of closed triads
+- *GroupSet*: TIntSet (input)
+    Set of NIds representing a subset of the neighbors of the node of interest
 
-- *OpenTriads*: int (input)
-	Number of open triads
 
 Return value:
 
-- int (output)
-    Returns number of closed triads, and sets *OpenTriads* and *ClosedTriads* to the number of open and closed triads that *NId* participates in in *Graph*
+- list: [int, int, int, int]
+    The list contains four elements: the first two elements are the number of closed triads between *NId* and nodes in *GroupSet*, the third element is the number of triads between *NId* and a node in *GroupSet* and another node not in *GroupSet*, the fourth element is the number of triads between *NId* and two nodes not in *GroupSet*.
 
-The following example shows how to compute the number of Open and Closed triads that a node NId participates in for the :class:`TNGraph`, :class:`TUNGraph`, and :class:`TNEANet` classes::
+The following example shows how to calculate the number of triads a node participates in for nodes in
+:class:`TNGraph`, :class:`TUNGraph`, and :class:`TNEANet`::
 
     import snap
 
-    Graph = snap.GenRndGnm(snap.PNGraph, 10, 10)
-    closed = snap.TInt()
-    open = snap.TInt()
-    print snap.GetNodeTriads(Graph, 2, closed, open)
+    Graph = snap.GenFull(snap.PNGraph, 100)
+    NI = Graph.Nodes().next()
+    NId = NI.GetId()
+    GroupSet = snap.TIntSet()
+    for NbrIdx in range(4):
+        GroupSet.AddKey(NI.GetOutNId(NbrIdx))
+    result = snap.GetNodeTriads(Graph, NId, GroupSet)
+    print "number of triads between", NId, " and two set members", result[0]
+    print "number of triads between", NId, " and a set member and a set non-member", result[2]
+    print "number of triads between", NId, " and two set non-members", result[3]
 
-    Graph = snap.GenRndGnm(snap.PUNGraph, 10, 10)
-    closed = snap.TInt()
-    open = snap.TInt()
-    print snap.GetNodeTriads(Graph, 2, closed, open)
+    Graph = snap.GenFull(snap.PUNGraph, 100)
+    NI = Graph.Nodes().next()
+    NId = NI.GetId()
+    GroupSet = snap.TIntSet()
+    for NbrIdx in range(4):
+        GroupSet.AddKey(NI.GetOutNId(NbrIdx))
+    result = snap.GetNodeTriads(Graph, NId, GroupSet)
+    print "number of triads between", NId, " and two set members", result[0]
+    print "number of triads between", NId, " and a set member and a set non-member", result[2]
+    print "number of triads between", NId, " and two set non-members", result[3]
 
-    Graph = snap.GenRndGnm(snap.PNEANet, 10, 10)
-    closed = snap.TInt()
-    open = snap.TInt()
-    print snap.GetNodeTriads(Graph, 2, closed, open)
+    Graph = snap.GenFull(snap.PNEANet, 100)
+    NI = Graph.Nodes().next()
+    NId = NI.GetId()
+    GroupSet = snap.TIntSet()
+    for NbrIdx in range(4):
+        GroupSet.AddKey(NI.GetOutNId(NbrIdx))
+    result = snap.GetNodeTriads(Graph, NId, GroupSet)
+    print "number of triads between", NId, " and two set members", result[0]
+    print "number of triads between", NId, " and a set member and a set non-member", result[2]
+    print "number of triads between", NId, " and two set non-members", result[3]
 
-The error report produced from the calls to GetNodeTriads is::
-
-    Traceback (most recent call last):
-    File "<stdin>", line 1, in <module>
-    File "/Library/Python/2.7/site-packages/snap.py", line 170480, in GetNodeTriads
-    if type(tspec) == PNGraph : return GetNodeTriads_PNGraph(tspec, *args)
-    NameError: global name 'GetNodeTriads_PNGraph' is not defined
-	
-    Traceback (most recent call last):
-    File "<stdin>", line 1, in <module>
-    File "/Library/Python/2.7/site-packages/snap.py", line 170479, in GetNodeTriads
-    if type(tspec) == PUNGraph: return GetNodeTriads_PUNGraph(tspec, *args)
-    NameError: global name 'GetNodeTriads_PUNGraph' is not defined
-	
-    Traceback (most recent call last):
-    File "<stdin>", line 1, in <module>
-    File "/Library/Python/2.7/site-packages/snap.py", line 170481, in GetNodeTriads
-    if type(tspec) == PNEANet : return GetNodeTriads_PNEANet(tspec, *args)
-    NameError: global name 'GetNodeTriads_PNEANet' is not defined

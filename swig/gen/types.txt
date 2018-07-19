@@ -64,6 +64,7 @@ __func__	GetNodesAtHops
 __func__	GetShortPath
 __func__	GetBfsFullDiam
 __func__	GetBfsEffDiam
+__func__	GetBfsEffDiamAll
 __func__	DrawGViz
 __cons__	GenGrid
 __cons__	GenStar
@@ -73,10 +74,13 @@ __cons__	GenTree
 __cons__	GenBaraHierar
 __cons__	GenRndGnm
 __func__	GetClustCf
+__func__	GetClustCfAll
 __func__	GetNodeClustCf
 __func__	GetTriads
+__func__	GetTriadsAll
 __func__	GetTriadEdges
 __func__	GetNodeTriads
+__func__	GetNodeTriadsAll
 __func__	GetTriadParticip
 __func__	GetCmnNbrs
 __func__	GetLen2Paths

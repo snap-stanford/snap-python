@@ -250,6 +250,7 @@
 // Diameter
 %template(GetBfsFullDiam_PNEANet) TSnap::GetBfsFullDiam<PNEANet>;
 %template(GetBfsEffDiam_PNEANet) TSnap::GetBfsEffDiam<PNEANet>;
+%template(GetBfsEffDiamAll_PNEANet) TSnap::GetBfsEffDiamAll<PNEANet>;
 
 
 // drawgviz.h
@@ -300,15 +301,18 @@
 
 // triad.h - PNEANet
 %template(GetClustCf_PNEANet) TSnap::GetClustCf<PNEANet>;
+%template(GetClustCfAll_PNEANet) TSnap::GetClustCfAll<PNEANet>;
 %template(GetNodeClustCf_PNEANet) TSnap::GetNodeClustCf<PNEANet>;
 %template(GetTriads_PNEANet) TSnap::GetTriads<PNEANet>;
+%template(GetTriadsAll_PNEANet) TSnap::GetTriadsAll<PNEANet>;
 %template(GetTriadEdges_PNEANet) TSnap::GetTriadEdges<PNEANet>;
 %template(GetNodeTriads_PNEANet) TSnap::GetNodeTriads<PNEANet>;
+%template(GetNodeTriadsAll_PNEANet) TSnap::GetNodeTriadsAll<PNEANet>;
 %template(GetTriadParticip_PNEANet) TSnap::GetTriadParticip<PNEANet>;
 %template(GetTriangleCnt_PNEANet) TSnap::GetTriangleCnt<PNEANet>;
 
 %template(GetCmnNbrs_PNEANet) TSnap::GetCmnNbrs<PNEANet>;
-//%template(GetLen2Paths_PNEANet) TSnap::GetLen2Paths<PNEANet>;
+%template(GetLen2Paths_PNEANet) TSnap::GetLen2Paths<PNEANet>;
 
 
 // cmty.h - PNEANet

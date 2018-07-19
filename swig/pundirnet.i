@@ -112,6 +112,7 @@ TUndirNetEdgeI.GetId = GetId
 // Diameter
 %template(GetBfsFullDiam_PUndirNet) TSnap::GetBfsFullDiam<PUndirNet>;
 %template(GetBfsEffDiam_PUndirNet) TSnap::GetBfsEffDiam<PUndirNet>;
+%template(GetBfsEffDiamAll_PUndirNet) TSnap::GetBfsEffDiamAll<PUndirNet>;
 
 
 // drawgviz.h
@@ -162,15 +163,18 @@ TUndirNetEdgeI.GetId = GetId
 
 // triad.h - PUndirNet
 %template(GetClustCf_PUndirNet) TSnap::GetClustCf<PUndirNet>;
+%template(GetClustCfAll_PUndirNet) TSnap::GetClustCfAll<PUndirNet>;
 %template(GetNodeClustCf_PUndirNet) TSnap::GetNodeClustCf<PUndirNet>;
 %template(GetTriads_PUndirNet) TSnap::GetTriads<PUndirNet>;
+%template(GetTriadsAll_PUndirNet) TSnap::GetTriadsAll<PUndirNet>;
 %template(GetTriadEdges_PUndirNet) TSnap::GetTriadEdges<PUndirNet>;
 %template(GetNodeTriads_PUndirNet) TSnap::GetNodeTriads<PUndirNet>;
+%template(GetNodeTriadsAll_PUndirNet) TSnap::GetNodeTriadsAll<PUndirNet>;
 %template(GetTriadParticip_PUndirNet) TSnap::GetTriadParticip<PUndirNet>;
 %template(GetTriangleCnt_PUndirNet) TSnap::GetTriangleCnt<PUndirNet>;
 
 %template(GetCmnNbrs_PUndirNet) TSnap::GetCmnNbrs<PUndirNet>;
-//%template(GetLen2Paths_PUndirNet) TSnap::GetLen2Paths<PUndirNet>;
+%template(GetLen2Paths_PUndirNet) TSnap::GetLen2Paths<PUndirNet>;
 
 
 // cmty.h - PUndirNet

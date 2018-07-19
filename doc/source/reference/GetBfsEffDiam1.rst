@@ -1,17 +1,9 @@
 GetBfsEffDiam
 '''''''''''''
-.. note::
 
-    This page is a draft and under revision.
+.. function:: GetBfsEffDiam(Graph, NTestNodes, SubGraphNIdV, IsDir)
 
-
-.. function:: GetBfsEffDiam(Graph, NTestNodes, IsDir, EffDiam, FullDiam)
-
-.. note::
-
-    This function is not yet supported.
-
-Returns the (approximation of the) Effective Diameter and the Diameter of Graph by performing BFS from NTestNodes starting nodes.
+Uses the entire graph (all edges) to measure the shortest path lengths but reports only the path lengths between nodes in SubGraphNIdV.
 
 Parameters:
 
@@ -19,50 +11,46 @@ Parameters:
     A Snap.py graph or a network.
 
 - *NTestNodes*: int (input)
-    The number of random start nodes to use in the BFS used to calculate the graph diameter and effective diameter.
+    Number of starting nodes for calculating path lengths.
+
+- *SubGraphNIdV*: TIntV - vector of ints (input)
+    List of nodes in the subgraph for which the path lengths will be reported.
 
 - *IsDir*: bool (input)
     Indicates whether the edges should be considered directed or undirected.
 
-- *EffDiam: float* (output)
-    The computed effective diameter will be stored in EffDiam.
-
-- FullDiam: float (output)
-    The computed full diameter will be stored in FullDiam.
-
 Return value:
 
-- float
-    The effective diameter of the graph (same value as EffDiam)
+- list: [float, float, int]
+    The list contains three elements: the first and the second element are
+    the 90th-percentile approximation for the average shortest path length
+    among the nodes in SubGraphNIdV, the third element is the diameter.
 
-The following example shows how to fetch the in-degrees for nodes in
-:class:`TNGraph`, :class:`TUNGraph`, and :class:`TNEANet`::
+Notes:
+
+- There are three other versions of GetBfsEffDiam with different parameters. 
+
+
+The following example shows how to calculate the average shortest path length
+for nodes in :class:`TNGraph`, :class:`TUNGraph`, and :class:`TNEANet`::
 
     import snap
 
     Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
-    NTestNodes = 1
-    IsDir = True
-    EffDiam = 0
-    FullDiam = 0
-    snap.GetBfsEffDiam(Graph, NTestNodes, IsDir, EffDiam, FullDiam)
-    print("Effective Diameter = %f" % EffDiam)
-    print("Full Diameter = %f" % FullDiam)
+    Num = 50
+    List = snap.TIntV.GetV(1, 4, 9, 16, 25, 36)
+    Result = snap.GetBfsEffDiam(Graph, Num, List, True)
+    print Result
 
     Graph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
-    NTestNodes = 1
-    IsDir = False
-    EffDiam = 0
-    FullDiam = 0
-    snap.GetBfsEffDiam(Graph, NTestNodes, IsDir, EffDiam, FullDiam)
-    print("Effective Diameter = %f" % EffDiam)
-    print("Full Diameter = %f" % FullDiam)
+    Num = 75
+    List = snap.TIntV.GetV(1, 4, 9, 16, 25, 36)
+    Result = snap.GetBfsEffDiam(Graph, Num, List, False)
+    print Result
 
     Graph = snap.GenRndGnm(snap.PNEANet, 100, 1000)
-    NTestNodes = 1
-    IsDir = False
-    EffDiam = 0
-    FullDiam = 0
-    snap.GetBfsEffDiam(Graph, NTestNodes, IsDir, EffDiam, FullDiam)
-    print("Effective Diameter = %f" % EffDiam)
-    print("Full Diameter = %f" % FullDiam)
+    Num = 33
+    List = snap.TIntV.GetV(1, 4, 9, 16, 25, 36)
+    Result = snap.GetBfsEffDiam(Graph, Num, List, True)
+    print Result
+

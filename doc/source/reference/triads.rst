@@ -7,18 +7,17 @@ Triads and Clustering Coefficient
 
    GetClustCf
    GetClustCf1
-   GetClustCf2
+   GetClustCfAll
    GetTriads
    GetTriads1
-   GetTriads2
+   GetTriadsAll
    GetCmnNbrs
    GetCmnNbrs1
    GetNodeClustCf
    GetNodeClustCf1
    GetNodeTriads
    GetNodeTriads1
-   GetNodeTriads2
-   GetNodeTriads3
+   GetNodeTriadsAll
    GetLen2Paths
    GetLen2Paths1
    GetTriadEdges

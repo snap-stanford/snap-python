@@ -118,6 +118,7 @@ TUNGraphEdgeI.GetId = GetId
 // Diameter
 %template(GetBfsFullDiam_PUNGraph) TSnap::GetBfsFullDiam<PUNGraph>;
 %template(GetBfsEffDiam_PUNGraph) TSnap::GetBfsEffDiam<PUNGraph>;
+%template(GetBfsEffDiamAll_PUNGraph) TSnap::GetBfsEffDiamAll<PUNGraph>;
 
 
 // drawgviz.h
@@ -168,15 +169,18 @@ TUNGraphEdgeI.GetId = GetId
 
 // triad.h - PUNGraph
 %template(GetClustCf_PUNGraph) TSnap::GetClustCf<PUNGraph>;
+%template(GetClustCfAll_PUNGraph) TSnap::GetClustCfAll<PUNGraph>;
 %template(GetNodeClustCf_PUNGraph) TSnap::GetNodeClustCf<PUNGraph>;
 %template(GetTriads_PUNGraph) TSnap::GetTriads<PUNGraph>;
+%template(GetTriadsAll_PUNGraph) TSnap::GetTriadsAll<PUNGraph>;
 %template(GetTriadEdges_PUNGraph) TSnap::GetTriadEdges<PUNGraph>;
 %template(GetNodeTriads_PUNGraph) TSnap::GetNodeTriads<PUNGraph>;
+%template(GetNodeTriadsAll_PUNGraph) TSnap::GetNodeTriadsAll<PUNGraph>;
 %template(GetTriadParticip_PUNGraph) TSnap::GetTriadParticip<PUNGraph>;
 %template(GetTriangleCnt_PUNGraph) TSnap::GetTriangleCnt<PUNGraph>;
 
 %template(GetCmnNbrs_PUNGraph) TSnap::GetCmnNbrs<PUNGraph>;
-//%template(GetLen2Paths_PUNGraph) TSnap::GetLen2Paths<PUNGraph>;
+%template(GetLen2Paths_PUNGraph) TSnap::GetLen2Paths<PUNGraph>;
 
 
 // cmty.h - PUNGraph

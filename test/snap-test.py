@@ -2308,6 +2308,55 @@ class SnapPythonTest(unittest.TestCase):
         result = snap.GetBfsEffDiam(Graph, 10)
         self.assertAlmostEqual(0.88888888888888888888, result)
 
+        # Directed Graph
+        Graph = snap.GenFull(snap.PNGraph, 100)
+        Num = 50
+        List = snap.TIntV.GetV(1, 4, 9, 16, 25, 36)
+        expected_result = [0.88, 0.88, 1]
+        result = snap.GetBfsEffDiam(Graph, Num, List, True)
+        self.assertEqual(expected_result, result)
+
+        # Undirected Graph
+        Graph = snap.GenFull(snap.PUNGraph, 100)
+        Num = 75
+        List = snap.TIntV.GetV(1, 4, 9, 16, 25, 36)
+        expected_result = [0.88, 0.88, 1]
+        result = snap.GetBfsEffDiam(Graph, Num, List, False)
+        self.assertEqual(expected_result, result)
+
+        # Network
+        Graph = snap.GenFull(snap.PNEANet, 100)
+        Num = 33
+        List = snap.TIntV.GetV(1, 4, 9, 16, 25, 36)
+        expected_result = [0.88, 0.88, 1]
+        result = snap.GetBfsEffDiam(Graph, Num, List, True)
+        self.assertEqual(expected_result, result)
+
+    def test_GetBfsEffDiamAll(self):
+        # Directed Graph
+        Graph = snap.GenFull(snap.PNGraph, 100)
+        Num = 50
+        expected_result = [0.89898989898989901,
+                            0.89898989898989901, 1, 0.98999999999999999]
+        result = snap.GetBfsEffDiamAll(Graph, Num, True)
+        self.assertEqual(expected_result, result)
+
+        # Undirected Graph
+        Graph = snap.GenFull(snap.PUNGraph, 100)
+        Num = 75
+        expected_result = [0.89898989898989901,
+                            0.89898989898989901, 1, 0.98999999999999999]
+        result = snap.GetBfsEffDiamAll(Graph, Num, False)
+        self.assertEqual(expected_result, result)
+
+        # Network
+        Graph = snap.GenFull(snap.PNEANet, 100)
+        Num = 33
+        expected_result = [0.89898989898989901,
+                            0.89898989898989901, 1, 0.98999999999999999]
+        result = snap.GetBfsEffDiamAll(Graph, Num, True)
+        self.assertEqual(expected_result, result)
+
     def test_GetBetweennessCentr(self):
         # Undirected Graph
         Graph = snap.GenFull(snap.PUNGraph, 10)
@@ -2473,6 +2522,59 @@ class SnapPythonTest(unittest.TestCase):
         result = snap.GetNodeTriads(Graph, 0)
         self.assertEqual(result, 36)
 
+    def test_GetNodeTriadsSet(self):
+        # Directed Graph
+        Graph = snap.GenFull(snap.PNGraph, 100)
+        NI = Graph.Nodes().next()
+        NId = NI.GetId()
+        GroupSet = snap.TIntSet()
+        for NbrIdx in range(4):
+            GroupSet.AddKey(NI.GetOutNId(NbrIdx))
+        expected_result = [6, 6, 380, 4465]
+        result = snap.GetNodeTriads(Graph, NId, GroupSet)
+        self.assertEqual(result, expected_result)
+
+        # Undirected Graph
+        Graph = snap.GenFull(snap.PUNGraph, 100)
+        NI = Graph.Nodes().next()
+        NId = NI.GetId()
+        GroupSet = snap.TIntSet()
+        for NbrIdx in range(4):
+            GroupSet.AddKey(NI.GetOutNId(NbrIdx))
+        expected_result = [6, 6, 380, 4465]
+        result = snap.GetNodeTriads(Graph, NId, GroupSet)
+        self.assertEqual(result, expected_result)
+
+        # Network
+        Graph = snap.GenFull(snap.PNEANet, 100)
+        NI = Graph.Nodes().next()
+        NId = NI.GetId()
+        GroupSet = snap.TIntSet()
+        for NbrIdx in range(4):
+            GroupSet.AddKey(NI.GetOutNId(NbrIdx))
+        expected_result = [6, 6, 380, 4465]
+        result = snap.GetNodeTriads(Graph, NId, GroupSet)
+        self.assertEqual(result, expected_result)
+
+    def test_GetNodeTriadsAll(self):
+        # Directed Graph
+        Graph = snap.GenFull(snap.PNGraph, 100)
+        expected_result = [4851, 4851, 0]
+        result = snap.GetNodeTriadsAll(Graph, 10)
+        self.assertEqual(result, expected_result)
+
+        # Undirected Graph
+        Graph = snap.GenFull(snap.PUNGraph, 100)
+        expected_result = [4851, 4851, 0]
+        result = snap.GetNodeTriadsAll(Graph, 10)
+        self.assertEqual(result, expected_result)
+
+        # Network
+        Graph = snap.GenFull(snap.PNEANet, 100)
+        expected_result = [4851, 4851, 0]
+        result = snap.GetNodeTriadsAll(Graph, 10)
+        self.assertEqual(result, expected_result)
+
     def test_GetTriads(self):
         # Directed Graph
         Graph = snap.GenFull(snap.PNGraph, 10)
@@ -2488,6 +2590,25 @@ class SnapPythonTest(unittest.TestCase):
         Graph = snap.GenFull(snap.PNEANet, 10)
         result = snap.GetTriads(Graph)
         self.assertEqual(result, 120L)
+
+    def test_GetTriadsAll(self):
+        # Directed Graph
+        Graph = snap.GenFull(snap.PNGraph, 100)
+        expected_result = [161700, 161700, 0]
+        result = snap.GetTriadsAll(Graph)
+        self.assertEqual(result, expected_result)
+
+        # Undirected Graph
+        Graph = snap.GenFull(snap.PUNGraph, 100)
+        expected_result = [161700, 161700, 0]
+        result = snap.GetTriadsAll(Graph)
+        self.assertEqual(result, expected_result)
+
+        # Network
+        Graph = snap.GenFull(snap.PNEANet, 100)
+        expected_result = [161700, 161700, 0]
+        result = snap.GetTriadsAll(Graph)
+        self.assertEqual(result, expected_result)
 
     def test_GetClustCf(self):
         # Directed Graph
@@ -2539,6 +2660,28 @@ class SnapPythonTest(unittest.TestCase):
         Graph = snap.GenFull(snap.PNEANet, 10)
         result = snap.GetClustCf(Graph, 0)
         self.assertAlmostEqual(result, 0.0)
+
+    def test_GetClustCfAll(self):
+        # Directed Graph
+        Graph = snap.GenFull(snap.PNGraph, 100)
+        V = snap.TFltPrV()
+        result = snap.GetClustCfAll(Graph, V)
+        expected_result = [1.0, 161700, 0]
+        self.assertEqual(result, expected_result)
+
+        # Undirected Graph
+        Graph = snap.GenFull(snap.PUNGraph, 100)
+        V = snap.TFltPrV()
+        result = snap.GetClustCfAll(Graph, V)
+        expected_result = [1.0, 161700, 0]
+        self.assertEqual(result, expected_result)
+
+        # Network
+        Graph = snap.GenFull(snap.PNEANet, 100)
+        V = snap.TFltPrV()
+        result = snap.GetClustCfAll(Graph, V)
+        expected_result = [1.0, 161700, 0]
+        self.assertEqual(result, expected_result)
 
     def test_SavePajek(self):
         # Directed Graph

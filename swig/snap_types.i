@@ -12,13 +12,13 @@
 %apply int &OUTPUT { int& FullDiamX};
 %apply int &OUTPUT { int& EdgesInX};
 %apply int &OUTPUT { int& EdgesOutX};
-//%apply int64 &OUTPUT { int64& ClosedTriadsX};
-//%apply int64 &OUTPUT { int64& OpenTriadsX};
+%apply int64 &OUTPUT { int64& ClosedTriadsX};
+%apply int64 &OUTPUT { int64& OpenTriadsX};
 %apply int &OUTPUT { int& ClosedNTriadsX};
 %apply int &OUTPUT { int& OpenNTriadsX};
 %apply int &OUTPUT { int& InGroupEdgesX};
 %apply int &OUTPUT { int& InOutGroupEdgesX};
-%apply int &OUTPUT { int& OutGroupX};
+%apply int &OUTPUT { int& OutGroupEdgesX};
 
 //
 // TInt

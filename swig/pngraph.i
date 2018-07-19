@@ -120,6 +120,7 @@ TNGraphEdgeI.GetId = GetId
 // Diameter
 %template(GetBfsFullDiam_PNGraph) TSnap::GetBfsFullDiam<PNGraph>;
 %template(GetBfsEffDiam_PNGraph) TSnap::GetBfsEffDiam<PNGraph>;
+%template(GetBfsEffDiamAll_PNGraph) TSnap::GetBfsEffDiamAll<PNGraph>;
 
 
 // drawgviz.h
@@ -169,15 +170,18 @@ TNGraphEdgeI.GetId = GetId
 
 // triad.h - PNGraph
 %template(GetClustCf_PNGraph) TSnap::GetClustCf<PNGraph>;
+%template(GetClustCfAll_PNGraph) TSnap::GetClustCfAll<PNGraph>;
 %template(GetNodeClustCf_PNGraph) TSnap::GetNodeClustCf<PNGraph>;
 %template(GetTriads_PNGraph) TSnap::GetTriads<PNGraph>;
+%template(GetTriadsAll_PNGraph) TSnap::GetTriadsAll<PNGraph>;
 %template(GetTriadEdges_PNGraph) TSnap::GetTriadEdges<PNGraph>;
 %template(GetNodeTriads_PNGraph) TSnap::GetNodeTriads<PNGraph>;
+%template(GetNodeTriadsAll_PNGraph) TSnap::GetNodeTriadsAll<PNGraph>;
 %template(GetTriadParticip_PNGraph) TSnap::GetTriadParticip<PNGraph>;
 %template(GetTriangleCnt_PNGraph) TSnap::GetTriangleCnt<PNGraph>;
 
 %template(GetCmnNbrs_PNGraph) TSnap::GetCmnNbrs<PNGraph>;
-//%template(GetLen2Paths_PNGraph) TSnap::GetLen2Paths<PNGraph>;
+%template(GetLen2Paths_PNGraph) TSnap::GetLen2Paths<PNGraph>;
 
 
 // cmty.h - PNGraph

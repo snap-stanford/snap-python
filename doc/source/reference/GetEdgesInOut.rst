@@ -15,10 +15,10 @@ Parameters:
 
 Return value:
 
-- tuple
-    The first value gives the number of reciprocal edges between the nodes in *NIdV*, and the second value gives the number of edges between the nodes in *NIdV* and the rest of the graph.
+- list: [ int, int ]
+    The list contains two elements: the first element gives the number of reciprocal edges between the nodes in *NIdV*, and the second element gives the number of edges between the nodes in *NIdV* and the rest of the graph.
 
-The following example shows how to use :func:`GetEdgesInOut' with
+The following example shows how to use :func:`GetEdgesInOut` with
 :class:`TNGraph`, :class:`TUNGraph`, and :class:`TNEANet`::
 
     import snap

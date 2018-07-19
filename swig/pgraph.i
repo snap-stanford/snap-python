@@ -80,6 +80,15 @@ def GetBfsEffDiam(tspec, *args):
     if type(tspec) == PNGraphMP: return GetBfsEffDiam_PNGraphMP(tspec, *args)
     if type(tspec) == PNEANetMP : return GetBfsEffDiam_PNEANetMP(tspec, *args)
     raise TypeError('First argument has invalid type')
+def GetBfsEffDiamAll(tspec, *args):
+    if type(tspec) == PUNGraph: return GetBfsEffDiamAll_PUNGraph(tspec, *args)
+    if type(tspec) == PUndirNet: return GetBfsEffDiamAll_PUndirNet(tspec, *args)
+    if type(tspec) == PDirNet: return GetBfsEffDiamAll_PDirNet(tspec, *args)
+    if type(tspec) == PNGraph : return GetBfsEffDiamAll_PNGraph(tspec, *args)
+    if type(tspec) == PNEANet : return GetBfsEffDiamAll_PNEANet(tspec, *args)
+    if type(tspec) == PNGraphMP: return GetBfsEffDiamAll_PNGraphMP(tspec, *args)
+    if type(tspec) == PNEANetMP : return GetBfsEffDiamAll_PNEANetMP(tspec, *args)
+    raise TypeError('First argument has invalid type')
 def PercentMxWcc(tspec, *args):
     if type(tspec) == PUNGraph: return PercentMxWcc_PUNGraph(tspec, *args)
     if type(tspec) == PUndirNet: return PercentMxWcc_PUndirNet(tspec, *args)
@@ -629,6 +638,15 @@ def GetClustCf(tspec, *args):
     if type(tspec) == PNGraphMP: return GetClustCf_PNGraphMP(tspec, *args)
     if type(tspec) == PNEANetMP : return GetClustCf_PNEANetMP(tspec, *args)
     raise TypeError('First argument has invalid type')
+def GetClustCfAll(tspec, *args):
+    if type(tspec) == PUNGraph: return GetClustCfAll_PUNGraph(tspec, *args)
+    if type(tspec) == PUndirNet: return GetClustCfAll_PUndirNet(tspec, *args)
+    if type(tspec) == PDirNet: return GetClustCfAll_PDirNet(tspec, *args)
+    if type(tspec) == PNGraph : return GetClustCfAll_PNGraph(tspec, *args)
+    if type(tspec) == PNEANet : return GetClustCfAll_PNEANet(tspec, *args)
+    if type(tspec) == PNGraphMP: return GetClustCfAll_PNGraphMP(tspec, *args)
+    if type(tspec) == PNEANetMP : return GetClustCfAll_PNEANetMP(tspec, *args)
+    raise TypeError('First argument has invalid type')
 def GetNodesAtHops(tspec, *args):
     if type(tspec) == PUNGraph: return GetNodesAtHops_PUNGraph(tspec, *args)
     if type(tspec) == PUndirNet: return GetNodesAtHops_PUndirNet(tspec, *args)
@@ -980,6 +998,15 @@ def GetNodeTriads(tspec, *args):
     if type(tspec) == PNGraphMP: return GetNodeTriads_PNGraphMP(tspec, *args)
     if type(tspec) == PNEANetMP : return GetNodeTriads_PNEANetMP(tspec, *args)
     raise TypeError('First argument has invalid type')
+def GetNodeTriadsAll(tspec, *args):
+    if type(tspec) == PUNGraph: return GetNodeTriadsAll_PUNGraph(tspec, *args)
+    if type(tspec) == PUndirNet: return GetNodeTriadsAll_PUndirNet(tspec, *args)
+    if type(tspec) == PDirNet: return GetNodeTriadsAll_PDirNet(tspec, *args)
+    if type(tspec) == PNGraph : return GetNodeTriadsAll_PNGraph(tspec, *args)
+    if type(tspec) == PNEANet : return GetNodeTriadsAll_PNEANet(tspec, *args)
+    if type(tspec) == PNGraphMP: return GetNodeTriadsAll_PNGraphMP(tspec, *args)
+    if type(tspec) == PNEANetMP : return GetNodeTriadsAll_PNEANetMP(tspec, *args)
+    raise TypeError('First argument has invalid type')
 def GetNodeEcc(tspec, *args):
     if type(tspec) == PUNGraph: return GetNodeEcc_PUNGraph(tspec, *args)
     if type(tspec) == PUndirNet: return GetNodeEcc_PUndirNet(tspec, *args)
@@ -1015,6 +1042,15 @@ def GetTriads(tspec, *args):
     if type(tspec) == PNEANet : return GetTriads_PNEANet(tspec, *args)
     if type(tspec) == PNGraphMP: return GetTriads_PNGraphMP(tspec, *args)
     if type(tspec) == PNEANetMP : return GetTriads_PNEANetMP(tspec, *args)
+    raise TypeError('First argument has invalid type')
+def GetTriadsAll(tspec, *args):
+    if type(tspec) == PUNGraph: return GetTriadsAll_PUNGraph(tspec, *args)
+    if type(tspec) == PUndirNet: return GetTriadsAll_PUndirNet(tspec, *args)
+    if type(tspec) == PDirNet: return GetTriadsAll_PDirNet(tspec, *args)
+    if type(tspec) == PNGraph : return GetTriadsAll_PNGraph(tspec, *args)
+    if type(tspec) == PNEANet : return GetTriadsAll_PNEANet(tspec, *args)
+    if type(tspec) == PNGraphMP: return GetTriadsAll_PNGraphMP(tspec, *args)
+    if type(tspec) == PNEANetMP : return GetTriadsAll_PNEANetMP(tspec, *args)
     raise TypeError('First argument has invalid type')
 
 #

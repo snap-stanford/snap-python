@@ -114,6 +114,7 @@ TDirNetEdgeI.GetId = GetId
 // Diameter
 %template(GetBfsFullDiam_PDirNet) TSnap::GetBfsFullDiam<PDirNet>;
 %template(GetBfsEffDiam_PDirNet) TSnap::GetBfsEffDiam<PDirNet>;
+%template(GetBfsEffDiamAll_PDirNet) TSnap::GetBfsEffDiamAll<PDirNet>;
 
 
 // drawgviz.h
@@ -163,15 +164,18 @@ TDirNetEdgeI.GetId = GetId
 
 // triad.h - PDirNet
 %template(GetClustCf_PDirNet) TSnap::GetClustCf<PDirNet>;
+%template(GetClustCfAll_PDirNet) TSnap::GetClustCfAll<PDirNet>;
 %template(GetNodeClustCf_PDirNet) TSnap::GetNodeClustCf<PDirNet>;
 %template(GetTriads_PDirNet) TSnap::GetTriads<PDirNet>;
+%template(GetTriadsAll_PDirNet) TSnap::GetTriadsAll<PDirNet>;
 %template(GetTriadEdges_PDirNet) TSnap::GetTriadEdges<PDirNet>;
 %template(GetNodeTriads_PDirNet) TSnap::GetNodeTriads<PDirNet>;
+%template(GetNodeTriadsAll_PDirNet) TSnap::GetNodeTriadsAll<PDirNet>;
 %template(GetTriadParticip_PDirNet) TSnap::GetTriadParticip<PDirNet>;
 %template(GetTriangleCnt_PDirNet) TSnap::GetTriangleCnt<PDirNet>;
 
 %template(GetCmnNbrs_PDirNet) TSnap::GetCmnNbrs<PDirNet>;
-//%template(GetLen2Paths_PDirNet) TSnap::GetLen2Paths<PDirNet>;
+%template(GetLen2Paths_PDirNet) TSnap::GetLen2Paths<PDirNet>;
 
 
 // cmty.h - PDirNet

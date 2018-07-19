@@ -45,7 +45,7 @@ python gentypes.py typedef-tm.txt | grep template > swig-tm.txt
 // double definition
 //%template(TStrVIntH) THash<TStrV, TInt>;
 
-// class TTm’ has no member named ‘Load
+// class TTm has no member named Load
 //%template(TTmStrPr) TPair<TTm, TStr>;
 //%template(TStrTmPr) TPair<TStr, TTm>;
 
@@ -54,17 +54,17 @@ python gentypes.py typedef-tm.txt | grep template > swig-tm.txt
 //%template(TStrIntSH) TStrHash<TInt>;
 //%template(TStrToIntVSH) TStrHash<TIntV>;
 
-// no member named ‘Load’
+// no member named Load
 //%template(TBoolChPr) TPair<TBool, TCh>;
 //%template(TUChIntPr) TPair<TUCh, TInt>;
 //%template(TUChUInt64Pr) TPair<TUCh, TUInt64>;
 //%template(TUChStrPr) TPair<TUCh, TStr>;
 //%template(TIntChPr) TPair<TInt, TCh>;
 
-// no match for ‘operator<’
+// no match for operator<
 //%template(TIntQV) TVec<TQQueue<TInt> >;
 
-// ‘Nd’ cannot be used as a function
+// N cannot be used as a function
 //%template(TIntL) TLst<TInt>;
 //%template(TIntKdL) TLst<TIntKd>;
 //%template(TFltL) TLst<TFlt>;
@@ -72,16 +72,16 @@ python gentypes.py typedef-tm.txt | grep template > swig-tm.txt
 //%template(TAscFltIntKdL) TLst<TAscFltIntKd>;
 //%template(TStrL) TLst<TStr>;
 
-// no matching function for call to ‘TCh::GetStr() const’
+// no matching function for call to TCh::GetStr() const
 //%template(TChChH) THash<TCh, TCh>;
 
-// no member named ‘GetStr’
+// no member named GetStr
 //%template(TChTrIntH) THash<TChTr, TInt>;
 
-// no match for ‘operator=
+// no match for operator=
 //%template(TIntIntFltPrH) THash<TInt, TIntFltPr>;
 
-// no member named ‘GetMemUsed’
+// no member named GetMemUsed
 //%template(TDbStrIntH) THash<TDbStr, TInt>;
 //%template(TDbStrStrH) THash<TDbStr, TStr>;
 

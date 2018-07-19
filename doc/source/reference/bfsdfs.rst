@@ -8,8 +8,7 @@ Breadth and Depth First Search
    GetBfsFullDiam
    GetBfsEffDiam
    GetBfsEffDiam1
-   GetBfsEffDiam2
-   GetBfsEffDiam3
+   GetBfsEffDiamAll
    GetNodesAtHop
    GetNodesAtHops
    GetShortPath

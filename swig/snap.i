@@ -240,6 +240,7 @@ Version = "4.1.1"
 %template(TStrIntPr) TPair<TStr, TInt>;
 %template(TIntTr) TTriple<TInt, TInt, TInt>;
 %template(TIntFltKd) TKeyDat<TInt, TFlt>;
+%template(TIntStrPr) TPair<TInt, TStr>;
 
 %template(TIntV) TVec<TInt>;
 %template(TFltV) TVec<TFlt>;
@@ -249,7 +250,6 @@ Version = "4.1.1"
 %template(TStrIntPrV) TVec<TStrIntPr>;
 %template(TIntTrV) TVec<TIntTr>;
 %template(TIntFltKdV) TVec<TIntFltKd>;
-%template(TIntStrPr) TPair<TInt, TStr>;
 %template(TIntIntVV) TVec< TVec< TInt, int >, int >;
 %template(PNEANetV) TVec<PNEANet>;
 
