@@ -2683,6 +2683,37 @@ class SnapPythonTest(unittest.TestCase):
         expected_result = [1.0, 161700, 0]
         self.assertEqual(result, expected_result)
 
+    def test_GetLen2Paths(self):
+        # Directed Graph
+        Graph = snap.GenFull(snap.PNGraph, 100)
+        result = snap.GetLen2Paths(Graph, 0, 1)
+        self.assertEqual(result, 98L)
+
+        NV = snap.TIntV()
+        result = snap.GetLen2Paths(Graph, 0, 1, NV)
+        self.assertEqual(NV.Len(), 98L)
+
+        # Undirected Graph
+        Graph = snap.GenFull(snap.PUNGraph, 100)
+        result = snap.GetLen2Paths(Graph, 0, 1)
+        self.assertEqual(result, 98L)
+
+        NV = snap.TIntV()
+        result = snap.GetLen2Paths(Graph, 0, 1, NV)
+        self.assertEqual(result, 98L)
+        self.assertEqual(NV.Len(), 98L)
+
+        # Network
+        Graph = snap.GenFull(snap.PNEANet, 100)
+        result = snap.GetLen2Paths(Graph, 0, 1)
+        self.assertEqual(result, 98L)
+        self.assertEqual(result, 98L)
+
+        NV = snap.TIntV()
+        result = snap.GetLen2Paths(Graph, 0, 1, NV)
+        self.assertEqual(result, 98L)
+        self.assertEqual(NV.Len(), 98L)
+
     def test_SavePajek(self):
         # Directed Graph
         fname = "mygraph.txt"
@@ -2982,6 +3013,14 @@ class SnapPythonTest(unittest.TestCase):
             self.assertAlmostEqual(i, val)
         for i in RightSV:
             self.assertAlmostEqual(i, val)
+
+        SngValV = snap.TFltV()
+        LeftSVV = snap.TFltVFltV()
+        RightSVV = snap.TFltVFltV()
+        snap.GetSngVec(Graph, 5, SngValV, LeftSVV, RightSVV)
+        self.assertAlmostEqual(SngValV[0], 9.0)
+        for i in range(1,10):
+            self.assertAlmostEqual(SngValV[1], 1.0)
 
     def test_LoadConnList(self):
         fname = "mygraph.txt"

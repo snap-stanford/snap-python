@@ -251,6 +251,7 @@ Version = "4.1.1"
 %template(TIntTrV) TVec<TIntTr>;
 %template(TIntFltKdV) TVec<TIntFltKd>;
 %template(TIntIntVV) TVec< TVec< TInt, int >, int >;
+%template(TFltVFltV) TVec<TFltV>;
 %template(PNEANetV) TVec<PNEANet>;
 
 #if SNAP_ALL

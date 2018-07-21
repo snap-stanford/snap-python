@@ -1,15 +1,7 @@
 GetSngVec
-'''''''''
-.. note::
-
-    This page is a draft and under revision.
-
+'''''''''''
 
 .. function:: GetSngVec(Graph, SngVecs, SngValV, LeftSV, RightSV)
-
-.. note::
-
-    This function is not yet supported.
 
 Computes the singular values and left and right singular vectors of the adjacency matrix representing a directed Graph.
 
@@ -24,10 +16,10 @@ Parameters:
 - SngValV: TFltV (output)
     Computed singular values stored as a vector of floats
 
-- LeftSV: TVec<TFltV> (output)
+- LeftSV: TFltVFltV (output)
     Computed left singular vectors stored as a vector of vectors of floats
 
-- RightSV: TVec<TFltV> (output)
+- RightSV: TFltVTFltV (output)
     Computed right singular vectors stored as a vector of vectors of floats
     
 Return value:
@@ -42,8 +34,8 @@ The following example shows how to fetch the in-degrees for nodes in
     Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
     SngVecs = 5
     SngValV = snap.TFltV()
-    LeftSV = snap.TVec(snap.TFltV())
-    RightSV = snap.TVec(snap.TFltV())
+    LeftSV = snap.TFltVFltV()
+    RightSV = snap.TFltVFltV()
     snap.GetSngVec(Graph, SngVecs, SngValV, LeftSV, RightSV)
     for value in SngValV:
         print("Singular value: %f" % value)
@@ -57,8 +49,8 @@ The following example shows how to fetch the in-degrees for nodes in
     Graph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
     SngVecs = 5
     SngValV = snap.TFltV()
-    LeftSV = snap.TVec(snap.TFltV())
-    RightSV = snap.TVec(snap.TFltV())
+    LeftSV = snap.TFltVFltV()
+    RightSV = snap.TFltVFltV()
     snap.GetSngVec(Graph, SngVecs, SngValV, LeftSV, RightSV)
     for value in SngValV:
         print("Singular value: %f" % value)
@@ -72,8 +64,8 @@ The following example shows how to fetch the in-degrees for nodes in
     Graph = snap.GenRndGnm(snap.PNEANet, 100, 1000)
     SngVecs = 5
     SngValV = snap.TFltV()
-    LeftSV = snap.TVec(snap.TFltV())
-    RightSV = snap.TVec(snap.TFltV())
+    LeftSV = snap.TFltVFltV()
+    RightSV = snap.TFltVFltV()
     snap.GetSngVec(Graph, SngVecs, SngValV, LeftSV, RightSV)
     for value in SngValV:
         print("Singular value: %f" % value)
