@@ -111,6 +111,7 @@ __func__	PlotShortPathDistr
 __func__	PlotKCoreNodes
 __func__	PlotKCoreEdges
 __func__	GetSubGraph
+__func__	GetSubGraphRenumber
 __func__	GetESubGraph
 __func__	GetRndSubGraph
 __func__	GetRndESubGraph

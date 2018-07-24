@@ -107,6 +107,15 @@ def GetSubGraph(tspec, *args):
     if type(tspec) == PNGraphMP: return GetSubGraph_PNGraphMP(tspec, *args)
     if type(tspec) == PNEANetMP : return GetSubGraph_PNEANetMP(tspec, *args)
     raise TypeError('First argument has invalid type')
+def GetSubGraphRenumber(tspec, *args):
+    if type(tspec) == PUNGraph: return GetSubGraphRenumber_PUNGraph(tspec, *args)
+    if type(tspec) == PUndirNet: return GetSubGraphRenumber_PUndirNet(tspec, *args)
+    if type(tspec) == PDirNet: return GetSubGraphRenumber_PDirNet(tspec, *args)
+    if type(tspec) == PNGraph : return GetSubGraphRenumber_PNGraph(tspec, *args)
+    if type(tspec) == PNEANet : return GetSubGraphRenumber_PNEANet(tspec, *args)
+    if type(tspec) == PNGraphMP: return GetSubGraphRenumber_PNGraphMP(tspec, *args)
+    if type(tspec) == PNEANetMP : return GetSubGraphRenumber_PNEANetMP(tspec, *args)
+    raise TypeError('First argument has invalid type')
 def GetBfsTree(tspec, *args):
     if type(tspec) == PUNGraph: return GetBfsTree_PUNGraph(tspec, *args)
     if type(tspec) == PUndirNet: return GetBfsTree_PUndirNet(tspec, *args)

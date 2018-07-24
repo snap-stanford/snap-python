@@ -163,6 +163,7 @@ TUNGraphEdgeI.GetId = GetId
 %template(ConvertSubGraph_PUNGraph_PNEANet) TSnap::ConvertSubGraph <PUNGraph, PNEANet>;
 %template(ConvertESubGraph_PUNGraph_PNEANet) TSnap::ConvertESubGraph <PUNGraph, PNEANet>;
 %template(GetSubGraph_PUNGraph) TSnap::GetSubGraph<PUNGraph>;
+%template(GetSubGraphRenumber_PUNGraph) TSnap::GetSubGraphRenumber<PUNGraph>;
 %template(GetRndSubGraph_PUNGraph) TSnap::GetRndSubGraph<PUNGraph>;
 %template(GetRndESubGraph_PUNGraph) TSnap::GetRndESubGraph<PUNGraph>;
 

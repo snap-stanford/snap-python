@@ -3147,7 +3147,13 @@ class SnapPythonTest(unittest.TestCase):
         SubGraph = snap.GetSubGraph(Graph, V)
         self.assertEqual(SubGraph.GetNodes(), 5)
         self.assertEqual(SubGraph.GetEdges(), 5 * 4)
-        
+
+        SubGraph = snap.GetSubGraphRenumber(Graph, V)
+        self.assertEqual(SubGraph.GetNodes(), 5)
+        self.assertEqual(SubGraph.GetEdges(), 5 * 4)
+        # verify that NIds are in 0..N-1
+        for NI in SubGraph.Nodes():
+            self.assertEqual(NI.GetId() < SubGraph.GetNodes(), True)
 
         # Undirected Graph
         Graph = snap.GenFull(snap.PUNGraph, 10)
@@ -3155,6 +3161,12 @@ class SnapPythonTest(unittest.TestCase):
         self.assertEqual(SubGraph.GetNodes(), 5)
         self.assertEqual(SubGraph.GetEdges(), 5 * 4/2)
 
+        SubGraph = snap.GetSubGraphRenumber(Graph, V)
+        self.assertEqual(SubGraph.GetNodes(), 5)
+        self.assertEqual(SubGraph.GetEdges(), 5 * 4/2)
+        # verify that NIds are in 0..N-1
+        for NI in SubGraph.Nodes():
+            self.assertEqual(NI.GetId() < SubGraph.GetNodes(), True)
 
         # Network
         Graph = snap.GenFull(snap.PNEANet, 10)

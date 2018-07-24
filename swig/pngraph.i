@@ -164,6 +164,7 @@ TNGraphEdgeI.GetId = GetId
 %template(ConvertSubGraph_PNGraph_PNEANet) TSnap::ConvertSubGraph <PNGraph, PNEANet>;
 %template(ConvertESubGraph_PNGraph_PNEANet) TSnap::ConvertESubGraph <PNGraph, PNEANet>;
 %template(GetSubGraph_PNGraph) TSnap::GetSubGraph<PNGraph>;
+%template(GetSubGraphRenumber_PNGraph) TSnap::GetSubGraphRenumber<PNGraph>;
 %template(GetRndSubGraph_PNGraph) TSnap::GetRndSubGraph<PNGraph>;
 %template(GetRndESubGraph_PNGraph) TSnap::GetRndESubGraph<PNGraph>;
 

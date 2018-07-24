@@ -9,7 +9,7 @@ Subgraphs and Graph Type Conversions
    ConvertSubGraph
    ConvertESubGraph
    GetSubGraph
-   GetSubGraph1
+   GetSubGraphRenumber
    GetSubTreeSz
    GetESubGraph
    GetRndSubGraph
