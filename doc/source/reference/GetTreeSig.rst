@@ -26,18 +26,15 @@ Parameters:
 
 GetTreeSig currently has a bug. The following code shows an example of the bug. When executed, the program runs out of memory and causes an error.::
 
-    from snap import *
+    import snap
 
-    G1 = TNGraph.New()
+    G1 = snap.TNGraph.New()
     G1.AddNode(1)
     G1.AddNode(2)
     G1.AddEdge(1,2)
-    v1 = TIntV()
-    GetTreeSig(G1, 1, v1)
+    v1 = snap.TIntV()
+    snap.GetTreeSig(G1, 1, v1)
 
     for item in v1:
         print item
 
-
-
-        
