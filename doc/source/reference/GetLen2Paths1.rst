@@ -1,17 +1,9 @@
 GetLen2Paths
-''''''''''''
-.. note::
-
-    This page is a draft and under revision.
-
+''''''''''''''
 
 .. function:: GetLen2Paths (Graph, NId1, NId2, NbrV)
 
-.. note::
-
-    This function is not yet supported.
-
-Return the number of length 2 paths between a pair of nodes.
+Returns the number of length 2 paths between a pair of nodes *NId1*, *NId2* (*NId1* --> U --> *NId2*).
 
 Parameters:
 
@@ -24,26 +16,35 @@ Parameters:
 - *NId2*: int (input)
     ID of the destination node
 
-- *NbrV*: TIntV (input)
-    List of nodes on each path between node NId1 and node NId2. The list is filled by the function.
+- *NbrV*: TIntV (output)
+    A vector of nodes on each path between node *NId1* and node *NId2*. The vector is filled by the function.
 
 Return value:
 
-- Number of length 2 paths between a pair of nodes.
+- int: the number of length 2 paths between a pair of nodes.
 
-The following example shows how to use GetLen2Paths in :class:`PUNGraph`, :class:`PNGraph`, and :class:`PNEANet` 
-(**NOTE**: at the time this document was written, GetLen2Paths is not implemented yet so the author could not verify the code)::
+The following example shows how to use GetLen2Paths in :class:`PUNGraph`, :class:`PNGraph`, and :class:`PNEANet`::
 
     import snap
 
     g = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
-    middle_nodes = snap.TIntV()
-    print snap.GetLen2Paths(g, 0, 1, middle_nodes)
+    NbrV = snap.TIntV()
+    Num = snap.GetLen2Paths(g, 0, 1, NbrV)
+    print "The number of paths between nodes %d and %d is %d" % (0, 1, Num)
+    for Nbr in NbrV:
+        print "Path: %d %d %d" % (0, Nbr, 1)
 
     g = snap.GenRndGnm(snap.PNGraph, 100, 1000)
-    middle_nodes = snap.TIntV()
-    print snap.GetLen2Paths(g, 0, 1, middle_nodes)
+    NbrV = snap.TIntV()
+    Num = snap.GetLen2Paths(g, 0, 1, NbrV)
+    print "The number of paths between nodes %d and %d is %d" % (0, 1, Num)
+    for Nbr in NbrV:
+        print "Path: %d %d %d" % (0, Nbr, 1)
 
     g = snap.GenRndGnm(snap.PNEANet, 100, 1000)
-    middle_nodes = snap.TIntV()
-    print snap.GetLen2Paths(g, 0, 1, middle_nodes)
+    NbrV = snap.TIntV()
+    Num = snap.GetLen2Paths(g, 0, 1, NbrV)
+    print "The number of paths between nodes %d and %d is %d" % (0, 1, Num)
+    for Nbr in NbrV:
+        print "Path: %d %d %d" % (0, Nbr, 1)
+
