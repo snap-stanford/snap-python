@@ -1,15 +1,7 @@
 GetEigVec
 '''''''''''
-.. note::
 
-    This page is a draft and under revision.
-
-
-.. function:: GetEigVec(Graph, EigVecs, EigValV, EigVecV)
-
-.. note::
-
-    This function is not yet supported.
+.. function:: GetEigVec(Graph, EigVecs, EigVal, EigVecV)
 
 Computes top EigVecs eigenvalues and eigenvectors of the adjacency matrix representing a given undirected Graph.
 
@@ -24,7 +16,7 @@ Parameters:
 - *EigValV*: TFltV, a vector of floats (output)
     Eigenvalues.
 
-- *EigVecV*: TVec<TFltV> (output)
+- *EigVecV*: TFltVFltV> (output)
     Eigenvectors.
 
 Return value:
@@ -38,12 +30,19 @@ The following example shows how to calculate the top 2 eigenvalues and eigenvect
     import snap
 
     Graph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
-    Eigval = snap.TFlt()
-    Eigvec = snap.TFltV()
-    snap.GetEigVec(Graph, 2, Eigval, Eigvec)
+    EigValV = snap.TFltV()
+    EigVecV = snap.TFltVFltV()
+    snap.GetEigVec(Graph, 10, EigVal, EigVecV)
 
-    print "Eigenvalue: ", Eigval.Val
+    i = 0
+    for item in EigVal:
+        i += 1
+        print "Eigenvalue %d: %.6f" % (i, item)
 
-    print "Eigenvector: "
-    for i in Eigvec:
-	print i
+    i = 0
+    for v in EigVecV:
+        i += 1
+        print "=== Eigenvector: %d ===" % (i)
+        for item in v:
+            print item
+

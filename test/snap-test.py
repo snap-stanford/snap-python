@@ -3049,9 +3049,16 @@ class SnapPythonTest(unittest.TestCase):
     def test_GetEigVec(self):
         # Undirected Graph
         Graph = snap.GenRndGnm(snap.PUNGraph, 100, 500)
-        V = snap.TFltV()
-        snap.GetEigVec(Graph, V)
-        self.assertEqual(V.Len(), 100)
+        EigV = snap.TFltV()
+        snap.GetEigVec(Graph, EigV)
+        self.assertEqual(EigV.Len(), 100)
+
+        EigVal = snap.TFltV()
+        EigVV = snap.TFltVFltV()
+        snap.GetEigVec(Graph, 10, EigVal, EigVV)
+        self.assertEqual(EigVal.Len(), 10)
+        for V in EigVV:
+            self.assertEqual(V.Len(), 100)
 
     def test_DrawGViz(self):
         # Directed Graph
