@@ -1,5 +1,5 @@
-Snap.py 4.0 Release Notes
-July 2017
+Snap.py 4.1 Release Notes
+July 2018
 
 Snap.py is a Python interface for SNAP (Stanford Network Analysis Platform).
 SNAP is a general purpose, high performance system for analysis and
@@ -10,6 +10,30 @@ Snap.py provides performance benefits of SNAP, combined with flexibility
 of Python. Most of the SNAP functionality is available via Snap.py in Python.
 
 This file contains a high-level description of changes in Snap.py releases.
+
+Release 4.1.0, Jul 27, 2018
+
+- updated C++ codebase to SNAP 4.1
+- implemented GetSubGraphRenumber()
+- implemented GetLen2Paths()
+- implemented GetEigVec()
+- implemented GetSngVec()
+- implemented GetBfsEffDiamAll()
+- implemented GetClustCfAll()
+- implemented GetTriadsAll()
+- implemented GetNodeTriadsAll()
+- improved support for node2vec
+- expanded the set of supported node iterator methods
+- defined TFltVFltV
+- added test programs for gnuplot and Graphviz
+- improved documentation for GetEdgesInOut()
+- improved documentation for GetSubTreeSz()
+- improved documentation for IsTree()
+- improved documentation for GetMxNId()
+- improved documentation for CommunityCNM()
+- improved documentation for CommunityCNM()
+- improved documentation for GetRndNId()
+- performed other minor updates in the documentation
 
 Release 4.0.0, Jul 28, 2017
 
