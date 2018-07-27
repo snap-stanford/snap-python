@@ -29,6 +29,8 @@ scripts=(quick_test.py \
     test-vec-ops.py \
     test-2015-18a-attr.py \
     test-20160801-LoadConnListStr.py \
+    test-20180416-table.py \
+    attrtest.py \
     test-GetBetweennessCentr.py \
     test-GetClosenessCentr.py \
     test-GetFarnessCentr.py \
