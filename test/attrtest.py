@@ -8,7 +8,7 @@ import snap
 #G.AddIntAttrDatN(1, 10, "NValInt")
 #print G.GetIntAttrDatN(1, "NValInt")
 
-g1 = snap.LoadEdgeList(snap.PNEANet, "g1.edgelist") 
+g1 = snap.LoadEdgeList(snap.PNEANet, "data/g1.edgelist") 
 
 g1.AddIntAttrN("NValInt", 55) 
 
