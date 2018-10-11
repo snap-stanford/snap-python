@@ -8,12 +8,12 @@ TUNGraph
 
 .. class:: TUNGraph()
            TUNGraph(Nodes, Edges)
-           TUNGraph(Graph)
 
    Returns a new undirected graph. If no parameters are provided,
    an empty graph is created. If *Nodes* and *Edges* are specified, space
-   is preallocated for *Nodes* nodes and *Edges* edges. If *Graph* is specified,
-   the new graph is a copy of the input graph.
+   is preallocated for *Nodes* nodes and *Edges* edges.
+   Do not call these methods directly! To create a new :class:`TUNGraph`
+   object, use one of the :meth:`New()` methods.
 
    Nodes have IDs, which are arbitrary non-negative integers. Nodes and edges
    have no attributes/data associated with them. There is at most one
@@ -300,12 +300,12 @@ TNGraph
 
 .. class:: TNGraph()
            TNGraph(Nodes, Edges)
-           TNGraph(Graph)
 
    Returns a new directed graph. If no parameters are provided,
    an empty graph is created. If *Nodes* and *Edges* are specified, space
-   is preallocated for *Nodes* nodes and *Edges* edges. If *Graph* is specified,
-   the new graph is a copy of the input graph.
+   is preallocated for *Nodes* nodes and *Edges* edges.
+   Do not call these methods directly! To create a new :class:`TNGraph`
+   object, use one of the :meth:`New()` methods.
 
    Nodes have IDs, which are arbitrary non-negative integers. Nodes and edges
    have no attributes/data associated with them. There is at most one
@@ -588,13 +588,13 @@ TNEANet
 
 .. class:: TNEANet()
            TNEANet(Nodes, Edges)
-           TNEANet(Graph)
 
    Returns a new directed multigraph with node and edge attributes.
    If no parameters are provided,
    an empty graph is created. If *Nodes* and *Edges* are specified, space
-   is preallocated for *Nodes* nodes and *Edges* edges. If *Graph* is specified,
-   the new graph is a copy of the input graph.
+   is preallocated for *Nodes* nodes and *Edges* edges.
+   Do not call these methods directly! To create a new :class:`TNEANet`
+   object, use one of the :meth:`New()` methods.
 
    Nodes have IDs, which are arbitrary non-negative integers. Edges have IDs.
    There can be more than one directed edge from one source node to
@@ -1313,12 +1313,12 @@ TUndirNet
 
 .. class:: TUndirNet()
            TUndirNet(Nodes, Edges)
-           TUndirNet(Graph)
 
    Returns a new undirected graph. If no parameters are provided,
    an empty graph is created. If *Nodes* and *Edges* are specified, space
-   is preallocated for *Nodes* nodes and *Edges* edges. If *Graph* is specified,
-   the new graph is a copy of the input graph.
+   is preallocated for *Nodes* nodes and *Edges* edges.
+   Do not call these methods directly! To create a new :class:`TUndirNet`
+   object, use one of the :meth:`New()` methods.
 
    Nodes have IDs, which are arbitrary non-negative integers. Nodes and edges
    have no attributes/data associated with them. There is at most one
@@ -1677,12 +1677,12 @@ TDirNet
 
 .. class:: TDirNet()
            TDirNet(Nodes, Edges)
-           TDirNet(Graph)
 
    Returns a new directed graph. If no parameters are provided,
    an empty graph is created. If *Nodes* and *Edges* are specified, space
-   is preallocated for *Nodes* nodes and *Edges* edges. If *Graph* is specified,
-   the new graph is a copy of the input graph.
+   is preallocated for *Nodes* nodes and *Edges* edges.
+   Do not call these methods directly! To create a new :class:`TDirNet`
+   object, use one of the :meth:`New()` methods.
 
    Nodes have IDs, which are arbitrary non-negative integers. Nodes and edges
    have no attributes/data associated with them. There is at most one
