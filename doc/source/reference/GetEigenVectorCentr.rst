@@ -32,4 +32,4 @@ The following example shows how to calculate eigenvector centrality values for n
     NIdEigenH = snap.TIntFltH()
     snap.GetEigenVectorCentr(UGraph, NIdEigenH)
     for item in NIdEigenH:
-        print "%node: d centrality: %f" % (item, NIdEigenH[item])
+        print "node: %d centrality: %f" % (item, NIdEigenH[item])
