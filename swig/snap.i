@@ -20,8 +20,9 @@ Version = "4.1.0"
 #include "agm.h"
 #include "agmfast.h"
 #include "agmfit.h"
+#include "motifcluster.h"
 #include "n2v.h"
- 
+
 /* #include "Engine.h" */
 #include "snapswig.h"
 
@@ -107,6 +108,9 @@ Version = "4.1.0"
 //%ignore TVec< TPair< TStr,TAttrType > >::TVec(TSIn *);
 %ignore TVec< TPair< TStr,TAttrType > >::TVec(TSIn &);
 //%ignore Schema::Load;
+
+%ignore TVec<TIntH>::GetPrimHashCd;
+%ignore TVec<TIntH>::GetSecHashCd;
 
 %ignore TVec<PNEANet>::Intrs;
 %ignore TVec<PNEANet>::IntrsLen;
@@ -224,6 +228,7 @@ Version = "4.1.0"
 %include "agm.h"
 %include "agmfast.h"
 %include "agmfit.h"
+%include "motifcluster.h"
 %include "n2v.h"
 
 //%template(Schema) TVec< TPair< TStr, TAttrType> >;
@@ -537,6 +542,9 @@ Version = "4.1.0"
 //%template(TStrSH) TStrHash<TInt>;
 //%template(TStrIntSH) TStrHash<TInt>;
 //%template(TStrToIntVSH) TStrHash<TIntV>;
+
+// define vector types
+%template(WeightVH) TVec<TIntH>;
 
 // define keydat types
 //%template(TChChHI) THashKeyDatI <TCh, TCh>;

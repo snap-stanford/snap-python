@@ -5,7 +5,7 @@
 # Build instructions for Mac OS X and Linux:
 #		make
 #		make dist
-# 
+#
 # Build instructions for Windows:
 #	- run swig in Cygwin to generate snap_wrap.cxx and snap.py
 #		make swig-win
@@ -40,32 +40,21 @@ snap_wrap.cxx: snap.i snap_types.i tvec.i pneanet.i tmodenet.i tcrossnet.i pungr
 snap_wrap.o: snap_wrap.cxx
 	g++ $(CXXFLAGS) -c snap_wrap.cxx -I$(SNAPDIR) -I$(SNAPADVDIR) -I$(GLIBDIR) -I/usr/include/python2.6 -I/usr/include/python2.7 -I/usr/lib/python2.7/dist-packages/numpy/core/include
 
-Snap.o: 
+Snap.o:
 	$(CC) $(CXXFLAGS) -c $(SNAPDIR)/Snap.cpp -I$(SNAPDIR) -I$(SNAPADVDIR) -I$(GLIBDIR)
 
-cliques.o: 
-	$(CC) $(CXXFLAGS) -c $(SNAPADVDIR)/cliques.cpp -I$(SNAPDIR) -I$(SNAPADVDIR) -I$(GLIBDIR)
+OBJS = $(addsuffix .o, cliques agm agmfast agmfit biasedrandomwalk motifcluster word2vec n2v)
 
-agm.o: 
-	$(CC) $(CXXFLAGS) -c $(SNAPADVDIR)/agm.cpp -I$(SNAPDIR) -I$(SNAPADVDIR) -I$(GLIBDIR)
+$(OBJS): %.o:
+	$(CC) $(CXXFLAGS) -c $(SNAPADVDIR)/$*.cpp -I$(SNAPDIR) -I$(SNAPADVDIR) -I$(GLIBDIR)
 
-agmfast.o: 
-	$(CC) $(CXXFLAGS) -c $(SNAPADVDIR)/agmfast.cpp -I$(SNAPDIR) -I$(SNAPADVDIR) -I$(GLIBDIR)
-
-agmfit.o: 
-	$(CC) $(CXXFLAGS) -c $(SNAPADVDIR)/agmfit.cpp -I$(SNAPDIR) -I$(SNAPADVDIR) -I$(GLIBDIR)
-
-biasedrandomwalk.o: 
-	$(CC) $(CXXFLAGS) -c $(SNAPADVDIR)/biasedrandomwalk.cpp -I$(SNAPDIR) -I$(SNAPADVDIR) -I$(GLIBDIR)
-
-word2vec.o: 
-	$(CC) $(CXXFLAGS) -c $(SNAPADVDIR)/word2vec.cpp -I$(SNAPDIR) -I$(SNAPADVDIR) -I$(GLIBDIR)
-
-n2v.o: 
-	$(CC) $(CXXFLAGS) -c $(SNAPADVDIR)/n2v.cpp -I$(SNAPDIR) -I$(SNAPADVDIR) -I$(GLIBDIR)
-
-_snap.so: snap_wrap.o Snap.o cliques.o agm.o agmfast.o agmfit.o biasedrandomwalk.o word2vec.o n2v.o
-	g++ $(LDFLAGS) -o _snap.so snap_wrap.o Snap.o cliques.o agm.o agmfast.o agmfit.o biasedrandomwalk.o word2vec.o n2v.o $(LIBS)
+ifeq (, $(findstring -larpack, $(LIBS)))
+_snap.so: $(filter-out motifcluster.o, $(OBJS))
+else
+_snap.so: $(OBJS)
+endif
+_snap.so: snap_wrap.o Snap.o
+	g++ $(LDFLAGS) -o _snap.so $^ $(LIBS)
 
 snap.py: snap_wrap.cxx
 
