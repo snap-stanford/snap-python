@@ -16,7 +16,7 @@ from distutils.core import setup, Extension
 #
 #   Snap.py version
 #
-snappy_version = "4.1.0"
+snappy_version = "4.1.0.1" #third dot demarks various pip releases :) 
 
 def getdynpath():
     '''
