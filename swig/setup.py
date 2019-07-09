@@ -96,6 +96,7 @@ if uname[0] == "Linux":
             swubuntu = True
     except:
         pass
+    useros="POSIX :: Linux"
 
     obj_name = "_snap.so"
 
@@ -108,7 +109,7 @@ elif uname[0] == "Darwin":
         os_version = "macosx" + content.strip()
     except:
         pass
-
+    useros="MacOS"
     obj_name = "_snap.so"
 
 elif uname[0].find("CYGWIN") == 0:
@@ -119,6 +120,7 @@ elif uname[0].find("CYGWIN") == 0:
 elif uname[0].find("Windows") == 0:
     os_version = "Win"
     obj_name = "_snap.pyd"
+    useros="Microsoft :: Windows"
 
 # architecture
 arch = "i386"
@@ -189,5 +191,9 @@ setup (name = 'snap',
     version     = pkg_version,
     author      = "snap.stanford.edu",
     description = """SNAP (Stanford Network Analysis Platform) Python""",
+    classifiers=[
+        "Programming Language :: Python :: 2",
+        "Operating System :: " + useros,
+    ],
     )
 
