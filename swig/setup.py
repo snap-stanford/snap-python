@@ -11,7 +11,13 @@ import os
 import platform
 import sys
 
-from distutils.core import setup, Extension
+from distutils.core import Extension
+
+#added backwards compatibility
+try:
+    from setuptools import setup
+except ImportError:
+    from distutils.core import setup
 
 #
 #   Snap.py version
