@@ -87,11 +87,11 @@ word2vec.o:
 n2v.o: 
 	$(CC) $(CXXFLAGS) -c $(SNAPADVDIR)/n2v.cpp -I$(SNAPDIR) -I$(SNAPADVDIR) -I$(GLIBDIR)
 
-_snap.so: snap_wrap.o Snap.o cliques.o agm.o agmfast.o agmfit.o biasedrandomwalk.o word2vec.o n2v.o
-	g++ $(LDFLAGS) -o _snap.so snap_wrap.o Snap.o cliques.o agm.o agmfast.o agmfit.o biasedrandomwalk.o word2vec.o n2v.o $(LIBS)
+#_snap.so: snap_wrap.o Snap.o cliques.o agm.o agmfast.o agmfit.o biasedrandomwalk.o word2vec.o n2v.o
+#	g++ $(LDFLAGS) -o _snap.so snap_wrap.o Snap.o cliques.o agm.o agmfast.o agmfit.o biasedrandomwalk.o word2vec.o n2v.o $(LIBS)
 
-_snap3.so: snap_wrap3.o Snap.o 
-	g++ $(LDFLAGS3) -o _snap3.so snap_wrap3.o Snap.o $(LIBS)
+#_snap3.so: snap_wrap3.o Snap.o 
+#	g++ $(LDFLAGS3) -o _snap3.so snap_wrap3.o Snap.o $(LIBS)
 
 snap.py: snap_wrap.cxx
 
