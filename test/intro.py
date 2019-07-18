@@ -10,28 +10,28 @@ def intro():
     G1.AddEdge(1,5)
     G1.AddEdge(5,1)
     G1.AddEdge(5,32)
-    print "G1: Nodes %d, Edges %d" % (G1.GetNodes(), G1.GetEdges())
+    print("G1: Nodes %d, Edges %d" % (G1.GetNodes(), G1.GetEdges()))
 
     # create a directed random graph on 100 nodes and 1k edges
     G2 = snap.GenRndGnm(snap.PNGraph, 100, 1000)
-    print "G2: Nodes %d, Edges %d" % (G2.GetNodes(), G2.GetEdges())
+    print("G2: Nodes %d, Edges %d" % (G2.GetNodes(), G2.GetEdges()))
 
     # traverse the nodes
     for NI in G2.Nodes():
-        print "node id %d with out-degree %d and in-degree %d" % (
-            NI.GetId(), NI.GetOutDeg(), NI.GetInDeg())
+        print("node id %d with out-degree %d and in-degree %d" % (
+            NI.GetId(), NI.GetOutDeg(), NI.GetInDeg()))
     # traverse the edges
     for EI in G2.Edges():
-        print "edge (%d, %d)" % (EI.GetSrcNId(), EI.GetDstNId())
+        print("edge (%d, %d)" % (EI.GetSrcNId(), EI.GetDstNId()))
 
     # traverse the edges by nodes
     for NI in G2.Nodes():
         for Id in NI.GetOutEdges():
-            print "edge (%d %d)" % (NI.GetId(), Id)
+            print("edge (%d %d)" % (NI.GetId(), Id))
 
     # generate a network using Forest Fire model
     G3 = snap.GenForestFire(1000, 0.35, 0.35)
-    print "G3: Nodes %d, Edges %d" % (G3.GetNodes(), G3.GetEdges())
+    print("G3: Nodes %d, Edges %d" % (G3.GetNodes(), G3.GetEdges()))
 
     # save and load binary
     FOut = snap.TFOut("test.graph")
@@ -39,19 +39,19 @@ def intro():
     FOut.Flush()
     FIn = snap.TFIn("test.graph")
     G4 = snap.TNGraph.Load(FIn)
-    print "G4: Nodes %d, Edges %d" % (G4.GetNodes(), G4.GetEdges())
+    print("G4: Nodes %d, Edges %d" % (G4.GetNodes(), G4.GetEdges()))
 
     # save and load from a text file
     snap.SaveEdgeList(G4, "test.txt", "Save as tab-separated list of edges")
     G5 = snap.LoadEdgeList(snap.PNGraph, "test.txt", 0, 1)
-    print "G5: Nodes %d, Edges %d" % (G5.GetNodes(), G5.GetEdges())
+    print("G5: Nodes %d, Edges %d" % (G5.GetNodes(), G5.GetEdges()))
 
     # generate a network using Forest Fire model
     G6 = snap.GenForestFire(1000, 0.35, 0.35)
-    print "G6: Nodes %d, Edges %d" % (G6.GetNodes(), G6.GetEdges())
+    print("G6: Nodes %d, Edges %d" % (G6.GetNodes(), G6.GetEdges()))
     # convert to undirected graph
     G7 = snap.ConvertGraph(snap.PUNGraph,G6)
-    print "G7: Nodes %d, Edges %d" % (G7.GetNodes(), G7.GetEdges())
+    print("G7: Nodes %d, Edges %d" % (G7.GetNodes(), G7.GetEdges()))
     # get largest weakly connected component of G
     WccG = snap.GetMxWcc(G6)
     # get a subgraph induced on nodes {0,1,2,3,4,5}
@@ -60,11 +60,11 @@ def intro():
     Core3 = snap.GetKCore(G6, 3)
     # delete nodes of out degree 10 and in degree 5
     snap.DelDegKNodes(G6, 10, 5)
-    print "G6a: Nodes %d, Edges %d" % (G6.GetNodes(), G6.GetEdges())
+    print("G6a: Nodes %d, Edges %d" % (G6.GetNodes(), G6.GetEdges()))
 
     # generate a Preferential Attachment graph on 1000 nodes and node out degree of 3
     G8 = snap.GenPrefAttach(1000, 3)
-    print "G8: Nodes %d, Edges %d" % (G8.GetNodes(), G8.GetEdges())
+    print("G8: Nodes %d, Edges %d" % (G8.GetNodes(), G8.GetEdges()))
     # vector of pairs of integers (size, count)
     CntV = snap.TIntPrV()
     # get distribution of connected components (component size, count)

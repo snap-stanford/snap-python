@@ -17,5 +17,5 @@ T = snap.GetBfsTree(G, 0, True, True)
 #T = snap.GetBfsTree(G, 0, False, False) # node 0 only, no edges
 
 for e in T.Edges():
-    print e.GetSrcNId(), e.GetDstNId()
+    print(e.GetSrcNId(), e.GetDstNId())
 

@@ -9,7 +9,7 @@ except:
     pass
 
 if status:
-    print "SUCCESS, your version of Snap.py is %s" % (version)
+    print("SUCCESS, your version of Snap.py is %s" % (version))
 else:
-    print "*** ERROR, no working Snap.py was found on your computer"
+    print("*** ERROR, no working Snap.py was found on your computer")
 

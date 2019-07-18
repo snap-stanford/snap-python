@@ -17,50 +17,50 @@ output.write("""*Vertices      9
 """)
 output.close()
 
-print "Directed graph"
+print("Directed graph")
 Graph = snap.LoadPajek(snap.PNGraph, filename)
 
-print "Nodes", Graph.GetNodes()
+print("Nodes", Graph.GetNodes())
 if Graph.GetNodes() != 3:
-    print "*** Error11"
+    print("*** Error11")
 for NI in Graph.Nodes():
-    print "Node", NI.GetId()
+    print("Node", NI.GetId())
 
-print "Edges", Graph.GetEdges()
+print("Edges", Graph.GetEdges())
 if Graph.GetEdges() != 3:
-    print "*** Error12"
+    print("*** Error12")
 for EI in Graph.Edges():
-    print "Edge", EI.GetSrcNId(), EI.GetDstNId()
+    print("Edge", EI.GetSrcNId(), EI.GetDstNId())
 
-print "Undirected graph"
+print("Undirected graph")
 UGraph = snap.LoadPajek(snap.PUNGraph, filename)
 
-print "Nodes", UGraph.GetNodes()
+print("Nodes", UGraph.GetNodes())
 if UGraph.GetNodes() != 3:
-    print "*** Error21"
+    print("*** Error21")
 for NI in UGraph.Nodes():
-    print "Node", NI.GetId()
+    print("Node", NI.GetId())
 
-print "Edges", UGraph.GetEdges()
+print("Edges", UGraph.GetEdges())
 if UGraph.GetEdges() != 3:
-    print "*** Error22"
+    print("*** Error22")
 for EI in UGraph.Edges():
-    print "Edge", EI.GetSrcNId(), EI.GetDstNId()
+    print("Edge", EI.GetSrcNId(), EI.GetDstNId())
 
-print "Directed multigraph"
+print("Directed multigraph")
 Network = snap.LoadPajek(snap.PNEANet, filename)
 
-print "Nodes", Network.GetNodes()
+print("Nodes", Network.GetNodes())
 if Network.GetNodes() != 3:
-    print "*** Error31"
+    print("*** Error31")
 for NI in Network.Nodes():
-    print "Node", NI.GetId()
+    print("Node", NI.GetId())
 
-print "Edges", Network.GetEdges()
+print("Edges", Network.GetEdges())
 if Network.GetEdges() != 3:
-    print "*** Error32"
+    print("*** Error32")
 for EI in Network.Edges():
-    print "Edge", EI.GetSrcNId(), EI.GetDstNId()
+    print("Edge", EI.GetSrcNId(), EI.GetDstNId())
 
 os.remove(filename)
 

@@ -33,13 +33,13 @@ for x in Gnea.Edges():
 
 # Retrieve the attribute "weight"
 for x in Gnea.Edges():              
-    print Gnea.GetFltAttrDatE(x.GetId(), 'posWeight')
+    print(Gnea.GetFltAttrDatE(x.GetId(), 'posWeight'))
 
 for x in Gnea.Edges():              
-    print Gnea.GetFltAttrDatE(x.GetId(), 'negWeight')
+    print(Gnea.GetFltAttrDatE(x.GetId(), 'negWeight'))
 
 for x in Gnea.Edges():              
     if Gnea.GetFltAttrDatE(x.GetId(), 'posWeight') == Gnea.GetFltAttrDatE(x.GetId(), 'negWeight'):
-        print "*** Error: attributes are equal"
+        print("*** Error: attributes are equal")
         sys.exit(1)
 

@@ -14,15 +14,12 @@ import sys
 from distutils.core import Extension
 
 #added backwards compatibility
-try:
-    from setuptools import setup
-except ImportError:
-    from distutils.core import setup
+from setuptools import setup
 
 #
 #   Snap.py version
 #
-snappy_version = "4.1.0.1" #third dot demarks various pip releases :) 
+snappy_version = "4.1.0"
 
 def getdynpath():
     '''
@@ -165,12 +162,12 @@ if uname[0] == "Darwin":
     dynlib_path = getdynpath()
 
 if dryrun:
-    print "swubuntu", swubuntu
-    print "pkg_version", pkg_version
-    print "obj_name", obj_name
-    print "user_install", user_install
+    print("swubuntu", swubuntu)
+    print("pkg_version", pkg_version)
+    print("obj_name", obj_name)
+    print("user_install", user_install)
     if dynlib_path:
-        print "dynlib_path", dynlib_path
+        print("dynlib_path", dynlib_path)
     sys.exit(0)
 
 # specify additional files for Mac OS X
@@ -199,6 +196,7 @@ setup (name = 'snap',
     description = """SNAP (Stanford Network Analysis Platform) Python""",
     classifiers=[
         "Programming Language :: Python :: 2",
+        "Programming Language :: Python :: 3",
         "Operating System :: " + useros,
     ],
     )

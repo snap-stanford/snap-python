@@ -1,0 +1,5 @@
+setup.py
+snap.py
+_snap3.so
+update_dynlib.sh
+install_name_tool

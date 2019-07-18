@@ -48,13 +48,13 @@ class TestSequenceFunctions(unittest.TestCase):
             self.assertEqual(NI.GetInDeg(), len(ilist))
 
             # test neighbor access
-            for i in xrange(0, NI.GetOutDeg()):
+            for i in range(0, NI.GetOutDeg()):
                 self.assertEqual(olist[i], NI.GetOutNId(i))
-            for i in xrange(0, NI.GetInDeg()):
+            for i in range(0, NI.GetInDeg()):
                 self.assertEqual(ilist[i], NI.GetInNId(i))
 
             # test neighbor validation
-            for i in xrange(0,self.nodes):
+            for i in range(0,self.nodes):
                 self.assertEqual(i in olist, NI.IsOutNId(i))
                 self.assertEqual(i in ilist, NI.IsInNId(i))
                 self.assertEqual((i in ilist) or (i in olist), NI.IsNbrNId(i))

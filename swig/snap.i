@@ -16,11 +16,11 @@ Version = "4.1.0"
 %{
 
 #include "Snap.h"
-#include "cliques.h"
-#include "agm.h"
-#include "agmfast.h"
-#include "agmfit.h"
-#include "n2v.h"
+//#include "cliques.h"
+//#include "agm.h"
+//#include "agmfast.h"
+//#include "agmfit.h"
+//#include "n2v.h"
  
 /* #include "Engine.h" */
 #include "snapswig.h"
@@ -220,11 +220,11 @@ Version = "4.1.0"
 %include "util.h"
 %include "triad.h"
 %include "statplot.h"
-%include "cliques.h"
-%include "agm.h"
-%include "agmfast.h"
-%include "agmfit.h"
-%include "n2v.h"
+//%include "cliques.h"
+//%include "agm.h"
+//%include "agmfast.h"
+//%include "agmfit.h"
+//%include "n2v.h"
 
 //%template(Schema) TVec< TPair< TStr, TAttrType> >;
 //%template(Schema) TVec< TPair< TStr, TAttrType_> >;

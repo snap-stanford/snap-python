@@ -1,6 +1,6 @@
 import snap
 
-print "testing snap.TIntSet ..."
+print("testing snap.TIntSet ...")
 set = snap.TIntSet()
 set.AddKey(0)
 set.AddKey(1)
@@ -9,7 +9,7 @@ for Id_A in set:
     for Id_B in set:
         print (Id_A, Id_B)
 
-print "testing snap.TIntH ..."
+print("testing snap.TIntH ...")
 hash = snap.TIntH()
 hash[0] = 0
 hash[1] = 1

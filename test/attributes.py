@@ -32,10 +32,10 @@ for NI in G.Nodes():
     ival = G.GetIntAttrDatN(nid, "NValInt")
     fval = G.GetFltAttrDatN(nid, "NValFlt")
     sval = G.GetStrAttrDatN(nid, "NValStr")
-    print "node %d, NValInt %d, NValFlt %.2f, NValStr %s" % (nid, ival, fval, sval)
+    print("node %d, NValInt %d, NValFlt %.2f, NValStr %s" % (nid, ival, fval, sval))
 
     for nid1 in NI.GetOutEdges():
         eid = G.GetEId(nid, nid1)
         val = G.GetIntAttrDatE(eid, "EValInt")
-        print "edge %d (%d,%d), EValInt %d" % (eid, nid, nid1, val)
+        print("edge %d (%d,%d), EValInt %d" % (eid, nid, nid1, val))
 
