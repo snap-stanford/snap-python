@@ -59,7 +59,7 @@ snap_wrap.o: snap_wrap.cxx
 	g++ $(CXXFLAGS) -c snap_wrap.cxx -I$(SNAPDIR) -I$(SNAPADVDIR) -I$(GLIBDIR) -I/usr/include/python2.6 -I/usr/include/python2.7 -I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/lib/python2.7/dist-packages/numpy/core/include -I/Library/Frameworks/Python.framework/Versions/2.7/include/python2.7/ -I/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/numpy/core/include 
 
 snap_wrap3.o: snap_wrap3.cxx
-	g++ $(CXXFLAGS) -c snap_wrap3.cxx -I$(SNAPDIR)  -I$(GLIBDIR) -I/usr/local/include/python3.6m -I/usr/local/Frameworks/Python.framework/Versions/3.7/include/python3.7m -I/usr/local/Frameworks/Python.framework/Versions/3.7/Headers/Python.h -o snap_wrap.o
+	g++ $(CXXFLAGS) -c snap_wrap3.cxx -I$(SNAPDIR)  -I$(GLIBDIR) -I/usr/local/include/python3.6m -I/usr/include/python3.6m -I/usr/local/Frameworks/Python.framework/Versions/3.7/include/python3.7m -I/usr/local/Frameworks/Python.framework/Versions/3.7/Headers/Python.h -o snap_wrap.o
 
 	ln -f snap_wrap.o snap_wrap3.o
 
