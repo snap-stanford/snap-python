@@ -110,3 +110,6 @@ dist-win: setup.py snap.py _snap.pyd
 
 clean:
 	rm -f *.o *_wrap*.cxx _*.so *.pyc snap*.py _snap*.*
+
+pip: dist/*	
+	python -m twine upload --repository-url https://test.pypi.org/legacy/ dist/*
