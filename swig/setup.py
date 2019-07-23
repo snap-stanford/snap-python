@@ -11,9 +11,8 @@ import os
 import platform
 import sys
 
-from distutils.core import setup, Extension
-
-#from setuptools import setup, Extension
+#from distutils.core import setup, Extension
+from setuptools import setup, Extension
 
 #
 #   Snap.py version
