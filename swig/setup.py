@@ -193,8 +193,7 @@ setup (name = 'snap',
     author      = "snap.stanford.edu",
     description = """SNAP (Stanford Network Analysis Platform) Python""",
     classifiers=[
-        "Programming Language :: Python :: 2",
-        "Programming Language :: Python :: 3",
+        "Programming Language :: Python :: "+str(sys.version_info[0]),
         "Operating System :: " + useros,
     ],
     )
