@@ -94,6 +94,10 @@ dist: setup.py snap.py _snap.so
 	cp $(MANIFEST) MANIFEST
 	python setup.py sdist
 
+bdist: setup.py snap.py _snap.so
+	cp $(MANIFEST) MANIFEST
+	python setup.py bdist_wheel
+
 dist3: setup.py snap3.py _snap3.so
 	cp $(MANIFEST) MANIFEST
 	python3 setup.py sdist
