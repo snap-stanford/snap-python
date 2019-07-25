@@ -203,6 +203,7 @@ setup (name = 'snap',
     version     = snappy_version,
     author      = "snap.stanford.edu",
     description = """SNAP (Stanford Network Analysis Platform) Python""",
+    cmdclass={'bdist_wheel': bdist_wheel},
     classifiers=[
         "Programming Language :: Python :: "+str(sys.version_info[0]),
         "Operating System :: " + useros,
