@@ -17,8 +17,7 @@ from setuptools import setup, Extension
 #
 #   Snap.py version
 #
-snappy_version = "4.1.0"
-
+snappy_version = "4.1.0a24"
 def getdynpath():
     '''
     get the path for the Python dynamic library
@@ -58,7 +57,6 @@ try:
             self.root_is_pure = False
 except ImportError:
     bdist_wheel = None
-
 
 #
 #   determine package parameters:
@@ -157,6 +155,9 @@ instdir = "site-packages"
 if swubuntu:
     instdir = "dist-packages"
 
+#pip path relative to usr/local/ for mac and linux
+pip_install='lib/python'+str(sys.version_info[0])+'.'+str(sys.version_info[1])+'/site-packages/'
+
 # check for an alternative Python user directory
 user_install = sys_install
 for p in sys.path:
@@ -175,6 +176,7 @@ if dryrun:
     print("pkg_version", pkg_version)
     print("obj_name", obj_name)
     print("user_install", user_install)
+    print("pip_install", pip_install)
     if dynlib_path:
         print("dynlib_path", dynlib_path)
     sys.exit(0)
@@ -183,6 +185,10 @@ if dryrun:
 files = []
 if uname[0] == "Darwin"  and  sdist:
     files = ["install_name_tool", "update_dynlib.sh"]
+
+#system python special case
+if uname[0] == "Darwin"  and str(sys.version_info[0])=='2':
+    pip_install=user_install
 
 #
 #   update the dynamic library path
@@ -194,11 +200,10 @@ if dynlib_path:
 #
 #   setup configuration
 #
-
 setup (name = 'snap',
     py_modules  = ["snap"],
     #ext_modules = [snap_module],
-    data_files  = [(user_install, [obj_name])],
+    data_files  = [(pip_install, [obj_name])], #user_install
     scripts     = files,
     version     = snappy_version,
     author      = "snap.stanford.edu",

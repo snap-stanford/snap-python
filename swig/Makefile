@@ -57,7 +57,7 @@ snap_wrap3.cxx: snap.i snap_types.i tvec.i pneanet.i tmodenet.i tcrossnet.i pung
 	ln -f snap_wrap.cxx snap_wrap3.cxx
 
 snap_wrap.o: snap_wrap.cxx
-	g++ $(CXXFLAGS) -c snap_wrap.cxx -I$(SNAPDIR)  -I$(GLIBDIR) -I/usr/include/python2.6 -I/usr/include/python2.7 -I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/lib/python2.7/dist-packages/numpy/core/include -I/Library/Frameworks/Python.framework/Versions/2.7/include/python2.7/ -I/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/numpy/core/include 
+	g++ $(CXXFLAGS) -c snap_wrap.cxx -I$(SNAPDIR)  -I$(GLIBDIR) -I/usr/include/python2.6 -I/usr/include/python2.7 -I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/lib/python2.7/dist-packages/numpy/core/include -I/Library/Frameworks/Python.framework/Versions/2.7/include/python2.7/ -I/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/numpy/core/include -I/usr/local/opt/python2/Frameworks/Python.framework/Versions/2.7/Headers/ -I/usr/local/opt/python2/Frameworks/Python.framework/Versions/2.7/Headers
 
 snap_wrap3.o: snap_wrap3.cxx
 	g++ $(CXXFLAGS) -c snap_wrap3.cxx -I$(SNAPDIR)  -I$(GLIBDIR) -I/usr/local/include/python3.6m  -I/usr/include/python3.6m -I/usr/local/Frameworks/Python.framework/Versions/3.7/include/python3.7m -I/usr/local/Frameworks/Python.framework/Versions/3.7/Headers/Python.h -o snap_wrap.o
@@ -98,9 +98,13 @@ bdist: setup.py snap.py _snap.so
 	cp $(MANIFEST) MANIFEST
 	python setup.py bdist_wheel
 
-dist3: setup.py snap3.py _snap3.so
+dist3: setup.py snap3.py _snap3.so _snap.so snap.py
 	cp $(MANIFEST) MANIFEST
 	python3 setup.py sdist
+
+bdist3: setup.py snap3.py _snap3.so _snap.so snap.py
+	cp $(MANIFEST) MANIFEST
+	python3 setup.py bdist_wheel
 
 swig-win: snap_wrap.cxx
 
