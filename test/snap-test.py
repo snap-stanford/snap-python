@@ -2701,32 +2701,32 @@ class SnapPythonTest(unittest.TestCase):
         # Directed Graph
         Graph = snap.GenFull(snap.PNGraph, 100)
         result = snap.GetLen2Paths(Graph, 0, 1)
-        self.assertEqual(result, 98L)
+        self.assertEqual(result, 98)
 
         NV = snap.TIntV()
         result = snap.GetLen2Paths(Graph, 0, 1, NV)
-        self.assertEqual(NV.Len(), 98L)
+        self.assertEqual(NV.Len(), 98)
 
         # Undirected Graph
         Graph = snap.GenFull(snap.PUNGraph, 100)
         result = snap.GetLen2Paths(Graph, 0, 1)
-        self.assertEqual(result, 98L)
+        self.assertEqual(result, 98)
 
         NV = snap.TIntV()
         result = snap.GetLen2Paths(Graph, 0, 1, NV)
-        self.assertEqual(result, 98L)
-        self.assertEqual(NV.Len(), 98L)
+        self.assertEqual(result, 98)
+        self.assertEqual(NV.Len(), 98)
 
         # Network
         Graph = snap.GenFull(snap.PNEANet, 100)
         result = snap.GetLen2Paths(Graph, 0, 1)
-        self.assertEqual(result, 98L)
-        self.assertEqual(result, 98L)
+        self.assertEqual(result, 98)
+        self.assertEqual(result, 98)
 
         NV = snap.TIntV()
         result = snap.GetLen2Paths(Graph, 0, 1, NV)
-        self.assertEqual(result, 98L)
-        self.assertEqual(NV.Len(), 98L)
+        self.assertEqual(result, 98)
+        self.assertEqual(NV.Len(), 98)
 
     def test_SavePajek(self):
         # Directed Graph
