@@ -28,9 +28,6 @@ class IterVec:
     def __iter__(self):
         return self
 
-    def __next__(self):
-        return self.next()
-
     def next(self):
         if self.count+1 < self.vec.Len():
             self.count += 1

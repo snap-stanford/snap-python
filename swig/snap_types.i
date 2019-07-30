@@ -145,81 +145,35 @@
 //  $1 = &S;
 //}
 
-//%typemap(in) TStr {
-  //TStr S(PyString_AsString($input));
-  //$1 = &S;
-//  $1 = TStr(PyString_AsString($input));
-//}
-
 %typemap(in) TStr {
   //TStr S(PyString_AsString($input));
   //$1 = &S;
-  if (PyString_Check($input)) {
-    $1 = TStr(PyString_AsString($input));
-  } else {
-    $1 = TStr(PyBytes_AS_STRING(
-           PyUnicode_AsEncodedString($input, "utf-8", "Error ~")));
-  }
+  $1 = TStr(PyString_AsString($input));
 }
-
-//%typemap(in) TStr& {
-  //TStr S(PyString_AsString($input));
-  //$1 = &S;
-  //$1 = new TStr(PyString_AsString($input));
-//}
 
 %typemap(in) TStr& {
   //TStr S(PyString_AsString($input));
   //$1 = &S;
-  if (PyString_Check($input)) {
-    $1 = new TStr(PyString_AsString($input));
-  } else {
-    $1 = new TStr(PyBytes_AS_STRING(
-           PyUnicode_AsEncodedString($input, "utf-8", "Error ~")));
-  }
+  $1 = new TStr(PyString_AsString($input));
 }
 
 %typemap(freearg) TStr& {
    free($1);
 }
 
-//%typemap(in) const TStr& {
-  //TStr S(PyString_AsString($input));
-  //$1 = &S;
-  //$1 = new TStr(PyString_AsString($input));
-//}
-
 %typemap(in) const TStr& {
   //TStr S(PyString_AsString($input));
   //$1 = &S;
-  if (PyString_Check($input)) {
-    $1 = new TStr(PyString_AsString($input));
-  } else {
-    $1 = new TStr(PyBytes_AS_STRING(
-           PyUnicode_AsEncodedString($input, "utf-8", "Error ~")));
-  }
+  $1 = new TStr(PyString_AsString($input));
 }
 
 %typemap(freearg) const TStr& {
    free($1);
 }
 
-//%typemap(in) TStr defaultValue {
-//  TStr S(PyString_AsString($input));
-//  $1 = S;
-//  //$1 = TStr(PyString_AsString($input));
-//}
-
 %typemap(in) TStr defaultValue {
-  if (PyString_Check($input)) {
-    TStr S(PyString_AsString($input));
-    $1 = S;
-  } else {
-    TStr S(PyBytes_AS_STRING(
-             PyUnicode_AsEncodedString($input, "utf-8", "Error ~")));
-    $1 = S;
-  }
-
+  TStr S(PyString_AsString($input));
+  $1 = S;
   //$1 = TStr(PyString_AsString($input));
 }
 
@@ -231,30 +185,13 @@
   $result = PyString_FromString($1->CStr());
 }
 
-//%typecheck(SWIG_TYPECHECK_STRING) char *, const char *, TStr, TStr&, const TStr, const TStr& {
-//  $1 = PyString_Check($input) ? 1 : 0;
-//}
-
 %typecheck(SWIG_TYPECHECK_STRING) char *, const char *, TStr, TStr&, const TStr, const TStr& {
-  $1 = (PyString_Check($input) || PyUnicode_Check($input)) ? 1 : 0;
+  $1 = PyString_Check($input) ? 1 : 0;
 }
 
-
-//%typemap(in) (char *str, int len) {
-//  $1 = PyString_AsString($input);   /* char *str */
-//  $2 = PyString_Size($input);       /* int len   */
-//}
-
 %typemap(in) (char *str, int len) {
-  if (PyString_Check($input)) {
-    $1 = PyString_AsString($input);   /* char *str */
-    $2 = PyString_Size($input);       /* int len   */
-  } else {
-    $1 = PyBytes_AS_STRING(
-            PyUnicode_AsEncodedString($input, "utf-8", "Error ~"));
-    $2 = PyString_Size(
-            PyUnicode_AsEncodedString($input, "utf-8", "Error ~"));
-  }
+  $1 = PyString_AsString($input);   /* char *str */
+  $2 = PyString_Size($input);       /* int len   */
 }
 
 // Create type for fixed-size Python lists of doubles.
