@@ -14,6 +14,9 @@ import sys
 #from distutils.core import setup, Extension
 from setuptools import setup, Extension
 
+#added pip flag
+pip=False
+
 #
 #   Snap.py version
 #
@@ -156,7 +159,11 @@ if swubuntu:
     instdir = "dist-packages"
 
 #pip path relative to usr/local/ for mac and linux
-pip_install='lib/python'+str(sys.version_info[0])+'.'+str(sys.version_info[1])+'/site-packages/'
+if uname[0]=="Darwin":
+    pip_install='lib/python'+'/'+instdir+'/'
+else:
+    pip_install='lib/python'+str(sys.version_info[0])+'.'+str(sys.version_info[1])+'/'+instdir+'/'
+
 
 # check for an alternative Python user directory
 user_install = sys_install
@@ -180,15 +187,15 @@ if dryrun:
     if dynlib_path:
         print("dynlib_path", dynlib_path)
     sys.exit(0)
+    
+#switch to pip directory
+if pip:
+    user_install=pip_install
 
 # specify additional files for Mac OS X
 files = []
 if uname[0] == "Darwin"  and  sdist:
     files = ["install_name_tool", "update_dynlib.sh"]
-
-#system python special case
-if uname[0] == "Darwin"  and str(sys.version_info[0])=='2':
-    pip_install=user_install
 
 #
 #   update the dynamic library path
@@ -203,7 +210,7 @@ if dynlib_path:
 setup (name = 'snap',
     py_modules  = ["snap"],
     #ext_modules = [snap_module],
-    data_files  = [(pip_install, [obj_name])], #user_install
+    data_files  = [(user_install, [obj_name])], #user_install
     scripts     = files,
     version     = snappy_version,
     author      = "snap.stanford.edu",
