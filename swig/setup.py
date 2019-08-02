@@ -129,6 +129,7 @@ elif uname[0].find("CYGWIN") == 0:
     w = uname[0].rsplit("-",1)
     os_version = w[0].lower()
     obj_name = "_snap.so"
+    useros="Microsoft :: Windows"
 
 elif uname[0].find("Windows") == 0:
     os_version = "Win"
@@ -161,8 +162,10 @@ if swubuntu:
 #pip path relative to usr/local/ for mac and linux
 if uname[0]=="Darwin":
     pip_install='lib/python'+'/'+instdir+'/'
-else:
+elif uname[0]=="Linux":
     pip_install='lib/python'+str(sys.version_info[0])+'.'+str(sys.version_info[1])+'/'+instdir+'/'
+else:
+    pip_install='lib/python'+'/'+instdir+'/'
 
 
 # check for an alternative Python user directory
