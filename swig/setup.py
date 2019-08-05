@@ -206,6 +206,9 @@ if uname[0] == "Darwin"  and  sdist:
 if dynlib_path:
     cmd = "./update_dynlib.sh " + dynlib_path
     os.system(cmd)
+    
+with open("README.txt", "r") as fh:
+    long_description = fh.read()
 
 #
 #   setup configuration
@@ -218,6 +221,9 @@ setup (name = 'snap',
     version     = snappy_version,
     author      = "snap.stanford.edu",
     description = """SNAP (Stanford Network Analysis Platform) Python""",
+    long_description=long_description,
+    long_description_content_type="text/plain",
+    #url="https://github.com/snap-stanford/snap-python",
     cmdclass={'bdist_wheel': bdist_wheel},
     classifiers=[
         "Programming Language :: Python :: "+str(sys.version_info[0]),
