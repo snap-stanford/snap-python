@@ -18,8 +18,3 @@ This bug is caused by multiple versions of Python being installed. It can thus b
 
 # error: self assert when running tests
 You need to install gnuplot and/or graphviz
-
-# error installing graphviz on MacOS
-Use macports: 'port install graphviz' *requires installing macports
-
-
