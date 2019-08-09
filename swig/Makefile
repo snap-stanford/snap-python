@@ -2,9 +2,14 @@
 # Makefile for SWIG processing of SNAP Python
 #	Use this Makefile to compile SNAP Python from scratch
 #
-# Build instructions for Mac OS X and Linux:
-#		make
-#		make dist
+# Build instructions for macOS and Linux:
+#		make                 # apply SWIG and compile the code
+#		make srcdist         # build source distribution
+#		make whldist         # build wheel distribution
+#		make srcdist3        # build source distribution for py3
+#		make whldist3        # build wheel distribution for py3
+#
+# NOTE: must use brew python on macOS to build distribution packages
 # 
 # Build instructions for Windows:
 #	- run swig in Cygwin to generate snap_wrap.cxx and snap.py
@@ -90,19 +95,19 @@ n2v.o:
 install: setup.py snap.py _snap.so
 	sudo python setup.py install
 
-dist: setup.py snap.py _snap.so
+srcdist: setup.py snap.py _snap.so
 	cp $(MANIFEST) MANIFEST
 	python setup.py sdist
 
-bdist: setup.py snap.py _snap.so
+whldist: setup.py snap.py _snap.so
 	cp $(MANIFEST) MANIFEST
 	python setup.py bdist_wheel
 
-dist3: setup.py snap3.py _snap3.so _snap.so snap.py
+srcdist3: setup.py snap3.py _snap3.so _snap.so snap.py
 	cp $(MANIFEST) MANIFEST
 	python3 setup.py sdist
 
-bdist3: setup.py snap3.py _snap3.so _snap.so snap.py
+whlbdist3: setup.py snap3.py _snap3.so _snap.so snap.py
 	cp $(MANIFEST) MANIFEST
 	python3 setup.py bdist_wheel
 
@@ -111,7 +116,7 @@ swig-win: snap_wrap.cxx
 install-win: setup.py snap.py _snap.pyd
 	/cygdrive/c/Python27/python.exe setup.py install
 
-dist-win: setup.py snap.py _snap.pyd
+srcdist-win: setup.py snap.py _snap.pyd
 	cp $(MANIFEST) MANIFEST
 	/cygdrive/c/Python27/python.exe setup.py sdist
 	chmod 0644 dist/*.zip
@@ -119,8 +124,8 @@ dist-win: setup.py snap.py _snap.pyd
 clean:
 	rm -f *.o *_wrap*.cxx _*.so *.pyc snap*.py _snap*.*
 
-pip: dist/*	
+pip-upload: dist/*
 	python -m twine upload --repository-url https://test.pypi.org/legacy/ dist/*
 
-pip3: dist/*	
+pip3-upload: dist/*
 	python3 -m twine upload --repository-url https://test.pypi.org/legacy/ dist/*
