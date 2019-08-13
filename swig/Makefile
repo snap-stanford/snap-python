@@ -2,14 +2,23 @@
 # Makefile for SWIG processing of SNAP Python
 #	Use this Makefile to compile SNAP Python from scratch
 #
-# Build instructions for macOS and Linux:
-#		make                 # apply SWIG and compile the code
+# Build instructions for py2 on macOS and Linux:
+#		make all             # apply SWIG and compile the code
 #		make srcdist         # build source distribution
 #		make whldist         # build wheel distribution
+# Build instructions for py3 on macOS and Linux:
+#		make all3            # apply SWIG and compile the code
 #		make srcdist3        # build source distribution for py3
 #		make whldist3        # build wheel distribution for py3
 #
-# NOTE: must use brew python on macOS to build distribution packages
+# NOTE: python2 build on macOS
+#	- use system python on macOS to compile
+#	- use system/brew python on macOS to build the source distribution
+#	- use brew python on macOS to build the wheel distribution
+#	- TODO: test cross system/brew install
+# NOTE: python3 build on macOS
+#	- use brew python for all the steps
+#	- the final packages requires brew
 # 
 # Build instructions for Windows:
 #	- run swig in Cygwin to generate snap_wrap.cxx and snap.py
@@ -102,6 +111,10 @@ srcdist: setup.py snap.py _snap.so
 whldist: setup.py snap.py _snap.so
 	cp $(MANIFEST) MANIFEST
 	python setup.py bdist_wheel
+ifeq ($(UNAME), Linux)
+	# change name '-linux_' to '-linuxmany1_' as required by pip
+	mv dist/*-linux_* `ls dist/*-linux_* | sed -e "s/-linux_/-manylinux1_/g"`
+endif
 
 srcdist3: setup.py snap3.py _snap3.so _snap.so snap.py
 	cp $(MANIFEST) MANIFEST
@@ -125,7 +138,9 @@ clean:
 	rm -f *.o *_wrap*.cxx _*.so *.pyc snap*.py _snap*.*
 
 pip-upload: dist/*
-	python -m twine upload --repository-url https://test.pypi.org/legacy/ dist/*
+	# upload the last package to pip
+	python -m twine upload --repository-url https://test.pypi.org/legacy/ `ls -rt dist/*.whl | tail -1`
 
 pip3-upload: dist/*
 	python3 -m twine upload --repository-url https://test.pypi.org/legacy/ dist/*
+

@@ -16,13 +16,10 @@ import sys
 
 import setuptools
 
-# added pip flag
-swpip = False
-
 #
 #   Snap.py version
 #
-snappy_version = "5.2.0"
+snappy_version = "5.2.4"
 def getdynpath():
     '''
     get the path for the Python dynamic library
@@ -178,7 +175,7 @@ if uname[0] == "Darwin":
     pip_install = os.path.join('lib/python', instdir)
 elif uname[0] == "Linux":
     sysinfo = str(sys.version_info[0]) + '.' + str(sys.version_info[1])
-    pip_install = os.path.join('lib/python', sysinfo, instdir)
+    pip_install = os.path.join('lib/python' + sysinfo, instdir)
 else:
     pip_install = os.path.join('lib/python', instdir)
 
@@ -194,6 +191,10 @@ for p in sys.path:
 dynlib_path = None
 if uname[0] == "Darwin":
     dynlib_path = getdynpath()
+    
+# for wheel build, switch to pip directory
+if swwheel:
+    user_install = pip_install
 
 if dryrun:
     print("snappy_version %s" % snappy_version)
@@ -212,10 +213,6 @@ if dryrun:
     if dynlib_path:
         print("dynlib_path %s" % dynlib_path)
     sys.exit(0)
-    
-# switch to pip directory
-if swpip:
-    user_install = pip_install
 
 # specify additional files for Mac OS X
 files = []
@@ -243,9 +240,10 @@ setuptools.setup(name = 'snap',
     version     = pkg_version,
     author      = "snap.stanford.edu",
     description = '""SNAP (Stanford Network Analysis Platform) Python""',
-    long_description = long_description,
+    #long_description = long_description,
     #long_description_content_type = "text/plain",
     #url = "https://github.com/snap-stanford/snap-python",
+    url = "http://snap.stanford.edu",
     cmdclass = {'bdist_wheel': bdist_wheel},
     classifiers = [
         "Programming Language :: Python :: " + str(sys.version_info[0]),
