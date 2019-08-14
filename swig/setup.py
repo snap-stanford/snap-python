@@ -19,7 +19,7 @@ import setuptools
 #
 #   Snap.py version
 #
-snappy_version = "5.2.4"
+snappy_version = "5.2.6"
 def getdynpath():
     '''
     get the path for the Python dynamic library
@@ -194,7 +194,13 @@ if uname[0] == "Darwin":
     
 # for wheel build, switch to pip directory
 if swwheel:
-    user_install = pip_install
+    #user_install = pip_install
+    user_install = "../purelib"
+
+# specify additional files for Mac OS X
+script_files = []
+if uname[0] == "Darwin"  and  (swsdist  or  swwheel):
+    script_files = ["install_name_tool", "update_dynlib.sh"]
 
 if dryrun:
     print("snappy_version %s" % snappy_version)
@@ -210,14 +216,10 @@ if dryrun:
     print("sdist_flag %s" % swsdist)
     print("wheel_flag %s" % swwheel)
     print("pip_install %s" % pip_install)
+    print("script_files %s" % str(script_files))
     if dynlib_path:
         print("dynlib_path %s" % dynlib_path)
     sys.exit(0)
-
-# specify additional files for Mac OS X
-files = []
-if uname[0] == "Darwin"  and  swsdist:
-    files = ["install_name_tool", "update_dynlib.sh"]
 
 #
 #   update the dynamic library path
@@ -232,17 +234,16 @@ with open("README.txt", "r") as fh:
 #
 #   setup configuration
 #
-setuptools.setup(name = 'snap',
-    py_modules  = ["snap"],
-    #ext_modules = [snap_module],
-    data_files  = [(user_install, [obj_name])], #user_install
-    scripts     = files,
+setuptools.setup(
+    name = 'snap',
+    py_modules  = [ "snap" ],
+    data_files  = [(user_install, [ obj_name ])],
+    scripts     = script_files,
     version     = pkg_version,
     author      = "snap.stanford.edu",
     description = '""SNAP (Stanford Network Analysis Platform) Python""',
     #long_description = long_description,
     #long_description_content_type = "text/plain",
-    #url = "https://github.com/snap-stanford/snap-python",
     url = "http://snap.stanford.edu",
     cmdclass = {'bdist_wheel': bdist_wheel},
     classifiers = [
