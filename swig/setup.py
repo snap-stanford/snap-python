@@ -34,9 +34,10 @@ def getdynpath():
         if found:
             newpath = s[:found.end()] + "libpython2.7.dylib"
     elif "Cellar" in s:
-        start = s.find("Python.framework")
-        if start > 0:
-            newpath = s[:start] + "Python.framework/Python"
+        # get the path for inspect and remove the last three elements
+        dirs = s.split("/")[:-3]
+        dirs.append("Python")
+        newpath = "/".join(dirs)
 
     return newpath
     
@@ -56,6 +57,11 @@ if len(sys.argv) > narg  and  sys.argv[narg] == "sdist":
 swwheel = False
 if len(sys.argv) > narg  and  sys.argv[narg] == "bdist_wheel":
     swwheel = True
+
+# is this an install
+swinstall = False
+if len(sys.argv) > narg  and  sys.argv[narg] == "install":
+    swinstall = True
     
 # added OS specific wheeling
 bdist_wheel = None
@@ -86,7 +92,8 @@ except:
     pass
 
 # python version
-python_version = "py" + str(sys.version_info[0]) + "." + str(sys.version_info[1])
+sysinfo = str(sys.version_info[0]) + '.' + str(sys.version_info[1])
+python_version = "py" + sysinfo
 
 # os version
 uname = platform.uname()
@@ -174,7 +181,6 @@ if swubuntu:
 if uname[0] == "Darwin":
     pip_install = os.path.join('lib/python', instdir)
 elif uname[0] == "Linux":
-    sysinfo = str(sys.version_info[0]) + '.' + str(sys.version_info[1])
     pip_install = os.path.join('lib/python' + sysinfo, instdir)
 else:
     pip_install = os.path.join('lib/python', instdir)
@@ -222,10 +228,10 @@ if dryrun:
     sys.exit(0)
 
 #
-#   update the dynamic library path
+#   update the dynamic library path during installation
 #
-if dynlib_path:
-    cmd = "./update_dynlib.sh " + dynlib_path
+if swinstall  and  dynlib_path:
+    cmd = "./update_dynlib.sh " + dynlib_path + " " + sysinfo[0]
     os.system(cmd)
     
 with open("README.txt", "r") as fh:
