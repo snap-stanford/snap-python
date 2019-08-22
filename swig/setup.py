@@ -19,7 +19,7 @@ import setuptools
 #
 #   Snap.py version
 #
-snappy_version = "5.2.6"
+snappy_version = "5.2.7"
 def getdynpath():
     '''
     get the path for the Python dynamic library
@@ -205,7 +205,7 @@ if swwheel:
 
 # specify additional files for Mac OS X
 script_files = []
-if uname[0] == "Darwin"  and  (swsdist  or  swwheel):
+if uname[0] == "Darwin"  and  swsdist:
     script_files = ["install_name_tool", "update_dynlib.sh"]
 
 if dryrun:

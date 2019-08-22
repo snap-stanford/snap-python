@@ -42,6 +42,8 @@ GLIBDIR = $(GITDIR)/$(GLIB)
 SNAPADVDIR = $(GITDIR)/$(SNAPADV)
 SNAPEXPDIR = $(GITDIR)/$(SNAPEXP)
 
+WHLFILE := $(shell ls -rt dist/*.whl | tail -1)
+
 # include compilation parameters
 include $(GITDIR)/Makefile.config
 include ../Makefile.config
@@ -142,18 +144,18 @@ clean:
 	rm -f *.o *_wrap*.cxx _*.so *.pyc snap*.py _snap*.*
 
 pip-test: dist/*
-	# upload the last package to pip test site
-	python -m twine upload --repository-url https://test.pypi.org/legacy/ `ls -rt dist/*.whl | tail -1`
+	@echo TESTING uploading test file ${WHLFILE}
+	python -m twine upload --repository-url https://test.pypi.org/legacy/ ${WHLFILE}
 
 pip3-test: dist/*
-	# upload the last package to pip test site
-	python3 -m twine upload --repository-url https://test.pypi.org/legacy/ `ls -rt dist/*.whl | tail -1`
+	@echo TESTING uploading test file ${WHLFILE}
+	python3 -m twine upload --repository-url https://test.pypi.org/legacy/ ${WHLFILE}
 
 pip-public: dist/*
-	# upload the last package to the public pip site
-	python -m twine upload `ls -rt dist/*.whl | tail -1`
+	@echo PUBLIC RELEASE uploading file ${WHLFILE}
+	python -m twine upload ${WHLFILE}
 
 pip3-public: dist/*
-	# upload the last package to the public pip site
-	python3 -m twine upload `ls -rt dist/*.whl | tail -1`
+	@echo PUBLIC RELEASE uploading file ${WHLFILE}
+	python3 -m twine upload ${WHLFILE}
 
