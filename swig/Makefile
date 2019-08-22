@@ -48,9 +48,11 @@ include ../Makefile.config
 
 all: snap.py _snap.so
 
-all3: snap.py _snap3.so
+all3: snap3.py _snap3.so
 
 snap.py: snap_wrap.cxx
+
+snap3.py: snap_wrap3.cxx
 
 _snap.so: snap_wrap.o Snap.o cliques.o agm.o agmfast.o agmfit.o biasedrandomwalk.o word2vec.o n2v.o
 	g++ $(LDFLAGS) -o _snap.so snap_wrap.o Snap.o cliques.o agm.o agmfast.o agmfit.o biasedrandomwalk.o word2vec.o n2v.o $(LIBS)
@@ -114,11 +116,11 @@ ifeq ($(UNAME), Linux)
 	mv dist/*-linux_* `ls dist/*-linux_* | sed -e "s/-linux_/-manylinux1_/g"`
 endif
 
-srcdist3: setup.py _snap3.so _snap.so snap.py
+srcdist3: setup.py snap3.py _snap3.so snap.py
 	cp $(MANIFEST) MANIFEST
 	python3 setup.py sdist
 
-whldist3: setup.py _snap3.so _snap.so snap.py
+whldist3: setup.py snap3.py _snap3.so snap.py
 	cp $(MANIFEST) MANIFEST
 	python3 setup.py bdist_wheel
 ifeq ($(UNAME), Linux)

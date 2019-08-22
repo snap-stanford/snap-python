@@ -245,10 +245,11 @@ setuptools.setup(
     #long_description = long_description,
     #long_description_content_type = "text/plain",
     url = "http://snap.stanford.edu",
-    cmdclass = {'bdist_wheel': bdist_wheel},
     classifiers = [
         "Programming Language :: Python :: " + str(sys.version_info[0]),
         "Operating System :: " + user_os,
     ],
+    cmdclass = {'bdist_wheel': bdist_wheel},
+    zip_safe = False,
     )
 
