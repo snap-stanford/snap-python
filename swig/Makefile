@@ -48,11 +48,9 @@ include ../Makefile.config
 
 all: snap.py _snap.so
 
-all3: snap3.py _snap3.so
+all3: snap.py _snap3.so
 
 snap.py: snap_wrap.cxx
-
-snap3.py: snap_wrap3.cxx
 
 _snap.so: snap_wrap.o Snap.o cliques.o agm.o agmfast.o agmfit.o biasedrandomwalk.o word2vec.o n2v.o
 	g++ $(LDFLAGS) -o _snap.so snap_wrap.o Snap.o cliques.o agm.o agmfast.o agmfit.o biasedrandomwalk.o word2vec.o n2v.o $(LIBS)
@@ -116,13 +114,17 @@ ifeq ($(UNAME), Linux)
 	mv dist/*-linux_* `ls dist/*-linux_* | sed -e "s/-linux_/-manylinux1_/g"`
 endif
 
-srcdist3: setup.py snap3.py _snap3.so _snap.so snap.py
+srcdist3: setup.py _snap3.so _snap.so snap.py
 	cp $(MANIFEST) MANIFEST
 	python3 setup.py sdist
 
-whlbdist3: setup.py snap3.py _snap3.so _snap.so snap.py
+whldist3: setup.py _snap3.so _snap.so snap.py
 	cp $(MANIFEST) MANIFEST
 	python3 setup.py bdist_wheel
+ifeq ($(UNAME), Linux)
+	# change name '-linux_' to '-linuxmany1_' as required by pip
+	mv dist/*-linux_* `ls dist/*-linux_* | sed -e "s/-linux_/-manylinux1_/g"`
+endif
 
 swig-win: snap_wrap.cxx
 
@@ -137,10 +139,19 @@ srcdist-win: setup.py snap.py _snap.pyd
 clean:
 	rm -f *.o *_wrap*.cxx _*.so *.pyc snap*.py _snap*.*
 
-pip-upload: dist/*
-	# upload the last package to pip
+pip-test: dist/*
+	# upload the last package to pip test site
 	python -m twine upload --repository-url https://test.pypi.org/legacy/ `ls -rt dist/*.whl | tail -1`
 
-pip3-upload: dist/*
-	python3 -m twine upload --repository-url https://test.pypi.org/legacy/ dist/*
+pip3-test: dist/*
+	# upload the last package to pip test site
+	python3 -m twine upload --repository-url https://test.pypi.org/legacy/ `ls -rt dist/*.whl | tail -1`
+
+pip-public: dist/*
+	# upload the last package to the public pip site
+	python -m twine upload `ls -rt dist/*.whl | tail -1`
+
+pip3-public: dist/*
+	# upload the last package to the public pip site
+	python3 -m twine upload `ls -rt dist/*.whl | tail -1`
 
