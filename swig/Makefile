@@ -20,20 +20,21 @@
 #	- use brew python for all the steps
 #	- the final packages requires brew
 # 
-# Build instructions for Windows:
+# Build instructions for py2 on Windows:
 #	- run swig in Cygwin to generate snap_wrap.cxx and snap.py
 #		make swig-win
 #	- build Snappy solution in Visual Studio to generate _snap.pyd
 #		- open snappy-VS12
 #		- add VC++ include path for snap-core, glib-core, snap-adv
-#		  - subst S: <path_to_snap>
-#			C:\cygwin\home\<user>\git\snap-dev-64
-#		  - subst P: <path_to_snap_python>
-#			C:\cygwin\home\<user>\git\snap-python-64
+#		  - create drive shares S: and P:, use Command Prompt:
+#		    subst S: <path_to_snap>
+#			example path: C:\cygwin\home\<user>\git\snap-dev-64
+#		    subst P: <path_to_snap_python>
+#			example path: C:\cygwin\home\<user>\git\snap-python-64
 #		- build
 #	- run setup.py in Cygwin to generate the package,
 #	  NOT OVER SSH, but locally
-#		make dist-win
+#		make srcdist-win
 
 # set the path to your SNAP directory here
 GITDIR = ../../snap
@@ -137,7 +138,7 @@ install-win: setup.py snap.py _snap.pyd
 
 srcdist-win: setup.py snap.py _snap.pyd
 	cp $(MANIFEST) MANIFEST
-	/cygdrive/c/Python27/python.exe setup.py sdist
+	/cygdrive/c/Python27/python.exe setup.py sdist --formats=zip
 	chmod 0644 dist/*.zip
 
 clean:
