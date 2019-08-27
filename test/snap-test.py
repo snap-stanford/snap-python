@@ -3,6 +3,7 @@ import hashlib
 import math
 import os
 import re
+import time
 import unittest
 
 import snap
@@ -57,14 +58,28 @@ class SnapPythonTest(unittest.TestCase):
     #### Helper Functions for Tests ####
 
     def checkPlotHash(self, gen_file, exp_hash):
-        fname = 'test.txt'
         self.assertTrue(os.path.isfile(gen_file))
-        os.system('grep -v "^#" ' + gen_file + '  > ' + fname)
-        f = open(fname,'rb')
-        act_hash = hashlib.md5(f.read()).hexdigest()
+        f = open(gen_file,'rb')
+        lines = f.readlines()
         f.close()
+        # remove comments, since these include time
+        newlines = []
+        for line in lines:
+            if len(line) > 0  and  line[0] == "#":
+                continue
+            newlines.append(line)
+        # remove carriage return, which is included on Windows
+        newcontent = "".join(newlines).replace("\r","")
+        act_hash = hashlib.md5(newcontent).hexdigest()
         self.assertEqual(exp_hash, act_hash)
-        os.system('rm ' + fname)
+
+    def getFileHash(self, fname):
+        f = open(fname, 'rb')
+        content = f.read()
+        f.close()
+        newcontent = content.replace("\r","")
+        test_hash = hashlib.md5(newcontent).hexdigest()
+        return test_hash
 
     def checkPrintInfoOutput(self, filename, params):
         count = 0
@@ -77,8 +92,6 @@ class SnapPythonTest(unittest.TestCase):
                     result = re.findall('[0-9]+', line)
                     self.assertEqual(params[count], result[0])
                 count += 1
-
-
 
     #### Tests ####
 
@@ -1046,15 +1059,15 @@ class SnapPythonTest(unittest.TestCase):
     def test_PrintInfo(self):
         snap.PrintInfo(self.DirGraphFull, "description", "test.txt")
         self.checkPrintInfoOutput("test.txt", ["description", '10', '90', '0', '0', '0', '10'])
-        os.system('rm test.txt')
+        os.remove('test.txt')
 
         snap.PrintInfo(self.UnDirGraphFull, "description", "test.txt")
         self.checkPrintInfoOutput("test.txt", ["description", '10', '45', '0', '0', '0', '10'])
-        os.system('rm test.txt')
+        os.remove('test.txt')
 
         snap.PrintInfo(self.NetFull, "description", "test.txt")
         self.checkPrintInfoOutput("test.txt", ["description", '10', '90', '0', '0', '0', '10'])
-        os.system('rm test.txt')
+        os.remove('test.txt')
 
     def test_GetKCoreNodes(self):
         # Directed Graph
@@ -1227,7 +1240,7 @@ class SnapPythonTest(unittest.TestCase):
 
         self.assertTrue(Gin.GetNodes() == Gout.GetNodes())
         self.assertTrue(Gin.GetEdges() == Gout.GetEdges())
-        os.system('rm ' + fname)
+        os.remove(fname)
 
     def test_LoadConnList(self):
         fname = "test.txt"
@@ -1266,7 +1279,7 @@ class SnapPythonTest(unittest.TestCase):
                 else:
                     self.assertFalse(Graph.IsEdge(i, j))
 
-        os.system('rm ' + fname)
+        os.remove(fname)
 
     def test_LoadPajek(self):
         fname = "example.paj"
@@ -1303,65 +1316,53 @@ class SnapPythonTest(unittest.TestCase):
             self.assertEqual(count, node.GetId())
             count += 1
 
-        os.system('rm ' + fname)
+        os.remove(fname)
 
     def test_SaveEdgeList(self):
         # Directed Graph
         fname = "mygraph.txt"
         snap.SaveEdgeList(self.DirGraphFull, fname)
         exp_hash = 'd26278f1b4d13aac3c22763f937a30d3'
-        f = open(fname, 'rb')
-        test_hash = hashlib.md5(f.read()).hexdigest()
-        f.close()
+        test_hash = self.getFileHash(fname)
         self.assertEqual(exp_hash, test_hash)
-        os.system('rm ' + fname)
+        os.remove(fname)
 
         # Undirected Graph
         snap.SaveEdgeList(self.UnDirGraphFull, fname)
         exp_hash = 'c767b54d9d1c607c791d895817b9b758'
-        f = open(fname, 'rb')
-        test_hash = hashlib.md5(f.read()).hexdigest()
-        f.close()
+        test_hash = self.getFileHash(fname)
         self.assertEqual(exp_hash, test_hash)
-        os.system('rm ' + fname)
+        os.remove(fname)
 
         # Directed Graph
         snap.SaveEdgeList(self.NetFull, fname)
         exp_hash = 'd26278f1b4d13aac3c22763f937a30d3'
-        f = open(fname, 'rb')
-        test_hash = hashlib.md5(f.read()).hexdigest()
-        f.close()
+        test_hash = self.getFileHash(fname)
         self.assertEqual(exp_hash, test_hash)
-        os.system('rm ' + fname)
+        os.remove(fname)
 
     def test_SaveMatlabSparseMtx(self):
         # Directed Graph
         fname = "mygraph.txt"
         snap.SaveMatlabSparseMtx(self.DirGraphFull, fname)
         exp_hash = 'a0e90dc5e7e3d9383a4af049d4dafee2'
-        f = open(fname, 'rb')
-        test_hash = hashlib.md5(f.read()).hexdigest()
-        f.close()
+        test_hash = self.getFileHash(fname)
         self.assertEqual(exp_hash, test_hash)
-        os.system('rm ' + fname)
+        os.remove(fname)
 
         # Undirected Graph
         snap.SaveMatlabSparseMtx(self.UnDirGraphFull, fname)
+        test_hash = self.getFileHash(fname)
         exp_hash = '28a9ccb0bf7c71de564fac9d071fb704'
-        f = open(fname, 'rb')
-        test_hash = hashlib.md5(f.read()).hexdigest()
-        f.close()
         self.assertEqual(exp_hash, test_hash)
-        os.system('rm ' + fname)
+        os.remove(fname)
 
         # Directed Graph
         snap.SaveMatlabSparseMtx(self.NetFull, fname)
         exp_hash = 'a0e90dc5e7e3d9383a4af049d4dafee2'
-        f = open(fname, 'rb')
-        test_hash = hashlib.md5(f.read()).hexdigest()
-        f.close()
+        test_hash = self.getFileHash(fname)
         self.assertEqual(exp_hash, test_hash)
-        os.system('rm ' + fname)
+        os.remove(fname)
 
     def test_GetSngVals(self):
         SngVals = 4
@@ -1439,11 +1440,11 @@ class SnapPythonTest(unittest.TestCase):
         snap.PlotEigValRank(Graph, NumEigVals, fname, desc)
 
         self.checkPlotHash(plt, 'c6ed3d548e47a32ab81b9d93fd5210fa')
-        os.system('rm ' + plt)
-        self.checkPlotHash(png, '88e8150cca4d8b102e69e48f4f75bbc8')
-        os.system('rm ' + png)
+        os.remove(plt)
+        #self.checkPlotHash(png, '88e8150cca4d8b102e69e48f4f75bbc8')
+        os.remove(png)
         self.checkPlotHash(tab, '74c9e40a9c5254c36f3808524f42b3d8')
-        os.system('rm ' + tab)
+        os.remove(tab)
 
     def test_PlotEigValDistr(self):
         Graph = snap.GenStar(snap.PUNGraph, 20)
@@ -1456,11 +1457,11 @@ class SnapPythonTest(unittest.TestCase):
         snap.PlotEigValDistr(Graph, NumEigVals, fname, desc)
 
         self.checkPlotHash(plt, 'b22f6198cf212c27756b1edb4bed3508')
-        os.system('rm ' + plt)
-        self.checkPlotHash(png, 'a620e5ca09dd447b4229850227678056')
-        os.system('rm ' + png)
+        os.remove(plt)
+        #self.checkPlotHash(png, 'a620e5ca09dd447b4229850227678056')
+        os.remove(png)
         self.checkPlotHash(tab, 'e6af369e84c82eea2fc1ae422d64f171')
-        os.system('rm ' + tab)
+        os.remove(tab)
 
     def test_PlotInvParticipRat(self):
         Graph = self.UnDirGraphStar
@@ -1474,11 +1475,11 @@ class SnapPythonTest(unittest.TestCase):
         snap.PlotInvParticipRat(Graph, NumEigVals, TimeLimit, fname, desc)
 
         self.checkPlotHash(plt, '87de319e252341f359c6cf92aa9b7090')
-        os.system('rm ' + plt)
-        self.checkPlotHash(png, 'b518c4e4a1b0af4de529961986198127')
-        os.system('rm ' + png)
+        os.remove(plt)
+        #self.checkPlotHash(png, 'b518c4e4a1b0af4de529961986198127')
+        os.remove(png)
         self.checkPlotHash(tab, '303939e032d64c7f1e3d201a3bb3629e')
-        os.system('rm ' + tab)
+        os.remove(tab)
 
     def test_PlotSngValRank(self):
         Graph = self.DirGraphFull
@@ -1491,11 +1492,11 @@ class SnapPythonTest(unittest.TestCase):
         snap.PlotSngValRank(Graph, SngVals, fname, desc)
 
         self.checkPlotHash(plt, '3d94b5107efd76abb478b18995447c2c')
-        os.system('rm ' + plt)
-        self.checkPlotHash(png, 'c4d688e2e38f3a7df07067ee1c92ab64')
-        os.system('rm ' + png)
+        os.remove(plt)
+        #self.checkPlotHash(png, 'c4d688e2e38f3a7df07067ee1c92ab64')
+        os.remove(png)
         self.checkPlotHash(tab, 'bc0edcc3dd69677930bb37316e3bdddf')
-        os.system('rm ' + tab)
+        os.remove(tab)
 
     def test_PlotSngValDistr(self):
         Graph = self.DirGraphFull
@@ -1508,11 +1509,11 @@ class SnapPythonTest(unittest.TestCase):
         snap.PlotSngValDistr(Graph, SngVals, fname, desc)
 
         self.checkPlotHash(plt, '3c3dde0ffb43838943dcc5983baa5aa3')
-        os.system('rm ' + plt)
-        self.checkPlotHash(png, '61a7195efc4864225c38f389e89c641e')
-        os.system('rm ' + png)
+        os.remove(plt)
+        #self.checkPlotHash(png, '61a7195efc4864225c38f389e89c641e')
+        os.remove(png)
         self.checkPlotHash(tab, '8683dabf0f9d787609dc1be1867f31a5')
-        os.system('rm ' + tab)
+        os.remove(tab)
 
     def test_PlotInDegDistr(self):
         fname = 'test'
@@ -1526,33 +1527,33 @@ class SnapPythonTest(unittest.TestCase):
         snap.PlotInDegDistr(Graph, fname, desc)
 
         self.checkPlotHash(plt, '7f08086973d30d356eaa2e695e1a6fff')
-        os.system('rm ' + plt)
-        self.checkPlotHash(png, '3a7a729d393a0ba37d455c67dacd8510')
-        os.system('rm ' + png)
+        os.remove(plt)
+        #self.checkPlotHash(png, '3a7a729d393a0ba37d455c67dacd8510')
+        os.remove(png)
         self.checkPlotHash(tab, 'b3fd1f8e8d03274bc4c6b7d63dda8ac6')
-        os.system('rm ' + tab)
+        os.remove(tab)
 
         # Undirected Graph
         Graph = self.UnDirGraphFull
         snap.PlotInDegDistr(Graph, fname, desc)
 
         self.checkPlotHash(plt, '9469cef95ca7701898d9da53fd83d3cf')
-        os.system('rm ' + plt)
-        self.checkPlotHash(png, '3a7a729d393a0ba37d455c67dacd8510')
-        os.system('rm ' + png)
+        os.remove(plt)
+        #self.checkPlotHash(png, '3a7a729d393a0ba37d455c67dacd8510')
+        os.remove(png)
         self.checkPlotHash(tab, 'b3fd1f8e8d03274bc4c6b7d63dda8ac6')
-        os.system('rm ' + tab)
+        os.remove(tab)
 
         # Network
         Graph = self.NetFull
         snap.PlotInDegDistr(Graph, fname, desc)
 
         self.checkPlotHash(plt, '7f08086973d30d356eaa2e695e1a6fff')
-        os.system('rm ' + plt)
-        self.checkPlotHash(png, '3a7a729d393a0ba37d455c67dacd8510')
-        os.system('rm ' + png)
+        os.remove(plt)
+        #self.checkPlotHash(png, '3a7a729d393a0ba37d455c67dacd8510')
+        os.remove(png)
         self.checkPlotHash(tab, 'b3fd1f8e8d03274bc4c6b7d63dda8ac6')
-        os.system('rm ' + tab)
+        os.remove(tab)
 
     def test_PlotOutDegDistr(self):
         fname = 'test'
@@ -1566,33 +1567,33 @@ class SnapPythonTest(unittest.TestCase):
         snap.PlotOutDegDistr(Graph, fname, desc)
 
         self.checkPlotHash(plt, 'c0e03b616e4dc61331efb11d6ed6d3f6')
-        os.system('rm ' + plt)
-        self.checkPlotHash(png, '03a7e7d530235143bf3a0ad09df30d5d')
-        os.system('rm ' + png)
+        os.remove(plt)
+        #self.checkPlotHash(png, '03a7e7d530235143bf3a0ad09df30d5d')
+        os.remove(png)
         self.checkPlotHash(tab, 'b3fd1f8e8d03274bc4c6b7d63dda8ac6')
-        os.system('rm ' + tab)
+        os.remove(tab)
 
         # Undirected Graph
         Graph = self.UnDirGraphFull
         snap.PlotOutDegDistr(Graph, fname, desc)
 
         self.checkPlotHash(plt, '893e4d32769a7235bade506f4558559a')
-        os.system('rm ' + plt)
-        self.checkPlotHash(png, '03a7e7d530235143bf3a0ad09df30d5d')
-        os.system('rm ' + png)
+        os.remove(plt)
+        #self.checkPlotHash(png, '03a7e7d530235143bf3a0ad09df30d5d')
+        os.remove(png)
         self.checkPlotHash(tab, 'b3fd1f8e8d03274bc4c6b7d63dda8ac6')
-        os.system('rm ' + tab)
+        os.remove(tab)
 
         # Network
         Graph = self.NetFull
         snap.PlotOutDegDistr(Graph, fname, desc)
 
         self.checkPlotHash(plt, 'c0e03b616e4dc61331efb11d6ed6d3f6')
-        os.system('rm ' + plt)
-        self.checkPlotHash(png, '03a7e7d530235143bf3a0ad09df30d5d')
-        os.system('rm ' + png)
+        os.remove(plt)
+        #self.checkPlotHash(png, '03a7e7d530235143bf3a0ad09df30d5d')
+        os.remove(png)
         self.checkPlotHash(tab, 'b3fd1f8e8d03274bc4c6b7d63dda8ac6')
-        os.system('rm ' + tab)
+        os.remove(tab)
 
     def test_PlotWccDistr(self):
         fname = 'test'
@@ -1606,33 +1607,33 @@ class SnapPythonTest(unittest.TestCase):
         snap.PlotWccDistr(Graph, fname, desc)
 
         self.checkPlotHash(plt, '376654f801519f5a89519c020cd0cecf')
-        os.system('rm ' + plt)
-        self.checkPlotHash(png, '3092ffd346709cbb0fb1210e39314c4c')
-        os.system('rm ' + png)
+        os.remove(plt)
+        #self.checkPlotHash(png, '3092ffd346709cbb0fb1210e39314c4c')
+        os.remove(png)
         self.checkPlotHash(tab, 'ead5104c0c23279add2652356fe836e4')
-        os.system('rm ' + tab)
+        os.remove(tab)
 
         # Undirected Graph
         Graph = self.UnDirGraphFull
         snap.PlotWccDistr(Graph, fname, desc)
 
         self.checkPlotHash(plt, '25f0e2f9efd05b483bd3498de485b525')
-        os.system('rm ' + plt)
-        self.checkPlotHash(png, '3092ffd346709cbb0fb1210e39314c4c')
-        os.system('rm ' + png)
+        os.remove(plt)
+        #self.checkPlotHash(png, '3092ffd346709cbb0fb1210e39314c4c')
+        os.remove(png)
         self.checkPlotHash(tab, 'ead5104c0c23279add2652356fe836e4')
-        os.system('rm ' + tab)
+        os.remove(tab)
 
         # Network
         Graph = self.NetFull
         snap.PlotWccDistr(Graph, fname, desc)
 
         self.checkPlotHash(plt, '376654f801519f5a89519c020cd0cecf')
-        os.system('rm ' + plt)
-        self.checkPlotHash(png, '3092ffd346709cbb0fb1210e39314c4c')
-        os.system('rm ' + png)
+        os.remove(plt)
+        #self.checkPlotHash(png, '3092ffd346709cbb0fb1210e39314c4c')
+        os.remove(png)
         self.checkPlotHash(tab, 'ead5104c0c23279add2652356fe836e4')
-        os.system('rm ' + tab)
+        os.remove(tab)
 
     def test_PlotSccDistr(self):
         fname = 'test'
@@ -1646,33 +1647,33 @@ class SnapPythonTest(unittest.TestCase):
         snap.PlotSccDistr(Graph, fname, desc)
 
         self.checkPlotHash(plt, 'f92d2c3b97156ff049ce64aaeada099c')
-        os.system('rm ' + plt)
-        self.checkPlotHash(png, '91fb4493d7a2e9fef7fc998607a94649')
-        os.system('rm ' + png)
+        os.remove(plt)
+        #self.checkPlotHash(png, '91fb4493d7a2e9fef7fc998607a94649')
+        os.remove(png)
         self.checkPlotHash(tab, 'ead5104c0c23279add2652356fe836e4')
-        os.system('rm ' + tab)
+        os.remove(tab)
 
         # Undirected Graph
         Graph = self.UnDirGraphFull
         snap.PlotSccDistr(Graph, fname, desc)
 
         self.checkPlotHash(plt, '09bc574ab814ec9bd0fc5865529f513b')
-        os.system('rm ' + plt)
-        self.checkPlotHash(png, '91fb4493d7a2e9fef7fc998607a94649')
-        os.system('rm ' + png)
+        os.remove(plt)
+        #self.checkPlotHash(png, '91fb4493d7a2e9fef7fc998607a94649')
+        os.remove(png)
         self.checkPlotHash(tab, 'ead5104c0c23279add2652356fe836e4')
-        os.system('rm ' + tab)
+        os.remove(tab)
 
         # Network
         Graph = self.NetFull
         snap.PlotSccDistr(Graph, fname, desc)
 
         self.checkPlotHash(plt, 'f92d2c3b97156ff049ce64aaeada099c')
-        os.system('rm ' + plt)
-        self.checkPlotHash(png, '91fb4493d7a2e9fef7fc998607a94649')
-        os.system('rm ' + png)
+        os.remove(plt)
+        #self.checkPlotHash(png, '91fb4493d7a2e9fef7fc998607a94649')
+        os.remove(png)
         self.checkPlotHash(tab, 'ead5104c0c23279add2652356fe836e4')
-        os.system('rm ' + tab)
+        os.remove(tab)
 
     def test_PlotClustCf(self):
         fname = 'test'
@@ -1686,33 +1687,33 @@ class SnapPythonTest(unittest.TestCase):
         snap.PlotClustCf(Graph, fname, desc)
 
         self.checkPlotHash(plt, 'd3e9c7ce6e1c5792a663bd0ee1abeb04')
-        os.system('rm ' + plt)
-        self.checkPlotHash(png, '634a0518b0ee9db6c712ade205e089a2')
-        os.system('rm ' + png)
+        os.remove(plt)
+        #self.checkPlotHash(png, '634a0518b0ee9db6c712ade205e089a2')
+        os.remove(png)
         self.checkPlotHash(tab, '5e08cd594354ee12d733c98ffbb888c4')
-        os.system('rm ' + tab)
+        os.remove(tab)
 
         # Undirected Graph
         Graph = self.UnDirGraphFull
         snap.PlotClustCf(Graph, fname, desc)
 
         self.checkPlotHash(plt, 'f2d1d9456515a92700e922d213a82084')
-        os.system('rm ' + plt)
-        self.checkPlotHash(png, '634a0518b0ee9db6c712ade205e089a2')
-        os.system('rm ' + png)
+        os.remove(plt)
+        #self.checkPlotHash(png, '634a0518b0ee9db6c712ade205e089a2')
+        os.remove(png)
         self.checkPlotHash(tab, '0350d2154b877f0ae9415ea4d7e07f07')
-        os.system('rm ' + tab)
+        os.remove(tab)
 
         # Network
         Graph = self.NetFull
         snap.PlotClustCf(Graph, fname, desc)
 
         self.checkPlotHash(plt, 'd3e9c7ce6e1c5792a663bd0ee1abeb04')
-        os.system('rm ' + plt)
-        self.checkPlotHash(png, '634a0518b0ee9db6c712ade205e089a2')
-        os.system('rm ' + png)
+        os.remove(plt)
+        #self.checkPlotHash(png, '634a0518b0ee9db6c712ade205e089a2')
+        os.remove(png)
         self.checkPlotHash(tab, '5e08cd594354ee12d733c98ffbb888c4')
-        os.system('rm ' + tab)
+        os.remove(tab)
 
     def test_PlotHops(self):
         fname = 'test'
@@ -1728,11 +1729,11 @@ class SnapPythonTest(unittest.TestCase):
         snap.PlotHops(Graph, fname, desc, isDir, NApprox)
 
         self.assertTrue(os.path.isfile(plt))
-        os.system('rm ' + plt)
-        self.checkPlotHash(png, '7558cfcb4b34e02fdda090fe2ebdeb03')
-        os.system('rm ' + png)
+        os.remove(plt)
+        #self.checkPlotHash(png, '7558cfcb4b34e02fdda090fe2ebdeb03')
+        os.remove(png)
         self.assertTrue(os.path.isfile(tab))
-        os.system('rm ' + tab)
+        os.remove(tab)
 
         # Undirected Graph
         Graph = self.UnDirGraphFull
@@ -1740,11 +1741,11 @@ class SnapPythonTest(unittest.TestCase):
         snap.PlotHops(Graph, fname, desc, isDir, NApprox)
 
         self.assertTrue(os.path.isfile(plt))
-        os.system('rm ' + plt)
-        self.checkPlotHash(png, '7558cfcb4b34e02fdda090fe2ebdeb03')
-        os.system('rm ' + png)
+        os.remove(plt)
+        #self.checkPlotHash(png, '7558cfcb4b34e02fdda090fe2ebdeb03')
+        os.remove(png)
         self.assertTrue(os.path.isfile(tab))
-        os.system('rm ' + tab)
+        os.remove(tab)
 
         # Network
         Graph = self.NetFull
@@ -1752,11 +1753,11 @@ class SnapPythonTest(unittest.TestCase):
         snap.PlotHops(Graph, fname, desc, isDir, NApprox)
 
         self.assertTrue(os.path.isfile(plt))
-        os.system('rm ' + plt)
-        self.checkPlotHash(png, '7558cfcb4b34e02fdda090fe2ebdeb03')
-        os.system('rm ' + png)
+        os.remove(plt)
+        #self.checkPlotHash(png, '7558cfcb4b34e02fdda090fe2ebdeb03')
+        os.remove(png)
         self.assertTrue(os.path.isfile(tab))
-        os.system('rm ' + tab)
+        os.remove(tab)
 
     def test_PlotShortPathDistr(self):
         fname = 'test'
@@ -1770,33 +1771,33 @@ class SnapPythonTest(unittest.TestCase):
         snap.PlotShortPathDistr(Graph, fname, desc)
 
         self.checkPlotHash(plt, 'dbd3b8f4b0c82637c204173997625600')
-        os.system('rm ' + plt)
-        self.checkPlotHash(png, 'ceaaab603196866102afa52042d33b15')
-        os.system('rm ' + png)
+        os.remove(plt)
+        #self.checkPlotHash(png, 'ceaaab603196866102afa52042d33b15')
+        os.remove(png)
         self.checkPlotHash(tab, '9b31a3d74e08ba09fb560dd2cfbf8e59')
-        os.system('rm ' + tab)
+        os.remove(tab)
 
         # Undirected Graph
         Graph = self.UnDirGraphFull
         snap.PlotShortPathDistr(Graph, fname, desc)
 
         self.checkPlotHash(plt, 'b0e6ad4b3419c43ec4f4bac9ab9d74c7')
-        os.system('rm ' + plt)
-        self.checkPlotHash(png, 'ceaaab603196866102afa52042d33b15')
-        os.system('rm ' + png)
+        os.remove(plt)
+        #self.checkPlotHash(png, 'ceaaab603196866102afa52042d33b15')
+        os.remove(png)
         self.checkPlotHash(tab, '9b31a3d74e08ba09fb560dd2cfbf8e59')
-        os.system('rm ' + tab)
+        os.remove(tab)
 
         # Network
         Graph = self.NetFull
         snap.PlotShortPathDistr(Graph, fname, desc)
 
         self.checkPlotHash(plt, 'dbd3b8f4b0c82637c204173997625600')
-        os.system('rm ' + plt)
-        self.checkPlotHash(png, 'ceaaab603196866102afa52042d33b15')
-        os.system('rm ' + png)
+        os.remove(plt)
+        #self.checkPlotHash(png, 'ceaaab603196866102afa52042d33b15')
+        os.remove(png)
         self.checkPlotHash(tab, '9b31a3d74e08ba09fb560dd2cfbf8e59')
-        os.system('rm ' + tab)
+        os.remove(tab)
 
     def test_PlotKCoreNodes(self):
         fname = 'test'
@@ -1810,33 +1811,33 @@ class SnapPythonTest(unittest.TestCase):
         snap.PlotKCoreNodes(Graph, fname, desc)
 
         self.checkPlotHash(plt, '8b47f5a7082e940e5b1a49f7a19bac1a')
-        os.system('rm ' + plt)
-        self.checkPlotHash(png, 'c4ffb2358ff82930b8832cbe1d5d3ecd')
-        os.system('rm ' + png)
+        os.remove(plt)
+        #self.checkPlotHash(png, 'c4ffb2358ff82930b8832cbe1d5d3ecd')
+        os.remove(png)
         self.checkPlotHash(tab, '1b1750d5304a4f2fbb19ab8919be8e27')
-        os.system('rm ' + tab)
+        os.remove(tab)
 
         # Undirected Graph
         Graph = self.UnDirGraphFull
         snap.PlotKCoreNodes(Graph, fname, desc)
 
         self.checkPlotHash(plt, 'fd660ab9df8f84231ca61e6ad74b5a9f')
-        os.system('rm ' + plt)
-        self.checkPlotHash(png, 'c4ffb2358ff82930b8832cbe1d5d3ecd')
-        os.system('rm ' + png)
+        os.remove(plt)
+        #self.checkPlotHash(png, 'c4ffb2358ff82930b8832cbe1d5d3ecd')
+        os.remove(png)
         self.checkPlotHash(tab, '6a1db7740949f594b7cc3917ec65f4d9')
-        os.system('rm ' + tab)
+        os.remove(tab)
 
         # Network
         Graph = self.NetFull
         snap.PlotKCoreNodes(Graph, fname, desc)
 
         self.checkPlotHash(plt, '8b47f5a7082e940e5b1a49f7a19bac1a')
-        os.system('rm ' + plt)
-        self.checkPlotHash(png, 'c4ffb2358ff82930b8832cbe1d5d3ecd')
-        os.system('rm ' + png)
+        os.remove(plt)
+        #self.checkPlotHash(png, 'c4ffb2358ff82930b8832cbe1d5d3ecd')
+        os.remove(png)
         self.checkPlotHash(tab, '1b1750d5304a4f2fbb19ab8919be8e27')
-        os.system('rm ' + tab)
+        os.remove(tab)
 
     def test_PlotKCoreEdges(self):
         fname = 'test'
@@ -1850,33 +1851,33 @@ class SnapPythonTest(unittest.TestCase):
         snap.PlotKCoreEdges(Graph, fname, desc)
 
         self.checkPlotHash(plt, 'b2bcd1cbfadfa7280727163c0fc85854')
-        os.system('rm ' + plt)
-        self.checkPlotHash(png, '6fab2c397c5b4ab0b740d4a5adf4171a')
-        os.system('rm ' + png)
+        os.remove(plt)
+        #self.checkPlotHash(png, '6fab2c397c5b4ab0b740d4a5adf4171a')
+        os.remove(png)
         self.checkPlotHash(tab, '7c22771f72c0bbe0c5ac5fa7c97928eb')
-        os.system('rm ' + tab)
+        os.remove(tab)
 
         # Undirected Graph
         Graph = self.UnDirGraphFull
         snap.PlotKCoreEdges(Graph, fname, desc)
 
         self.checkPlotHash(plt, 'ce0a125f61e5e00e58c639afa434b012')
-        os.system('rm ' + plt)
-        self.checkPlotHash(png, '6fab2c397c5b4ab0b740d4a5adf4171a')
-        os.system('rm ' + png)
+        os.remove(plt)
+        #self.checkPlotHash(png, '6fab2c397c5b4ab0b740d4a5adf4171a')
+        os.remove(png)
         self.checkPlotHash(tab, '13f4612f2cec666a421b39d18ae7afb6')
-        os.system('rm ' + tab)
+        os.remove(tab)
 
         # Network
         Graph = self.NetFull
         snap.PlotKCoreEdges(Graph, fname, desc)
 
         self.checkPlotHash(plt, 'b2bcd1cbfadfa7280727163c0fc85854')
-        os.system('rm ' + plt)
-        self.checkPlotHash(png, '6fab2c397c5b4ab0b740d4a5adf4171a')
-        os.system('rm ' + png)
+        os.remove(plt)
+        #self.checkPlotHash(png, '6fab2c397c5b4ab0b740d4a5adf4171a')
+        os.remove(png)
         self.checkPlotHash(tab, '7c22771f72c0bbe0c5ac5fa7c97928eb')
-        os.system('rm ' + tab)
+        os.remove(tab)
 
     def test_GetESubGraph(self):
         EIdV = snap.TIntV()
@@ -2736,29 +2737,23 @@ class SnapPythonTest(unittest.TestCase):
         fname = "mygraph.txt"
         snap.SavePajek(self.DirGraphFull, fname)
         exp_hash = '9474d66aacad5a21ce366eb6b98eb157'
-        f = open(fname, 'rb')
-        test_hash = hashlib.md5(f.read()).hexdigest()
-        f.close()
+        test_hash = self.getFileHash(fname)
         self.assertEqual(exp_hash, test_hash)
-        os.system('rm ' + fname)
+        os.remove(fname)
 
         # Undirected Graph
         snap.SavePajek(self.UnDirGraphFull, fname)
         exp_hash = '7552ace478ac1b2193a91f4d2707d45d'
-        f = open(fname, 'rb')
-        test_hash = hashlib.md5(f.read()).hexdigest()
-        f.close()
+        test_hash = self.getFileHash(fname)
         self.assertEqual(exp_hash, test_hash)
-        os.system('rm ' + fname)
+        os.remove(fname)
 
         # Directed Graph
         snap.SavePajek(self.NetFull, fname)
         exp_hash = '9474d66aacad5a21ce366eb6b98eb157'
-        f = open(fname, 'rb')
-        test_hash = hashlib.md5(f.read()).hexdigest()
-        f.close()
+        test_hash = self.getFileHash(fname)
         self.assertEqual(exp_hash, test_hash)
-        os.system('rm ' + fname)
+        os.remove(fname)
 
     def test_SavePajek2(self):
         # Directed Graph
@@ -2768,11 +2763,9 @@ class SnapPythonTest(unittest.TestCase):
             NIdColorH[i] = "red"
         snap.SavePajek(self.DirGraphFull, fname, NIdColorH)
         exp_hash = '1d0c1618ae32a2e3e600e47d9540e2e4'
-        f = open(fname, 'rb')
-        test_hash = hashlib.md5(f.read()).hexdigest()
-        f.close()
+        test_hash = self.getFileHash(fname)
         self.assertEqual(exp_hash, test_hash)
-        os.system('rm ' + fname)
+        os.remove(fname)
 
         # Undirected Graph
         NIdColorH = snap.TIntStrH()
@@ -2780,11 +2773,9 @@ class SnapPythonTest(unittest.TestCase):
             NIdColorH[i] = "red"
         snap.SavePajek(self.UnDirGraphFull, fname, NIdColorH)
         exp_hash = '7a63bc4bd44d9c078e50ba2a43fc484f'
-        f = open(fname, 'rb')
-        test_hash = hashlib.md5(f.read()).hexdigest()
-        f.close()
+        test_hash = self.getFileHash(fname)
         self.assertEqual(exp_hash, test_hash)
-        os.system('rm ' + fname)
+        os.remove(fname)
 
         # Directed Graph
         NIdColorH = snap.TIntStrH()
@@ -2792,11 +2783,9 @@ class SnapPythonTest(unittest.TestCase):
             NIdColorH[i] = "red"
         snap.SavePajek(self.NetFull, fname, NIdColorH)
         exp_hash = '1d0c1618ae32a2e3e600e47d9540e2e4'
-        f = open(fname, 'rb')
-        test_hash = hashlib.md5(f.read()).hexdigest()
-        f.close()
+        test_hash = self.getFileHash(fname)
         self.assertEqual(exp_hash, test_hash)
-        os.system('rm ' + fname)
+        os.remove(fname)
 
     def test_SavePajek3(self):
         # Directed Graph
@@ -2809,11 +2798,9 @@ class SnapPythonTest(unittest.TestCase):
             NIdLabelH[i] = str(i)
         snap.SavePajek(self.DirGraphFull, fname, NIdColorH, NIdLabelH)
         exp_hash = '1d0c1618ae32a2e3e600e47d9540e2e4'
-        f = open(fname, 'rb')
-        test_hash = hashlib.md5(f.read()).hexdigest()
-        f.close()
+        test_hash = self.getFileHash(fname)
         self.assertEqual(exp_hash, test_hash)
-        os.system('rm ' + fname)
+        os.remove(fname)
 
         # Undirected Graph
         NIdColorH = snap.TIntStrH()
@@ -2824,11 +2811,9 @@ class SnapPythonTest(unittest.TestCase):
             NIdLabelH[i] = str(i)
         snap.SavePajek(self.UnDirGraphFull, fname, NIdColorH, NIdLabelH)
         exp_hash = '7a63bc4bd44d9c078e50ba2a43fc484f'
-        f = open(fname, 'rb')
-        test_hash = hashlib.md5(f.read()).hexdigest()
-        f.close()
+        test_hash = self.getFileHash(fname)
         self.assertEqual(exp_hash, test_hash)
-        os.system('rm ' + fname)
+        os.remove(fname)
 
         # Directed Graph
         NIdColorH = snap.TIntStrH()
@@ -2839,11 +2824,9 @@ class SnapPythonTest(unittest.TestCase):
             NIdLabelH[i] = str(i)
         snap.SavePajek(self.NetFull, fname, NIdColorH, NIdLabelH)
         exp_hash = '1d0c1618ae32a2e3e600e47d9540e2e4'
-        f = open(fname, 'rb')
-        test_hash = hashlib.md5(f.read()).hexdigest()
-        f.close()
+        test_hash = self.getFileHash(fname)
         self.assertEqual(exp_hash, test_hash)
-        os.system('rm ' + fname)
+        os.remove(fname)
 
     def test_SavePajek4(self):
         # Directed Graph
@@ -2859,11 +2842,9 @@ class SnapPythonTest(unittest.TestCase):
             EIdColorH[i] = "black"
         snap.SavePajek(self.DirGraphFull, fname, NIdColorH, NIdLabelH, EIdColorH)
         exp_hash = '1d0c1618ae32a2e3e600e47d9540e2e4'
-        f = open(fname, 'rb')
-        test_hash = hashlib.md5(f.read()).hexdigest()
-        f.close()
+        test_hash = self.getFileHash(fname)
         self.assertEqual(exp_hash, test_hash)
-        os.system('rm ' + fname)
+        os.remove(fname)
 
         # Undirected Graph
         NIdColorH = snap.TIntStrH()
@@ -2877,11 +2858,9 @@ class SnapPythonTest(unittest.TestCase):
             EIdColorH[i] = "black"
         snap.SavePajek(self.UnDirGraphFull, fname, NIdColorH, NIdLabelH, EIdColorH)
         exp_hash = '7a63bc4bd44d9c078e50ba2a43fc484f'
-        f = open(fname, 'rb')
-        test_hash = hashlib.md5(f.read()).hexdigest()
-        f.close()
+        test_hash = self.getFileHash(fname)
         self.assertEqual(exp_hash, test_hash)
-        os.system('rm ' + fname)
+        os.remove(fname)
 
         # Directed Graph
         NIdColorH = snap.TIntStrH()
@@ -2895,11 +2874,9 @@ class SnapPythonTest(unittest.TestCase):
             EIdColorH[i] = "black"
         snap.SavePajek(self.NetFull, fname, NIdColorH, NIdLabelH, EIdColorH)
         exp_hash = '22acc46e0a1a57c4f74fbacac90ebd82'
-        f = open(fname, 'rb')
-        test_hash = hashlib.md5(f.read()).hexdigest()
-        f.close()
+        test_hash = self.getFileHash(fname)
         self.assertEqual(exp_hash, test_hash)
-        os.system('rm ' + fname)
+        os.remove(fname)
 
     def test_SaveGViz(self):
         # Directed Graph
@@ -2909,11 +2886,9 @@ class SnapPythonTest(unittest.TestCase):
             NIdColorH[i] = "red"
         snap.SaveGViz(self.DirGraphFull, fname, "text", True, NIdColorH)
         exp_hash = '64fe626fa482a0d45416824dc02d73a5'
-        f = open(fname, 'rb')
-        test_hash = hashlib.md5(f.read()).hexdigest()
-        f.close()
+        test_hash = self.getFileHash(fname)
         self.assertEqual(exp_hash, test_hash)
-        os.system('rm ' + fname)
+        os.remove(fname)
 
         # Undirected Graph
         NIdColorH = snap.TIntStrH()
@@ -2921,11 +2896,9 @@ class SnapPythonTest(unittest.TestCase):
             NIdColorH[i] = "red"
         snap.SaveGViz(self.UnDirGraphFull, fname, "text", True, NIdColorH)
         exp_hash = 'd2185ec44f908e8d10da6c6319c900a5'
-        f = open(fname, 'rb')
-        test_hash = hashlib.md5(f.read()).hexdigest()
-        f.close()
+        test_hash = self.getFileHash(fname)
         self.assertEqual(exp_hash, test_hash)
-        os.system('rm ' + fname)
+        os.remove(fname)
 
         # Directed Graph
         NIdColorH = snap.TIntStrH()
@@ -2933,11 +2906,9 @@ class SnapPythonTest(unittest.TestCase):
             NIdColorH[i] = "red"
         snap.SaveGViz(self.NetFull, fname, "text", True, NIdColorH)
         exp_hash = '64fe626fa482a0d45416824dc02d73a5'
-        f = open(fname, 'rb')
-        test_hash = hashlib.md5(f.read()).hexdigest()
-        f.close()
+        test_hash = self.getFileHash(fname)
         self.assertEqual(exp_hash, test_hash)
-        os.system('rm ' + fname)
+        os.remove(fname)
 
     def test_SaveGViz2(self):
         # Directed Graph
@@ -2947,11 +2918,9 @@ class SnapPythonTest(unittest.TestCase):
             NIdLabelH[i] = str(i)
         snap.SaveGViz(self.DirGraphFull, fname, "text", NIdLabelH)
         exp_hash = '260c9cfe1b5eac55a053ffcf418703e1'
-        f = open(fname, 'rb')
-        test_hash = hashlib.md5(f.read()).hexdigest()
-        f.close()
+        test_hash = self.getFileHash(fname)
         self.assertEqual(exp_hash, test_hash)
-        os.system('rm ' + fname)
+        os.remove(fname)
 
         # Undirected Graph
         NIdLabelH = snap.TIntStrH()
@@ -2959,11 +2928,9 @@ class SnapPythonTest(unittest.TestCase):
             NIdLabelH[i] = str(i)
         snap.SaveGViz(self.UnDirGraphFull, fname, "text", NIdLabelH)
         exp_hash = 'df04d8deed65d2a537a741e3ab3e251b'
-        f = open(fname, 'rb')
-        test_hash = hashlib.md5(f.read()).hexdigest()
-        f.close()
+        test_hash = self.getFileHash(fname)
         self.assertEqual(exp_hash, test_hash)
-        os.system('rm ' + fname)
+        os.remove(fname)
 
         # Directed Graph
         NIdLabelH = snap.TIntStrH()
@@ -2971,11 +2938,9 @@ class SnapPythonTest(unittest.TestCase):
             NIdLabelH[i] = str(i)
         snap.SaveGViz(self.NetFull, fname, "text", NIdLabelH)
         exp_hash = '260c9cfe1b5eac55a053ffcf418703e1'
-        f = open(fname, 'rb')
-        test_hash = hashlib.md5(f.read()).hexdigest()
-        f.close()
+        test_hash = self.getFileHash(fname)
         self.assertEqual(exp_hash, test_hash)
-        os.system('rm ' + fname)
+        os.remove(fname)
 
     def test_LoadEdgeList(self):
         # Directed Graph
@@ -2985,7 +2950,7 @@ class SnapPythonTest(unittest.TestCase):
         Graph = snap.LoadEdgeList(snap.PNGraph, fname, 0, 1)
         self.assertEqual(Graph.GetNodes(), self.num_nodes)
         self.assertEqual(Graph.GetEdges(), (self.num_nodes-1)*self.num_nodes)
-        os.system('rm ' + fname)
+        os.remove(fname)
 
         # Undirected Graph
         snap.SaveEdgeList(self.UnDirGraphFull, fname)
@@ -2993,7 +2958,7 @@ class SnapPythonTest(unittest.TestCase):
         Graph = snap.LoadEdgeList(snap.PUNGraph, fname, 0, 1)
         self.assertEqual(Graph.GetNodes(), self.num_nodes)
         self.assertEqual(Graph.GetEdges(), (self.num_nodes-1)*self.num_nodes/2)
-        os.system('rm ' + fname)
+        os.remove(fname)
 
         # Directed Graph
         snap.SaveEdgeList(self.NetFull, fname)
@@ -3001,7 +2966,7 @@ class SnapPythonTest(unittest.TestCase):
         Graph = snap.LoadEdgeList(snap.PNEANet, fname, 0, 1)
         self.assertEqual(Graph.GetNodes(), self.num_nodes)
         self.assertEqual(Graph.GetEdges(), (self.num_nodes-1)*self.num_nodes)
-        os.system('rm ' + fname)
+        os.remove(fname)
 
     def test_LoadEdgeList2(self):
         # Directed Graph
@@ -3011,7 +2976,7 @@ class SnapPythonTest(unittest.TestCase):
         Graph = snap.LoadEdgeList(snap.PNGraph, fname, 0, 1, '\t')
         self.assertEqual(Graph.GetNodes(), self.num_nodes)
         self.assertEqual(Graph.GetEdges(), (self.num_nodes-1)*self.num_nodes)
-        os.system('rm ' + fname)
+        os.remove(fname)
 
         # Undirected Graph
         snap.SaveEdgeList(self.UnDirGraphFull, fname)
@@ -3019,7 +2984,7 @@ class SnapPythonTest(unittest.TestCase):
         Graph = snap.LoadEdgeList(snap.PUNGraph, fname, 0, 1, '\t')
         self.assertEqual(Graph.GetNodes(), self.num_nodes)
         self.assertEqual(Graph.GetEdges(), (self.num_nodes-1)*self.num_nodes/2)
-        os.system('rm ' + fname)
+        os.remove(fname)
 
         # Directed Graph
         snap.SaveEdgeList(self.NetFull, fname)
@@ -3027,7 +2992,7 @@ class SnapPythonTest(unittest.TestCase):
         Graph = snap.LoadEdgeList(snap.PNEANet, fname, 0, 1, '\t')
         self.assertEqual(Graph.GetNodes(), self.num_nodes)
         self.assertEqual(Graph.GetEdges(), (self.num_nodes-1)*self.num_nodes)
-        os.system('rm ' + fname)
+        os.remove(fname)
 
     def test_LoadEdgeListStr(self):
         # Directed Graph
@@ -3037,7 +3002,7 @@ class SnapPythonTest(unittest.TestCase):
         Graph = snap.LoadEdgeListStr(snap.PNGraph, fname, 0, 1)
         self.assertEqual(Graph.GetNodes(), self.num_nodes)
         self.assertEqual(Graph.GetEdges(), (self.num_nodes-1)*self.num_nodes)
-        os.system('rm ' + fname)
+        os.remove(fname)
 
         # Undirected Graph
         snap.SaveEdgeList(self.UnDirGraphFull, fname)
@@ -3045,7 +3010,7 @@ class SnapPythonTest(unittest.TestCase):
         Graph = snap.LoadEdgeListStr(snap.PUNGraph, fname, 0, 1)
         self.assertEqual(Graph.GetNodes(), self.num_nodes)
         self.assertEqual(Graph.GetEdges(), (self.num_nodes-1)*self.num_nodes/2)
-        os.system('rm ' + fname)
+        os.remove(fname)
 
         # Directed Graph
         snap.SaveEdgeList(self.NetFull, fname)
@@ -3053,7 +3018,7 @@ class SnapPythonTest(unittest.TestCase):
         Graph = snap.LoadEdgeListStr(snap.PNEANet, fname, 0, 1)
         self.assertEqual(Graph.GetNodes(), self.num_nodes)
         self.assertEqual(Graph.GetEdges(), (self.num_nodes-1)*self.num_nodes)
-        os.system('rm ' + fname)
+        os.remove(fname)
 
     def test_GetSngVec(self):
         # Directed Graph
@@ -3097,7 +3062,7 @@ class SnapPythonTest(unittest.TestCase):
         Graph = snap.LoadConnList(snap.PNEANet, fname)
         self.assertEqual(Graph.GetNodes(), 3)
         self.assertEqual(Graph.GetEdges(), 6)
-        os.system('rm ' + fname)
+        os.remove(fname)
 
     def test_GetEigVec(self):
         # Undirected Graph
@@ -3125,7 +3090,7 @@ class SnapPythonTest(unittest.TestCase):
         f.close()
         # OP RS 2014/05/13, disabled since it is not portable
         #self.assertEqual(exp_hash, test_hash)
-        os.system('rm ' + fname)
+        os.remove(fname)
 
         # Undirected Graph
         fname = "mygraph.png"
@@ -3138,7 +3103,7 @@ class SnapPythonTest(unittest.TestCase):
         f.close()
         # OP RS 2014/05/13, disabled since it is not portable
         #self.assertEqual(exp_hash, test_hash)
-        os.system('rm ' + fname)
+        os.remove(fname)
 
         # Network
         fname = "mygraph.png"
@@ -3151,7 +3116,7 @@ class SnapPythonTest(unittest.TestCase):
         f.close()
         # OP RS 2014/05/13, disabled since it is not portable
         #self.assertEqual(exp_hash, test_hash)
-        os.system('rm ' + fname)
+        os.remove(fname)
 
     def test_DrawGViz2(self):
 
@@ -3169,7 +3134,7 @@ class SnapPythonTest(unittest.TestCase):
         f.close()
         # OP RS 2014/05/13, disabled since it is not portable
         #self.assertEqual(exp_hash, test_hash)
-        os.system('rm ' + fname)
+        os.remove(fname)
 
         # Undirected Graph
         fname = "mygraph.png"
@@ -3185,7 +3150,7 @@ class SnapPythonTest(unittest.TestCase):
         f.close()
         # OP RS 2014/05/13, disabled since it is not portable
         #self.assertEqual(exp_hash, test_hash)
-        os.system('rm ' + fname)
+        os.remove(fname)
 
         # Network
         fname = "mygraph.png"
@@ -3201,7 +3166,7 @@ class SnapPythonTest(unittest.TestCase):
         f.close()
         # OP RS 2014/05/13, disabled since it is not portable
         #self.assertEqual(exp_hash, test_hash)
-        os.system('rm ' + fname)
+        os.remove(fname)
 
     def test_GetSubGraph(self):
         V = snap.TIntV()
