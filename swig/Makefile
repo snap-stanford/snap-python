@@ -10,6 +10,8 @@
 #		make all3            # apply SWIG and compile the code
 #		make srcdist3        # build source distribution for py3
 #		make whldist3        # build wheel distribution for py3
+#		make pip-test        # upload to private test pip
+#		make pip-public      # upload to public release pip
 #
 # NOTE: python2 build on macOS
 #	- use system python on macOS to compile
@@ -33,8 +35,13 @@
 #			example path: C:\cygwin\home\<user>\git\snap-python-64
 #		- build
 #	- run setup.py in Cygwin to generate the package,
-#	  NOT OVER SSH, but locally
-#		make srcdist-win
+#	  EXECUTE LOCALLY DIRECTLY IN CYGWIN ON THE HOST, NOT OVER SSH
+#		make srcdist-win      # build Windows source distribution
+#		make whldist-win      # build Windows wheel distribution
+#		make pip-test         # upload to private test pip
+#				      # EXECUTE MANUALLY FROM COMMAND PROMPT
+#		make pip-public       # upload to public release pip
+#				      # EXECUTE MANUALLY FROM COMMAND PROMPT
 
 # set the path to your SNAP directory here
 GITDIR = ../../snap
@@ -105,15 +112,15 @@ n2v.o:
 	$(CC) $(CXXFLAGS) -c $(SNAPADVDIR)/n2v.cpp -I$(SNAPDIR) -I$(SNAPADVDIR) -I$(GLIBDIR)
 
 install: setup.py snap.py _snap.so
-	sudo python setup.py install
+	sudo $(PYTHON) setup.py install
 
 srcdist: setup.py snap.py _snap.so
 	cp $(MANIFEST) MANIFEST
-	python setup.py sdist
+	$(PYTHON) setup.py sdist
 
 whldist: setup.py snap.py _snap.so
 	cp $(MANIFEST) MANIFEST
-	python setup.py bdist_wheel
+	$(PYTHON) setup.py bdist_wheel
 ifeq ($(UNAME), Linux)
 	# change name '-linux_' to '-linuxmany1_' as required by pip
 	mv dist/*-linux_* `ls dist/*-linux_* | sed -e "s/-linux_/-manylinux1_/g"`
@@ -138,15 +145,19 @@ install-win: setup.py snap.py _snap.pyd
 
 srcdist-win: setup.py snap.py _snap.pyd
 	cp $(MANIFEST) MANIFEST
-	/cygdrive/c/Python27/python.exe setup.py sdist --formats=zip
+	$(PYTHON) setup.py sdist --formats=zip
 	chmod 0644 dist/*.zip
+
+whldist-win: setup.py snap.py _snap.pyd
+	cp $(MANIFEST) MANIFEST
+	$(PYTHON) setup.py bdist_wheel
 
 clean:
 	rm -f *.o *_wrap*.cxx _*.so *.pyc snap*.py _snap*.*
 
 pip-test: dist/*
 	@echo TESTING uploading test file ${WHLFILE}
-	python -m twine upload --repository-url https://test.pypi.org/legacy/ ${WHLFILE}
+	$(PYTHON) -m twine upload --repository-url https://test.pypi.org/legacy/ ${WHLFILE}
 
 pip3-test: dist/*
 	@echo TESTING uploading test file ${WHLFILE}
@@ -154,7 +165,7 @@ pip3-test: dist/*
 
 pip-public: dist/*
 	@echo PUBLIC RELEASE uploading file ${WHLFILE}
-	python -m twine upload ${WHLFILE}
+	$(PYTHON) -m twine upload ${WHLFILE}
 
 pip3-public: dist/*
 	@echo PUBLIC RELEASE uploading file ${WHLFILE}
