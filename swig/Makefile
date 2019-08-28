@@ -26,7 +26,7 @@
 #	- run swig in Cygwin to generate snap_wrap.cxx and snap.py
 #		make swig-win
 #	- build Snappy solution in Visual Studio to generate _snap.pyd
-#		- open snappy-VS12
+#		- open snappy-VS19
 #		- add VC++ include path for snap-core, glib-core, snap-adv
 #		  - create drive shares S: and P:, use Command Prompt:
 #		    subst S: <path_to_snap>
@@ -41,6 +41,26 @@
 #		make pip-test         # upload to private test pip
 #				      # EXECUTE MANUALLY FROM COMMAND PROMPT
 #		make pip-public       # upload to public release pip
+#				      # EXECUTE MANUALLY FROM COMMAND PROMPT
+# Build instructions for py3 on Windows:
+#	- run swig in Cygwin to generate snap_wrap.cxx and snap.py
+#		make swig3-win
+#	- build Snappy solution in Visual Studio to generate _snap.pyd
+#		- open snappy3-VS19
+#		- add VC++ include path for snap-core, glib-core, snap-adv
+#		  - create drive shares S: and P:, use Command Prompt:
+#		    subst S: <path_to_snap>
+#			example path: C:\cygwin\home\<user>\git\snap-dev-64
+#		    subst P: <path_to_snap_python>
+#			example path: C:\cygwin\home\<user>\git\snap-python-64
+#		- build
+#	- run setup.py in Cygwin to generate the package,
+#	  EXECUTE LOCALLY DIRECTLY IN CYGWIN ON THE HOST, NOT OVER SSH
+#		make srcdist3-win     # build Windows source distribution
+#		make whldist3-win     # build Windows wheel distribution
+#		make pip3-test        # upload to private test pip
+#				      # EXECUTE MANUALLY FROM COMMAND PROMPT
+#		make pip3-public      # upload to public release pip
 #				      # EXECUTE MANUALLY FROM COMMAND PROMPT
 
 # set the path to your SNAP directory here
@@ -143,16 +163,25 @@ swig-win: snap_wrap.cxx
 swig3-win: snap_wrap3.cxx
 
 install-win: setup.py snap.py _snap.pyd
-	/cygdrive/c/Python27/python.exe setup.py install
+	$(PYTHON) setup.py install
 
 srcdist-win: setup.py snap.py _snap.pyd
 	cp $(MANIFEST) MANIFEST
 	$(PYTHON) setup.py sdist --formats=zip
 	chmod 0644 dist/*.zip
 
+srcdist3-win: setup.py snap.py _snap.pyd
+	cp $(MANIFEST) MANIFEST
+	"$(PYTHON3)" setup.py sdist --formats=zip
+	chmod 0644 dist/*.zip
+
 whldist-win: setup.py snap.py _snap.pyd
 	cp $(MANIFEST) MANIFEST
 	$(PYTHON) setup.py bdist_wheel
+
+whldist3-win: setup.py snap.py _snap.pyd
+	cp $(MANIFEST) MANIFEST
+	"$(PYTHON3)" setup.py bdist_wheel
 
 clean:
 	rm -f *.o *_wrap*.cxx _*.so *.pyc snap*.py _snap*.*
@@ -163,7 +192,7 @@ pip-test: dist/*
 
 pip3-test: dist/*
 	@echo TESTING uploading test file ${WHLFILE}
-	python3 -m twine upload --repository-url https://test.pypi.org/legacy/ ${WHLFILE}
+	"$(PYTHON3)" -m twine upload --repository-url https://test.pypi.org/legacy/ ${WHLFILE}
 
 pip-public: dist/*
 	@echo PUBLIC RELEASE uploading file ${WHLFILE}
@@ -171,5 +200,5 @@ pip-public: dist/*
 
 pip3-public: dist/*
 	@echo PUBLIC RELEASE uploading file ${WHLFILE}
-	python3 -m twine upload ${WHLFILE}
+	"$(PYTHON3)" -m twine upload ${WHLFILE}
 
