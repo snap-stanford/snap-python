@@ -59,7 +59,7 @@ class SnapPythonTest(unittest.TestCase):
 
     def checkPlotHash(self, gen_file, exp_hash):
         self.assertTrue(os.path.isfile(gen_file))
-        f = open(gen_file,'rb')
+        f = open(gen_file,'r')
         lines = f.readlines()
         f.close()
         # remove comments, since these include time
@@ -69,15 +69,15 @@ class SnapPythonTest(unittest.TestCase):
                 continue
             newlines.append(line)
         # remove carriage return, which is included on Windows
-        newcontent = "".join(newlines).replace("\r","")
+        newcontent = str("".join(newlines).replace("\r","")).encode("utf-8")
         act_hash = hashlib.md5(newcontent).hexdigest()
         self.assertEqual(exp_hash, act_hash)
 
     def getFileHash(self, fname):
-        f = open(fname, 'rb')
+        f = open(fname, 'r')
         content = f.read()
         f.close()
-        newcontent = content.replace("\r","")
+        newcontent = str(content.replace("\r","")).encode("utf-8")
         test_hash = hashlib.md5(newcontent).hexdigest()
         return test_hash
 

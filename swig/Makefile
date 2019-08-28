@@ -140,6 +140,8 @@ endif
 
 swig-win: snap_wrap.cxx
 
+swig3-win: snap_wrap3.cxx
+
 install-win: setup.py snap.py _snap.pyd
 	/cygdrive/c/Python27/python.exe setup.py install
 
