@@ -36,16 +36,16 @@ The following example shows how to convert a subgraph between the different type
     GIn = snap.GenRndGnm(snap.PNGraph, 100, 1000)
     GOut = snap.ConvertSubGraph(snap.PUNGraph, GIn, V)
     for NI in GOut.Nodes():
-        print "node: %d" % NI.GetId()
+        print("node: %d" % NI.GetId())
 
     GIn = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
     GOut = snap.ConvertSubGraph(snap.PNEANet, GIn, V)
     for NI in GOut.Nodes():
-        print "node: %d" % NI.GetId()
+        print("node: %d" % NI.GetId())
 
     GIn = snap.GenRndGnm(snap.PNEANet, 100, 1000)
     GOut = snap.ConvertSubGraph(snap.PNGraph, GIn, V)
     for NI in GOut.Nodes():
-        print "node: %d" % NI.GetId()
+        print("node: %d" % NI.GetId())
         
   

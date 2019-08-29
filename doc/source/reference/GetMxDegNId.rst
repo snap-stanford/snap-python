@@ -23,13 +23,13 @@ The following example shows how to use :func:`GetMxDegNId` with
 
     Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
     NId1 = snap.GetMxDegNId(Graph)
-    print NId1
+    print(NId1)
 
     UGraph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
     NId2 = snap.GetMxDegNId(UGraph)
-    print NId2
+    print(NId2)
 
     Network = snap.GenRndGnm(snap.PNEANet, 100, 1000)
     NId3 = snap.GetMxDegNId(Network)
-    print NId3
+    print(NId3)
 

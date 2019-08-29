@@ -33,10 +33,10 @@ vectors::
     RightSV = snap.TFltV()
     snap.GetSngVec(Graph, LeftSV, RightSV)
 
-    print "Left singular vector:"
+    print("Left singular vector:")
     for item in LeftSV:
-      print item
+      print(item)
 
-    print "Right singular vector:"
+    print("Right singular vector:")
     for item in RightSV:
-      print item
+      print(item)

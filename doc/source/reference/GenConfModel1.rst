@@ -23,9 +23,9 @@ The following example shows how to generate a random undirected graph of the sam
 
     Graph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
     for NI in Graph.Nodes():
-        print NI.GetId(), NI.GetDeg()
+        print(NI.GetId(), NI.GetDeg())
 
     G1 = snap.GenConfModel(Graph)
     for NI in G1.Nodes():
-        print NI.GetId(), NI.GetDeg()
+        print(NI.GetId(), NI.GetDeg())
 

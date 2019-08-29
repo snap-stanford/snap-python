@@ -27,16 +27,16 @@ The following example shows how to compute the triangles participation ratio for
     TriadCntV = snap.TIntPrV()
     snap.GetTriadParticip(Graph, TriadCntV)
     for pair in TriadCntV:
-        print pair.Val1(), pair.Val2()
+        print(pair.Val1(), pair.Val2())
 
     UGraph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
     TriadCntV = snap.TIntPrV()
     snap.GetTriadParticip(UGraph, TriadCntV)
     for pair in TriadCntV:
-        print pair.Val1(), pair.Val2()
+        print(pair.Val1(), pair.Val2())
 
     Network = snap.GenRndGnm(snap.PNEANet, 100, 1000)
     TriadCntV = snap.TIntPrV()
     snap.GetTriadParticip(Network, TriadCntV)
     for pair in TriadCntV:
-        print pair.Val1(), pair.Val2()
+        print(pair.Val1(), pair.Val2())

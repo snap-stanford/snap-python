@@ -41,4 +41,4 @@ The following example shows how to get PNGraph object for nodes in
     GIn = snap.LoadDyNet(fname)
     
     if (GIn.GetNodes() == GOut.GetNodes()):
-        print ("true")
+        print("true")

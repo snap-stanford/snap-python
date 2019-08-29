@@ -32,12 +32,12 @@ The following example shows how to get the size of the tree starting at node 0 w
 
     Graph = snap.GenTree(snap.PNGraph, 3, 3)
     results = snap.GetSubTreeSz(Graph, 0, True, True)
-    print "Size %d, Depth %d" % (results[0], results[2])
+    print("Size %d, Depth %d" % (results[0], results[2]))
 
     UGraph = snap.GenTree(snap.PUNGraph, 3, 3)
     results = snap.GetSubTreeSz(UGraph, 0, True, True)
-    print "Size %d, Depth %d" % (results[0], results[2])
+    print("Size %d, Depth %d" % (results[0], results[2]))
 
     Network = snap.GenTree(snap.PNEANet, 3, 3)
     results = snap.GetSubTreeSz(Network, 0, True, True)
-    print "Size %d, Depth %d" % (results[0], results[2])
+    print("Size %d, Depth %d" % (results[0], results[2]))

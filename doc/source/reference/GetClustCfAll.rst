@@ -33,26 +33,26 @@ The following example shows how to compute the in degree for nodes in
     DegToCCfV = snap.TFltPrV()
     result = snap.GetClustCfAll(Graph, DegToCCfV)
     for item in DegToCCfV:
-        print "degree: %d, clustering coefficient: %f" % (item.GetVal1(), item.GetVal2())
-    print "average clustering coefficient", result[0]
-    print "closed triads", result[1]
-    print "open triads", result[2]
+        print("degree: %d, clustering coefficient: %f" % (item.GetVal1(), item.GetVal2()))
+    print("average clustering coefficient", result[0])
+    print("closed triads", result[1])
+    print("open triads", result[2])
 
     Graph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
     DegToCCfV = snap.TFltPrV()
     result = snap.GetClustCfAll(Graph, DegToCCfV)
     for item in DegToCCfV:
-        print "degree: %d, clustering coefficient: %f" % (item.GetVal1(), item.GetVal2())
-    print "average clustering coefficient", result[0]
-    print "closed triads", result[1]
-    print "open triads", result[2]
+        print("degree: %d, clustering coefficient: %f" % (item.GetVal1(), item.GetVal2()))
+    print("average clustering coefficient", result[0])
+    print("closed triads", result[1])
+    print("open triads", result[2])
 
     Graph = snap.GenRndGnm(snap.PNEANet, 100, 1000)
     DegToCCfV = snap.TFltPrV()
     result = snap.GetClustCfAll(Graph, DegToCCfV)
     for item in DegToCCfV:
-        print "degree: %d, clustering coefficient: %f" % (item.GetVal1(), item.GetVal2())
-    print "average clustering coefficient", result[0]
-    print "closed triads", result[1]
-    print "open triads", result[2]
+        print("degree: %d, clustering coefficient: %f" % (item.GetVal1(), item.GetVal2()))
+    print("average clustering coefficient", result[0])
+    print("closed triads", result[1])
+    print("open triads", result[2])
 

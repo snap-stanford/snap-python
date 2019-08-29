@@ -23,8 +23,8 @@ The following example shows how to get the root node id in
 
     Graph = snap.GenTree(snap.PNGraph, 3, 3)
     root_id = snap.GetTreeRootNId(Graph)
-    print "The graph has a root id: %d" % root_id
+    print("The graph has a root id: %d" % root_id)
 
     Network = snap.GenTree(snap.PNEANet, 3, 3)
     root_id = snap.GetTreeRootNId(Network)
-    print "The graph has a root id: %d" % root_id
+    print("The graph has a root id: %d" % root_id)

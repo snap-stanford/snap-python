@@ -29,4 +29,4 @@ The following example shows how to get the 1-components with
 
     for CnCom in CnComs:
         for NI in CnCom:
-            print NI
+            print(NI)

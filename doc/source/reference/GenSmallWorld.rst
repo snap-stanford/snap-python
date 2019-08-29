@@ -34,9 +34,9 @@ The following example shows how to generate a small-world graph for various valu
     Rnd = snap.TRnd(1,0)
     UGraph1 = snap.GenSmallWorld(10, 3, 0, Rnd)
     for EI in UGraph1.Edges():
-        print "edge: (%d, %d)" % (EI.GetSrcNId(), EI.GetDstNId())
+        print("edge: (%d, %d)" % (EI.GetSrcNId(), EI.GetDstNId()))
 
     UGraph2 = snap.GenSmallWorld(10, 3, 0.7, Rnd)
     for EI in UGraph2.Edges():
-        print "edge: (%d, %d)" % (EI.GetSrcNId(), EI.GetDstNId())
+        print("edge: (%d, %d)" % (EI.GetSrcNId(), EI.GetDstNId()))
 	

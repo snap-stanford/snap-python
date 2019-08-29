@@ -25,12 +25,12 @@ The following example shows how to generate different types of fully connected g
 
     Graph = snap.GenFull(snap.PNGraph, 5)
     for EI in Graph.Edges():
-        print "edge: (%d, %d)" % (EI.GetSrcNId(), EI.GetDstNId())
+        print("edge: (%d, %d)" % (EI.GetSrcNId(), EI.GetDstNId()))
 
     UGraph = snap.GenFull(snap.PUNGraph, 5)
     for EI in UGraph.Edges():
-        print "edge: (%d, %d)" % (EI.GetSrcNId(), EI.GetDstNId())
+        print("edge: (%d, %d)" % (EI.GetSrcNId(), EI.GetDstNId()))
 
     Network = snap.GenFull(snap.PNEANet, 5)
     for EI in Network.Edges():
-        print "edge: (%d, %d)" % (EI.GetSrcNId(), EI.GetDstNId())
+        print("edge: (%d, %d)" % (EI.GetSrcNId(), EI.GetDstNId()))

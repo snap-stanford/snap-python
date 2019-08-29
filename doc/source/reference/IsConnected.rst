@@ -21,10 +21,10 @@ The following example shows how to use :func:`IsConnected` for nodes in
     import snap
 
     Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
-    print snap.IsConnected(Graph)
+    print(snap.IsConnected(Graph))
 
     UGraph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
-    print snap.IsConnected(UGraph)
+    print(snap.IsConnected(UGraph))
 
     Network = snap.GenRndGnm(snap.PNEANet, 100, 1000)
-    print snap.IsConnected(Network)
+    print(snap.IsConnected(Network))

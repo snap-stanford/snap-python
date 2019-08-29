@@ -30,5 +30,5 @@ The following example shows how to calculate singular values for :class:`TNGraph
 	SngValV = snap.TFltV() 
 	snap.GetSngVals(Graph, SngVals, SngValV)
 	for item in SngValV:
-	    print item
+	    print(item)
 

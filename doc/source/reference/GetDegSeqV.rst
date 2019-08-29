@@ -27,16 +27,16 @@ The following example shows how to compute the sequence vector for nodes in
     result_degree = snap.TIntV()
     snap.GetDegSeqV(Graph, result_degree)
     for i in range(0, result_degree.Len()):
-        print "Node %s has degree %s" % (i, result_degree[i])
+        print("Node %s has degree %s" % (i, result_degree[i]))
 
     UGraph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
     result_degree = snap.TIntV()
     snap.GetDegSeqV(UGraph, result_degree)
     for i in range(0, result_degree.Len()):
-        print "Node %s has degree %s" % (i, result_degree[i])
+        print("Node %s has degree %s" % (i, result_degree[i]))
 
     Network = snap.GenRndGnm(snap.PNEANet, 100, 1000)
     result_degree = snap.TIntV()
     snap.GetDegSeqV(Network, result_degree)
     for i in range(0, result_degree.Len()):
-        print "Node %s has degree %s" % (i, result_degree[i])
+        print("Node %s has degree %s" % (i, result_degree[i]))

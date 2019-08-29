@@ -31,15 +31,15 @@ The following example shows how to return get a subgraph of
     Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
     SubGraph = snap.GetSubGraph(Graph, NIdV)
     for EI in SubGraph.Edges():
-        print "edge (%d %d)" % (EI.GetSrcNId(), EI.GetDstNId())
+        print("edge (%d %d)" % (EI.GetSrcNId(), EI.GetDstNId()))
 
     UGraph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
     SubGraph = snap.GetSubGraph(UGraph, NIdV)
     for EI in SubGraph.Edges():
-        print "edge (%d %d)" % (EI.GetSrcNId(), EI.GetDstNId())
+        print("edge (%d %d)" % (EI.GetSrcNId(), EI.GetDstNId()))
 
     Network = snap.GenRndGnm(snap.PNEANet, 100, 1000)
     SubGraph = snap.GetSubGraph(Network, NIdV)
     for EI in SubGraph.Edges():
-        print "edge (%d %d)" % (EI.GetSrcNId(), EI.GetDstNId())
+        print("edge (%d %d)" % (EI.GetSrcNId(), EI.GetDstNId()))
 

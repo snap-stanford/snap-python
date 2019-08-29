@@ -27,4 +27,4 @@ The following example shows how to get leading eigenvector of the adjacency matr
     EigVec =  snap.TFltV()
     snap.GetEigVec(UGraph, EigVec)
     for Val in EigVec:
-        print Val
+        print(Val)

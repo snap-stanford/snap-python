@@ -138,7 +138,7 @@ TInt
    Below is some code demonstrating the use of the :class:`TInt` type:
 
       >>> i = snap.TInt(10)
-      >>> print i.Val
+      >>> print(i.Val)
       10
       >>> i.Val = 21
       >>> snap.TInt.IsEven(5)
@@ -294,7 +294,7 @@ TFlt
    Below is some code demonstrating the use of the :class:`TFlt` type:
 
       >>> f = snap.TFlt(9.874)
-      >>> print f.Val
+      >>> print(f.Val)
       9.874
       >>> f.Val = 2.1
       >>> f.IsNum()
@@ -628,7 +628,7 @@ TStr
    Below is some code demonstrating the use of the :class:`TStr` type:
 
       >>> s = snap.TStr('Welcome to Snap.py!')
-      >>> print s.CStr()
+      >>> print(s.CStr())
       'Welcome to Snap.py!'
       >>> s.GetSubStr(0,6)
       'Welcome'

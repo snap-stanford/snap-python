@@ -36,5 +36,5 @@ The following example shows how to generate a random scale-free, undirected grap
     Rnd = snap.TRnd();
     UGraph = snap.GenGeoPrefAttach(100, 10, 0.25, Rnd)
     for EI in UGraph.Edges():
-        print "edge: (%d, %d)" % (EI.GetSrcNId(), EI.GetDstNId())
+        print("edge: (%d, %d)" % (EI.GetSrcNId(), EI.GetDstNId()))
 

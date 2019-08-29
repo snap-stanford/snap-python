@@ -23,12 +23,12 @@ The following example shows how to calculate the number of unique bidirectional 
 
     Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
     Count = snap.CntUniqBiDirEdges(Graph)
-    print "Directed Graph: Count of unique bidirectional edges is %d" % Count
+    print("Directed Graph: Count of unique bidirectional edges is %d" % Count)
 
     UGraph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
     Count = snap.CntUniqBiDirEdges(UGraph)
-    print "Undirected Graph: Count of unique bidirectional edges is %d" % Count
+    print("Undirected Graph: Count of unique bidirectional edges is %d" % Count)
 
     Network = snap.GenRndGnm(snap.PNEANet, 100, 1000)
     Count = snap.CntUniqBiDirEdges(Network)
-    print "Network Graph: Count of unique bidirectional edges is %d" % Count
+    print("Network Graph: Count of unique bidirectional edges is %d" % Count)

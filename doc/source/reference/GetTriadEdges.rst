@@ -25,12 +25,12 @@ The following example shows how to calculate the number of edges in triads for n
 
     Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
     NumTriadEdges = snap.GetTriadEdges(Graph)
-    print NumTriadEdges
+    print(NumTriadEdges)
 
     UGraph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
     NumTriadEdges = snap.GetTriadEdges(UGraph)
-    print NumTriadEdges
+    print(NumTriadEdges)
 
     Network = snap.GenRndGnm(snap.PNEANet, 100, 1000)
     NumTriadEdges = snap.GetTriadEdges(Network)
-    print NumTriadEdges
+    print(NumTriadEdges)

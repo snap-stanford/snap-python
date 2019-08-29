@@ -32,10 +32,10 @@ The following example shows how to load the following from a text file, wiki-vot
     import snap
 
     G = snap.LoadEdgeListStr(snap.PNGraph, "Wiki-Vote.txt", 0, 1)
-    print "Number of Nodes: %d" % G.GetNodes()
+    print("Number of Nodes: %d" % G.GetNodes())
 
     G = snap.LoadEdgeListStr(snap.PUNGraph, "Wiki-Vote.txt", 0, 1)
-    print "Number of Nodes: %d" % G.GetNodes()
+    print("Number of Nodes: %d" % G.GetNodes())
 
     G = snap.LoadEdgeListStr(snap.PNEANet, "Wiki-Vote.txt", 0, 1)
-    print "Number of Nodes: %d" % G.GetNodes()
+    print("Number of Nodes: %d" % G.GetNodes())

@@ -31,16 +31,16 @@ The following example shows how to delete nodes from
     snap.DelNodes(Graph, V)
     for NI in V:
         if Graph.IsNode(NI):
-            print "Node %d found in graph." % NI
+            print("Node %d found in graph." % NI)
 
     UGraph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
     snap.DelNodes(UGraph, V)
     for NI in V:
         if UGraph.IsNode(NI):
-            print "Node %d found in graph." % NI
+            print("Node %d found in graph." % NI)
 
     Network = snap.GenRndGnm(snap.PNEANet, 100, 1000)
     snap.DelNodes(Network, V)
     for NI in V:
         if Network.IsNode(NI):
-            print "Node %d found in graph." % NI
+            print("Node %d found in graph." % NI)

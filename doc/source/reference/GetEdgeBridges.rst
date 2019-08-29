@@ -27,4 +27,4 @@ The following example shows how to calculate number of bidirectional edges for
     EdgeV = snap.TIntPrV()
     snap.GetEdgeBridges(UGraph, EdgeV)
     for edge in EdgeV:
-        print "edge: (%d, %d)" % (edge.GetVal1(), edge.GetVal2())
+        print("edge: (%d, %d)" % (edge.GetVal1(), edge.GetVal2()))

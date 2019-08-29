@@ -27,8 +27,8 @@ The following example shows how to detect communities using CNM algorithm in :cl
     CmtyV = snap.TCnComV()
     modularity = snap.CommunityCNM(UGraph, CmtyV)
     for Cmty in CmtyV:
-        print "Community: "
+        print("Community: ")
         for NI in Cmty:
-            print NI
-    print "The modularity of the network is %f" % modularity
+            print(NI)
+    print("The modularity of the network is %f" % modularity)
  

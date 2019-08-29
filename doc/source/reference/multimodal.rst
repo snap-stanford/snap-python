@@ -54,13 +54,13 @@ The following code shows example usage of :class:`TMMNet` to construct a toy mul
     # Iterate over modes
     modeneti = mmnet.BegModeNetI()
     while modeneti < mmnet.EndModeNetI():
-        print modeneti.GetModeName()
+        print(modeneti.GetModeName())
         modeneti.Next()
 
     # Iterate over crossnets
     crossneti = mmnet.BegCrossNetI()
     while crossneti < mmnet.EndCrossNetI():
-        print crossneti.GetCrossName()
+        print(crossneti.GetCrossName())
         crossneti.Next()
 
     # Get a subgraph

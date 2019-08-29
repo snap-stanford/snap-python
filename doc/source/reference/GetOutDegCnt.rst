@@ -26,16 +26,16 @@ The following examples shows how to obtain the out-degree histogram for nodes in
     DegToCntV = snap.TIntPrV()
     snap.GetOutDegCnt(Graph, DegToCntV)
     for item in DegToCntV:
-        print "%d nodes with out-degree %d" % (item.GetVal2(), item.GetVal1())
+        print("%d nodes with out-degree %d" % (item.GetVal2(), item.GetVal1()))
 
     UGraph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
     DegToCntV = snap.TIntPrV()
     snap.GetOutDegCnt(UGraph, DegToCntV)
     for item in DegToCntV:
-        print "%d nodes with out-degree %d" % (item.GetVal2(), item.GetVal1())
+        print("%d nodes with out-degree %d" % (item.GetVal2(), item.GetVal1()))
 
     Network = snap.GenRndGnm(snap.PNEANet, 100, 1000)
     DegToCntV = snap.TIntPrV()
     snap.GetOutDegCnt(Network, DegToCntV)
     for item in DegToCntV:
-        print "%d nodes with out-degree %d" % (item.GetVal2(), item.GetVal1())
+        print("%d nodes with out-degree %d" % (item.GetVal2(), item.GetVal1()))

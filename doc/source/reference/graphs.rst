@@ -106,7 +106,7 @@ TUNGraph
         Rnd.Randomize()
         for i in range(0,10):
             NId = G.GetRndNId(Rnd)
-            print NId
+            print(NId)
 
      .. describe:: GetRndNI()
 
@@ -204,11 +204,11 @@ TUNGraph
       -1
       >>> G1.AddEdge(1,2)
       -1
-      >>> print G1.Empty()
+      >>> print(G1.Empty())
       False
-      >>> print G1.GetNodes()
+      >>> print(G1.GetNodes())
       3
-      >>> print G1.GetEdges()
+      >>> print(G1.GetEdges())
       2
 
 TUNGraphNodeI
@@ -491,11 +491,11 @@ TNGraph
       -1
       >>> G2.AddEdge(1,2)
       -1
-      >>> print G2.Empty()
+      >>> print(G2.Empty())
       False
-      >>> print G2.GetNodes()
+      >>> print(G2.GetNodes())
       3
-      >>> print G2.GetEdges()
+      >>> print(G2.GetEdges())
       2
 
 TNGraphNodeI
@@ -1190,11 +1190,11 @@ TNEANet
       1
       >>> G3.AddEdge(1,2)
       2
-      >>> print G3.Empty()
+      >>> print(G3.Empty())
       False
-      >>> print G3.GetNodes()
+      >>> print(G3.GetNodes())
       3
-      >>> print G3.GetEdges()
+      >>> print(G3.GetEdges())
       3
 
 TNEANetNodeI
@@ -1581,11 +1581,11 @@ TUndirNet
       -1
       >>> G1.AddEdge(1,2)
       -1
-      >>> print G1.Empty()
+      >>> print(G1.Empty())
       False
-      >>> print G1.GetNodes()
+      >>> print(G1.GetNodes())
       3
-      >>> print G1.GetEdges()
+      >>> print(G1.GetEdges())
       2
 
 TUndirNetNodeI
@@ -1950,11 +1950,11 @@ TDirNet
       -1
       >>> G2.AddEdge(1,2)
       -1
-      >>> print G2.Empty()
+      >>> print(G2.Empty())
       False
-      >>> print G2.GetNodes()
+      >>> print(G2.GetNodes())
       3
-      >>> print G2.GetEdges()
+      >>> print(G2.GetEdges())
       2
 
 TDirNetNodeI

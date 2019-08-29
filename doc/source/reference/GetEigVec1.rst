@@ -37,12 +37,12 @@ The following example shows how to calculate the top 2 eigenvalues and eigenvect
     i = 0
     for item in EigVal:
         i += 1
-        print "Eigenvalue %d: %.6f" % (i, item)
+        print("Eigenvalue %d: %.6f" % (i, item))
 
     i = 0
     for v in EigVecV:
         i += 1
-        print "=== Eigenvector: %d ===" % (i)
+        print("=== Eigenvector: %d ===" % (i))
         for item in v:
-            print item
+            print(item)
 

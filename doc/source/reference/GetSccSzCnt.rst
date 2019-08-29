@@ -27,16 +27,16 @@ The following example shows how to get the distribution of strongly-connected co
 	ComponentDist = snap.TIntPrV()
 	snap.GetSccSzCnt(Graph, ComponentDist)
 	for comp in ComponentDist:
-	    print "Size: %d - Number of Components: %d" % (comp.GetVal1(), comp.GetVal2())
+	    print("Size: %d - Number of Components: %d" % (comp.GetVal1(), comp.GetVal2()))
 
 	UGraph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
 	ComponentDist = snap.TIntPrV()
 	snap.GetSccSzCnt(UGraph, ComponentDist)
 	for comp in ComponentDist:
-	    print "Size: %d - Number of Components: %d" % (comp.GetVal1(), comp.GetVal2())
+	    print("Size: %d - Number of Components: %d" % (comp.GetVal1(), comp.GetVal2()))
 
 	Network = snap.GenRndGnm(snap.PNEANet, 100, 1000)
 	ComponentDist = snap.TIntPrV()
 	snap.GetSccSzCnt(Network, ComponentDist)
 	for comp in ComponentDist:
-	    print "Size: %d - Number of Components: %d" % (comp.GetVal1(), comp.GetVal2())
+	    print("Size: %d - Number of Components: %d" % (comp.GetVal1(), comp.GetVal2()))

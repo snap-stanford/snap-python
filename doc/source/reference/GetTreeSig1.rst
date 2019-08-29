@@ -47,9 +47,9 @@ The following example shows how to compute the tree signature for nodes in
       #if (NI.GetInDeg() == 0 or NI.GetOutDeg() == 0):
       snap.GetTreeSig(Graph, NI.GetId(), Sig, NodeMap)
       for item in Sig:
-        print item
+        print(item)
       for item in NodeMap:
-        print item.GetVal1(), item.GetVal2()
+        print(item.GetVal1(), item.GetVal2())
 
     Graph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
     Sig = snap.TIntV()
@@ -60,9 +60,9 @@ The following example shows how to compute the tree signature for nodes in
       #if (NI.GetInDeg() == 0 or NI.GetOutDeg() == 0):
       snap.GetTreeSig(Graph, NI.GetId(), Sig, NodeMap)
       for item in Sig:
-        print item
+        print(item)
       for item in NodeMap:
-        print item.GetVal1(), item.GetVal2()
+        print(item.GetVal1(), item.GetVal2())
 
     Graph = snap.GenRndGnm(snap.PNEANet, 100, 1000)
     Sig = snap.TIntV()
@@ -73,7 +73,7 @@ The following example shows how to compute the tree signature for nodes in
       #if (NI.GetInDeg() == 0 or NI.GetOutDeg() == 0):
       snap.GetTreeSig(Graph, NI.GetId(), Sig, NodeMap)
       for item in Sig:
-        print item
+        print(item)
       for item in NodeMap:
-        print item.GetVal1(), item.GetVal2()
+        print(item.GetVal1(), item.GetVal2())
 

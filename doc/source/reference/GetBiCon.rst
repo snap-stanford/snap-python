@@ -27,5 +27,5 @@ The following example shows how to print out representations of the bi-connected
     snap.GetBiCon(UGraph, V)
     for CnCom in V:
       for NI in CnCom:
-        print NI
-      print "---------------"
+        print(NI)
+      print("---------------")

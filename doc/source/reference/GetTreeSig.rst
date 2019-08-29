@@ -36,5 +36,5 @@ GetTreeSig currently has a bug. The following code shows an example of the bug. 
     snap.GetTreeSig(G1, 1, v1)
 
     for item in v1:
-        print item
+        print(item)
 

@@ -27,4 +27,4 @@ distribution in :class:`TUNGraph`::
     SzCntV = snap.TIntPrV()
     snap.GetBiConSzCnt(UGraph, SzCntV)
     for item in SzCntV:
-        print "%d, %d" % (item.GetVal1(), item.GetVal2())
+        print("%d, %d" % (item.GetVal1(), item.GetVal2()))

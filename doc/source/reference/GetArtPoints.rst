@@ -29,7 +29,7 @@ The following example shows how to find articulation points in a graph of type
     ArtNIdV = snap.TIntV() 
     snap.GetArtPoints(UGraph, ArtNIdV) 
     
-    print "Articulation points of a random Undirected Graph : " 
+    print("Articulation points of a random Undirected Graph : ")
     for NI in ArtNIdV:
-        print "node: %d" % NI
+        print("node: %d" % NI)
 

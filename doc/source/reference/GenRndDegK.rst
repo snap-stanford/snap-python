@@ -35,4 +35,4 @@ over the aforementioned attributes::
     DegToCntV = snap.TIntPrV()
     snap.GetDegCnt(UGraph, DegToCntV)
     for item in DegToCntV:
-        print "degree %d: count %d" % (item.GetVal1(), item.GetVal2())
+        print("degree %d: count %d" % (item.GetVal1(), item.GetVal2()))

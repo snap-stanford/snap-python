@@ -35,24 +35,24 @@ The following example shows how to calculate Hub and Authority scores for nodes 
     NIdAuthH = snap.TIntFltH()
     snap.GetHits(Graph, NIdHubH, NIdAuthH)
     for item in NIdHubH:
-        print item, NIdHubH[item]
+        print(item, NIdHubH[item])
     for item in NIdAuthH:
-        print item, NIdAuthH[item]
+        print(item, NIdAuthH[item])
 
     UGraph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
     NIdHubH = snap.TIntFltH()
     NIdAuthH = snap.TIntFltH()
     snap.GetHits(UGraph, NIdHubH, NIdAuthH)
     for item in NIdHubH:
-        print item, NIdHubH[item]
+        print(item, NIdHubH[item])
     for item in NIdAuthH:
-        print item, NIdAuthH[item]
+        print(item, NIdAuthH[item])
 
     Network = snap.GenRndGnm(snap.PNEANet, 100, 1000)
     NIdHubH = snap.TIntFltH()
     NIdAuthH = snap.TIntFltH()
     snap.GetHits(Network, NIdHubH, NIdAuthH)
     for item in NIdHubH:
-        print item, NIdHubH[item]
+        print(item, NIdHubH[item])
     for item in NIdAuthH:
-        print item, NIdAuthH[item]
+        print(item, NIdAuthH[item])

@@ -26,12 +26,12 @@ The following example shows how to get the number of nodes with out-degrees 10, 
 
     Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
     Count = snap.CntOutDegNodes(Graph, 10)
-    print "Directed Graph: Count of nodes with out-degree 10 is %d" % Count
+    print("Directed Graph: Count of nodes with out-degree 10 is %d" % Count)
 
     UGraph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
     Count = snap.CntOutDegNodes(UGraph, 20)
-    print "Undirected Graph: Count of nodes with out-degree 20 is %d" % Count
+    print("Undirected Graph: Count of nodes with out-degree 20 is %d" % Count)
 
     Network = snap.GenRndGnm(snap.PNEANet, 100, 1000)
     Count = snap.CntOutDegNodes(Network, 5)
-    print "Network Graph: Count of nodes with out-degree 5 is %d" % Count
+    print("Network Graph: Count of nodes with out-degree 5 is %d" % Count)

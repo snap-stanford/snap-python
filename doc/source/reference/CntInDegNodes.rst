@@ -26,12 +26,12 @@ The following example shows how to get the number of nodes with in-degrees 10, 2
 
     Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
     Count = snap.CntInDegNodes(Graph, 10)
-    print "Directed Graph: Count of nodes with in-degree 10 is %d" % Count
+    print("Directed Graph: Count of nodes with in-degree 10 is %d" % Count)
 
     UGraph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
     Count = snap.CntInDegNodes(UGraph, 20)
-    print "Undirected Graph: Count of nodes with in-degree 20 is %d" % Count
+    print("Undirected Graph: Count of nodes with in-degree 20 is %d" % Count)
 
     Network = snap.GenRndGnm(snap.PNEANet, 100, 1000)
     Count = snap.CntInDegNodes(Network, 5)
-    print "Network Graph: Count of nodes with in-degree 5 is %d" % Count
+    print("Network Graph: Count of nodes with in-degree 5 is %d" % Count)

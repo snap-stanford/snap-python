@@ -37,20 +37,20 @@ The following example shows how to calculate the length of the shortest path in
     NIdToDistH = snap.TIntH()
     shortestPath = snap.GetShortPath(Graph, 10, NIdToDistH)
     for item in NIdToDistH:
-        print item, NIdToDistH[item]
-    print shortestPath
+        print(item, NIdToDistH[item])
+    print(shortestPath)
 
     UGraph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
     NIdToDistH = snap.TIntH()
     shortestPath = snap.GetShortPath(UGraph, 10, NIdToDistH)
     for item in NIdToDistH:
-        print item, NIdToDistH[item]
-    print shortestPath
+        print(item, NIdToDistH[item])
+    print(shortestPath)
 
     Network = snap.GenRndGnm(snap.PNEANet, 100, 1000)
     NIdToDistH = snap.TIntH()
     shortestPath = snap.GetShortPath(Network, 10, NIdToDistH)
     for item in NIdToDistH:
-        print item, NIdToDistH[item]
-    print shortestPath
+        print(item, NIdToDistH[item])
+    print(shortestPath)
 

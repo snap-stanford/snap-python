@@ -30,21 +30,21 @@ The following example shows how to use GetLen2Paths in :class:`PUNGraph`, :class
     g = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
     NbrV = snap.TIntV()
     Num = snap.GetLen2Paths(g, 0, 1, NbrV)
-    print "The number of paths between nodes %d and %d is %d" % (0, 1, Num)
+    print("The number of paths between nodes %d and %d is %d" % (0, 1, Num))
     for Nbr in NbrV:
-        print "Path: %d %d %d" % (0, Nbr, 1)
+        print("Path: %d %d %d" % (0, Nbr, 1))
 
     g = snap.GenRndGnm(snap.PNGraph, 100, 1000)
     NbrV = snap.TIntV()
     Num = snap.GetLen2Paths(g, 0, 1, NbrV)
-    print "The number of paths between nodes %d and %d is %d" % (0, 1, Num)
+    print("The number of paths between nodes %d and %d is %d" % (0, 1, Num))
     for Nbr in NbrV:
-        print "Path: %d %d %d" % (0, Nbr, 1)
+        print("Path: %d %d %d" % (0, Nbr, 1))
 
     g = snap.GenRndGnm(snap.PNEANet, 100, 1000)
     NbrV = snap.TIntV()
     Num = snap.GetLen2Paths(g, 0, 1, NbrV)
-    print "The number of paths between nodes %d and %d is %d" % (0, 1, Num)
+    print("The number of paths between nodes %d and %d is %d" % (0, 1, Num))
     for Nbr in NbrV:
-        print "Path: %d %d %d" % (0, Nbr, 1)
+        print("Path: %d %d %d" % (0, Nbr, 1))
 

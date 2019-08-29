@@ -38,16 +38,16 @@ The following example shows how to use :func:`GetAnf` with
     DistNbrsV = snap.TIntFltKdV()
     snap.GetAnf(Graph, DistNbrsV, 3, False, 32)
     for item in DistNbrsV:
-        print item.Dat()
+        print(item.Dat())
 
     UGraph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
     DistNbrsV = snap.TIntFltKdV()
     snap.GetAnf(UGraph, DistNbrsV, 3, False, 32)
     for item in DistNbrsV:
-        print item.Dat()
+        print(item.Dat())
 
     Network = snap.GenRndGnm(snap.PNEANet, 100, 1000)
     DistNbrsV = snap.TIntFltKdV()
     snap.GetAnf(Network, DistNbrsV, 3, False, 32)
     for item in DistNbrsV:
-        print item.Dat()
+        print(item.Dat())

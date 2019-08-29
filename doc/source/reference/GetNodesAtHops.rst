@@ -33,16 +33,16 @@ The following example shows how to obtain number of nodes for each hop distance 
     NodeVec = snap.TIntPrV()
     snap.GetNodesAtHops(Graph, 1, NodeVec, True)
     for item in NodeVec:
-        print "%d, %d" % (item.GetVal1(), item.GetVal2())
+        print("%d, %d" % (item.GetVal1(), item.GetVal2()))
 
     UGraph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
     NodeVec = snap.TIntPrV()
     snap.GetNodesAtHops(UGraph, 1, NodeVec, False)
     for item in NodeVec:
-        print "%d, %d" % (item.GetVal1(), item.GetVal2())
+        print("%d, %d" % (item.GetVal1(), item.GetVal2()))
 
     Network = snap.GenRndGnm(snap.PNEANet, 100, 1000)
     NodeVec = snap.TIntPrV()
     snap.GetNodesAtHops(Network, 1, NodeVec, True)
     for item in NodeVec:
-        print "%d, %d" % (item.GetVal1(), item.GetVal2())
+        print("%d, %d" % (item.GetVal1(), item.GetVal2()))

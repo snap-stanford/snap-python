@@ -23,14 +23,14 @@ The following example shows how to add self edges to every node in
     Graph = snap.GenRndGnm(snap.PNGraph, 10, 0)
     snap.AddSelfEdges(Graph)
     for EI in Graph.Edges():
-        print "edge: (%d, %d)" % (EI.GetSrcNId(), EI.GetDstNId())
+        print("edge: (%d, %d)" % (EI.GetSrcNId(), EI.GetDstNId()))
 
     UGraph = snap.GenRndGnm(snap.PUNGraph, 10, 0)
     snap.AddSelfEdges(UGraph)
     for EI in UGraph.Edges():
-        print "edge: (%d, %d)" % (EI.GetSrcNId(), EI.GetDstNId())
+        print("edge: (%d, %d)" % (EI.GetSrcNId(), EI.GetDstNId()))
 
     Network = snap.GenRndGnm(snap.PNEANet, 10, 0)
     snap.AddSelfEdges(Network)
     for EI in Network.Edges():
-        print "edge: (%d, %d)" % (EI.GetSrcNId(), EI.GetDstNId())
+        print("edge: (%d, %d)" % (EI.GetSrcNId(), EI.GetDstNId()))

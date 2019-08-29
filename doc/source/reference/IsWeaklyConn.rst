@@ -22,10 +22,10 @@ The following example shows how to use :func:`IsWeaklyConn` for nodes in
     import snap
 
     Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
-    print snap.IsWeaklyConn(Graph)
+    print(snap.IsWeaklyConn(Graph))
 
     UGraph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
-    print snap.IsWeaklyConn(UGraph)
+    print(snap.IsWeaklyConn(UGraph))
 
     Network = snap.GenRndGnm(snap.PNEANet, 100, 1000)
-    print snap.IsWeaklyConn(Network)
+    print(snap.IsWeaklyConn(Network))

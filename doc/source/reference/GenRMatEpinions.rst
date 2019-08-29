@@ -23,5 +23,5 @@ The following example shows how to generate a synthetic R-Mat with the same para
 
     Graph = snap.GenRMatEpinions()
     for EI in Graph.Edges():
-        print "edge: (%d, %d)" % (EI.GetSrcNId(), EI.GetDstNId())
+        print("edge: (%d, %d)" % (EI.GetSrcNId(), EI.GetDstNId()))
 

@@ -27,16 +27,16 @@ The following example shows how to use :func:`GetNodeInDegV` with nodes in :clas
     InDegV = snap.TIntPrV()
     snap.GetNodeInDegV(Graph, InDegV)
     for item in InDegV:
-        print "node ID %d: in-degree %d" % (item.GetVal1(), item.GetVal2())
+        print("node ID %d: in-degree %d" % (item.GetVal1(), item.GetVal2()))
 
     UGraph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
     InDegV = snap.TIntPrV()
     snap.GetNodeInDegV(UGraph, InDegV)
     for item in InDegV:
-        print "node ID %d: in-degree %d" % (item.GetVal1(), item.GetVal2())
+        print("node ID %d: in-degree %d" % (item.GetVal1(), item.GetVal2()))
 
     Network = snap.GenRndGnm(snap.PNEANet, 100, 1000)
     InDegV = snap.TIntPrV()
     snap.GetNodeInDegV(Network, InDegV)
     for item in InDegV:
-        print "node ID %d: in-degree %d" % (item.GetVal1(), item.GetVal2())
+        print("node ID %d: in-degree %d" % (item.GetVal1(), item.GetVal2()))

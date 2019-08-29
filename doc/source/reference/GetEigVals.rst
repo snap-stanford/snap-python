@@ -30,4 +30,4 @@ The following example shows how to calcualte the top *EigVals* eigenvalues for :
 	PEigV = snap.TFltV()
 	snap.GetEigVals(UGraph, EigVals, PEigV)
 	for item in PEigV:
-	    print item
+	    print(item)

@@ -35,9 +35,9 @@ The following example shows how to calculate the number of triads a node partici
     for NbrIdx in range(4):
         GroupSet.AddKey(NI.GetOutNId(NbrIdx))
     result = snap.GetNodeTriads(Graph, NId, GroupSet)
-    print "number of triads between", NId, " and two set members", result[0]
-    print "number of triads between", NId, " and a set member and a set non-member", result[2]
-    print "number of triads between", NId, " and two set non-members", result[3]
+    print("number of triads between", NId, " and two set members", result[0])
+    print("number of triads between", NId, " and a set member and a set non-member", result[2])
+    print("number of triads between", NId, " and two set non-members", result[3])
 
     Graph = snap.GenFull(snap.PUNGraph, 100)
     NI = Graph.Nodes().next()
@@ -46,9 +46,9 @@ The following example shows how to calculate the number of triads a node partici
     for NbrIdx in range(4):
         GroupSet.AddKey(NI.GetOutNId(NbrIdx))
     result = snap.GetNodeTriads(Graph, NId, GroupSet)
-    print "number of triads between", NId, " and two set members", result[0]
-    print "number of triads between", NId, " and a set member and a set non-member", result[2]
-    print "number of triads between", NId, " and two set non-members", result[3]
+    print("number of triads between", NId, " and two set members", result[0])
+    print("number of triads between", NId, " and a set member and a set non-member", result[2])
+    print("number of triads between", NId, " and two set non-members", result[3])
 
     Graph = snap.GenFull(snap.PNEANet, 100)
     NI = Graph.Nodes().next()
@@ -57,7 +57,7 @@ The following example shows how to calculate the number of triads a node partici
     for NbrIdx in range(4):
         GroupSet.AddKey(NI.GetOutNId(NbrIdx))
     result = snap.GetNodeTriads(Graph, NId, GroupSet)
-    print "number of triads between", NId, " and two set members", result[0]
-    print "number of triads between", NId, " and a set member and a set non-member", result[2]
-    print "number of triads between", NId, " and two set non-members", result[3]
+    print("number of triads between", NId, " and two set members", result[0])
+    print("number of triads between", NId, " and a set member and a set non-member", result[2])
+    print("number of triads between", NId, " and two set non-members", result[3])
 

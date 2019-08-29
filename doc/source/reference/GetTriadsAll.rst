@@ -27,16 +27,16 @@ The following example shows how to compute the number of open and closed triads 
 
     Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
     result = snap.GetTriadsAll(Graph)
-    print "closed triads", result[0]
-    print "open triads", result[2]
+    print("closed triads", result[0])
+    print("open triads", result[2])
 
     Graph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
     result = snap.GetTriadsAll(Graph)
-    print "closed triads", result[0]
-    print "open triads", result[2]
+    print("closed triads", result[0])
+    print("open triads", result[2])
 
     Graph = snap.GenRndGnm(snap.PNEANet, 100, 1000)
     result = snap.GetTriadsAll(Graph)
-    print "closed triads", result[0]
-    print "open triads", result[2]
+    print("closed triads", result[0])
+    print("open triads", result[2])
 

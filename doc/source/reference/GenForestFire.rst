@@ -28,4 +28,4 @@ The following example shows how to use :func:`GenForestFire`::
 
     Graph = snap.GenForestFire(100, 0.5, 0.5)
     for EI in Graph.Edges():
-        print "edge: (%d, %d)" % (EI.GetSrcNId(), EI.GetDstNId())
+        print("edge: (%d, %d)" % (EI.GetSrcNId(), EI.GetDstNId()))

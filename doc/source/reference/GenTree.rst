@@ -34,14 +34,14 @@ The following examples shows how to generate a tree graph for classes :class:`TN
 
     Graph = snap.GenTree(snap.PNGraph, 3, 3)
     for EI in Graph.Edges():
-        print "edge: (%d, %d)" % (EI.GetSrcNId(), EI.GetDstNId())
+        print("edge: (%d, %d)" % (EI.GetSrcNId(), EI.GetDstNId()))
     
     UGraph = snap.GenTree(snap.PUNGraph, 3, 3)
     for EI in UGraph.Edges():
-        print "edge: (%d, %d)" % (EI.GetSrcNId(), EI.GetDstNId())
+        print("edge: (%d, %d)" % (EI.GetSrcNId(), EI.GetDstNId()))
 
     Network = snap.GenTree(snap.PNEANet, 3, 3)
     for EI in Network.Edges():
-        print "edge: (%d, %d)" % (EI.GetSrcNId(), EI.GetDstNId())
+        print("edge: (%d, %d)" % (EI.GetSrcNId(), EI.GetDstNId()))
 
     

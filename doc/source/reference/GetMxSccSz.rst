@@ -22,11 +22,11 @@ The following code shows how to calculate the relative size of the maximum stron
   import snap
 
   Graph = snap.GenRndGnm(snap.PNGraph, 20, 10)
-  print 'Relative size of SCC in Directed Graph:', snap.GetMxSccSz(Graph)
+  print('Relative size of SCC in Directed Graph:', snap.GetMxSccSz(Graph))
 
   UGraph = snap.GenRndGnm(snap.PUNGraph, 20, 10)
-  print 'Relative size of Size SCC in Undirected Graph:', snap.GetMxSccSz(UGraph)
+  print('Relative size of Size SCC in Undirected Graph:', snap.GetMxSccSz(UGraph))
 
   Network = snap.GenRndGnm(snap.PNEANet, 20, 10)
-  print 'Relative size of SCC in Network:', snap.GetMxSccSz(Network)
+  print('Relative size of SCC in Network:', snap.GetMxSccSz(Network))
 

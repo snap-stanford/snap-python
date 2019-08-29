@@ -38,16 +38,16 @@ The following example shows how to get a vector of nodes at hop distance
     NodeVec = snap.TIntV()
     snap.GetNodesAtHop(Graph, 1, 2, NodeVec, True)
     for item in NodeVec:
-        print item
+        print(item)
 
     UGraph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
     NodeVec = snap.TIntV()
     snap.GetNodesAtHop(UGraph, 1, 2, NodeVec, False)
     for item in NodeVec:
-        print item
+        print(item)
 
     Network = snap.GenRndGnm(snap.PNEANet, 100, 1000)
     NodeVec = snap.TIntV()
     snap.GetNodesAtHop(Network, 1, 2, NodeVec, True)
     for item in NodeVec:
-        print item
+        print(item)

@@ -84,10 +84,10 @@ The name :class:`TPair` refers to a general data structure that consists of two 
    Below is some code demonstrating the use of the :class:`TPair` type:
 
       >>> pr = snap.TIntPr(10, 15)
-      >>> print pr.Val1.Val
+      >>> print(pr.Val1.Val)
       10
       >>> pr.Val1 = snap.TInt(21)
-      >>> print pr.GetVal1()
+      >>> print(pr.GetVal1())
       21
       >>> pr.GetPrimHashCd()
       687
@@ -128,7 +128,7 @@ vector. All of the following methods are available for objects that are classifi
       >>> v1.Add(1)
       >>> v2 = snap.TIntV(v1)
       >>> for val in v2:
-      ...     print val
+      ...     print(val)
       ...
       1
 
@@ -481,7 +481,7 @@ vector. All of the following methods are available for objects that are classifi
       >>> vec2.Add(10)
       >>> vec2.Diff(vec1)
       >>> for val in vec2:
-      ...     print val
+      ...     print(val)
       ...
       10
 
@@ -519,7 +519,7 @@ Hash tables contain values of the same type. Each value has a user provided key 
       >>> h1[5] = 5
       >>> h2 = snap.TIntH(h1)
       >>> for key in h2:
-      ...     print key, h2[key]
+      ...     print(key, h2[key])
       ...
       5 5
 
@@ -834,7 +834,7 @@ An iterator over the values in a :class:`THash` object. Normally, these objects 
       ...
       >>> it = h1.BegI()
       >>> while not it.IsEnd():
-      >>>     print it.GetKey(), it.GetDat()
+      >>>     print(it.GetKey(), it.GetDat())
       >>>     it.Next()
       0 1
       1 2
@@ -874,7 +874,7 @@ Hash sets contain keys are of the same type. Specific keys can be accessed throu
       ...
       >>> hs = snap.TIntSet(v)
       >>> for key in hs:
-      ...     print key
+      ...     print(key)
       ...
       0
       1
@@ -1089,7 +1089,7 @@ An iterator over the values in a :class:`THashSet` object. Normally, these objec
       >>> hs1 = snap.TIntSet()
       >>> hs1.AddKey(0)
       >>> it = hs1.BegI()
-      >>> print it.GetKey()
+      >>> print(it.GetKey())
       0
 
 

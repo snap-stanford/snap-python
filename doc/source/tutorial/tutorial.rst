@@ -68,24 +68,24 @@ Below are the most commonly used vector operations:
 
 - get the number of values in the vector:
 
-  >>> print v.Len()
+  >>> print(v.Len())
   5
 
 - get a value at a specific vector location
 
-  >>> print "v[2] =", v[2]
+  >>> print("v[2] =", v[2])
   v[2] = 3
 
 - change a value at a specific vector location
 
   >>> v.SetVal(2,6)
-  >>> print "v[2] =", v[2]
+  >>> print("v[2] =", v[2])
   v[2] = 6
 
 - print all values in a vector using an iterator
 
   >>> for item in v:
-  >>>     print item
+  >>>     print(item)
   1
   2
   6
@@ -95,7 +95,7 @@ Below are the most commonly used vector operations:
 - print all values in a vector using an index
 
   >>> for i in range(0, v.Len()):
-  >>>     print i, v[i]
+  >>>     print(i, v[i])
   0 1
   1 2
   2 6
@@ -132,24 +132,24 @@ Below are the most commonly used hash table operations:
 
 - get the number of values in the table:
 
-  >>> print h.Len()
+  >>> print(h.Len())
   5
 
 - get a value for a specific key
 
-  >>> print "h[3] =", h[3]
+  >>> print("h[3] =", h[3])
   h[3] = three
 
 - change a value at a specific key
 
   >>> h[3] = "four"
-  >>> print "h[3] =", h[3]
+  >>> print("h[3] =", h[3])
   h[3] = four
 
 - print all values in a table using an iterator
 
   >>> for key in h:
-  >>>     print key, h[key]
+  >>>     print(key, h[key])
   5 five
   3 four
   9 nine
@@ -174,12 +174,12 @@ Below are the most commonly used pair operations:
 
 - print the first value:
 
-  >>> print p.GetVal1()
+  >>> print(p.GetVal1())
   1
 
 - print the second value:
 
-  >>> print p.GetVal2()
+  >>> print(p.GetVal2())
   one
 
 .. seealso::
@@ -302,18 +302,18 @@ Create a directed random graph on 100 nodes and 1000 edges:
 Traverse all the nodes using a node iterator:
 
 >>> for NI in G2.Nodes():
->>>     print "node: %d, out-degree %d, in-degree %d" % ( NI.GetId(), NI.GetOutDeg(), NI.GetInDeg())
+>>>     print("node: %d, out-degree %d, in-degree %d" % ( NI.GetId(), NI.GetOutDeg(), NI.GetInDeg()))
 
 Traverse all the edges using an edge iterator:
 
 >>> for EI in G2.Edges():
->>>     print "edge (%d, %d)" % (EI.GetSrcNId(), EI.GetDstNId())
+>>>     print("edge (%d, %d)" % (EI.GetSrcNId(), EI.GetDstNId()))
 
 Traverse the edges by traversing nodes and getting all their neighbors:
 
 >>> for NI in G2.Nodes():
 >>>     for Id in NI.GetOutEdges():
->>>         print "edge (%d %d)" % (NI.GetId(), Id)
+>>>         print("edge (%d %d)" % (NI.GetId(), Id))
 
 Node iterators provide several useful methods:
 
@@ -404,13 +404,13 @@ Define a vector of pairs of integers (size, count) and get a distribution of con
 >>> CntV = snap.TIntPrV()
 >>> snap.GetWccSzCnt(G9, CntV)
 >>> for p in CntV:
->>>     print "size %d: count %d" % (p.GetVal1(), p.GetVal2())
+>>>     print("size %d: count %d" % (p.GetVal1(), p.GetVal2()))
 
 Get degree distribution pairs (out-degree, count):
 
 >>> snap.GetOutDegCnt(G9, CntV)
 >>> for p in CntV:
->>>     print "degree %d: count %d" % (p.GetVal1(), p.GetVal2())
+>>>     print("degree %d: count %d" % (p.GetVal1(), p.GetVal2()))
 
 Generate a Preferential Attachment graph on 100 nodes and out-degree of 3:
 
@@ -423,7 +423,7 @@ Define a vector of floats and get first eigenvector of graph adjacency matrix:
 >>> nr = 0
 >>> for f in EigV:
 >>>     nr += 1
->>>     print "%d: %.6f" % (nr, f)
+>>>     print("%d: %.6f" % (nr, f))
 
 Get an approximation of graph diameter:
 

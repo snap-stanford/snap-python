@@ -27,4 +27,4 @@ The following example shows how to get distribution of sizes of 1-components in 
 
     snap.Get1CnComSzCnt(UGraph, szCntV)
     for item in szCntV:
-        print "%d, %d" % (item.GetVal1(), item.GetVal2())
+        print("%d, %d" % (item.GetVal1(), item.GetVal2()))

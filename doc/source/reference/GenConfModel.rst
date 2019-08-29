@@ -31,4 +31,4 @@ The following example generates a random undirected graph with degree sequence 1
 
     UGraph = snap.GenConfModel(DegSeqV, Rnd)
     for EI in UGraph.Edges():
-        print "edge: (%d, %d)" % (EI.GetSrcNId(), EI.GetDstNId())
+        print("edge: (%d, %d)" % (EI.GetSrcNId(), EI.GetDstNId()))

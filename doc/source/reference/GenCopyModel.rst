@@ -29,4 +29,4 @@ The following example shows how to generate a :class:`TNGraph` using :func:`GenC
     import snap
 
     Graph = snap.GenCopyModel(20, 0.4, snap.TRnd())
-    print "Resulting Graph: Nodes %d, Edges %d" % (Graph.GetNodes(), Graph.GetEdges())
+    print("Resulting Graph: Nodes %d, Edges %d" % (Graph.GetNodes(), Graph.GetEdges()))

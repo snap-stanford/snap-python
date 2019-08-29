@@ -42,13 +42,13 @@ The following example shows how to load a Pajek file::
 
    Graph = snap.LoadPajek(snap.PNGraph, 'example.paj')
    for NI in Graph.Nodes():
-       print NI.GetId()
+       print(NI.GetId())
 
    UGraph = snap.LoadPajek(snap.PUNGraph, 'example.paj')
    for NI in UGraph.Nodes():
-       print NI.GetId()
+       print(NI.GetId())
 
    Network = snap.LoadPajek(snap.PNEANet, 'example.paj')
    for NI in Network.Nodes():
-       print NI.GetId()
+       print(NI.GetId())
 

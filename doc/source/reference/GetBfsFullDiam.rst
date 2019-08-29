@@ -31,12 +31,12 @@ The following example shows how to calculate diameters for nodes in
 
     Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
     diam = snap.GetBfsFullDiam(Graph, 100, False)
-    print diam
+    print(diam)
 
     UGraph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
     diam = snap.GetBfsFullDiam(UGraph, 100, False)
-    print diam
+    print(diam)
 
     Network = snap.GenRndGnm(snap.PNEANet, 100, 1000)
     diam = snap.GetBfsFullDiam(Network, 100, False)
-    print diam
+    print(diam)

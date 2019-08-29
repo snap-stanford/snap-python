@@ -31,12 +31,12 @@ The following example shows how to generate grid graphs for classes :class:`TNGr
 
     Graph = snap.GenGrid(snap.PNGraph, 10, 12, False)
     for EI in Graph.Edges():
-        print "edge: (%d, %d)" % (EI.GetSrcNId(), EI.GetDstNId())
+        print("edge: (%d, %d)" % (EI.GetSrcNId(), EI.GetDstNId()))
 	
     UGraph = snap.GenGrid(snap.PUNGraph, 10, 12, False)
     for EI in UGraph.Edges():
-        print "edge: (%d, %d)" % (EI.GetSrcNId(), EI.GetDstNId())
+        print("edge: (%d, %d)" % (EI.GetSrcNId(), EI.GetDstNId()))
 
     Network = snap.GenGrid(snap.PNEANet, 10, 12, False)
     for EI in Network.Edges():
-        print "edge: (%d, %d)" % (EI.GetSrcNId(), EI.GetDstNId())
+        print("edge: (%d, %d)" % (EI.GetSrcNId(), EI.GetDstNId()))

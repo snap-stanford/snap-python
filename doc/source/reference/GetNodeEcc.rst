@@ -28,13 +28,13 @@ The following example shows how to calculate eccentricity for nodes in
     
     Graph = snap.GenRndGnm(snap.PNGraph, 10, 30)
     for NI in Graph.Nodes():
-        print NI.GetId(), snap.GetNodeEcc(Graph, NI.GetId(), True)
+        print(NI.GetId(), snap.GetNodeEcc(Graph, NI.GetId(), True))
     
     UGraph = snap.GenRndGnm(snap.PUNGraph, 10, 30)
     for NI in UGraph.Nodes():
-        print NI.GetId(), snap.GetNodeEcc(UGraph, NI.GetId(), False)
+        print(NI.GetId(), snap.GetNodeEcc(UGraph, NI.GetId(), False))
 
     Network = snap.GenRndGnm(snap.PNEANet, 10, 30)
     for NI in Network.Nodes():
-        print NI.GetId(), snap.GetNodeEcc(Network, NI.GetId(), True)
+        print(NI.GetId(), snap.GetNodeEcc(Network, NI.GetId(), True))
 

@@ -29,13 +29,13 @@ The following example shows how to use :func:`GetEdgesInOut` with
 
     Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
     results = snap.GetEdgesInOut(Graph, Nodes)
-    print "EdgesIn: %s EdgesOut: %s" % (results[0], results[1])
+    print("EdgesIn: %s EdgesOut: %s" % (results[0], results[1]))
 
     UGraph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
     results = snap.GetEdgesInOut(UGraph, Nodes)
-    print "EdgesIn: %s EdgesOut: %s" % (results[0], results[1])
+    print("EdgesIn: %s EdgesOut: %s" % (results[0], results[1]))
 
     Network = snap.GenRndGnm(snap.PNEANet, 100, 1000)
     results = snap.GetEdgesInOut(Network, Nodes)
-    print "EdgesIn: %s EdgesOut: %s" % (results[0], results[1])
+    print("EdgesIn: %s EdgesOut: %s" % (results[0], results[1]))
 

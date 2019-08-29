@@ -31,4 +31,4 @@ The following example shows how to use :func:`GenPrefAttach`::
     Rnd = snap.TRnd()
     UGraph = snap.GenPrefAttach(100, 10, Rnd)
     for EI in UGraph.Edges():
-        print "edge: (%d, %d)" % (EI.GetSrcNId(), EI.GetDstNId())
+        print("edge: (%d, %d)" % (EI.GetSrcNId(), EI.GetDstNId()))

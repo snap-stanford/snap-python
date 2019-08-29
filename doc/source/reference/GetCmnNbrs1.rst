@@ -32,16 +32,16 @@ The following example shows how to find the shared neighbors of two nodes in :cl
     Nbrs = snap.TIntV()
     snap.GetCmnNbrs(Graph, 1, 10, Nbrs)
     for NId in Nbrs:
-        print "node: %d" % NId
+        print("node: %d" % NId)
 
     UGraph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
     Nbrs = snap.TIntV()
     snap.GetCmnNbrs(UGraph, 1, 10, Nbrs)
     for NId in Nbrs:
-        print "node: %d" % NId
+        print("node: %d" % NId)
 
     Network = snap.GenRndGnm(snap.PNEANet, 100, 1000)
     Nbrs = snap.TIntV()
     snap.GetCmnNbrs(Network, 1, 10, Nbrs)
     for NId in Nbrs:
-        print "node: %d" % NId
+        print("node: %d" % NId)

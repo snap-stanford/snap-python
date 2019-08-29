@@ -26,16 +26,16 @@ The following examples shows how to obtain the degree histogram for nodes in :cl
     DegToCntV = snap.TIntPrV()
     snap.GetDegCnt(Graph, DegToCntV)
     for item in DegToCntV:
-        print "%d nodes with degree %d" % (item.GetVal2(), item.GetVal1())
+        print("%d nodes with degree %d" % (item.GetVal2(), item.GetVal1()))
 
     UGraph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
     DegToCntV = snap.TIntPrV()
     snap.GetDegCnt(UGraph, DegToCntV)
     for item in DegToCntV:
-        print "%d nodes with degree %d" % (item.GetVal2(), item.GetVal1())
+        print("%d nodes with degree %d" % (item.GetVal2(), item.GetVal1()))
 
     Network = snap.GenRndGnm(snap.PNEANet, 100, 1000)
     DegToCntV = snap.TIntPrV()
     snap.GetDegCnt(Network, DegToCntV)
     for item in DegToCntV:
-        print "%d nodes with degree %d" % (item.GetVal2(), item.GetVal1())
+        print("%d nodes with degree %d" % (item.GetVal2(), item.GetVal1()))

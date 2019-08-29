@@ -32,13 +32,13 @@ The following example shows how to calculate an effective diameter::
 
    G = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
    result = snap.GetBfsEffDiamAll(G, 10, False)
-   print result
+   print(result)
 
    G = snap.GenRndGnm(snap.PNGraph, 100, 1000)
    result = snap.GetBfsEffDiamAll(G, 10, False)
-   print result
+   print(result)
 
    G = snap.GenRndGnm(snap.PNEANet, 100, 1000)
    result = snap.GetBfsEffDiamAll(G, 10, False)
-   print result
+   print(result)
 

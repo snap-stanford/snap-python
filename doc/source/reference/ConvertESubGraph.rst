@@ -37,12 +37,12 @@ The following example shows how to create a subgraph for nodes in
 
     Sub_Graph = snap.ConvertESubGraph(snap.PNGraph, Network, V, False)
     for EI in Sub_Graph.Edges():
-        print "edge: (%d, %d)" % (EI.GetSrcNId(), EI.GetDstNId())
+        print("edge: (%d, %d)" % (EI.GetSrcNId(), EI.GetDstNId()))
 
     Sub_UGraph = snap.ConvertESubGraph(snap.PUNGraph, Network, V, False)
     for EI in Sub_UGraph.Edges():
-        print "edge: (%d, %d)" % (EI.GetSrcNId(), EI.GetDstNId())
+        print("edge: (%d, %d)" % (EI.GetSrcNId(), EI.GetDstNId()))
 
     Sub_Network = snap.ConvertESubGraph(snap.PNEANet, Network, V, False)
     for EI in Sub_Network.Edges():
-        print "edge: (%d, %d)" % (EI.GetSrcNId(), EI.GetDstNId())
+        print("edge: (%d, %d)" % (EI.GetSrcNId(), EI.GetDstNId()))

@@ -28,17 +28,17 @@ The following example shows how to get the number of nodes for a given k-core in
     CoreIDSzV = snap.TIntPrV()
     kValue = snap.GetKCoreNodes(Graph, CoreIDSzV)
     for item in CoreIDSzV:
-        print "order: %d nodes: %d" % (item.GetVal1(), item.GetVal2())
+        print("order: %d nodes: %d" % (item.GetVal1(), item.GetVal2()))
 
     UGraph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
     CoreIDSzV = snap.TIntPrV()
     kValue = snap.GetKCoreNodes(UGraph, CoreIDSzV)
     for item in CoreIDSzV:
-        print "order: %d nodes: %d" % (item.GetVal1(), item.GetVal2())
+        print("order: %d nodes: %d" % (item.GetVal1(), item.GetVal2()))
 
     Network = snap.GenRndGnm(snap.PNEANet, 100, 1000)
     CoreIDSzV = snap.TIntPrV()
     kValue = snap.GetKCoreNodes(Network, CoreIDSzV)
     for item in CoreIDSzV:
-        print "order: %d nodes: %d" % (item.GetVal1(), item.GetVal2())
+        print("order: %d nodes: %d" % (item.GetVal1(), item.GetVal2()))
 

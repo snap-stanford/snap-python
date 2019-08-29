@@ -30,4 +30,4 @@ The following example shows how to convert directed graph to un-directed graph u
 
 	UGraph = snap.GetUnDir(Graph)
 	for EI in UGraph.Edges():
-		print "edge (%d, %d)" % (EI.GetSrcNId(), EI.GetDstNId())
+		print("edge (%d, %d)" % (EI.GetSrcNId(), EI.GetDstNId()))

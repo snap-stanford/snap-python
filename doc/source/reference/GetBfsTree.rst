@@ -33,14 +33,14 @@ The following examples show how to use :func:`GetBfsTree` with graphs of type
     Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
     BfsTree = snap.GetBfsTree(Graph, 1, True, False)
     for EI in BfsTree.Edges():
-        print "Edge from %d to %d in generated tree." % (EI.GetSrcNId(), EI.GetDstNId())
+        print("Edge from %d to %d in generated tree." % (EI.GetSrcNId(), EI.GetDstNId()))
 
     UGraph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
     BfsTree = snap.GetBfsTree(UGraph, 1, True, False)
     for EI in BfsTree.Edges():
-        print "Edge from %d to %d in generated tree." % (EI.GetSrcNId(), EI.GetDstNId())
+        print("Edge from %d to %d in generated tree." % (EI.GetSrcNId(), EI.GetDstNId()))
 
     Network = snap.GenRndGnm(snap.PNEANet, 100, 1000)
     BfsTree = snap.GetBfsTree(Network, 1, True, False)
     for EI in BfsTree.Edges():
-        print "Edge from %d to %d in generated tree." % (EI.GetSrcNId(), EI.GetDstNId())
+        print("Edge from %d to %d in generated tree." % (EI.GetSrcNId(), EI.GetDstNId()))
