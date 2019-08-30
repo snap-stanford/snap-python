@@ -1,5 +1,5 @@
-Snap.py 4.1 Release Notes
-July 2018
+Snap.py 5.0 Release Notes
+August 2019
 
 Snap.py is a Python interface for SNAP (Stanford Network Analysis Platform).
 SNAP is a general purpose, high performance system for analysis and
@@ -10,6 +10,27 @@ Snap.py provides performance benefits of SNAP, combined with flexibility
 of Python. Most of the SNAP functionality is available via Snap.py in Python.
 
 This file contains a high-level description of changes in Snap.py releases.
+
+Release 5.0.0, Aug 30, 2019
+
+- implemented support for py3
+- implemented wheel packages and pip for py2 and py3
+- updated tests and documentation for py3
+- updated other python code for the py3 print function
+- upgraded build platforms to Ubuntu 18.04, macOS 14.10, Windows 10
+- upgraded Visual Studio files to VS2019
+- updated install_name_tool to the version from High Sierra 10.13
+- updated setup.py from distutils to setuptools
+- improved the tests for generated files, such as gnuplot files
+- removed the need for Unix dependent commands grep and rm in tests
+- commented out tests for PNG files, since these differ on various platforms
+- implemented various other improvements in tests
+- improved the update_dynlib.sh script 
+- improved the package build process
+- added a license text
+- added troubleshooting notes
+- improved documentation on graph creation
+- updated conf.py for the next release
 
 Release 4.1.0, Jul 27, 2018
 

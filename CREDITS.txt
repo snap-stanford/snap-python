@@ -11,6 +11,7 @@ The following people contributed to the development of Snap.py (in
 alphabetical order):
 Roger Chen
 Carlos Hernandez
+Farzaan Kaiyom
 Jure Leskovec
 Stephen Macke
 Ben Pastel
