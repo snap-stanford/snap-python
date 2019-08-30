@@ -19,7 +19,7 @@ import setuptools
 #
 #   Snap.py version
 #
-snappy_version = "5.2.7"
+snappy_version = "5.0.0"
 def getdynpath():
     '''
     get the path for the Python dynamic library
