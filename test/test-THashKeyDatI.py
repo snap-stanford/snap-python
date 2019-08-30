@@ -6,6 +6,6 @@ for i in range(500):
 
 it = h1.BegI()
 while not it.IsEnd():
-    print it.GetKey(), it.GetDat()
+    print(it.GetKey(), it.GetDat())
     it.Next()
 

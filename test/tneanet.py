@@ -159,7 +159,7 @@ def ManipulateAttributesId():
     while NI < Graph.EndNAIntI(attr2):
         if NI.GetDat() != 0:
            print("Attribute1: %s, Node: %i, Val: %d" % (attr2, NodeId, NI.GetDat()))
-           #print "Attribute: %s, Node: %i, Val: %d" % (attr2(), NodeId, NI.GetDat())
+           #print("Attribute: %s, Node: %i, Val: %d" % (attr2(), NodeId, NI.GetDat()))
         NodeId += 1
         NI.Next()
 
@@ -181,7 +181,7 @@ def ManipulateAttributesId():
     while NI < Graph.EndNAFltI(attr3):
         if NI.GetDat() != snap.TFlt.Mn:
             print("Attribute2: %s, Node: %i, Val: %f" % (attr3, NodeId, NI.GetDat()))
-            #print "Attribute: %s, Node: %i, Val: %f" % (attr3(), NodeId, NI.GetDat())
+            #print("Attribute: %s, Node: %i, Val: %f" % (attr3(), NodeId, NI.GetDat()))
         NodeId += 1
         NI.Next()
 
@@ -202,7 +202,7 @@ def ManipulateAttributesId():
     while NI < Graph.EndNAStrI(attr1):
         if NI.GetDat() != snap.TStr.GetNullStr():
             print("Attribute3: %s, Node: %i, Val: %s" % (attr1, NodeId, NI.GetDat()))
-            #print "Attribute: %s, Node: %i, Val: %s" % (attr1(), NodeId, NI.GetDat())
+            #print("Attribute: %s, Node: %i, Val: %s" % (attr1(), NodeId, NI.GetDat()))
         NodeId += 1
         NI.Next()
 
@@ -562,7 +562,7 @@ def ManipulateAttributesIter():
     while NI < Graph.EndNAIntI(attr2):
         if NI.GetDat() != 0:
            print("Attribute1: %s, Node: %i, Val: %d" % (attr2, NodeId, NI.GetDat()))
-           #print "Attribute: %s, Node: %i, Val: %d" % (attr2(), NodeId, NI.GetDat())
+           #print("Attribute: %s, Node: %i, Val: %d" % (attr2(), NodeId, NI.GetDat()))
         NodeId += 1
         NI.Next()
 
@@ -588,7 +588,7 @@ def ManipulateAttributesIter():
     while NI < Graph.EndNAFltI(attr3):
         if NI.GetDat() != snap.TFlt.Mn:
             print("Attribute2: %s, Node: %i, Val: %f" % (attr3, NodeId, NI.GetDat()))
-            #print "Attribute: %s, Node: %i, Val: %f" % (attr3(), NodeId, NI.GetDat())
+            #print("Attribute: %s, Node: %i, Val: %f" % (attr3(), NodeId, NI.GetDat()))
         NodeId += 1
         NI.Next()
 
@@ -612,7 +612,7 @@ def ManipulateAttributesIter():
     while NI < Graph.EndNAStrI(attr1):
         if NI.GetDat() != snap.TStr.GetNullStr():
             print("Attribute3: %s, Node: %i, Val: %s" % (attr1, NodeId, NI.GetDat()))
-            #print "Attribute: %s, Node: %i, Val: %s" % (attr1(), NodeId, NI.GetDat())
+            #print("Attribute: %s, Node: %i, Val: %s" % (attr1(), NodeId, NI.GetDat()))
         NodeId += 1
         NI.Next()
 

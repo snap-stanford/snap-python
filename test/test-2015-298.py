@@ -16,10 +16,10 @@ for SrcNId in range(1,n):
 
         EI = G.GetEI(SrcNId, DstNId)
         if EI.GetSrcNId() != SrcNId:
-            print "*** Error SrcNID (%d, %d), expected %d, got %d" % (
-                SrcNId, DstNId, SrcNId, EI.GetSrcNId())
+            print("*** Error SrcNID (%d, %d), expected %d, got %d" % (
+                SrcNId, DstNId, SrcNId, EI.GetSrcNId()))
 
         if EI.GetDstNId() != DstNId:
-            print "*** Error DstNID (%d, %d), expected %d, got %d" % (
-                SrcNId, DstNId, DstNId, EI.GetDstNId())
+            print("*** Error DstNID (%d, %d), expected %d, got %d" % (
+                SrcNId, DstNId, DstNId, EI.GetDstNId()))
 

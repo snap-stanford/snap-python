@@ -42,7 +42,7 @@ def main():
   #v2 = SwigPyList(pylist)
   #assert v2.Len() == n
   #assert v1 == v2     # Doesn't appear to check
-  #print "Converted %d values\n" % v2.Len()
+  #print("Converted %d values\n" % v2.Len())
   
   setup = """\
 import snap
@@ -50,17 +50,17 @@ from __main__ import PyListToTIntV, SwigPyList
 pylist = range(%d)
 """ % n
 
-  print "Method 1: Python-to-SNAP conversion:"
-  print "-" * 50
+  print("Method 1: Python-to-SNAP conversion:")
+  print("-" * 50)
   s1 = "v1 = PyListToTIntV(pylist)"
-#  print timeit.timeit(setup=setup, stmt=s1, number=5)/5.0
+#  print(timeit.timeit(setup=setup, stmt=s1, number=5)/5.0)
   cProfile.run(setup + s1)
  
-  print "Method 2: Python-to-SNAP conversion:"
-  print "-" * 50
+  print("Method 2: Python-to-SNAP conversion:")
+  print("-" * 50)
 
   s2 = "v2 = SwigPyList(pylist)"
-#  print timeit.timeit(setup=setup, stmt=s2, number=5)/5.0
+#  print(timeit.timeit(setup=setup, stmt=s2, number=5)/5.0)
   cProfile.run(setup + s2)
 
 if __name__ == "__main__":

@@ -18,7 +18,7 @@ table = snap.TTable.LoadSS(schema, tsv_file, context, "\t", snap.TBool(False))
 
 tmp = table.BegRI()
 while tmp < table.EndRI():
-    #print str(tmp)
+    #print(str(tmp))
     #print(tmp.GetFltAttr('distance'))
     print(tmp.GetIntAttr('srcID'), tmp.GetIntAttr('dstID'), tmp.GetFltAttr('distance'))
     #print(tmp.GetIntAttr('srcID'), tmp.GetIntAttr('dstID'), tmp.GetStrAttr('distance'))

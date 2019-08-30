@@ -7,8 +7,8 @@ Rnd.Randomize()
 
 for i in range(0,10):
     NId = G.GetRndNId()
-    print NId
+    print(NId)
 
     # result is not well formed, the following statement fails
-    #print NI.GetId()
+    #print(NI.GetId())
 

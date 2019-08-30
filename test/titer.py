@@ -8,23 +8,23 @@ def PrintGStats(s, Graph, nodes, edges, empty):
     Print graph statistics
     '''
 
-    print "%s graph %s, nodes %d (%d), edges %d (%d), empty %s (%s)" % (
+    print("%s graph %s, nodes %d (%d), edges %d (%d), empty %s (%s)" % (
         type(Graph), s, Graph.GetNodes(), nodes, Graph.GetEdges(), edges,
-        Graph.Empty(), empty)
+        Graph.Empty(), empty))
 
     if Graph.GetNodes() != nodes:
-        print "*** Error: %d %d, incorrect number of nodes" % (
-            Graph.GetNodes(), nodes)
+        print("*** Error: %d %d, incorrect number of nodes" % (
+            Graph.GetNodes(), nodes))
         sys.exit(1)
 
     if Graph.GetEdges() != edges:
-        print "*** Error: %d %d, incorrect number of edges" % (
-            Graph.GetEdges(), edges)
+        print("*** Error: %d %d, incorrect number of edges" % (
+            Graph.GetEdges(), edges))
         sys.exit(1)
 
     if Graph.Empty() != empty:
-        print "*** Error: %s %s, incorrect empty test" % (
-            Graph.Empty(), empty)
+        print("*** Error: %s %s, incorrect empty test" % (
+            Graph.Empty(), empty))
         sys.exit(1)
 
 def GenGraph1(gtype):
@@ -38,23 +38,23 @@ def GenGraph1(gtype):
     if gtype == PNEANet:
         # PNEANet
         Graph = GenRndGnm(NNodes, NEdges)
-        print "type %s" % (type(Graph))
-        print "nodes %d, edges %d" % (Graph.GetNodes(), Graph.GetEdges())
+        print("type %s" % (type(Graph)))
+        print("nodes %d, edges %d" % (Graph.GetNodes(), Graph.GetEdges()))
         return Graph
 
     if gtype == PUNGraph:
         # PUNGraph
         Graph = GenRndGnm_PUNGraph(NNodes, NEdges)
-        print "type %s" % (type(Graph))
-        print "nodes %d, edges %d" % (Graph.GetNodes(), Graph.GetEdges())
+        print("type %s" % (type(Graph)))
+        print("nodes %d, edges %d" % (Graph.GetNodes(), Graph.GetEdges()))
         return Graph
 
     if gtype == PNGraph:
         # PNGraph
         #Graph = GenRndGnm_PNGraph(NNodes, NEdges)
         Graph = GenRndGnm_PNGraph(NNodes, NEdges)
-        print "type %s" % (type(Graph))
-        print "nodes %d, edges %d" % (Graph.GetNodes(), Graph.GetEdges())
+        print("type %s" % (type(Graph)))
+        print("nodes %d, edges %d" % (Graph.GetNodes(), Graph.GetEdges()))
         return Graph
 
     return None
@@ -64,18 +64,18 @@ def ManipulateNodesEdges(Graph):
     Test node, edge creation
     '''
 
-    print "4type %s" % (type(Graph))
-    print "4nodes %d, edges %d" % (Graph.GetNodes(), Graph.GetEdges())
+    print("4type %s" % (type(Graph)))
+    print("4nodes %d, edges %d" % (Graph.GetNodes(), Graph.GetEdges()))
 
     Graph.Clr()
-    print "5nodes %d, edges %d" % (Graph.GetNodes(), Graph.GetEdges())
+    print("5nodes %d, edges %d" % (Graph.GetNodes(), Graph.GetEdges()))
 
     NNodes = 12345
     NEdges = 123456
     FName = "test.graph"
 
     #Graph = TNEANet()
-    #print "5type %s" % (type(Graph))
+    #print("5type %s" % (type(Graph)))
 
     t = Graph.Empty()
 
@@ -115,15 +115,15 @@ def ManipulateNodesEdges(Graph):
     for EI in Graph.Edges():
         ECount2 += 1
 
-    print "graph ManipulateNodesEdges:Graph2, nodes %d, edges1 %d, edges2 %d (%d)"\
-        % (NCount, ECount1, ECount2, ECount1*2)
+    print("graph ManipulateNodesEdges:Graph2, nodes %d, edges1 %d, edges2 %d (%d)"\
+        % (NCount, ECount1, ECount2, ECount1*2))
 
     # assignment
     Graph1 = Graph
     PrintGStats("ManipulateNodesEdges:Graph3", Graph1, NNodes, NEdges, False)
 
     # save the graph
-    print "graph type = ", type(Graph)
+    print("graph type = ", type(Graph))
     FOut = TFOut(TStr(FName))
     Graph.Save(FOut)
     FOut.Flush()
@@ -150,81 +150,81 @@ def ManipulateNodesEdges(Graph):
 
 def NewGraph():
 
-    print "----- New TUNGraph -----"
+    print("----- New TUNGraph -----")
     Graph = TUNGraph.New()
     #Graph = PUNGraph.New()
-    print "6type %s" % (type(Graph))
-    print "connected", IsConnected(Graph)
-    #print "connected", IsConnected_PNEANet(Graph)
+    print("6type %s" % (type(Graph)))
+    print("connected", IsConnected(Graph))
+    #print("connected", IsConnected_PNEANet(Graph))
     PrintGStats("ManipulateNodesEdges:Graph" , Graph, 0, 0, True)
 
     Graph = GenRndGnm(PUNGraph, 23, 234)
-    print "type %s" % (type(Graph))
-    print "nodes %d, edges %d" % (Graph.GetNodes(), Graph.GetEdges())
-    print "connected", IsConnected(Graph)
-    print "connected", IsConnected_PUNGraph(Graph)
+    print("type %s" % (type(Graph)))
+    print("nodes %d, edges %d" % (Graph.GetNodes(), Graph.GetEdges()))
+    print("connected", IsConnected(Graph))
+    print("connected", IsConnected_PUNGraph(Graph))
     PrintGStats("ManipulateNodesEdges:Graph" , Graph, 23, 234, False)
     for NI in Graph.Nodes():
-        print NI.GetId()
+        print(NI.GetId())
     for EI in Graph.Edges():
-        print EI.GetId()
+        print(EI.GetId())
 
 def Main():
 
-    print "----- PNEANet -----"
+    print("----- PNEANet -----")
     Graph = TNEANet.New()
     #Graph = PNEANet.New()
-    print "6type %s" % (type(Graph))
-    print "connected", IsConnected(Graph)
-    #print "connected", IsConnected_PNEANet(Graph)
+    print("6type %s" % (type(Graph)))
+    print("connected", IsConnected(Graph))
+    #print("connected", IsConnected_PNEANet(Graph))
     PrintGStats("ManipulateNodesEdges:Graph" , Graph, 0, 0, True)
 
     Graph = GenRndGnm(PNEANet, 23, 234)
-    print "type %s" % (type(Graph))
-    print "nodes %d, edges %d" % (Graph.GetNodes(), Graph.GetEdges())
-    print "connected", IsConnected(Graph)
-    print "connected", IsConnected_PNEANet(Graph)
+    print("type %s" % (type(Graph)))
+    print("nodes %d, edges %d" % (Graph.GetNodes(), Graph.GetEdges()))
+    print("connected", IsConnected(Graph))
+    print("connected", IsConnected_PNEANet(Graph))
     PrintGStats("ManipulateNodesEdges:Graph" , Graph, 23, 234, False)
     for NI in Graph.Nodes():
-        print NI.GetId()
+        print(NI.GetId())
     for EI in Graph.Edges():
-        print EI.GetId()
+        print(EI.GetId())
 
-    print "----- ManipulateNodesEdges -----"
+    print("----- ManipulateNodesEdges -----")
     ManipulateNodesEdges(Graph)
 
-    print "----- PUNGraph -----"
+    print("----- PUNGraph -----")
     Graph = TUNGraph.New()
-    print "6type %s" % (type(Graph))
+    print("6type %s" % (type(Graph)))
     PrintGStats("ManipulateNodesEdges:Graph" , Graph, 0, 0, True)
 
     Graph = GenRndGnm(PUNGraph, 34, 345)
-    print "type %s" % (type(Graph))
-    print "nodes %d, edges %d" % (Graph.GetNodes(), Graph.GetEdges())
+    print("type %s" % (type(Graph)))
+    print("nodes %d, edges %d" % (Graph.GetNodes(), Graph.GetEdges()))
     PrintGStats("ManipulateNodesEdges:Graph" , Graph, 34, 345, False)
     for NI in Graph.Nodes():
-        print NI.GetId()
+        print(NI.GetId())
     for EI in Graph.Edges():
-        print EI.GetId()
+        print(EI.GetId())
 
-    print "----- ManipulateNodesEdges -----"
+    print("----- ManipulateNodesEdges -----")
     ManipulateNodesEdges(Graph)
 
-    print "----- PNGraph -----"
+    print("----- PNGraph -----")
     Graph = TNGraph.New()
-    print "6type %s" % (type(Graph))
+    print("6type %s" % (type(Graph)))
     PrintGStats("ManipulateNodesEdges:Graph" , Graph, 0, 0, True)
 
     Graph = GenRndGnm(PNGraph, 45, 456)
-    print "type %s" % (type(Graph))
-    print "nodes %d, edges %d" % (Graph.GetNodes(), Graph.GetEdges())
+    print("type %s" % (type(Graph)))
+    print("nodes %d, edges %d" % (Graph.GetNodes(), Graph.GetEdges()))
     PrintGStats("ManipulateNodesEdges:Graph" , Graph, 45, 456, False)
     for NI in Graph.Nodes():
-        print NI.GetId()
+        print(NI.GetId())
     for EI in Graph.Edges():
-        print EI.GetId()
+        print(EI.GetId())
 
-    print "----- ManipulateNodesEdges -----"
+    print("----- ManipulateNodesEdges -----")
     ManipulateNodesEdges(Graph)
 
 if __name__ == '__main__':
