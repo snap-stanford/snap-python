@@ -25,7 +25,7 @@ for NI in G.Nodes():
         val = eid
         G.AddIntAttrDatE(eid, val, "EValInt")
 
-# print out attribute values
+# print(out attribute values)
 
 for NI in G.Nodes():
     nid = NI.GetId()

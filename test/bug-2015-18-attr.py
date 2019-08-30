@@ -35,5 +35,5 @@ for x in Gnea.Edges():
 
 # Retrieve the attribute "weight"
 for x in Gnea.Edges():              
-    print Gnea.GetIntAttrDatE(x.GetId(), 'weight')
+    print(Gnea.GetIntAttrDatE(x.GetId(), 'weight'))
 

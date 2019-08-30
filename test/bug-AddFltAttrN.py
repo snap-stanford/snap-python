@@ -10,5 +10,5 @@ G.AddFltAttrDatN(nid, float(10), "NValFlt3")
 fval = G.GetFltAttrDatN(nid, "NValFlt")
 fval2 = G.GetFltAttrDatN(nid,  "NValFlt2")
 fval3 = G.GetFltAttrDatN(nid,  "NValFlt3")
-print fval, fval2, fval3 # prints 10.0, 10.0, 10.0 instead of 1.0, 5.0, 10.0
+print(fval, fval2, fval3) # prints 10.0, 10.0, 10.0 instead of 1.0, 5.0, 10.0
 
