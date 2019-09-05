@@ -34,6 +34,8 @@
 #		    subst P: <path_to_snap_python>
 #			example path: C:\cygwin\home\<user>\git\snap-python-64
 #		- build
+#		  - use Configuration
+#		    Release, x64
 #	- run setup.py in Cygwin to generate the package,
 #	  EXECUTE LOCALLY DIRECTLY IN CYGWIN ON THE HOST, NOT OVER SSH
 #		make srcdist-win      # build Windows source distribution
@@ -54,6 +56,8 @@
 #		    subst P: <path_to_snap_python>
 #			example path: C:\cygwin\home\<user>\git\snap-python-64
 #		- build
+#		  - use Configuration
+#		    Release, x64
 #	- run setup.py in Cygwin to generate the package,
 #	  EXECUTE LOCALLY DIRECTLY IN CYGWIN ON THE HOST, NOT OVER SSH
 #		make srcdist3-win     # build Windows source distribution
