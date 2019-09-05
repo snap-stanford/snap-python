@@ -241,7 +241,7 @@ with open("README.txt", "r") as fh:
 #   setup configuration
 #
 setuptools.setup(
-    name = 'snap',
+    name = 'snap-stanford',
     py_modules  = [ "snap" ],
     data_files  = [(user_install, [ obj_name ])],
     scripts     = script_files,
