@@ -6,12 +6,14 @@
 #		make all             # apply SWIG and compile the code
 #		make srcdist         # build source distribution
 #		make whldist         # build wheel distribution
+#		make pip-test        # upload to private test pip
+#		make pip-public      # upload to public release pip
 # Build instructions for py3 on macOS and Linux:
 #		make all3            # apply SWIG and compile the code
 #		make srcdist3        # build source distribution for py3
 #		make whldist3        # build wheel distribution for py3
-#		make pip-test        # upload to private test pip
-#		make pip-public      # upload to public release pip
+#		make pip3-test       # upload to private test pip
+#		make pip3-public     # upload to public release pip
 #
 # NOTE: python2 build on macOS
 #	- use system python on macOS to compile
@@ -105,14 +107,14 @@ snap_wrap3.cxx: snap.i snap_types.i tvec.i pneanet.i tmodenet.i tcrossnet.i pung
 	ln -f snap_wrap.cxx snap_wrap3.cxx
 
 snap_wrap.o: snap_wrap.cxx
-	g++ $(CXXFLAGS) -c snap_wrap.cxx -I$(SNAPDIR)  -I$(GLIBDIR) $(IFLAGS)
+	g++ $(CXXFLAGS) -c snap_wrap.cxx -I$(SNAPDIR) -I$(GLIBDIR) $(IFLAGS)
 
 snap_wrap3.o: snap_wrap3.cxx
-	g++ $(CXXFLAGS) -c snap_wrap3.cxx -I$(SNAPDIR)  -I$(GLIBDIR) $(IFLAGS3) -o snap_wrap.o
+	/usr/bin/time -v g++ $(CXXFLAGS) -c snap_wrap3.cxx -I$(SNAPDIR) -I$(GLIBDIR) $(IFLAGS3) -o snap_wrap.o
 	ln -f snap_wrap.o snap_wrap3.o
 
 Snap.o: 
-	$(CC) $(CXXFLAGS) -c $(SNAPDIR)/Snap.cpp -I$(SNAPDIR)  -I$(GLIBDIR)
+	$(CC) $(CXXFLAGS) -c $(SNAPDIR)/Snap.cpp -I$(SNAPDIR) -I$(GLIBDIR)
 
 cliques.o: 
 	$(CC) $(CXXFLAGS) -c $(SNAPADVDIR)/cliques.cpp -I$(SNAPDIR) -I$(SNAPADVDIR) -I$(GLIBDIR)
@@ -140,10 +142,12 @@ install: setup.py snap.py _snap.so
 
 srcdist: setup.py snap.py _snap.so
 	cp $(MANIFEST) MANIFEST
+	cp $(MANIFEST_IN) MANIFEST.in
 	$(PYTHON) setup.py sdist
 
 whldist: setup.py snap.py _snap.so
 	cp $(MANIFEST) MANIFEST
+	cp $(MANIFEST_IN) MANIFEST.in
 	$(PYTHON) setup.py bdist_wheel
 ifeq ($(UNAME), Linux)
 	# change name '-linux_' to '-linuxmany1_' as required by pip
@@ -152,10 +156,12 @@ endif
 
 srcdist3: setup.py snap3.py _snap3.so snap.py
 	cp $(MANIFEST) MANIFEST
+	cp $(MANIFEST_IN) MANIFEST.in
 	python3 setup.py sdist
 
 whldist3: setup.py snap3.py _snap3.so snap.py
 	cp $(MANIFEST) MANIFEST
+	cp $(MANIFEST_IN) MANIFEST.in
 	python3 setup.py bdist_wheel
 ifeq ($(UNAME), Linux)
 	# change name '-linux_' to '-linuxmany1_' as required by pip
@@ -171,20 +177,24 @@ install-win: setup.py snap.py _snap.pyd
 
 srcdist-win: setup.py snap.py _snap.pyd
 	cp $(MANIFEST) MANIFEST
+	cp $(MANIFEST_IN) MANIFEST.in
 	$(PYTHON) setup.py sdist --formats=zip
 	chmod 0644 dist/*.zip
 
 srcdist3-win: setup.py snap.py _snap.pyd
 	cp $(MANIFEST) MANIFEST
+	cp $(MANIFEST_IN) MANIFEST.in
 	"$(PYTHON3)" setup.py sdist --formats=zip
 	chmod 0644 dist/*.zip
 
 whldist-win: setup.py snap.py _snap.pyd
 	cp $(MANIFEST) MANIFEST
+	cp $(MANIFEST_IN) MANIFEST.in
 	$(PYTHON) setup.py bdist_wheel
 
 whldist3-win: setup.py snap.py _snap.pyd
 	cp $(MANIFEST) MANIFEST
+	cp $(MANIFEST_IN) MANIFEST.in
 	"$(PYTHON3)" setup.py bdist_wheel
 
 clean:
