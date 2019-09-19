@@ -110,7 +110,7 @@ snap_wrap.o: snap_wrap.cxx
 	g++ $(CXXFLAGS) -c snap_wrap.cxx -I$(SNAPDIR) -I$(GLIBDIR) $(IFLAGS)
 
 snap_wrap3.o: snap_wrap3.cxx
-	/usr/bin/time -v g++ $(CXXFLAGS) -c snap_wrap3.cxx -I$(SNAPDIR) -I$(GLIBDIR) $(IFLAGS3) -o snap_wrap.o
+	g++ $(CXXFLAGS) -c snap_wrap3.cxx -I$(SNAPDIR) -I$(GLIBDIR) $(IFLAGS3) -o snap_wrap.o
 	ln -f snap_wrap.o snap_wrap3.o
 
 Snap.o: 
