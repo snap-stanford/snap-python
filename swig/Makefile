@@ -91,10 +91,10 @@ snap.py: snap_wrap.cxx
 snap3.py: snap_wrap3.cxx
 
 _snap.so: snap_wrap.o Snap.o cliques.o agm.o agmfast.o agmfit.o biasedrandomwalk.o word2vec.o n2v.o
-	g++ $(LDFLAGS) -o _snap.so snap_wrap.o Snap.o cliques.o agm.o agmfast.o agmfit.o biasedrandomwalk.o word2vec.o n2v.o $(LIBS)
+	$(CXX) $(LDFLAGS) -o _snap.so snap_wrap.o Snap.o cliques.o agm.o agmfast.o agmfit.o biasedrandomwalk.o word2vec.o n2v.o $(LIBS)
 
 _snap3.so: snap_wrap3.o Snap.o 
-	g++ $(LDFLAGS3) -o _snap.so snap_wrap3.o Snap.o  $(LIBS)
+	$(CXX) $(LDFLAGS3) -o _snap.so snap_wrap3.o Snap.o  $(LIBS)
 	ln -f _snap.so _snap3.so
 
 snap_wrap.cxx: snap.i snap_types.i tvec.i pneanet.i tmodenet.i tcrossnet.i pungraph.i pngraph.i pgraph.i pngraphmp.i pneanetmp.i\
@@ -107,35 +107,35 @@ snap_wrap3.cxx: snap.i snap_types.i tvec.i pneanet.i tmodenet.i tcrossnet.i pung
 	ln -f snap_wrap.cxx snap_wrap3.cxx
 
 snap_wrap.o: snap_wrap.cxx
-	g++ $(CXXFLAGS) -c snap_wrap.cxx -I$(SNAPDIR) -I$(GLIBDIR) $(IFLAGS)
+	$(CXX) $(CXXFLAGS) -c snap_wrap.cxx -I$(SNAPDIR) -I$(GLIBDIR) $(IFLAGS)
 
 snap_wrap3.o: snap_wrap3.cxx
-	g++ $(CXXFLAGS) -c snap_wrap3.cxx -I$(SNAPDIR) -I$(GLIBDIR) $(IFLAGS3) -o snap_wrap.o
+	$(CXX) $(CXXFLAGS) -c snap_wrap3.cxx -I$(SNAPDIR) -I$(GLIBDIR) $(IFLAGS3) -o snap_wrap.o
 	ln -f snap_wrap.o snap_wrap3.o
 
 Snap.o: 
-	$(CC) $(CXXFLAGS) -c $(SNAPDIR)/Snap.cpp -I$(SNAPDIR) -I$(GLIBDIR)
+	$(CXX) $(CXXFLAGS) -c $(SNAPDIR)/Snap.cpp -I$(SNAPDIR) -I$(GLIBDIR)
 
 cliques.o: 
-	$(CC) $(CXXFLAGS) -c $(SNAPADVDIR)/cliques.cpp -I$(SNAPDIR) -I$(SNAPADVDIR) -I$(GLIBDIR)
+	$(CXX) $(CXXFLAGS) -c $(SNAPADVDIR)/cliques.cpp -I$(SNAPDIR) -I$(SNAPADVDIR) -I$(GLIBDIR)
 
 agm.o: 
-	$(CC) $(CXXFLAGS) -c $(SNAPADVDIR)/agm.cpp -I$(SNAPDIR) -I$(SNAPADVDIR) -I$(GLIBDIR)
+	$(CXX) $(CXXFLAGS) -c $(SNAPADVDIR)/agm.cpp -I$(SNAPDIR) -I$(SNAPADVDIR) -I$(GLIBDIR)
 
 agmfast.o: 
-	$(CC) $(CXXFLAGS) -c $(SNAPADVDIR)/agmfast.cpp -I$(SNAPDIR) -I$(SNAPADVDIR) -I$(GLIBDIR)
+	$(CXX) $(CXXFLAGS) -c $(SNAPADVDIR)/agmfast.cpp -I$(SNAPDIR) -I$(SNAPADVDIR) -I$(GLIBDIR)
 
 agmfit.o: 
-	$(CC) $(CXXFLAGS) -c $(SNAPADVDIR)/agmfit.cpp -I$(SNAPDIR) -I$(SNAPADVDIR) -I$(GLIBDIR)
+	$(CXX) $(CXXFLAGS) -c $(SNAPADVDIR)/agmfit.cpp -I$(SNAPDIR) -I$(SNAPADVDIR) -I$(GLIBDIR)
 
 biasedrandomwalk.o: 
-	$(CC) $(CXXFLAGS) -c $(SNAPADVDIR)/biasedrandomwalk.cpp -I$(SNAPDIR) -I$(SNAPADVDIR) -I$(GLIBDIR)
+	$(CXX) $(CXXFLAGS) -c $(SNAPADVDIR)/biasedrandomwalk.cpp -I$(SNAPDIR) -I$(SNAPADVDIR) -I$(GLIBDIR)
 
 word2vec.o: 
-	$(CC) $(CXXFLAGS) -c $(SNAPADVDIR)/word2vec.cpp -I$(SNAPDIR) -I$(SNAPADVDIR) -I$(GLIBDIR)
+	$(CXX) $(CXXFLAGS) -c $(SNAPADVDIR)/word2vec.cpp -I$(SNAPDIR) -I$(SNAPADVDIR) -I$(GLIBDIR)
 
 n2v.o: 
-	$(CC) $(CXXFLAGS) -c $(SNAPADVDIR)/n2v.cpp -I$(SNAPDIR) -I$(SNAPADVDIR) -I$(GLIBDIR)
+	$(CXX) $(CXXFLAGS) -c $(SNAPADVDIR)/n2v.cpp -I$(SNAPDIR) -I$(SNAPADVDIR) -I$(GLIBDIR)
 
 install: setup.py snap.py _snap.so
 	sudo $(PYTHON) setup.py install
