@@ -228,7 +228,7 @@ TCrossNet
 
      .. describe:: Save(SOut)
 
-        Saves the crossnet to a binary stream *SOut*. 
+        Saves the crossnet to a binary stream *SOut* of type :class:`TFOut`. 
 
      .. describe:: GetEdges()
 
@@ -463,11 +463,11 @@ TMMNet
 
      .. describe:: Load(SIn)
 
-        Loads the multimodal network from a binary stream *SIn* and returns a pointer to it. 
+        Loads the multimodal network from a binary stream *SIn* (of type :class:`TFIn`) and returns a pointer to it. 
 
      .. describe:: Save(SOut)
 
-        Saves the multimodal network to a binary stream *SOut*. 
+        Saves the multimodal network to a binary stream *SOut* of type :class:`TFOut`. 
 
      .. describe:: GetModeNets()
 

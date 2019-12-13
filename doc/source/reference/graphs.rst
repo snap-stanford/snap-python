@@ -42,11 +42,11 @@ TUNGraph
 
      .. describe:: Load(SIn)
 
-        Loads a graph from a binary stream *SIn* and returns a pointer to it. 
+        Loads a graph from a binary stream *SIn* (of type :class:`TFIn`) and returns a pointer to it. 
 
      .. describe:: Save(SOut)
 
-        Saves the graph to a binary stream *SOut*. 
+        Saves the graph to a binary stream *SOut* (of type :class:`TFOut`). 
 
      .. describe:: Nodes()
 
@@ -335,11 +335,11 @@ TNGraph
 
      .. describe:: Load(SIn)
 
-        Loads a graph from a binary stream *SIn* and returns a pointer to it. 
+        Loads a graph from a binary stream *SIn* (of type :class:`TFIn`) and returns a pointer to it. 
 
      .. describe:: Save(SOut)
 
-        Saves the graph to a binary stream *SOut*. 
+        Saves the graph to a binary stream *SOut* of type :class:`TFOut`. 
 
      .. describe:: Nodes()
 
@@ -634,11 +634,11 @@ TNEANet
 
      .. describe:: Load(SIn)
 
-        Loads a graph from a binary stream *SIn* and returns a pointer to it. 
+        Loads a graph from a binary stream *SIn* (of type :class:`TFIn`) and returns a pointer to it. 
 
      .. describe:: Save(SOut)
 
-        Saves the graph to a binary stream *SOut*. 
+        Saves the graph to a binary stream *SOut* of type :class:`TFOut`. 
 
      .. describe:: Nodes()
 
@@ -1347,11 +1347,11 @@ TUndirNet
 
      .. describe:: Load(SIn)
 
-        Loads a graph from a binary stream *SIn* and returns a pointer to it. 
+        Loads a graph from a binary stream *SIn* (of type :class:`TFIn`) and returns a pointer to it. 
 
      .. describe:: Save(SOut)
 
-        Saves the graph to a binary stream *SOut*. 
+        Saves the graph to a binary stream *SOut* of type :class:`TFOut`. 
 
      .. describe:: GetNodes()
 
@@ -1712,11 +1712,11 @@ TDirNet
 
      .. describe:: Load(SIn)
 
-        Loads a graph from a binary stream *SIn* and returns a pointer to it. 
+        Loads a graph from a binary stream *SIn* (of type :class:`TFIn`) and returns a pointer to it. 
 
      .. describe:: Save(SOut)
 
-        Saves the graph to a binary stream *SOut*. 
+        Saves the graph to a binary stream *SOut* of type :class:`TFOut`. 
 
      .. describe:: GetNodes()
 

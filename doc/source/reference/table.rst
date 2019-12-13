@@ -113,7 +113,7 @@ TTable
 
    Returns a new table. If no parameters are provided, an empty table is returned. If
    *S* and *Context* are provided, the table is initialized with the provided Schema and
-   TTableContext. If *SIn* is provided, the table is read from the binary stream. If *H*, a
+   TTableContext. If *SIn* is provided, the table is read from the binary stream (of type :class:`TFIn`). If *H*, a
    :class:`THash` with :class:`TInt` keys and either :class:`TInt` or :class:`TFlt` values,
    is given, the TTable is constructed from the hash table. If *IsStrKeys* is True, then 
    the :class:`TInt` keys in *H* refer to strings in the *Context*. *Col1* provides the name
@@ -454,7 +454,7 @@ TTable
 
       .. describe:: Load(SIn, Context)
 
-         Loads table from the input stream *SIn* using
+         Loads table from the input stream *SIn* (of type :class:`TFIn`) using
          :class:`TTableContext` *Context*. Returns a :class:`PTable`.
 
       .. describe:: LoadSS(Schema, InFNm, Context, Separator='\\t', HasTitleLine=False)
