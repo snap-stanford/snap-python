@@ -1,3 +1,24 @@
+Installation
+````````````
+Detailed installation instructions can be found at: https://snap.stanford.edu/snappy/.
+
+To install using pip, use the following command (with sudo privileges and pip3, in brackets,
+included as necessary depending on OS and Python version):
+
+>>> [sudo] pip[3] install snap-stanford 
+
+To install using either the Anaconda or Miniconda package managers, use the following 
+command:
+
+>>> conda install -c snap-stanford snap-stanford
+
+Alternate installation methods and commands for supported operating systems can be found at:
+https://docs.google.com/spreadsheets/d/1m-5gHUmGzh8XfLUCAY3eYvdcBA98TUMMusVZkwmpdaI/. Note that
+on macOS 10.13, the setup.py installation script from https://snap.stanford.edu/snappy/ must 
+be used over pip. If using setup.py to install Snap.py, do not test the installation in the same
+directory as the install.
+
+
 Introduction
 ````````````
 
