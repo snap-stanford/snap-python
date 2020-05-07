@@ -20,6 +20,9 @@
         TUNGraphEdgeI GetEI(const int &SrcNId, const int &DstNId) {
           return TUNGraphEdgeI($self->GetEI(SrcNId, DstNId));
         }
+        int CntSelfEdges(){
+            return TSnap::CntSelfEdges(PUNGraph($self));
+        }
 };
 
 %pythoncode %{
