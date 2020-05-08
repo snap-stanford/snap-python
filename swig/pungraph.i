@@ -1,6 +1,6 @@
 // pungraph.i
 // Templates for SNAP TUNGraph, PUNGraph
-
+    
 %extend TUNGraph {
         TUNGraphNodeI BegNI() {
                 return TUNGraphNodeI($self->BegNI());
@@ -20,9 +20,6 @@
         TUNGraphEdgeI GetEI(const int &SrcNId, const int &DstNId) {
           return TUNGraphEdgeI($self->GetEI(SrcNId, DstNId));
         }
-        int CntSelfEdges(){
-            return TSnap::CntSelfEdges(PUNGraph($self));
-        }
 };
 
 %pythoncode %{
@@ -32,6 +29,15 @@ def GetId(self):
 
 TUNGraphEdgeI.GetId = GetId
 %}
+
+
+// Add class functions
+%extend TUNGraph {
+    int CntSelfEdges(){
+        return TSnap::CntSelfEdges(PUNGraph($self));
+    }
+};
+
 
 // Basic Undirected Graphs
 
@@ -220,3 +226,16 @@ TUNGraphEdgeI.GetId = GetId
 // conv.h - PUNGraph
 %template(ToGraph_PUNGraph) TSnap::ToGraph<PUNGraph>;
 
+
+// Accept list as arguments 
+%pythoncode %{
+    def GetEdgesInOut_PUNGraph(Graph: 'PUNGraph', NIdV: 'TIntV, List[int]'):
+        if type(NIdV) == list:
+            NIdV_snap = TIntV()
+            for NId in NIdV:
+                NIdV_snap.Add(NId)
+
+            return _snap.GetEdgesInOut_PUNGraph(Graph, NIdV_snap)
+        else:
+            return _snap.GetEdgesInOut_PUNGraph(Graph, NIdV)
+%}
