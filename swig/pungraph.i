@@ -239,3 +239,11 @@ TUNGraphEdgeI.GetId = GetId
         else:
             return _snap.GetEdgesInOut_PUNGraph(Graph, NIdV)
 %}
+
+// Move function parameter into return
+%pythoncode %{
+    def GetDegCnt_PUNGraph(Graph: 'PUNGraph'):
+        DegToCntV = TIntPrV()
+        _snap.GetDegCnt_PUNGraph(Graph, DegToCntV)
+        return DegToCntV
+%}
