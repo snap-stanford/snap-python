@@ -229,6 +229,7 @@ TUNGraphEdgeI.GetId = GetId
 
 // Accept list as arguments 
 %pythoncode %{
+    # Redefine functions to accept lists as arguments
     def GetEdgesInOut_PUNGraph(Graph: 'PUNGraph', NIdV: 'TIntV, List[int]'):
         if type(NIdV) == list:
             NIdV_snap = TIntV()
@@ -242,8 +243,19 @@ TUNGraphEdgeI.GetId = GetId
 
 // Move function parameter into return
 %pythoncode %{
+    # Redefine functions that should be returning arguments
     def GetDegCnt_PUNGraph(Graph: 'PUNGraph'):
         DegToCntV = TIntPrV()
         _snap.GetDegCnt_PUNGraph(Graph, DegToCntV)
         return DegToCntV
+%}
+
+// Overloaded functions
+%pythoncode %{
+    #Redefine overloaded functions
+    def LoadEdgeList_PUNGraph(InFNm, SrcColld, DstColld, Separator = None):
+        if Separator is not None:
+            return _snap.LoadEdgeList_PUNGraph(InFNm, SrcColld, DstColld, Separator)
+        else:
+            return _snap.LoadEdgeList_PUNGraph(InFNm, SrcColld, DstColld)
 %}
