@@ -156,6 +156,84 @@
   
 };
 
+
+//Add class functions
+%extend TNEANet{
+    int CntDegNodes(const int& NodeDeg){
+        return TSnap::CntDegNodes(PNEANet($self), NodeDeg);
+    }
+    int CntInDegNodes(const int& NodeInDeg){
+        return TSnap::CntInDegNodes(PNEANet($self), NodeInDeg);
+    }
+    int CntOutDegNodes(const int& NodeOutDeg){
+        return TSnap::CntOutDegNodes(PNEANet($self), NodeOutDeg);
+    }
+    int CntNonZNodes(){
+        return TSnap::CntNonZNodes(PNEANet($self));
+    }
+    void GetDegCnt(TIntPrV& DegToCntV){
+        return TSnap::GetDegCnt(PNEANet($self), DegToCntV);
+    }
+    void GetDegCnt(TFltPrV& DegToCntV){
+        return TSnap::GetDegCnt(PNEANet($self), DegToCntV);
+    }
+    void GetInDegCnt(TIntPrV& DegToCntV){
+        return TSnap::GetInDegCnt(PNEANet($self), DegToCntV);
+    }
+    void GetInDegCnt(TFltPrV& DegToCntV){
+        return TSnap::GetInDegCnt(PNEANet($self), DegToCntV);
+    }
+    void GetOutDegCnt(TIntPrV& DegToCntV){
+        return TSnap::GetOutDegCnt(PNEANet($self), DegToCntV);
+    }
+    void GetOutDegCnt(TFltPrV& DegToCntV){
+        return TSnap::GetOutDegCnt(PNEANet($self), DegToCntV);
+    }
+    int GetMxDegNId(){
+        return TSnap::GetMxDegNId(PNEANet($self));
+    }
+    int GetMxInDegNId(){
+        return TSnap::GetMxInDegNId(PNEANet($self));
+    }
+    int GetMxOutDegNId(){
+        return TSnap::GetMxOutDegNId(PNEANet($self));
+    }
+    void GetNodeInDegV(TIntPrV& NIdInDegV){
+        return TSnap::GetNodeInDegV(PNEANet($self), NIdInDegV);
+    }
+    void GetNodeOutDegV(TIntPrV& NIdOutDegV){
+        return TSnap::GetNodeOutDegV(PNEANet($self), NIdOutDegV);
+    }
+    void GetDegSeqV(TIntV& DegV){
+        return TSnap::GetDegSeqV(PNEANet($self), DegV);
+    }
+    void GetDegSeqV(TIntV& InDegV, TIntV& OutDegV){
+        return TSnap::GetDegSeqV(PNEANet($self), InDegV, OutDegV);
+    }
+    int CntSelfEdges(){
+        return TSnap::CntSelfEdges(PNEANet($self));
+    }
+    int CntUniqBiDirEdges(){
+        return TSnap::CntUniqBiDirEdges(PNEANet($self));
+    }
+    int CntUniqDirEdges(){
+        return TSnap::CntUniqDirEdges(PNEANet($self));
+    }
+    int CntUniqUndirEdges(){
+        return TSnap::CntUniqUndirEdges(PNEANet($self));
+    }
+    int CntEdgesToSet(const int& NId, const TIntSet& NodeSet){
+        return TSnap::CntEdgesToSet(PNEANet($self), NId, NodeSet);
+    }
+    bool IsTree(int& RootNIdX){
+        return TSnap::IsTree(PNEANet($self), RootNIdX);
+    }
+    void PrintInfo(const TStr& Desc="", const TStr& OutFNm="", const bool& Fast=true){
+        return TSnap::PrintInfo(PNEANet($self), Desc, OutFNm, Fast);
+    }
+};
+
+
 // Convert a directed graph to a multi-edge attribute graph
 //%template(ConvertGraphToPNEANet) ConvertGraph<PNEANet, PNGraph>;
 

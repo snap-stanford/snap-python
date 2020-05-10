@@ -22,6 +22,84 @@
         }
 };
 
+
+//Add class functions
+%extend TNGraph{
+    int CntDegNodes(const int& NodeDeg){
+        return TSnap::CntDegNodes(PNGraph($self), NodeDeg);
+    }
+    int CntInDegNodes(const int& NodeInDeg){
+        return TSnap::CntInDegNodes(PNGraph($self), NodeInDeg);
+    }
+    int CntOutDegNodes(const int& NodeOutDeg){
+        return TSnap::CntOutDegNodes(PNGraph($self), NodeOutDeg);
+    }
+    int CntNonZNodes(){
+        return TSnap::CntNonZNodes(PNGraph($self));
+    }
+    void GetDegCnt(TIntPrV& DegToCntV){
+        return TSnap::GetDegCnt(PNGraph($self), DegToCntV);
+    }
+    void GetDegCnt(TFltPrV& DegToCntV){
+        return TSnap::GetDegCnt(PNGraph($self), DegToCntV);
+    }
+    void GetInDegCnt(TIntPrV& DegToCntV){
+        return TSnap::GetInDegCnt(PNGraph($self), DegToCntV);
+    }
+    void GetInDegCnt(TFltPrV& DegToCntV){
+        return TSnap::GetInDegCnt(PNGraph($self), DegToCntV);
+    }
+    void GetOutDegCnt(TIntPrV& DegToCntV){
+        return TSnap::GetOutDegCnt(PNGraph($self), DegToCntV);
+    }
+    void GetOutDegCnt(TFltPrV& DegToCntV){
+        return TSnap::GetOutDegCnt(PNGraph($self), DegToCntV);
+    }
+    int GetMxDegNId(){
+        return TSnap::GetMxDegNId(PNGraph($self));
+    }
+    int GetMxInDegNId(){
+        return TSnap::GetMxInDegNId(PNGraph($self));
+    }
+    int GetMxOutDegNId(){
+        return TSnap::GetMxOutDegNId(PNGraph($self));
+    }
+    void GetNodeInDegV(TIntPrV& NIdInDegV){
+        return TSnap::GetNodeInDegV(PNGraph($self), NIdInDegV);
+    }
+    void GetNodeOutDegV(TIntPrV& NIdOutDegV){
+        return TSnap::GetNodeOutDegV(PNGraph($self), NIdOutDegV);
+    }
+    void GetDegSeqV(TIntV& DegV){
+        return TSnap::GetDegSeqV(PNGraph($self), DegV);
+    }
+    void GetDegSeqV(TIntV& InDegV, TIntV& OutDegV){
+        return TSnap::GetDegSeqV(PNGraph($self), InDegV, OutDegV);
+    }
+    int CntSelfEdges(){
+        return TSnap::CntSelfEdges(PNGraph($self));
+    }
+    int CntUniqBiDirEdges(){
+        return TSnap::CntUniqBiDirEdges(PNGraph($self));
+    }
+    int CntUniqDirEdges(){
+        return TSnap::CntUniqDirEdges(PNGraph($self));
+    }
+    int CntUniqUndirEdges(){
+        return TSnap::CntUniqUndirEdges(PNGraph($self));
+    }
+    int CntEdgesToSet(const int& NId, const TIntSet& NodeSet){
+        return TSnap::CntEdgesToSet(PNGraph($self), NId, NodeSet);
+    }
+    bool IsTree(int& RootNIdX){
+        return TSnap::IsTree(PNGraph($self), RootNIdX);
+    }
+    void PrintInfo(const TStr& Desc="", const TStr& OutFNm="", const bool& Fast=true){
+        return TSnap::PrintInfo(PNGraph($self), Desc, OutFNm, Fast);
+    }
+};
+
+
 %pythoncode %{
 # redefine TNGraphEdgeI.GetId to return a pair of nodes rather than -1
 def GetId(self):
