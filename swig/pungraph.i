@@ -297,23 +297,9 @@ TUNGraphEdgeI.GetId = GetId
 %template(ToGraph_PUNGraph) TSnap::ToGraph<PUNGraph>;
 
 
-// Accept list as arguments 
-%pythoncode %{
-    # Redefine functions to accept lists as arguments
-    def GetEdgesInOut_PUNGraph(Graph: 'PUNGraph', NIdV: 'TIntV, List[int]'):
-        if type(NIdV) == list:
-            NIdV_snap = TIntV()
-            for NId in NIdV:
-                NIdV_snap.Add(NId)
-
-            return _snap.GetEdgesInOut_PUNGraph(Graph, NIdV_snap)
-        else:
-            return _snap.GetEdgesInOut_PUNGraph(Graph, NIdV)
-%}
-
 // Move function parameter into return
 %pythoncode %{
-    # Redefine functions that should be returning arguments
+# Redefine functions that should be returning arguments
     def GetDegCnt_PUNGraph(Graph: 'PUNGraph'):
         DegToCntV = TIntPrV()
         _snap.GetDegCnt_PUNGraph(Graph, DegToCntV)
@@ -322,7 +308,7 @@ TUNGraphEdgeI.GetId = GetId
 
 // Overloaded functions
 %pythoncode %{
-    #Redefine overloaded functions
+#Redefine overloaded functions
     def LoadEdgeList_PUNGraph(InFNm, SrcColld, DstColld, Separator = None):
         if Separator is not None:
             return _snap.LoadEdgeList_PUNGraph(InFNm, SrcColld, DstColld, Separator)

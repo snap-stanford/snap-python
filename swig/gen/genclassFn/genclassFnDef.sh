@@ -10,5 +10,5 @@
 
 while read func; do
   grep -h "template.*$func[ \t\n]*(" /home/albert/SNAP/snap/snap-core -r | sed "s/^/$func /"
-  grep -h "template.*$func[ \t\n]*(" /home/albert/SNAP/snap/snap-adv -r
+  grep -h "template.*$func[ \t\n]*(" /home/albert/SNAP/snap/snap-adv -r | sed "s/^/$func /"
 done
