@@ -8,3 +8,4 @@ G.AddEdge(1,3)
 G.AddEdge(2,3)
 
 print(snap.CntEdgesToSet(G,1,{2,3}))
+print(G.CntEdgesToSet(1, {2,3}))
