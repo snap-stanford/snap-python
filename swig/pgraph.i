@@ -1537,19 +1537,25 @@ TNEANetMPNodeI.GetInEdges = GetInEdges
 // Add compatibility for Python data types as arguments
 
 %pythoncode %{
-# This functions adds compatility to an additional datatypes
-# Works for newTypes: list, set (with their corresponding SNAP prevTypes in SNAP)
+# This functions adds compatility to additional datatypes
+# Works for newTypes: list, set (with their corresponding SNAP types)
     def AddArgCompatibility(args, pos, prevType, newType):
         convertedArgs = list(args)
 
         arg = args[pos]
         if type(arg) == newType:
             convertedArg = prevType()
-            for item in arg:
-                if newType == list:
+
+            if newType == list:
+                for item in arg:
                     convertedArg.Add(item)
-                elif newType == set:
+            elif newType == set:
+                for item in arg:
                     convertedArg.AddKey(item)
+            elif newType == dict: 
+                for key in arg:
+                    convertedArg[key] = arg[key]
+
             convertedArgs[pos] = convertedArg
 
         return tuple(convertedArgs)
@@ -1867,6 +1873,18 @@ TNEANetMPNodeI.GetInEdges = GetInEdges
         if type(tspec) == PNGraphMP: return GetNodeTriads_PNGraphMP(tspec, *args)
         if type(tspec) == PNEANetMP : return GetNodeTriads_PNEANetMP(tspec, *args)
         raise TypeError('First argument has invalid type')
+
+    def DrawGViz(tspec, *args):
+        args = AddArgCompatibility(args, -1, TIntStrH, dict)
+
+        if type(tspec) == PUNGraph: return DrawGViz_PUNGraph(tspec, *args)
+        if type(tspec) == PUndirNet: return DrawGViz_PUndirNet(tspec, *args)
+        if type(tspec) == PDirNet: return DrawGViz_PDirNet(tspec, *args)
+        if type(tspec) == PNGraph : return DrawGViz_PNGraph(tspec, *args)
+        if type(tspec) == PNEANet : return DrawGViz_PNEANet(tspec, *args)
+        if type(tspec) == PNEANetMP : return DrawGViz_PNEANetMP(tspec, *args)
+        if type(tspec) == PNGraphMP: return DrawGViz_PNGraphMP(tspec, *args)
+        raise TypeError('First argument has invalid type')
 %}
 
 
@@ -1874,7 +1892,7 @@ TNEANetMPNodeI.GetInEdges = GetInEdges
 
 %pythoncode %{
 # Add class functions
-    
+
     def CntDegNodes_classFn(self, *args):
         return CntDegNodes(self, *args)
     PUNGraph.CntDegNodes = CntDegNodes_classFn
