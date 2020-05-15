@@ -1537,8 +1537,8 @@ TNEANetMPNodeI.GetInEdges = GetInEdges
 // Add compatibility for Python data types as arguments
 
 %pythoncode %{
-    # This functions adds compatility to an additional datatypes
-    # Works for newTypes: list, set (with their corresponding SNAP prevTypes in SNAP)
+# This functions adds compatility to an additional datatypes
+# Works for newTypes: list, set (with their corresponding SNAP prevTypes in SNAP)
     def AddArgCompatibility(args, pos, prevType, newType):
         convertedArgs = list(args)
 
@@ -1867,4 +1867,131 @@ TNEANetMPNodeI.GetInEdges = GetInEdges
         if type(tspec) == PNGraphMP: return GetNodeTriads_PNGraphMP(tspec, *args)
         if type(tspec) == PNEANetMP : return GetNodeTriads_PNEANetMP(tspec, *args)
         raise TypeError('First argument has invalid type')
+%}
+
+
+// Add class functions
+
+%pythoncode %{
+# Add class functions
+    
+    def CntDegNodes_classFn(self, *args):
+        return CntDegNodes(self, *args)
+    PUNGraph.CntDegNodes = CntDegNodes_classFn
+    PNGraph.CntDegNodes = CntDegNodes_classFn
+    PNEANet.CntDegNodes = CntDegNodes_classFn
+
+    def CntInDegNodes_classFn(self, *args):
+        return CntInDegNodes(self, *args)
+    PUNGraph.CntInDegNodes = CntInDegNodes_classFn
+    PNGraph.CntInDegNodes = CntInDegNodes_classFn
+    PNEANet.CntInDegNodes = CntInDegNodes_classFn
+
+    def CntOutDegNodes_classFn(self, *args):
+        return CntOutDegNodes(self, *args)
+    PUNGraph.CntOutDegNodes = CntOutDegNodes_classFn
+    PNGraph.CntOutDegNodes = CntOutDegNodes_classFn
+    PNEANet.CntOutDegNodes = CntOutDegNodes_classFn
+
+    def CntNonZNodes_classFn(self, *args):
+        return CntNonZNodes(self, *args)
+    PUNGraph.CntNonZNodes = CntNonZNodes_classFn
+    PNGraph.CntNonZNodes = CntNonZNodes_classFn
+    PNEANet.CntNonZNodes = CntNonZNodes_classFn
+
+    def GetDegCnt_classFn(self, *args):
+        return GetDegCnt(self, *args)
+    PUNGraph.GetDegCnt = GetDegCnt_classFn
+    PNGraph.GetDegCnt = GetDegCnt_classFn
+    PNEANet.GetDegCnt = GetDegCnt_classFn
+
+    def GetInDegCnt_classFn(self, *args):
+        return GetInDegCnt(self, *args)
+    PUNGraph.GetInDegCnt = GetInDegCnt_classFn
+    PNGraph.GetInDegCnt = GetInDegCnt_classFn
+    PNEANet.GetInDegCnt = GetInDegCnt_classFn
+
+    def GetOutDegCnt_classFn(self, *args):
+        return GetOutDegCnt(self, *args)
+    PUNGraph.GetOutDegCnt = GetOutDegCnt_classFn
+    PNGraph.GetOutDegCnt = GetOutDegCnt_classFn
+    PNEANet.GetOutDegCnt = GetOutDegCnt_classFn
+
+    def GetMxDegNId_classFn(self, *args):
+        return GetMxDegNId(self, *args)
+    PUNGraph.GetMxDegNId = GetMxDegNId_classFn
+    PNGraph.GetMxDegNId = GetMxDegNId_classFn
+    PNEANet.GetMxDegNId = GetMxDegNId_classFn
+
+    def GetMxInDegNId_classFn(self, *args):
+        return GetMxInDegNId(self, *args)
+    PUNGraph.GetMxInDegNId = GetMxInDegNId_classFn
+    PNGraph.GetMxInDegNId = GetMxInDegNId_classFn
+    PNEANet.GetMxInDegNId = GetMxInDegNId_classFn
+
+    def GetMxOutDegNId_classFn(self, *args):
+        return GetMxOutDegNId(self, *args)
+    PUNGraph.GetMxOutDegNId = GetMxOutDegNId_classFn
+    PNGraph.GetMxOutDegNId = GetMxOutDegNId_classFn
+    PNEANet.GetMxOutDegNId = GetMxOutDegNId_classFn
+
+    def GetNodeInDegV_classFn(self, *args):
+        return GetNodeInDegV(self, *args)
+    PUNGraph.GetNodeInDegV = GetNodeInDegV_classFn
+    PNGraph.GetNodeInDegV = GetNodeInDegV_classFn
+    PNEANet.GetNodeInDegV = GetNodeInDegV_classFn
+
+    def GetNodeOutDegV_classFn(self, *args):
+        return GetNodeOutDegV(self, *args)
+    PUNGraph.GetNodeOutDegV = GetNodeOutDegV_classFn
+    PNGraph.GetNodeOutDegV = GetNodeOutDegV_classFn
+    PNEANet.GetNodeOutDegV = GetNodeOutDegV_classFn
+
+    def GetDegSeqV_classFn(self, *args):
+        return GetDegSeqV(self, *args)
+    PUNGraph.GetDegSeqV = GetDegSeqV_classFn
+    PNGraph.GetDegSeqV = GetDegSeqV_classFn
+    PNEANet.GetDegSeqV = GetDegSeqV_classFn
+
+    def CntSelfEdges_classFn(self, *args):
+        return CntSelfEdges(self, *args)
+    PUNGraph.CntSelfEdges = CntSelfEdges_classFn
+    PNGraph.CntSelfEdges = CntSelfEdges_classFn
+    PNEANet.CntSelfEdges = CntSelfEdges_classFn
+
+    def CntUniqBiDirEdges_classFn(self, *args):
+        return CntUniqBiDirEdges(self, *args)
+    PUNGraph.CntUniqBiDirEdges = CntUniqBiDirEdges_classFn
+    PNGraph.CntUniqBiDirEdges = CntUniqBiDirEdges_classFn
+    PNEANet.CntUniqBiDirEdges = CntUniqBiDirEdges_classFn
+
+    def CntUniqDirEdges_classFn(self, *args):
+        return CntUniqDirEdges(self, *args)
+    PUNGraph.CntUniqDirEdges = CntUniqDirEdges_classFn
+    PNGraph.CntUniqDirEdges = CntUniqDirEdges_classFn
+    PNEANet.CntUniqDirEdges = CntUniqDirEdges_classFn
+
+    def CntUniqUndirEdges_classFn(self, *args):
+        return CntUniqUndirEdges(self, *args)
+    PUNGraph.CntUniqUndirEdges = CntUniqUndirEdges_classFn
+    PNGraph.CntUniqUndirEdges = CntUniqUndirEdges_classFn
+    PNEANet.CntUniqUndirEdges = CntUniqUndirEdges_classFn
+
+    def CntEdgesToSet_classFn(self, *args):
+        return CntEdgesToSet(self, *args)
+    PUNGraph.CntEdgesToSet = CntEdgesToSet_classFn
+    PNGraph.CntEdgesToSet = CntEdgesToSet_classFn
+    PNEANet.CntEdgesToSet = CntEdgesToSet_classFn
+
+    def IsTree_classFn(self, *args):
+        return IsTree(self, *args)
+    PUNGraph.IsTree = IsTree_classFn
+    PNGraph.IsTree = IsTree_classFn
+    PNEANet.IsTree = IsTree_classFn
+
+    def PrintInfo_classFn(self, *args):
+        return PrintInfo(self, *args)
+    PUNGraph.PrintInfo = PrintInfo_classFn
+    PNGraph.PrintInfo = PrintInfo_classFn
+    PNEANet.PrintInfo = PrintInfo_classFn
 %}
