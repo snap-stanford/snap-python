@@ -55,6 +55,9 @@ class SnapPythonTest(unittest.TestCase):
 
 
 
+
+
+
     #### Helper Functions for Tests ####
 
     def checkPlotHash(self, gen_file, exp_hash):
@@ -94,6 +97,259 @@ class SnapPythonTest(unittest.TestCase):
                 count += 1
 
     #### Tests ####
+
+    # Avery Vector tests
+    def test_v_append(self):
+        # Vector to test against
+        new_vec = snap.TIntV()
+        new_vec.Add(1)
+
+        vector = snap.TIntV()
+        vector.append(1)
+        self.assertEqual(vector, new_vec)
+
+    def v_test_extend(self):
+        # Vector to test against
+        new_vec = snap.TIntV()
+        new_vec.Add(1)
+        new_vec.Add(2)
+        new_vec.Add(3)
+
+        # Vector to extend by
+        extend_vec = snap.TIntV()
+        extend_vec.Add(2)
+        extend_vec.Add(3)
+
+        # Extend operation
+        vector = snap.TIntV()
+        vector.Add(1)
+        vector.extend(extend_vec)
+
+        self.assertEqual(vector, new_vec)
+
+    def v_test_clear(self):
+        # Vector to test against
+        new_vec = snap.TIntV()
+
+        # Adding to and clearing vector
+        vector = snap.TIntV()
+        vector.Add(1)
+        vector.clear()
+
+        self.assertEqual(vector, new_vec)
+
+    def v_test_insert(self):
+        # Vector to test against
+        new_vec = snap.TIntV()
+        new_vec.Add(1)
+        new_vec.Add(2)
+        new_vec.Add(3)
+
+        # Attempting insert on self.vector
+        vector = snap.TIntV()
+        vector.Add(1)
+        vector.Add(3)
+        vector.insert(1, 2)
+
+        self.assertEqual(vector, new_vec)
+
+    def v_test_remove(self):
+        # Vector to test against
+        new_vec = snap.TIntV()
+        new_vec.Add(1)
+
+        # Attempting insert on vector
+        vector = snap.TIntV()
+        vector.Add(1)
+        vector.Add(2)
+        vector.remove(2)
+
+        self.assertEqual(vector, new_vec)
+
+    def v_test_index(self):
+        vector = snap.TIntV()
+        vector.Add(1)
+        vector.Add(2)
+        index = vector.index(2)
+
+        self.assertEqual(index, 1)
+
+    def v_test_count(self):
+        vector = snap.TIntV()
+        vector.Add(1)
+        vector.Add(1)
+        vector.Add(1)
+        num_ones = vector.count(1)
+
+        self.assertEqual(num_ones, 3)
+
+    def v_test_pop(self):
+        vector = snap.TIntV()
+        vector.Add(1)
+        vector.Add(2)
+        popped = vector.pop(1)
+
+        self.assertEqual(popped, 2)
+
+    def v_test_reverse(self):
+        # Vector to compare
+        new_vec = snap.TIntV()
+        new_vec.Add(2)
+        new_vec.Add(1)
+
+        vector = snap.TIntV()
+        vector.Add(1)
+        vector.Add(2)
+        vector.reverse()
+
+        self.assertEqual(vector, new_vec)
+
+    def v_test_sort(self):
+        # Vector to compare
+        new_vec = snap.TIntV()
+        new_vec.Add(3)
+        new_vec.Add(2)
+        new_vec.Add(1)
+
+        vector = snap.TIntV()
+        vector.Add(1)
+        vector.Add(3)
+        vector.Add(2)
+        vector.sort(reverse=True)
+
+        self.assertEqual(vector, new_vec)
+
+    def v_test_copy(self):
+        vector = snap.TIntV()
+        vector.Add(1)
+        vector.Add(2)
+        new_vec = vector.copy()
+
+        self.assertEqual(vector, new_vec)
+
+    def v_test_len(self):
+        vector = snap.TIntV()
+        vector.Add(1)
+        len = len(vector)
+
+        self.assertEqual(len, 1)
+
+    def v_test_max(self):
+        vector = snap.TIntV()
+        vector.Add(1)
+        vector.Add(5)
+        vector.Add(2)
+
+        maximum = max(vector)
+
+        self.assertEqual(maximum, 5)
+
+    def v_test_max(self):
+        vector = snap.TIntV()
+        vector.Add(2)
+        vector.Add(1)
+        vector.Add(5)
+
+        minimum = min(vector)
+
+        self.assertEqual(minimum, 1)
+
+    # Avery Hash Table Tests
+    def ht_test_clear(self):
+        new_ht = snap.TIntH()
+
+        ht = snap.TIntH()
+        ht[1] = 2
+        ht.clear()
+
+        self.assertEqual(ht, new_ht)
+
+    def ht_test_copy(self):
+        ht = snap.TIntH()
+        ht[1] = 2
+        new_ht = ht.copy()
+
+        self.assertEqual(ht, new_ht)
+
+    def ht_test_get(self):
+        ht = snap.TIntH()
+        ht[1] = 2
+        value = ht.get(1)
+
+        self.assertEqual(value, 2)
+
+    def ht_test_items(self):
+        ht = snap.TIntH()
+        self.ht[1] = 2
+        self.ht[3] = 4
+        items = [(1, 2), (3, 4)]
+        ht_items = ht.items()
+
+        self.assertEqual(items, ht_items)
+
+    def ht_test_keys(self):
+        ht = snap.TIntH()
+        ht[1] = 2
+        ht[3] = 4
+        keys = [1, 2]
+        ht_keys = ht.keys()
+
+        self.assertEqual(keys, ht_keys)
+
+    def ht_test_pop(self):
+        ht = snap.TIntH()
+        ht[1] = 2
+        ht[3] = 4
+        popped = 3
+        ht_popped = ht.pop(1)
+
+        self.assertEqual(popped, ht_popped)
+
+    def ht_test_popitem(self):
+        ht = snap.TIntH()
+        ht[3] = 4
+        popped = (3, 4)
+        ht_popped = ht.popitem()
+
+        self.assertEqual(popped, ht_popped)
+
+    def ht_test_setdefault(self):
+        new_ht = snap.TIntH()
+        new_ht[1] = 2
+        new_ht[3] = 4
+
+        ht = snap.TIntH()
+        ht[1] = 2
+        default_val = ht.setdefault(3, 4)
+
+        self.assertEqual(ht, new_ht)
+        self.assertEqual(default_val, 4)
+
+    def ht_test_update(self):
+        new_ht = snap.TIntH()
+        new_ht[1] = 2
+        new_ht[3] = 5
+
+        ht = snap.TIntH()
+        ht[3] = 4
+        ht.update(new_ht)
+
+        final_ht = snap.TIntH()
+        final_ht[1] = 2
+        final_ht[3] = 5
+
+        self.assertEqual(ht, final_ht)
+
+    def ht_test_values(self):
+        expected_values = [2, 4]
+
+        ht = snap.TIntH()
+        ht[1] = 2
+        ht[3] = 4
+        values = ht.values()
+
+        self.assertEqual(expected_values, values)
+
 
     def test_CntInDegNodes(self):
         # Directed graph
