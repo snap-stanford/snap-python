@@ -2629,76 +2629,166 @@ class SnapPythonTest(unittest.TestCase):
         self.assertEqual(result, expected_result)
 
     def test_GetClustCf(self):
+
+        # testing GetClustCf(Graph, SampleNodes=-1)
+
+        DirGraph = snap.GenFull(snap.PNGraph, 10)
+        UnGraph = snap.GenFull(snap.PUNGraph, 10)
+        MultiGraph = snap.GenFull(snap.PNEANet, 10)
+
+        # no parameters
+
         # Directed Graph
-        Graph = snap.GenFull(snap.PNGraph, 10)
-        result = snap.GetClustCf(Graph)
+        result = snap.GetClustCf(DirGraph)
         self.assertAlmostEqual(result, 1.0)
 
         # Undirected Graph
-        Graph = snap.GenFull(snap.PUNGraph, 10)
-        result = snap.GetClustCf(Graph)
+        result = snap.GetClustCf(UnGraph)
         self.assertAlmostEqual(result, 1.0)
 
         # Network
-        Graph = snap.GenFull(snap.PNEANet, 10)
-        result = snap.GetClustCf(Graph)
+        result = snap.GetClustCf(MultiGraph)
+        self.assertAlmostEqual(result, 1.0)
+
+        # parameter = 0
+
+        result = snap.GetClustCf(DirGraph, 0)
+        self.assertAlmostEqual(result, 0.0)
+
+        result = snap.GetClustCf(UnGraph, 0)
+        self.assertAlmostEqual(result, 0.0)
+
+        result = snap.GetClustCf(MultiGraph, 0)
+        self.assertAlmostEqual(result, 0.0)
+
+        # parameter > 0
+
+        result = snap.GetClustCf(DirGraph, 3)
+        self.assertAlmostEqual(result, 1.0)
+
+        result = snap.GetClustCf(UnGraph, 3)
+        self.assertAlmostEqual(result, 1.0)
+
+        result = snap.GetClustCf(MultiGraph, 3)
         self.assertAlmostEqual(result, 1.0)
 
     def test_GetClustCf2(self):
+
+        # testing GetClustCf(Graph, DegToCCfV, SampleNodes=-1)
+
+        DirGraph = snap.GenFull(snap.PNGraph, 10)
+        UnGraph = snap.GenFull(snap.PUNGraph, 10)
+        MultiGraph = snap.GenFull(snap.PNEANet, 10)
+
+        # no parameters
+
         # Directed Graph
-        Graph = snap.GenFull(snap.PNGraph, 10)
         V = snap.TFltPrV()
-        result = snap.GetClustCf(Graph, V)
+        result = snap.GetClustCf(DirGraph, V)
         self.assertAlmostEqual(result, 1.0)
+        self.assertEqual(V.Len(), 1)
 
         # Undirected Graph
-        Graph = snap.GenFull(snap.PUNGraph, 10)
         V = snap.TFltPrV()
-        result = snap.GetClustCf(Graph, V)
+        result = snap.GetClustCf(UnGraph, V)
         self.assertAlmostEqual(result, 1.0)
+        self.assertEqual(V.Len(), 1)
 
         # Network
-        Graph = snap.GenFull(snap.PNEANet, 10)
         V = snap.TFltPrV()
-        result = snap.GetClustCf(Graph, V)
+        result = snap.GetClustCf(MultiGraph, V)
         self.assertAlmostEqual(result, 1.0)
+        self.assertEqual(V.Len(), 1)
 
-    def test_GetClustCf3(self):
-        # Directed Graph
-        Graph = snap.GenFull(snap.PNGraph, 10)
-        result = snap.GetClustCf(Graph, 0)
-        self.assertAlmostEqual(result, 0.0)
+        # parameter = 0
 
-        # Undirected Graph
-        Graph = snap.GenFull(snap.PUNGraph, 10)
-        result = snap.GetClustCf(Graph, 0)
+        V = snap.TFltPrV()
+        result = snap.GetClustCf(DirGraph, V, 0)
         self.assertAlmostEqual(result, 0.0)
+        self.assertEqual(V.Len(), 0)
 
-        # Network
-        Graph = snap.GenFull(snap.PNEANet, 10)
-        result = snap.GetClustCf(Graph, 0)
+        V = snap.TFltPrV()
+        result = snap.GetClustCf(UnGraph, V, 0)
         self.assertAlmostEqual(result, 0.0)
+        self.assertEqual(V.Len(), 0)
+
+        V = snap.TFltPrV()
+        result = snap.GetClustCf(MultiGraph, V, 0)
+        self.assertAlmostEqual(result, 0.0)
+        self.assertEqual(V.Len(), 0)
+
+        # parameter > 0
+
+        V = snap.TFltPrV()
+        result = snap.GetClustCf(DirGraph, V, 3)
+        self.assertAlmostEqual(result, 1.0)
+        self.assertEqual(V.Len(), 1)
+
+        V = snap.TFltPrV()
+        result = snap.GetClustCf(UnGraph, V, 3)
+        self.assertAlmostEqual(result, 1.0)
+        self.assertEqual(V.Len(), 1)
+
+        V = snap.TFltPrV()
+        result = snap.GetClustCf(MultiGraph, V, 3)
+        self.assertAlmostEqual(result, 1.0)
+        self.assertEqual(V.Len(), 1)
 
     def test_GetClustCfAll(self):
-        # Directed Graph
-        Graph = snap.GenFull(snap.PNGraph, 100)
+
+        DirGraph = snap.GenFull(snap.PNGraph, 100)
+        UnGraph = snap.GenFull(snap.PUNGraph, 100)
+        MultiGraph = snap.GenFull(snap.PNEANet, 100)
+
+        # no parameter
+
         V = snap.TFltPrV()
-        result = snap.GetClustCfAll(Graph, V)
+        result = snap.GetClustCfAll(DirGraph, V)
         expected_result = [1.0, 161700, 0]
         self.assertEqual(result, expected_result)
 
-        # Undirected Graph
-        Graph = snap.GenFull(snap.PUNGraph, 100)
         V = snap.TFltPrV()
-        result = snap.GetClustCfAll(Graph, V)
+        result = snap.GetClustCfAll(UnGraph, V)
         expected_result = [1.0, 161700, 0]
         self.assertEqual(result, expected_result)
 
-        # Network
-        Graph = snap.GenFull(snap.PNEANet, 100)
         V = snap.TFltPrV()
-        result = snap.GetClustCfAll(Graph, V)
+        result = snap.GetClustCfAll(MultiGraph, V)
         expected_result = [1.0, 161700, 0]
+        self.assertEqual(result, expected_result)
+
+        # parameter = 0
+
+        V = snap.TFltPrV()
+        result = snap.GetClustCfAll(DirGraph, V, 0)
+        expected_result = [0.0, 0, 0]
+        self.assertEqual(result, expected_result)
+
+        V = snap.TFltPrV()
+        result = snap.GetClustCfAll(UnGraph, V, 0)
+        expected_result = [0.0, 0, 0]
+        self.assertEqual(result, expected_result)
+
+        V = snap.TFltPrV()
+        result = snap.GetClustCfAll(MultiGraph, V, 0)
+        expected_result = [0.0, 0, 0]
+        self.assertEqual(result, expected_result)
+
+        # parameter > 0
+
+        V = snap.TFltPrV()
+        result = snap.GetClustCfAll(DirGraph, V, 5)
+        expected_result = [1.0, 8085, 0]
+        self.assertEqual(result, expected_result)
+
+        V = snap.TFltPrV()
+        result = snap.GetClustCfAll(UnGraph, V, 5)
+        expected_result = [1.0, 8085, 0]
+        self.assertEqual(result, expected_result)
+
+        V = snap.TFltPrV()
+        result = snap.GetClustCfAll(MultiGraph, V, 5)
+        expected_result = [1.0, 8085, 0]
         self.assertEqual(result, expected_result)
 
     def test_GetLen2Paths(self):

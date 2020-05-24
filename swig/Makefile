@@ -3,7 +3,7 @@
 #	Use this Makefile to compile SNAP Python from scratch
 #
 # Build instructions for py2 on macOS and Linux:
-#		make all             # apply SWIG and compile the code
+#		make all2            # apply SWIG and compile the code
 #		make srcdist         # build source distribution
 #		make whldist         # build wheel distribution
 #		make pip-test        # upload to private test pip
@@ -82,7 +82,9 @@ WHLFILE := $(shell ls -rt dist/*.whl | tail -1)
 include $(GITDIR)/Makefile.config
 include ../Makefile.config
 
-all: snap.py _snap.so
+all: all3
+
+all2: snap.py _snap.so
 
 all3: snap3.py _snap3.so
 
