@@ -99,7 +99,7 @@ class SnapPythonTest(unittest.TestCase):
     #### Tests ####
 
     # Avery Vector tests
-    def test_v_append(self):
+    def test_vec_append(self):
         # Vector to test against
         new_vec = snap.TIntV()
         new_vec.Add(1)
@@ -108,7 +108,7 @@ class SnapPythonTest(unittest.TestCase):
         vector.append(1)
         self.assertEqual(vector, new_vec)
 
-    def v_test_extend(self):
+    def test_vec_extend(self):
         # Vector to test against
         new_vec = snap.TIntV()
         new_vec.Add(1)
@@ -127,7 +127,7 @@ class SnapPythonTest(unittest.TestCase):
 
         self.assertEqual(vector, new_vec)
 
-    def v_test_clear(self):
+    def test_vec_clear(self):
         # Vector to test against
         new_vec = snap.TIntV()
 
@@ -138,7 +138,7 @@ class SnapPythonTest(unittest.TestCase):
 
         self.assertEqual(vector, new_vec)
 
-    def v_test_insert(self):
+    def test_vec_insert(self):
         # Vector to test against
         new_vec = snap.TIntV()
         new_vec.Add(1)
@@ -153,7 +153,7 @@ class SnapPythonTest(unittest.TestCase):
 
         self.assertEqual(vector, new_vec)
 
-    def v_test_remove(self):
+    def test_vec_remove(self):
         # Vector to test against
         new_vec = snap.TIntV()
         new_vec.Add(1)
@@ -166,7 +166,7 @@ class SnapPythonTest(unittest.TestCase):
 
         self.assertEqual(vector, new_vec)
 
-    def v_test_index(self):
+    def test_vec_index(self):
         vector = snap.TIntV()
         vector.Add(1)
         vector.Add(2)
@@ -174,7 +174,7 @@ class SnapPythonTest(unittest.TestCase):
 
         self.assertEqual(index, 1)
 
-    def v_test_count(self):
+    def test_vec_count(self):
         vector = snap.TIntV()
         vector.Add(1)
         vector.Add(1)
@@ -183,7 +183,7 @@ class SnapPythonTest(unittest.TestCase):
 
         self.assertEqual(num_ones, 3)
 
-    def v_test_pop(self):
+    def test_vec_pop(self):
         vector = snap.TIntV()
         vector.Add(1)
         vector.Add(2)
@@ -191,7 +191,7 @@ class SnapPythonTest(unittest.TestCase):
 
         self.assertEqual(popped, 2)
 
-    def v_test_reverse(self):
+    def test_vec_reverse(self):
         # Vector to compare
         new_vec = snap.TIntV()
         new_vec.Add(2)
@@ -204,7 +204,7 @@ class SnapPythonTest(unittest.TestCase):
 
         self.assertEqual(vector, new_vec)
 
-    def v_test_sort(self):
+    def test_vec_sort(self):
         # Vector to compare
         new_vec = snap.TIntV()
         new_vec.Add(3)
@@ -219,7 +219,7 @@ class SnapPythonTest(unittest.TestCase):
 
         self.assertEqual(vector, new_vec)
 
-    def v_test_copy(self):
+    def test_vec_copy(self):
         vector = snap.TIntV()
         vector.Add(1)
         vector.Add(2)
@@ -227,14 +227,14 @@ class SnapPythonTest(unittest.TestCase):
 
         self.assertEqual(vector, new_vec)
 
-    def v_test_len(self):
+    def test_vec_len(self):
         vector = snap.TIntV()
         vector.Add(1)
         len = len(vector)
 
         self.assertEqual(len, 1)
 
-    def v_test_max(self):
+    def test_vec_max(self):
         vector = snap.TIntV()
         vector.Add(1)
         vector.Add(5)
@@ -244,7 +244,7 @@ class SnapPythonTest(unittest.TestCase):
 
         self.assertEqual(maximum, 5)
 
-    def v_test_max(self):
+    def test_vec_min(self):
         vector = snap.TIntV()
         vector.Add(2)
         vector.Add(1)
@@ -255,7 +255,7 @@ class SnapPythonTest(unittest.TestCase):
         self.assertEqual(minimum, 1)
 
     # Avery Hash Table Tests
-    def ht_test_clear(self):
+    def test_hash_clear(self):
         new_ht = snap.TIntH()
 
         ht = snap.TIntH()
@@ -264,30 +264,30 @@ class SnapPythonTest(unittest.TestCase):
 
         self.assertEqual(ht, new_ht)
 
-    def ht_test_copy(self):
+    def test_hash_copy(self):
         ht = snap.TIntH()
         ht[1] = 2
         new_ht = ht.copy()
 
         self.assertEqual(ht, new_ht)
 
-    def ht_test_get(self):
+    def test_hash_get(self):
         ht = snap.TIntH()
         ht[1] = 2
         value = ht.get(1)
 
         self.assertEqual(value, 2)
 
-    def ht_test_items(self):
+    def test_hash_items(self):
         ht = snap.TIntH()
-        self.ht[1] = 2
-        self.ht[3] = 4
+        ht[1] = 2
+        ht[3] = 4
         items = [(1, 2), (3, 4)]
         ht_items = ht.items()
 
         self.assertEqual(items, ht_items)
 
-    def ht_test_keys(self):
+    def test_hash_keys(self):
         ht = snap.TIntH()
         ht[1] = 2
         ht[3] = 4
@@ -296,7 +296,7 @@ class SnapPythonTest(unittest.TestCase):
 
         self.assertEqual(keys, ht_keys)
 
-    def ht_test_pop(self):
+    def test_hash_pop(self):
         ht = snap.TIntH()
         ht[1] = 2
         ht[3] = 4
@@ -305,7 +305,7 @@ class SnapPythonTest(unittest.TestCase):
 
         self.assertEqual(popped, ht_popped)
 
-    def ht_test_popitem(self):
+    def test_hash_popitem(self):
         ht = snap.TIntH()
         ht[3] = 4
         popped = (3, 4)
@@ -313,7 +313,7 @@ class SnapPythonTest(unittest.TestCase):
 
         self.assertEqual(popped, ht_popped)
 
-    def ht_test_setdefault(self):
+    def test_hash_setdefault(self):
         new_ht = snap.TIntH()
         new_ht[1] = 2
         new_ht[3] = 4
@@ -325,7 +325,7 @@ class SnapPythonTest(unittest.TestCase):
         self.assertEqual(ht, new_ht)
         self.assertEqual(default_val, 4)
 
-    def ht_test_update(self):
+    def test_hash_update(self):
         new_ht = snap.TIntH()
         new_ht[1] = 2
         new_ht[3] = 5
@@ -340,7 +340,7 @@ class SnapPythonTest(unittest.TestCase):
 
         self.assertEqual(ht, final_ht)
 
-    def ht_test_values(self):
+    def test_hash_values(self):
         expected_values = [2, 4]
 
         ht = snap.TIntH()
