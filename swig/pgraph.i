@@ -1533,12 +1533,11 @@ TNEANetMPNodeI.GetInEdges = GetInEdges
 #endif // GCC_ATOMIC
 
 
-
-// Add compatibility for Python data types as arguments
+// Add compatibility for Python data types as arguments, moving arguments to output, and overloaded functions
 
 %pythoncode %{
-# This functions adds compatility to additional datatypes
-# Works for newTypes: list, set (with their corresponding SNAP types)
+    # This function adds compatility to additional datatypes
+    # Works for newTypes: list, set (with their corresponding SNAP types)
     def AddArgCompatibility(args, pos, prevType, newType):
         convertedArgs = list(args)
 
@@ -1561,330 +1560,103 @@ TNEANetMPNodeI.GetInEdges = GetInEdges
         return tuple(convertedArgs)
 
 
+    # This function moves the argument at pos to be returned instead
+    def MoveArgToReturn (tspec, args, func, pos, argType):
+        if len(args) > pos and type(args[pos] == argType):
+            #For backward compatility
+            return func(tspec, *args)
+        else:
+            returnArg = argType()
+            newArgs = list(args)
+            newArgs[pos] = returnArg
+            oldReturn = func(tspec, *newArgs)
+            if oldReturn == None:
+                return returnArg
+            else:
+                return (oldReturn, returnArg)
+
+
+    _LoadEdgeList = LoadEdgeList
+    def LoadEdgeList(GraphType, InFNm, SrcColId = 0, DstColId = 0, Separator = " "):
+        if Separator == " ":
+            return _LoadEdgeList(GraphType, InFNm, SrcColId, DstColId)
+        else:
+            return _LoadEdgeList(GraphType, InFNm, SrcColId, DstColId, Separator)
+
+
+    _LoadEdgeListStr = LoadEdgeListStr
+    def LoadEdgeListStr(GraphType, InFNm, SrcColId = 0, DstColId = 1, Mapping = False):
+        if Mapping == False:
+            return _LoadEdgeListStr(GraphType, InFNm, SrcColId, DstColId)
+        else:
+            StrToNIdH = TStrIntSH()
+            graph = _LoadEdgeListStr(GraphType, InFNm, SrcColId, DstColId, StrToNIdH)
+            return (graph, StrToNIdH)
+
+
+    _LoadConnListStr = LoadConnListStr 
+    def LoadConnListStr(tspec, *args):
+        return MoveArgToReturn(tspec, args, _LoadConnListStr, 1, TStrIntSH)
+
+
+    _CntEdgesToSet = CntEdgesToSet
     def CntEdgesToSet(tspec, *args):
         args = AddArgCompatibility(args, 1, TIntSet, set)
-
-        if type(tspec) == PUNGraph: return CntEdgesToSet_PUNGraph(tspec, *args)
-        if type(tspec) == PUndirNet: return CntEdgesToSet_PUndirNet(tspec, *args)
-        if type(tspec) == PDirNet: return CntEdgesToSet_PDirNet(tspec, *args)
-        if type(tspec) == PNGraph : return CntEdgesToSet_PNGraph(tspec, *args)
-        if type(tspec) == PNEANet : return CntEdgesToSet_PNEANet(tspec, *args)
-        if type(tspec) == PNGraphMP: return CntEdgesToSet_PNGraphMP(tspec, *args)
-        if type(tspec) == PNEANetMP : return CntEdgesToSet_PNEANetMP(tspec, *args)
-        raise TypeError('First argument has invalid type')
+        return _CntEdgesToSet(tspec, *args)
 
 
+    _DelNodes = DelNodes
     def DelNodes(tspec, *args):
         args = AddArgCompatibility(args, 0, TIntV, list)
-
-        if type(tspec) == PUNGraph: return DelNodes_PUNGraph(tspec, *args)
-        if type(tspec) == PUndirNet: return DelNodes_PUndirNet(tspec, *args)
-        if type(tspec) == PDirNet: return DelNodes_PDirNet(tspec, *args)
-        if type(tspec) == PNGraph : return DelNodes_PNGraph(tspec, *args)
-        if type(tspec) == PNEANet : return DelNodes_PNEANet(tspec, *args)
-        if type(tspec) == PNGraphMP: return DelNodes_PNGraphMP(tspec, *args)
-        if type(tspec) == PNEANetMP : return DelNodes_PNEANetMP(tspec, *args)
-        raise TypeError('First argument has invalid type')
+        return _DelNodes(tspec, *args)
 
 
+    _ConvertSubGraph = ConvertSubGraph
     def ConvertSubGraph(toutspec, tinspec, *args):
         args = AddArgCompatibility(args, 0, TIntV, list)
-
-        if toutspec == PUNGraph:
-            if type(tinspec) == PUNGraph:
-                return ConvertSubGraph_PUNGraph_PUNGraph(tinspec, *args)
-            if type(tinspec) == PUndirNet:
-                return ConvertSubGraph_PUNGraph_PUndirNet(tinspec, *args)
-            if type(tinspec) == PDirNet:
-                return ConvertSubGraph_PUNGraph_PDirNet(tinspec, *args)
-            if type(tinspec) == PNGraph:
-                return ConvertSubGraph_PUNGraph_PNGraph(tinspec, *args)
-            if type(tinspec) == PNEANet:
-                return ConvertSubGraph_PUNGraph_PNEANet(tinspec, *args)
-            if type(tinspec) == PNGraphMP:
-                return ConvertSubGraph_PUNGraph_PNGraphMP(tinspec, *args)
-            if type(tinspec) == PNEANetMP:
-                return ConvertSubGraph_PUNGraph_PNEANetMP(tinspec, *args)
-        if toutspec == PUndirNet:
-            if type(tinspec) == PUNGraph:
-                return ConvertSubGraph_PUndirNet_PUNGraph(tinspec, *args)
-            if type(tinspec) == PUndirNet:
-                return ConvertSubGraph_PUndirNet_PUndirNet(tinspec, *args)
-            if type(tinspec) == PDirNet:
-                return ConvertSubGraph_PUndirNet_PDirNet(tinspec, *args)
-            if type(tinspec) == PNGraph:
-                return ConvertSubGraph_PUndirNet_PNGraph(tinspec, *args)
-            if type(tinspec) == PNEANet:
-                return ConvertSubGraph_PUndirNet_PNEANet(tinspec, *args)
-            if type(tinspec) == PNGraphMP:
-                return ConvertSubGraph_PUndirNet_PNGraphMP(tinspec, *args)
-            if type(tinspec) == PNEANetMP:
-                return ConvertSubGraph_PUndirNet_PNEANetMP(tinspec, *args)
-        if toutspec == PDirNet:
-            if type(tinspec) == PUNGraph:
-                return ConvertSubGraph_PDirNet_PUNGraph(tinspec, *args)
-            if type(tinspec) == PUndirNet:
-                return ConvertSubGraph_PDirNet_PUndirNet(tinspec, *args)
-            if type(tinspec) == PDirNet:
-                return ConvertSubGraph_PDirNet_PDirNet(tinspec, *args)
-            if type(tinspec) == PNGraph:
-                return ConvertSubGraph_PDirNet_PNGraph(tinspec, *args)
-            if type(tinspec) == PNEANet:
-                return ConvertSubGraph_PDirNet_PNEANet(tinspec, *args)
-            if type(tinspec) == PNGraphMP:
-                return ConvertSubGraph_PDirNet_PNGraphMP(tinspec, *args)
-            if type(tinspec) == PNEANetMP:
-                return ConvertSubGraph_PDirNet_PNEANetMP(tinspec, *args)
-        if toutspec == PNGraph:
-            if type(tinspec) == PUNGraph:
-                return ConvertSubGraph_PNGraph_PUNGraph(tinspec, *args)
-            if type(tinspec) == PUndirNet:
-                return ConvertSubGraph_PNGraph_PUndirNet(tinspec, *args)
-            if type(tinspec) == PDirNet:
-                return ConvertSubGraph_PNGraph_PDirNet(tinspec, *args)
-            if type(tinspec) == PNGraph:
-                return ConvertSubGraph_PNGraph_PNGraph(tinspec, *args)
-            if type(tinspec) == PNEANet:
-                return ConvertSubGraph_PNGraph_PNEANet(tinspec, *args)
-            if type(tinspec) == PNGraphMP:
-                return ConvertSubGraph_PNGraph_PNGraphMP(tinspec, *args)
-            if type(tinspec) == PNEANetMP:
-                return ConvertSubGraph_PNGraph_PNEANetMP(tinspec, *args)
-        if toutspec == PNEANet:
-            if type(tinspec) == PUNGraph:
-                return ConvertSubGraph_PNEANet_PUNGraph(tinspec, *args)
-            if type(tinspec) == PUndirNet:
-                return ConvertSubGraph_PNEANet_PUndirNet(tinspec, *args)
-            if type(tinspec) == PDirNet:
-                return ConvertSubGraph_PNEANet_PDirNet(tinspec, *args)
-            if type(tinspec) == PNGraph:
-                return ConvertSubGraph_PNEANet_PNGraph(tinspec, *args)
-            if type(tinspec) == PNEANet:
-                return ConvertSubGraph_PNEANet_PNEANet(tinspec, *args)
-            if type(tinspec) == PNGraphMP:
-                return ConvertSubGraph_PNEANet_PNGraphMP(tinspec, *args)
-            if type(tinspec) == PNEANetMP:
-                return ConvertSubGraph_PNEANet_PNEANetMP(tinspec, *args)
-        if toutspec == PNGraphMP:
-            if type(tinspec) == PUNGraph:
-                return ConvertSubGraph_PNGraphMP_PUNGraph(tinspec, *args)
-            if type(tinspec) == PUndirNet:
-                return ConvertSubGraph_PNGraphMP_PUndirNet(tinspec, *args)
-            if type(tinspec) == PDirNet:
-                return ConvertSubGraph_PNGraphMP_PDirNet(tinspec, *args)
-            if type(tinspec) == PNGraph:
-                return ConvertSubGraph_PNGraphMP_PNGraph(tinspec, *args)
-            if type(tinspec) == PNEANet:
-                return ConvertSubGraph_PNGraphMP_PNEANet(tinspec, *args)
-            if type(tinspec) == PNGraphMP:
-                return ConvertSubGraph_PNGraphMP_PNGraphMP(tinspec, *args)
-            if type(tinspec) == PNEANetMP:
-                return ConvertSubGraph_PNGraphMP_PNEANetMP(tinspec, *args)
-        if toutspec == PNEANetMP:
-            if type(tinspec) == PUNGraph:
-                return ConvertSubGraph_PNEANetMP_PUNGraph(tinspec, *args)
-            if type(tinspec) == PUndirNet:
-                return ConvertSubGraph_PNEANetMP_PUndirNet(tinspec, *args)
-            if type(tinspec) == PDirNet:
-                return ConvertSubGraph_PNEANetMP_PDirNet(tinspec, *args)
-            if type(tinspec) == PNGraph:
-                return ConvertSubGraph_PNEANetMP_PNGraph(tinspec, *args)
-            if type(tinspec) == PNEANet:
-                return ConvertSubGraph_PNEANetMP_PNEANet(tinspec, *args)
-            if type(tinspec) == PNGraphMP:
-                return ConvertSubGraph_PNEANetMP_PNGraphMP(tinspec, *args)
-            if type(tinspec) == PNEANetMP:
-                return ConvertSubGraph_PNEANetMP_PNEANetMP(tinspec, *args)
-        raise TypeError('First argument has invalid type')
+        return _ConvertSubGraph(toutspec, tinspec, *args)
 
 
+    _ConvertESubGraph = ConvertESubGraph
     def ConvertESubGraph(toutspec, tinspec, *args):
         args = AddArgCompatibility(args, 0, TIntV, list)
-
-        if toutspec == PUNGraph:
-            if type(tinspec) == PUNGraph:
-                return ConvertESubGraph_PUNGraph_PUNGraph(tinspec, *args)
-            if type(tinspec) == PUndirNet:
-                return ConvertESubGraph_PUNGraph_PUndirNet(tinspec, *args)
-            if type(tinspec) == PDirNet:
-                return ConvertESubGraph_PUNGraph_PDirNet(tinspec, *args)
-            if type(tinspec) == PNGraph:
-                return ConvertESubGraph_PUNGraph_PNGraph(tinspec, *args)
-            if type(tinspec) == PNEANet:
-                return ConvertESubGraph_PUNGraph_PNEANet(tinspec, *args)
-            if type(tinspec) == PNGraphMP:
-                return ConvertESubGraph_PUNGraph_PNGraphMP(tinspec, *args)
-            if type(tinspec) == PNEANetMP:
-                return ConvertESubGraph_PUNGraph_PNEANetMP(tinspec, *args)
-        if toutspec == PUndirNet:
-            if type(tinspec) == PUNGraph:
-                return ConvertESubGraph_PUndirNet_PUNGraph(tinspec, *args)
-            if type(tinspec) == PUndirNet:
-                return ConvertESubGraph_PUndirNet_PUndirNet(tinspec, *args)
-            if type(tinspec) == PDirNet:
-                return ConvertESubGraph_PUndirNet_PDirNet(tinspec, *args)
-            if type(tinspec) == PNGraph:
-                return ConvertESubGraph_PUndirNet_PNGraph(tinspec, *args)
-            if type(tinspec) == PNEANet:
-                return ConvertESubGraph_PUndirNet_PNEANet(tinspec, *args)
-            if type(tinspec) == PNGraphMP:
-                return ConvertESubGraph_PUndirNet_PNGraphMP(tinspec, *args)
-            if type(tinspec) == PNEANetMP:
-                return ConvertESubGraph_PUndirNet_PNEANetMP(tinspec, *args)
-        if toutspec == PDirNet:
-            if type(tinspec) == PUNGraph:
-                return ConvertESubGraph_PDirNet_PUNGraph(tinspec, *args)
-            if type(tinspec) == PUndirNet:
-                return ConvertESubGraph_PDirNet_PUndirNet(tinspec, *args)
-            if type(tinspec) == PDirNet:
-                return ConvertESubGraph_PDirNet_PDirNet(tinspec, *args)
-            if type(tinspec) == PNGraph:
-                return ConvertESubGraph_PDirNet_PNGraph(tinspec, *args)
-            if type(tinspec) == PNEANet:
-                return ConvertESubGraph_PDirNet_PNEANet(tinspec, *args)
-            if type(tinspec) == PNGraphMP:
-                return ConvertESubGraph_PDirNet_PNGraphMP(tinspec, *args)
-            if type(tinspec) == PNEANetMP:
-                return ConvertESubGraph_PDirNet_PNEANetMP(tinspec, *args)
-        if toutspec == PNGraph:
-            if type(tinspec) == PUNGraph:
-                return ConvertESubGraph_PNGraph_PUNGraph(tinspec, *args)
-            if type(tinspec) == PUndirNet:
-                return ConvertESubGraph_PNGraph_PUndirNet(tinspec, *args)
-            if type(tinspec) == PDirNet:
-                return ConvertESubGraph_PNGraph_PDirNet(tinspec, *args)
-            if type(tinspec) == PNGraph:
-                return ConvertESubGraph_PNGraph_PNGraph(tinspec, *args)
-            if type(tinspec) == PNEANet:
-                return ConvertESubGraph_PNGraph_PNEANet(tinspec, *args)
-            if type(tinspec) == PNGraphMP:
-                return ConvertESubGraph_PNGraph_PNGraphMP(tinspec, *args)
-            if type(tinspec) == PNEANetMP:
-                return ConvertESubGraph_PNGraph_PNEANetMP(tinspec, *args)
-        if toutspec == PNEANet:
-            if type(tinspec) == PUNGraph:
-                return ConvertESubGraph_PNEANet_PUNGraph(tinspec, *args)
-            if type(tinspec) == PUndirNet:
-                return ConvertESubGraph_PNEANet_PUndirNet(tinspec, *args)
-            if type(tinspec) == PDirNet:
-                return ConvertESubGraph_PNEANet_PDirNet(tinspec, *args)
-            if type(tinspec) == PNGraph:
-                return ConvertESubGraph_PNEANet_PNGraph(tinspec, *args)
-            if type(tinspec) == PNEANet:
-                return ConvertESubGraph_PNEANet_PNEANet(tinspec, *args)
-            if type(tinspec) == PNGraphMP:
-                return ConvertESubGraph_PNEANet_PNGraphMP(tinspec, *args)
-            if type(tinspec) == PNEANetMP:
-                return ConvertESubGraph_PNEANet_PNEANetMP(tinspec, *args)
-        if toutspec == PNGraphMP:
-            if type(tinspec) == PUNGraph:
-                return ConvertESubGraph_PNGraphMP_PUNGraph(tinspec, *args)
-            if type(tinspec) == PUndirNet:
-                return ConvertESubGraph_PNGraphMP_PUndirNet(tinspec, *args)
-            if type(tinspec) == PDirNet:
-                return ConvertESubGraph_PNGraphMP_PDirNet(tinspec, *args)
-            if type(tinspec) == PNGraph:
-                return ConvertESubGraph_PNGraphMP_PNGraph(tinspec, *args)
-            if type(tinspec) == PNEANet:
-                return ConvertESubGraph_PNGraphMP_PNEANet(tinspec, *args)
-            if type(tinspec) == PNGraphMP:
-                return ConvertESubGraph_PNGraphMP_PNGraphMP(tinspec, *args)
-            if type(tinspec) == PNEANetMP:
-                return ConvertESubGraph_PNGraphMP_PNEANetMP(tinspec, *args)
-        if toutspec == PNEANetMP:
-            if type(tinspec) == PUNGraph:
-                return ConvertESubGraph_PNEANetMP_PUNGraph(tinspec, *args)
-            if type(tinspec) == PUndirNet:
-                return ConvertESubGraph_PNEANetMP_PUndirNet(tinspec, *args)
-            if type(tinspec) == PDirNet:
-                return ConvertESubGraph_PNEANetMP_PDirNet(tinspec, *args)
-            if type(tinspec) == PNGraph:
-                return ConvertESubGraph_PNEANetMP_PNGraph(tinspec, *args)
-            if type(tinspec) == PNEANet:
-                return ConvertESubGraph_PNEANetMP_PNEANet(tinspec, *args)
-            if type(tinspec) == PNGraphMP:
-                return ConvertESubGraph_PNEANetMP_PNGraphMP(tinspec, *args)
-            if type(tinspec) == PNEANetMP:
-                return ConvertESubGraph_PNEANetMP_PNEANetMP(tinspec, *args)
-        raise TypeError('First argument has invalid type')
+        return _ConvertESubGraph(toutspec, tinspec, *args)
 
 
+    _GetSubGraph = GetSubGraph
     def GetSubGraph(tspec, *args):
-        args = args = AddArgCompatibility(args, 0, TIntV, list)
-
-        if type(tspec) == PUNGraph: return GetSubGraph_PUNGraph(tspec, *args)
-        if type(tspec) == PUndirNet: return GetSubGraph_PUndirNet(tspec, *args)
-        if type(tspec) == PDirNet: return GetSubGraph_PDirNet(tspec, *args)
-        if type(tspec) == PNGraph : return GetSubGraph_PNGraph(tspec, *args)
-        if type(tspec) == PNEANet : return GetSubGraph_PNEANet(tspec, *args)
-        if type(tspec) == PNGraphMP: return GetSubGraph_PNGraphMP(tspec, *args)
-        if type(tspec) == PNEANetMP : return GetSubGraph_PNEANetMP(tspec, *args)
-        raise TypeError('First argument has invalid type')
+        args = AddArgCompatibility(args, 0, TIntV, list)
+        return _GetSubGraph(tspec, *args)
 
 
+    _GetSubGraphRenumber = GetSubGraphRenumber
     def GetSubGraphRenumber(tspec, *args):
         args = AddArgCompatibility(args, 0, TIntV, list)
-
-        if type(tspec) == PUNGraph: return GetSubGraphRenumber_PUNGraph(tspec, *args)
-        if type(tspec) == PUndirNet: return GetSubGraphRenumber_PUndirNet(tspec, *args)
-        if type(tspec) == PDirNet: return GetSubGraphRenumber_PDirNet(tspec, *args)
-        if type(tspec) == PNGraph : return GetSubGraphRenumber_PNGraph(tspec, *args)
-        if type(tspec) == PNEANet : return GetSubGraphRenumber_PNEANet(tspec, *args)
-        if type(tspec) == PNGraphMP: return GetSubGraphRenumber_PNGraphMP(tspec, *args)
-        if type(tspec) == PNEANetMP : return GetSubGraphRenumber_PNEANetMP(tspec, *args)
-        raise TypeError('First argument has invalid type')
+        return _GetSubGraphRenumber(tspec, *args)
 
 
+    _GetEdgesInOut = GetEdgesInOut
     def GetEdgesInOut(tspec, *args):
         args = AddArgCompatibility(args, 0, TIntV, list)
-
-        if type(tspec) == PUNGraph: return GetEdgesInOut_PUNGraph(tspec, *args)
-        if type(tspec) == PUndirNet: return GetEdgesInOut_PUndirNet(tspec, *args)
-        if type(tspec) == PDirNet: return GetEdgesInOut_PDirNet(tspec, *args)
-        if type(tspec) == PNGraph : return GetEdgesInOut_PNGraph(tspec, *args)
-        if type(tspec) == PNEANet : return GetEdgesInOut_PNEANet(tspec, *args)
-        if type(tspec) == PNGraphMP: return GetEdgesInOut_PNGraphMP(tspec, *args)
-        if type(tspec) == PNEANetMP : return GetEdgesInOut_PNEANetMP(tspec, *args)
-        raise TypeError('First argument has invalid type')  
+        return _GetEdgesInOut(tspec, *args)
 
 
+    _GetModularity = GetModularity
     def GetModularity(tspec, *args):
         args = AddArgCompatibility(args, 0, TIntV, list)
+        return _GetModularity(tspec, *args)
 
-        if type(tspec) == PUNGraph: return GetModularity_PUNGraph(tspec, *args)
-        if type(tspec) == PUndirNet: return GetModularity_PUndirNet(tspec, *args)
-        if type(tspec) == PDirNet: return GetModularity_PDirNet(tspec, *args)
-        if type(tspec) == PNGraph : return GetModularity_PNGraph(tspec, *args)
-        if type(tspec) == PNEANet : return GetModularity_PNEANet(tspec, *args)
-        if type(tspec) == PNGraphMP: return GetModularity_PNGraphMP(tspec, *args)
-        if type(tspec) == PNEANetMP : return GetModularity_PNEANetMP(tspec, *args)
-        raise TypeError('First argument has invalid type')
-
-
+    _GetNodeTriads = GetNodeTriads
     def GetNodeTriads(tspec, *args):
         if len(args) == 2:
             args = AddArgCompatibility(args, 1, TIntSet, set)
+        return _GetNodeTriads(tspec, *args)
 
-        if type(tspec) == PUNGraph: return GetNodeTriads_PUNGraph(tspec, *args)
-        if type(tspec) == PUndirNet: return GetNodeTriads_PUndirNet(tspec, *args)
-        if type(tspec) == PDirNet: return GetNodeTriads_PDirNet(tspec, *args)
-        if type(tspec) == PNGraph : return GetNodeTriads_PNGraph(tspec, *args)
-        if type(tspec) == PNEANet : return GetNodeTriads_PNEANet(tspec, *args)
-        if type(tspec) == PNGraphMP: return GetNodeTriads_PNGraphMP(tspec, *args)
-        if type(tspec) == PNEANetMP : return GetNodeTriads_PNEANetMP(tspec, *args)
-        raise TypeError('First argument has invalid type')
 
+    _DrawGViz = DrawGViz
     def DrawGViz(tspec, *args):
         args = AddArgCompatibility(args, -1, TIntStrH, dict)
-
-        if type(tspec) == PUNGraph: return DrawGViz_PUNGraph(tspec, *args)
-        if type(tspec) == PUndirNet: return DrawGViz_PUndirNet(tspec, *args)
-        if type(tspec) == PDirNet: return DrawGViz_PDirNet(tspec, *args)
-        if type(tspec) == PNGraph : return DrawGViz_PNGraph(tspec, *args)
-        if type(tspec) == PNEANet : return DrawGViz_PNEANet(tspec, *args)
-        if type(tspec) == PNEANetMP : return DrawGViz_PNEANetMP(tspec, *args)
-        if type(tspec) == PNGraphMP: return DrawGViz_PNGraphMP(tspec, *args)
-        raise TypeError('First argument has invalid type')
+        return _DrawGViz(tspec, *args)
 %}
 
 

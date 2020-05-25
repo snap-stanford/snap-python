@@ -228,13 +228,3 @@ TUNGraphEdgeI.GetId = GetId
         _snap.GetDegCnt_PUNGraph(Graph, DegToCntV)
         return DegToCntV
 %}
-
-// Overloaded functions
-%pythoncode %{
-#Redefine overloaded functions
-    def LoadEdgeList_PUNGraph(InFNm, SrcColld, DstColld, Separator = None):
-        if Separator is not None:
-            return _snap.LoadEdgeList_PUNGraph(InFNm, SrcColld, DstColld, Separator)
-        else:
-            return _snap.LoadEdgeList_PUNGraph(InFNm, SrcColld, DstColld)
-%}
