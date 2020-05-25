@@ -1540,22 +1540,22 @@ TNEANetMPNodeI.GetInEdges = GetInEdges
     # Works for newTypes: list, set (with their corresponding SNAP types)
     def AddArgCompatibility(args, pos, prevType, newType):
         convertedArgs = list(args)
+        if len(args) > pos:
+            arg = args[pos]
 
-        arg = args[pos]
-        if type(arg) == newType:
-            convertedArg = prevType()
+            if type(arg) == newType:
+                convertedArg = prevType()
 
-            if newType == list:
-                for item in arg:
-                    convertedArg.Add(item)
-            elif newType == set:
-                for item in arg:
-                    convertedArg.AddKey(item)
-            elif newType == dict: 
-                for key in arg:
-                    convertedArg[key] = arg[key]
-
-            convertedArgs[pos] = convertedArg
+                if newType == list:
+                    for item in arg:
+                        convertedArg.Add(item)
+                elif newType == set:
+                    for item in arg:
+                        convertedArg.AddKey(item)
+                elif newType == dict: 
+                    for key in arg:
+                        convertedArg[key] = arg[key]
+                convertedArgs[pos] = convertedArg
 
         return tuple(convertedArgs)
 
@@ -1597,6 +1597,27 @@ TNEANetMPNodeI.GetInEdges = GetInEdges
     _LoadConnListStr = LoadConnListStr 
     def LoadConnListStr(tspec, *args):
         return MoveArgToReturn(tspec, args, _LoadConnListStr, 1, TStrIntSH)
+
+
+    _SaveGViz = SaveGViz
+    def SaveGViz(tspec, *args):
+        args = AddArgCompatibility(args, -1, TIntStrH, dict)
+        return _SaveGViz(tspec, *args)
+
+
+    _SavePajek = SavePajek
+    def SavePajek(Graph, OutFNm, NIdColorH = None, NIdLabelH = None, EIdColorH = None):
+        if NIdColorH is None:
+            NIdColorH = TIntStrH()
+        if NIdLabelH is None:
+            NIdLabelH = TIntStrH()
+        if EIdColorH is None:
+            EIdColorH = TIntStrH()
+        args = (OutFNm, NIdColorH, NIdLabelH, EIdColorH)
+        args = AddArgCompatibility(args, 1, TIntStrH, dict)
+        args = AddArgCompatibility(args, 2, TIntStrH, dict)
+        args = AddArgCompatibility(args, 3, TIntStrH, dict)
+        return _SavePajek(Graph, *args)
 
 
     _CntEdgesToSet = CntEdgesToSet
@@ -1645,6 +1666,7 @@ TNEANetMPNodeI.GetInEdges = GetInEdges
     def GetModularity(tspec, *args):
         args = AddArgCompatibility(args, 0, TIntV, list)
         return _GetModularity(tspec, *args)
+
 
     _GetNodeTriads = GetNodeTriads
     def GetNodeTriads(tspec, *args):
