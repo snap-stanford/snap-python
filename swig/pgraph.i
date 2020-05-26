@@ -1706,6 +1706,61 @@ TNEANetMPNodeI.GetInEdges = GetInEdges
         return _DrawGViz(Graph, *args)
 
 
+    _GetSccs = GetSccs
+    def GetSccs(Graph, *args):
+        return MoveArgToReturn(Graph, args, _GetSccs, 0, TCnComV)
+
+
+    _GetSccSzCnt = GetSccSzCnt
+    def GetSccSzCnt(Graph, *args):
+        return MoveArgToReturn(Graph, args, _GetSccSzCnt, 0, TIntPrV)  
+
+
+    _GetWccs = GetWccs
+    def GetWccs(Graph, *args):
+        return MoveArgToReturn(Graph, args, _GetWccs, 0, TCnComV)
+
+
+    _GetWccSzCnt = GetWccSzCnt
+    def GetWccSzCnt(Graph, *args):
+        return MoveArgToReturn(Graph, args, _GetWccSzCnt, 0, TIntPrV)
+
+
+    _GetNodeWcc = GetNodeWcc
+    def GetNodeWcc(Graph, *args):
+        return MoveArgToReturn(Graph, args, _GetNodeWcc, 1, TIntV)
+
+
+    _Get1CnCom = Get1CnCom
+    def Get1CnCom(Graph, *args):
+        return MoveArgToReturn(Graph, args, _Get1CnCom, 0, TCnComV)
+
+
+    _Get1CnComSzCnt = Get1CnComSzCnt
+    def Get1CnComSzCnt(Graph, *args):
+        return MoveArgToReturn(Graph, args, _Get1CnComSzCnt, 0, TCnComV)
+
+
+    _GetBiCon = GetBiCon
+    def GetBiCon(Graph, *args):
+        return MoveArgToReturn(Graph, args, _GetBiCon, 0, TCnComV)
+
+
+    _GetBiConSzCnt = GetBiConSzCnt
+    def GetBiConSzCnt(Graph, *args):
+        return MoveArgToReturn(Graph, args, _GetBiConSzCnt, 0, TCnComV)
+
+
+    _GetArtPoints = GetArtPoints
+    def GetArtPoints(Graph, *args):
+        return MoveArgToReturn(Graph, args, _GetArtPoints, 0, TCnComV)
+
+
+    _GetEdgeBridges = GetEdgeBridges
+    def GetEdgeBridges(Graph, *args):
+        return MoveArgToReturn(Graph, args, _GetEdgeBridges, 0, TCnComV)
+
+
     _GetEdgesInOut = GetEdgesInOut
     def GetEdgesInOut(Graph, *args):
         args = AddArgCompatibility(args, 0, TIntV, list)
