@@ -1763,12 +1763,12 @@ TNEANetMPNodeI.GetInEdges = GetInEdges
 
     _GetNodesAtHop = GetNodesAtHop
     def GetNodesAtHop(Graph, *args):
-        return MoveArgToReturn(Graph, args, _GetNodesAtHop, , TCnComV)
+        return MoveArgToReturn(Graph, args, _GetNodesAtHop, 2, TIntV)
 
 
     _GetNodesAtHops = GetNodesAtHops
     def GetNodesAtHops(Graph, *args):
-        return MoveArgToReturn(Graph, args, _GetNodesAtHops, 0, TCnComV)
+        return MoveArgToReturn(Graph, args, _GetNodesAtHops, 1, TIntPrV)
 
 
     _GetTreeSig = GetTreeSig
@@ -1782,6 +1782,47 @@ TNEANetMPNodeI.GetInEdges = GetInEdges
             sig = TIntV()
             _GetTreeSig(Graph, RootNId, sig)
             return sig
+
+
+    _GetBetweennessCentr = GetBetweennessCentr
+    def GetBetweennessCentr(Graph, NodeFrac = 1.0, IsDir = False):
+        NIdBtwH = TIntFltH()
+        EdgeBtwH = TIntPrFltH()
+        _GetBetweennessCentr (Graph, NIdBtwH, EdgeBtwH, NodeFrac, IsDir)
+        return (NIdBtwH, EdgeBtwH)
+
+
+    _GetPageRank = GetPageRank
+    def GetPageRank(Graph, *args):
+        return MoveArgToReturn(Graph, args, _GetPageRank, 0, TIntFltH)
+
+
+    _GetHits = GetHits
+    def GetHits(Graph, NIdHubH, NIdAuthH, MaxIter = 20):
+        NIdHubH = TIntFltH()
+        NIdAuthH = TIntFltH()
+        _GetHits(Graph, MaxIter)
+        return (NIdHubH, NIdAuthH)
+
+
+    _GetEigenVectorCentr = GetEigenVectorCentr
+    def GetEigenVectorCentr(Graph, *args):
+        return MoveArgToReturn(Graph, args, _GetEigenVectorCentr, 0, TIntFltH)
+
+
+    _CommunityCNM = CommunityCNM
+    def CommunityCNM(Graph, *args):
+        return MoveArgToReturn(Graph, args, _CommunityCNM, 0, TCnComV)
+
+
+    _CommunityGirvanNewman = CommunityGirvanNewman
+    def CommunityGirvanNewman(Graph, *args):
+        return MoveArgToReturn(Graph, args, _CommunityGirvanNewman, 0, TCnComV)
+
+
+    _GetPageRank = GetPageRank
+    def GetPageRank(Graph, *args):
+        return MoveArgToReturn(Graph, args, _GetPageRank, 0, TIntFltH)
 
 
     _GetEdgesInOut = GetEdgesInOut
