@@ -1600,9 +1600,9 @@ TNEANetMPNodeI.GetInEdges = GetInEdges
 
 
     _SaveGViz = SaveGViz
-    def SaveGViz(tspec, *args):
+    def SaveGViz(Graph, *args):
         args = AddArgCompatibility(args, -1, TIntStrH, dict)
-        return _SaveGViz(tspec, *args)
+        return _SaveGViz(Graph, *args)
 
 
     _SavePajek = SavePajek
@@ -1621,28 +1621,28 @@ TNEANetMPNodeI.GetInEdges = GetInEdges
 
 
     _getDegCnt = GetDegCnt
-    def GetDegCnt(tspec, *args):
-        return MoveArgToReturn(tspec, args, _GetDegCnt, 0, TIntPrV)
+    def GetDegCnt(Graph, *args):
+        return MoveArgToReturn(Graph, args, _GetDegCnt, 0, TIntPrV)
 
 
     _GetInDegCnt = GetInDegCnt
-    def GetInDegCnt(tspec, *args):
-        return MoveArgToReturn(tspec, args, _GetInDegCnt, 0, TIntPrV)
+    def GetInDegCnt(Graph, *args):
+        return MoveArgToReturn(Graph, args, _GetInDegCnt, 0, TIntPrV)
 
 
     _GetOutDegCnt = GetOutDegCnt
-    def GetOutDegCnt(tspec, *args):
-        return MoveArgToReturn(tspec, args, _GetOutDegCnt, 0, TIntPrV)        
+    def GetOutDegCnt(Graph, *args):
+        return MoveArgToReturn(Graph, args, _GetOutDegCnt, 0, TIntPrV)        
 
 
     _GetNodeInDegV = GetNodeInDegV
-    def GetNodeInDegV(tspec, *args):
-        return MoveArgToReturn(tspec, args, _GetNodeInDegV, 0, TIntPrV)
+    def GetNodeInDegV(Graph, *args):
+        return MoveArgToReturn(Graph, args, _GetNodeInDegV, 0, TIntPrV)
 
 
     _GetNodeOutDegV = GetNodeOutDegV
-    def GetNodeOutDegV(tspec, *args):
-        return MoveArgToReturn(tspec, args, _GetNodeOutDegV, 0, TIntPrV)
+    def GetNodeOutDegV(Graph, *args):
+        return MoveArgToReturn(Graph, args, _GetNodeOutDegV, 0, TIntPrV)
 
 
     _GetDegSeqV = GetDegSeqV
@@ -1659,70 +1659,70 @@ TNEANetMPNodeI.GetInEdges = GetInEdges
 
 
     _CntEdgesToSet = CntEdgesToSet
-    def CntEdgesToSet(tspec, *args):
+    def CntEdgesToSet(Graph, *args):
         args = AddArgCompatibility(args, 1, TIntSet, set)
-        return _CntEdgesToSet(tspec, *args)
+        return _CntEdgesToSet(Graph, *args)
 
 
     _DelNodes = DelNodes
-    def DelNodes(tspec, *args):
+    def DelNodes(Graph, *args):
         args = AddArgCompatibility(args, 0, TIntV, list)
-        return _DelNodes(tspec, *args)
+        return _DelNodes(Graph, *args)
 
 
     _ConvertSubGraph = ConvertSubGraph
-    def ConvertSubGraph(toutspec, tinspec, *args):
+    def ConvertSubGraph(GraphType, InGraph, *args):
         args = AddArgCompatibility(args, 0, TIntV, list)
-        return _ConvertSubGraph(toutspec, tinspec, *args)
+        return _ConvertSubGraph(GraphType, InGraph, *args)
 
 
     _ConvertESubGraph = ConvertESubGraph
-    def ConvertESubGraph(toutspec, tinspec, *args):
+    def ConvertESubGraph(GraphType, InGraph, *args):
         args = AddArgCompatibility(args, 0, TIntV, list)
-        return _ConvertESubGraph(toutspec, tinspec, *args)
+        return _ConvertESubGraph(GraphType, InGraph, *args)
 
 
     _GetSubGraph = GetSubGraph
-    def GetSubGraph(tspec, *args):
+    def GetSubGraph(Graph, *args):
         args = AddArgCompatibility(args, 0, TIntV, list)
-        return _GetSubGraph(tspec, *args)
+        return _GetSubGraph(Graph, *args)
 
 
     _GetSubGraphRenumber = GetSubGraphRenumber
-    def GetSubGraphRenumber(tspec, *args):
+    def GetSubGraphRenumber(Graph, *args):
         args = AddArgCompatibility(args, 0, TIntV, list)
-        return _GetSubGraphRenumber(tspec, *args)
+        return _GetSubGraphRenumber(Graph, *args)
 
 
     _GetESubGraph = GetESubGraph
-    def GetESubGraph(tspec, *args):
+    def GetESubGraph(Graph, *args):
         args = AddArgCompatibility(args, 0, TIntV, list)
-        return _GetESubGraph(tspec, *args)
+        return _GetESubGraph(Graph, *args)
 
 
     _DrawGViz = DrawGViz
-    def DrawGViz(tspec, *args):
+    def DrawGViz(Graph, *args):
         args = AddArgCompatibility(args, -1, TIntStrH, dict)
-        return _DrawGViz(tspec, *args)
+        return _DrawGViz(Graph, *args)
 
 
     _GetEdgesInOut = GetEdgesInOut
-    def GetEdgesInOut(tspec, *args):
+    def GetEdgesInOut(Graph, *args):
         args = AddArgCompatibility(args, 0, TIntV, list)
-        return _GetEdgesInOut(tspec, *args)
+        return _GetEdgesInOut(Graph, *args)
 
 
     _GetModularity = GetModularity
-    def GetModularity(tspec, *args):
+    def GetModularity(Graph, *args):
         args = AddArgCompatibility(args, 0, TIntV, list)
-        return _GetModularity(tspec, *args)
+        return _GetModularity(Graph, *args)
 
 
     _GetNodeTriads = GetNodeTriads
-    def GetNodeTriads(tspec, *args):
+    def GetNodeTriads(Graph, *args):
         if len(args) == 2:
             args = AddArgCompatibility(args, 1, TIntSet, set)
-        return _GetNodeTriads(tspec, *args)
+        return _GetNodeTriads(Graph, *args)
 
 
 
