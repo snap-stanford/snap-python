@@ -1771,6 +1771,12 @@ TNEANetMPNodeI.GetInEdges = GetInEdges
         return MoveArgToReturn(Graph, args, _GetNodesAtHops, 1, TIntPrV)
 
 
+    def GetShortPathAll(Graph, SrcNId, IsDir=false, MaxDist=TInt::Mx):
+        NIdToDistH = TIntH()
+        GetShortPath(Graph, SrcNId, NIdToDistH, IsDir, MaxDist)
+        return NIdToDistH
+
+
     _GetTreeSig = GetTreeSig
     def GetTreeSig(Graph, RootNId, Sig, NodeMap = False):
         if NodeMap:
@@ -1820,11 +1826,6 @@ TNEANetMPNodeI.GetInEdges = GetInEdges
         return MoveArgToReturn(Graph, args, _CommunityGirvanNewman, 0, TCnComV)
 
 
-    _GetPageRank = GetPageRank
-    def GetPageRank(Graph, *args):
-        return MoveArgToReturn(Graph, args, _GetPageRank, 0, TIntFltH)
-
-
     _GetEdgesInOut = GetEdgesInOut
     def GetEdgesInOut(Graph, *args):
         args = AddArgCompatibility(args, 0, TIntV, list)
@@ -1837,6 +1838,31 @@ TNEANetMPNodeI.GetInEdges = GetInEdges
         return _GetModularity(Graph, *args)
 
 
+    _GetClustCf = GetClustCf
+    def GetClustCf(Graph, CCfByDeg = False, SampleNodes =- 1):
+        if CCfByDeg:
+            DegToCCfV = TFltPrV()
+            PrevReturn = _GetClustCf(Graph, DegToCCfV, SampleNodes)
+            return (PrevReturn, DegToCCfV)
+        else:
+            return _GetClustCf(Graph, SampleNodes)
+
+
+    _GetCmnNbrs = GetCmnNbrs
+    def GetCmnNbrs(Graph, NId1, NId2, NbrList = False):
+        if NbrList:
+            NbrV = TIntV()
+            PrevReturn = _GetCmnNbrs(Graph, NId1, NId2, NbrV)
+            return (PrevReturn, NbrV)
+        else:
+            return _GetCmnNbrs(Graph, NId1, NId2)
+
+    def GetNodeClustCfAll(Graph):
+        NIdCCfH = TIntFltH()
+        GetNodeClustCf(Graph, NIdCCfH)
+        return NIdCCfH
+
+
     _GetNodeTriads = GetNodeTriads
     def GetNodeTriads(Graph, *args):
         if len(args) == 2:
@@ -1844,7 +1870,61 @@ TNEANetMPNodeI.GetInEdges = GetInEdges
         return _GetNodeTriads(Graph, *args)
 
 
+    _GetTriadParticip = GetTriadParticip
+    def GetTriadParticip(Graph, *args):
+        return MoveArgToReturn(Graph, args, _GetTriadParticip, 0, TIntPrV)
 
+
+    _GetKCoreNodes = GetKCoreNodes
+    def GetKCoreNodes(Graph, *args):
+        return MoveArgToReturn(Graph, args, _GetKCoreNodes, 0, TIntPrV)
+
+
+    _GetKCoreEdges = GetKCoreEdges
+    def GetKCoreEdges(Graph, *args):
+        return MoveArgToReturn(Graph, args, _GetKCoreEdges, 0, TIntPrV)
+
+
+    _GetEigVals = GetEigVals
+    def GetEigVals(Graph, *args):
+        return MoveArgToReturn(Graph, args, _GetEigVals, 1, TFltV)
+
+
+    _GetSngVals = GetSngVals
+    def GetSngVals(Graph, *args):
+        return MoveArgToReturn(Graph, args, _GetSngVals, 1, TFltV)
+
+
+    _GetInvParticipRat = GetInvParticipRat
+    def GetInvParticipRat(Graph, *args):
+        return MoveArgToReturn(Graph, args, _GetInvParticipRat, 2, TFltPrV)
+
+    def GetLeadEigVec(Graph):
+        EigVec = TFltV()
+        GetEigVec(Graph, EigVec)
+        return EigVec
+
+
+    def GetEigVecs(Graph, EigVecs):
+        EigVal = TFltV()
+        EigVecV = TFltVFltV()
+        GetEigVec(Graph, EigVecs, EigVal, EigVecV)
+        return (EigVal, EigVecV)
+
+
+    def GetLeadSngVec(Graph):
+        LeftSV = TFltV()
+        RightSV = TFltV()
+        GetSngVec(Graph, LeftSV, RightSV)
+        return (LeftSV, RightSV)
+
+
+    def GetSngVecs(Graph, SngVecs):
+        SngValV = TFltV()
+        LeftSV = TFltVFltV()
+        RightSV = TFltVFltV()
+        GetSngVec(Graph, SngVecs, SngValV, LeftSV, RightSV)
+        return (SngValV, LeftSV, RightSV)
 %}
 
 
