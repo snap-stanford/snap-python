@@ -1738,7 +1738,7 @@ TNEANetMPNodeI.GetInEdges = GetInEdges
 
     _Get1CnComSzCnt = Get1CnComSzCnt
     def Get1CnComSzCnt(Graph, *args):
-        return MoveArgToReturn(Graph, args, _Get1CnComSzCnt, 0, TCnComV)
+        return MoveArgToReturn(Graph, args, _Get1CnComSzCnt, 0, TIntPrV)
 
 
     _GetBiCon = GetBiCon
@@ -1748,17 +1748,40 @@ TNEANetMPNodeI.GetInEdges = GetInEdges
 
     _GetBiConSzCnt = GetBiConSzCnt
     def GetBiConSzCnt(Graph, *args):
-        return MoveArgToReturn(Graph, args, _GetBiConSzCnt, 0, TCnComV)
+        return MoveArgToReturn(Graph, args, _GetBiConSzCnt, 0, TIntPrV)
 
 
     _GetArtPoints = GetArtPoints
     def GetArtPoints(Graph, *args):
-        return MoveArgToReturn(Graph, args, _GetArtPoints, 0, TCnComV)
+        return MoveArgToReturn(Graph, args, _GetArtPoints, 0, TIntV)
 
 
     _GetEdgeBridges = GetEdgeBridges
     def GetEdgeBridges(Graph, *args):
-        return MoveArgToReturn(Graph, args, _GetEdgeBridges, 0, TCnComV)
+        return MoveArgToReturn(Graph, args, _GetEdgeBridges, 0, TIntPrV)
+
+
+    _GetNodesAtHop = GetNodesAtHop
+    def GetNodesAtHop(Graph, *args):
+        return MoveArgToReturn(Graph, args, _GetNodesAtHop, , TCnComV)
+
+
+    _GetNodesAtHops = GetNodesAtHops
+    def GetNodesAtHops(Graph, *args):
+        return MoveArgToReturn(Graph, args, _GetNodesAtHops, 0, TCnComV)
+
+
+    _GetTreeSig = GetTreeSig
+    def GetTreeSig(Graph, RootNId, Sig, NodeMap = False):
+        if NodeMap:
+            map = TIntPrV()
+            sig = TIntV()
+            _GetTreeSig(Graph, RootNId, sig, map)
+            return (sig, map)
+        else:
+            sig = TIntV()
+            _GetTreeSig(Graph, RootNId, sig)
+            return sig
 
 
     _GetEdgesInOut = GetEdgesInOut
