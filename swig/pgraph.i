@@ -1595,8 +1595,8 @@ TNEANetMPNodeI.GetInEdges = GetInEdges
 
 
     _LoadConnListStr = LoadConnListStr 
-    def LoadConnListStr(tspec, *args):
-        return MoveArgToReturn(tspec, args, _LoadConnListStr, 1, TStrIntSH)
+    def LoadConnListStr(GraphType, *args):
+        return MoveArgToReturn(GraphType, args, _LoadConnListStr, 1, TStrIntSH)
 
 
     _SaveGViz = SaveGViz
@@ -1618,6 +1618,44 @@ TNEANetMPNodeI.GetInEdges = GetInEdges
         args = AddArgCompatibility(args, 2, TIntStrH, dict)
         args = AddArgCompatibility(args, 3, TIntStrH, dict)
         return _SavePajek(Graph, *args)
+
+
+    _getDegCnt = GetDegCnt
+    def GetDegCnt(tspec, *args):
+        return MoveArgToReturn(tspec, args, _GetDegCnt, 0, TIntPrV)
+
+
+    _GetInDegCnt = GetInDegCnt
+    def GetInDegCnt(tspec, *args):
+        return MoveArgToReturn(tspec, args, _GetInDegCnt, 0, TIntPrV)
+
+
+    _GetOutDegCnt = GetOutDegCnt
+    def GetOutDegCnt(tspec, *args):
+        return MoveArgToReturn(tspec, args, _GetOutDegCnt, 0, TIntPrV)        
+
+
+    _GetNodeInDegV = GetNodeInDegV
+    def GetNodeInDegV(tspec, *args):
+        return MoveArgToReturn(tspec, args, _GetNodeInDegV, 0, TIntPrV)
+
+
+    _GetNodeOutDegV = GetNodeOutDegV
+    def GetNodeOutDegV(tspec, *args):
+        return MoveArgToReturn(tspec, args, _GetNodeOutDegV, 0, TIntPrV)
+
+
+    _GetDegSeqV = GetDegSeqV
+    def GetDegSeqV(Graph, Dir = False):
+        If Dir:
+            InDegV = TIntV()
+            OutDegV = TIntV()
+            _GetDegSeqV(Graph, InDegV, OutDegV)
+            return (InDegV, OutDegV)
+        else:
+            DegV = TIntV()
+            _GetDegSeqV(Graph, DegV)
+            return GetDegSeqV(DegV)
 
 
     _CntEdgesToSet = CntEdgesToSet
@@ -1656,6 +1694,18 @@ TNEANetMPNodeI.GetInEdges = GetInEdges
         return _GetSubGraphRenumber(tspec, *args)
 
 
+    _GetESubGraph = GetESubGraph
+    def GetESubGraph(tspec, *args):
+        args = AddArgCompatibility(args, 0, TIntV, list)
+        return _GetESubGraph(tspec, *args)
+
+
+    _DrawGViz = DrawGViz
+    def DrawGViz(tspec, *args):
+        args = AddArgCompatibility(args, -1, TIntStrH, dict)
+        return _DrawGViz(tspec, *args)
+
+
     _GetEdgesInOut = GetEdgesInOut
     def GetEdgesInOut(tspec, *args):
         args = AddArgCompatibility(args, 0, TIntV, list)
@@ -1675,10 +1725,7 @@ TNEANetMPNodeI.GetInEdges = GetInEdges
         return _GetNodeTriads(tspec, *args)
 
 
-    _DrawGViz = DrawGViz
-    def DrawGViz(tspec, *args):
-        args = AddArgCompatibility(args, -1, TIntStrH, dict)
-        return _DrawGViz(tspec, *args)
+
 %}
 
 
