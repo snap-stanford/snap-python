@@ -3,7 +3,7 @@
 #	Use this Makefile to compile SNAP Python from scratch
 #
 # Build instructions for py2 on macOS and Linux:
-#		make all             # apply SWIG and compile the code
+#		make all2            # apply SWIG and compile the code
 #		make srcdist         # build source distribution
 #		make whldist         # build wheel distribution
 #		make pip-test        # upload to private test pip
@@ -82,7 +82,9 @@ WHLFILE := $(shell ls -rt dist/*.whl | tail -1)
 include $(GITDIR)/Makefile.config
 include ../Makefile.config
 
-all: snap.py _snap.so
+all: all3
+
+all2: snap.py _snap.so
 
 all3: snap3.py _snap3.so
 
@@ -91,10 +93,10 @@ snap.py: snap_wrap.cxx
 snap3.py: snap_wrap3.cxx
 
 _snap.so: snap_wrap.o Snap.o cliques.o agm.o agmfast.o agmfit.o biasedrandomwalk.o word2vec.o n2v.o
-	g++ $(LDFLAGS) -o _snap.so snap_wrap.o Snap.o cliques.o agm.o agmfast.o agmfit.o biasedrandomwalk.o word2vec.o n2v.o $(LIBS)
+	$(CC) $(LDFLAGS) $(LIBS) snap_wrap.o Snap.o cliques.o agm.o agmfast.o agmfit.o biasedrandomwalk.o word2vec.o n2v.o -o _snap.so
 
 _snap3.so: snap_wrap3.o Snap.o 
-	g++ $(LDFLAGS3) -o _snap.so snap_wrap3.o Snap.o  $(LIBS)
+	$(CC) $(LDFLAGS3) $(LIBS) snap_wrap3.o Snap.o -o _snap.so
 	ln -f _snap.so _snap3.so
 
 snap_wrap.cxx: snap.i snap_types.i tvec.i pneanet.i tmodenet.i tcrossnet.i pungraph.i pngraph.i pgraph.i pngraphmp.i pneanetmp.i\
@@ -107,35 +109,35 @@ snap_wrap3.cxx: snap.i snap_types.i tvec.i pneanet.i tmodenet.i tcrossnet.i pung
 	ln -f snap_wrap.cxx snap_wrap3.cxx
 
 snap_wrap.o: snap_wrap.cxx
-	g++ $(CXXFLAGS) -c snap_wrap.cxx -I$(SNAPDIR) -I$(GLIBDIR) $(IFLAGS)
+	$(CC) $(CXXFLAGS) -I$(SNAPDIR) -I$(GLIBDIR) $(IFLAGS) -c snap_wrap.cxx
 
 snap_wrap3.o: snap_wrap3.cxx
-	g++ $(CXXFLAGS) -c snap_wrap3.cxx -I$(SNAPDIR) -I$(GLIBDIR) $(IFLAGS3) -o snap_wrap.o
+	$(CC) $(CXXFLAGS) -I$(SNAPDIR) -I$(GLIBDIR) $(IFLAGS3) -c snap_wrap3.cxx -o snap_wrap.o
 	ln -f snap_wrap.o snap_wrap3.o
 
 Snap.o: 
-	$(CC) $(CXXFLAGS) -c $(SNAPDIR)/Snap.cpp -I$(SNAPDIR) -I$(GLIBDIR)
+	$(CC) $(CXXFLAGS) -I$(SNAPDIR) -I$(GLIBDIR) -c $(SNAPDIR)/Snap.cpp
 
 cliques.o: 
-	$(CC) $(CXXFLAGS) -c $(SNAPADVDIR)/cliques.cpp -I$(SNAPDIR) -I$(SNAPADVDIR) -I$(GLIBDIR)
+	$(CC) $(CXXFLAGS) -I$(SNAPDIR) -I$(SNAPADVDIR) -I$(GLIBDIR) -c $(SNAPADVDIR)/cliques.cpp
 
 agm.o: 
-	$(CC) $(CXXFLAGS) -c $(SNAPADVDIR)/agm.cpp -I$(SNAPDIR) -I$(SNAPADVDIR) -I$(GLIBDIR)
+	$(CC) $(CXXFLAGS) -I$(SNAPDIR) -I$(SNAPADVDIR) -I$(GLIBDIR) -c $(SNAPADVDIR)/agm.cpp
 
 agmfast.o: 
-	$(CC) $(CXXFLAGS) -c $(SNAPADVDIR)/agmfast.cpp -I$(SNAPDIR) -I$(SNAPADVDIR) -I$(GLIBDIR)
+	$(CC) $(CXXFLAGS) -I$(SNAPDIR) -I$(SNAPADVDIR) -I$(GLIBDIR) -c $(SNAPADVDIR)/agmfast.cpp
 
 agmfit.o: 
-	$(CC) $(CXXFLAGS) -c $(SNAPADVDIR)/agmfit.cpp -I$(SNAPDIR) -I$(SNAPADVDIR) -I$(GLIBDIR)
+	$(CC) $(CXXFLAGS) -I$(SNAPDIR) -I$(SNAPADVDIR) -I$(GLIBDIR) -c $(SNAPADVDIR)/agmfit.cpp
 
 biasedrandomwalk.o: 
-	$(CC) $(CXXFLAGS) -c $(SNAPADVDIR)/biasedrandomwalk.cpp -I$(SNAPDIR) -I$(SNAPADVDIR) -I$(GLIBDIR)
+	$(CC) $(CXXFLAGS) -I$(SNAPDIR) -I$(SNAPADVDIR) -I$(GLIBDIR) -c $(SNAPADVDIR)/biasedrandomwalk.cpp
 
 word2vec.o: 
-	$(CC) $(CXXFLAGS) -c $(SNAPADVDIR)/word2vec.cpp -I$(SNAPDIR) -I$(SNAPADVDIR) -I$(GLIBDIR)
+	$(CC) $(CXXFLAGS) -I$(SNAPDIR) -I$(SNAPADVDIR) -I$(GLIBDIR) -c $(SNAPADVDIR)/word2vec.cpp
 
 n2v.o: 
-	$(CC) $(CXXFLAGS) -c $(SNAPADVDIR)/n2v.cpp -I$(SNAPDIR) -I$(SNAPADVDIR) -I$(GLIBDIR)
+	$(CC) $(CXXFLAGS) -I$(SNAPDIR) -I$(SNAPADVDIR) -I$(GLIBDIR) -c $(SNAPADVDIR)/n2v.cpp
 
 install: setup.py snap.py _snap.so
 	sudo $(PYTHON) setup.py install
