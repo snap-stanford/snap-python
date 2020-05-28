@@ -1562,13 +1562,13 @@ TNEANetMPNodeI.GetInEdges = GetInEdges
 
     # This function moves the argument at pos to be returned instead
     def MoveArgToReturn (tspec, args, func, pos, argType):
-        if len(args) > pos and type(args[pos] == argType):
+        if len(args) > pos and type(args[pos]) == argType:
             #For backward compatility
             return func(tspec, *args)
         else:
             returnArg = argType()
             newArgs = list(args)
-            newArgs[pos] = returnArg
+            newArgs.insert(pos, returnArg)
             oldReturn = func(tspec, *newArgs)
             if oldReturn == None:
                 return returnArg
@@ -1647,7 +1647,7 @@ TNEANetMPNodeI.GetInEdges = GetInEdges
 
     _GetDegSeqV = GetDegSeqV
     def GetDegSeqV(Graph, Dir = False):
-        If Dir:
+        if Dir:
             InDegV = TIntV()
             OutDegV = TIntV()
             _GetDegSeqV(Graph, InDegV, OutDegV)
@@ -1771,7 +1771,7 @@ TNEANetMPNodeI.GetInEdges = GetInEdges
         return MoveArgToReturn(Graph, args, _GetNodesAtHops, 1, TIntPrV)
 
 
-    def GetShortPathAll(Graph, SrcNId, IsDir=false, MaxDist=TInt::Mx):
+    def GetShortPathAll(Graph, SrcNId, IsDir = False, MaxDist=TInt.Mx):
         NIdToDistH = TIntH()
         GetShortPath(Graph, SrcNId, NIdToDistH, IsDir, MaxDist)
         return NIdToDistH
