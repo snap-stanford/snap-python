@@ -1536,28 +1536,35 @@ TNEANetMPNodeI.GetInEdges = GetInEdges
 // Add compatibility for Python data types as arguments, moving arguments to output, and overloaded functions
 
 %pythoncode %{
+
     # This function adds compatility to additional datatypes
-    # Works for newTypes: list, set (with their corresponding SNAP types)
-    def AddArgCompatibility(args, pos, prevType, newType):
-        convertedArgs = list(args)
+    # Works for Python types: list, set, and dict (with their corresponding SNAP types)
+    def ConvertToSnapType(args, pos, SnapType, PyType):
         if len(args) > pos:
             arg = args[pos]
+            if type(arg) == PyType:
+                convertedArgs = list(args)
+                convertedArg = SnapType()
 
-            if type(arg) == newType:
-                convertedArg = prevType()
+                try:
+                    if PyType == list:
+                        for item in arg:
+                            convertedArg.Add(item)
+                    elif PyType == set:
+                        for item in arg:
+                            convertedArg.AddKey(item)
+                    elif PyType == dict: 
+                        for key in arg:
+                            convertedArg[key] = arg[key]
+                except TypeError:
+                    # Raise TypeError instead of the general SystemError
+                    raise
 
-                if newType == list:
-                    for item in arg:
-                        convertedArg.Add(item)
-                elif newType == set:
-                    for item in arg:
-                        convertedArg.AddKey(item)
-                elif newType == dict: 
-                    for key in arg:
-                        convertedArg[key] = arg[key]
                 convertedArgs[pos] = convertedArg
 
-        return tuple(convertedArgs)
+                return tuple(convertedArgs)
+
+        return args
 
 
     # This function moves the argument at pos to be returned instead
@@ -1601,7 +1608,7 @@ TNEANetMPNodeI.GetInEdges = GetInEdges
 
     _SaveGViz = SaveGViz
     def SaveGViz(Graph, *args):
-        args = AddArgCompatibility(args, -1, TIntStrH, dict)
+        args = ConvertToSnapType(args, -1, TIntStrH, dict)
         return _SaveGViz(Graph, *args)
 
 
@@ -1614,9 +1621,9 @@ TNEANetMPNodeI.GetInEdges = GetInEdges
         if EIdColorH is None:
             EIdColorH = TIntStrH()
         args = (OutFNm, NIdColorH, NIdLabelH, EIdColorH)
-        args = AddArgCompatibility(args, 1, TIntStrH, dict)
-        args = AddArgCompatibility(args, 2, TIntStrH, dict)
-        args = AddArgCompatibility(args, 3, TIntStrH, dict)
+        args = ConvertToSnapType(args, 1, TIntStrH, dict)
+        args = ConvertToSnapType(args, 2, TIntStrH, dict)
+        args = ConvertToSnapType(args, 3, TIntStrH, dict)
         return _SavePajek(Graph, *args)
 
 
@@ -1660,49 +1667,49 @@ TNEANetMPNodeI.GetInEdges = GetInEdges
 
     _CntEdgesToSet = CntEdgesToSet
     def CntEdgesToSet(Graph, *args):
-        args = AddArgCompatibility(args, 1, TIntSet, set)
+        args = ConvertToSnapType(args, 1, TIntSet, set)
         return _CntEdgesToSet(Graph, *args)
 
 
     _DelNodes = DelNodes
     def DelNodes(Graph, *args):
-        args = AddArgCompatibility(args, 0, TIntV, list)
+        args = ConvertToSnapType(args, 0, TIntV, list)
         return _DelNodes(Graph, *args)
 
 
     _ConvertSubGraph = ConvertSubGraph
     def ConvertSubGraph(GraphType, InGraph, *args):
-        args = AddArgCompatibility(args, 0, TIntV, list)
+        args = ConvertToSnapType(args, 0, TIntV, list)
         return _ConvertSubGraph(GraphType, InGraph, *args)
 
 
     _ConvertESubGraph = ConvertESubGraph
     def ConvertESubGraph(GraphType, InGraph, *args):
-        args = AddArgCompatibility(args, 0, TIntV, list)
+        args = ConvertToSnapType(args, 0, TIntV, list)
         return _ConvertESubGraph(GraphType, InGraph, *args)
 
 
     _GetSubGraph = GetSubGraph
     def GetSubGraph(Graph, *args):
-        args = AddArgCompatibility(args, 0, TIntV, list)
+        args = ConvertToSnapType(args, 0, TIntV, list)
         return _GetSubGraph(Graph, *args)
 
 
     _GetSubGraphRenumber = GetSubGraphRenumber
     def GetSubGraphRenumber(Graph, *args):
-        args = AddArgCompatibility(args, 0, TIntV, list)
+        args = ConvertToSnapType(args, 0, TIntV, list)
         return _GetSubGraphRenumber(Graph, *args)
 
 
     _GetESubGraph = GetESubGraph
     def GetESubGraph(Graph, *args):
-        args = AddArgCompatibility(args, 0, TIntV, list)
+        args = ConvertToSnapType(args, 0, TIntV, list)
         return _GetESubGraph(Graph, *args)
 
 
     _DrawGViz = DrawGViz
     def DrawGViz(Graph, *args):
-        args = AddArgCompatibility(args, -1, TIntStrH, dict)
+        args = ConvertToSnapType(args, -1, TIntStrH, dict)
         return _DrawGViz(Graph, *args)
 
 
@@ -1828,13 +1835,13 @@ TNEANetMPNodeI.GetInEdges = GetInEdges
 
     _GetEdgesInOut = GetEdgesInOut
     def GetEdgesInOut(Graph, *args):
-        args = AddArgCompatibility(args, 0, TIntV, list)
+        args = ConvertToSnapType(args, 0, TIntV, list)
         return _GetEdgesInOut(Graph, *args)
 
 
     _GetModularity = GetModularity
     def GetModularity(Graph, *args):
-        args = AddArgCompatibility(args, 0, TIntV, list)
+        args = ConvertToSnapType(args, 0, TIntV, list)
         return _GetModularity(Graph, *args)
 
 
@@ -1866,7 +1873,7 @@ TNEANetMPNodeI.GetInEdges = GetInEdges
     _GetNodeTriads = GetNodeTriads
     def GetNodeTriads(Graph, *args):
         if len(args) == 2:
-            args = AddArgCompatibility(args, 1, TIntSet, set)
+            args = ConvertToSnapType(args, 1, TIntSet, set)
         return _GetNodeTriads(Graph, *args)
 
 
