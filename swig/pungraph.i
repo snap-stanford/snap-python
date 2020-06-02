@@ -218,13 +218,3 @@ TUNGraphEdgeI.GetId = GetId
 
 // conv.h - PUNGraph
 %template(ToGraph_PUNGraph) TSnap::ToGraph<PUNGraph>;
-
-
-// Move function parameter into return
-%pythoncode %{
-# Redefine functions that should be returning arguments
-    def GetDegCnt_PUNGraph(Graph: 'PUNGraph'):
-        DegToCntV = TIntPrV()
-        _snap.GetDegCnt_PUNGraph(Graph, DegToCntV)
-        return DegToCntV
-%}

@@ -1627,7 +1627,7 @@ TNEANetMPNodeI.GetInEdges = GetInEdges
         return _SavePajek(Graph, *args)
 
 
-    _getDegCnt = GetDegCnt
+    _GetDegCnt = GetDegCnt
     def GetDegCnt(Graph, *args):
         return MoveArgToReturn(Graph, args, _GetDegCnt, 0, TIntPrV)
 
@@ -1653,16 +1653,22 @@ TNEANetMPNodeI.GetInEdges = GetInEdges
 
 
     _GetDegSeqV = GetDegSeqV
-    def GetDegSeqV(Graph, Dir = False):
-        if Dir:
-            InDegV = TIntV()
-            OutDegV = TIntV()
-            _GetDegSeqV(Graph, InDegV, OutDegV)
-            return (InDegV, OutDegV)
+    def GetDegSeq(Graph, *args, **kwargs):
+        if len(args) > 0 and type(args[0]) == TIntV:
+            #Backward compatibility
+            return _GetDegSeqV(Graph, *args)
         else:
-            DegV = TIntV()
-            _GetDegSeqV(Graph, DegV)
-            return GetDegSeqV(DegV)
+            if len(args) == 0 or (len(args) == 1 and args[0] == False) or (len(kwargs) == 1 and kwargs['Dir'] == False):
+                # case Dir = False
+                DegV = TIntV()
+                _GetDegSeqV(Graph, DegV)
+                return DegV
+            else:
+                # case Dir = True
+                InDegV = TIntV()
+                OutDegV = TIntV()
+                _GetDegSeqV(Graph, InDegV, OutDegV)
+                return (InDegV, OutDegV)               
 
 
     _CntEdgesToSet = CntEdgesToSet
@@ -1798,11 +1804,15 @@ TNEANetMPNodeI.GetInEdges = GetInEdges
 
 
     _GetBetweennessCentr = GetBetweennessCentr
-    def GetBetweennessCentr(Graph, NodeFrac = 1.0, IsDir = False):
-        NIdBtwH = TIntFltH()
-        EdgeBtwH = TIntPrFltH()
-        _GetBetweennessCentr (Graph, NIdBtwH, EdgeBtwH, NodeFrac, IsDir)
-        return (NIdBtwH, EdgeBtwH)
+    def GetBetweennessCentr(Graph, *args):
+        if len(args)>=1 and type(args[0]) == TIntFltH and type(args[1]) == TIntPrFltH:
+            #Backward compatibility
+            return _GetBetweennessCentr(Graph, *args)
+        else:
+            NIdBtwH = TIntFltH()
+            EdgeBtwH = TIntPrFltH()
+            _GetBetweennessCentr (Graph, NIdBtwH, EdgeBtwH, NodeFrac, IsDir)
+            return (NIdBtwH, EdgeBtwH)
 
 
     _GetPageRank = GetPageRank
@@ -1811,11 +1821,22 @@ TNEANetMPNodeI.GetInEdges = GetInEdges
 
 
     _GetHits = GetHits
-    def GetHits(Graph, NIdHubH, NIdAuthH, MaxIter = 20):
-        NIdHubH = TIntFltH()
-        NIdAuthH = TIntFltH()
-        _GetHits(Graph, MaxIter)
-        return (NIdHubH, NIdAuthH)
+    def GetHits(Graph, *args, **kwargs):
+        if len(args) >= 2 and (type(args[0]) == TIntFltH) and (type(args[1]) == TIntFltH):
+            #Backward compatibility
+            return _GetHits(Graph, *args)
+        else:
+            if len(args) == 1:
+                MaxIter = args[0]
+            elif "MaxIter" in kwargs:
+                MaxIter = kwargs["MaxIter"]
+            else:
+                #Default value for MaxIter is 20
+                MaxIter = 20
+                NIdHubH = TIntFltH()
+                NIdAuthH = TIntFltH()
+                _GetHits(Graph, MaxIter)
+                return (NIdHubH, NIdAuthH)
 
 
     _GetEigenVectorCentr = GetEigenVectorCentr
@@ -1846,13 +1867,35 @@ TNEANetMPNodeI.GetInEdges = GetInEdges
 
 
     _GetClustCf = GetClustCf
-    def GetClustCf(Graph, CCfByDeg = False, SampleNodes =- 1):
+    def GetClustCf(Graph, *args, **kwargs):
+        if len(args) == 2 and (type(args[0]) == TFltPrV):
+            #Backward compatibility
+            return _GetClustCf(Graph, *args)
+        if len(args) == 1 and (type(args[0]) == int):
+            #Backward compatibility
+            return _GetClustCf(Graph, *args)
+
+        #Default argument values
+        CCfByDeg = False
+        SampleNodes = -1
+
+        #Populate argument values
+        if 'CCfByDeg' in kwargs:
+            CCfByDeg = kwargs['CCfByDeg']
+        if 'SampleNodes' in kwargs:
+            SampleNodes = kwargs['SampleNodes']
+        if len(args) == 1:
+            CCfByDeg = args[0]
+        if len(args) == 2:
+            CCfByDeg = args[0]
+            SampleNodes = args[1]
+
         if CCfByDeg:
             DegToCCfV = TFltPrV()
             PrevReturn = _GetClustCf(Graph, DegToCCfV, SampleNodes)
             return (PrevReturn, DegToCCfV)
         else:
-            return _GetClustCf(Graph, SampleNodes)
+            return _GetClustCf(Graph, SampleNodes)        
 
 
     _GetCmnNbrs = GetCmnNbrs
