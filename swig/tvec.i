@@ -16,6 +16,61 @@ def len_vec(self):
 def delitem_vec(self,  i):
     self.Del(i)
 
+// Where Avery started
+
+def append(self, val):
+    self.Add(val)
+
+def extend(self, tvec):
+    self.AddV(tvec)
+
+def clear(self):
+    self.Clr()
+
+def insert(self, index, val):
+    self.Ins(index, val)
+
+// This most definitely isn't the right way to throw a value error
+def remove(self, val):
+    bool = self.DelIfIn(val)
+    if not bool:
+        raise Exception("ValueError: list.remove({}): {} not in list".format(val, val))
+
+// again, throwing error is definitely not correct
+def index(self, val):
+    for i in range(self.Len()):
+        if self[i] == val:
+            return i
+    raise Exception("ValueError: {} is not in list".format(val))
+
+def count(self, val):
+    count = 0
+    for i in range(self.Len()):
+        if self[i] == val:
+            count += 1
+    return count
+
+def pop(self, index):
+    ret_val = self[index]
+    vec1 = self[0:index]
+    vec2 = self[index + 1:]
+    // Can't make a new vector because I don't know what type it is?
+
+def reverse(self):
+    for i in range(self.Len() / 2):
+        self[i] = self[self.Len() - 1 - i]
+
+// Need to decide how to implement this given it can be overloaded
+def sort()
+
+// Also not sure how to implement this, would need to make a new vector
+def copy(self):
+
+def len(self):
+    return self.Len()
+
+
+
 #
 # define iterator for TVec
 #

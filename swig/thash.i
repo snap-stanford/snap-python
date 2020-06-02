@@ -15,6 +15,61 @@ def delitem_hash(self, key):
 def len_hash(self):
     return self.Len()
 
+// Avery additions to hash tables
+
+def clear(self):
+    self.Clr()
+
+// Not sure how to implement as with vectors
+def copy(self)
+
+def get(self, key):
+    if not key in self:
+        return None
+    else:
+        return self[key]
+
+// Should I return lists or vectors when a list is called for
+// in regular Python?
+def items(self):
+    ret_list = []
+    for key in self:
+        ret_list.append((key, self[key]))
+    return ret_list
+
+def keys(self):
+    ret_list = []
+    for key in self:
+        ret_list.append(key)
+    return ret_list
+
+def pop(self, key):
+    ret_value = self[key]
+    self.DelKey(key)
+    return ret_value
+
+// Not convinced that we need this functionality,
+// it's pretty strange
+def popitem(self):
+
+def setdefault(self, key, default):
+    if key not in self:
+        self[key] = default
+        return default
+    else:
+        return self[key]
+
+def update(self, hash):
+    for key in hash:
+        self[key] = hash[key]
+
+def values(self):
+    ret_list = []
+    for key in self:
+        ret_list.append(self[key])
+    return ret_list
+
+
 #
 # define iterator for THash
 #
