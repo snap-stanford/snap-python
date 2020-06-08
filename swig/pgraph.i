@@ -1584,7 +1584,7 @@ TNEANetMPNodeI.GetInEdges = GetInEdges
 
 
     _LoadEdgeList = LoadEdgeList
-    def LoadEdgeList(GraphType, InFNm, SrcColId = 0, DstColId = 0, Separator = " "):
+    def LoadEdgeList(GraphType, InFNm, SrcColId = 0, DstColId = 1, Separator = " "):
         if Separator == " ":
             return _LoadEdgeList(GraphType, InFNm, SrcColId, DstColId)
         else:
@@ -1871,7 +1871,7 @@ TNEANetMPNodeI.GetInEdges = GetInEdges
         if len(args) == 2 and (type(args[0]) == TFltPrV):
             #Backward compatibility
             return _GetClustCf(Graph, *args)
-        if len(args) == 1 and (type(args[0]) == int):
+        if len(args) == 1 and (type(args[0]) == int or type(args[0]) == TFltPrV):
             #Backward compatibility
             return _GetClustCf(Graph, *args)
 
