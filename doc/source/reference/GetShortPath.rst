@@ -31,14 +31,14 @@ The following example shows how to find shortest path for nodes in
     import snap
 
     Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
-    Length = GetShortPath(Graph, 1, 100)
+    Length = snap.GetShortPath(Graph, 1, 100)
     print("Shortest Path from node 1 to node 100 is %d edges" % Length)
 
     UGraph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
-    Length = GetShortPath(UGraph, 1, 100)
+    Length = snap.GetShortPath(UGraph, 1, 100)
     print("Shortest Path from node 1 to node 100 is %d edges" % Length)
 
     Network = snap.GenRndGnm(snap.PNEANet, 100, 1000)
-    Length = GetShortPath(Network, 1, 100)
+    Length = snap.GetShortPath(Network, 1, 100)
     print("Shortest Path from node 1 to node 100 is %d edges" % Length)
 
