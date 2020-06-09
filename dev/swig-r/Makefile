@@ -1,14 +1,14 @@
 #
 # Makefile for SWIG processing of SNAP
-# 
+#
 
 # set the path to your SNAP directory here
-GITDIR = ../../../snap
+SNAPROOT = ../../../snap
 
-include $(GITDIR)/Makefile.config
+include $(SNAPROOT)/Makefile.config
 
-SNAPDIR = $(GITDIR)/$(SNAP)
-GLIBDIR = $(GITDIR)/$(GLIB)
+SNAPDIR = $(SNAPROOT)/$(SNAP)
+GLIBDIR = $(SNAPROOT)/$(GLIB)
 
 RINGODIR = ../../ringo/ringo-engine
 
@@ -41,8 +41,7 @@ python: Snap.o Engine.o jusnap.i
 #  rm -f libengine.a
 #  ar -cvq libengine.a Engine.o
 
-Snap.o: 
+Snap.o:
 	$(CC) $(CXXFLAGS) -c $(SNAPDIR)/Snap.cpp -I$(SNAPDIR) -I$(GLIBDIR)
 clean:
 	rm -f *.o *_wrap.cxx _*.so *.pyc
-
