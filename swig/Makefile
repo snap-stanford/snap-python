@@ -23,7 +23,7 @@
 # NOTE: python3 build on macOS
 #	- use brew python for all the steps
 #	- the final packages requires brew
-# 
+#
 # Build instructions for py2 on Windows:
 #	- run swig in Cygwin to generate snap_wrap.cxx and snap.py
 #		make swig-win
@@ -95,7 +95,7 @@ snap3.py: snap_wrap3.cxx
 _snap.so: snap_wrap.o Snap.o cliques.o agm.o agmfast.o agmfit.o biasedrandomwalk.o word2vec.o n2v.o
 	$(CC) $(LDFLAGS) $(LIBS) snap_wrap.o Snap.o cliques.o agm.o agmfast.o agmfit.o biasedrandomwalk.o word2vec.o n2v.o -o _snap.so
 
-_snap3.so: snap_wrap3.o Snap.o 
+_snap3.so: snap_wrap3.o Snap.o
 	$(CC) $(LDFLAGS3) $(LIBS) snap_wrap3.o Snap.o -o _snap.so
 	ln -f _snap.so _snap3.so
 
@@ -115,28 +115,28 @@ snap_wrap3.o: snap_wrap3.cxx
 	$(CC) $(CXXFLAGS) -I$(SNAPDIR) -I$(GLIBDIR) $(IFLAGS3) -c snap_wrap3.cxx -o snap_wrap.o
 	ln -f snap_wrap.o snap_wrap3.o
 
-Snap.o: 
+Snap.o:
 	$(CC) $(CXXFLAGS) -I$(SNAPDIR) -I$(GLIBDIR) -c $(SNAPDIR)/Snap.cpp
 
-cliques.o: 
+cliques.o:
 	$(CC) $(CXXFLAGS) -I$(SNAPDIR) -I$(SNAPADVDIR) -I$(GLIBDIR) -c $(SNAPADVDIR)/cliques.cpp
 
-agm.o: 
+agm.o:
 	$(CC) $(CXXFLAGS) -I$(SNAPDIR) -I$(SNAPADVDIR) -I$(GLIBDIR) -c $(SNAPADVDIR)/agm.cpp
 
-agmfast.o: 
+agmfast.o:
 	$(CC) $(CXXFLAGS) -I$(SNAPDIR) -I$(SNAPADVDIR) -I$(GLIBDIR) -c $(SNAPADVDIR)/agmfast.cpp
 
-agmfit.o: 
+agmfit.o:
 	$(CC) $(CXXFLAGS) -I$(SNAPDIR) -I$(SNAPADVDIR) -I$(GLIBDIR) -c $(SNAPADVDIR)/agmfit.cpp
 
-biasedrandomwalk.o: 
+biasedrandomwalk.o:
 	$(CC) $(CXXFLAGS) -I$(SNAPDIR) -I$(SNAPADVDIR) -I$(GLIBDIR) -c $(SNAPADVDIR)/biasedrandomwalk.cpp
 
-word2vec.o: 
+word2vec.o:
 	$(CC) $(CXXFLAGS) -I$(SNAPDIR) -I$(SNAPADVDIR) -I$(GLIBDIR) -c $(SNAPADVDIR)/word2vec.cpp
 
-n2v.o: 
+n2v.o:
 	$(CC) $(CXXFLAGS) -I$(SNAPDIR) -I$(SNAPADVDIR) -I$(GLIBDIR) -c $(SNAPADVDIR)/n2v.cpp
 
 install: setup.py snap.py _snap.so
@@ -151,10 +151,6 @@ whldist: setup.py snap.py _snap.so
 	cp $(MANIFEST) MANIFEST
 	cp $(MANIFEST_IN) MANIFEST.in
 	$(PYTHON) setup.py bdist_wheel
-ifeq ($(UNAME), Linux)
-	# change name '-linux_' to '-linuxmany1_' as required by pip
-	mv dist/*-linux_* `ls dist/*-linux_* | sed -e "s/-linux_/-manylinux1_/g"`
-endif
 
 srcdist3: setup.py snap3.py _snap3.so snap.py
 	cp $(MANIFEST) MANIFEST
@@ -165,10 +161,6 @@ whldist3: setup.py snap3.py _snap3.so snap.py
 	cp $(MANIFEST) MANIFEST
 	cp $(MANIFEST_IN) MANIFEST.in
 	python3 setup.py bdist_wheel
-ifeq ($(UNAME), Linux)
-	# change name '-linux_' to '-linuxmany1_' as required by pip
-	mv dist/*-linux_* `ls dist/*-linux_* | sed -e "s/-linux_/-manylinux1_/g"`
-endif
 
 swig-win: snap_wrap.cxx
 
@@ -217,4 +209,3 @@ pip-public: dist/*
 pip3-public: dist/*
 	@echo PUBLIC RELEASE uploading file ${WHLFILE}
 	"$(PYTHON3)" -m twine upload ${WHLFILE}
-
