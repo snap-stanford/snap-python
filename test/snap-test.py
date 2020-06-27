@@ -227,13 +227,6 @@ class SnapPythonTest(unittest.TestCase):
 
         self.assertEqual(vector, new_vec)
 
-    def test_vec_len(self):
-        vector = snap.TIntV()
-        vector.Add(1)
-        len = len(vector)
-
-        self.assertEqual(len, 1)
-
     def test_vec_max(self):
         vector = snap.TIntV()
         vector.Add(1)
@@ -291,7 +284,7 @@ class SnapPythonTest(unittest.TestCase):
         ht = snap.TIntH()
         ht[1] = 2
         ht[3] = 4
-        keys = [1, 2]
+        keys = [1, 3]
         ht_keys = ht.keys()
 
         self.assertEqual(keys, ht_keys)
@@ -300,16 +293,8 @@ class SnapPythonTest(unittest.TestCase):
         ht = snap.TIntH()
         ht[1] = 2
         ht[3] = 4
-        popped = 3
+        popped = 2
         ht_popped = ht.pop(1)
-
-        self.assertEqual(popped, ht_popped)
-
-    def test_hash_popitem(self):
-        ht = snap.TIntH()
-        ht[3] = 4
-        popped = (3, 4)
-        ht_popped = ht.popitem()
 
         self.assertEqual(popped, ht_popped)
 
