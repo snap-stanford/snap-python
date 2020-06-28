@@ -1653,7 +1653,7 @@ TNEANetMPNodeI.GetInEdges = GetInEdges
 
 
     _GetDegSeqV = GetDegSeqV
-    def GetDegSeq(Graph, *args, **kwargs):
+    def GetDegSeqV(Graph, *args, **kwargs):
         if len(args) > 0 and type(args[0]) == TIntV:
             #Backward compatibility
             return _GetDegSeqV(Graph, *args)
