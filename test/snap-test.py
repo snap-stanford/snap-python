@@ -207,15 +207,15 @@ class SnapPythonTest(unittest.TestCase):
     def test_vec_sort(self):
         # Vector to compare
         new_vec = snap.TIntV()
-        new_vec.Add(3)
-        new_vec.Add(2)
         new_vec.Add(1)
+        new_vec.Add(2)
+        new_vec.Add(3)
 
         vector = snap.TIntV()
         vector.Add(1)
         vector.Add(3)
         vector.Add(2)
-        vector.sort(reverse=True)
+        vector.sort(asc=True)
 
         self.assertEqual(vector, new_vec)
 
