@@ -22,6 +22,7 @@
         }
 };
 
+
 %pythoncode %{
 # redefine TNGraphEdgeI.GetId to return a pair of nodes rather than -1
 def GetId(self):
