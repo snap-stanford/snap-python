@@ -1,5 +1,5 @@
 ## SnapX: An experimental SNAP API with NetworkX-like interface
-This subdirectory contains an experimental interface to SNAP, whose goal is to offer an alternative, more Pythonic way to interact with C++ SNAP's graph data structures and algorithms. The new API provided here is aimed to be fully compatible with NetworkX, with the ultimate goal of behaving as its drop-in replacement. 
+This directory contains an experimental interface to SNAP, whose goal is to offer an alternative, more Pythonic way to interact with C++ SNAP's graph data structures and algorithms. The new API provided here is aimed to be fully compatible with NetworkX, with the ultimate goal of behaving as its drop-in replacement. 
 
 ## Getting started
 To install the interface, simply run `setup.py` in your environment. By design, you can manipulate SnapX graphs as if you are working with NetworkX, as the following code snippet demonstrates:
@@ -14,7 +14,7 @@ g.nodes(data=True) # Show nodes with their attributes
 g.edges[(0, 1)] # Show attributes associated with edge (0, 1)
 ```
 
-## Currently supported features
+## Implementation overview
 
 ### Data structures
 - `Graph`: An undirected graph data structure emulated by SNAP's `TNEANet`, a multigraph with support for node and edge attributes. Please see the docstring for `Graph` class, available under `classes/graph.py` for notes on its design.
@@ -26,6 +26,8 @@ The following view classes are currently available for use:
 - `NodeView`
 - `EdgeView`
 
+### Algorithms (NOT working)
+The subdirectory `algorithms` is where you can find SNAP's graph algorithms. Currently, only a tiny subset of algorithms are exposed from snap.py; they are NOT not working at the moment due to the use of TNEANet. The subdirectory is left here nonetheless in order to help illustrate the future direction should we choose to support graph algorithms. 
 
 ## Testing
 The entire test suite can be invoked by calling `pytest`. 
