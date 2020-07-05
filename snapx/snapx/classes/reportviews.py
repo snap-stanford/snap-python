@@ -6,10 +6,10 @@ class NodeView(Mapping, Set):
     __slots__ = '_graph',
 
     def __getstate__(self):
-        return {'_graph': self._graph}
+        raise NotImplementedError("TODO")
 
     def __setstate__(self, state):
-        self._graph = state['_graph']
+        raise NotImplementedError("TODO")
 
     def __init__(self, graph):
         self._graph = graph
@@ -30,7 +30,6 @@ class NodeView(Mapping, Set):
     def __contains__(self, n):
         return n in self._graph
 
-    # NOTE: Is this used?
     @classmethod
     def _from_iterable(cls, it):
         return set(it)
