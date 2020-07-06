@@ -165,4 +165,96 @@ class TestNodeDataView:
             else:
                 assert d == 1
 
+def test_nodedataview_unhashable():
+    G = sx.path_graph(9)
+    G.nodes[3]["foo"] = "bar"
+    nvs = [G.nodes.data()]
+    nvs.append(G.nodes.data(True))
+    H = G.copy()
+    H.nodes[4]["foo"] = {1, 2, 3}
+    nvs.append(H.nodes.data(True))
+    # raise unhashable
+    for nv in nvs:
+        pytest.raises(TypeError, set, nv)
+        pytest.raises(TypeError, eval, "nv | nv", locals())
+    # no raise... hashable
+    Gn = G.nodes.data(False)
+    set(Gn)
+    Gn | Gn
+    Gn = G.nodes.data("foo")
+    set(Gn)
+    Gn | Gn
+
+
+class TestNodeViewSetOps:
+    @classmethod
+    def setup_class(cls):
+        cls.G = sx.path_graph(9)
+        cls.G.nodes[3]["foo"] = "bar"
+        cls.nv = cls.G.nodes
+
+    def n_its(self, nodes):
+        return {node for node in nodes}
+
+    def test_len(self):
+        G = self.G.copy()
+        nv = G.nodes
+        assert len(nv) == 9
+        # NOTE: Remove node not supported
+        # G.remove_node(7)
+        # assert len(nv) == 8
+        G.add_node(9)
+        assert len(nv) == 10
+
+    def test_and(self):
+        # print("G & H nodes:", gnv & hnv)
+        nv = self.nv
+        some_nodes = self.n_its(range(5, 12))
+        assert nv & some_nodes == self.n_its(range(5, 9))
+        assert some_nodes & nv == self.n_its(range(5, 9))
+
+    def test_or(self):
+        # print("G | H nodes:", gnv | hnv)
+        nv = self.nv
+        some_nodes = self.n_its(range(5, 12))
+        assert nv | some_nodes == self.n_its(range(12))
+        assert some_nodes | nv == self.n_its(range(12))
+
+    def test_xor(self):
+        # print("G ^ H nodes:", gnv ^ hnv)
+        nv = self.nv
+        some_nodes = self.n_its(range(5, 12))
+        nodes = {0, 1, 2, 3, 4, 9, 10, 11}
+        assert nv ^ some_nodes == self.n_its(nodes)
+        assert some_nodes ^ nv == self.n_its(nodes)
+
+    def test_sub(self):
+        # print("G - H nodes:", gnv - hnv)
+        nv = self.nv
+        some_nodes = self.n_its(range(5, 12))
+        assert nv - some_nodes == self.n_its(range(5))
+        assert some_nodes - nv == self.n_its(range(9, 12))
+
+
+class TestNodeDataViewSetOps(TestNodeViewSetOps):
+    @classmethod
+    def setup_class(cls):
+        cls.G = sx.path_graph(9)
+        cls.G.nodes[3]["foo"] = "bar"
+        cls.nv = cls.G.nodes.data("foo")
+
+    def n_its(self, nodes):
+        return {(node, "bar" if node == 3 else None) for node in nodes}
+
+
+class TestNodeDataViewDefaultSetOps(TestNodeDataViewSetOps):
+    @classmethod
+    def setup_class(cls):
+        cls.G = sx.path_graph(9)
+        cls.G.nodes[3]["foo"] = "bar"
+        cls.nv = cls.G.nodes.data("foo", default=1)
+
+    def n_its(self, nodes):
+        return {(node, "bar" if node == 3 else 1) for node in nodes}
+
 
