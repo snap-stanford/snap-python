@@ -1823,7 +1823,7 @@ TNEANetMPNodeI.GetInEdges = GetInEdges
     _GetHits = GetHits
     def GetHits(Graph, *args, **kwargs):
         if len(args) >= 2 and (type(args[0]) == TIntFltH) and (type(args[1]) == TIntFltH):
-            #Backward compatibility
+    #Backward compatibility
             return _GetHits(Graph, *args)
         else:
             if len(args) == 1:
@@ -1831,11 +1831,11 @@ TNEANetMPNodeI.GetInEdges = GetInEdges
             elif "MaxIter" in kwargs:
                 MaxIter = kwargs["MaxIter"]
             else:
-                #Default value for MaxIter is 20
+    #Default value for MaxIter is 20
                 MaxIter = 20
                 NIdHubH = TIntFltH()
                 NIdAuthH = TIntFltH()
-                _GetHits(Graph, MaxIter)
+                _GetHits(Graph, NIdHubH, NIdAuthH, MaxIter)
                 return (NIdHubH, NIdAuthH)
 
 
