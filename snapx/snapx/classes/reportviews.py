@@ -129,13 +129,10 @@ class OutEdgeDataView:
                  '_graph', '_nodes_nbrs', '_report')
 
     def __getstate__(self):
-        return {'viewer': self._viewer,
-                'nbunch': self._nbunch,
-                'data': self._data,
-                'default': self._default}
+        raise NotImplementedError("TODO")
 
     def __setstate__(self, state):
-        self.__init__(**state)
+        raise NotImplementedError("TODO")
 
     def __init__(self, viewer, nbunch=None, data=False, default=None):
         self._viewer = viewer
