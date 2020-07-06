@@ -56,14 +56,10 @@ class NodeDataView(Set):
     __slots__ = ('_graph', '_data', '_default')
 
     def __getstate__(self):
-        return {'_graph': self._graph,
-                '_data': self._data,
-                '_default': self._default}
+        raise NotImplementedError("TODO")
 
     def __setstate__(self, state):
-        self._graph = state['_nodes']
-        self._data = state['_data']
-        self._default = state['_default']
+        raise NotImplementedError("TODO")
 
     def __init__(self, graph, data=False, default=None):
         self._graph = graph
@@ -110,7 +106,11 @@ class NodeDataView(Set):
         return n in self._graph and self[n] == d
 
     def __getitem__(self, n):
-        return self._graph.nodes[n]
+        ddict = self._graph.nodes[n]
+        data = self._data
+        if data is False or data is True:
+            return ddict
+        return ddict[data] if data in ddict else self._default
 
     def __str__(self):
         return str(list(self))
