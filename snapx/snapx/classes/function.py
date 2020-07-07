@@ -80,7 +80,8 @@ def set_node_attributes(G, values, name=None):
                 pass
 
 def set_edge_attributes(G, values, name=None):
-    """Sets edge attributes from a given value or dictionary of values.
+    """PORTED FROM NETWORKX
+    Sets edge attributes from a given value or dictionary of values.
     .. Warning:: The call order of arguments `values` and `name`
         switched between v1.x & v2.x.
     Parameters
