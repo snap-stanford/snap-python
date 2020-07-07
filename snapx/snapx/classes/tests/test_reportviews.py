@@ -362,3 +362,132 @@ class TestEdgeDataView:
         assert len(H.edges(1)) == 3
         assert len(H.edges()) == 9
         assert len(H.edges) == 9
+
+# Edge Views
+class TestEdgeView:
+    @classmethod
+    def setup_class(cls):
+        cls.G = sx.path_graph(9)
+        cls.eview = sx.reportviews.EdgeView
+
+    # NOTE: Not supported
+    # def test_pickle(self):
+    #     import pickle
+
+    #     ev = self.eview(self.G)
+    #     pev = pickle.loads(pickle.dumps(ev, -1))
+    #     assert ev == pev
+    #     assert ev.__slots__ == pev.__slots__
+
+    def modify_edge(self, G, e, **kwds):
+        G._adj[e[0]][e[1]].update(kwds)
+
+    def test_str(self):
+        ev = self.eview(self.G)
+        rep = str([(n, n + 1) for n in range(8)])
+        assert str(ev) == rep
+
+    def test_repr(self):
+        ev = self.eview(self.G)
+        rep = (
+            "EdgeView([(0, 1), (1, 2), (2, 3), (3, 4), "
+            + "(4, 5), (5, 6), (6, 7), (7, 8)])"
+        )
+        assert repr(ev) == rep
+
+    def test_call(self):
+        ev = self.eview(self.G)
+        assert id(ev) == id(ev())
+        assert id(ev) == id(ev(data=False))
+        assert id(ev) != id(ev(data=True))
+        assert id(ev) != id(ev(nbunch=1))
+
+    def test_data(self):
+        ev = self.eview(self.G)
+        assert id(ev) != id(ev.data())
+        assert id(ev) == id(ev.data(data=False))
+        assert id(ev) != id(ev.data(data=True))
+        assert id(ev) != id(ev.data(nbunch=1))
+
+    def test_iter(self):
+        ev = self.eview(self.G)
+        for u, v in ev:
+            pass
+        iev = iter(ev)
+        assert next(iev) == (0, 1)
+        assert iter(ev) != ev
+        assert iter(iev) == iev
+
+    def test_contains(self):
+        ev = self.eview(self.G)
+        edv = ev()
+        if self.G.is_directed():
+            assert (1, 2) in ev and (2, 1) not in ev
+            assert (1, 2) in edv and (2, 1) not in edv
+        else:
+            assert (1, 2) in ev and (2, 1) in ev
+            assert (1, 2) in edv and (2, 1) in edv
+        assert not (1, 4) in ev
+        assert not (1, 4) in edv
+        # edge not in graph
+        assert not (1, 90) in ev
+        assert not (90, 1) in ev
+        assert not (1, 90) in edv
+        assert not (90, 1) in edv
+
+    def test_len(self):
+        ev = self.eview(self.G)
+        num_ed = 9 if self.G.is_multigraph() else 8
+        assert len(ev) == num_ed
+
+        H = self.G.copy()
+        H.add_edge(1, 1)
+        assert len(H.edges(1)) == 3 + H.is_multigraph() - H.is_directed()
+        assert len(H.edges()) == num_ed + 1
+        assert len(H.edges) == num_ed + 1
+
+    def test_and(self):
+        # print("G & H edges:", gnv & hnv)
+        ev = self.eview(self.G)
+        some_edges = {(0, 1), (1, 0), (0, 2)}
+        if self.G.is_directed():
+            assert some_edges & ev, {(0, 1)}
+            assert ev & some_edges, {(0, 1)}
+        else:
+            assert ev & some_edges == {(0, 1), (1, 0)}
+            assert some_edges & ev == {(0, 1), (1, 0)}
+        return
+
+    def test_or(self):
+        # print("G | H edges:", gnv | hnv)
+        ev = self.eview(self.G)
+        some_edges = {(0, 1), (1, 0), (0, 2)}
+        result1 = {(n, n + 1) for n in range(8)}
+        result1.update(some_edges)
+        result2 = {(n + 1, n) for n in range(8)}
+        result2.update(some_edges)
+        assert (ev | some_edges) in (result1, result2)
+        assert (some_edges | ev) in (result1, result2)
+
+    def test_xor(self):
+        # print("G ^ H edges:", gnv ^ hnv)
+        ev = self.eview(self.G)
+        some_edges = {(0, 1), (1, 0), (0, 2)}
+        if self.G.is_directed():
+            result = {(n, n + 1) for n in range(1, 8)}
+            result.update({(1, 0), (0, 2)})
+            assert ev ^ some_edges == result
+        else:
+            result = {(n, n + 1) for n in range(1, 8)}
+            result.update({(0, 2)})
+            assert ev ^ some_edges == result
+        return
+
+    def test_sub(self):
+        # print("G - H edges:", gnv - hnv)
+        ev = self.eview(self.G)
+        some_edges = {(0, 1), (1, 0), (0, 2)}
+        result = {(n, n + 1) for n in range(8)}
+        result.remove((0, 1))
+        assert ev - some_edges, result
+

@@ -203,10 +203,10 @@ class OutEdgeView(Set, Mapping):
     dataview = OutEdgeDataView
 
     def __getstate__(self):
-        return {'_graph': self._graph}
+        raise NotImplementedError("TODO")
 
     def __setstate__(self, state):
-        self._graph = state['_graph']
+        raise NotImplementedError("TODO")
 
     @classmethod
     def _from_iterable(cls, it):
