@@ -1,5 +1,4 @@
-"""Classic graph generators ported from NetworkX.
-For generators provided by snap, check out snap_classic."""
+"""Classic graph generators from NetworkX."""
 
 import snapx as sx
 
