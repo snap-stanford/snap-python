@@ -277,7 +277,7 @@ def GetHits(Graph, *args, **kwargs):
             MaxIter = 20
             NIdHubH = TIntFltH()
             NIdAuthH = TIntFltH()
-            _GetHits(Graph, MaxIter)
+            _GetHits(Graph, NIdHubH, NIdAuthH, MaxIter)
             return (NIdHubH, NIdAuthH)
 
 _GetEigenVectorCentr = GetEigenVectorCentr
