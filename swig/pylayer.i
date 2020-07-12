@@ -232,8 +232,8 @@ def GetNodesAtHops(Graph, *args):
 
 def GetShortPathAll(Graph, SrcNId, IsDir = False, MaxDist=TInt.Mx):
     NIdToDistH = TIntH()
-    GetShortPath(Graph, SrcNId, NIdToDistH, IsDir, MaxDist)
-    return NIdToDistH
+    oldReturn = GetShortPath(Graph, SrcNId, NIdToDistH, IsDir, MaxDist)
+    return oldReturn, NIdToDistH
 
 _GetTreeSig = GetTreeSig
 def GetTreeSig(Graph, RootNId, Sig, NodeMap = False):
@@ -255,7 +255,7 @@ def GetBetweennessCentr(Graph, *args):
     else:
         NIdBtwH = TIntFltH()
         EdgeBtwH = TIntPrFltH()
-        _GetBetweennessCentr (Graph, NIdBtwH, EdgeBtwH, NodeFrac, IsDir)
+        _GetBetweennessCentr (Graph, NIdBtwH, EdgeBtwH, *args)
         return (NIdBtwH, EdgeBtwH)
 
 _GetPageRank = GetPageRank
@@ -559,19 +559,19 @@ PNGraph.MakeUnDir = MakeUnDir_classFn
 PNEANet.MakeUnDir = MakeUnDir_classFn
 
 def ConvertGraph_classFn(self, *args, **kwargs):
-    return ConvertGraph(self, *args, **kwargs)
+    return ConvertGraph(args[0], self, *(args[1:]), **kwargs)
 PUNGraph.ConvertGraph = ConvertGraph_classFn
 PNGraph.ConvertGraph = ConvertGraph_classFn
 PNEANet.ConvertGraph = ConvertGraph_classFn
 
 def ConvertSubGraph_classFn(self, *args, **kwargs):
-    return ConvertSubGraph(self, *args, **kwargs)
+    return ConvertSubGraph(args[0], self, *args[1:], **kwargs)
 PUNGraph.ConvertSubGraph = ConvertSubGraph_classFn
 PNGraph.ConvertSubGraph = ConvertSubGraph_classFn
 PNEANet.ConvertSubGraph = ConvertSubGraph_classFn
 
 def ConvertESubGraph_classFn(self, *args, **kwargs):
-    return ConvertESubGraph(self, *args, **kwargs)
+    return ConvertESubGraph(args[0], self, *args[1:], **kwargs)
 PUNGraph.ConvertESubGraph = ConvertESubGraph_classFn
 PNGraph.ConvertESubGraph = ConvertESubGraph_classFn
 PNEANet.ConvertESubGraph = ConvertESubGraph_classFn
@@ -1163,6 +1163,12 @@ def GetInvParticipRat_classFn(self, *args, **kwargs):
 PUNGraph.GetInvParticipRat = GetInvParticipRat_classFn
 PNGraph.GetInvParticipRat = GetInvParticipRat_classFn
 PNEANet.GetInvParticipRat = GetInvParticipRat_classFn
+
+def GetShortPathAll_classFn(self, *args, **kwargs):
+    return GetShortPathAll(self, *args, **kwargs)
+PUNGraph.GetShortPathAll = GetShortPathAll_classFn
+PNGraph.GetShortPathAll = GetShortPathAll_classFn
+PNEANet.GetShortPathAll = GetShortPathAll_classFn
 
 %}
 
