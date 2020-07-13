@@ -984,12 +984,6 @@ PUNGraph.GetClustCf = GetClustCf_classFn
 PNGraph.GetClustCf = GetClustCf_classFn
 PNEANet.GetClustCf = GetClustCf_classFn
 
-def GetClustCf_classFn(self, *args, **kwargs):
-    return GetClustCf(self, *args, **kwargs)
-PUNGraph.GetClustCf = GetClustCf_classFn
-PNGraph.GetClustCf = GetClustCf_classFn
-PNEANet.GetClustCf = GetClustCf_classFn
-
 def GetClustCfAll_classFn(self, *args, **kwargs):
     return GetClustCfAll(self, *args, **kwargs)
 PUNGraph.GetClustCfAll = GetClustCfAll_classFn
@@ -1032,11 +1026,11 @@ PUNGraph.GetNodeClustCf = GetNodeClustCf_classFn
 PNGraph.GetNodeClustCf = GetNodeClustCf_classFn
 PNEANet.GetNodeClustCf = GetNodeClustCf_classFn
 
-def GetNodeClustCf_classFn(self, *args, **kwargs):
-    return GetNodeClustCf(self, *args, **kwargs)
-PUNGraph.GetNodeClustCf = GetNodeClustCf_classFn
-PNGraph.GetNodeClustCf = GetNodeClustCf_classFn
-PNEANet.GetNodeClustCf = GetNodeClustCf_classFn
+def GetNodeClustCfAll_classFn(self, *args, **kwargs):
+    return GetNodeClustCfAll(self, *args, **kwargs)
+PUNGraph.GetNodeClustCfAll = GetNodeClustCfAll_classFn
+PNGraph.GetNodeClustCfAll = GetNodeClustCfAll_classFn
+PNEANet.GetNodeClustCfAll = GetNodeClustCfAll_classFn
 
 def GetNodeTriads_classFn(self, *args, **kwargs):
     return GetNodeTriads(self, *args, **kwargs)
@@ -1134,11 +1128,17 @@ PUNGraph.GetEigVec = GetEigVec_classFn
 PNGraph.GetEigVec = GetEigVec_classFn
 PNEANet.GetEigVec = GetEigVec_classFn
 
-def GetEigVec_classFn(self, *args, **kwargs):
-    return GetEigVec(self, *args, **kwargs)
-PUNGraph.GetEigVec = GetEigVec_classFn
-PNGraph.GetEigVec = GetEigVec_classFn
-PNEANet.GetEigVec = GetEigVec_classFn
+def GetLeadEigVec_classFn(self, *args, **kwargs):
+    return GetLeadEigVec(self, *args, **kwargs)
+PUNGraph.GetLeadEigVec = GetLeadEigVec_classFn
+PNGraph.GetLeadEigVec = GetLeadEigVec_classFn
+PNEANet.GetLeadEigVec = GetLeadEigVec_classFn
+
+def GetEigVecs_classFn(self, *args, **kwargs):
+    return GetEigVecs(self, *args, **kwargs)
+PUNGraph.GetEigVecs = GetEigVecs_classFn
+PNGraph.GetEigVecs = GetEigVecs_classFn
+PNEANet.GetEigVecs = GetEigVecs_classFn
 
 def GetSngVals_classFn(self, *args, **kwargs):
     return GetSngVals(self, *args, **kwargs)
@@ -1152,11 +1152,17 @@ PUNGraph.GetSngVec = GetSngVec_classFn
 PNGraph.GetSngVec = GetSngVec_classFn
 PNEANet.GetSngVec = GetSngVec_classFn
 
-def GetSngVec_classFn(self, *args, **kwargs):
-    return GetSngVec(self, *args, **kwargs)
-PUNGraph.GetSngVec = GetSngVec_classFn
-PNGraph.GetSngVec = GetSngVec_classFn
-PNEANet.GetSngVec = GetSngVec_classFn
+def GetSngVecs_classFn(self, *args, **kwargs):
+    return GetSngVecs(self, *args, **kwargs)
+PUNGraph.GetSngVecs = GetSngVecs_classFn
+PNGraph.GetSngVecs = GetSngVecs_classFn
+PNEANet.GetSngVecs = GetSngVecs_classFn
+
+def GetLeadSngVec_classFn(self, *args, **kwargs):
+    return GetLeadSngVec(self, *args, **kwargs)
+PUNGraph.GetLeadSngVec = GetLeadSngVec_classFn
+PNGraph.GetLeadSngVec = GetLeadSngVec_classFn
+PNEANet.GetLeadSngVec = GetLeadSngVec_classFn
 
 def GetInvParticipRat_classFn(self, *args, **kwargs):
     return GetInvParticipRat(self, *args, **kwargs)
