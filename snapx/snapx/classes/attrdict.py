@@ -5,19 +5,29 @@ from snapx.exception import SnapXKeyError, SnapXTypeError
 
 class AttributeDict(MutableMapping):
     """Wraps snap's attributes representations and presents them
-    like a python built-in dict.
+    like a Python built-in dict.
 
     For attribute types not supported by Snap, it emulates the behavior by
     storing these in the extra attribute dictionaries.
 
     This layer should work for both node and edge attributes.
 
-    IMPORTANT NOTE: For the time being, only int types are stored to SNAP's
+    DESIGN NOTE:
+    1) What gets stored in SNAP's feature storage
+    For the time being, only int types are stored to SNAP's
     feature store, and the rest will go straight to the extra attr dicts.
     The following is an illustration of what gets stored where:
     >>> g = sx.Graph()
     >>> g.add_nodes([(0, {'foo': 'bar'}), (1, {'foo': 1})])
     >>> # Node 0's foo is in extra dict, Node 1's foo is in SNAP
+
+    2) Treatment of edge attributes for undirected graphs
+    Since we use TNEANet as the underlying graph data structure, we are
+    emulating the undirected graph's behavior by sorting the pair of nodes
+    of an edge in the ascending order, so that we consistently access the
+    same internal attribute storage.
+    For example, edge attribute queries for both (1, 4) and (4, 1) will
+    look at the internal storage for (1, 4)
     """
     def __init__(self, graph, key):
         self._graph = graph
