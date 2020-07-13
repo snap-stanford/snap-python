@@ -4,6 +4,7 @@ from .attrdict import AttributeDict
 
 class AtlasView(Mapping):
     """This is a view into a dict-of-dict-like structure.
+    This view shows a certain node's neighbors and their edge attributes.
 
     Note that unlike NetworkX's AltasView, we need both the
     underlying graph and the ID for the node of interest in
@@ -52,7 +53,9 @@ class AtlasView(Mapping):
 
 
 class AdjacencyView(Mapping):
-    """This is a view into a dict-of-dict-of-dict-like structure."""
+    """This is a view into a dict-of-dict-of-dict-like data structure.
+    This view shows all nodes' neighbors and their edge attributes.
+    """
     __slots__ = '_graph',
 
     def __init__(self, g):
