@@ -12,8 +12,8 @@ class AttributeDict(MutableMapping):
 
     This layer should work for both node and edge attributes.
 
-    For the time being, only int types are stored to SNAP's feature
-    store, and the rest will go straight to the extra attr dicts.
+    IMPORTANT NOTE: For the time being, only int types are stored to SNAP's
+    feature store, and the rest will go straight to the extra attr dicts.
     The following is an illustration of what gets stored where:
     >>> g = sx.Graph()
     >>> g.add_nodes([(0, {'foo': 'bar'}), (1, {'foo': 1})])
