@@ -86,6 +86,9 @@ def SaveGViz(Graph, *args):
     args = ConvertToSnapType(args, -1, TIntStrH, dict)
     return _SaveGViz(Graph, *args)
 
+def SaveGVizColor(Graph, OutFNm, Desc, NodeLabels, NIdColorH):
+    return SaveGViz(Graph, OutFNm, Desc, NodeLabels, NIdColorH)
+
 _SavePajek = SavePajek
 def SavePajek(Graph, OutFNm, NIdColorH = None, NIdLabelH = None, EIdColorH = None):
     if NIdColorH is None:
@@ -177,6 +180,9 @@ _DrawGViz = DrawGViz
 def DrawGViz(Graph, *args):
     args = ConvertToSnapType(args, -1, TIntStrH, dict)
     return _DrawGViz(Graph, *args)
+
+def DrawGVizColor(Graph, Layout, PltFNm, Desc, NodeLabels, NIdColorH):
+    return DrawGViz(Graph, Layout, PltFNm, Desc, NodeLabels, NIdColorH)
 
 _GetSccs = GetSccs
 def GetSccs(Graph, *args):
@@ -333,6 +339,11 @@ def GetClustCf(Graph, *args, **kwargs):
     else:
         return _GetClustCf(Graph, SampleNodes)        
 
+def GetTriadsbyNode(Graph, SampleNodes=-1):
+    NIdCOTriadV = TIntTrV()
+    GetTriads(Graph, NIdCOTriadV, SampleNodes)
+    return NIdCOTriadV
+
 _GetCmnNbrs = GetCmnNbrs
 def GetCmnNbrs(Graph, NId1, NId2, NbrList = False):
     if NbrList:
@@ -352,6 +363,9 @@ def GetNodeTriads(Graph, *args):
     if len(args) == 2:
         args = ConvertToSnapType(args, 1, TIntSet, set)
     return _GetNodeTriads(Graph, *args)
+
+def GetNodeTriadsSet(Graph, NId, GroupSet):
+    return GetNodeTriads(Graph, NId, GroupSet)
 
 _GetTriadParticip = GetTriadParticip
 def GetTriadParticip(Graph, *args):
@@ -376,6 +390,19 @@ def GetSngVals(Graph, *args):
 _GetInvParticipRat = GetInvParticipRat
 def GetInvParticipRat(Graph, *args):
     return MoveArgToReturn(Graph, args, _GetInvParticipRat, 2, TFltPrV)
+
+_GetAnf = GetAnf
+def GetAnf(Graph, *args):
+    if type(args[0]) == TIntFltKdV:
+        return MoveArgToReturn(Graph, args, _GetAnf, 0, TIntFltKdV)
+    else:
+        return MoveArgToReturn(Graph, args, _GetAnf, 1, TIntFltKdV)
+
+def GetAnfNode(Graph, SrcNId, DistNbrsV, MxDist, IsDir, NApprox=32):
+    return GetAnf(Graph, SrcNId, DistNbrsV, MxDist, IsDir, NApprox)
+
+def GetAnfGraph(Graph, DistNbrsV, MxDist, IsDir, NApprox=32):
+    return GetAnf(Graph, DistNbrsV, MxDist, IsDir, NApprox)
 
 def GetLeadEigVec(Graph):
     EigVec = TFltV()
@@ -630,11 +657,11 @@ PUNGraph.DrawGViz = DrawGViz_classFn
 PNGraph.DrawGViz = DrawGViz_classFn
 PNEANet.DrawGViz = DrawGViz_classFn
 
-def DrawGViz_classFn(self, *args, **kwargs):
-    return DrawGViz(self, *args, **kwargs)
-PUNGraph.DrawGViz = DrawGViz_classFn
-PNGraph.DrawGViz = DrawGViz_classFn
-PNEANet.DrawGViz = DrawGViz_classFn
+def DrawGVizColor_classFn(self, *args, **kwargs):
+    return DrawGVizColor(self, *args, **kwargs)
+PUNGraph.DrawGVizColor = DrawGVizColor_classFn
+PNGraph.DrawGVizColor = DrawGVizColor_classFn
+PNEANet.DrawGVizColor = DrawGVizColor_classFn
 
 def PlotSccDistr_classFn(self, *args, **kwargs):
     return PlotSccDistr(self, *args, **kwargs)
@@ -996,11 +1023,11 @@ PUNGraph.GetTriads = GetTriads_classFn
 PNGraph.GetTriads = GetTriads_classFn
 PNEANet.GetTriads = GetTriads_classFn
 
-def GetTriads_classFn(self, *args, **kwargs):
-    return GetTriads(self, *args, **kwargs)
-PUNGraph.GetTriads = GetTriads_classFn
-PNGraph.GetTriads = GetTriads_classFn
-PNEANet.GetTriads = GetTriads_classFn
+def GetTriadsByNode_classFn(self, *args, **kwargs):
+    return GetTriadsByNode(self, *args, **kwargs)
+PUNGraph.GetTriadsByNode = GetTriadsByNode_classFn
+PNGraph.GetTriadsByNode = GetTriadsByNode_classFn
+PNEANet.GetTriadsByNode = GetTriadsByNode_classFn
 
 def GetTriadsAll_classFn(self, *args, **kwargs):
     return GetTriadsAll(self, *args, **kwargs)
@@ -1038,11 +1065,11 @@ PUNGraph.GetNodeTriads = GetNodeTriads_classFn
 PNGraph.GetNodeTriads = GetNodeTriads_classFn
 PNEANet.GetNodeTriads = GetNodeTriads_classFn
 
-def GetNodeTriads_classFn(self, *args, **kwargs):
-    return GetNodeTriads(self, *args, **kwargs)
-PUNGraph.GetNodeTriads = GetNodeTriads_classFn
-PNGraph.GetNodeTriads = GetNodeTriads_classFn
-PNEANet.GetNodeTriads = GetNodeTriads_classFn
+def GetNodeTriadsSet_classFn(self, *args, **kwargs):
+    return GetNodeTriadsSet(self, *args, **kwargs)
+PUNGraph.GetNodeTriadsSet = GetNodeTriadsSet_classFn
+PNGraph.GetNodeTriadsSet = GetNodeTriadsSet_classFn
+PNEANet.GetNodeTriadsSet = GetNodeTriadsSet_classFn
 
 def GetNodeTriadsAll_classFn(self, *args, **kwargs):
     return GetNodeTriadsAll(self, *args, **kwargs)
@@ -1098,11 +1125,17 @@ PUNGraph.GetAnf = GetAnf_classFn
 PNGraph.GetAnf = GetAnf_classFn
 PNEANet.GetAnf = GetAnf_classFn
 
-def GetAnf_classFn(self, *args, **kwargs):
-    return GetAnf(self, *args, **kwargs)
-PUNGraph.GetAnf = GetAnf_classFn
-PNGraph.GetAnf = GetAnf_classFn
-PNEANet.GetAnf = GetAnf_classFn
+def GetAnfNode_classFn(self, *args, **kwargs):
+    return GetAnfNode(self, *args, **kwargs)
+PUNGraph.GetAnfNode = GetAnfNode_classFn
+PNGraph.GetAnfNode = GetAnfNode_classFn
+PNEANet.GetAnfNode = GetAnfNode_classFn
+
+def GetAnfGraph_classFn(self, *args, **kwargs):
+    return GetAnfGraph(self, *args, **kwargs)
+PUNGraph.GetAnfGraph = GetAnfGraph_classFn
+PNGraph.GetAnfGraph = GetAnfGraph_classFn
+PNEANet.GetAnfGraph = GetAnfGraph_classFn
 
 def GetAnfEffDiam_classFn(self, *args, **kwargs):
     return GetAnfEffDiam(self, *args, **kwargs)

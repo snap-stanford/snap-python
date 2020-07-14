@@ -3808,14 +3808,26 @@ class SnapPythonTest(unittest.TestCase):
         result = snap.GetNodeTriads(Graph, 0)
         self.assertEqual(result, 36)
 
+        Graph = snap.GenFull(snap.PNGraph, 10)
+        result = Graph.GetNodeTriads(0)
+        self.assertEqual(result, 36)
+
         # Undirected Graph
         Graph = snap.GenFull(snap.PUNGraph, 10)
         result = snap.GetNodeTriads(Graph, 0)
         self.assertEqual(result, 36)
 
+        Graph = snap.GenFull(snap.PUNGraph, 10)
+        result = Graph.GetNodeTriads(0)
+        self.assertEqual(result, 36)
+
         # Network
         Graph = snap.GenFull(snap.PNEANet, 10)
         result = snap.GetNodeTriads(Graph, 0)
+        self.assertEqual(result, 36)
+
+        Graph = snap.GenFull(snap.PNEANet, 10)
+        result = Graph.GetNodeTriads(0)
         self.assertEqual(result, 36)
 
     def test_GetNodeTriadsSet(self):
@@ -3831,6 +3843,17 @@ class SnapPythonTest(unittest.TestCase):
         result = snap.GetNodeTriads(Graph, NId, GroupSet)
         self.assertEqual(result, expected_result)
 
+        Graph = snap.GenFull(snap.PNGraph, 100)
+        for NI in Graph.Nodes():
+            break
+        NId = NI.GetId()
+        GroupSetPy = set()
+        for NbrIdx in range(4):
+            GroupSetPy.add(NI.GetOutNId(NbrIdx))
+        expected_result = [6, 6, 380, 4465]
+        result = Graph.GetNodeTriadsSet(NId, GroupSetPy)
+        self.assertEqual(result, expected_result)
+
         # Undirected Graph
         Graph = snap.GenFull(snap.PUNGraph, 100)
         for NI in Graph.Nodes():
@@ -3843,6 +3866,17 @@ class SnapPythonTest(unittest.TestCase):
         result = snap.GetNodeTriads(Graph, NId, GroupSet)
         self.assertEqual(result, expected_result)
 
+        Graph = snap.GenFull(snap.PUNGraph, 100)
+        for NI in Graph.Nodes():
+            break
+        NId = NI.GetId()
+        GroupSetPy = set()
+        for NbrIdx in range(4):
+            GroupSetPy.add(NI.GetOutNId(NbrIdx))
+        expected_result = [6, 6, 380, 4465]
+        result = Graph.GetNodeTriadsSet(NId, GroupSetPy)
+        self.assertEqual(result, expected_result)
+
         # Network
         Graph = snap.GenFull(snap.PNEANet, 100)
         for NI in Graph.Nodes():
@@ -3853,6 +3887,17 @@ class SnapPythonTest(unittest.TestCase):
             GroupSet.AddKey(NI.GetOutNId(NbrIdx))
         expected_result = [6, 6, 380, 4465]
         result = snap.GetNodeTriads(Graph, NId, GroupSet)
+        self.assertEqual(result, expected_result)
+
+        Graph = snap.GenFull(snap.PNEANet, 100)
+        for NI in Graph.Nodes():
+            break
+        NId = NI.GetId()
+        GroupSetPy = set()
+        for NbrIdx in range(4):
+            GroupSetPy.add(NI.GetOutNId(NbrIdx))
+        expected_result = [6, 6, 380, 4465]
+        result = Graph.GetNodeTriadsSet(NId, GroupSetPy)
         self.assertEqual(result, expected_result)
 
     def test_GetNodeTriadsAll(self):
@@ -3889,14 +3934,26 @@ class SnapPythonTest(unittest.TestCase):
         result = snap.GetTriads(Graph)
         self.assertEqual(result, 120)
 
+        Graph = snap.GenFull(snap.PNGraph, 10)
+        result = Graph.GetTriads()
+        self.assertEqual(result, 120)
+
         # Undirected Graph
         Graph = snap.GenFull(snap.PUNGraph, 10)
         result = snap.GetTriads(Graph)
         self.assertEqual(result, 120)
 
+        Graph = snap.GenFull(snap.PUNGraph, 10)
+        result = Graph.GetTriads()
+        self.assertEqual(result, 120)
+
         # Network
         Graph = snap.GenFull(snap.PNEANet, 10)
         result = snap.GetTriads(Graph)
+        self.assertEqual(result, 120)
+
+        Graph = snap.GenFull(snap.PNEANet, 10)
+        result = Graph.GetTriads()
         self.assertEqual(result, 120)
 
     def test_GetTriadsAll(self):
@@ -4384,6 +4441,18 @@ class SnapPythonTest(unittest.TestCase):
         self.assertEqual(exp_hash, test_hash)
         os.remove(fname)
 
+        fname = "mygraph.dot"
+        NIdColorH = snap.TIntStrH()
+        NIdColor_dict = {}
+        for i in range(self.num_nodes):
+            NIdColorH[i] = "red"
+            NIdColor_dict[i] = "red"
+        snap.SaveGVizColor(self.DirGraphFull, fname, "text", True, NIdColor_dict)
+        exp_hash = '64fe626fa482a0d45416824dc02d73a5'
+        test_hash = self.getFileHash(fname)
+        self.assertEqual(exp_hash, test_hash)
+        os.remove(fname)
+
         # Undirected Graph
         NIdColorH = snap.TIntStrH()
         for i in range(self.num_nodes):
@@ -4394,11 +4463,33 @@ class SnapPythonTest(unittest.TestCase):
         self.assertEqual(exp_hash, test_hash)
         os.remove(fname)
 
+        NIdColorH = snap.TIntStrH()
+        NIdColor_dict = {}
+        for i in range(self.num_nodes):
+            NIdColorH[i] = "red"
+            NIdColor_dict[i] = "red"
+        snap.SaveGVizColor(self.UnDirGraphFull, fname, "text", True, NIdColor_dict)
+        exp_hash = 'd2185ec44f908e8d10da6c6319c900a5'
+        test_hash = self.getFileHash(fname)
+        self.assertEqual(exp_hash, test_hash)
+        os.remove(fname)
+
         # Directed Graph
         NIdColorH = snap.TIntStrH()
         for i in range(self.num_nodes):
             NIdColorH[i] = "red"
         snap.SaveGViz(self.NetFull, fname, "text", True, NIdColorH)
+        exp_hash = '64fe626fa482a0d45416824dc02d73a5'
+        test_hash = self.getFileHash(fname)
+        self.assertEqual(exp_hash, test_hash)
+        os.remove(fname)
+
+        NIdColorH = snap.TIntStrH()
+        NIdColor_dict = {}
+        for i in range(self.num_nodes):
+            NIdColorH[i] = "red"
+            NIdColor_dict[i] = "red"
+        snap.SaveGVizColor(self.NetFull, fname, "text", True, NIdColor_dict)
         exp_hash = '64fe626fa482a0d45416824dc02d73a5'
         test_hash = self.getFileHash(fname)
         self.assertEqual(exp_hash, test_hash)
