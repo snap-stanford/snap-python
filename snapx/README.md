@@ -1,5 +1,5 @@
-## SnapX: An experimental SNAP API with NetworkX-like interface
-This directory contains an experimental interface to SNAP, whose goal is to offer an alternative, more Pythonic way to interact with C++ SNAP's graph data structures and algorithms. The new API provided here is aimed to be fully compatible with NetworkX, with the ultimate goal of behaving as its drop-in replacement. 
+## SnapX: A new SNAP API with NetworkX-like interface
+This directory contains an alternative interface to SNAP, whose goal is to offer a more Pythonic way to interact with C++ SNAP's graph data structures and algorithms. The new API provided here is aimed to be fully compatible with NetworkX, with the ultimate goal of behaving as its drop-in replacement. 
 
 ## Getting started
 To install the interface, simply run `setup.py` in your environment. By design, you can manipulate SnapX graphs as if you are working with NetworkX, as the following code snippet demonstrates:

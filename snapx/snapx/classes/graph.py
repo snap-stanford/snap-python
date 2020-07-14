@@ -19,8 +19,12 @@ class Graph:
     1) Use of TNEANet and its consequences:
     This class is built on top of TNEANet, a multigraph implemented in C++ SNAP.
     For that reason, some of the behaviors expected out of an undirected graph
-    are emulated in this layer. For example, we enforce in this layer that no
-    more than one edge exists between a pair of nodes.
+    are emulated in this layer. More specifically, we did the following:
+    - When an edge (u, v) is added, both (u, v) and (v, u) get registered
+      to the underlying TNEANet.
+    - We keep a counter 'self._num_edges' to track how many edges exist in
+      the graph.
+
     We currently rely on TNEANet due to its rich support for node and edge
     attributes. A future implementation may obviate the need for this emulation
     by expanding the C++ SNAP's undirected graph to provide support for such
@@ -443,7 +447,7 @@ class Graph:
             return False
 
     def add_edge(self, u_of_edge, v_of_edge, **attr):
-        """DOCSTRING PORTRED FROM NETWORKX:
+        """PORTED FROM NETWORKX:
         Add an edge between u and v.
         The nodes u and v will be automatically added if they are
         not already in the graph.
