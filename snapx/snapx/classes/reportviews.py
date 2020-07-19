@@ -3,7 +3,7 @@ from collections.abc import Mapping, Set
 
 # NodeViews
 class NodeView(Mapping, Set):
-    __slots__ = '_graph',
+    __slots__ = ("_graph",)
 
     def __getstate__(self):
         raise NotImplementedError("TODO")
@@ -53,7 +53,7 @@ class NodeView(Mapping, Set):
 
 
 class NodeDataView(Set):
-    __slots__ = ('_graph', '_data', '_default')
+    __slots__ = ("_graph", "_data", "_default")
 
     def __getstate__(self):
         raise NotImplementedError("TODO")
@@ -123,10 +123,19 @@ class NodeDataView(Set):
             return f"{name}({dict(self)})"
         return f"{name}({dict(self)}, data={self._data!r})"
 
+
 class OutEdgeDataView:
     """EdgeDataView for outward edges of DiGraph; See EdgeDataView"""
-    __slots__ = ('_viewer', '_nbunch', '_data', '_default',
-                 '_graph', '_nodes_nbrs', '_report')
+
+    __slots__ = (
+        "_viewer",
+        "_nbunch",
+        "_data",
+        "_default",
+        "_graph",
+        "_nodes_nbrs",
+        "_report",
+    )
 
     def __getstate__(self):
         raise NotImplementedError("TODO")
@@ -136,7 +145,7 @@ class OutEdgeDataView:
 
     def __init__(self, viewer, nbunch=None, data=False, default=None):
         self._viewer = viewer
-        graph = self._graph = viewer._graph # FIXME: Better way to pass graph?
+        graph = self._graph = viewer._graph  # FIXME: Better way to pass graph?
 
         if nbunch is None:
             self._nodes_nbrs = graph.adj.items
@@ -154,16 +163,22 @@ class OutEdgeDataView:
         elif data is False:
             self._report = lambda n, nbr, dd: (n, nbr)
         else:  # data is attribute name
-            self._report = lambda n, nbr, dd: \
-                (n, nbr, dd[data]) if data in dd else (n, nbr, default)
+            self._report = (
+                lambda n, nbr, dd: (n, nbr, dd[data])
+                if data in dd
+                else (n, nbr, default)
+            )
 
     def __len__(self):
         # TODO: Support nbunch and returning # of their neighbors
         return self._graph.number_of_edges()
 
     def __iter__(self):
-        return (self._report(n, nbr, dd) for n, nbrs in self._nodes_nbrs()
-                for nbr, dd in nbrs.items())
+        return (
+            self._report(n, nbr, dd)
+            for n, nbrs in self._nodes_nbrs()
+            for nbr, dd in nbrs.items()
+        )
 
     def __contains__(self, e):
         try:
@@ -178,6 +193,7 @@ class OutEdgeDataView:
 
     def __repr__(self):
         return f"{self.__class__.__name__}({list(self)})"
+
 
 class EdgeDataView(OutEdgeDataView):
     __slots__ = ()
@@ -198,7 +214,8 @@ class EdgeDataView(OutEdgeDataView):
 # EdgeViews    have set operations and no data reported
 class OutEdgeView(Set, Mapping):
     """A EdgeView class for outward edges of a DiGraph"""
-    __slots__ = ('_graph', '_nodes_nbrs')
+
+    __slots__ = ("_graph", "_nodes_nbrs")
 
     dataview = OutEdgeDataView
 
@@ -250,6 +267,7 @@ class OutEdgeView(Set, Mapping):
     def __repr__(self):
         return f"{self.__class__.__name__}({list(self)})"
 
+
 class EdgeView(OutEdgeView):
     __slots__ = ()
     dataview = EdgeDataView
@@ -266,5 +284,4 @@ class EdgeView(OutEdgeView):
                     yield (n, nbr)
             seen[n] = 1
         del seen
-
 

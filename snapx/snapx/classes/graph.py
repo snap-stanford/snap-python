@@ -11,6 +11,7 @@ import snapx.convert as convert
 from snapx.exception import SnapXTypeError, SnapXError
 from ._nodeiter import _GraphNodeIterator, _GraphEdgeIterator, _TNEANetEdgeIter
 
+
 class Graph:
     """
     Base class for undirected graphs, much like the "Graph" class in NetworkX.
@@ -114,11 +115,11 @@ class Graph:
         keyed by the string `"name"`. as well as an attribute (technically
         a property) `G.name`. This is entirely user controlled.
         """
-        return self.graph.get('name', '')
+        return self.graph.get("name", "")
 
     @name.setter
     def name(self, s):
-        self.graph['name'] = s
+        self.graph["name"] = s
 
     def __str__(self):
         """PORTED FROM NETWORKX
@@ -386,7 +387,7 @@ class Graph:
         # Lazy View creation: overload the (class) property on the instance
         # Then future G.nodes use the existing View
         # setattr doesn't work because attribute already exists
-        self.__dict__['nodes'] = nodes
+        self.__dict__["nodes"] = nodes
         return nodes
 
     def number_of_nodes(self):
@@ -495,7 +496,7 @@ class Graph:
 
         # Emulate (non-multi) graph by checking if the edge
         # already exists.
-        if self.has_edge(u,v):
+        if self.has_edge(u, v):
             return
         try:
             self._graph.AddEdge(u, v)
@@ -559,7 +560,7 @@ class Graph:
             except (TypeError, RuntimeError) as e:
                 pass
 
-    def add_weighted_edges_from(self, ebunch_to_add, weight='weight', **attr):
+    def add_weighted_edges_from(self, ebunch_to_add, weight="weight", **attr):
         """PORTED FROM NETWORKX
         Add weighted edges in `ebunch_to_add` with specified weight attr
         Parameters
@@ -586,8 +587,7 @@ class Graph:
         >>> G = nx.Graph()   # or DiGraph, MultiGraph, MultiDiGraph, etc
         >>> G.add_weighted_edges_from([(0, 1, 3.0), (1, 2, 7.5)])
         """
-        self.add_edges_from(((u, v, {weight: d}) for u, v, d in ebunch_to_add),
-                            **attr)
+        self.add_edges_from(((u, v, {weight: d}) for u, v, d in ebunch_to_add), **attr)
 
     def remove_edge(self, u, v):
         raise NotImplementedError("TODO")
@@ -968,14 +968,16 @@ class Graph:
         """
         if as_view is True:
             raise NotImplementedError("TODO")
-            #return nx.graphviews.generic_graph_view(self)
+            # return nx.graphviews.generic_graph_view(self)
         G = self.__class__()
         G.graph.update(self.graph)
         # Copy snap graph
         G.add_nodes_from((n, d) for n, d in self.nodes(data=True))
-        G.add_edges_from((u, v, datadict)
-                         for u, nbrs in self.adj.items()
-                         for v, datadict in nbrs.items())
+        G.add_edges_from(
+            (u, v, datadict)
+            for u, nbrs in self.adj.items()
+            for v, datadict in nbrs.items()
+        )
         return G
 
     def to_directed(self, as_view=False):
@@ -1106,6 +1108,7 @@ class Graph:
         elif nbunch in self:
             bunch = iter([nbunch])
         else:
+
             def bunch_iter(nlist, adj):
                 try:
                     for n in nlist:
@@ -1114,7 +1117,7 @@ class Graph:
                 except TypeError as e:
                     message = e.args[0]
                     # capture error for non-sequence/iterator nbunch.
-                    if 'iter' in message:
+                    if "iter" in message:
                         msg = "nbunch is not a node or a sequence of nodes."
                         raise SnapXError(msg)
                     else:
