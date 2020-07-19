@@ -3,6 +3,10 @@
 __all__ = [
     "SnapXException",
     "SnapXError",
+    "SnapXAlgorithmError",
+    "SnapXUnfeasible",
+    "SnapXNoPath",
+    "NodeNotFound",
     "SnapXTypeError",
     "SnapXKeyError",
 ]
@@ -23,6 +27,15 @@ class SnapXAlgorithmError(SnapXException):
 class SnapXUnfeasible(SnapXAlgorithmError):
     """Exception raised by algorithms trying to solve a problem
     instance that has no feasible solution."""
+
+
+class SnapXNoPath(SnapXUnfeasible):
+    """Exception for algorithms that should return a path when running
+    on graphs where such a path does not exist."""
+
+
+class NodeNotFound(SnapXException):
+    """Exception raised if requested node is not present in the graph"""
 
 
 class SnapXTypeError(TypeError):
