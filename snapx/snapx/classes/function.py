@@ -1,6 +1,5 @@
+__all__ = ["set_node_attributes", "set_edge_attributes", "freeze"]
 
-__all__ = ["set_node_attributes",
-           "set_edge_attributes"]
 
 def set_node_attributes(G, values, name=None):
     """PORTED FROM NETWORKX
@@ -78,6 +77,7 @@ def set_node_attributes(G, values, name=None):
                 G.nodes[n].update(d)
             except KeyError:
                 pass
+
 
 def set_edge_attributes(G, values, name=None):
     """PORTED FROM NETWORKX
@@ -169,3 +169,105 @@ def set_edge_attributes(G, values, name=None):
                 except KeyError:
                     pass
 
+
+# def edge_subgraph(G, edges):
+#     """PORTED FROM NETWORKX
+#     Returns a view of the subgraph induced by the specified edges.
+#     The induced subgraph contains each edge in `edges` and each
+#     node incident to any of those edges.
+#     Parameters
+#     ----------
+#     G : NetworkX Graph
+#     edges : iterable
+#         An iterable of edges. Edges not present in `G` are ignored.
+#     Returns
+#     -------
+#     subgraph : SubGraph View
+#         A read-only edge-induced subgraph of `G`.
+#         Changes to `G` are reflected in the view.
+#     Notes
+#     -----
+#     To create a mutable subgraph with its own copies of nodes
+#     edges and attributes use `subgraph.copy()` or `Graph(subgraph)`
+#     If you create a subgraph of a subgraph recursively you can end up
+#     with a chain of subgraphs that becomes very slow with about 15
+#     nested subgraph views. Luckily the edge_subgraph filter nests
+#     nicely so you can use the original graph as G in this function
+#     to avoid chains. We do not rule out chains programmatically so
+#     that odd cases like an `edge_subgraph` of a `restricted_view`
+#     can be created.
+#     Examples
+#     --------
+#     >>> import networkx as nx
+#     >>> G = nx.path_graph(5)
+#     >>> H = G.edge_subgraph([(0, 1), (3, 4)])
+#     >>> list(H.nodes)
+#     [0, 1, 3, 4]
+#     >>> list(H.edges)
+#     [(0, 1), (3, 4)]
+#     """
+#     sxf = sx.filters
+#     edges = set(edges)
+#     nodes = set()
+#     for e in edges:
+#         nodes.update(e[:2])
+#     induced_nodes = sxf.show_nodes(nodes)
+#     if G.is_multigraph():
+#         if G.is_directed():
+#             induced_edges = sxf.show_multidiedges(edges)
+#         else:
+#             induced_edges = sxf.show_multiedges(edges)
+#     else:
+#         if G.is_directed():
+#             induced_edges = sxf.show_diedges(edges)
+#         else:
+#             induced_edges = sxf.show_edges(edges)
+#     return sx.graphviews.subgraph_view(G, induced_nodes, induced_edges)
+
+
+def frozen(*args, **kwargs):
+    """Dummy method for raising errors when trying to modify frozen graphs"""
+    raise sx.SnapXError("Frozen graph can't be modified")
+
+
+def freeze(G):
+    """Modify graph to prevent further change by adding or removing
+    nodes or edges.
+    Node and edge data can still be modified.
+    Parameters
+    ----------
+    G : graph
+      A NetworkX graph
+    Examples
+    --------
+    >>> G = nx.path_graph(4)
+    >>> G = nx.freeze(G)
+    >>> try:
+    ...    G.add_edge(4, 5)
+    ... except nx.NetworkXError as e:
+    ...    print(str(e))
+    Frozen graph can't be modified
+    Notes
+    -----
+    To "unfreeze" a graph you must make a copy by creating a new graph object:
+    >>> graph = nx.path_graph(4)
+    >>> frozen_graph = nx.freeze(graph)
+    >>> unfrozen_graph = nx.Graph(frozen_graph)
+    >>> nx.is_frozen(unfrozen_graph)
+    False
+    See Also
+    --------
+    is_frozen
+    """
+    G.add_node = frozen
+    G.add_nodes_from = frozen
+    G.remove_node = frozen
+    G.remove_nodes_from = frozen
+    G.add_edge = frozen
+    G.add_edges_from = frozen
+    G.add_weighted_edges_from = frozen
+    G.remove_edge = frozen
+    G.remove_edges_from = frozen
+    G.clear = frozen
+    G.frozen = True
+    return G
