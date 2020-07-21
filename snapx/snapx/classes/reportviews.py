@@ -49,7 +49,7 @@ class NodeView(Mapping, Set):
         return str(list(self))
 
     def __repr__(self):
-        return f"{self.__class__.__name__}({tuple(self)})"
+        return "{}({})".format(self.__class__.__name__, tuple(self))
 
 
 class NodeDataView(Set):
@@ -118,10 +118,10 @@ class NodeDataView(Set):
     def __repr__(self):
         name = self.__class__.__name__
         if self._data is False:
-            return f"{name}({tuple(self)})"
+            return "{}({})".format(name, tuple(self))
         if self._data is True:
-            return f"{name}({dict(self)})"
-        return f"{name}({dict(self)}, data={self._data!r})"
+            return "{}({})".format(name, dict(self))
+        return "{}({}, data={})".format(name, dict(self), self._data.__repr__())
 
 class OutEdgeDataView:
     """EdgeDataView for outward edges of DiGraph; See EdgeDataView"""
@@ -177,7 +177,7 @@ class OutEdgeDataView:
         return str(list(self))
 
     def __repr__(self):
-        return f"{self.__class__.__name__}({list(self)})"
+        return "{}({})".format(self.__class__.__name__, list(self))
 
 class EdgeDataView(OutEdgeDataView):
     __slots__ = ()
@@ -248,7 +248,7 @@ class OutEdgeView(Set, Mapping):
         return str(list(self))
 
     def __repr__(self):
-        return f"{self.__class__.__name__}({list(self)})"
+        return "{}({})".format(self.__class__.__name__, list(self))
 
 class EdgeView(OutEdgeView):
     __slots__ = ()

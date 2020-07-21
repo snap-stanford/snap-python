@@ -764,7 +764,7 @@ class Graph:
         try:
             return iter(self.adj[n])
         except KeyError:
-            raise SnapXError(f"The node {n} is not in the graph.")
+            raise SnapXError("The node {} is not in the graph.".format(n))
 
     @property
     def edges(self):
