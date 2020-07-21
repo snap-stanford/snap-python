@@ -55,9 +55,6 @@ class SnapPythonTest(unittest.TestCase):
 
 
 
-
-
-
     #### Helper Functions for Tests ####
 
     def checkPlotHash(self, gen_file, exp_hash):
@@ -97,358 +94,118 @@ class SnapPythonTest(unittest.TestCase):
                 count += 1
 
     #### Tests ####
-
-    # Avery Vector tests
-    def test_vec_append(self):
-        # Vector to test against
-        new_vec = snap.TIntV()
-        new_vec.Add(1)
-
-        vector = snap.TIntV()
-        vector.append(1)
-        self.assertEqual(vector, new_vec)
-
-    def test_vec_extend(self):
-        # Vector to test against
-        new_vec = snap.TIntV()
-        new_vec.Add(1)
-        new_vec.Add(2)
-        new_vec.Add(3)
-
-        # Vector to extend by
-        extend_vec = snap.TIntV()
-        extend_vec.Add(2)
-        extend_vec.Add(3)
-
-        # Extend operation
-        vector = snap.TIntV()
-        vector.Add(1)
-        vector.extend(extend_vec)
-
-        self.assertEqual(vector, new_vec)
-
-    def test_vec_clear(self):
-        # Vector to test against
-        new_vec = snap.TIntV()
-
-        # Adding to and clearing vector
-        vector = snap.TIntV()
-        vector.Add(1)
-        vector.clear()
-
-        self.assertEqual(vector, new_vec)
-
-    def test_vec_insert(self):
-        # Vector to test against
-        new_vec = snap.TIntV()
-        new_vec.Add(1)
-        new_vec.Add(2)
-        new_vec.Add(3)
-
-        # Attempting insert on self.vector
-        vector = snap.TIntV()
-        vector.Add(1)
-        vector.Add(3)
-        vector.insert(1, 2)
-
-        self.assertEqual(vector, new_vec)
-
-    def test_vec_remove(self):
-        # Vector to test against
-        new_vec = snap.TIntV()
-        new_vec.Add(1)
-
-        # Attempting insert on vector
-        vector = snap.TIntV()
-        vector.Add(1)
-        vector.Add(2)
-        vector.remove(2)
-
-        self.assertEqual(vector, new_vec)
-
-    def test_vec_index(self):
-        vector = snap.TIntV()
-        vector.Add(1)
-        vector.Add(2)
-        index = vector.index(2)
-
-        self.assertEqual(index, 1)
-
-    def test_vec_count(self):
-        vector = snap.TIntV()
-        vector.Add(1)
-        vector.Add(1)
-        vector.Add(1)
-        num_ones = vector.count(1)
-
-        self.assertEqual(num_ones, 3)
-
-    def test_vec_pop(self):
-        vector = snap.TIntV()
-        vector.Add(1)
-        vector.Add(2)
-        popped = vector.pop(1)
-
-        self.assertEqual(popped, 2)
-
-    def test_vec_reverse(self):
-        # Vector to compare
-        new_vec = snap.TIntV()
-        new_vec.Add(2)
-        new_vec.Add(1)
-
-        vector = snap.TIntV()
-        vector.Add(1)
-        vector.Add(2)
-        vector.reverse()
-
-        self.assertEqual(vector, new_vec)
-
-    def test_vec_sort(self):
-        # Vector to compare
-        new_vec = snap.TIntV()
-        new_vec.Add(1)
-        new_vec.Add(2)
-        new_vec.Add(3)
-
-        vector = snap.TIntV()
-        vector.Add(1)
-        vector.Add(3)
-        vector.Add(2)
-        vector.sort(asc=True)
-
-        self.assertEqual(vector, new_vec)
-
-    def test_vec_copy(self):
-        vector = snap.TIntV()
-        vector.Add(1)
-        vector.Add(2)
-        new_vec = vector.copy()
-
-        self.assertEqual(vector, new_vec)
-
-    def test_vec_max(self):
-        vector = snap.TIntV()
-        vector.Add(1)
-        vector.Add(5)
-        vector.Add(2)
-
-        maximum = max(vector)
-
-        self.assertEqual(maximum, 5)
-
-    def test_vec_min(self):
-        vector = snap.TIntV()
-        vector.Add(2)
-        vector.Add(1)
-        vector.Add(5)
-
-        minimum = min(vector)
-
-        self.assertEqual(minimum, 1)
-
-    # Avery Hash Table Tests
-    def test_hash_clear(self):
-        new_ht = snap.TIntH()
-
-        ht = snap.TIntH()
-        ht[1] = 2
-        ht.clear()
-
-        self.assertEqual(ht, new_ht)
-
-    def test_hash_copy(self):
-        ht = snap.TIntH()
-        ht[1] = 2
-        new_ht = ht.copy()
-
-        self.assertEqual(ht, new_ht)
-
-    def test_hash_get(self):
-        ht = snap.TIntH()
-        ht[1] = 2
-        value = ht.get(1)
-
-        self.assertEqual(value, 2)
-
-    def test_hash_items(self):
-        ht = snap.TIntH()
-        ht[1] = 2
-        ht[3] = 4
-        items = [(1, 2), (3, 4)]
-        ht_items = ht.items()
-
-        self.assertEqual(items, ht_items)
-
-    def test_hash_keys(self):
-        ht = snap.TIntH()
-        ht[1] = 2
-        ht[3] = 4
-        keys = [1, 3]
-        ht_keys = ht.keys()
-
-        self.assertEqual(keys, ht_keys)
-
-    def test_hash_pop(self):
-        ht = snap.TIntH()
-        ht[1] = 2
-        ht[3] = 4
-        popped = 2
-        ht_popped = ht.pop(1)
-
-        self.assertEqual(popped, ht_popped)
-
-    def test_hash_setdefault(self):
-        new_ht = snap.TIntH()
-        new_ht[1] = 2
-        new_ht[3] = 4
-
-        ht = snap.TIntH()
-        ht[1] = 2
-        default_val = ht.setdefault(3, 4)
-
-        self.assertEqual(ht, new_ht)
-        self.assertEqual(default_val, 4)
-
-    def test_hash_update(self):
-        new_ht = snap.TIntH()
-        new_ht[1] = 2
-        new_ht[3] = 5
-
-        ht = snap.TIntH()
-        ht[3] = 4
-        ht.update(new_ht)
-
-        final_ht = snap.TIntH()
-        final_ht[1] = 2
-        final_ht[3] = 5
-
-        self.assertEqual(ht, final_ht)
-
-    def test_hash_values(self):
-        expected_values = [2, 4]
-
-        ht = snap.TIntH()
-        ht[1] = 2
-        ht[3] = 4
-        values = ht.values()
-
-        self.assertEqual(expected_values, values)
-
-
+        
     def test_CntInDegNodes(self):
         # Directed graph
-        num_nodes = snap.CntInDegNodes(self.DirGraphFull, self.num_nodes-1)
-        self.assertEqual(self.num_nodes, num_nodes)
+        num_nodes = self.DirGraphFull.CntInDegNodes(self.num_nodes-1)
+        self.assertEqual(num_nodes, self.num_nodes)
 
         # Undirected Graph
-        num_nodes = snap.CntInDegNodes(self.UnDirGraphFull, self.num_nodes-1)
-        self.assertEqual(self.num_nodes, num_nodes)
+        num_nodes = self.UnDirGraphFull.CntInDegNodes(self.num_nodes-1)
+        self.assertEqual(num_nodes, self.num_nodes)
 
         # Network
-        num_nodes = snap.CntInDegNodes(self.NetFull, self.num_nodes-1)
-        self.assertEqual(self.num_nodes, num_nodes)
+        num_nodes = self.NetFull.CntInDegNodes(self.num_nodes-1)
+        self.assertEqual(num_nodes, self.num_nodes)
 
     def test_CntOutDegNodes(self):
         # Directed Graph
-        num_nodes = snap.CntOutDegNodes(self.DirGraphFull, self.num_nodes-1)
-        self.assertEqual(self.num_nodes, num_nodes)
+        num_nodes = self.DirGraphFull.CntOutDegNodes(self.num_nodes-1)
+        self.assertEqual(num_nodes, self.num_nodes)
 
         # Undirected Graph
-        num_nodes = snap.CntOutDegNodes(self.UnDirGraphFull, self.num_nodes-1)
-        self.assertEqual(self.num_nodes, num_nodes)
+        num_nodes = self.UnDirGraphFull.CntOutDegNodes(self.num_nodes-1)
+        self.assertEqual(num_nodes, self.num_nodes)
 
         # Network
-        num_nodes = snap.CntOutDegNodes(self.NetFull, self.num_nodes-1)
-        self.assertEqual(self.num_nodes, num_nodes)
+        num_nodes = self.NetFull.CntOutDegNodes(self.num_nodes-1)
+        self.assertEqual(num_nodes, self.num_nodes)
 
     def test_CntDegNodes(self):
         # Directed Graph - it will have twice the edges as the undirected graph
-        num_nodes = snap.CntDegNodes(self.DirGraphFull, 2*(self.num_nodes-1))
-        self.assertEqual(self.num_nodes, num_nodes)
+        num_nodes = self.DirGraphFull.CntDegNodes(2*(self.num_nodes-1))
+        self.assertEqual(num_nodes, self.num_nodes)
 
         # Undirected Graph
-        num_nodes = snap.CntDegNodes(self.UnDirGraphFull, self.num_nodes-1)
-        self.assertEqual(self.num_nodes, num_nodes)
+        num_nodes = self.UnDirGraphFull.CntDegNodes(self.num_nodes-1)
+        self.assertEqual(num_nodes, self.num_nodes)
 
         # Network
-        num_nodes = snap.CntDegNodes(self.NetFull, 2*(self.num_nodes-1))
-        self.assertEqual(self.num_nodes, num_nodes)
+        num_nodes = self.NetFull.CntDegNodes(2*(self.num_nodes-1))
+        self.assertEqual(num_nodes, self.num_nodes)
 
     def test_CntNonZNodes(self):
         # Directed Graph
-        num_nodes = snap.CntNonZNodes(self.DirGraphFull)
-        self.assertEqual(self.num_nodes, num_nodes)
+        num_nodes = self.DirGraphFull.CntNonZNodes()
+        self.assertEqual(num_nodes, self.num_nodes)
 
         # Undirected Graph
-        num_nodes = snap.CntNonZNodes(self.UnDirGraphFull)
-        self.assertEqual(self.num_nodes, num_nodes)
+        num_nodes = self.UnDirGraphFull.CntNonZNodes()
+        self.assertEqual(num_nodes, self.num_nodes)
 
         # Network
-        num_nodes = snap.CntNonZNodes(self.NetFull)
-        self.assertEqual(self.num_nodes, num_nodes)
+        num_nodes = self.NetFull.CntNonZNodes()
+        self.assertEqual(num_nodes, self.num_nodes)
 
     def test_GetMxDegNId(self):
         # Directed Graph
-        max_id = snap.GetMxDegNId(self.DirGraphStar)
-        self.assertEqual(0, max_id)
+        max_id = self.DirGraphStar.GetMxDegNId()
+        self.assertEqual(max_id, 0)
 
         # Undirected Graph
-        max_id = snap.GetMxDegNId(self.UnDirGraphStar)
-        self.assertEqual(0, max_id)
+        max_id = self.UnDirGraphStar.GetMxDegNId()
+        self.assertEqual(max_id, 0)
 
         # Network
-        max_id = snap.GetMxDegNId(self.NetStar)
-        self.assertEqual(0, max_id)
+        max_id = self.NetStar.GetMxDegNId()
+        self.assertEqual(max_id, 0)
 
     def test_GetMxInDegNId(self):
         # Directed Graph
-        max_id = snap.GetMxInDegNId(self.DirGraphStar)
         # node with id 0 is the only node with in-degree 0
-        self.assertNotEqual(0, max_id)
+        max_id = self.DirGraphStar.GetMxInDegNId()
+        self.assertNotEqual(max_id, 0)
 
         # Undirected Graph
-        max_id = snap.GetMxInDegNId(self.UnDirGraphStar)
-        self.assertEqual(0, max_id)
+        max_id = self.UnDirGraphStar.GetMxInDegNId()
+        self.assertEqual(max_id, 0)
 
         # Network
-        max_id = snap.GetMxInDegNId(self.NetStar)
         # node with id 0 is the only node with in-degree 0
-        self.assertNotEqual(0, max_id)
+        max_id = self.NetStar.GetMxInDegNId()
+        self.assertNotEqual(max_id, 0)
 
     def test_GetMxOutDegNId(self):
         # Directed Graph
-        max_id = snap.GetMxOutDegNId(self.DirGraphStar)
-        self.assertEqual(0, max_id)
+        max_id = self.DirGraphStar.GetMxOutDegNId()
+        self.assertEqual(max_id, 0)
 
         # Undirected Graph
-        max_id = snap.GetMxOutDegNId(self.UnDirGraphStar)
-        self.assertEqual(0, max_id)
+        max_id = self.UnDirGraphStar.GetMxOutDegNId()
+        self.assertEqual(max_id, 0)
 
         # Network
-        max_id = snap.GetMxOutDegNId(self.NetStar)
-        self.assertEqual(0, max_id)
+        max_id = self.NetStar.GetMxOutDegNId()
+        self.assertEqual(max_id, 0)
 
     def test_GetInDegCnt(self):
         # Directed Graph
-        DegToCntV = snap.TIntPrV()
-        snap.GetInDegCnt(self.DirGraphFull, DegToCntV)
+        DegToCntV = self.DirGraphFull.GetInDegCnt()
         # There should be only one entry (num_nodes -1, num_nodes) in DegToCntV
         for item in DegToCntV:
             self.assertEqual(self.num_nodes-1, item.GetVal1())
             self.assertEqual(self.num_nodes, item.GetVal2())
+        self.assertEqual(DegToCntV, DegToCntV)
 
         # Undirected Graph
-        DegToCntV = snap.TIntPrV()
-        snap.GetInDegCnt(self.UnDirGraphFull, DegToCntV)
+        DegToCntV = self.UnDirGraphFull.GetInDegCnt()
         # There should be only one entry (num_nodes -1, num_nodes) in DegToCntV
         for item in DegToCntV:
             self.assertEqual(self.num_nodes-1, item.GetVal1())
             self.assertEqual(self.num_nodes, item.GetVal2())
 
         # Network
-        DegToCntV = snap.TIntPrV()
-        snap.GetInDegCnt(self.NetFull, DegToCntV)
+        DegToCntV = self.NetFull.GetInDegCnt()
         # There should be only one entry (num_nodes -1, num_nodes) in DegToCntV
         for item in DegToCntV:
             self.assertEqual(self.num_nodes-1, item.GetVal1())
@@ -456,24 +213,21 @@ class SnapPythonTest(unittest.TestCase):
 
     def test_GetOutDegCnt(self):
         # Directed Graph
-        DegToCntV = snap.TIntPrV()
-        snap.GetOutDegCnt(self.DirGraphFull, DegToCntV)
+        DegToCntV = self.DirGraphFull.GetOutDegCnt()
         # There should be only one entry (num_nodes -1, num_nodes) in DegToCntV
         for item in DegToCntV:
             self.assertEqual(self.num_nodes-1, item.GetVal1())
             self.assertEqual(self.num_nodes, item.GetVal2())
 
         # Undirected Graph
-        DegToCntV = snap.TIntPrV()
-        snap.GetOutDegCnt(self.UnDirGraphFull, DegToCntV)
+        DegToCntV = self.UnDirGraphFull.GetOutDegCnt()
         # There should be only one entry (num_nodes -1, num_nodes) in DegToCntV
         for item in DegToCntV:
             self.assertEqual(self.num_nodes-1, item.GetVal1())
             self.assertEqual(self.num_nodes, item.GetVal2())
 
         # Network
-        DegToCntV = snap.TIntPrV()
-        snap.GetOutDegCnt(self.NetFull, DegToCntV)
+        DegToCntV = self.NetFull.GetOutDegCnt()
         # There should be only one entry (2*(num_nodes-1), num_nodes) in DegToCntV
         for item in DegToCntV:
             self.assertEqual(self.num_nodes-1, item.GetVal1())
@@ -481,121 +235,159 @@ class SnapPythonTest(unittest.TestCase):
 
     def test_GetDegCnt(self):
         # Directed Graph
-        DegToCntV = snap.TIntPrV()
-        snap.GetDegCnt(self.DirGraphFull, DegToCntV)
+        DegToCntV = self.DirGraphFull.GetDegCnt()
         # There should be only one entry (2*(num_nodes-1), num_nodes) in DegToCntV
         for item in DegToCntV:
             self.assertEqual(2*(self.num_nodes-1), item.GetVal1())
             self.assertEqual(self.num_nodes, item.GetVal2())
 
         # Undirected Graph
-        DegToCntV = snap.TIntPrV()
-        snap.GetDegCnt(self.UnDirGraphFull, DegToCntV)
+        DegToCntV = self.UnDirGraphFull.GetDegCnt()
         # There should be only one entry (num_nodes-1, num_nodes) in DegToCntV
         for item in DegToCntV:
             self.assertEqual(self.num_nodes-1, item.GetVal1())
             self.assertEqual(self.num_nodes, item.GetVal2())
 
         # Network
-        DegToCntV = snap.TIntPrV()
-        snap.GetDegCnt(self.NetFull, DegToCntV)
+        DegToCntV = self.NetFull.GetDegCnt()
         # There should be only one entry (2*(num_nodes-1), num_nodes) in DegToCntV
         for item in DegToCntV:
             self.assertEqual(self.num_nodes, item.GetVal2())
 
     def test_GetNodeInDegV(self):
         # Directed Graph
-        DegToCntV = snap.TIntPrV()
-        snap.GetNodeInDegV(self.DirGraphFull, DegToCntV)
+        DegToCntV = self.DirGraphFull.GetNodeInDegV()
         for item in DegToCntV:
             self.assertEqual(self.num_nodes-1, item.GetVal2())
 
         # Undirected Graph
-        DegToCntV = snap.TIntPrV()
-        snap.GetNodeInDegV(self.UnDirGraphFull, DegToCntV)
+        DegToCntV = self.UnDirGraphFull.GetNodeInDegV()
         for item in DegToCntV:
             self.assertEqual(self.num_nodes-1, item.GetVal2())
 
         # Network
-        DegToCntV = snap.TIntPrV()
-        snap.GetNodeInDegV(self.NetFull, DegToCntV)
+        DegToCntV = self.NetFull.GetNodeInDegV()
         for item in DegToCntV:
             self.assertEqual(self.num_nodes-1, item.GetVal2())
 
     def test_GetNodeOutDegV(self):
         # Directed Graph
-        DegToCntV = snap.TIntPrV()
-        snap.GetNodeOutDegV(self.DirGraphFull, DegToCntV)
+        DegToCntV = self.DirGraphFull.GetNodeOutDegV()
         for item in DegToCntV:
             self.assertEqual(self.num_nodes-1, item.GetVal2())
 
         # Undirected Graph
-        DegToCntV = snap.TIntPrV()
-        snap.GetNodeOutDegV(self.UnDirGraphFull, DegToCntV)
+        DegToCntV = self.UnDirGraphFull.GetNodeOutDegV()
         for item in DegToCntV:
             self.assertEqual(self.num_nodes-1, item.GetVal2())
 
         # Network
-        DegToCntV = snap.TIntPrV()
-        snap.GetNodeOutDegV(self.NetFull, DegToCntV)
+        DegToCntV = self.NetFull.GetNodeOutDegV()
         for item in DegToCntV:
             self.assertEqual(self.num_nodes-1, item.GetVal2())
+
+    def test_GetDegSeqV(self):
+        # Directed Graph
+        G = snap.GenFull(snap.PNGraph, 10)
+        V = G.GetDegSeqV(Dir = False)
+        for i in V:
+            self.assertEqual(18, i)
+
+        # Undirected Graph
+        G = snap.GenFull(snap.PUNGraph, 10)
+        V = G.GetDegSeqV(Dir = False)
+        snap.GetDegSeqV(G, V)
+        for i in V:
+            self.assertEqual(9, i)
+
+        # Network
+        G = snap.GenFull(snap.PNEANet, 10)
+        V = G.GetDegSeqV(Dir = False)
+        for i in V:
+            self.assertEqual(18, i)
+
+    def test_GetDegSeqV2(self):
+        # Directed Graph
+        G = snap.GenFull(snap.PNGraph, 10)
+        V, V2 = G.GetDegSeqV(Dir = True)
+        snap.GetDegSeqV(G, V, V2)
+        for i in V:
+            self.assertEqual(9, i)
+        for i in V2:
+            self.assertEqual(9, i)
+
+        # Undirected Graph
+        G = snap.GenFull(snap.PUNGraph, 10)
+        V, V2 = G.GetDegSeqV(Dir = True)
+        for i in V:
+            self.assertEqual(9, i)
+        for i in V2:
+            self.assertEqual(9, i)
+
+        # Network
+        G = snap.GenFull(snap.PNEANet, 10)
+        V_new, V2_new = G.GetDegSeqV(Dir = True)
+        snap.GetDegSeqV(G, V, V2)
+        for i in V:
+            self.assertEqual(9, i)
+        for i in V2:
+            self.assertEqual(9, i)
 
     def test_CntUniqUndirEdges(self):
         # Directed Graph
-        num_edges = snap.CntUniqUndirEdges(self.DirGraphFull)
+        num_edges = self.DirGraphFull.CntUniqUndirEdges()
         self.assertEqual(self.num_nodes * (self.num_nodes - 1)/2, num_edges)
 
         # Unidrected Graph
-        num_edges = snap.CntUniqUndirEdges(self.UnDirGraphFull)
+        num_edges = self.UnDirGraphFull.CntUniqUndirEdges()
         self.assertEqual(self.num_nodes * (self.num_nodes - 1)/2, num_edges)
 
         # Network
-        num_edges = snap.CntUniqUndirEdges(self.NetFull)
+        num_edges = self.NetFull.CntUniqUndirEdges()
         self.assertEqual(self.num_nodes * (self.num_nodes - 1)/2, num_edges)
 
     def test_CntUniqDirEdges(self):
         # Directed Graph
-        num_edges = snap.CntUniqDirEdges(self.DirGraphFull)
+        num_edges = self.DirGraphFull.CntUniqDirEdges()
         self.assertEqual(self.num_nodes * (self.num_nodes - 1), num_edges)
 
         # Unidrected Graph
-        num_edges = snap.CntUniqDirEdges(self.UnDirGraphFull)
+        num_edges = self.UnDirGraphFull.CntUniqDirEdges()
         self.assertEqual(self.num_nodes * (self.num_nodes - 1), num_edges)
 
         # Network
-        num_edges = snap.CntUniqDirEdges(self.NetFull)
+        num_edges = self.NetFull.CntUniqDirEdges()
         self.assertEqual(self.num_nodes * (self.num_nodes - 1), num_edges)
 
     def test_CntUniqBiDirEdges(self):
         # Directed Graph
-        num_edges = snap.CntUniqBiDirEdges(self.DirGraphFull)
+        num_edges = self.DirGraphFull.CntUniqBiDirEdges()
         self.assertEqual(self.num_nodes * (self.num_nodes - 1)/2, num_edges)
 
         # Unidrected Graph
-        num_edges = snap.CntUniqBiDirEdges(self.UnDirGraphFull)
+        num_edges = self.UnDirGraphFull.CntUniqBiDirEdges()
         self.assertEqual(self.num_nodes * (self.num_nodes - 1)/2, num_edges)
 
         # Network
-        num_edges = snap.CntUniqBiDirEdges(self.NetFull)
+        num_edges = self.NetFull.CntUniqBiDirEdges()
         self.assertEqual(self.num_nodes * (self.num_nodes - 1)/2, num_edges)
 
     def test_CntSelfEdges(self):
         # Directed Graph
-        num_edges = snap.CntSelfEdges(self.DirGraphFull)
+        num_edges = self.DirGraphFull.CntSelfEdges()
         self.assertEqual(0, num_edges)
 
         # Undirected Graph
-        num_edges = snap.CntSelfEdges(self.UnDirGraphFull)
+        num_edges = self.UnDirGraphFull.CntSelfEdges()
         self.assertEqual(0, num_edges)
 
         # Network
-        num_edges = snap.CntSelfEdges(self.NetFull)
+        num_edges = self.NetFull.CntSelfEdges()
         self.assertEqual(0, num_edges)
 
     def test_GetUnDir(self):
         # Directed Graph
-        New_Graph = snap.GetUnDir(self.DirGraphStar)
+        New_Graph = self.DirGraphStar.GetUnDir()
         for node in self.DirGraphStar.Nodes():
             self.assertTrue(New_Graph.IsNode(node.GetId()))
         for edge in self.DirGraphStar.Edges():
@@ -603,7 +395,7 @@ class SnapPythonTest(unittest.TestCase):
             self.assertTrue(New_Graph.IsEdge(edge.GetDstNId(), edge.GetSrcNId()))
 
         # Undirected Graph
-        New_Graph = snap.GetUnDir(self.UnDirGraphStar)
+        New_Graph = self.UnDirGraphStar.GetUnDir()
         for node in self.UnDirGraphStar.Nodes():
             self.assertTrue(New_Graph.IsNode(node.GetId()))
         for edge in self.UnDirGraphStar.Edges():
@@ -611,7 +403,7 @@ class SnapPythonTest(unittest.TestCase):
             self.assertTrue(New_Graph.IsEdge(edge.GetDstNId(), edge.GetSrcNId()))
 
         # Network
-        New_Graph = snap.GetUnDir(self.NetStar)
+        New_Graph = self.NetStar.GetUnDir()
         for node in self.NetStar.Nodes():
             self.assertTrue(New_Graph.IsNode(node.GetId()))
         for edge in self.NetStar.Edges():
@@ -620,8 +412,8 @@ class SnapPythonTest(unittest.TestCase):
 
     def test_MakeUnDir(self):
         # Directed Graph
-        New_Graph = self.DirGraphStar
-        snap.MakeUnDir(New_Graph)
+        New_Graph = snap.GenStar(snap.PNGraph, self.num_nodes)
+        New_Graph.MakeUnDir()
         for node in self.DirGraphStar.Nodes():
             self.assertTrue(New_Graph.IsNode(node.GetId()))
         for edge in self.DirGraphStar.Edges():
@@ -629,8 +421,8 @@ class SnapPythonTest(unittest.TestCase):
             self.assertTrue(New_Graph.IsEdge(edge.GetDstNId(), edge.GetSrcNId()))
 
         # Undirected Graph
-        New_Graph = self.UnDirGraphStar
-        snap.MakeUnDir(New_Graph)
+        New_Graph = snap.GenStar(snap.PUNGraph, self.num_nodes)
+        New_Graph.MakeUnDir()
         for node in self.UnDirGraphStar.Nodes():
             self.assertTrue(New_Graph.IsNode(node.GetId()))
         for edge in self.UnDirGraphStar.Edges():
@@ -638,8 +430,8 @@ class SnapPythonTest(unittest.TestCase):
             self.assertTrue(New_Graph.IsEdge(edge.GetDstNId(), edge.GetSrcNId()))
 
         # Network
-        New_Graph = self.NetStar
-        snap.MakeUnDir(New_Graph)
+        New_Graph = snap.GenStar(snap.PNEANet, self.num_nodes)
+        New_Graph.MakeUnDir()
         for node in self.NetStar.Nodes():
             self.assertTrue(New_Graph.IsNode(node.GetId()))
         for edge in self.NetStar.Edges():
@@ -648,108 +440,114 @@ class SnapPythonTest(unittest.TestCase):
 
     def test_AddSelfEdges(self):
         # Directed Graph
-        Graph_Copy = self.DirGraphFull
-        snap.AddSelfEdges(Graph_Copy)
-        for node in Graph_Copy.Nodes():
-            self.assertTrue(Graph_Copy.IsEdge(node.GetId(), node.GetId()))
+        New_Graph = snap.GenFull(snap.PNGraph, self.num_nodes)
+        New_Graph.AddSelfEdges()
+        for node in New_Graph.Nodes():
+            self.assertTrue(New_Graph.IsEdge(node.GetId(), node.GetId()))
 
         # Undirected Graph
-        Graph_Copy = self.UnDirGraphFull
-        snap.AddSelfEdges(Graph_Copy)
-        for node in Graph_Copy.Nodes():
-            self.assertTrue(Graph_Copy.IsEdge(node.GetId(), node.GetId()))
+        New_Graph = snap.GenFull(snap.PUNGraph, self.num_nodes)
+        New_Graph.AddSelfEdges()
+        for node in New_Graph.Nodes():
+            self.assertTrue(New_Graph.IsEdge(node.GetId(), node.GetId()))
 
         # Network
-        Graph_Copy = self.NetFull
-        snap.AddSelfEdges(Graph_Copy)
-        for node in Graph_Copy.Nodes():
-            self.assertTrue(Graph_Copy.IsEdge(node.GetId(), node.GetId()))
+        New_Graph = snap.GenFull(snap.PNEANet, self.num_nodes)
+        New_Graph.AddSelfEdges()
+        for node in New_Graph.Nodes():
+            self.assertTrue(New_Graph.IsEdge(node.GetId(), node.GetId()))
 
     def test_DelSelfEdges(self):
         # Directed Graph
-        Graph_Copy = self.DirGraphSelfEdge
-        snap.DelSelfEdges(Graph_Copy)
-        for node in Graph_Copy.Nodes():
-            self.assertFalse(Graph_Copy.IsEdge(node.GetId(), node.GetId()))
+        New_Graph = snap.GenRndGnm(snap.PNGraph, 10, 20)
+        New_Graph.AddEdge(0, 0)
+        New_Graph.DelSelfEdges()
+        for node in New_Graph.Nodes():
+            self.assertFalse(New_Graph.IsEdge(node.GetId(), node.GetId()))
 
         # Undirected Graph
-        Graph_Copy = self.UnDirGraphSelfEdge
-        snap.DelSelfEdges(Graph_Copy)
-        for node in Graph_Copy.Nodes():
-            self.assertFalse(Graph_Copy.IsEdge(node.GetId(), node.GetId()))
+        New_Graph = snap.GenRndGnm(snap.PUNGraph, 10, 20)
+        New_Graph.AddEdge(0, 0)
+        New_Graph.DelSelfEdges()
+        for node in New_Graph.Nodes():
+            self.assertFalse(New_Graph.IsEdge(node.GetId(), node.GetId()))
 
         # Network
-        Graph_Copy = self.NetSelfEdge
-        snap.DelSelfEdges(Graph_Copy)
-        for node in Graph_Copy.Nodes():
-            self.assertFalse(Graph_Copy.IsEdge(node.GetId(), node.GetId()))
+        New_Graph = snap.GenRndGnm(snap.PNEANet, 10, 20)
+        New_Graph.AddEdge(0, 0)
+        New_Graph.DelSelfEdges()
+        for node in New_Graph.Nodes():
+            self.assertFalse(New_Graph.IsEdge(node.GetId(), node.GetId()))
 
     def test_DelNodes(self):
         # Directed Graph
-        Graph_Copy = self.DirGraphFull
-        DelNodes = snap.TIntV()
-        DelNodes.Add(0)
-        snap.DelNodes(Graph_Copy, DelNodes)
+        New_Graph = snap.GenFull(snap.PNGraph, self.num_nodes)
+        DelNodes = [0]
+        New_Graph.DelNodes(DelNodes)
         for node in DelNodes:
-            self.assertFalse(Graph_Copy.IsNode(node))
+            self.assertFalse(New_Graph.IsNode(node))
 
         # Undirected Graph
-        Graph_Copy = self.UnDirGraphFull
-        DelNodes = snap.TIntV()
-        DelNodes.Add(0)
-        snap.DelNodes(Graph_Copy, DelNodes)
+        New_Graph = snap.GenFull(snap.PUNGraph, self.num_nodes)
+        DelNodes = [0]
+        New_Graph.DelNodes(DelNodes)
         for node in DelNodes:
-            self.assertFalse(Graph_Copy.IsNode(node))
+            self.assertFalse(New_Graph.IsNode(node))
 
         # Network
-        Graph_Copy = self.NetFull
-        DelNodes = snap.TIntV()
-        DelNodes.Add(0)
-        snap.DelNodes(Graph_Copy, DelNodes)
+        New_Graph = snap.GenFull(snap.PNEANet, self.num_nodes)
+        DelNodes = [0]
+        New_Graph.DelNodes(DelNodes)
         for node in DelNodes:
-            self.assertFalse(Graph_Copy.IsNode(node))
+            self.assertFalse(New_Graph.IsNode(node))
 
     def test_DelZeroDegNodes(self):
         # Directed Graph
-        snap.DelZeroDegNodes(self.DirGraphZeroDegree)
-        for NI in self.DirGraphZeroDegree.Nodes():
-            self.assertNotEqual(0, NI.GetOutDeg() + NI.GetInDeg())
+        New_Graph = snap.GenRndGnm(snap.PNGraph, 10, 1)
+        New_Graph.DelZeroDegNodes()
+        for NI in New_Graph.Nodes():
+            self.assertNotEqual(0, NI.GetOutDeg() + NI.GetInDeg())        
 
         # Undirected Graph
-        snap.DelZeroDegNodes(self.UnDirGraphZeroDegree)
-        for NI in self.UnDirGraphZeroDegree.Nodes():
-            self.assertNotEqual(0, NI.GetOutDeg() + NI.GetInDeg())
+        New_Graph = snap.GenRndGnm(snap.PUNGraph, 10, 1)
+        New_Graph.DelZeroDegNodes()
+        for NI in New_Graph.Nodes():
+            self.assertNotEqual(0, NI.GetOutDeg() + NI.GetInDeg())    
 
         # Network
-        snap.DelZeroDegNodes(self.NetZeroDegree)
-        for NI in self.NetZeroDegree.Nodes():
-            self.assertNotEqual(0, NI.GetOutDeg() + NI.GetInDeg())
+        New_Graph = snap.GenRndGnm(snap.PNEANet, 10, 1)
+        New_Graph.DelZeroDegNodes()
+        for NI in New_Graph.Nodes():
+            self.assertNotEqual(0, NI.GetOutDeg() + NI.GetInDeg())    
 
     def test_DelDegKNodes(self):
         # Directed Graph
-        snap.DelDegKNodes(self.DirGraphZeroDegree, 0, 0)
-        for NI in self.DirGraphZeroDegree.Nodes():
+        DirGraphZeroDegree = snap.GenRndGnm(snap.PNGraph, 10, 1)
+        DirGraphZeroDegree.DelDegKNodes(0,0)
+        for NI in DirGraphZeroDegree.Nodes():
             self.assertNotEqual(0, NI.GetOutDeg() + NI.GetInDeg())
 
         # Undirected Graph
-        snap.DelDegKNodes(self.UnDirGraphZeroDegree, 0, 0)
-        for NI in self.UnDirGraphZeroDegree.Nodes():
+        UnDirGraphZeroDegree = snap.GenRndGnm(snap.PNGraph, 10, 1)
+        UnDirGraphZeroDegree.DelDegKNodes(0,0)
+        for NI in UnDirGraphZeroDegree.Nodes():
             self.assertNotEqual(0, NI.GetOutDeg() + NI.GetInDeg())
 
         # Network
-        snap.DelDegKNodes(self.NetZeroDegree, 0, 0)
-        for NI in self.NetZeroDegree.Nodes():
+        NetZeroDegree = snap.GenRndGnm(snap.PNGraph, 10, 1)
+        NetZeroDegree.DelDegKNodes(0,0)
+        for NI in NetZeroDegree.Nodes():
             self.assertNotEqual(0, NI.GetOutDeg() + NI.GetInDeg())
 
     def test_IsTree(self):
         # Directed Graph
         expected_results = [True, 0]
-        results = snap.IsTree(self.DirTree)
+        results = self.DirTree.IsTree()
         self.assertEqual(expected_results, results)
 
         # Network
         expected_results = [True, 0]
-        results = snap.IsTree(self.NetTree)
+        results = self.NetTree.IsTree()
         self.assertEqual(expected_results, results)
 
     def test_GetTreeRootNId(self):
@@ -758,7 +556,7 @@ class SnapPythonTest(unittest.TestCase):
         self.assertEqual(0, root_id)
 
         # Network
-        root_id = snap.GetTreeRootNId(self.NetTree)
+        root_id = self.NetTree.GetTreeRootNId()
         self.assertEqual(0, root_id)
 
     def test_GetBfsTree(self):
@@ -767,59 +565,55 @@ class SnapPythonTest(unittest.TestCase):
         follow_in = False
 
         # Directed Graph
-        BfsTree = snap.GetBfsTree(self.DirGraphFull, start_node, follow_out, follow_in)
+        BfsTree = self.DirGraphFull.GetBfsTree(start_node, follow_out, follow_in)
         self.assertEqual(self.num_nodes - 1, BfsTree.GetEdges())
         for end_node in range(1, self.num_nodes-1):
             self.assertTrue(BfsTree.IsEdge(start_node, end_node))
 
         # Undirected Graph
-        BfsTree = snap.GetBfsTree(self.UnDirGraphFull, start_node, follow_out, follow_in)
+        BfsTree = self.DirGraphFull.GetBfsTree(start_node, follow_out, follow_in)
         self.assertEqual(self.num_nodes - 1, BfsTree.GetEdges())
         for end_node in range(1, self.num_nodes-1):
             self.assertTrue(BfsTree.IsEdge(start_node, end_node))
 
         # Network
-        BfsTree = snap.GetBfsTree(self.NetFull, start_node, follow_out, follow_in)
+        BfsTree = self.NetFull.GetBfsTree(start_node, follow_out, follow_in)
         self.assertEqual(self.num_nodes - 1, BfsTree.GetEdges())
         for end_node in range(1, self.num_nodes-1):
             self.assertTrue(BfsTree.IsEdge(start_node, end_node))
 
     def test_GetSubTreeSz(self):
         # Directed Graph
-        results = snap.GetSubTreeSz(self.DirTree, 0, True, True)
         exp_results = [40, 40, 3]
+        results = self.DirTree.GetSubTreeSz(0, True, True)
         self.assertEqual(exp_results, results)
 
         # Undirected Graph
-        results = snap.GetSubTreeSz(self.UnDirTree, 0, True, True)
         exp_results = [40, 40, 3]
+        results = self.UnDirTree.GetSubTreeSz(0, True, True)
         self.assertEqual(exp_results, results)
 
         # Network
-        results = snap.GetSubTreeSz(self.NetTree, 0, True, True)
         exp_results = [40, 40, 3]
+        results = self.NetTree.GetSubTreeSz(0, True, True)
         self.assertEqual(exp_results, results)
 
     def test_GetNodesAtHop(self):
         # Directed Graph
-        NodeVec = snap.TIntV()
-        num_nodes = snap.GetNodesAtHop(self.DirGraphStar, 0, 1, NodeVec, True)
+        num_nodes, NodeVec = self.DirGraphStar.GetNodesAtHop(0, 1, True)
         self.assertEqual(self.num_nodes-1, num_nodes)
 
         # Undirected Graph
-        NodeVec = snap.TIntV()
-        num_nodes = snap.GetNodesAtHop(self.UnDirGraphStar, 0, 1, NodeVec, False)
+        num_nodes, NodeVec = self.UnDirGraphStar.GetNodesAtHop(0, 1, True)
         self.assertEqual(self.num_nodes-1, num_nodes)
 
         # Network
-        NodeVec = snap.TIntV()
-        num_nodes = snap.GetNodesAtHop(self.NetStar, 0, 1, NodeVec, True)
+        num_nodes, NodeVec = self.NetStar.GetNodesAtHop(0, 1, True)
         self.assertEqual(self.num_nodes-1, num_nodes)
 
     def test_GetNodesAtHops(self):
         # Directed Graph
-        HopVec = snap.TIntPrV()
-        num_hops = snap.GetNodesAtHops(self.DirGraphStar, 0, HopVec, True)
+        num_hops, HopVec = self.DirGraphStar.GetNodesAtHops(0, True)
         self.assertEqual(2, num_hops)
         for pair in HopVec:
             if pair.Val1() == 0:
@@ -829,19 +623,17 @@ class SnapPythonTest(unittest.TestCase):
                 self.assertEqual(self.num_nodes-1, pair.Val2())
 
         # Undirected Graph
-        HopVec = snap.TIntPrV()
-        num_hops = snap.GetNodesAtHops(self.UnDirGraphStar, 0, HopVec, False)
+        num_hops, HopVec = self.UnDirGraphStar.GetNodesAtHops(0, False)
         self.assertEqual(2, num_hops)
         for pair in HopVec:
             if pair.Val1() == 0:
                 self.assertEqual(1, pair.Val2())
             else:
                 self.assertEqual(1, pair.Val1())
-                self.assertEqual(self.num_nodes-1, pair.Val2())
+                self.assertEqual(self.num_nodes-1, pair.Val2())        
 
         # Network
-        HopVec = snap.TIntPrV()
-        num_hops = snap.GetNodesAtHops(self.NetStar, 0, HopVec, True)
+        num_hops, HopVec = self.NetStar.GetNodesAtHops(0, False)
         self.assertEqual(2, num_hops)
         for pair in HopVec:
             if pair.Val1() == 0:
@@ -852,60 +644,57 @@ class SnapPythonTest(unittest.TestCase):
 
     def test_GetDegreeCentr(self):
         # Undirected Graph
-        degree_center = snap.GetDegreeCentr(self.UnDirGraphStar, 0)
+        degree_center = self.UnDirGraphStar.GetDegreeCentr(0)
         self.assertEqual(1, degree_center)
 
     def test_GetFarnessCentr(self):
         # Undirected Graph
-        farness_center = snap.GetFarnessCentr(self.UnDirGraphStar, 0)
+        farness_center = self.UnDirGraphStar.GetFarnessCentr(0)
         self.assertEqual(1, farness_center)
 
         # Directed Graph
-        farness_center = snap.GetFarnessCentr(self.DirGraphStar, 0)
+        farness_center = self.DirGraphStar.GetFarnessCentr(0)
         self.assertEqual(1, farness_center)
 
         # Network
-        farness_center = snap.GetFarnessCentr(self.NetStar, 0)
+        farness_center = self.NetStar.GetFarnessCentr(0)
         self.assertEqual(1, farness_center)
 
     def test_GetClosenessCentr(self):
         # Undirected Graph
-        closeness_center = snap.GetClosenessCentr(self.UnDirGraphStar, 0)
+        closeness_center = self.UnDirGraphStar.GetClosenessCentr(0)
         self.assertEqual(1, closeness_center)
 
         # Directed Graph
-        closeness_center = snap.GetClosenessCentr(self.DirGraphStar, 0)
+        closeness_center = self.DirGraphStar.GetClosenessCentr(0)
         self.assertEqual(1, closeness_center)
 
         # Network
-        closeness_center = snap.GetClosenessCentr(self.NetStar, 0)
+        closeness_center = self.NetStar.GetClosenessCentr(0)
         self.assertEqual(1, closeness_center)
 
     def test_GetEigenVectorCentr(self):
         # Undirected Graph
-        EigenVec = snap.TIntFltH()
-        snap.GetEigenVectorCentr(self.UnDirGraphStar, EigenVec)
+        EigenVec = self.UnDirGraphStar.GetEigenVectorCentr()
         for item in EigenVec:
             self.assertTrue(0 < EigenVec[item])
 
     def test_GetNodeEcc(self):
         # Directed Graph
-        node_ecc = snap.GetNodeEcc(self.DirGraphStar, 0, True)
+        node_ecc = self.DirGraphStar.GetNodeEcc(0, True)
         self.assertEqual(1, node_ecc)
 
         # Undirected Graph
-        node_ecc = snap.GetNodeEcc(self.UnDirGraphStar, 0, False)
+        node_ecc = self.UnDirGraphStar.GetNodeEcc(0, True)
         self.assertEqual(1, node_ecc)
 
         # Network
-        node_ecc = snap.GetNodeEcc(self.NetStar, 0, True)
+        node_ecc = self.NetStar.GetNodeEcc(0, True)
         self.assertEqual(1, node_ecc)
 
     def test_GetHits(self):
         # Directed Graph
-        NIdHubH = snap.TIntFltH()
-        NIdAuthH = snap.TIntFltH()
-        snap.GetHits(self.DirGraphFull, NIdHubH, NIdAuthH)
+        NIdHubH, NIdAuthH = self.DirGraphFull.GetHits()
         value = NIdHubH.GetDat(0)
         for item in NIdHubH:
             self.assertEqual(value, NIdHubH[item])
@@ -914,9 +703,7 @@ class SnapPythonTest(unittest.TestCase):
             self.assertEqual(value, NIdAuthH[item])
 
         # Undirected Graph
-        NIdHubH = snap.TIntFltH()
-        NIdAuthH = snap.TIntFltH()
-        snap.GetHits(self.UnDirGraphFull, NIdHubH, NIdAuthH)
+        NIdHubH, NIdAuthH = self.UnDirGraphFull.GetHits()
         value = NIdHubH.GetDat(0)
         for item in NIdHubH:
             self.assertEqual(value, NIdHubH[item])
@@ -925,9 +712,7 @@ class SnapPythonTest(unittest.TestCase):
             self.assertEqual(value, NIdAuthH[item])
 
         # Network
-        NIdHubH = snap.TIntFltH()
-        NIdAuthH = snap.TIntFltH()
-        snap.GetHits(self.NetFull, NIdHubH, NIdAuthH)
+        NIdHubH, NIdAuthH = self.NetFull.GetHits()
         value = NIdHubH.GetDat(0)
         for item in NIdHubH:
             self.assertEqual(value, NIdHubH[item])
@@ -938,71 +723,64 @@ class SnapPythonTest(unittest.TestCase):
     def test_CommunityGirvanNewman(self):
         exp_val = 0.010151451527112903
         Graph = snap.GenPrefAttach(100, 10)
-        Vec = snap.TCnComV()
-        act_val = snap.CommunityGirvanNewman(Graph, Vec)
-        self.assertAlmostEqual(exp_val, act_val)
+        act_val, Vec = Graph.CommunityGirvanNewman()
+        self.assertAlmostEqual(exp_val, act_val)        
 
     def test_CommunityCNM(self):
         gnutellaUndir = snap.ConvertGraph(snap.PUNGraph, self.gnutella)
-        Vcc = snap.TCnComV()
-        modularity = snap.CommunityCNM(gnutellaUndir, Vcc)
+        modularity, Vcc = gnutellaUndir.CommunityCNM()
         self.assertAlmostEqual(0.4647213330572384, modularity)
 
     def test_GetModularity(self):
-        V = snap.TIntV()
-        for i in range(5):
-            V.Add(i)
+        V = [0,1,2,3,4]
 
-        val = snap.GetModularity(self.DirGraphFull, V)
+        # Directed Graph
+        val = self.DirGraphFull.GetModularity(V)
         self.assertAlmostEqual(0.04861111111111111, val)
 
-        val = snap.GetModularity(self.UnDirGraphFull, V)
+        # Undirected Graph
+        val = self.UnDirGraphFull.GetModularity(V)
         self.assertAlmostEqual(-0.027777777777777776, val)
 
-        val = snap.GetModularity(self.NetFull, V)
+        # Network
+        val = self.NetFull.GetModularity(V)
         self.assertAlmostEqual(0.04861111111111111, val)
 
     def test_GetEdgesInOut(self):
-        V = snap.TIntV()
-        V.Add(0)
-
         # Directed Graph
-        result = snap.GetEdgesInOut(self.DirGraphFull, V)
+        result = self.DirGraphFull.GetEdgesInOut([0])
         exp_results = [0, 9]
         self.assertEqual(exp_results, result)
 
         # Undirected Graph
-        result = snap.GetEdgesInOut(self.UnDirGraphFull, V)
+        result = self.UnDirGraphFull.GetEdgesInOut([0])
         exp_results = [0, 9]
         self.assertEqual(exp_results, result)
 
         # Network
-        result = snap.GetEdgesInOut(self.NetFull, V)
+        result = self.NetFull.GetEdgesInOut([0])
         exp_results = [0, 9]
         self.assertEqual(exp_results, result)
 
     def test_GetBiConSzCnt(self):
         # Undirected Graph
-        szCntV = snap.TIntPrV()
-        snap.GetBiConSzCnt(self.UnDirGraphFull, szCntV)
+        szCntV = self.UnDirGraphFull.GetBiConSzCnt()
         for item in szCntV:
             self.assertEqual(item.GetVal1(), self.num_nodes)
             self.assertEqual(item.GetVal2(), 1)
 
     def test_GetBiCon(self):
         # Undirected Graph
-        CnComs = snap.TCnComV()
-        snap.GetBiCon(self.UnDirGraphFull, CnComs)
+        CnComs = self.UnDirGraphFull.GetBiCon()
         nodeId = 0
         for CnCom in CnComs:
             for node in CnCom:
               self.assertEqual(nodeId, node)
-              nodeId += 1
+              nodeId += 1 
 
     def test_GetEdgeBridges(self):
         # Undirected Graph
-        edges = snap.TIntPrV()
-        snap.GetEdgeBridges(self.UnDirGraphStar, edges)
+        edges = self.UnDirGraphStar.GetEdgeBridges()
         count = 0
         for edge in edges:
             self.assertEqual(0, edge.GetVal1())
@@ -1012,8 +790,7 @@ class SnapPythonTest(unittest.TestCase):
 
     def test_Get1CnCom(self):
         # Undirected Graph
-        components = snap.TCnComV()
-        snap.Get1CnCom(self.UnDirGraphStar, components)
+        components = self.UnDirGraphStar.Get1CnCom()
         num_comp = 0
         comp_size = 0
         for comp in components:
@@ -1025,43 +802,40 @@ class SnapPythonTest(unittest.TestCase):
 
     def test_GetMxBiCon(self):
         # Directed Graph
-        Graph = snap.GetMxBiCon(self.DirGraphFull)
+        Graph = self.DirGraphFull.GetMxBiCon()
         self.assertEqual(self.DirGraphFull.GetNodes(), Graph.GetNodes())
         self.assertEqual(self.DirGraphFull.GetEdges(), Graph.GetEdges())
         self.assertEqual(type(self.DirGraphFull), type(Graph))
 
         # Undirected Graph
-        Graph = snap.GetMxBiCon(self.UnDirGraphFull)
+        Graph = self.UnDirGraphFull.GetMxBiCon()
         self.assertEqual(self.UnDirGraphFull.GetNodes(), Graph.GetNodes())
         self.assertEqual(self.UnDirGraphFull.GetEdges(), Graph.GetEdges())
         self.assertEqual(type(self.UnDirGraphFull), type(Graph))
 
         # Network
-        Graph = snap.GetMxBiCon(self.NetFull)
+        Graph = self.NetFull.GetMxBiCon()
         self.assertEqual(self.NetFull.GetNodes(), Graph.GetNodes())
         self.assertEqual(self.NetFull.GetEdges(), Graph.GetEdges())
         self.assertEqual(type(Graph), type(self.NetFull))
 
     def test_GetNodeWcc(self):
         # Directed Graph
-        component = snap.TIntV()
-        snap.GetNodeWcc(self.DirGraphStar, 1, component)
+        component = self.DirGraphStar.GetNodeWcc(1)
         sumNodes = 0
         for node in component:
             sumNodes += node
         self.assertEqual((self.num_nodes - 1) * self.num_nodes / 2, sumNodes)
 
         # Undirected Graph
-        component = snap.TIntV()
-        snap.GetNodeWcc(self.UnDirGraphStar, 1, component)
+        component = self.UnDirGraphStar.GetNodeWcc(1)
         sumNodes = 0
         for node in component:
             sumNodes += node
         self.assertEqual((self.num_nodes - 1) * self.num_nodes / 2, sumNodes)
 
         # Network
-        component = snap.TIntV()
-        snap.GetNodeWcc(self.NetStar, 1, component)
+        component = self.NetStar.GetNodeWcc(1)
         sumNodes = 0
         for node in component:
             sumNodes += node
@@ -1069,50 +843,46 @@ class SnapPythonTest(unittest.TestCase):
 
     def test_isConnected(self):
         # Directed Graph
-        self.assertTrue(snap.IsConnected(self.DirGraphStar))
+        self.assertTrue(self.DirGraphStar.IsConnected())
 
         # Undirected Graph
-        self.assertTrue(snap.IsConnected(self.UnDirGraphStar))
+        self.assertTrue(self.UnDirGraphStar.IsConnected())
 
         # Network
-        self.assertTrue(snap.IsConnected(self.NetStar))
+        self.assertTrue(self.NetStar.IsConnected())
 
     def test_isWeaklyConn(self):
         # Directed Graph
-        self.assertTrue(snap.IsWeaklyConn(self.DirGraphStar))
+        self.assertTrue(self.DirGraphStar.IsWeaklyConn())
 
         # Undirected Graph
-        self.assertTrue(snap.IsWeaklyConn(self.UnDirGraphStar))
+        self.assertTrue(self.UnDirGraphStar.IsWeaklyConn())
 
         # Network
-        self.assertTrue(snap.IsWeaklyConn(self.NetStar))
+        self.assertTrue(self.NetStar.IsWeaklyConn())
 
     def test_GetWccSzCnt(self):
         # Directed Graph
-        counts = snap.TIntPrV()
-        snap.GetWccSzCnt(self.DirGraphStar, counts)
+        counts = self.DirGraphStar.GetWccSzCnt()
         for pair in counts:
             self.assertEqual(self.num_nodes, pair.GetVal1())
             self.assertEqual(1, pair.GetVal2())
 
         # Undirected Graph
-        counts = snap.TIntPrV()
-        snap.GetWccSzCnt(self.UnDirGraphStar, counts)
+        counts = self.UnDirGraphStar.GetWccSzCnt()
         for pair in counts:
             self.assertEqual(self.num_nodes, pair.GetVal1())
             self.assertEqual(1, pair.GetVal2())
 
         # Network
-        counts = snap.TIntPrV()
-        snap.GetWccSzCnt(self.NetStar, counts)
+        counts = self.NetStar.GetWccSzCnt()
         for pair in counts:
             self.assertEqual(self.num_nodes, pair.GetVal1())
             self.assertEqual(1, pair.GetVal2())
 
     def test_GetWccs(self):
         # Directed Graph
-        components = snap.TCnComV()
-        snap.GetWccs(self.DirGraphStar, components)
+        components = self.DirGraphStar.GetWccs()
         num_comp = 0
         comp_size = 0
         for comp in components:
@@ -1123,8 +893,7 @@ class SnapPythonTest(unittest.TestCase):
         self.assertEqual(self.num_nodes, comp_size)
 
         # Undirected Graph
-        components = snap.TCnComV()
-        snap.GetWccs(self.UnDirGraphStar, components)
+        components = self.UnDirGraphStar.GetWccs()
         num_comp = 0
         comp_size = 0
         for comp in components:
@@ -1135,8 +904,7 @@ class SnapPythonTest(unittest.TestCase):
         self.assertEqual(self.num_nodes, comp_size)
 
         # Network
-        components = snap.TCnComV()
-        snap.GetWccs(self.NetStar, components)
+        components = self.UnDirGraphStar.GetWccs()
         num_comp = 0
         comp_size = 0
         for comp in components:
@@ -1148,30 +916,26 @@ class SnapPythonTest(unittest.TestCase):
 
     def test_GetSccSzCnt(self):
          # Directed Graph
-        counts = snap.TIntPrV()
+        counts = self.DirGraphFull.GetSccSzCnt()
         snap.GetSccSzCnt(self.DirGraphFull, counts)
         for pair in counts:
             self.assertEqual(self.num_nodes, pair.GetVal1())
             self.assertEqual(1, pair.GetVal2())
 
         # Undirected Graph
-        counts = snap.TIntPrV()
-        snap.GetSccSzCnt(self.UnDirGraphFull, counts)
+        counts = self.UnDirGraphFull.GetSccSzCnt()
         for pair in counts:
             self.assertEqual(self.num_nodes, pair.GetVal1())
             self.assertEqual(1, pair.GetVal2())
-
         # Network
-        counts = snap.TIntPrV()
-        snap.GetSccSzCnt(self.NetFull, counts)
+        counts = self.NetFull.GetSccSzCnt()
         for pair in counts:
             self.assertEqual(self.num_nodes, pair.GetVal1())
             self.assertEqual(1, pair.GetVal2())
 
     def test_GetSccs(self):
         # Directed Graph
-        components = snap.TCnComV()
-        snap.GetSccs(self.DirGraphFull, components)
+        components = self.DirGraphFull.GetSccs()
         num_comp = 0
         comp_size = 0
         for comp in components:
@@ -1182,8 +946,7 @@ class SnapPythonTest(unittest.TestCase):
         self.assertEqual(self.num_nodes, comp_size)
 
         # Undirected Graph
-        components = snap.TCnComV()
-        snap.GetSccs(self.UnDirGraphFull, components)
+        components = self.UnDirGraphFull.GetSccs()
         num_comp = 0
         comp_size = 0
         for comp in components:
@@ -1194,8 +957,7 @@ class SnapPythonTest(unittest.TestCase):
         self.assertEqual(self.num_nodes, comp_size)
 
         # Network
-        components = snap.TCnComV()
-        snap.GetSccs(self.NetFull, components)
+        components = self.NetFull.GetSccs()
         num_comp = 0
         comp_size = 0
         for comp in components:
@@ -1207,47 +969,47 @@ class SnapPythonTest(unittest.TestCase):
 
     def test_GetMxWccSz(self):
         # Directed Graph
-        sz = snap.GetMxWccSz(self.DirGraphStar)
+        sz = self.DirGraphStar.GetMxWccSz()
         self.assertEqual(1, sz)
 
         # Undirected Graph
-        sz = snap.GetMxWccSz(self.UnDirGraphStar)
+        sz = self.UnDirGraphStar.GetMxWccSz()
         self.assertEqual(1, sz)
 
         # Network
-        sz = snap.GetMxWccSz(self.NetStar)
+        sz = self.NetStar.GetMxWccSz()
         self.assertEqual(1, sz)
 
     def test_GetMxSccSz(self):
         # Directed Graph
-        sz = snap.GetMxSccSz(self.DirGraphStar)
+        sz = self.DirGraphStar.GetMxSccSz()
         self.assertEqual(1.0/self.num_nodes, sz)
 
         # Undirected Graph
-        sz = snap.GetMxSccSz(self.UnDirGraphStar)
-        self.assertEqual(1, sz)
+        sz = self.UnDirGraphStar.GetMxSccSz()
+        self.assertEqual(1, sz) 
 
         # Network
-        sz = snap.GetMxSccSz(self.NetStar)
+        sz = self.NetStar.GetMxSccSz()
         self.assertEqual(1.0/self.num_nodes, sz)
 
     def test_GetMxWcc(self):
         # Directed Graph
-        subgraph = snap.GetMxWcc(self.DirGraphStar)
+        subgraph = self.DirGraphStar.GetMxWcc()
         for node in self.DirGraphStar.Nodes():
             self.assertTrue(subgraph.IsNode(node.GetId()))
         for edge in self.DirGraphStar.Edges():
             self.assertTrue(subgraph.IsEdge(edge.GetSrcNId(), edge.GetDstNId()))
 
         # Undirected Graph
-        subgraph = snap.GetMxWcc(self.UnDirGraphStar)
+        subgraph = self.UnDirGraphStar.GetMxWcc()
         for node in self.DirGraphStar.Nodes():
             self.assertTrue(subgraph.IsNode(node.GetId()))
         for edge in self.DirGraphStar.Edges():
             self.assertTrue(subgraph.IsEdge(edge.GetSrcNId(), edge.GetDstNId()))
 
         # Network
-        subgraph = snap.GetMxWcc(self.NetStar)
+        subgraph = self.NetStar.GetMxWcc()
         for node in self.DirGraphStar.Nodes():
             self.assertTrue(subgraph.IsNode(node.GetId()))
         for edge in self.DirGraphStar.Edges():
@@ -1255,21 +1017,21 @@ class SnapPythonTest(unittest.TestCase):
 
     def test_GetMxScc(self):
         # Directed Graph
-        subgraph = snap.GetMxScc(self.DirGraphFull)
+        subgraph = self.DirGraphFull.GetMxScc()
         for node in self.DirGraphStar.Nodes():
             self.assertTrue(subgraph.IsNode(node.GetId()))
         for edge in self.DirGraphStar.Edges():
             self.assertTrue(subgraph.IsEdge(edge.GetSrcNId(), edge.GetDstNId()))
 
         # Undirected Graph
-        subgraph = snap.GetMxScc(self.UnDirGraphFull)
+        subgraph = self.UnDirGraphFull.GetMxScc()
         for node in self.DirGraphStar.Nodes():
             self.assertTrue(subgraph.IsNode(node.GetId()))
         for edge in self.DirGraphStar.Edges():
             self.assertTrue(subgraph.IsEdge(edge.GetSrcNId(), edge.GetDstNId()))
 
         # Network
-        subgraph = snap.GetMxScc(self.NetFull)
+        subgraph = self.NetFull.GetMxScc()
         for node in self.DirGraphStar.Nodes():
             self.assertTrue(subgraph.IsNode(node.GetId()))
         for edge in self.DirGraphStar.Edges():
@@ -1277,69 +1039,63 @@ class SnapPythonTest(unittest.TestCase):
 
     def test_GetMxBiCon(self):
         # Directed Graph
-        subgraph = snap.GetMxBiCon(self.DirGraphFull)
+        subgraph = self.DirGraphFull.GetMxBiCon()
         for node in self.DirGraphStar.Nodes():
             self.assertTrue(subgraph.IsNode(node.GetId()))
         for edge in self.DirGraphStar.Edges():
             self.assertTrue(subgraph.IsEdge(edge.GetSrcNId(), edge.GetDstNId()))
 
         # Undirected Graph
-        subgraph = snap.GetMxBiCon(self.UnDirGraphFull)
+        subgraph = self.UnDirGraphFull.GetMxBiCon()
         for node in self.DirGraphStar.Nodes():
             self.assertTrue(subgraph.IsNode(node.GetId()))
         for edge in self.DirGraphStar.Edges():
             self.assertTrue(subgraph.IsEdge(edge.GetSrcNId(), edge.GetDstNId()))
 
         # Network
-        subgraph = snap.GetMxBiCon(self.NetFull)
+        subgraph = self.NetFull.GetMxBiCon()
         for node in self.DirGraphStar.Nodes():
             self.assertTrue(subgraph.IsNode(node.GetId()))
         for edge in self.DirGraphStar.Edges():
             self.assertTrue(subgraph.IsEdge(edge.GetSrcNId(), edge.GetDstNId()))
 
     def test_PrintInfo(self):
-        snap.PrintInfo(self.DirGraphFull, "description", "test.txt")
+        self.DirGraphFull.PrintInfo("description", "test.txt")
         self.checkPrintInfoOutput("test.txt", ["description", '10', '90', '0', '0', '0', '10'])
         os.remove('test.txt')
 
-        snap.PrintInfo(self.UnDirGraphFull, "description", "test.txt")
+        self.UnDirGraphFull.PrintInfo("description", "test.txt")
         self.checkPrintInfoOutput("test.txt", ["description", '10', '45', '0', '0', '0', '10'])
         os.remove('test.txt')
 
-        snap.PrintInfo(self.NetFull, "description", "test.txt")
+        self.NetFull.PrintInfo("description", "test.txt")
         self.checkPrintInfoOutput("test.txt", ["description", '10', '90', '0', '0', '0', '10'])
         os.remove('test.txt')
-
+        
     def test_GetKCoreNodes(self):
         # Directed Graph
-        CoreN = snap.TIntPrV()
-        result = snap.GetKCoreNodes(self.DirGraphStar, CoreN)
+        result, CoreN = self.DirGraphStar.GetKCoreNodes()
         self.assertEqual(2, result)
 
         # Undirected Graph
-        CoreN = snap.TIntPrV()
-        result = snap.GetKCoreNodes(self.UnDirGraphStar, CoreN)
+        result, CoreN = self.UnDirGraphStar.GetKCoreNodes()
         self.assertEqual(2, result)
 
         # Network
-        CoreN = snap.TIntPrV()
-        result = snap.GetKCoreNodes(self.NetStar, CoreN)
+        result, CoreN = self.NetStar.GetKCoreNodes()
         self.assertEqual(2, result)
 
     def test_GetKCoreEdges(self):
         # Directed Graph
-        CoreN = snap.TIntPrV()
-        result = snap.GetKCoreEdges(self.DirGraphStar, CoreN)
+        result, CoreN = self.DirGraphStar.GetKCoreEdges()
         self.assertEqual(2, result)
 
         # Undirected Graph
-        CoreN = snap.TIntPrV()
-        result = snap.GetKCoreEdges(self.UnDirGraphStar, CoreN)
+        result, CoreN = self.UnDirGraphStar.GetKCoreEdges()
         self.assertEqual(2, result)
 
         # Network
-        CoreN = snap.TIntPrV()
-        result = snap.GetKCoreEdges(self.NetStar, CoreN)
+        result, CoreN = self.NetStar.GetKCoreEdges()
         self.assertEqual(2, result)
 
     def test_GenDegSeq(self):
@@ -1607,8 +1363,7 @@ class SnapPythonTest(unittest.TestCase):
 
     def test_GetSngVals(self):
         SngVals = 4
-        SngValV = snap.TFltV()
-        snap.GetSngVals(self.DirGraphFull, SngVals, SngValV)
+        SngValV = self.DirGraphFull.GetSngVals(SngVals)
         count = 0
         for item in SngValV:
             if count == 0:
@@ -1620,8 +1375,7 @@ class SnapPythonTest(unittest.TestCase):
     def test_GetEigVals(self):
         Graph = snap.GenStar(snap.PUNGraph, 50)
         NumEigVals = 2
-        EigValV = snap.TFltV()
-        snap.GetEigVals(Graph, NumEigVals, EigValV)
+        EigValV = Graph.GetEigVals(NumEigVals)
         count = 0
         for item in EigValV:
             if count == 0:
@@ -1646,8 +1400,7 @@ class SnapPythonTest(unittest.TestCase):
         Graph.AddEdge(4, 1)
 
         expected = [[-1.246980, 0.214286],[0.445042, 0.214286],[1.801938, 0.214286]]
-        EigValIprV = snap.TFltPrV()
-        snap.GetInvParticipRat(Graph, 10, 1000, EigValIprV)
+        EigValIprV = Graph.GetInvParticipRat(10, 1000)
         count = 0
         for x in EigValIprV:
             self.assertAlmostEqual(expected[count][0], x.GetVal1(), 5)
@@ -1657,17 +1410,17 @@ class SnapPythonTest(unittest.TestCase):
     def test_GetKCore(self):
         # Directed Graph
         k = self.num_nodes - 1
-        KCore = snap.GetKCore(self.DirGraphFull, k)
+        KCore = self.DirGraphFull.GetKCore(k)
         self.assertEqual(self.num_nodes, KCore.GetNodes())
 
         # Undirected Graph
         k = self.num_nodes - 1
-        KCore = snap.GetKCore(self.UnDirGraphFull, k)
+        KCore = self.UnDirGraphFull.GetKCore(k)
         self.assertEqual(self.num_nodes, KCore.GetNodes())
 
         # Network
         k = self.num_nodes - 1
-        KCore = snap.GetKCore(self.NetFull, k)
+        KCore = self.NetFull.GetKCore(k)
         self.assertEqual(self.num_nodes, KCore.GetNodes())
 
     def test_PlotEigValRank(self):
@@ -1678,8 +1431,8 @@ class SnapPythonTest(unittest.TestCase):
         plt = 'eigVal.' + fname + '.plt'
         png = 'eigVal.' + fname + '.png'
         tab = 'eigVal.' + fname + '.tab'
-        snap.PlotEigValRank(Graph, NumEigVals, fname, desc)
 
+        Graph.PlotEigValRank(NumEigVals, fname, desc)
         self.checkPlotHash(plt, 'c6ed3d548e47a32ab81b9d93fd5210fa')
         os.remove(plt)
         #self.checkPlotHash(png, '88e8150cca4d8b102e69e48f4f75bbc8')
@@ -1695,8 +1448,8 @@ class SnapPythonTest(unittest.TestCase):
         plt = 'eigDistr.' + fname + '.plt'
         png = 'eigDistr.' + fname + '.png'
         tab = 'eigDistr.' + fname + '.tab'
-        snap.PlotEigValDistr(Graph, NumEigVals, fname, desc)
 
+        Graph.PlotEigValDistr(NumEigVals, fname, desc)
         self.checkPlotHash(plt, 'b22f6198cf212c27756b1edb4bed3508')
         os.remove(plt)
         #self.checkPlotHash(png, 'a620e5ca09dd447b4229850227678056')
@@ -1713,8 +1466,8 @@ class SnapPythonTest(unittest.TestCase):
         plt = 'eigIPR.' + fname + '.plt'
         png = 'eigIPR.' + fname + '.png'
         tab = 'eigIPR.' + fname + '.tab'
-        snap.PlotInvParticipRat(Graph, NumEigVals, TimeLimit, fname, desc)
 
+        Graph.PlotInvParticipRat(NumEigVals, TimeLimit, fname, desc)
         self.checkPlotHash(plt, '87de319e252341f359c6cf92aa9b7090')
         os.remove(plt)
         #self.checkPlotHash(png, 'b518c4e4a1b0af4de529961986198127')
@@ -1730,8 +1483,8 @@ class SnapPythonTest(unittest.TestCase):
         plt = 'sngVal.' + fname + '.plt'
         png = 'sngVal.' + fname + '.png'
         tab = 'sngVal.' + fname + '.tab'
-        snap.PlotSngValRank(Graph, SngVals, fname, desc)
 
+        Graph.PlotSngValRank(SngVals, fname, desc)
         self.checkPlotHash(plt, '3d94b5107efd76abb478b18995447c2c')
         os.remove(plt)
         #self.checkPlotHash(png, 'c4d688e2e38f3a7df07067ee1c92ab64')
@@ -1747,8 +1500,8 @@ class SnapPythonTest(unittest.TestCase):
         plt = 'sngDistr.' + fname + '.plt'
         png = 'sngDistr.' + fname + '.png'
         tab = 'sngDistr.' + fname + '.tab'
-        snap.PlotSngValDistr(Graph, SngVals, fname, desc)
 
+        Graph.PlotSngValDistr(SngVals, fname, desc)
         self.checkPlotHash(plt, '3c3dde0ffb43838943dcc5983baa5aa3')
         os.remove(plt)
         #self.checkPlotHash(png, '61a7195efc4864225c38f389e89c641e')
@@ -1765,7 +1518,7 @@ class SnapPythonTest(unittest.TestCase):
 
         # Directed Graph
         Graph = self.DirGraphFull
-        snap.PlotInDegDistr(Graph, fname, desc)
+        Graph.PlotInDegDistr(fname, desc)
 
         self.checkPlotHash(plt, '7f08086973d30d356eaa2e695e1a6fff')
         os.remove(plt)
@@ -1776,7 +1529,7 @@ class SnapPythonTest(unittest.TestCase):
 
         # Undirected Graph
         Graph = self.UnDirGraphFull
-        snap.PlotInDegDistr(Graph, fname, desc)
+        Graph.PlotInDegDistr(fname, desc)
 
         self.checkPlotHash(plt, '9469cef95ca7701898d9da53fd83d3cf')
         os.remove(plt)
@@ -1787,7 +1540,7 @@ class SnapPythonTest(unittest.TestCase):
 
         # Network
         Graph = self.NetFull
-        snap.PlotInDegDistr(Graph, fname, desc)
+        Graph.PlotInDegDistr(fname, desc)
 
         self.checkPlotHash(plt, '7f08086973d30d356eaa2e695e1a6fff')
         os.remove(plt)
@@ -1816,7 +1569,7 @@ class SnapPythonTest(unittest.TestCase):
 
         # Undirected Graph
         Graph = self.UnDirGraphFull
-        snap.PlotOutDegDistr(Graph, fname, desc)
+        Graph.PlotOutDegDistr(fname, desc)
 
         self.checkPlotHash(plt, '893e4d32769a7235bade506f4558559a')
         os.remove(plt)
@@ -1827,7 +1580,7 @@ class SnapPythonTest(unittest.TestCase):
 
         # Network
         Graph = self.NetFull
-        snap.PlotOutDegDistr(Graph, fname, desc)
+        Graph.PlotOutDegDistr(fname, desc)
 
         self.checkPlotHash(plt, 'c0e03b616e4dc61331efb11d6ed6d3f6')
         os.remove(plt)
@@ -1845,7 +1598,7 @@ class SnapPythonTest(unittest.TestCase):
 
         # Directed Graph
         Graph = self.DirGraphFull
-        snap.PlotWccDistr(Graph, fname, desc)
+        Graph.PlotWccDistr(fname, desc)
 
         self.checkPlotHash(plt, '376654f801519f5a89519c020cd0cecf')
         os.remove(plt)
@@ -1856,7 +1609,7 @@ class SnapPythonTest(unittest.TestCase):
 
         # Undirected Graph
         Graph = self.UnDirGraphFull
-        snap.PlotWccDistr(Graph, fname, desc)
+        Graph.PlotWccDistr(fname, desc)
 
         self.checkPlotHash(plt, '25f0e2f9efd05b483bd3498de485b525')
         os.remove(plt)
@@ -1867,7 +1620,7 @@ class SnapPythonTest(unittest.TestCase):
 
         # Network
         Graph = self.NetFull
-        snap.PlotWccDistr(Graph, fname, desc)
+        Graph.PlotWccDistr(fname, desc)
 
         self.checkPlotHash(plt, '376654f801519f5a89519c020cd0cecf')
         os.remove(plt)
@@ -1885,7 +1638,7 @@ class SnapPythonTest(unittest.TestCase):
 
         # Directed Graph
         Graph = self.DirGraphFull
-        snap.PlotSccDistr(Graph, fname, desc)
+        Graph.PlotSccDistr(fname, desc)
 
         self.checkPlotHash(plt, 'f92d2c3b97156ff049ce64aaeada099c')
         os.remove(plt)
@@ -1896,7 +1649,7 @@ class SnapPythonTest(unittest.TestCase):
 
         # Undirected Graph
         Graph = self.UnDirGraphFull
-        snap.PlotSccDistr(Graph, fname, desc)
+        Graph.PlotSccDistr(fname, desc)
 
         self.checkPlotHash(plt, '09bc574ab814ec9bd0fc5865529f513b')
         os.remove(plt)
@@ -1907,7 +1660,7 @@ class SnapPythonTest(unittest.TestCase):
 
         # Network
         Graph = self.NetFull
-        snap.PlotSccDistr(Graph, fname, desc)
+        Graph.PlotSccDistr(fname, desc)
 
         self.checkPlotHash(plt, 'f92d2c3b97156ff049ce64aaeada099c')
         os.remove(plt)
@@ -1925,7 +1678,7 @@ class SnapPythonTest(unittest.TestCase):
 
         # Directed Graph
         Graph = self.DirGraphFull
-        snap.PlotClustCf(Graph, fname, desc)
+        Graph.PlotClustCf(fname, desc)
 
         self.checkPlotHash(plt, 'd3e9c7ce6e1c5792a663bd0ee1abeb04')
         os.remove(plt)
@@ -1936,7 +1689,7 @@ class SnapPythonTest(unittest.TestCase):
 
         # Undirected Graph
         Graph = self.UnDirGraphFull
-        snap.PlotClustCf(Graph, fname, desc)
+        Graph.PlotClustCf(fname, desc)
 
         self.checkPlotHash(plt, 'f2d1d9456515a92700e922d213a82084')
         os.remove(plt)
@@ -1947,7 +1700,7 @@ class SnapPythonTest(unittest.TestCase):
 
         # Network
         Graph = self.NetFull
-        snap.PlotClustCf(Graph, fname, desc)
+        Graph.PlotClustCf(fname, desc)
 
         self.checkPlotHash(plt, 'd3e9c7ce6e1c5792a663bd0ee1abeb04')
         os.remove(plt)
@@ -1967,7 +1720,7 @@ class SnapPythonTest(unittest.TestCase):
         # Directed Graph
         Graph = self.DirGraphFull
         isDir = True
-        snap.PlotHops(Graph, fname, desc, isDir, NApprox)
+        Graph.PlotHops(fname, desc, isDir, NApprox)
 
         self.assertTrue(os.path.isfile(plt))
         os.remove(plt)
@@ -1979,7 +1732,7 @@ class SnapPythonTest(unittest.TestCase):
         # Undirected Graph
         Graph = self.UnDirGraphFull
         isDir = False
-        snap.PlotHops(Graph, fname, desc, isDir, NApprox)
+        Graph.PlotHops(fname, desc, isDir, NApprox)
 
         self.assertTrue(os.path.isfile(plt))
         os.remove(plt)
@@ -1991,7 +1744,7 @@ class SnapPythonTest(unittest.TestCase):
         # Network
         Graph = self.NetFull
         isDir = True
-        snap.PlotHops(Graph, fname, desc, isDir, NApprox)
+        Graph.PlotHops(fname, desc, isDir, NApprox)
 
         self.assertTrue(os.path.isfile(plt))
         os.remove(plt)
@@ -2009,7 +1762,7 @@ class SnapPythonTest(unittest.TestCase):
 
         # Directed Graph
         Graph = self.DirGraphFull
-        snap.PlotShortPathDistr(Graph, fname, desc)
+        Graph.PlotShortPathDistr(fname, desc)
 
         self.checkPlotHash(plt, 'dbd3b8f4b0c82637c204173997625600')
         os.remove(plt)
@@ -2020,7 +1773,7 @@ class SnapPythonTest(unittest.TestCase):
 
         # Undirected Graph
         Graph = self.UnDirGraphFull
-        snap.PlotShortPathDistr(Graph, fname, desc)
+        Graph.PlotShortPathDistr(fname, desc)
 
         self.checkPlotHash(plt, 'b0e6ad4b3419c43ec4f4bac9ab9d74c7')
         os.remove(plt)
@@ -2031,7 +1784,7 @@ class SnapPythonTest(unittest.TestCase):
 
         # Network
         Graph = self.NetFull
-        snap.PlotShortPathDistr(Graph, fname, desc)
+        Graph.PlotShortPathDistr(fname, desc)
 
         self.checkPlotHash(plt, 'dbd3b8f4b0c82637c204173997625600')
         os.remove(plt)
@@ -2049,7 +1802,7 @@ class SnapPythonTest(unittest.TestCase):
 
         # Directed Graph
         Graph = self.DirGraphFull
-        snap.PlotKCoreNodes(Graph, fname, desc)
+        Graph.PlotKCoreNodes(fname, desc)
 
         self.checkPlotHash(plt, '8b47f5a7082e940e5b1a49f7a19bac1a')
         os.remove(plt)
@@ -2060,7 +1813,7 @@ class SnapPythonTest(unittest.TestCase):
 
         # Undirected Graph
         Graph = self.UnDirGraphFull
-        snap.PlotKCoreNodes(Graph, fname, desc)
+        Graph.PlotKCoreNodes(fname, desc)
 
         self.checkPlotHash(plt, 'fd660ab9df8f84231ca61e6ad74b5a9f')
         os.remove(plt)
@@ -2071,7 +1824,7 @@ class SnapPythonTest(unittest.TestCase):
 
         # Network
         Graph = self.NetFull
-        snap.PlotKCoreNodes(Graph, fname, desc)
+        Graph.PlotKCoreNodes(fname, desc)
 
         self.checkPlotHash(plt, '8b47f5a7082e940e5b1a49f7a19bac1a')
         os.remove(plt)
@@ -2089,7 +1842,7 @@ class SnapPythonTest(unittest.TestCase):
 
         # Directed Graph
         Graph = self.DirGraphFull
-        snap.PlotKCoreEdges(Graph, fname, desc)
+        Graph.PlotKCoreEdges(fname, desc)
 
         self.checkPlotHash(plt, 'b2bcd1cbfadfa7280727163c0fc85854')
         os.remove(plt)
@@ -2100,7 +1853,7 @@ class SnapPythonTest(unittest.TestCase):
 
         # Undirected Graph
         Graph = self.UnDirGraphFull
-        snap.PlotKCoreEdges(Graph, fname, desc)
+        Graph.PlotKCoreEdges(fname, desc)
 
         self.checkPlotHash(plt, 'ce0a125f61e5e00e58c639afa434b012')
         os.remove(plt)
@@ -2111,7 +1864,7 @@ class SnapPythonTest(unittest.TestCase):
 
         # Network
         Graph = self.NetFull
-        snap.PlotKCoreEdges(Graph, fname, desc)
+        Graph.PlotKCoreEdges(fname, desc)
 
         self.checkPlotHash(plt, 'b2bcd1cbfadfa7280727163c0fc85854')
         os.remove(plt)
@@ -2121,10 +1874,10 @@ class SnapPythonTest(unittest.TestCase):
         os.remove(tab)
 
     def test_GetESubGraph(self):
-        EIdV = snap.TIntV()
+        EIdV = []
         for edge in self.NetStar.Edges():
-            EIdV.Add(edge.GetId())
-        ESubGraph = snap.GetESubGraph(self.NetStar, EIdV)
+            EIdV.append(edge.GetId())
+        ESubGraph = self.NetStar.GetESubGraph(EIdV)
         for node in self.NetStar.Nodes():
             self.assertTrue(ESubGraph.IsNode(node.GetId()))
         for edge in self.NetStar.Edges():
@@ -2132,7 +1885,7 @@ class SnapPythonTest(unittest.TestCase):
 
     def test_ConvertGraph(self):
         # Directed to Undirected
-        UnDirStar = snap.ConvertGraph(snap.PUNGraph, self.DirGraphStar)
+        UnDirStar = self.DirGraphStar.ConvertGraph(snap.PUNGraph)
         for node in self.DirGraphStar.Nodes():
             self.assertTrue(UnDirStar.IsNode(node.GetId()))
         self.assertEqual(UnDirStar.GetNodes(), self.DirGraphStar.GetNodes())
@@ -2142,7 +1895,7 @@ class SnapPythonTest(unittest.TestCase):
         self.assertEqual(UnDirStar.GetEdges(), self.DirGraphStar.GetEdges())
 
         # Directed to Network
-        NetStar = snap.ConvertGraph(snap.PNEANet, self.DirGraphStar)
+        NetStar = self.DirGraphStar.ConvertGraph(snap.PNEANet)
         for node in self.DirGraphStar.Nodes():
             self.assertTrue(NetStar.IsNode(node.GetId()))
         self.assertEqual(NetStar.GetNodes(), self.DirGraphStar.GetNodes())
@@ -2151,7 +1904,7 @@ class SnapPythonTest(unittest.TestCase):
         self.assertEqual(NetStar.GetEdges(), self.DirGraphStar.GetEdges())
 
         # Undirected to Directed
-        DirStar = snap.ConvertGraph(snap.PNGraph, self.UnDirGraphStar)
+        DirStar = self.UnDirGraphStar.ConvertGraph(snap.PNGraph)
         for node in self.UnDirGraphStar.Nodes():
             self.assertTrue(DirStar.IsNode(node.GetId()))
         self.assertEqual(DirStar.GetNodes(), self.UnDirGraphStar.GetNodes())
@@ -2161,7 +1914,7 @@ class SnapPythonTest(unittest.TestCase):
         self.assertEqual(DirStar.GetEdges(), self.UnDirGraphStar.GetEdges()*2)
 
         # Undirected to Network
-        NetStar = snap.ConvertGraph(snap.PNEANet, self.UnDirGraphStar)
+        NetStar = self.UnDirGraphStar.ConvertGraph(snap.PNEANet)
         for node in self.UnDirGraphStar.Nodes():
             self.assertTrue(NetStar.IsNode(node.GetId()))
         self.assertEqual(NetStar.GetNodes(), self.UnDirGraphStar.GetNodes())
@@ -2171,7 +1924,7 @@ class SnapPythonTest(unittest.TestCase):
         self.assertEqual(NetStar.GetEdges(), self.UnDirGraphStar.GetEdges()*2)
 
         # Network to Undirected
-        UnDirStar = snap.ConvertGraph(snap.PUNGraph, self.NetStar)
+        UnDirStar = self.NetStar.ConvertGraph(snap.PUNGraph)
         for node in self.NetStar.Nodes():
             self.assertTrue(UnDirStar.IsNode(node.GetId()))
         self.assertEqual(UnDirStar.GetNodes(), self.NetStar.GetNodes())
@@ -2181,7 +1934,7 @@ class SnapPythonTest(unittest.TestCase):
         self.assertEqual(UnDirStar.GetEdges(), self.NetStar.GetEdges())
 
         # Network to Directed
-        DirStar = snap.ConvertGraph(snap.PNGraph, self.NetStar)
+        DirStar = self.NetStar.ConvertGraph(snap.PNGraph)
         for node in self.NetStar.Nodes():
             self.assertTrue(DirStar.IsNode(node.GetId()))
         self.assertEqual(DirStar.GetNodes(), self.NetStar.GetNodes())
@@ -2190,12 +1943,12 @@ class SnapPythonTest(unittest.TestCase):
         self.assertEqual(DirStar.GetEdges(), self.NetStar.GetEdges())
 
     def test_ConvertSubGraph(self):
-        ListNodes = snap.TIntV()
+        PyListNodes = []
         for x in range(self.num_nodes):
-            ListNodes.Add(x)
+            PyListNodes.append(x)
 
         # Directed to Undirected
-        UnDirStar = snap.ConvertSubGraph(snap.PUNGraph, self.DirGraphStar, ListNodes)
+        UnDirStar = self.DirGraphStar.ConvertSubGraph(snap.PUNGraph, PyListNodes)
         for node in self.DirGraphStar.Nodes():
             self.assertTrue(UnDirStar.IsNode(node.GetId()))
         self.assertEqual(UnDirStar.GetNodes(), self.DirGraphStar.GetNodes())
@@ -2205,7 +1958,7 @@ class SnapPythonTest(unittest.TestCase):
         self.assertEqual(UnDirStar.GetEdges(), self.DirGraphStar.GetEdges())
 
         # Directed to Network
-        NetStar = snap.ConvertSubGraph(snap.PNEANet, self.DirGraphStar, ListNodes)
+        NetStar = self.DirGraphStar.ConvertSubGraph(snap.PNEANet, PyListNodes)
         for node in self.DirGraphStar.Nodes():
             self.assertTrue(NetStar.IsNode(node.GetId()))
         self.assertEqual(NetStar.GetNodes(), self.DirGraphStar.GetNodes())
@@ -2214,7 +1967,7 @@ class SnapPythonTest(unittest.TestCase):
         self.assertEqual(NetStar.GetEdges(), self.DirGraphStar.GetEdges())
 
         # Undirected to Directed
-        DirStar = snap.ConvertSubGraph(snap.PNGraph, self.UnDirGraphStar, ListNodes)
+        DirStar = self.UnDirGraphStar.ConvertSubGraph(snap.PNGraph, PyListNodes)
         for node in self.UnDirGraphStar.Nodes():
             self.assertTrue(DirStar.IsNode(node.GetId()))
         self.assertEqual(DirStar.GetNodes(), self.UnDirGraphStar.GetNodes())
@@ -2224,7 +1977,7 @@ class SnapPythonTest(unittest.TestCase):
         self.assertEqual(DirStar.GetEdges(), self.UnDirGraphStar.GetEdges()*2)
 
         # Undirected to Network
-        NetStar = snap.ConvertSubGraph(snap.PNEANet, self.UnDirGraphStar, ListNodes)
+        NetStar = self.UnDirGraphStar.ConvertSubGraph(snap.PNEANet, PyListNodes)
         for node in self.UnDirGraphStar.Nodes():
             self.assertTrue(NetStar.IsNode(node.GetId()))
         self.assertEqual(NetStar.GetNodes(), self.UnDirGraphStar.GetNodes())
@@ -2234,7 +1987,7 @@ class SnapPythonTest(unittest.TestCase):
         self.assertEqual(NetStar.GetEdges(), self.UnDirGraphStar.GetEdges()*2)
 
         # Network to Undirected
-        UnDirStar = snap.ConvertSubGraph(snap.PUNGraph, self.NetStar, ListNodes)
+        UnDirStar = self.NetStar.ConvertSubGraph(snap.PUNGraph, PyListNodes)
         for node in self.NetStar.Nodes():
             self.assertTrue(UnDirStar.IsNode(node.GetId()))
         self.assertEqual(UnDirStar.GetNodes(), self.NetStar.GetNodes())
@@ -2244,7 +1997,7 @@ class SnapPythonTest(unittest.TestCase):
         self.assertEqual(UnDirStar.GetEdges(), self.NetStar.GetEdges())
 
         # Network to Directed
-        DirStar = snap.ConvertSubGraph(snap.PNGraph, self.NetStar, ListNodes)
+        DirStar = self.NetStar.ConvertSubGraph(snap.PNGraph, PyListNodes)
         for node in self.NetStar.Nodes():
             self.assertTrue(DirStar.IsNode(node.GetId()))
         self.assertEqual(DirStar.GetNodes(), self.NetStar.GetNodes())
@@ -2257,7 +2010,7 @@ class SnapPythonTest(unittest.TestCase):
 
         # Directed Graph
         Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
-        subGraph = snap.GetRndSubGraph(Graph, exp_nodes)
+        subGraph = Graph.GetRndSubGraph(exp_nodes)
         self.assertEqual(exp_nodes, subGraph.GetNodes())
         for node in subGraph.Nodes():
             self.assertTrue(Graph.IsNode(node.GetId()))
@@ -2268,7 +2021,7 @@ class SnapPythonTest(unittest.TestCase):
 
         # Undirected Graph
         Graph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
-        subGraph = snap.GetRndSubGraph(Graph, exp_nodes)
+        subGraph = Graph.GetRndSubGraph(exp_nodes)
         self.assertEqual(exp_nodes, subGraph.GetNodes())
         for node in subGraph.Nodes():
             self.assertTrue(Graph.IsNode(node.GetId()))
@@ -2279,7 +2032,7 @@ class SnapPythonTest(unittest.TestCase):
 
         # Directed Graph
         Graph = snap.GenRndGnm(snap.PNEANet, 100, 1000)
-        subGraph = snap.GetRndSubGraph(Graph, exp_nodes)
+        subGraph = Graph.GetRndSubGraph(exp_nodes)
         self.assertEqual(exp_nodes, subGraph.GetNodes())
         for node in subGraph.Nodes():
             self.assertTrue(Graph.IsNode(node.GetId()))
@@ -2293,7 +2046,7 @@ class SnapPythonTest(unittest.TestCase):
 
         # Directed Graph
         Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
-        subGraph = snap.GetRndESubGraph(Graph, exp_edges)
+        subGraph = Graph.GetRndESubGraph(exp_edges)
         self.assertEqual(exp_edges, subGraph.GetEdges())
         for node in subGraph.Nodes():
             self.assertTrue(Graph.IsNode(node.GetId()))
@@ -2303,7 +2056,7 @@ class SnapPythonTest(unittest.TestCase):
 
         # Network
         Graph = snap.GenRndGnm(snap.PNEANet, 100, 1000)
-        subGraph = snap.GetRndESubGraph(Graph, exp_edges)
+        subGraph = Graph.GetRndESubGraph(exp_edges)
         self.assertEqual(exp_edges, subGraph.GetEdges())
         for node in subGraph.Nodes():
             self.assertTrue(Graph.IsNode(node.GetId()))
@@ -2314,17 +2067,17 @@ class SnapPythonTest(unittest.TestCase):
     def test_GetTriadEdges(self):
         # Directed Graph
         exp_triad_edges = self.DirGraphFull.GetEdges()
-        act_triad_edges = snap.GetTriadEdges(self.DirGraphFull)
+        act_triad_edges = self.DirGraphFull.GetTriadEdges()
         self.assertEqual(exp_triad_edges, act_triad_edges)
 
         # Unirected Graph
         exp_triad_edges = self.UnDirGraphFull.GetEdges()
-        act_triad_edges = snap.GetTriadEdges(self.UnDirGraphFull)
+        act_triad_edges = self.UnDirGraphFull.GetTriadEdges()
         self.assertEqual(exp_triad_edges, act_triad_edges)
 
         # Network
         exp_triad_edges = self.NetFull.GetEdges()
-        act_triad_edges = snap.GetTriadEdges(self.NetFull)
+        act_triad_edges = self.NetFull.GetTriadEdges()
         self.assertEqual(exp_triad_edges, act_triad_edges)
 
     def test_GetTriadParticip(self):
@@ -2332,22 +2085,19 @@ class SnapPythonTest(unittest.TestCase):
         exp_num_tri = f(self.num_nodes-1)/f(2)/f(self.num_nodes-3)
 
         # Directed Graph
-        TriadCntV = snap.TIntPrV()
-        snap.GetTriadParticip(self.DirGraphFull, TriadCntV)
+        TriadCntV = self.DirGraphFull.GetTriadParticip()
         for pair in TriadCntV:
             self.assertEqual(exp_num_tri, pair.Val1())
             self.assertEqual(self.num_nodes, pair.Val2)
 
         # Undirected Graph
-        TriadCntV = snap.TIntPrV()
-        snap.GetTriadParticip(self.UnDirGraphFull, TriadCntV)
+        TriadCntV = self.UnDirGraphFull.GetTriadParticip()
         for pair in TriadCntV:
             self.assertEqual(exp_num_tri, pair.Val1())
             self.assertEqual(self.num_nodes, pair.Val2)
 
         # Network
-        TriadCntV = snap.TIntPrV()
-        snap.GetTriadParticip(self.NetFull, TriadCntV)
+        TriadCntV = self.NetFull.GetTriadParticip()
         for pair in TriadCntV:
             self.assertEqual(exp_num_tri, pair.Val1())
             self.assertEqual(self.num_nodes, pair.Val2)
@@ -2355,213 +2105,154 @@ class SnapPythonTest(unittest.TestCase):
     def test_CntEdgesToSet(self):
         # Directed Graph
         G = snap.GenFull(snap.PNGraph, 10)
-        TS = snap.TIntSet()
-        val = snap.CntEdgesToSet(G, 0, TS)
+        val = G.CntEdgesToSet(0, set())
         self.assertEqual(0, val)
 
         # Undirected Graph
         G = snap.GenFull(snap.PUNGraph, 10)
-        TS = snap.TIntSet()
-        val = snap.CntEdgesToSet(G, 0, TS)
+        val = G.CntEdgesToSet(0, set())
         self.assertEqual(0, val)
 
         # Network
         G = snap.GenFull(snap.PNEANet, 10)
-        TS = snap.TIntSet()
-        val = snap.CntEdgesToSet(G, 0, TS)
+        val = G.CntEdgesToSet(0, set())
         self.assertEqual(0, val)
-
-    def test_GetDegSeqV(self):
-        # Directed Graph
-        G = snap.GenFull(snap.PNGraph, 10)
-        V = snap.TIntV()
-        snap.GetDegSeqV(G, V)
-        for i in V:
-            self.assertEqual(18, i)
-
-        # Undirected Graph
-        G = snap.GenFull(snap.PUNGraph, 10)
-        V = snap.TIntV()
-        snap.GetDegSeqV(G, V)
-        for i in V:
-            self.assertEqual(9, i)
-
-        # Network
-        G = snap.GenFull(snap.PNEANet, 10)
-        V = snap.TIntV()
-        snap.GetDegSeqV(G, V)
-        for i in V:
-            self.assertEqual(18, i)
-
-    def test_GetDegSeqV2(self):
-        # Directed Graph
-        G = snap.GenFull(snap.PNGraph, 10)
-        V = snap.TIntV()
-        V2 = snap.TIntV()
-        snap.GetDegSeqV(G, V, V2)
-        for i in V:
-            self.assertEqual(9, i)
-        for i in V2:
-            self.assertEqual(9, i)
-
-        # Undirected Graph
-        G = snap.GenFull(snap.PUNGraph, 10)
-        V = snap.TIntV()
-        V2 = snap.TIntV()
-        snap.GetDegSeqV(G, V, V2)
-        for i in V:
-            self.assertEqual(9, i)
-        for i in V2:
-            self.assertEqual(9, i)
-
-        # Network
-        G = snap.GenFull(snap.PNEANet, 10)
-        V = snap.TIntV()
-        V2 = snap.TIntV()
-        snap.GetDegSeqV(G, V, V2)
-        for i in V:
-            self.assertEqual(9, i)
-        for i in V2:
-            self.assertEqual(9, i)
 
     def test_GetAnf(self):
         # Directed Graph
         Graph = snap.GenFull(snap.PNGraph, 10)
         SrcNId = 0
         DistNbrsV = snap.TIntFltKdV()
-        snap.GetAnf(Graph, SrcNId, DistNbrsV, 3, False, 8192)
+        Graph.GetAnf(SrcNId, DistNbrsV, 3, False, 8192)
         self.assertEqual(3, DistNbrsV.Len())
 
         # Undirected Graph
         Graph = snap.GenFull(snap.PUNGraph, 10)
         SrcNId = 0
         DistNbrsV = snap.TIntFltKdV()
-        snap.GetAnf(Graph, SrcNId, DistNbrsV, 3, False, 8192)
+        Graph.GetAnf(SrcNId, DistNbrsV, 3, False, 8192)
         self.assertEqual(3, DistNbrsV.Len())
 
         # Network
         Graph = snap.GenFull(snap.PNEANet, 10)
         SrcNId = 0
         DistNbrsV = snap.TIntFltKdV()
-        snap.GetAnf(Graph, SrcNId, DistNbrsV, 3, False, 8192)
+        Graph.GetAnf(SrcNId, DistNbrsV, 3, False, 8192)
         self.assertEqual(3, DistNbrsV.Len())
 
     def test_GetAnf2(self):
         # Directed Graph
         Graph = snap.GenFull(snap.PNGraph, 10)
         DistNbrsV = snap.TIntFltKdV()
-        snap.GetAnf(Graph, DistNbrsV, 3, False, 8192)
+        Graph.GetAnf(DistNbrsV, 3, False, 8192)
         self.assertEqual(3, DistNbrsV.Len())
 
         # Undirected Graph
         Graph = snap.GenFull(snap.PUNGraph, 10)
         DistNbrsV = snap.TIntFltKdV()
-        snap.GetAnf(Graph, DistNbrsV, 3, False, 8192)
+        Graph.GetAnf(DistNbrsV, 3, False, 8192)
         self.assertEqual(3, DistNbrsV.Len())
 
         # Network
         Graph = snap.GenFull(snap.PNEANet, 10)
         DistNbrsV = snap.TIntFltKdV()
-        snap.GetAnf(Graph, DistNbrsV, 3, False, 8192)
+        Graph.GetAnf(DistNbrsV, 3, False, 8192)
         self.assertEqual(3, DistNbrsV.Len())
 
     def test_GetAnfEffDiam(self):
         # Directed Graph
         Graph = snap.GenFull(snap.PNGraph, 10)
-        result = snap.GetAnfEffDiam(Graph, True, 0.9, 1024)
+        result = Graph.GetAnfEffDiam(True, 0.9, 1024)
         self.assertTrue(result >= 0)
 
         # Undirected Graph
         Graph = snap.GenFull(snap.PUNGraph, 10)
-        result = snap.GetAnfEffDiam(Graph, True, 0.9, 1024)
+        result = Graph.GetAnfEffDiam(True, 0.9, 1024)
         self.assertTrue(result >= 0)
 
         # Network
         Graph = snap.GenFull(snap.PNEANet, 10)
-        result = snap.GetAnfEffDiam(Graph, True, 0.9, 1024)
+        result = Graph.GetAnfEffDiam(True, 0.9, 1024)
         self.assertTrue(result >= 0)
 
     def test_GetAnfEffDiam2(self):
         # Directed Graph
         Graph = snap.GenFull(snap.PNGraph, 10)
-        result = snap.GetAnfEffDiam(Graph)
+        result = Graph.GetAnfEffDiam()
         self.assertTrue(result >= 0)
 
         # Undirected Graph
         Graph = snap.GenFull(snap.PUNGraph, 10)
-        result = snap.GetAnfEffDiam(Graph)
+        result = Graph.GetAnfEffDiam()
         self.assertTrue(result >= 0)
 
         # Network
         Graph = snap.GenFull(snap.PNEANet, 10)
-        result = snap.GetAnfEffDiam(Graph)
+        result = Graph.GetAnfEffDiam()
         self.assertTrue(result >= 0)
 
     def test_GetShortPath(self):
         # Directed Graph
         Graph = snap.GenFull(snap.PNGraph, 10)
-        result = snap.GetShortPath(Graph, 0, 1)
+        result = Graph.GetShortPath(0, 1)
         self.assertEqual(1, result)
 
         # Undirected Graph
         Graph = snap.GenFull(snap.PUNGraph, 10)
-        result = snap.GetShortPath(Graph, 0, 1)
+        result = Graph.GetShortPath(0, 1)
         self.assertEqual(1, result)
 
         # Network
         Graph = snap.GenFull(snap.PNEANet, 10)
-        result = snap.GetShortPath(Graph, 0, 1)
+        result = Graph.GetShortPath(0, 1)
         self.assertEqual(1, result)
 
     def test_GetShortPath2(self):
         # Directed Graph
         Graph = snap.GenFull(snap.PNGraph, 10)
-        H = snap.TIntH()
-        result = snap.GetShortPath(Graph, 0, H)
+        result, H = Graph.GetShortPathAll(0)
         self.assertEqual(1, result)
 
         # Undirected Graph
         Graph = snap.GenFull(snap.PUNGraph, 10)
-        H = snap.TIntH()
-        result = snap.GetShortPath(Graph, 0, H)
+        result, H = Graph.GetShortPathAll(0)
         self.assertEqual(1, result)
 
         # Network
         Graph = snap.GenFull(snap.PNEANet, 10)
-        H = snap.TIntH()
-        result = snap.GetShortPath(Graph, 0, H)
+        result, H = Graph.GetShortPathAll(0)
         self.assertEqual(1, result)
 
     def test_GetBfsFullDiam(self):
         # Directed Graph
         Graph = snap.GenFull(snap.PNGraph, 10)
-        result = snap.GetBfsFullDiam(Graph, 10)
+        result = Graph.GetBfsFullDiam(10)
         self.assertEqual(1, result)
 
         # Undirected Graph
         Graph = snap.GenFull(snap.PUNGraph, 10)
-        result = snap.GetBfsFullDiam(Graph, 10)
+        result = Graph.GetBfsFullDiam(10)
         self.assertEqual(1, result)
 
         # Network
         Graph = snap.GenFull(snap.PNEANet, 10)
-        result = snap.GetBfsFullDiam(Graph, 10)
+        result = Graph.GetBfsFullDiam(10)
         self.assertEqual(1, result)
 
     def test_GetBfsEffDiam(self):
         # Directed Graph
         Graph = snap.GenFull(snap.PNGraph, 10)
-        result = snap.GetBfsEffDiam(Graph, 10)
+        result = Graph.GetBfsEffDiam(10)
         self.assertAlmostEqual(0.88888888888888888888, result)
 
         # Undirected Graph
         Graph = snap.GenFull(snap.PUNGraph, 10)
-        result = snap.GetBfsEffDiam(Graph, 10)
+        result = Graph.GetBfsEffDiam(10)
         self.assertAlmostEqual(0.88888888888888888888, result)
 
         # Network
         Graph = snap.GenFull(snap.PNEANet, 10)
-        result = snap.GetBfsEffDiam(Graph, 10)
+        result = Graph.GetBfsEffDiam(10)
         self.assertAlmostEqual(0.88888888888888888888, result)
 
         # Directed Graph
@@ -2569,7 +2260,7 @@ class SnapPythonTest(unittest.TestCase):
         Num = 50
         List = snap.TIntV.GetV(1, 4, 9, 16, 25, 36)
         expected_result = [0.88, 0.88, 1]
-        result = snap.GetBfsEffDiam(Graph, Num, List, True)
+        result = Graph.GetBfsEffDiam(Num, List, True)
         self.assertEqual(expected_result, result)
 
         # Undirected Graph
@@ -2577,7 +2268,7 @@ class SnapPythonTest(unittest.TestCase):
         Num = 75
         List = snap.TIntV.GetV(1, 4, 9, 16, 25, 36)
         expected_result = [0.88, 0.88, 1]
-        result = snap.GetBfsEffDiam(Graph, Num, List, False)
+        result = Graph.GetBfsEffDiam(Num, List, False)
         self.assertEqual(expected_result, result)
 
         # Network
@@ -2585,7 +2276,7 @@ class SnapPythonTest(unittest.TestCase):
         Num = 33
         List = snap.TIntV.GetV(1, 4, 9, 16, 25, 36)
         expected_result = [0.88, 0.88, 1]
-        result = snap.GetBfsEffDiam(Graph, Num, List, True)
+        result = Graph.GetBfsEffDiam(Num, List, True)
         self.assertEqual(expected_result, result)
 
     def test_GetBfsEffDiamAll(self):
@@ -2594,7 +2285,7 @@ class SnapPythonTest(unittest.TestCase):
         Num = 50
         expected_result = [0.89898989898989901,
                             0.89898989898989901, 1, 0.98999999999999999]
-        result = snap.GetBfsEffDiamAll(Graph, Num, True)
+        result = Graph.GetBfsEffDiamAll(Num, True)
         self.assertEqual(expected_result, result)
 
         # Undirected Graph
@@ -2602,7 +2293,7 @@ class SnapPythonTest(unittest.TestCase):
         Num = 75
         expected_result = [0.89898989898989901,
                             0.89898989898989901, 1, 0.98999999999999999]
-        result = snap.GetBfsEffDiamAll(Graph, Num, False)
+        result = Graph.GetBfsEffDiamAll(Num, False)
         self.assertEqual(expected_result, result)
 
         # Network
@@ -2610,15 +2301,13 @@ class SnapPythonTest(unittest.TestCase):
         Num = 33
         expected_result = [0.89898989898989901,
                             0.89898989898989901, 1, 0.98999999999999999]
-        result = snap.GetBfsEffDiamAll(Graph, Num, True)
+        result = Graph.GetBfsEffDiamAll(Num, True)
         self.assertEqual(expected_result, result)
 
     def test_GetBetweennessCentr(self):
         # Undirected Graph
         Graph = snap.GenFull(snap.PUNGraph, 10)
-        Nodes = snap.TIntFltH()
-        Edges = snap.TIntPrFltH()
-        snap.GetBetweennessCentr(Graph, Nodes, Edges, 1.0)
+        Nodes, Edges = Graph.GetBetweennessCentr(1.0)
         for node in Nodes:
             self.assertAlmostEqual(0, Nodes[node])
         for edge in Edges:
@@ -2626,9 +2315,7 @@ class SnapPythonTest(unittest.TestCase):
 
         # Directed Graph
         Graph = snap.GenFull(snap.PNGraph, 10)
-        Nodes = snap.TIntFltH()
-        Edges = snap.TIntPrFltH()
-        snap.GetBetweennessCentr(Graph, Nodes, Edges, 1.0)
+        Nodes, Edges = Graph.GetBetweennessCentr(1.0)
         for node in Nodes:
             self.assertAlmostEqual(0, Nodes[node])
         for edge in Edges:
@@ -2636,9 +2323,7 @@ class SnapPythonTest(unittest.TestCase):
 
         # Network
         Graph = snap.GenFull(snap.PNEANet, 10)
-        Nodes = snap.TIntFltH()
-        Edges = snap.TIntPrFltH()
-        snap.GetBetweennessCentr(Graph, Nodes, Edges, 1.0)
+        Nodes, Edges = Graph.GetBetweennessCentr(1.0)
         for node in Nodes:
             self.assertAlmostEqual(0, Nodes[node])
         for edge in Edges:
@@ -2647,8 +2332,7 @@ class SnapPythonTest(unittest.TestCase):
     def test_GetArtPoints(self):
         # Undirected Graph
         Graph = snap.GenFull(snap.PUNGraph, 10)
-        V = snap.TIntV()
-        snap.GetArtPoints(Graph, V)
+        V = Graph.GetArtPoints()
         self.assertEqual(0, V.Len())
 
     def test_GenRndPowerLaw(self):
@@ -2730,52 +2414,49 @@ class SnapPythonTest(unittest.TestCase):
     def test_GetCmnNbrs(self):
         # Directed Graph
         Graph = snap.GenFull(snap.PNGraph, 10)
-        result = snap.GetCmnNbrs(Graph, 0, 1)
+        result = Graph.GetCmnNbrs(0, 1, False)
         self.assertEqual(result, 8)
 
         # Undirected Graph
         Graph = snap.GenFull(snap.PUNGraph, 10)
-        result = snap.GetCmnNbrs(Graph, 0, 1)
+        result = Graph.GetCmnNbrs(0, 1, False)
         self.assertEqual(result, 8)
 
         # Network
         Graph = snap.GenFull(snap.PNEANet, 10)
-        result = snap.GetCmnNbrs(Graph, 0, 1)
+        result = Graph.GetCmnNbrs(0, 1, False)
         self.assertEqual(result, 8)
 
     def test_GetCmnNbrs1(self):
         # Directed Graph
         Graph = snap.GenFull(snap.PNGraph, 10)
-        V = snap.TIntV()
-        result = snap.GetCmnNbrs(Graph, 0, 1, V)
+        result, V = Graph.GetCmnNbrs(0, 1, True)
         self.assertEqual(result, 8)
 
         # Undirected Graph
         Graph = snap.GenFull(snap.PUNGraph, 10)
-        V = snap.TIntV()
-        result = snap.GetCmnNbrs(Graph, 0, 1, V)
+        result, V = Graph.GetCmnNbrs(0, 1, True)
         self.assertEqual(result, 8)
 
         # Network
         Graph = snap.GenFull(snap.PNEANet, 10)
-        V = snap.TIntV()
-        result = snap.GetCmnNbrs(Graph, 0, 1, V)
+        result, V = Graph.GetCmnNbrs(0, 1, True)
         self.assertEqual(result, 8)
 
     def test_GetNodeTriads(self):
         # Directed Graph
         Graph = snap.GenFull(snap.PNGraph, 10)
-        result = snap.GetNodeTriads(Graph, 0)
+        result = Graph.GetNodeTriads(0)
         self.assertEqual(result, 36)
 
         # Undirected Graph
         Graph = snap.GenFull(snap.PUNGraph, 10)
-        result = snap.GetNodeTriads(Graph, 0)
+        result = Graph.GetNodeTriads(0)
         self.assertEqual(result, 36)
 
         # Network
         Graph = snap.GenFull(snap.PNEANet, 10)
-        result = snap.GetNodeTriads(Graph, 0)
+        result = Graph.GetNodeTriads(0)
         self.assertEqual(result, 36)
 
     def test_GetNodeTriadsSet(self):
@@ -2784,11 +2465,11 @@ class SnapPythonTest(unittest.TestCase):
         for NI in Graph.Nodes():
             break
         NId = NI.GetId()
-        GroupSet = snap.TIntSet()
+        GroupSetPy = set()
         for NbrIdx in range(4):
-            GroupSet.AddKey(NI.GetOutNId(NbrIdx))
+            GroupSetPy.add(NI.GetOutNId(NbrIdx))
         expected_result = [6, 6, 380, 4465]
-        result = snap.GetNodeTriads(Graph, NId, GroupSet)
+        result = Graph.GetNodeTriadsSet(NId, GroupSetPy)
         self.assertEqual(result, expected_result)
 
         # Undirected Graph
@@ -2796,11 +2477,11 @@ class SnapPythonTest(unittest.TestCase):
         for NI in Graph.Nodes():
             break
         NId = NI.GetId()
-        GroupSet = snap.TIntSet()
+        GroupSetPy = set()
         for NbrIdx in range(4):
-            GroupSet.AddKey(NI.GetOutNId(NbrIdx))
+            GroupSetPy.add(NI.GetOutNId(NbrIdx))
         expected_result = [6, 6, 380, 4465]
-        result = snap.GetNodeTriads(Graph, NId, GroupSet)
+        result = Graph.GetNodeTriadsSet(NId, GroupSetPy)
         self.assertEqual(result, expected_result)
 
         # Network
@@ -2808,65 +2489,65 @@ class SnapPythonTest(unittest.TestCase):
         for NI in Graph.Nodes():
             break
         NId = NI.GetId()
-        GroupSet = snap.TIntSet()
+        GroupSetPy = set()
         for NbrIdx in range(4):
-            GroupSet.AddKey(NI.GetOutNId(NbrIdx))
+            GroupSetPy.add(NI.GetOutNId(NbrIdx))
         expected_result = [6, 6, 380, 4465]
-        result = snap.GetNodeTriads(Graph, NId, GroupSet)
+        result = Graph.GetNodeTriadsSet(NId, GroupSetPy)
         self.assertEqual(result, expected_result)
 
     def test_GetNodeTriadsAll(self):
         # Directed Graph
         Graph = snap.GenFull(snap.PNGraph, 100)
         expected_result = [4851, 4851, 0]
-        result = snap.GetNodeTriadsAll(Graph, 10)
+        result = Graph.GetNodeTriadsAll(10)
         self.assertEqual(result, expected_result)
 
         # Undirected Graph
         Graph = snap.GenFull(snap.PUNGraph, 100)
         expected_result = [4851, 4851, 0]
-        result = snap.GetNodeTriadsAll(Graph, 10)
+        result = Graph.GetNodeTriadsAll(10)
         self.assertEqual(result, expected_result)
 
         # Network
         Graph = snap.GenFull(snap.PNEANet, 100)
         expected_result = [4851, 4851, 0]
-        result = snap.GetNodeTriadsAll(Graph, 10)
+        result = Graph.GetNodeTriadsAll(10)
         self.assertEqual(result, expected_result)
 
     def test_GetTriads(self):
         # Directed Graph
         Graph = snap.GenFull(snap.PNGraph, 10)
-        result = snap.GetTriads(Graph)
+        result = Graph.GetTriads()
         self.assertEqual(result, 120)
 
         # Undirected Graph
         Graph = snap.GenFull(snap.PUNGraph, 10)
-        result = snap.GetTriads(Graph)
+        result = Graph.GetTriads()
         self.assertEqual(result, 120)
 
         # Network
         Graph = snap.GenFull(snap.PNEANet, 10)
-        result = snap.GetTriads(Graph)
+        result = Graph.GetTriads()
         self.assertEqual(result, 120)
 
     def test_GetTriadsAll(self):
         # Directed Graph
         Graph = snap.GenFull(snap.PNGraph, 100)
         expected_result = [161700, 161700, 0]
-        result = snap.GetTriadsAll(Graph)
+        result = Graph.GetTriadsAll()
         self.assertEqual(result, expected_result)
 
         # Undirected Graph
         Graph = snap.GenFull(snap.PUNGraph, 100)
         expected_result = [161700, 161700, 0]
-        result = snap.GetTriadsAll(Graph)
+        result = Graph.GetTriadsAll()
         self.assertEqual(result, expected_result)
 
         # Network
         Graph = snap.GenFull(snap.PNEANet, 100)
         expected_result = [161700, 161700, 0]
-        result = snap.GetTriadsAll(Graph)
+        result = Graph.GetTriadsAll()
         self.assertEqual(result, expected_result)
 
     def test_GetClustCf(self):
@@ -2880,37 +2561,37 @@ class SnapPythonTest(unittest.TestCase):
         # no parameters
 
         # Directed Graph
-        result = snap.GetClustCf(DirGraph)
+        result = DirGraph.GetClustCf()
         self.assertAlmostEqual(result, 1.0)
 
         # Undirected Graph
-        result = snap.GetClustCf(UnGraph)
+        result = UnGraph.GetClustCf()
         self.assertAlmostEqual(result, 1.0)
 
         # Network
-        result = snap.GetClustCf(MultiGraph)
+        result = MultiGraph.GetClustCf()
         self.assertAlmostEqual(result, 1.0)
 
         # parameter = 0
 
-        result = snap.GetClustCf(DirGraph, 0)
+        result = DirGraph.GetClustCf(False, 0)
         self.assertAlmostEqual(result, 0.0)
 
-        result = snap.GetClustCf(UnGraph, 0)
+        result = UnGraph.GetClustCf(False, 0)
         self.assertAlmostEqual(result, 0.0)
 
-        result = snap.GetClustCf(MultiGraph, 0)
+        result = MultiGraph.GetClustCf(False, 0)
         self.assertAlmostEqual(result, 0.0)
 
         # parameter > 0
 
-        result = snap.GetClustCf(DirGraph, 3)
+        result = DirGraph.GetClustCf(False, 3)
         self.assertAlmostEqual(result, 1.0)
 
-        result = snap.GetClustCf(UnGraph, 3)
+        result = UnGraph.GetClustCf(False, 3)
         self.assertAlmostEqual(result, 1.0)
 
-        result = snap.GetClustCf(MultiGraph, 3)
+        result = MultiGraph.GetClustCf(False, 3)
         self.assertAlmostEqual(result, 1.0)
 
     def test_GetClustCf2(self):
@@ -2925,53 +2606,53 @@ class SnapPythonTest(unittest.TestCase):
 
         # Directed Graph
         V = snap.TFltPrV()
-        result = snap.GetClustCf(DirGraph, V)
+        result, V = DirGraph.GetClustCf(True)
         self.assertAlmostEqual(result, 1.0)
         self.assertEqual(V.Len(), 1)
 
         # Undirected Graph
         V = snap.TFltPrV()
-        result = snap.GetClustCf(UnGraph, V)
+        result, V = UnGraph.GetClustCf(True)
         self.assertAlmostEqual(result, 1.0)
         self.assertEqual(V.Len(), 1)
 
         # Network
         V = snap.TFltPrV()
-        result = snap.GetClustCf(MultiGraph, V)
+        result, V = MultiGraph.GetClustCf(True)
         self.assertAlmostEqual(result, 1.0)
         self.assertEqual(V.Len(), 1)
 
         # parameter = 0
 
         V = snap.TFltPrV()
-        result = snap.GetClustCf(DirGraph, V, 0)
+        result, V = DirGraph.GetClustCf(True, 0)
         self.assertAlmostEqual(result, 0.0)
         self.assertEqual(V.Len(), 0)
 
         V = snap.TFltPrV()
-        result = snap.GetClustCf(UnGraph, V, 0)
+        result, V = UnGraph.GetClustCf(True, 0)
         self.assertAlmostEqual(result, 0.0)
         self.assertEqual(V.Len(), 0)
 
         V = snap.TFltPrV()
-        result = snap.GetClustCf(MultiGraph, V, 0)
+        result, V = MultiGraph.GetClustCf(True, 0)
         self.assertAlmostEqual(result, 0.0)
         self.assertEqual(V.Len(), 0)
 
         # parameter > 0
 
         V = snap.TFltPrV()
-        result = snap.GetClustCf(DirGraph, V, 3)
+        result, V = DirGraph.GetClustCf(True, 3)
         self.assertAlmostEqual(result, 1.0)
         self.assertEqual(V.Len(), 1)
 
         V = snap.TFltPrV()
-        result = snap.GetClustCf(UnGraph, V, 3)
+        result, V = UnGraph.GetClustCf(True, 3)
         self.assertAlmostEqual(result, 1.0)
         self.assertEqual(V.Len(), 1)
 
         V = snap.TFltPrV()
-        result = snap.GetClustCf(MultiGraph, V, 3)
+        result, V = MultiGraph.GetClustCf(True, 3)
         self.assertAlmostEqual(result, 1.0)
         self.assertEqual(V.Len(), 1)
 
@@ -2984,51 +2665,51 @@ class SnapPythonTest(unittest.TestCase):
         # no parameter
 
         V = snap.TFltPrV()
-        result = snap.GetClustCfAll(DirGraph, V)
+        result = DirGraph.GetClustCfAll(V)
         expected_result = [1.0, 161700, 0]
         self.assertEqual(result, expected_result)
 
         V = snap.TFltPrV()
-        result = snap.GetClustCfAll(UnGraph, V)
+        result = UnGraph.GetClustCfAll(V)
         expected_result = [1.0, 161700, 0]
         self.assertEqual(result, expected_result)
 
         V = snap.TFltPrV()
-        result = snap.GetClustCfAll(MultiGraph, V)
+        result = MultiGraph.GetClustCfAll(V)
         expected_result = [1.0, 161700, 0]
         self.assertEqual(result, expected_result)
 
         # parameter = 0
 
         V = snap.TFltPrV()
-        result = snap.GetClustCfAll(DirGraph, V, 0)
+        result = DirGraph.GetClustCfAll(V, 0)
         expected_result = [0.0, 0, 0]
         self.assertEqual(result, expected_result)
 
         V = snap.TFltPrV()
-        result = snap.GetClustCfAll(UnGraph, V, 0)
+        result = UnGraph.GetClustCfAll(V, 0)
         expected_result = [0.0, 0, 0]
         self.assertEqual(result, expected_result)
 
         V = snap.TFltPrV()
-        result = snap.GetClustCfAll(MultiGraph, V, 0)
+        result = MultiGraph.GetClustCfAll(V, 0)
         expected_result = [0.0, 0, 0]
         self.assertEqual(result, expected_result)
 
         # parameter > 0
 
         V = snap.TFltPrV()
-        result = snap.GetClustCfAll(DirGraph, V, 5)
+        result = DirGraph.GetClustCfAll(V, 5)
         expected_result = [1.0, 8085, 0]
         self.assertEqual(result, expected_result)
 
         V = snap.TFltPrV()
-        result = snap.GetClustCfAll(UnGraph, V, 5)
+        result = UnGraph.GetClustCfAll(V, 5)
         expected_result = [1.0, 8085, 0]
         self.assertEqual(result, expected_result)
 
         V = snap.TFltPrV()
-        result = snap.GetClustCfAll(MultiGraph, V, 5)
+        result = MultiGraph.GetClustCfAll(V, 5)
         expected_result = [1.0, 8085, 0]
         self.assertEqual(result, expected_result)
 
@@ -3212,30 +2893,30 @@ class SnapPythonTest(unittest.TestCase):
     def test_SaveGViz(self):
         # Directed Graph
         fname = "mygraph.dot"
-        NIdColorH = snap.TIntStrH()
+        NIdColor_dict = {}
         for i in range(self.num_nodes):
-            NIdColorH[i] = "red"
-        snap.SaveGViz(self.DirGraphFull, fname, "text", True, NIdColorH)
+            NIdColor_dict[i] = "red"
+        snap.SaveGVizColor(self.DirGraphFull, fname, "text", True, NIdColor_dict)
         exp_hash = '64fe626fa482a0d45416824dc02d73a5'
         test_hash = self.getFileHash(fname)
         self.assertEqual(exp_hash, test_hash)
         os.remove(fname)
 
         # Undirected Graph
-        NIdColorH = snap.TIntStrH()
+        NIdColor_dict = {}
         for i in range(self.num_nodes):
-            NIdColorH[i] = "red"
-        snap.SaveGViz(self.UnDirGraphFull, fname, "text", True, NIdColorH)
+            NIdColor_dict[i] = "red"
+        snap.SaveGVizColor(self.UnDirGraphFull, fname, "text", True, NIdColor_dict)
         exp_hash = 'd2185ec44f908e8d10da6c6319c900a5'
         test_hash = self.getFileHash(fname)
         self.assertEqual(exp_hash, test_hash)
         os.remove(fname)
 
         # Directed Graph
-        NIdColorH = snap.TIntStrH()
+        NIdColor_dict = {}
         for i in range(self.num_nodes):
-            NIdColorH[i] = "red"
-        snap.SaveGViz(self.NetFull, fname, "text", True, NIdColorH)
+            NIdColor_dict[i] = "red"
+        snap.SaveGVizColor(self.NetFull, fname, "text", True, NIdColor_dict)
         exp_hash = '64fe626fa482a0d45416824dc02d73a5'
         test_hash = self.getFileHash(fname)
         self.assertEqual(exp_hash, test_hash)
@@ -3244,7 +2925,7 @@ class SnapPythonTest(unittest.TestCase):
     def test_SaveGViz2(self):
         # Directed Graph
         fname = "mygraph.dot"
-        NIdLabelH = snap.TIntStrH()
+        NIdLabelH = {}
         for i in range(self.num_nodes):
             NIdLabelH[i] = str(i)
         snap.SaveGViz(self.DirGraphFull, fname, "text", NIdLabelH)
@@ -3254,7 +2935,7 @@ class SnapPythonTest(unittest.TestCase):
         os.remove(fname)
 
         # Undirected Graph
-        NIdLabelH = snap.TIntStrH()
+        NIdLabelH = {}
         for i in range(self.num_nodes):
             NIdLabelH[i] = str(i)
         snap.SaveGViz(self.UnDirGraphFull, fname, "text", NIdLabelH)
@@ -3264,7 +2945,7 @@ class SnapPythonTest(unittest.TestCase):
         os.remove(fname)
 
         # Directed Graph
-        NIdLabelH = snap.TIntStrH()
+        NIdLabelH = {}
         for i in range(self.num_nodes):
             NIdLabelH[i] = str(i)
         snap.SaveGViz(self.NetFull, fname, "text", NIdLabelH)
@@ -3330,7 +3011,7 @@ class SnapPythonTest(unittest.TestCase):
         fname = "mygraph.txt"
         snap.SaveEdgeList(self.DirGraphFull, fname)
         self.assertTrue(os.path.isfile(fname))
-        Graph = snap.LoadEdgeListStr(snap.PNGraph, fname, 0, 1)
+        Graph, mapping = snap.LoadEdgeListStr(snap.PNGraph, fname, 0, 1, True)
         self.assertEqual(Graph.GetNodes(), self.num_nodes)
         self.assertEqual(Graph.GetEdges(), (self.num_nodes-1)*self.num_nodes)
         os.remove(fname)
@@ -3338,7 +3019,7 @@ class SnapPythonTest(unittest.TestCase):
         # Undirected Graph
         snap.SaveEdgeList(self.UnDirGraphFull, fname)
         self.assertTrue(os.path.isfile(fname))
-        Graph = snap.LoadEdgeListStr(snap.PUNGraph, fname, 0, 1)
+        Graph, mapping = snap.LoadEdgeListStr(snap.PUNGraph, fname, 0, 1, True)
         self.assertEqual(Graph.GetNodes(), self.num_nodes)
         self.assertEqual(Graph.GetEdges(), (self.num_nodes-1)*self.num_nodes/2)
         os.remove(fname)
@@ -3346,7 +3027,7 @@ class SnapPythonTest(unittest.TestCase):
         # Directed Graph
         snap.SaveEdgeList(self.NetFull, fname)
         self.assertTrue(os.path.isfile(fname))
-        Graph = snap.LoadEdgeListStr(snap.PNEANet, fname, 0, 1)
+        Graph, mapping = snap.LoadEdgeListStr(snap.PNEANet, fname, 0, 1, True)
         self.assertEqual(Graph.GetNodes(), self.num_nodes)
         self.assertEqual(Graph.GetEdges(), (self.num_nodes-1)*self.num_nodes)
         os.remove(fname)
@@ -3355,18 +3036,13 @@ class SnapPythonTest(unittest.TestCase):
         # Directed Graph
         val = 0.316227766017
         Graph = snap.GenFull(snap.PNGraph, 10)
-        LeftSV = snap.TFltV()
-        RightSV = snap.TFltV()
-        snap.GetSngVec(Graph, LeftSV, RightSV)
+        LeftSV, RightSV = Graph.GetLeadSngVec()
         for i in LeftSV:
             self.assertAlmostEqual(i, val)
         for i in RightSV:
             self.assertAlmostEqual(i, val)
 
-        SngValV = snap.TFltV()
-        LeftSVV = snap.TFltVFltV()
-        RightSVV = snap.TFltVFltV()
-        snap.GetSngVec(Graph, 5, SngValV, LeftSVV, RightSVV)
+        SngValV, LeftSVV, RightSVV = Graph.GetSngVecs(5)
         self.assertAlmostEqual(SngValV[0], 9.0)
         for i in range(1,10):
             self.assertAlmostEqual(SngValV[1], 1.0)
@@ -3395,16 +3071,16 @@ class SnapPythonTest(unittest.TestCase):
         self.assertEqual(Graph.GetEdges(), 6)
         os.remove(fname)
 
-    def test_GetEigVec(self):
+    def test_GetLeadEigVec(self):
         # Undirected Graph
         Graph = snap.GenRndGnm(snap.PUNGraph, 100, 500)
-        EigV = snap.TFltV()
-        snap.GetEigVec(Graph, EigV)
+        EigV = Graph.GetLeadEigVec()
         self.assertEqual(EigV.Len(), 100)
 
-        EigVal = snap.TFltV()
-        EigVV = snap.TFltVFltV()
-        snap.GetEigVec(Graph, 10, EigVal, EigVV)
+    def test_GetEigVecs(self):
+        # Undirected Graph
+        Graph = snap.GenRndGnm(snap.PUNGraph, 100, 500)
+        EigVal, EigVV = Graph.GetEigVecs(10)
         self.assertEqual(EigVal.Len(), 10)
         for V in EigVV:
             self.assertEqual(V.Len(), 100)
@@ -3500,16 +3176,17 @@ class SnapPythonTest(unittest.TestCase):
         os.remove(fname)
 
     def test_GetSubGraph(self):
-        V = snap.TIntV()
+        V_list = []
         for i in range(5):
-            V.Add(i)
+            V_list.append(i)
+
         # Directed Graph
         Graph = snap.GenFull(snap.PNGraph, 10)
-        SubGraph = snap.GetSubGraph(Graph, V)
+        SubGraph = Graph.GetSubGraph(V_list)
         self.assertEqual(SubGraph.GetNodes(), 5)
         self.assertEqual(SubGraph.GetEdges(), 5 * 4)
 
-        SubGraph = snap.GetSubGraphRenumber(Graph, V)
+        SubGraph = Graph.GetSubGraphRenumber(V_list)
         self.assertEqual(SubGraph.GetNodes(), 5)
         self.assertEqual(SubGraph.GetEdges(), 5 * 4)
         # verify that NIds are in 0..N-1
@@ -3518,11 +3195,11 @@ class SnapPythonTest(unittest.TestCase):
 
         # Undirected Graph
         Graph = snap.GenFull(snap.PUNGraph, 10)
-        SubGraph = snap.GetSubGraph(Graph, V)
+        SubGraph = Graph.GetSubGraph(V_list)
         self.assertEqual(SubGraph.GetNodes(), 5)
         self.assertEqual(SubGraph.GetEdges(), 5 * 4/2)
 
-        SubGraph = snap.GetSubGraphRenumber(Graph, V)
+        SubGraph = Graph.GetSubGraphRenumber(V_list)
         self.assertEqual(SubGraph.GetNodes(), 5)
         self.assertEqual(SubGraph.GetEdges(), 5 * 4/2)
         # verify that NIds are in 0..N-1
@@ -3531,44 +3208,48 @@ class SnapPythonTest(unittest.TestCase):
 
         # Network
         Graph = snap.GenFull(snap.PNEANet, 10)
-        SubGraph = snap.GetSubGraph(Graph, V)
+        SubGraph = Graph.GetSubGraph(V_list)
         self.assertEqual(SubGraph.GetNodes(), 5)
         self.assertEqual(SubGraph.GetEdges(), 5 * 4)
 
+        SubGraph = Graph.GetSubGraph(V_list)
+        self.assertEqual(SubGraph.GetNodes(), 5)
+        self.assertEqual(SubGraph.GetEdges(), 5 * 4)
+        # verify that NIds are in 0..N-1
+        for NI in SubGraph.Nodes():
+            self.assertEqual(NI.GetId() < SubGraph.GetNodes(), True)
+
     def test_GetNodeClustCf(self):
         # Directed Graph
-        H = snap.TIntFltH()
-        snap.GetNodeClustCf(self.DirGraphFull, H)
+        H = self.DirGraphFull.GetNodeClustCfAll()
         for i in H:
             self.assertEqual(1.0, H[i])
 
         # Undirected Graph
-        H = snap.TIntFltH()
-        snap.GetNodeClustCf(self.UnDirGraphFull, H)
+        H = self.UnDirGraphFull.GetNodeClustCfAll()
         for i in H:
             self.assertEqual(1.0, H[i])
 
         # Network
-        H = snap.TIntFltH()
-        snap.GetNodeClustCf(self.NetFull, H)
+        H = self.NetFull.GetNodeClustCfAll()
         for i in H:
             self.assertEqual(1.0, H[i])
 
     def test_ConvertESubGraph(self):
-        V = snap.TIntV()
+        V_list = []
         for i in range(10):
-            V.Add(i+1)
+            V_list.append(i+1)
         # Directed Graph
-        SubGraph = snap.ConvertESubGraph(snap.PNGraph, self.NetFull, V)
-        self.assertEqual(SubGraph.GetEdges(), V.Len())
+        SubGraph = self.NetFull.ConvertESubGraph(snap.PNGraph, V_list)
+        self.assertEqual(SubGraph.GetEdges(), len(V_list))
 
         # Undirected Graph
-        SubGraph = snap.ConvertESubGraph(snap.PUNGraph, self.NetFull, V)
-        self.assertEqual(SubGraph.GetEdges(), V.Len())
+        SubGraph = self.NetFull.ConvertESubGraph(snap.PUNGraph, V_list)
+        self.assertEqual(SubGraph.GetEdges(), len(V_list))
 
         # Network
-        SubGraph = snap.ConvertESubGraph(snap.PNEANet, self.NetFull, V)
-        self.assertEqual(SubGraph.GetEdges(), V.Len())
+        SubGraph = self.NetFull.ConvertESubGraph(snap.PNEANet, V_list)
+        self.assertEqual(SubGraph.GetEdges(), len(V_list))
 
 if __name__ == '__main__':
   unittest.main()
