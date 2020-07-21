@@ -35,7 +35,8 @@ scripts=(quick_test.py \
     test-GetClosenessCentr.py \
     test-GetFarnessCentr.py \
     test-pajek.py \
-    snap-test.py) 
+    snap-test.py \
+    snap-test-pylayer.py) 
 
 for line in "${scripts[@]}"; do
     echo "***" `date` "$line ..."
