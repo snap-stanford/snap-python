@@ -99,11 +99,11 @@ _snap3.so: snap_wrap3.o Snap.o
 	$(CC) $(LDFLAGS3) $(LIBS) snap_wrap3.o Snap.o -o _snap.so
 	ln -f _snap.so _snap3.so
 
-snap_wrap.cxx: snap.i snap_types.i tvec.i pneanet.i tmodenet.i tcrossnet.i pungraph.i pngraph.i pgraph.i pngraphmp.i pneanetmp.i\
+snap_wrap.cxx: snap.i snap_types.i tvec.i pneanet.i tmodenet.i tcrossnet.i pungraph.i pngraph.i pgraph.i pngraphmp.i pneanetmp.i pylayer.i\
 	snapswig.h snap_types.h printgraph.h goodgraph.cpp
 	swig $(SWIGFLAGS) -python -c++ -w302,312,317,325,362,383,384,389,401,503,508,509 -O -I$(SNAPDIR) -I$(GLIBDIR) snap.i
 
-snap_wrap3.cxx: snap.i snap_types.i tvec.i pneanet.i tmodenet.i tcrossnet.i pungraph.i pngraph.i pgraph.i pngraphmp.i pneanetmp.i\
+snap_wrap3.cxx: snap.i snap_types.i tvec.i pneanet.i tmodenet.i tcrossnet.i pungraph.i pngraph.i pgraph.i pngraphmp.i pneanetmp.i pylayer.i\
 	snapswig.h snap_types.h printgraph.h goodgraph.cpp
 	swig $(SWIGFLAGS3) -python -c++ -w302,312,317,325,362,383,384,389,401,503,508,509 -O -I$(SNAPDIR) -I$(GLIBDIR) snap.i
 	ln -f snap_wrap.cxx snap_wrap3.cxx

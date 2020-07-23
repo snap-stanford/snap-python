@@ -346,12 +346,14 @@ def GetTriadsbyNode(Graph, SampleNodes=-1):
 
 _GetCmnNbrs = GetCmnNbrs
 def GetCmnNbrs(Graph, NId1, NId2, NbrList = False):
-    if NbrList:
+    if NbrList == None  or  NbrList == False:
+        return _GetCmnNbrs(Graph, NId1, NId2)
+    elif NbrList == True:
         NbrV = TIntV()
         PrevReturn = _GetCmnNbrs(Graph, NId1, NId2, NbrV)
         return (PrevReturn, NbrV)
-    else:
-        return _GetCmnNbrs(Graph, NId1, NId2)
+
+    return _GetCmnNbrs(Graph, NId1, NId2, NbrList)
 
 def GetNodeClustCfAll(Graph):
     NIdCCfH = TIntFltH()
