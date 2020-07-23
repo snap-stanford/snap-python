@@ -1469,6 +1469,7 @@ PUNGraph.Clr = Clr
 PUNGraph.Empty = Empty
 PUNGraph.Save = Save
 
+
 PUndirNet.Nodes = Nodes
 PUndirNet.Edges = Edges
 PUndirNet.Clr = Clr
@@ -1530,4 +1531,3 @@ TNEANetMPNodeI.GetInEdges = GetInEdges
 
 %}
 #endif // GCC_ATOMIC
-
