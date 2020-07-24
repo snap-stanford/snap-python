@@ -33,6 +33,7 @@ scripts=(quick_test.py \
     test-GetClosenessCentr.py \
     test-GetFarnessCentr.py \
     test-pajek.py \
+    test-girvan-newman.py \
     snap-test.py \
     snap-test-pylayer.py) 
 
