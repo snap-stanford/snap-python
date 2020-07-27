@@ -1,0 +1,25 @@
+CntDegNodes template <class PGraph> int CntDegNodes(const PGraph& Graph, const int& NodeDeg);
+CntInDegNodes template <class PGraph> int CntInDegNodes(const PGraph& Graph, const int& NodeInDeg);
+CntOutDegNodes template <class PGraph> int CntOutDegNodes(const PGraph& Graph, const int& NodeOutDeg);
+CntNonZNodes template <class PGraph> int CntNonZNodes(const PGraph& Graph);
+GetDegCnt template <class PGraph> void GetDegCnt(const PGraph& Graph, TIntPrV& DegToCntV);
+GetDegCnt template <class PGraph> void GetDegCnt(const PGraph& Graph, TFltPrV& DegToCntV);
+GetInDegCnt template <class PGraph> void GetInDegCnt(const PGraph& Graph, TIntPrV& DegToCntV);
+GetInDegCnt template <class PGraph> void GetInDegCnt(const PGraph& Graph, TFltPrV& DegToCntV);
+GetOutDegCnt template <class PGraph> void GetOutDegCnt(const PGraph& Graph, TIntPrV& DegToCntV);
+GetOutDegCnt template <class PGraph> void GetOutDegCnt(const PGraph& Graph, TFltPrV& DegToCntV);
+GetMxDegNId template <class PGraph> int GetMxDegNId(const PGraph& Graph);
+GetMxInDegNId template <class PGraph> int GetMxInDegNId(const PGraph& Graph);
+GetMxOutDegNId template <class PGraph> int GetMxOutDegNId(const PGraph& Graph);
+GetNodeInDegV template <class PGraph> void GetNodeInDegV(const PGraph& Graph, TIntPrV& NIdInDegV);
+GetNodeOutDegV template <class PGraph> void GetNodeOutDegV(const PGraph& Graph, TIntPrV& NIdOutDegV);
+GetDegSeqV template <class PGraph> void GetDegSeqV(const PGraph& Graph, TIntV& DegV);
+GetDegSeqV template <class PGraph> void GetDegSeqV(const PGraph& Graph, TIntV& InDegV, TIntV& OutDegV);
+CntSelfEdges template <class PGraph> int CntSelfEdges(const PGraph& Graph);
+CntUniqBiDirEdges template <class PGraph> int CntUniqBiDirEdges(const PGraph& Graph);
+CntUniqDirEdges template <class PGraph> int CntUniqDirEdges(const PGraph& Graph);
+CntUniqUndirEdges template <class PGraph> int CntUniqUndirEdges(const PGraph& Graph);
+CntEdgesToSet template <class PGraph> int CntEdgesToSet(const PGraph& Graph, const int& NId, const TIntSet& NodeSet);
+IsTree template <class PGraph> bool IsTree(const PGraph& Graph, int& RootNIdX);
+IsTree template <class PGraph> int GetTreeRootNId(const PGraph& Graph) { int RootNId; bool Tree; Tree = IsTree(Graph, RootNId);  Assert(Tree);  return RootNId; }
+PrintInfo template <class PGraph> void PrintInfo(const PGraph& Graph, const TStr& Desc="", const TStr& OutFNm="", const bool& Fast=true);

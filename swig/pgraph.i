@@ -1531,5 +1531,3 @@ TNEANetMPNodeI.GetInEdges = GetInEdges
 
 %}
 #endif // GCC_ATOMIC
-
-

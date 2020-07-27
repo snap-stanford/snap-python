@@ -936,8 +936,9 @@ class SnapPythonTest(unittest.TestCase):
             self.assertEqual(value, NIdAuthH[item])
 
     def test_CommunityGirvanNewman(self):
-        exp_val = 0.010151451527112903
-        Graph = snap.GenPrefAttach(100, 10)
+        Rnd = snap.TRnd(42)
+        Graph = snap.GenPrefAttach(100, 10, Rnd)
+        exp_val = 0.00963802805072646
         Vec = snap.TCnComV()
         act_val = snap.CommunityGirvanNewman(Graph, Vec)
         self.assertAlmostEqual(exp_val, act_val)

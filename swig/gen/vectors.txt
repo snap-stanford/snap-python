@@ -30,7 +30,6 @@ TIntIntStrTrV
 TIntIntFltTrV
 TIntFltIntTrV
 TIntStrIntTrV
-TIntKdV
 TUIntIntKdV
 TIntFltKdV
 TIntPrFltKdV
@@ -83,5 +82,10 @@ TFltVV
 TStrVV
 TIntPrVV
 TIntVVV
+TIntIntVV
 TFltVVV
-TStrV
+TFltVFltV
+PNEANetV
+Schema
+TCnCom
+TCnComV
