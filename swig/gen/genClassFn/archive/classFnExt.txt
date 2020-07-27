@@ -1,0 +1,225 @@
+%extend TUNGraph{
+    int CntDegNodes(const int& NodeDeg){
+        return TSnap::CntDegNodes(PUNGraph($self), NodeDeg);
+    }
+    int CntInDegNodes(const int& NodeInDeg){
+        return TSnap::CntInDegNodes(PUNGraph($self), NodeInDeg);
+    }
+    int CntOutDegNodes(const int& NodeOutDeg){
+        return TSnap::CntOutDegNodes(PUNGraph($self), NodeOutDeg);
+    }
+    int CntNonZNodes(){
+        return TSnap::CntNonZNodes(PUNGraph($self));
+    }
+    void GetDegCnt(TIntPrV& DegToCntV){
+        return TSnap::GetDegCnt(PUNGraph($self), DegToCntV);
+    }
+    void GetDegCnt(TFltPrV& DegToCntV){
+        return TSnap::GetDegCnt(PUNGraph($self), DegToCntV);
+    }
+    void GetInDegCnt(TIntPrV& DegToCntV){
+        return TSnap::GetInDegCnt(PUNGraph($self), DegToCntV);
+    }
+    void GetInDegCnt(TFltPrV& DegToCntV){
+        return TSnap::GetInDegCnt(PUNGraph($self), DegToCntV);
+    }
+    void GetOutDegCnt(TIntPrV& DegToCntV){
+        return TSnap::GetOutDegCnt(PUNGraph($self), DegToCntV);
+    }
+    void GetOutDegCnt(TFltPrV& DegToCntV){
+        return TSnap::GetOutDegCnt(PUNGraph($self), DegToCntV);
+    }
+    int GetMxDegNId(){
+        return TSnap::GetMxDegNId(PUNGraph($self));
+    }
+    int GetMxInDegNId(){
+        return TSnap::GetMxInDegNId(PUNGraph($self));
+    }
+    int GetMxOutDegNId(){
+        return TSnap::GetMxOutDegNId(PUNGraph($self));
+    }
+    void GetNodeInDegV(TIntPrV& NIdInDegV){
+        return TSnap::GetNodeInDegV(PUNGraph($self), NIdInDegV);
+    }
+    void GetNodeOutDegV(TIntPrV& NIdOutDegV){
+        return TSnap::GetNodeOutDegV(PUNGraph($self), NIdOutDegV);
+    }
+    void GetDegSeqV(TIntV& DegV){
+        return TSnap::GetDegSeqV(PUNGraph($self), DegV);
+    }
+    void GetDegSeqV(TIntV& InDegV, TIntV& OutDegV){
+        return TSnap::GetDegSeqV(PUNGraph($self), InDegV, OutDegV);
+    }
+    int CntSelfEdges(){
+        return TSnap::CntSelfEdges(PUNGraph($self));
+    }
+    int CntUniqBiDirEdges(){
+        return TSnap::CntUniqBiDirEdges(PUNGraph($self));
+    }
+    int CntUniqDirEdges(){
+        return TSnap::CntUniqDirEdges(PUNGraph($self));
+    }
+    int CntUniqUndirEdges(){
+        return TSnap::CntUniqUndirEdges(PUNGraph($self));
+    }
+    int CntEdgesToSet(const int& NId, const TIntSet& NodeSet){
+        return TSnap::CntEdgesToSet(PUNGraph($self), NId, NodeSet);
+    }
+    bool IsTree(int& RootNIdX){
+        return TSnap::IsTree(PUNGraph($self), RootNIdX);
+    }
+    void PrintInfo(const TStr& Desc="", const TStr& OutFNm="", const bool& Fast=true){
+        return TSnap::PrintInfo(PUNGraph($self), Desc, OutFNm, Fast);
+    }
+};
+
+%extend TNGraph{
+    int CntDegNodes(const int& NodeDeg){
+        return TSnap::CntDegNodes(PNGraph($self), NodeDeg);
+    }
+    int CntInDegNodes(const int& NodeInDeg){
+        return TSnap::CntInDegNodes(PNGraph($self), NodeInDeg);
+    }
+    int CntOutDegNodes(const int& NodeOutDeg){
+        return TSnap::CntOutDegNodes(PNGraph($self), NodeOutDeg);
+    }
+    int CntNonZNodes(){
+        return TSnap::CntNonZNodes(PNGraph($self));
+    }
+    void GetDegCnt(TIntPrV& DegToCntV){
+        return TSnap::GetDegCnt(PNGraph($self), DegToCntV);
+    }
+    void GetDegCnt(TFltPrV& DegToCntV){
+        return TSnap::GetDegCnt(PNGraph($self), DegToCntV);
+    }
+    void GetInDegCnt(TIntPrV& DegToCntV){
+        return TSnap::GetInDegCnt(PNGraph($self), DegToCntV);
+    }
+    void GetInDegCnt(TFltPrV& DegToCntV){
+        return TSnap::GetInDegCnt(PNGraph($self), DegToCntV);
+    }
+    void GetOutDegCnt(TIntPrV& DegToCntV){
+        return TSnap::GetOutDegCnt(PNGraph($self), DegToCntV);
+    }
+    void GetOutDegCnt(TFltPrV& DegToCntV){
+        return TSnap::GetOutDegCnt(PNGraph($self), DegToCntV);
+    }
+    int GetMxDegNId(){
+        return TSnap::GetMxDegNId(PNGraph($self));
+    }
+    int GetMxInDegNId(){
+        return TSnap::GetMxInDegNId(PNGraph($self));
+    }
+    int GetMxOutDegNId(){
+        return TSnap::GetMxOutDegNId(PNGraph($self));
+    }
+    void GetNodeInDegV(TIntPrV& NIdInDegV){
+        return TSnap::GetNodeInDegV(PNGraph($self), NIdInDegV);
+    }
+    void GetNodeOutDegV(TIntPrV& NIdOutDegV){
+        return TSnap::GetNodeOutDegV(PNGraph($self), NIdOutDegV);
+    }
+    void GetDegSeqV(TIntV& DegV){
+        return TSnap::GetDegSeqV(PNGraph($self), DegV);
+    }
+    void GetDegSeqV(TIntV& InDegV, TIntV& OutDegV){
+        return TSnap::GetDegSeqV(PNGraph($self), InDegV, OutDegV);
+    }
+    int CntSelfEdges(){
+        return TSnap::CntSelfEdges(PNGraph($self));
+    }
+    int CntUniqBiDirEdges(){
+        return TSnap::CntUniqBiDirEdges(PNGraph($self));
+    }
+    int CntUniqDirEdges(){
+        return TSnap::CntUniqDirEdges(PNGraph($self));
+    }
+    int CntUniqUndirEdges(){
+        return TSnap::CntUniqUndirEdges(PNGraph($self));
+    }
+    int CntEdgesToSet(const int& NId, const TIntSet& NodeSet){
+        return TSnap::CntEdgesToSet(PNGraph($self), NId, NodeSet);
+    }
+    bool IsTree(int& RootNIdX){
+        return TSnap::IsTree(PNGraph($self), RootNIdX);
+    }
+    void PrintInfo(const TStr& Desc="", const TStr& OutFNm="", const bool& Fast=true){
+        return TSnap::PrintInfo(PNGraph($self), Desc, OutFNm, Fast);
+    }
+};
+
+%extend TNEANet{
+    int CntDegNodes(const int& NodeDeg){
+        return TSnap::CntDegNodes(PNEANet($self), NodeDeg);
+    }
+    int CntInDegNodes(const int& NodeInDeg){
+        return TSnap::CntInDegNodes(PNEANet($self), NodeInDeg);
+    }
+    int CntOutDegNodes(const int& NodeOutDeg){
+        return TSnap::CntOutDegNodes(PNEANet($self), NodeOutDeg);
+    }
+    int CntNonZNodes(){
+        return TSnap::CntNonZNodes(PNEANet($self));
+    }
+    void GetDegCnt(TIntPrV& DegToCntV){
+        return TSnap::GetDegCnt(PNEANet($self), DegToCntV);
+    }
+    void GetDegCnt(TFltPrV& DegToCntV){
+        return TSnap::GetDegCnt(PNEANet($self), DegToCntV);
+    }
+    void GetInDegCnt(TIntPrV& DegToCntV){
+        return TSnap::GetInDegCnt(PNEANet($self), DegToCntV);
+    }
+    void GetInDegCnt(TFltPrV& DegToCntV){
+        return TSnap::GetInDegCnt(PNEANet($self), DegToCntV);
+    }
+    void GetOutDegCnt(TIntPrV& DegToCntV){
+        return TSnap::GetOutDegCnt(PNEANet($self), DegToCntV);
+    }
+    void GetOutDegCnt(TFltPrV& DegToCntV){
+        return TSnap::GetOutDegCnt(PNEANet($self), DegToCntV);
+    }
+    int GetMxDegNId(){
+        return TSnap::GetMxDegNId(PNEANet($self));
+    }
+    int GetMxInDegNId(){
+        return TSnap::GetMxInDegNId(PNEANet($self));
+    }
+    int GetMxOutDegNId(){
+        return TSnap::GetMxOutDegNId(PNEANet($self));
+    }
+    void GetNodeInDegV(TIntPrV& NIdInDegV){
+        return TSnap::GetNodeInDegV(PNEANet($self), NIdInDegV);
+    }
+    void GetNodeOutDegV(TIntPrV& NIdOutDegV){
+        return TSnap::GetNodeOutDegV(PNEANet($self), NIdOutDegV);
+    }
+    void GetDegSeqV(TIntV& DegV){
+        return TSnap::GetDegSeqV(PNEANet($self), DegV);
+    }
+    void GetDegSeqV(TIntV& InDegV, TIntV& OutDegV){
+        return TSnap::GetDegSeqV(PNEANet($self), InDegV, OutDegV);
+    }
+    int CntSelfEdges(){
+        return TSnap::CntSelfEdges(PNEANet($self));
+    }
+    int CntUniqBiDirEdges(){
+        return TSnap::CntUniqBiDirEdges(PNEANet($self));
+    }
+    int CntUniqDirEdges(){
+        return TSnap::CntUniqDirEdges(PNEANet($self));
+    }
+    int CntUniqUndirEdges(){
+        return TSnap::CntUniqUndirEdges(PNEANet($self));
+    }
+    int CntEdgesToSet(const int& NId, const TIntSet& NodeSet){
+        return TSnap::CntEdgesToSet(PNEANet($self), NId, NodeSet);
+    }
+    bool IsTree(int& RootNIdX){
+        return TSnap::IsTree(PNEANet($self), RootNIdX);
+    }
+    void PrintInfo(const TStr& Desc="", const TStr& OutFNm="", const bool& Fast=true){
+        return TSnap::PrintInfo(PNEANet($self), Desc, OutFNm, Fast);
+    }
+};
+

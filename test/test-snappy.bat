@@ -28,5 +28,7 @@ python test-GetBetweennessCentr.py
 python test-GetClosenessCentr.py
 python test-GetFarnessCentr.py
 python test-pajek.py
+python test-girvan-newman.py
 python snap-test.py
+python snap-test-pylayer.py
 

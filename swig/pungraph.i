@@ -1,6 +1,6 @@
 // pungraph.i
 // Templates for SNAP TUNGraph, PUNGraph
-
+    
 %extend TUNGraph {
         TUNGraphNodeI BegNI() {
                 return TUNGraphNodeI($self->BegNI());
@@ -22,6 +22,7 @@
         }
 };
 
+
 %pythoncode %{
 # redefine TUNGraphEdgeI.GetId to return a pair of nodes rather than -1
 def GetId(self):
@@ -29,6 +30,7 @@ def GetId(self):
 
 TUNGraphEdgeI.GetId = GetId
 %}
+
 
 // Basic Undirected Graphs
 
@@ -216,4 +218,3 @@ TUNGraphEdgeI.GetId = GetId
 
 // conv.h - PUNGraph
 %template(ToGraph_PUNGraph) TSnap::ToGraph<PUNGraph>;
-

@@ -20,8 +20,6 @@ TIntPrIntPrVH
 TIntTrIntH
 TIntVIntH
 TUIntH
-TIntPrIntH
-TIntPrIntVH
 TIntPrFltH
 TIntTrFltH
 TIntPrStrH
