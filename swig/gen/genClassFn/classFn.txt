@@ -101,7 +101,6 @@ GetNodeClustCfAll
 GetNodeTriads
 GetNodeTriadsSet
 GetNodeTriadsAll
-GetLen2Path
 GetLen2Paths
 GetTriadEdges
 GetTriadParticip
@@ -109,6 +108,8 @@ GetKCore
 GetKCoreNodes
 GetKCoreEdges
 GetAnf
+GetAnfNode
+GetAnfGraph
 GetAnfEffDiam
 GetEigVals
 GetEigVec
@@ -120,3 +121,10 @@ GetSngVecs
 GetLeadSngVec
 GetInvParticipRat
 GetShortPathAll
+GenRewire
+SaveEdgeList
+SaveMatlabSparseMtx
+SavePajek
+SaveGViz
+SaveGVizColor
+DrawGViz

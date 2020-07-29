@@ -1268,6 +1268,76 @@ class SnapPythonTest(unittest.TestCase):
         self.assertEqual(result, result_swig)
         self.assertEqual(CoreN, CoreN_swig)
 
+    def test_GenRewire(self):
+        Rewired = self.UnDirRand.GenRewire()
+        Rewired_swig = snap.GenRewire(self.UnDirRand)
+        for node in Rewired.Nodes():
+            for nodeR in Rewired_swig.Nodes():
+                if node.GetId() == nodeR.GetId():
+                    self.assertEqual(node.GetOutDeg()+node.GetInDeg(), nodeR.GetOutDeg()+nodeR.GetInDeg())
+
+    def test_SaveEdgeList(self):
+        # Directed Graph
+        fname = "mygraph.txt"
+        self.DirGraphFull.SaveEdgeList(fname)
+        test_hash = self.getFileHash(fname)
+        os.remove(fname)
+        snap.SaveEdgeList(self.DirGraphFull, fname)
+        test_hash_swig = self.getFileHash(fname)
+        os.remove(fname)
+        self.assertEqual(test_hash, test_hash_swig)
+
+        # Undirected Graph
+        fname = "mygraph.txt"
+        self.UnDirGraphFull.SaveEdgeList(fname)
+        test_hash = self.getFileHash(fname)
+        os.remove(fname)
+        snap.SaveEdgeList(self.UnDirGraphFull, fname)
+        test_hash_swig = self.getFileHash(fname)
+        os.remove(fname)
+        self.assertEqual(test_hash, test_hash_swig)
+
+        # Directed Graph
+        fname = "mygraph.txt"
+        self.NetFull.SaveEdgeList(fname)
+        test_hash = self.getFileHash(fname)
+        os.remove(fname)
+        snap.SaveEdgeList(self.NetFull, fname)
+        test_hash_swig = self.getFileHash(fname)
+        os.remove(fname)
+        self.assertEqual(test_hash, test_hash_swig)
+
+    def test_SaveMatlabSparseMtx(self):
+        # Directed Graph
+        fname = "mygraph.txt"
+        self.DirGraphFull.SaveMatlabSparseMtx(fname)
+        test_hash = self.getFileHash(fname)
+        os.remove(fname)
+        snap.SaveMatlabSparseMtx(self.DirGraphFull, fname)
+        test_hash_swig = self.getFileHash(fname)
+        os.remove(fname)
+        self.assertEqual(test_hash, test_hash_swig)
+
+        # Undirected Graph
+        fname = "mygraph.txt"
+        self.UnDirGraphFull.SaveMatlabSparseMtx(fname)
+        test_hash = self.getFileHash(fname)
+        os.remove(fname)
+        snap.SaveMatlabSparseMtx(self.UnDirGraphFull, fname)
+        test_hash_swig = self.getFileHash(fname)
+        os.remove(fname)
+        self.assertEqual(test_hash, test_hash_swig)
+
+        # Directed Graph
+        fname = "mygraph.txt"
+        self.NetFull.SaveMatlabSparseMtx(fname)
+        test_hash = self.getFileHash(fname)
+        os.remove(fname)
+        snap.SaveMatlabSparseMtx(self.NetFull, fname)
+        test_hash_swig = self.getFileHash(fname)
+        os.remove(fname)
+        self.assertEqual(test_hash, test_hash_swig)
+
     def test_GetSngVals(self):
         SngVals = 4
         SngValV = self.DirGraphFull.GetSngVals(SngVals)
@@ -2032,12 +2102,11 @@ class SnapPythonTest(unittest.TestCase):
         val_swig = snap.CntEdgesToSet(G, 0, TS_swig)
         self.assertEqual(val, val_swig)
 
-    def test_GetAnf(self):
+    def test_GetAnfNode(self):
         # Directed Graph
         Graph = snap.GenFull(snap.PNGraph, 10)
         SrcNId = 0
-        DistNbrsV = snap.TIntFltKdV()
-        Graph.GetAnf(SrcNId, DistNbrsV, 3, False, 8192)
+        DistNbrsV = Graph.GetAnfNode(SrcNId, 3, False, 8192)
         SrcNId_swig = 0
         DistNbrsV_swig = snap.TIntFltKdV()
         snap.GetAnf(Graph, SrcNId_swig, DistNbrsV_swig, 3, False, 8192)
@@ -2046,8 +2115,7 @@ class SnapPythonTest(unittest.TestCase):
         # Undirected Graph
         Graph = snap.GenFull(snap.PUNGraph, 10)
         SrcNId = 0
-        DistNbrsV = snap.TIntFltKdV()
-        Graph.GetAnf(SrcNId, DistNbrsV, 3, False, 8192)
+        DistNbrsV = Graph.GetAnfNode(SrcNId, 3, False, 8192)
         SrcNId_swig = 0
         DistNbrsV_swig = snap.TIntFltKdV()
         snap.GetAnf(Graph, SrcNId_swig, DistNbrsV_swig, 3, False, 8192)
@@ -2056,34 +2124,30 @@ class SnapPythonTest(unittest.TestCase):
         # Network
         Graph = snap.GenFull(snap.PNEANet, 10)
         SrcNId = 0
-        DistNbrsV = snap.TIntFltKdV()
-        Graph.GetAnf(SrcNId, DistNbrsV, 3, False, 8192)
+        DistNbrsV = Graph.GetAnfNode(SrcNId, 3, False, 8192)
         SrcNId_swig = 0
         DistNbrsV_swig = snap.TIntFltKdV()
         snap.GetAnf(Graph, SrcNId_swig, DistNbrsV_swig, 3, False, 8192)
         self.assertEqual(DistNbrsV, DistNbrsV_swig)
 
-    def test_GetAnf2(self):
+    def test_GetAnfGraph(self):
         # Directed Graph
         Graph = snap.GenFull(snap.PNGraph, 10)
-        DistNbrsV = snap.TIntFltKdV()
-        Graph.GetAnf(DistNbrsV, 3, False, 8192)
+        DistNbrsV = Graph.GetAnfGraph(3, False, 8192)
         DistNbrsV_swig = snap.TIntFltKdV()
         snap.GetAnf(Graph, DistNbrsV_swig, 3, False, 8192)
         self.assertEqual(DistNbrsV, DistNbrsV_swig)
 
         # Undirected Graph
         Graph = snap.GenFull(snap.PUNGraph, 10)
-        DistNbrsV = snap.TIntFltKdV()
-        Graph.GetAnf(DistNbrsV, 3, False, 8192)
+        DistNbrsV = Graph.GetAnfGraph(3, False, 8192)
         DistNbrsV_swig = snap.TIntFltKdV()
         snap.GetAnf(Graph, DistNbrsV_swig, 3, False, 8192)
         self.assertEqual(DistNbrsV, DistNbrsV_swig)
 
         # Network
         Graph = snap.GenFull(snap.PNEANet, 10)
-        DistNbrsV = snap.TIntFltKdV()
-        Graph.GetAnf(DistNbrsV, 3, False, 8192)
+        DistNbrsV = Graph.GetAnfGraph(3, False, 8192)
         DistNbrsV_swig = snap.TIntFltKdV()
         snap.GetAnf(Graph, DistNbrsV_swig, 3, False, 8192)
         self.assertEqual(DistNbrsV, DistNbrsV_swig)
@@ -2213,7 +2277,8 @@ class SnapPythonTest(unittest.TestCase):
         Graph = snap.GenFull(snap.PNGraph, 100)
         Num = 50
         List = snap.TIntV.GetV(1, 4, 9, 16, 25, 36)
-        result = Graph.GetBfsEffDiam(Num, List, True)
+        PyList = [1, 4, 9, 16, 25, 36]
+        result = Graph.GetBfsEffDiam(Num, PyList, True)
         result_swig = snap.GetBfsEffDiam(Graph, Num, List, True)
         self.assertAlmostEqual(result, result_swig)
 
@@ -2221,7 +2286,8 @@ class SnapPythonTest(unittest.TestCase):
         Graph = snap.GenFull(snap.PUNGraph, 100)
         Num = 75
         List = snap.TIntV.GetV(1, 4, 9, 16, 25, 36)
-        result = Graph.GetBfsEffDiam(Num, List, False)
+        PyList = [1, 4, 9, 16, 25, 36]
+        result = Graph.GetBfsEffDiam(Num, PyList, False)
         result_swig = snap.GetBfsEffDiam(Graph, Num, List, False)
         self.assertAlmostEqual(result, result_swig)
 
@@ -2229,7 +2295,8 @@ class SnapPythonTest(unittest.TestCase):
         Graph = snap.GenFull(snap.PNEANet, 100)
         Num = 33
         List = snap.TIntV.GetV(1, 4, 9, 16, 25, 36)
-        result = Graph.GetBfsEffDiam(Num, List, True)
+        PyList = [1, 4, 9, 16, 25, 36]
+        result = Graph.GetBfsEffDiam(Num, PyList, True)
         result_swig = snap.GetBfsEffDiam(Graph, Num, List, True)
         self.assertAlmostEqual(result, result_swig)
 
@@ -2290,6 +2357,15 @@ class SnapPythonTest(unittest.TestCase):
         V_swig = snap.TIntV()
         snap.GetArtPoints(Graph, V_swig)
         self.assertEqual(V, V_swig)
+
+    def test_GenConfModel(self):
+        # Undirected Graph
+        DegSeqV = [0]
+        Graph = snap.GenConfModel(DegSeqV)
+        DegSeqV_swig = snap.TIntV()
+        DegSeqV_swig.Add(0)
+        Graph_swig = snap.GenConfModel(DegSeqV_swig)
+        self.assertEqual(Graph.GetNodes(), Graph_swig.GetNodes())
 
     def test_GetCmnNbrs(self):
         # Directed Graph
@@ -2590,22 +2666,19 @@ class SnapPythonTest(unittest.TestCase):
 
         # no parameter
 
-        V = snap.TFltPrV()
-        result = DirGraph.GetClustCfAll(V)
+        result, V = DirGraph.GetClustCfAll()
         V_swig = snap.TFltPrV()
         result_swig = snap.GetClustCfAll(DirGraph, V_swig)
         self.assertAlmostEqual(result, result_swig)
         self.assertEqual(V, V_swig)
 
-        V = snap.TFltPrV()
-        result = UnGraph.GetClustCfAll(V)
+        result, V = UnGraph.GetClustCfAll()
         V_swig = snap.TFltPrV()
         result_swig = snap.GetClustCfAll(UnGraph, V_swig)
         self.assertAlmostEqual(result, result_swig)
         self.assertEqual(V, V_swig)
 
-        V = snap.TFltPrV()
-        result = MultiGraph.GetClustCfAll(V)
+        result, V = MultiGraph.GetClustCfAll()
         V_swig = snap.TFltPrV()
         result_swig = snap.GetClustCfAll(MultiGraph, V_swig)
         self.assertAlmostEqual(result, result_swig)
@@ -2613,22 +2686,19 @@ class SnapPythonTest(unittest.TestCase):
 
         # parameter = 0
 
-        V = snap.TFltPrV()
-        result = DirGraph.GetClustCfAll(V, 0)
+        result, V = DirGraph.GetClustCfAll(0)
         V_swig = snap.TFltPrV()
         result_swig = snap.GetClustCfAll(DirGraph, V_swig, 0)
         self.assertAlmostEqual(result, result_swig)
         self.assertEqual(V, V_swig)
 
-        V = snap.TFltPrV()
-        result = UnGraph.GetClustCfAll(V, 0)
+        result, V = UnGraph.GetClustCfAll(0)
         V_swig = snap.TFltPrV()
         result_swig = snap.GetClustCfAll(UnGraph, V_swig, 0)
         self.assertAlmostEqual(result, result_swig)
         self.assertEqual(V, V_swig)
 
-        V = snap.TFltPrV()
-        result = MultiGraph.GetClustCfAll(V, 0)
+        result, V = MultiGraph.GetClustCfAll(0)
         V_swig = snap.TFltPrV()
         result_swig = snap.GetClustCfAll(MultiGraph, V_swig, 0)
         self.assertAlmostEqual(result, result_swig)
@@ -2636,90 +2706,274 @@ class SnapPythonTest(unittest.TestCase):
 
         # parameter > 0
 
-        V = snap.TFltPrV()
-        result = DirGraph.GetClustCfAll(V, 5)
+        result, V = DirGraph.GetClustCfAll(5)
         V_swig = snap.TFltPrV()
         result_swig = snap.GetClustCfAll(DirGraph, V_swig, 5)
         self.assertAlmostEqual(result, result_swig)
         self.assertEqual(V, V_swig)
 
-        V = snap.TFltPrV()
-        result = UnGraph.GetClustCfAll(V, 5)
+        result, V = UnGraph.GetClustCfAll(5)
         V_swig = snap.TFltPrV()
         result_swig = snap.GetClustCfAll(UnGraph, V_swig, 5)
         self.assertAlmostEqual(result, result_swig)
         self.assertEqual(V, V_swig)
 
-        V = snap.TFltPrV()
-        result = MultiGraph.GetClustCfAll(V, 5)
+        result, V = MultiGraph.GetClustCfAll(5)
         V_swig = snap.TFltPrV()
         result_swig = snap.GetClustCfAll(MultiGraph, V_swig, 5)
         self.assertAlmostEqual(result, result_swig)
         self.assertEqual(V, V_swig)
 
-    def test_SaveGViz(self):
+    def test_GetLen2Paths(self):
         # Directed Graph
-        fname = "mygraph.dot"
-        NIdColor_dict = {}
-        for i in range(self.num_nodes):
-            NIdColor_dict[i] = "red"
-        snap.SaveGVizColor(self.DirGraphFull, fname, "text", True, NIdColor_dict)
-        exp_hash = '64fe626fa482a0d45416824dc02d73a5'
-        test_hash = self.getFileHash(fname)
-        self.assertEqual(exp_hash, test_hash)
-        os.remove(fname)
+        Graph = snap.GenFull(snap.PNGraph, 100)
+        result_swig = Graph.GetLen2Paths(0, 1, False)
+        result = snap.GetLen2Paths(Graph, 0, 1)
+        self.assertEqual(result_swig, result)
+
+        result_swig, NV_swig = Graph.GetLen2Paths(0, 1, True)
+        NV = snap.TIntV()
+        result = snap.GetLen2Paths(Graph, 0, 1, NV)
+        self.assertEqual(result_swig, result)
+        self.assertEqual(NV_swig.Len(), NV_swig.Len())
 
         # Undirected Graph
-        NIdColor_dict = {}
-        for i in range(self.num_nodes):
-            NIdColor_dict[i] = "red"
-        snap.SaveGVizColor(self.UnDirGraphFull, fname, "text", True, NIdColor_dict)
-        exp_hash = 'd2185ec44f908e8d10da6c6319c900a5'
+        Graph = snap.GenFull(snap.PUNGraph, 100)
+        result_swig = Graph.GetLen2Paths(0, 1, False)
+        result = snap.GetLen2Paths(Graph, 0, 1)
+        self.assertEqual(result_swig, result)
+
+        result_swig, NV_swig = Graph.GetLen2Paths(0, 1, True)
+        NV = snap.TIntV()
+        result = snap.GetLen2Paths(Graph, 0, 1, NV)
+        self.assertEqual(result_swig, result)
+        self.assertEqual(NV_swig.Len(), NV_swig.Len())
+
+        # Network
+        Graph = snap.GenFull(snap.PNEANet, 100)
+        result_swig = Graph.GetLen2Paths(0, 1, False)
+        result = snap.GetLen2Paths(Graph, 0, 1)
+        self.assertEqual(result_swig, result)
+
+        result_swig, NV_swig = Graph.GetLen2Paths(0, 1, True)
+        NV = snap.TIntV()
+        result = snap.GetLen2Paths(Graph, 0, 1, NV)
+        self.assertEqual(result_swig, result)
+        self.assertEqual(NV_swig.Len(), NV_swig.Len())
+
+    def test_SavePajek(self):
+        fname = "mygraph.txt"
+        # Directed Graph
+        self.DirGraphFull.SavePajek(fname)
         test_hash = self.getFileHash(fname)
-        self.assertEqual(exp_hash, test_hash)
         os.remove(fname)
+        snap.SavePajek(self.DirGraphFull, fname)
+        test_hash_swig = self.getFileHash(fname)
+        os.remove(fname)
+        self.assertEqual(test_hash, test_hash_swig)
+
+        # Undirected Graph
+        self.UnDirGraphFull.SavePajek(fname)
+        test_hash = self.getFileHash(fname)
+        os.remove(fname)
+        snap.SavePajek(self.UnDirGraphFull, fname)
+        test_hash_swig = self.getFileHash(fname)
+        os.remove(fname)
+        self.assertEqual(test_hash, test_hash_swig)
 
         # Directed Graph
+        self.NetFull.SavePajek(fname)
+        test_hash = self.getFileHash(fname)
+        os.remove(fname)
+        snap.SavePajek(self.NetFull, fname)
+        test_hash_swig = self.getFileHash(fname)
+        os.remove(fname)
+        self.assertEqual(test_hash, test_hash_swig)
+
+    def test_SavePajek2(self):
+        fname = "mygraph.txt"
+        NIdColorH_swig = snap.TIntStrH()
+        NIdColorH = {}
+        for i in range(self.num_nodes):
+            NIdColorH_swig[i] = "red"
+            NIdColorH[i] = "red"
+        # Directed Graph
+        self.DirGraphFull.SavePajek(fname, NIdColorH)
+        test_hash = self.getFileHash(fname)
+        os.remove(fname)
+        snap.SavePajek(self.DirGraphFull, fname, NIdColorH_swig)
+        test_hash_swig = self.getFileHash(fname)
+        os.remove(fname)
+        self.assertEqual(test_hash_swig, test_hash)
+
+        # Undirected Graph
+        self.UnDirGraphFull.SavePajek(fname, NIdColorH)
+        test_hash = self.getFileHash(fname)
+        os.remove(fname)
+        snap.SavePajek(self.UnDirGraphFull, fname, NIdColorH_swig)
+        test_hash_swig = self.getFileHash(fname)
+        os.remove(fname)
+        self.assertEqual(test_hash_swig, test_hash)
+
+        # Directed Graph
+        self.NetFull.SavePajek(fname, NIdColorH)
+        test_hash = self.getFileHash(fname)
+        os.remove(fname)
+        snap.SavePajek(self.NetFull, fname, NIdColorH_swig)
+        test_hash_swig = self.getFileHash(fname)
+        os.remove(fname)
+        self.assertEqual(test_hash_swig, test_hash)
+
+    def test_SavePajek3(self):
+        fname = "mygraph.txt"
+        NIdColorH_swig = snap.TIntStrH()
+        NIdColorH = {}
+        for i in range(self.num_nodes):
+            NIdColorH_swig[i] = "red"
+            NIdColorH[i] = "red"
+        NIdLabelH_swig = snap.TIntStrH()
+        NIdLabelH = {}
+        for i in range(100):
+            NIdLabelH_swig[i] = str(i)
+            NIdLabelH[i] = str(i)
+        # Directed Graph
+        self.DirGraphFull.SavePajek(fname, NIdColorH, NIdLabelH)
+        test_hash = self.getFileHash(fname)
+        os.remove(fname)
+        snap.SavePajek(self.DirGraphFull, fname, NIdColorH_swig, NIdLabelH_swig)
+        test_hash_swig = self.getFileHash(fname)
+        os.remove(fname)
+        self.assertEqual(test_hash_swig, test_hash)
+        
+        # Undirected Graph
+        self.UnDirGraphFull.SavePajek(fname, NIdColorH, NIdLabelH)
+        test_hash = self.getFileHash(fname)
+        os.remove(fname)
+        snap.SavePajek(self.UnDirGraphFull, fname, NIdColorH_swig, NIdLabelH_swig)
+        test_hash_swig = self.getFileHash(fname)
+        os.remove(fname)
+        self.assertEqual(test_hash_swig, test_hash)
+
+        # Directed Graph
+        self.NetFull.SavePajek(fname, NIdColorH, NIdLabelH)
+        test_hash = self.getFileHash(fname)
+        os.remove(fname)
+        snap.SavePajek(self.NetFull, fname, NIdColorH_swig, NIdLabelH_swig)
+        test_hash_swig = self.getFileHash(fname)
+        os.remove(fname)
+        self.assertEqual(test_hash_swig, test_hash)
+
+    def test_SavePajek4(self):
+        fname = "mygraph.txt"
+        NIdColorH_swig = snap.TIntStrH()
+        NIdColorH = {}
+        for i in range(self.num_nodes):
+            NIdColorH_swig[i] = "red"
+            NIdColorH[i] = "red"
+        NIdLabelH_swig = snap.TIntStrH()
+        NIdLabelH = {}
+        for i in range(100):
+            NIdLabelH_swig[i] = str(i)
+            NIdLabelH[i] = str(i)
+        EIdColorH_swig = snap.TIntStrH()
+        EIdColorH = {}
+        for i in range(1000):
+            EIdColorH_swig[i] = "black"
+            EIdColorH[i] = "black"
+        # Directed Graph
+        self.DirGraphFull.SavePajek(fname, NIdColorH, NIdLabelH, EIdColorH)
+        test_hash = self.getFileHash(fname)
+        os.remove(fname)
+        snap.SavePajek(self.DirGraphFull, fname, NIdColorH_swig, NIdLabelH_swig, EIdColorH_swig)
+        test_hash_swig = self.getFileHash(fname)
+        os.remove(fname)
+        self.assertEqual(test_hash_swig, test_hash)
+        
+        # Undirected Graph
+        self.UnDirGraphFull.SavePajek(fname, NIdColorH, NIdLabelH, EIdColorH)
+        test_hash = self.getFileHash(fname)
+        os.remove(fname)
+        snap.SavePajek(self.UnDirGraphFull, fname, NIdColorH_swig, NIdLabelH_swig, EIdColorH_swig)
+        test_hash_swig = self.getFileHash(fname)
+        os.remove(fname)
+        self.assertEqual(test_hash_swig, test_hash)
+
+        # Directed Graph
+        self.NetFull.SavePajek(fname, NIdColorH, NIdLabelH, EIdColorH)
+        test_hash = self.getFileHash(fname)
+        os.remove(fname)
+        snap.SavePajek(self.NetFull, fname, NIdColorH_swig, NIdLabelH_swig, EIdColorH_swig)
+        test_hash_swig = self.getFileHash(fname)
+        os.remove(fname)
+        self.assertEqual(test_hash_swig, test_hash)
+
+    def test_SaveGViz(self):
+        fname = "mygraph.dot"
+        NIdColorH = snap.TIntStrH()
         NIdColor_dict = {}
         for i in range(self.num_nodes):
+            NIdColorH[i] = "red"
             NIdColor_dict[i] = "red"
-        snap.SaveGVizColor(self.NetFull, fname, "text", True, NIdColor_dict)
-        exp_hash = '64fe626fa482a0d45416824dc02d73a5'
-        test_hash = self.getFileHash(fname)
-        self.assertEqual(exp_hash, test_hash)
+        # Directed Graph
+        snap.SaveGViz(self.DirGraphFull, fname, "text", True, NIdColorH)
+        test_hash_swig = self.getFileHash(fname)
         os.remove(fname)
+        self.DirGraphFull.SaveGVizColor(fname, "text", True, NIdColor_dict)
+        test_hash = self.getFileHash(fname)
+        os.remove(fname)
+        self.assertEqual(test_hash_swig, test_hash)
+
+        # Undirected Graph
+        snap.SaveGViz(self.UnDirGraphFull, fname, "text", True, NIdColorH)
+        test_hash_swig = self.getFileHash(fname)
+        os.remove(fname)
+        self.UnDirGraphFull.SaveGVizColor(fname, "text", True, NIdColor_dict)
+        test_hash = self.getFileHash(fname)
+        os.remove(fname)
+        self.assertEqual(test_hash_swig, test_hash)
+
+        # Directed Graph
+        snap.SaveGViz(self.NetFull, fname, "text", True, NIdColorH)
+        test_hash_swig = self.getFileHash(fname)
+        os.remove(fname)
+        self.NetFull.SaveGVizColor(fname, "text", True, NIdColor_dict)
+        test_hash = self.getFileHash(fname)
+        os.remove(fname)
+        self.assertEqual(test_hash_swig, test_hash)
 
     def test_SaveGViz2(self):
-        # Directed Graph
         fname = "mygraph.dot"
+        NIdLabelH_swig = snap.TIntStrH()
         NIdLabelH = {}
         for i in range(self.num_nodes):
+            NIdLabelH_swig[i] = str(i)
             NIdLabelH[i] = str(i)
-        snap.SaveGViz(self.DirGraphFull, fname, "text", NIdLabelH)
-        exp_hash = '260c9cfe1b5eac55a053ffcf418703e1'
+        # Directed Graph
+        self.DirGraphFull.SaveGViz(fname, "text", NIdLabelH)
         test_hash = self.getFileHash(fname)
-        self.assertEqual(exp_hash, test_hash)
         os.remove(fname)
+        snap.SaveGViz(self.DirGraphFull, fname, "text", NIdLabelH_swig)
+        test_hash_swig = self.getFileHash(fname)
+        os.remove(fname)
+        self.assertEqual(test_hash_swig, test_hash)
 
         # Undirected Graph
-        NIdLabelH = {}
-        for i in range(self.num_nodes):
-            NIdLabelH[i] = str(i)
-        snap.SaveGViz(self.UnDirGraphFull, fname, "text", NIdLabelH)
-        exp_hash = 'df04d8deed65d2a537a741e3ab3e251b'
+        self.UnDirGraphFull.SaveGViz(fname, "text", NIdLabelH)
         test_hash = self.getFileHash(fname)
-        self.assertEqual(exp_hash, test_hash)
         os.remove(fname)
+        snap.SaveGViz(self.UnDirGraphFull, fname, "text", NIdLabelH_swig)
+        test_hash_swig = self.getFileHash(fname)
+        os.remove(fname)
+        self.assertEqual(test_hash_swig, test_hash)
 
         # Directed Graph
-        NIdLabelH = {}
-        for i in range(self.num_nodes):
-            NIdLabelH[i] = str(i)
-        snap.SaveGViz(self.NetFull, fname, "text", NIdLabelH)
-        exp_hash = '260c9cfe1b5eac55a053ffcf418703e1'
+        self.NetFull.SaveGViz(fname, "text", NIdLabelH)
         test_hash = self.getFileHash(fname)
-        self.assertEqual(exp_hash, test_hash)
         os.remove(fname)
+        snap.SaveGViz(self.NetFull, fname, "text", NIdLabelH_swig)
+        test_hash_swig = self.getFileHash(fname)
+        os.remove(fname)
+        self.assertEqual(test_hash_swig, test_hash)
 
     def test_LoadEdgeListStr(self):
         # Directed Graph
@@ -2802,6 +3056,96 @@ class SnapPythonTest(unittest.TestCase):
         self.assertEqual(EigVal.Len(), 10)
         for V in EigVV:
             self.assertEqual(V.Len(), 100)
+
+    def test_DrawGViz(self):
+        # Directed Graph
+        fname = "mygraph.png"
+        snap.DrawGViz(self.DirGraphFull, snap.gvlDot, fname, "graph 1")
+        self.assertTrue(os.path.isfile(fname))
+        self.assertTrue(os.stat(fname).st_size > 50000)
+        exp_hash = '7ac8bcf157f7d916be78a09faaf13f23'
+        f = open(fname, 'rb')
+        test_hash = hashlib.md5(f.read()).hexdigest()
+        f.close()
+        # OP RS 2014/05/13, disabled since it is not portable
+        #self.assertEqual(exp_hash, test_hash)
+        os.remove(fname)
+
+        # Undirected Graph
+        fname = "mygraph.png"
+        snap.DrawGViz(self.UnDirGraphFull, snap.gvlDot, fname, "graph 1")
+        self.assertTrue(os.path.isfile(fname))
+        self.assertTrue(os.stat(fname).st_size > 50000)
+        exp_hash = '734899b11f197b88d14d771b18011d85'
+        f = open(fname, 'rb')
+        test_hash = hashlib.md5(f.read()).hexdigest()
+        f.close()
+        # OP RS 2014/05/13, disabled since it is not portable
+        #self.assertEqual(exp_hash, test_hash)
+        os.remove(fname)
+
+        # Network
+        fname = "mygraph.png"
+        snap.DrawGViz(self.NetFull, snap.gvlDot, fname, "graph 1")
+        self.assertTrue(os.path.isfile(fname))
+        self.assertTrue(os.stat(fname).st_size > 50000)
+        exp_hash = '7ac8bcf157f7d916be78a09faaf13f23'
+        f = open(fname, 'rb')
+        test_hash = hashlib.md5(f.read()).hexdigest()
+        f.close()
+        # OP RS 2014/05/13, disabled since it is not portable
+        #self.assertEqual(exp_hash, test_hash)
+        os.remove(fname)
+
+    def test_DrawGViz2(self):
+
+        # Directed Graph
+        fname = "mygraph.png"
+        labels = snap.TIntStrH()
+        for NI in self.DirGraphFull.Nodes():
+            labels[NI.GetId()] = str(NI.GetId())
+        snap.DrawGViz(self.DirGraphFull, snap.gvlDot, fname, "graph 1", labels)
+        self.assertTrue(os.stat(fname).st_size > 50000)
+        self.assertTrue(os.path.isfile(fname))
+        exp_hash = 'd0fa3688dd5d9c5599222270be49805e'
+        f = open(fname, 'rb')
+        test_hash = hashlib.md5(f.read()).hexdigest()
+        f.close()
+        # OP RS 2014/05/13, disabled since it is not portable
+        #self.assertEqual(exp_hash, test_hash)
+        os.remove(fname)
+
+        # Undirected Graph
+        fname = "mygraph.png"
+        labels = snap.TIntStrH()
+        for NI in self.UnDirGraphFull.Nodes():
+            labels[NI.GetId()] = str(NI.GetId())
+        snap.DrawGViz(self.UnDirGraphFull, snap.gvlDot, fname, "graph 1", labels)
+        self.assertTrue(os.path.isfile(fname))
+        self.assertTrue(os.stat(fname).st_size > 50000)
+        exp_hash = '191c86413fd43f23bf1c5ce4a9972863'
+        f = open(fname, 'rb')
+        test_hash = hashlib.md5(f.read()).hexdigest()
+        f.close()
+        # OP RS 2014/05/13, disabled since it is not portable
+        #self.assertEqual(exp_hash, test_hash)
+        os.remove(fname)
+
+        # Network
+        fname = "mygraph.png"
+        labels = snap.TIntStrH()
+        for NI in self.NetFull.Nodes():
+            labels[NI.GetId()] = str(NI.GetId())
+        snap.DrawGViz(self.NetFull, snap.gvlDot, fname, "graph 1", labels)
+        self.assertTrue(os.path.isfile(fname))
+        self.assertTrue(os.stat(fname).st_size > 50000)
+        exp_hash = 'd0fa3688dd5d9c5599222270be49805e'
+        f = open(fname, 'rb')
+        test_hash = hashlib.md5(f.read()).hexdigest()
+        f.close()
+        # OP RS 2014/05/13, disabled since it is not portable
+        #self.assertEqual(exp_hash, test_hash)
+        os.remove(fname)
 
     def test_GetSubGraph(self):
         V = []
@@ -2918,6 +3262,7 @@ class SnapPythonTest(unittest.TestCase):
         for edge,edge_swig in zip(SubGraph.Edges(), SubGraph_swig.Edges()):
             self.assertEqual(edge.GetSrcNId(), edge_swig.GetSrcNId())
             self.assertEqual(edge.GetDstNId(), edge_swig.GetDstNId())
+
 
 if __name__ == '__main__':
   unittest.main()
