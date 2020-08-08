@@ -1,14 +1,11 @@
 SaveGViz
-''''''''
+'''''''''''
 
-.. function:: SaveGViz(Graph, OutFNm, Desc, NodeLabels, NIdColorH)
+.. function:: SaveGViz(OutFNm, Desc, Labels)
 
-Saves *Graph* to the .DOT file format used by GraphViz. Use ".dot" as file extension for *OutFNm*.
+A graph method that saves a graph to the .DOT file format used by GraphViz. Use ".dot" as file extension for *OutFNm*.
 
 Parameters:
-
-- *Graph*: graph (input)
-    A Snap.py graph or a network.
 
 - *OutFNm*: string (input)
     Name of the output file.
@@ -16,12 +13,9 @@ Parameters:
 - *Desc*: string (input)
     Description of the Graph.
 
-- *NodeLabels*: bool (input)
-    Indicates whether to show the node labels.
-
-- *NIdColorH*: :class:`TIntStrH`, a hash table with int keys and string values (input)
-    Maps node ids to node colors (see GraphViz documentation for more details).
-
+- *Labels*: Python dictionary or :class:`TIntStrH`, a hash table with int keys and string values (input)
+    Maps node ids to node string labels.
+    
 Return value:
 
 - None
@@ -34,18 +28,13 @@ The following example shows how to save graphs of types
 
     import snap
 
-    H = snap.TIntStrH()
-    H.AddDat(1, "blue")
-    H.AddDat(2, "blue")
-    H.AddDat(3, "red")
-    H.AddDat(4, "red")
+    Labels = { 0: "zero", 1: "one", 2: "two", 3: "three" }
 
     Graph = snap.GenRndGnm(snap.PNGraph, 4, 6)
-    snap.SaveGViz(Graph, "Graph1.dot", "Directed Random Graph", True, H)
+    Graph.SaveGViz("graph1.dot", "Graph file", Labels)
 
     UGraph = snap.GenRndGnm(snap.PUNGraph, 4, 6)
-    snap.SaveGViz(UGraph, "Graph2.dot", "Undirected Random Graph", True, H)
+    UGraph.SaveGViz("graph2.dot", "Graph file", Labels)
 
     Network = snap.GenRndGnm(snap.PNEANet, 4, 6)
-    snap.SaveGViz(Network, "Graph3.dot", "Directed Random Network with Attributes", True, H)
-
+    Network.SaveGViz("graph3.dot", "Graph file", Labels)

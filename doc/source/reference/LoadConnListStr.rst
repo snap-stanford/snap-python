@@ -1,7 +1,7 @@
 LoadConnListStr
 '''''''''''''''
 
-.. function:: LoadConnListStr(GraphType, InFNm, StrToNIdH)
+.. function:: LoadConnListStr(GraphType, InFNm)
 
 Loads a (directed, undirected, or multi) graph from a text file, *InFNm*, with 1 node and all its edges in a single line.
 
@@ -18,28 +18,31 @@ Parameters:
 - *InFNm*: string (input)
     Filename with the description of the graph nodes and edges.
 
-- *StrToNIdH*: :class:`TStrIntSH`, a hash table of string keys and int values (output)
-    Stores the mapping from node names to node ids.
-    Note that this is a special hash table for holding strings and has a different interface than the standard SNAP hash table. Use *GetDat(name)* to obtain a mapping from a node name to its node id.
-
 Return value:
 
 - graph
     A Snap.py graph of the specified type *GraphType*.
+- *StrToNIdH*: :class:`TStrIntSH`, a hash table of string keys and int values (output)
+    Stores the mapping from node names to node ids.
+    Note that this is a special hash table for holding strings and its interface differs from the standard SNAP hash table. Use *GetKeyId(name)* to obtain a mapping from a node name to its node id.
 
 
 The following example shows how to load each of the graph types from a file named *test.dat*::
 
     import snap
 
-    H = snap.TStrIntSH()
-    Graph = snap.LoadConnListStr(snap.PNGraph, "test.dat", H)
+    (Graph, H) = snap.LoadConnListStr(snap.PNGraph, "test.dat")
 
-    H = snap.TStrIntSH()
-    UGraph = snap.LoadConnListStr(snap.PUNGraph, "test.dat", H)
+    (UGraph, H) = snap.LoadConnListStr(snap.PUNGraph, "test.dat")
 
-    H = snap.TStrIntSH()
-    Network = snap.LoadConnListStr(snap.PNEANet, "test.dat", H)
+    (Network, H) = snap.LoadConnListStr(snap.PNEANet, "test.dat")
+
+    # convert input string to node id
+    NodeId = H.GetKeyId("A")
+    # convert node id to input string
+    NodeName = H.GetKey(NodeId)
+    print("name", NodeName)
+    print("id  ", NodeId)
 
 A sample of *test.dat* is::
 

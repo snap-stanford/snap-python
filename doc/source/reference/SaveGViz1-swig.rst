@@ -1,5 +1,5 @@
-SaveGViz
-'''''''''''
+SaveGViz (SWIG)
+''''''''''''''''''
 
 .. function:: SaveGViz(Graph, OutFNm, Desc, NIdLabelH)
 

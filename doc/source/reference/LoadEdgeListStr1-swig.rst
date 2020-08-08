@@ -1,5 +1,5 @@
-LoadEdgeListStr
-'''''''''''''''
+LoadEdgeListStr (SWIG)
+''''''''''''''''''''''
 
 .. function:: LoadEdgeListStr(GraphType, InFNm, SrcColId, DstColId, StrToNIdH)
 

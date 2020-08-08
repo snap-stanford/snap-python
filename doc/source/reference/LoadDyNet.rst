@@ -12,7 +12,7 @@ Parameters:
 
 Return value:
 
-- directed graph
+- directed graph :class:`TNGraph`
     A directed Snap.py graph.
 
 For more info, see ORA Network Analysis Data (http://www.casos.cs.cmu.edu/computational_tools/data2.php) 

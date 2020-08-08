@@ -1,5 +1,5 @@
-LoadEdgeList
-''''''''''''
+LoadEdgeList (SWIG)
+'''''''''''''''''''
 
 .. function:: LoadEdgeList(PGraph, InFNm, SrcColId, DstColId, Separator)
 

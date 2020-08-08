@@ -1,5 +1,5 @@
-SavePajek
-'''''''''
+SavePajek (SWIG)
+''''''''''''''''
 
 .. function:: SavePajek(Graph, OutFNm, NIdColorH, NIdLabelH)
 
