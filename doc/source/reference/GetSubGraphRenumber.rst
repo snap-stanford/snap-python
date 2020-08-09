@@ -1,39 +1,38 @@
 GetSubGraphRenumber
 '''''''''''''''''''
 
-.. function:: GetSubGraphRenumber(Graph, NIdV)
+.. function:: GetSubGraphRenumber(NIdV)
 
-Returns the subgraph of *Graph* induced by the nodes in *NIdV* with renumbered node ids from 0 to N-1. This function is implemented for :class:`TNGraph` and :class:`TUNGraph`.
+A graph method that returns the subgraph induced by the nodes in *NIdV* with renumbered node ids from 0 to N-1. This function is implemented for :class:`TNGraph` and :class:`TUNGraph`.
 
 Parameters:
 
-- *Graph*: graph (input)
-    A Snap.py graph or a network.
-
-- *NIdV*: TIntV (input)
-    Node ID vector.  The subgraph consists of all nodes in *NIdV* and the edges between nodes in *NIdV*.
+- *NIdV*: Python list or :class:`TIntV`, a vector of ints
+    Node id vector.  The subgraph consists of all nodes in *NIdV* and the edges between nodes in *NIdV*.
 
 Return value:
 
-- a subgraph that is the same type as *Graph* and contains the nodes from *Graph*, which have node IDs in the *NIdV* vector and all the edges with both nodes in *NIdV*. The nodes in the resulting subgraph are renumbered sequentially from 0 to N-1.
+- graph
+    A subgraph that has the same type as the original graph and contains the nodes with ids in the *NIdV* vector and all the edges with both nodes in *NIdV*. The nodes in the resulting subgraph are renumbered sequentially from 0 to N-1.
 
 For more information, see: http://en.wikipedia.org/wiki/Glossary_of_graph_theory#Subgraphs
 
 The following example shows how to get subgraphs for
-:class:`TNGraph`, :class:`TUNGraph`, and :class:`TNEANet`::
+:class:`TNGraph` and :class:`TUNGraph`::
 
     import snap
     
     Graph = snap.GenRndGnm(snap.PNGraph, 50, 500)
-    Nodes = snap.TIntV()
+    Nodes = []
     for N in Graph.GetNI(0).GetOutEdges():
-        Nodes.Add(N)
-    # Get subgraph induced by the neighbors of Node 0.
-    SubGraph = snap.GetSubGraphRenumber(Graph, Nodes)
+        Nodes.append(N)
+    # Get subgraph induced by the neighbors of Node 0
+    SubGraph = Graph.GetSubGraphRenumber(Nodes)
     
-    Graph = snap.GenCircle(snap.PUNGraph, 100, 2, False)
-    Nodes = snap.TIntV()
-    for N in Graph.GetNI(50).GetOutEdges():
-        Nodes.Add(N)
-    SubGraph = snap.GetSubGraphRenumber(Graph, Nodes)
+    UGraph = snap.GenCircle(snap.PUNGraph, 100, 2, False)
+    Nodes = []
+    for N in UGraph.GetNI(50).GetOutEdges():
+        Nodes.append(N)
+    # Get subgraph induced by the neighbors of Node 50
+    SubGraph = UGraph.GetSubGraphRenumber(Nodes)
 

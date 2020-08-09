@@ -1,14 +1,13 @@
 AddSelfEdges
 ''''''''''''
 
-.. function:: AddSelfEdges(Graph)
+.. function:: AddSelfEdges()
 
-Adds a self-edge for every node in *Graph*.
+A graph method that adds a self-edge for every node in a graph.
 
 Parameters:
 
-- *Graph*: graph (input)
-    A Snap.py graph or a network.
+- None
 
 Return value:
 
@@ -21,16 +20,16 @@ The following example shows how to add self edges to every node in
     import snap
 
     Graph = snap.GenRndGnm(snap.PNGraph, 10, 0)
-    snap.AddSelfEdges(Graph)
+    Graph.AddSelfEdges()
     for EI in Graph.Edges():
         print("edge: (%d, %d)" % (EI.GetSrcNId(), EI.GetDstNId()))
 
     UGraph = snap.GenRndGnm(snap.PUNGraph, 10, 0)
-    snap.AddSelfEdges(UGraph)
+    UGraph.AddSelfEdges()
     for EI in UGraph.Edges():
         print("edge: (%d, %d)" % (EI.GetSrcNId(), EI.GetDstNId()))
 
     Network = snap.GenRndGnm(snap.PNEANet, 10, 0)
-    snap.AddSelfEdges(Network)
+    Network.AddSelfEdges()
     for EI in Network.Edges():
         print("edge: (%d, %d)" % (EI.GetSrcNId(), EI.GetDstNId()))

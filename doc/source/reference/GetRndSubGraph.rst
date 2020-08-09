@@ -1,16 +1,13 @@
 GetRndSubGraph
 ''''''''''''''
 
-.. function:: GetRndSubGraph(Graph, numNodes)
+.. function:: GetRndSubGraph(numNodes)
 
-Randomly selects *numNodes* nodes from the input graph and returns an induced graph on those nodes.
+A graph method that randomly selects *numNodes* nodes from the input graph and returns an induced graph on those nodes.
 
 Parameters:
 
-- *Graph*: graph (input)
-    A Snap.py graph or a network.
-
-- *numNodes*: int (input)
+- *numNodes*: int
     Number of nodes desired in the output graph.
 
 Return value:
@@ -25,11 +22,11 @@ The following example shows how to get a random subgraph of size 10 from a graph
     import snap
 
     Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
-    SubGraph = snap.GetRndSubGraph(Graph,10)
+    SubGraph = Graph.GetRndSubGraph(10)
 
     UGraph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
-    SubUGraph = snap.GetRndSubGraph(UGraph,10)
+    SubUGraph = UGraph.GetRndSubGraph(10)
 
     Network = snap.GenRndGnm(snap.PNEANet, 100, 1000)
-    SubNetwork = snap.GetRndSubGraph(Network,10)
+    SubNetwork = Network.GetRndSubGraph(10)
 
