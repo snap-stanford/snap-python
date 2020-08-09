@@ -7,7 +7,7 @@ Loads a directed network in the DyNetML format. Loads only the first network in 
 
 Parameters:
 
-- *InFNm*: string (input)
+- *InFNm*: string
     Filename with the description of the graph.
 
 Return value:

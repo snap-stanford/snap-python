@@ -9,19 +9,19 @@ Loads a (directed, undirected or multi) graph from a text file *InFNm* with 1 ed
 
 Parameters:
 
-- *GraphType*: graph class (input)
+- *GraphType*: graph class
     Class of output graph -- one of :class:`PNGraph`, :class:`PNEANet`, or :class:`PUNGraph`.
 
-- *InFNm*: string (input)
+- *InFNm*: string
     Filename with the description of the graph edges.
 
-- (optional) *SrcColId*: int (input)
+- (optional) *SrcColId*: int
     The column number in the file, which contains the node id representing the source vertex.
 
-- (optional) *DstColId*: int (input)
+- (optional) *DstColId*: int
     The column number in the file, which contains the node id representing the destination vertex.
 
-- (optional) *Separator*: char (input)
+- (optional) *Separator*: char
     Column separator. The default value is whitespace.
 
 Return value:

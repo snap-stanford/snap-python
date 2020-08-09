@@ -9,25 +9,26 @@ Loads a (directed, undirected or multi) graph from a text file *InFNm* with 1 ed
 
 Parameters:
 
-- *GraphType*: graph class (input)
+- *GraphType*: graph class
     Class of output graph -- one of :class:`PNGraph`, :class:`PNEANet`, or :class:`PUNGraph`.
 
-- *InFNm*: string (input)
+- *InFNm*: string
     Filename with the description of the graph edges.
 
-- (optional) *SrcColId*: int (input)
+- (optional) *SrcColId*: int
     The column number in the file, which contains the node id representing the source vertex.
 
-- (optional) *DstColId*: int (input)
+- (optional) *DstColId*: int
     The column number in the file, which contains the node id representing the destination vertex.
 
-- (optional) *Mapping*: bool (input)
+- (optional) *Mapping*: bool
     Specifies whether to return the mapping of node names to node ids.
 
 Return value:
 
 - graph
     A Snap.py graph or a network represented by the *InFNm* of type *GraphType*.
+
 - (optional) *StrToNIdH*: :class:`TStrIntSH`, a string hash table with string keys and int values
     It is returned, if *Mapping* is True and it contains the mapping of strings to node ids.
 

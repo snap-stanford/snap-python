@@ -7,13 +7,13 @@ A graph method that saves a graph to the .DOT file format used by GraphViz. Use 
 
 Parameters:
 
-- *OutFNm*: string (input)
+- *OutFNm*: string
     Name of the output file.
 
-- *Desc*: string (input)
+- *Desc*: string
     Description of the Graph.
 
-- *Labels*: Python dictionary or :class:`TIntStrH`, a hash table with int keys and string values (input)
+- *Labels*: Python dictionary or :class:`TIntStrH`, a hash table with int keys and string values
     Maps node ids to node string labels.
     
 Return value:

@@ -9,7 +9,7 @@ Each line contains a tuple of 3 values: <source node id><tab><destination node i
 
 Parameters:
 
-- *OutFNm*: string (input)
+- *OutFNm*: string
     Name of the output file.
 
 Return value:

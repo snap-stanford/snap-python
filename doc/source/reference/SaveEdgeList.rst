@@ -7,10 +7,10 @@ A graph method that saves lists of edges from a given graph into a file.  Each l
 
 Parameters:
 
-- *Filename*: string (input)
+- *Filename*: string
     The name of the file to save the graph to.
 	
-- (optional) *Description*: string (input)
+- (optional) *Description*: string
     A description that will be written to the top of the file in a commented section.
 
 Return value: 

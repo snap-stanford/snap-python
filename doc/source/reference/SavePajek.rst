@@ -7,19 +7,19 @@ A graph method that saves a graph in a Pajek .NET format.
 
 Parameters:
 
-- *Graph*: graph (input)
+- *Graph*: graph
     A Snap.py graph or a network.
 
-- *OutFNm*: string (input)
+- *OutFNm*: string
     Specifies output filename of Pajek formatted graph.
     
-- (optional) *NIdColorH*: Python dictionary or :class:`TIntStrH`, a hash table of int keys and string values (input)
+- (optional) *NIdColorH*: Python dictionary or :class:`TIntStrH`, a hash table of int keys and string values
     Maps node ids to node colors. Default node color is Red.
 
-- (optional) *NIdLabelH*: Python dictionary or :class:`TIntStrH`, a hash table of int keys and string values (input)
+- (optional) *NIdLabelH*: Python dictionary or :class:`TIntStrH`, a hash table of int keys and string values
     Maps node ids to node string labels.
 
-- (optional) *EIdColorH*: Python dictionary or :class:`TIntStrH`, a hash table of int keys and string values (input)
+- (optional) *EIdColorH*: Python dictionary or :class:`TIntStrH`, a hash table of int keys and string values
     Maps edge ids to node colors. Default edge color is black.
 
 Return value:

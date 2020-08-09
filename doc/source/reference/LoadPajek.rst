@@ -10,10 +10,10 @@ the filename in *InFNm*. Function supports both the 1 edge per line (<source>
 
 Parameters:
 
-- *GraphType*: graph class (input)
+- *GraphType*: graph class
     Class of output graph -- one of :class:`PNGraph`, :class:`PNEANet`, or :class:`PUNGraph`.
 
-- *InFNm*: string (input)
+- *InFNm*: string
     Filename with the description of the graph edges.
     
 Return value:

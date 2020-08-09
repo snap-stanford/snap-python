@@ -18,5 +18,4 @@ Node Degree
    GetNodeInDegV
    GetNodeOutDegV
    GetDegSeqV
-   GetDegSeqV1
 
