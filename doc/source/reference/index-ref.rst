@@ -31,6 +31,7 @@ Contents:
    kcore
    anf
    svd
+   legacy-swig
    contrib
 
 .. # classes

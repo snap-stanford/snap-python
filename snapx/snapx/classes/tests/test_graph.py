@@ -712,7 +712,7 @@ class TestGraph(BaseAttrGraphTester):
 #        G = sx.path_graph(5)
 #        # Add some node, edge, and graph attributes.
 #        for i in range(5):
-#            G.nodes[i]['name'] = f'node{i}'
+#            G.nodes[i]['name'] = 'node{}'.format(i)
 #        G.edges[0, 1]['name'] = 'edge01'
 #        G.edges[3, 4]['name'] = 'edge34'
 #        G.graph['name'] = 'graph'

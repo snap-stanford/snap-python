@@ -1,17 +1,14 @@
 DelNodes
 ''''''''
 
-.. function:: DelNodes(Graph, NIdV)
+.. function:: DelNodes(NIdV)
 
-Removes the nodes contained in the vector *NIdV* from *Graph*.
+A graph method that removes the nodes contained in the vector *NIdV* from a graph.
 
 Parameters:
 
-- *Graph*: graph (input)
-    A Snap.py graph or a network.
-
-- *NIdV*: :class:`TIntV`, vector of ints (input)
-    A vector of node ids to be deleted from *Graph*.
+- *NIdV*: Python list or :class:`TIntV`, vector of ints
+    A vector of node ids to be deleted.
 
 Return value:
 
@@ -23,24 +20,24 @@ The following example shows how to delete nodes from
 
     import snap
 
-    V = snap.TIntV()
+    V = []
     for i in range(10):
-        V.Add(i)
+        V.append(i)
 
     Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
-    snap.DelNodes(Graph, V)
+    Network.DelNodes(V)
     for NI in V:
         if Graph.IsNode(NI):
             print("Node %d found in graph." % NI)
 
     UGraph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
-    snap.DelNodes(UGraph, V)
+    UGraph.DelNodes(V)
     for NI in V:
         if UGraph.IsNode(NI):
             print("Node %d found in graph." % NI)
 
     Network = snap.GenRndGnm(snap.PNEANet, 100, 1000)
-    snap.DelNodes(Network, V)
+    Network.DelNodes(V)
     for NI in V:
         if Network.IsNode(NI):
             print("Node %d found in graph." % NI)

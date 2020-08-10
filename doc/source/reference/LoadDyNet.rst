@@ -7,12 +7,12 @@ Loads a directed network in the DyNetML format. Loads only the first network in 
 
 Parameters:
 
-- *InFNm*: string (input)
+- *InFNm*: string
     Filename with the description of the graph.
 
 Return value:
 
-- directed graph
+- directed graph :class:`TNGraph`
     A directed Snap.py graph.
 
 For more info, see ORA Network Analysis Data (http://www.casos.cs.cmu.edu/computational_tools/data2.php) 

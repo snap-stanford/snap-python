@@ -1,14 +1,13 @@
 MakeUnDir
 '''''''''
 
-.. function:: MakeUnDir(Graph)
+.. function:: MakeUnDir()
 
-Makes the graph undirected. For every edge (u,v) an edge (v,u) is added (if it does not yet exist). The function has no effect on undirected graphs.
+A graph method that makes the graph undirected. For every edge (u,v) an edge (v,u) is added (if it does not yet exist). The function has no effect on undirected graphs.
 
 Parameters:
 
-- *Graph*: graph (input)
-    A Snap.py graph or a network.
+- None
 
 Return value:
 
@@ -22,15 +21,15 @@ The following example shows usage with graph types
 
     Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
     print(Graph.GetEdges())
-    snap.MakeUnDir(Graph)
+    Graph.MakeUnDir()
     print(Graph.GetEdges())
 
     UGraph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
     print(UGraph.GetEdges())
-    snap.MakeUnDir(UGraph)
+    UGraph.MakeUnDir()
     print(UGraph.GetEdges())
 
     Network = snap.GenRndGnm(snap.PNEANet, 100, 1000)
     print(Network.GetEdges())
-    snap.MakeUnDir(Network)
+    Network.MakeUnDir()
     print(Network.GetEdges())

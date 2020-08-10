@@ -52,7 +52,7 @@ class AttributeDict(MutableMapping):
                 self._extra_attr = self._graph._edge_extra_attr
 
         except:
-            raise SnapXKeyError(f"Failed to get the edge ID for {str(key)}")
+            raise SnapXKeyError("Failed to get the edge ID for {}".format(str(key)))
 
         # TODO: Support floats and strs
         # For iteration over Snap's attribute stores
@@ -181,8 +181,9 @@ class AttributeDict(MutableMapping):
     def __str__(self):
         strs = []
         for k in iter(self):
-            strs.append(f"'{k}': {repr(self[k])}")
+            strs.append("'{}': {}".format(k, repr(self[k])))
         return "{" + ", ".join(strs) + "}"
 
     def __repr__(self):
-        return f"{self.__class__.__name__}({self.__str__()})"
+        return "{}({})".format(self.__class__.__name__, self.__str__())
+

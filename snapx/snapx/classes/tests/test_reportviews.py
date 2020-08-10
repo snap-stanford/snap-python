@@ -96,7 +96,7 @@ class TestNodeDataView:
     def test_repr(self):
         expected = "NodeDataView((0, 1, 2, 3, 4, 5, 6, 7, 8))"
         assert repr(self.nv) == expected
-        expected_data = [f"{n}: {repr(AttributeDict(self.G, n))}" for n in range(9)]
+        expected_data = ["{}: {}".format(n, repr(AttributeDict(self.G, n))) for n in range(9)]
         expected = "NodeDataView({" + ", ".join(expected_data) + "})"
         assert repr(self.ndv) == expected
         expected = (
@@ -285,10 +285,10 @@ class TestEdgeDataView:
         ev = self.eview(self.G)(data=True)
         ad = "AttributeDict({})"
         rep = (
-            f"EdgeDataView([(0, 1, {ad}), (1, 2, {ad}), "
-            + f"(2, 3, {ad}), (3, 4, {ad}), "
-            + f"(4, 5, {ad}), (5, 6, {ad}), "
-            + f"(6, 7, {ad}), (7, 8, {ad})])"
+            "EdgeDataView([(0, 1, {}), (1, 2, {}), ".format(ad, ad)
+            + "(2, 3, {}), (3, 4, {}), ".format(ad, ad)
+            + "(4, 5, {}), (5, 6, {}), ".format(ad, ad)
+            + "(6, 7, {}), (7, 8, {})])".format(ad, ad)
         )
         assert repr(ev) == rep
 

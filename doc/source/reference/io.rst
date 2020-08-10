@@ -6,19 +6,14 @@ Input and Output
    :maxdepth: 2
 
    LoadEdgeList
-   LoadEdgeList1
    SaveEdgeList
    LoadEdgeListStr
-   LoadEdgeListStr1
    LoadConnList
    LoadConnListStr
    SaveGViz
-   SaveGViz1
+   SaveGVizColor
    SaveMatlabSparseMtx
    LoadPajek
    SavePajek
-   SavePajek1
-   SavePajek2
-   SavePajek3
    LoadDyNet
 

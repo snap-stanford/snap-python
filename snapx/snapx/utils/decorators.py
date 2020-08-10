@@ -1,4 +1,4 @@
-from decorator import decorator
+from .decorator import decorator
 
 def nodes_or_number(which_args):
     """PORTED FROM NETWORKX
@@ -45,7 +45,7 @@ def nodes_or_number(which_args):
                 nodes = tuple(n)
             else:
                 if n < 0:
-                    msg = "Negative number of nodes not valid: {n}"
+                    msg = "Negative number of nodes not valid: {}".format(n)
                     raise sx.SnapXError(msg)
             new_args[i] = (n, nodes)
         return func_to_be_decorated(*new_args, **kw)

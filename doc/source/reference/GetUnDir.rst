@@ -1,21 +1,20 @@
 GetUnDir
 ''''''''
 
-.. function:: GetUnDir(Graph)
+.. function:: GetUnDir()
 
-Returns an undirected version of the graph. For every edge (u,v) an edge (v,u) is added (if it does not yet exist).
+A graph method that returns a new graph which is an undirected version of the graph. For every edge (u,v) an edge (v,u) is added (if it does not yet exist).
 
 Parameters:
 
-- *Graph*: directed graph (input)
-    A Snap.py graph or a network.
+- None
 
 Return value:
 
 - graph
-    The un-directed version of graph *Graph*. If *Graph* is undirected, returns an identical graph.  
+    The undirected version of the graph. If the graph is undirected, returns an identical graph.  
 
-The following example shows how to convert directed graph to un-directed graph using
+The following example shows how to convert directed graph to undirected graph using
 :class:`TNGraph`::
 
 	import snap
@@ -28,6 +27,6 @@ The following example shows how to convert directed graph to un-directed graph u
 	Graph.AddEdge(3,5)
 	Graph.AddEdge(1,5)
 
-	UGraph = snap.GetUnDir(Graph)
+	UGraph = Graph.GetUnDir()
 	for EI in UGraph.Edges():
 		print("edge (%d, %d)" % (EI.GetSrcNId(), EI.GetDstNId()))

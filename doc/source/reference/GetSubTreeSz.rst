@@ -1,23 +1,19 @@
 GetSubTreeSz
 ''''''''''''
 
-.. function:: GetSubTreeSz(Graph, StartNId, FollowOut, FollowIn)
+.. function:: GetSubTreeSz(StartNId, FollowOut, FollowIn)
 
-Returns the BFS tree size (number of nodes) and depth (number of
-levels) by following in-links and/or out-links of node *StartNId*.
+A graph method that returns the BFS tree size (number of nodes) and depth (number of levels) by following in-links and/or out-links of node *StartNId*.
 
 Parameters:
 
-- *Graph*: graph (input)
-    A Snap.py graph or a network.
-
-- *StartNId*: int (input)
+- *StartNId*: int
     Starting node id.
 
-- *FollowOut*: bool (input)
+- *FollowOut*: bool
     Whether to follow out-links.
 
-- *FollowIn*: bool (input)
+- *FollowIn*: bool
     Whether to follow in-links.
 
 Return value:
@@ -31,13 +27,13 @@ The following example shows how to get the size of the tree starting at node 0 w
     import snap
 
     Graph = snap.GenTree(snap.PNGraph, 3, 3)
-    results = snap.GetSubTreeSz(Graph, 0, True, True)
+    results = Graph.GetSubTreeSz(0, True, True)
     print("Size %d, Depth %d" % (results[0], results[2]))
 
     UGraph = snap.GenTree(snap.PUNGraph, 3, 3)
-    results = snap.GetSubTreeSz(UGraph, 0, True, True)
+    results = UGraph.GetSubTreeSz(0, True, True)
     print("Size %d, Depth %d" % (results[0], results[2]))
 
     Network = snap.GenTree(snap.PNEANet, 3, 3)
-    results = snap.GetSubTreeSz(Network, 0, True, True)
+    results = Network.GetSubTreeSz(0, True, True)
     print("Size %d, Depth %d" % (results[0], results[2]))

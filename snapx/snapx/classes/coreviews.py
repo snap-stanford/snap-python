@@ -51,8 +51,7 @@ class AtlasView(Mapping):
         return "{" + ", ".join(strs) + "}"
 
     def __repr__(self):
-        return f"{self.__class__.__name__}({self.__str__()})"
-
+        return '{}({})'.format(self.__class__.__name__, self.__str__())
 
 class AdjacencyView(Mapping):
     """This is a view into a dict-of-dict-of-dict-like data structure.
@@ -87,7 +86,7 @@ class AdjacencyView(Mapping):
         return "{" + ", ".join(strs) + "}"
 
     def __repr__(self):
-        return f"{self.__class__.__name__}({self.__str__()})"
+        return '{}({})'.format(self.__class__.__name__, self.__str__())
 
     def copy(self):
         raise NotImplementedError("TODO")

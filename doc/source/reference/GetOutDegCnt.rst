@@ -1,21 +1,18 @@
 GetOutDegCnt
 ''''''''''''
 
-.. function:: GetOutDegCnt(Graph, DegToCntV)
+.. function:: GetOutDegCnt()
 
-Computes an out-degree histogram: a vector of pairs (out-degree, number of nodes of such out-degree). The results are stored in *DegToCntV*.
+A graph method that returns the number of nodes for each out-degree as a vector of pairs (out-degree, number of nodes of such out-degree).
 
 Parameters:
 
-- *Graph*: graph (input)
-    A Snap.py graph or a network.
-
-- *DegToCntV*: :class:`TIntPrV`, a vector of (int, int) pairs (output)
-    A vector of (out-degree, number of nodes of such out-degree) pairs.
+- None
 
 Return value:
 
-- None
+- *DegToCntV*: :class:`TIntPrV`, a vector of (int, int) pairs
+    A vector of (out-degree, number of nodes of such out-degree) pairs.
 
 
 The following examples shows how to obtain the out-degree histogram for nodes in :class:`TNGraph`, :class:`TUNGraph`, and :class:`TNEANet`::
@@ -23,19 +20,16 @@ The following examples shows how to obtain the out-degree histogram for nodes in
     import snap
 
     Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
-    DegToCntV = snap.TIntPrV()
-    snap.GetOutDegCnt(Graph, DegToCntV)
+    DegToCntV = Graph.GetOutDegCnt()
     for item in DegToCntV:
         print("%d nodes with out-degree %d" % (item.GetVal2(), item.GetVal1()))
 
     UGraph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
-    DegToCntV = snap.TIntPrV()
-    snap.GetOutDegCnt(UGraph, DegToCntV)
+    DegToCntV = UGraph.GetOutDegCnt()
     for item in DegToCntV:
         print("%d nodes with out-degree %d" % (item.GetVal2(), item.GetVal1()))
 
     Network = snap.GenRndGnm(snap.PNEANet, 100, 1000)
-    DegToCntV = snap.TIntPrV()
-    snap.GetOutDegCnt(Network, DegToCntV)
+    DegToCntV = Network.GetOutDegCnt()
     for item in DegToCntV:
         print("%d nodes with out-degree %d" % (item.GetVal2(), item.GetVal1()))
