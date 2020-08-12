@@ -1,26 +1,23 @@
 PlotInDegDistr
 ''''''''''''''
 
-.. function:: PlotInDegDistr(Graph, FNmPref, DescStr, PlotCCdf=False, PowerFit=False)
+.. function:: PlotInDegDistr(FNmPref, DescStr, PlotCCdf=False, PowerFit=False)
 
-Plots the in-degree distribution of *Graph*. The function creates three new files: 1) inDeg.<*FNmPref*>.plt (the plot), 2) inDeg.<*FNPref*>.png (the plotting description), and 3) inDeg.<*FNmPref*>.tab (the tab separated plotting data).
+A graph method that plots the in-degree distribution of a graph. The function creates three new files: 1) inDeg.<*FNmPref*>.plt (the plot), 2) inDeg.<*FNPref*>.png (the plotting description), and 3) inDeg.<*FNmPref*>.tab (the tab separated plotting data).
 
 
 Parameters:
 
-- *Graph*: graph (input)
-    A Snap.py graph or a network.
-
-- *FNmPref*: string (input)
+- *FNmPref*: string
     A string representing the preferred output file name.
 
-- *DescStr*: string (input)
+- *DescStr*: string
     Description of the graph. The string should be non-empty.
 
-- *PlotCCdf*: bool (input)
+- *PlotCCdf*: bool
     Plots the distribution as a Complementary Cummulative distribution function.
 
-- *PowerFit*: bool (input)
+- *PowerFit*: bool
     Fits a Power-Law to the distribution.
 
 Return value:
@@ -33,10 +30,10 @@ The following example shows how generate a plot of the in-degree distribution fo
     import snap
 
     Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
-    snap.PlotInDegDistr(Graph, "example", "Directed graph - in-degree Distribution")
+    Graph.PlotInDegDistr("example", "Directed graph - in-degree Distribution")
 
     UGraph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
-    snap.PlotInDegDistr(UGraph, "example", "Undirected graph - in-degree Distribution")
+    UGraph.PlotInDegDistr("example", "Undirected graph - in-degree Distribution")
 
     Network = snap.GenRndGnm(snap.PNEANet, 100, 1000)
-    snap.PlotInDegDistr(Network, "example", "Network - in-degree Distribution")
+    Network.PlotInDegDistr("example", "Network - in-degree Distribution")

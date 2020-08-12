@@ -1,22 +1,19 @@
 PlotEigValDistr
 '''''''''''''''
 
-.. function:: PlotEigValDistr(Graph, NumEigenvalues, FNmPref, DescStr)
+.. function:: PlotEigValDistr(NumEigenvalues, FNmPref, DescStr)
 
-Plots the frequency distribution of the leading *NumEigenvalues* eigenvalues of the undirected graph *Graph*. The function creates three new files: 1) eigDistr.<*FNmPref*>.plt (the commands used to create the plot), 2) eigDistr.<*FNPref*>.png (the plot), and 3) eigDistr.<*FNmPref*>.tab (the plotting data).
+A graph method for undirected graphs that plots the frequency distribution of the leading *NumEigenvalues* eigenvalues. The function creates three new files: 1) eigDistr.<*FNmPref*>.plt (the commands used to create the plot), 2) eigDistr.<*FNPref*>.png (the plot), and 3) eigDistr.<*FNmPref*>.tab (the plotting data).
 
 Parameters:
 
-- *Graph*: undirected graph (input)
-    A Snap.py undirected graph.
-
-- *NumEigenvalues*: int (input)
+- *NumEigenvalues*: int
     The plot will contain the frequencies of the first *NumEigenvalues* eigenvalues.
 
-- *FNmPref*: string (input)
+- *FNmPref*: string
     File name preference for the plotted graph.
 
-- *DescStr*: string (input)
+- *DescStr*: string
     Description of the graph. The string should be non-empty.
 
 Return value:
@@ -33,5 +30,5 @@ an undirected graph of type :class:`TUNGraph`::
 
     # Plot the frequencies of the first 10 eigenvalues
     # NOTE: Random graphs are likely to thwart the calculation of eigenvalues
-    snap.PlotEigValDistr(UGraph, 10, "example", "Random Graph Eigenvalue Distribution")
+    UGraph.PlotEigValDistr(10, "example", "Random Graph Eigenvalue Distribution")
 

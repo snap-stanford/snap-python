@@ -1,21 +1,18 @@
 GetWccs
 '''''''
 
-.. function:: GetWccs (Graph, CnComV)
+.. function:: GetWccs ()
 
-Returns all weakly connected components in *Graph*.
+A graph method that returns all weakly connected components in a graph.
 
 Parameters:
 
-- *Graph*: graph (input)
-    A Snap.py graph or a network.
-
-- *CnComV*: :class:`TCnComV`, a vector of connected components (output)
-    Vector of all weakly-connected components. Each component consists of a TIntV vector of node ids.
+- None
 
 Return value:
 
-- None
+- *CnComV*: :class:`TCnComV`, a vector of connected components
+    Vector of all weakly-connected components. Each component consists of a TIntV vector of node ids.
 
 
 The following example shows how to calculate all weakly-connected components in
@@ -24,20 +21,17 @@ The following example shows how to calculate all weakly-connected components in
     import snap
 
     Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
-    Components = snap.TCnComV()
-    snap.GetWccs(Graph, Components)
+    Components = Graph.GetWccs()
     for CnCom in Components:
         print("Size of component: %d" % CnCom.Len())
 
     UGraph = snap.GenRndGnm(snap.PUNGraph, 1000, 50)
-    Components = snap.TCnComV()
-    snap.GetWccs(UGraph, Components)
+    Components = UGraph.GetWccs()
     for CnCom in Components:
         print("Size of component: %d" % CnCom.Len())
 
     Network = snap.GenRndGnm(snap.PNEANet, 1000, 300)
-    Components = snap.TCnComV()
-    snap.GetWccs(Network, Components)
+    Components = Network.GetWccs()
     for CnCom in Components:
         print("Size of component: %d" % CnCom.Len())
             

@@ -1,21 +1,18 @@
 GetSccs
 '''''''
 
-.. function:: GetSccs (Graph, CnComV)
+.. function:: GetSccs ()
 
-Returns all strongly connected components in *Graph*.
+A graph method that returns all strongly connected components in a graph.
 
 Parameters:
 
-- *Graph*: graph (input)
-    A Snap.py graph or a network.
-
-- *CnComV*: :class:`TCnComV`, a vector of connected components (output)
-    Vector of all strongly-connected components. Each component consists of a TIntV vector of node ids.
+- None
 
 Return value:
 
-- None
+- *CnComV*: :class:`TCnComV`, a vector of connected components
+    Vector of all strongly-connected components. Each component consists of a TIntV vector of node ids.
 
 
 The following example shows how to calculate all strongly-connected components in
@@ -24,20 +21,17 @@ The following example shows how to calculate all strongly-connected components i
     import snap
 
     Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
-    Components = snap.TCnComV()
-    snap.GetSccs(Graph, Components)
+    Components = Graph.GetSccs()
     for CnCom in Components:
         print("Size of component: %d" % CnCom.Len())
 
     UGraph = snap.GenRndGnm(snap.PUNGraph, 1000, 50)
-    Components = snap.TCnComV()
-    snap.GetSccs(UGraph, Components)
+    Components =UGraph.GetSccs()
     for CnCom in Components:
         print("Size of component: %d" % CnCom.Len())
 
     Network = snap.GenRndGnm(snap.PNEANet, 1000, 300)
-    Components = snap.TCnComV()
-    snap.GetSccs(Network, Components)
+    Components = Network.GetSccs()
     for CnCom in Components:
         print("Size of component: %d" % CnCom.Len())
             

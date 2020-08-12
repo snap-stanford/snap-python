@@ -1,21 +1,18 @@
 GetWccSzCnt
 '''''''''''
 
-.. function:: GetWccSzCnt(Graph, WccSzCnt)
+.. function:: GetWccSzCnt()
 
-Returns a distribution of weakly connected component sizes.
+A graph method that returns a distribution of weakly connected component sizes.
 
 Parameters:
 
-- *Graph*: graph (input)
-	A Snap.py graph or a network.
-
-- *WccSzCnt*: :class:`TIntPrV`, a vector of (int, int) pairs (output)
-    Vector of pairs (number of nodes in the component, number of such components).
+- None
 
 Return Value:
 
-- None
+- *WccSzCnt*: :class:`TIntPrV`, a vector of (int, int) pairs
+    Vector of pairs (number of nodes in the component, number of such components).
 
 
 The following example shows how to get the distribution of weakly-connected component sizes in
@@ -24,19 +21,16 @@ The following example shows how to get the distribution of weakly-connected comp
 	import snap
 
 	Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
-	ComponentDist = snap.TIntPrV()
-	snap.GetWccSzCnt(Graph, ComponentDist)
+	ComponentDist = Graph.GetWccSzCnt()
 	for comp in ComponentDist:
 	    print("Size: %d - Number of Components: %d" % (comp.GetVal1(), comp.GetVal2()))
 
 	UGraph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
-	ComponentDist = snap.TIntPrV()
-	snap.GetWccSzCnt(UGraph, ComponentDist)
+	ComponentDist = UGraph.GetWccSzCnt()
 	for comp in ComponentDist:
 	    print("Size: %d - Number of Components: %d" % (comp.GetVal1(), comp.GetVal2()))
 
 	Network = snap.GenRndGnm(snap.PNEANet, 100, 1000)
-	ComponentDist = snap.TIntPrV()
-	snap.GetWccSzCnt(Network, ComponentDist)
+	ComponentDist = Network.GetWccSzCnt()
 	for comp in ComponentDist:
 	    print("Size: %d - Number of Components: %d" % (comp.GetVal1(), comp.GetVal2()))

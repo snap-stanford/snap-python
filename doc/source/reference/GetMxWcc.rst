@@ -1,19 +1,18 @@
 GetMxWcc
 '''''''''''
 
-.. function:: GetMxWcc(Graph)
+.. function:: GetMxWcc()
 
-Returns a graph representing the largest weakly connected component in *Graph*.
+A graph method that returns a graph representing the largest weakly connected component in the original graph.
 
 Parameters:
 
-- *Graph*: graph (input)
-    A Snap.py graph or a network
+- None
 
 Return value:
 
 - graph
-	A Snap.py graph or a network representing the largest weakly connected component in *Graph*.
+	A graph representing the largest weakly connected component in the original graph.
 
 
 The following example shows how to get the largest weakly connected component in
@@ -22,16 +21,16 @@ The following example shows how to get the largest weakly connected component in
     import snap
 
     Graph = snap.GenRndGnm(snap.PNGraph, 100, 500)
-    MxWcc = snap.GetMxWcc(Graph)
+    MxWcc = Graph.GetMxWcc()
     for EI in MxWcc.Edges():
         print("edge: (%d, %d)" % (EI.GetSrcNId(), EI.GetDstNId()))
 
     UGraph = snap.GenRndGnm(snap.PUNGraph, 100, 500)
-    MxWcc = snap.GetMxWcc(UGraph)
+    MxWcc = UGraph.GetMxWcc()
     for EI in MxWcc.Edges():
         print("edge: (%d, %d)" % (EI.GetSrcNId(), EI.GetDstNId()))
 
     Network = snap.GenRndGnm(snap.PNEANet, 100, 500)
-    MxWcc = snap.GetMxWcc(Network)
+    MxWcc = Network.GetMxWcc()
     for EI in MxWcc.Edges():
         print("edge: (%d, %d)" % (EI.GetSrcNId(), EI.GetDstNId()))

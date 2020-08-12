@@ -1,19 +1,16 @@
 PlotKCoreNodes
 ''''''''''''''
 
-.. function:: PlotKCoreNodes(Graph, FNmPref, DescStr)
+.. function:: PlotKCoreNodes(FNmPref, DescStr)
 
-Plots the k-core node-size distribution: core k vs. number of nodes in k-core. The function creates three new files: 1) coreNodes.<*FNmPref*>.plt (the commands used to create the plot), 2) coreNodes.<*FNPref*>.png (the plot), and 3) coreNodes.<*FNmPref*>.tab (the plotting data).
+A graph method that plots the k-core node-size distribution: core k vs. number of nodes in k-core. The function creates three new files: 1) coreNodes.<*FNmPref*>.plt (the commands used to create the plot), 2) coreNodes.<*FNPref*>.png (the plot), and 3) coreNodes.<*FNmPref*>.tab (the plotting data).
 
 Parameters:
 
-- *Graph*: graph (input)
-    A Snap.py graph or a network.
-
-- *FNmPref*: string (input)
+- *FNmPref*: string
     A string representing the preferred output file name.
 
-- *DescStr*: string (input)
+- *DescStr*: string
     Description of the graph. The string should be non-empty.
 
 Return value:
@@ -27,10 +24,10 @@ The following example shows how to plot the k-core node-size distribution for
     import snap
 
     Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
-    snap.PlotKCoreNodes(Graph, "example", "Directed graph - k-core nodes")
+    Graph.PlotKCoreNodes("example", "Directed graph - k-core nodes")
     
     UGraph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
-    snap.PlotKCoreNodes(UGraph, "example", "Undirected graph - k-core nodes")
+    UGraph.PlotKCoreNodes("example", "Undirected graph - k-core nodes")
 
     Network = snap.GenRndGnm(snap.PNEANet, 100, 1000)
-    snap.PlotKCoreNodes(Network, "example", "Network - k-core nodes")
+    Graph.PlotKCoreNodes("example", "Network - k-core nodes")
