@@ -1,29 +1,26 @@
 GetClosenessCentr
 '''''''''''''''''
 
-.. function:: GetClosenessCentr(Graph, NId, Normalized=True, IsDir=False)
+.. function:: GetClosenessCentr(NId, Normalized=True, IsDir=False)
 
-Returns closeness centrality of a given node *NId* in *Graph*. Closeness centrality is equal to 1/farness centrality.
+A graph method that returns closeness centrality of a given node *NId*. Closeness centrality is equal to 1/farness centrality.
 
 Parameters:
 
-- *Graph*: graph (input)
-    A Snap.py graph or a network.
-
-- *NId*: int (input)
+- *NId*: int
     A node id in *Graph*.
 
-- *Normalized*: bool (input)
+- (optional) *Normalized*: bool
     Output should be normalized (*True*) or not (*False*).
 
-- *IsDir*: bool (input)
+- (optional) *IsDir*: bool
     Indicates whether the edges should be considered directed (*True*) or undirected (*False*).
 
 
 Return value:
 
 - float
-    The closeness centrality of the node *NId* in *Graph*.
+    The closeness centrality of the node *NId*.
 
 
 The following example shows how to get the closeness centrality for nodes in 
@@ -35,15 +32,15 @@ The following example shows how to get the closeness centrality for nodes in
 
     Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
     for NI in Graph.Nodes():
-        CloseCentr = snap.GetClosenessCentr(Graph, NI.GetId())
+        CloseCentr = Graph.GetClosenessCentr(NI.GetId())
         print("node: %d centrality: %f" % (NI.GetId(), CloseCentr))
 
     UGraph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
     for NI in UGraph.Nodes():
-        CloseCentr = snap.GetClosenessCentr(UGraph, NI.GetId())
+        CloseCentr = UGraph.GetClosenessCentr(NI.GetId())
         print("node: %d centrality: %f" % (NI.GetId(), CloseCentr))
 
     Network = snap.GenRndGnm(snap.PNEANet, 100, 1000)
     for NI in Network.Nodes():
-        CloseCentr = snap.GetClosenessCentr(Network, NI.GetId())
+        CloseCentr = Network.GetClosenessCentr(NI.GetId())
         print("node: %d centrality: %f" % (NI.GetId(), CloseCentr))

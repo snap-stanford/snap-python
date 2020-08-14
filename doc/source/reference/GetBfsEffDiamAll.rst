@@ -1,22 +1,17 @@
-
 GetBfsEffDiamAll
 ````````````````
 
-.. function:: GetBfsEffDiamAll(Graph, NTestNode, IsDir)
+.. function:: GetBfsEffDiamAll(NTestNode, IsDir)
 
-Returns the approximation of the effective diameter, the diameter, and
-the average shortest path length in a graph. Does this by performing
+A graph method that returns the approximation of the effective diameter, the diameter, and the average shortest path length in a graph. Does this by performing
 BFS from *NTestNodes* random starting nodes.
 
 Parameters:
 
-- *Graph*: graph (input)
-    A Snap.py graph or a network.
-
-- *NTestNodes*: int (input)
+- *NTestNodes*: int
     The number of random start nodes to use in the BFS used to calculate the graph diameter and effective diameter.
 
-- *IsDir*: bool (input)
+- *IsDir*: bool
     Indicates whether the edges should be considered directed or undirected.
 
 Return value:
@@ -30,15 +25,15 @@ The following example shows how to calculate an effective diameter::
 
    import snap
 
-   G = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
-   result = snap.GetBfsEffDiamAll(G, 10, False)
+   Graph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
+   result = Graph.GetBfsEffDiamAll(10, False)
    print(result)
 
-   G = snap.GenRndGnm(snap.PNGraph, 100, 1000)
-   result = snap.GetBfsEffDiamAll(G, 10, False)
+   UGraph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
+   result = UGraph.GetBfsEffDiamAll(10, False)
    print(result)
 
-   G = snap.GenRndGnm(snap.PNEANet, 100, 1000)
-   result = snap.GetBfsEffDiamAll(G, 10, False)
+   Network = snap.GenRndGnm(snap.PNEANet, 100, 1000)
+   result = Network.GetBfsEffDiamAll(10, False)
    print(result)
 

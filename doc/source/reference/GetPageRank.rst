@@ -1,30 +1,25 @@
 GetPageRank
 '''''''''''
 
-.. function:: GetPageRank(Graph, PRankH, C=0.85, Eps=1e-4, MaxIter=100)
+.. function:: GetPageRank(C=0.85, Eps=1e-4, MaxIter=100)
 
-Computes the PageRank score of every node in *Graph*. The scores are stored in *PRankH*.
+A graph method that returns the PageRank score of every node.
 
 Parameters:
 
-- *Graph*: graph (input)
-    A Snap.py graph or a network.
-
-- *PRankH*: :class:`TIntFltH`, a hash of int keys and float values (output)
-    PageRank scores. Keys are node IDs, values are computed PageRank scores.
-
-- *C*: float (input)
+- *C*: float
     Damping factor.
 
-- *Eps*: float (input)
+- *Eps*: float
     Convergence difference.
 
-- *MaxIter*: int (input)
+- *MaxIter*: int
     Maximum number of iterations.
 
 Return value:
 
-- None
+- *PRankH*: :class:`TIntFltH`, a hash of int keys and float values
+    PageRank scores. Keys are node ids, values are computed PageRank scores.
 
 
 The following example shows how to calculate PageRank scores for nodes in
@@ -33,20 +28,17 @@ The following example shows how to calculate PageRank scores for nodes in
     import snap
 
     Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
-    PRankH = snap.TIntFltH()
-    snap.GetPageRank(Graph, PRankH)
+    PRankH = Graph.GetPageRank(PRankH)
     for item in PRankH:
         print(item, PRankH[item])
 
     UGraph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
-    PRankH = snap.TIntFltH()
-    snap.GetPageRank(UGraph, PRankH)
+    PRankH = UGraph.GetPageRank(PRankH)
     for item in PRankH:
         print(item, PRankH[item])
 
     Network = snap.GenRndGnm(snap.PNEANet, 100, 1000)
-    PRankH = snap.TIntFltH()
-    snap.GetPageRank(Network, PRankH)
+    PRankH = Network.GetPageRank(PRankH)
     for item in PRankH:
         print(item, PRankH[item])
 

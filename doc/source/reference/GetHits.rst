@@ -1,28 +1,23 @@
 GetHits
 '''''''''''''''
 
-.. function:: GetHits (Graph, NIdHubH, NIdAuthH, MaxIter = 20)
+.. function:: GetHits (MaxIter = 20)
 
-Computes the Hubs and Authorities score of every node in *Graph*. The scores are stored in *NIdHubH* and *NIdAuthH*.
+A graph method that returns the Hubs and Authorities score of every node.
 
 
 Parameters
 
-- *Graph*: graph (input)
-    A Snap.py graph or a network.
-    
-- *NIdHubH*: :class:`TIntFltH`, a hash table of int keys and float values (output)
-    The keys are the node ids and the values are the hub scores as outputed by the HITS algorithm.
-
-- *NIdAuthH*: :class:`TIntFltH`, a hash table of int keys and float values (output)
-    The keys are the node ids and the values are the authority scores as outputed by the HITS algorithm.   
-
-- *MaxIter*: int (input)
+- (optional) *MaxIter*: int
     Maximum number of iterations.
 
 Return value:
 
-- None
+- *NIdHubH*: :class:`TIntFltH`, a hash table of int keys and float values
+    The keys are the node ids and the values are the hub scores as outputed by the HITS algorithm.
+
+- *NIdAuthH*: :class:`TIntFltH`, a hash table of int keys and float values
+    The keys are the node ids and the values are the authority scores as outputed by the HITS algorithm.   
 
 
 The following example shows how to calculate Hub and Authority scores for nodes in
@@ -31,27 +26,21 @@ The following example shows how to calculate Hub and Authority scores for nodes 
     import snap
 
     Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
-    NIdHubH = snap.TIntFltH()
-    NIdAuthH = snap.TIntFltH()
-    snap.GetHits(Graph, NIdHubH, NIdAuthH)
+    NIdHubH, NIdAuthH = Graph.GetHits()
     for item in NIdHubH:
         print(item, NIdHubH[item])
     for item in NIdAuthH:
         print(item, NIdAuthH[item])
 
     UGraph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
-    NIdHubH = snap.TIntFltH()
-    NIdAuthH = snap.TIntFltH()
-    snap.GetHits(UGraph, NIdHubH, NIdAuthH)
+    NIdHubH, NIdAuthH = UGraph.GetHits()
     for item in NIdHubH:
         print(item, NIdHubH[item])
     for item in NIdAuthH:
         print(item, NIdAuthH[item])
 
     Network = snap.GenRndGnm(snap.PNEANet, 100, 1000)
-    NIdHubH = snap.TIntFltH()
-    NIdAuthH = snap.TIntFltH()
-    snap.GetHits(Network, NIdHubH, NIdAuthH)
+    NIdHubH, NIdAuthH = Network.GetHits()
     for item in NIdHubH:
         print(item, NIdHubH[item])
     for item in NIdAuthH:

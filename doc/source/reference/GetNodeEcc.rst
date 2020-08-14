@@ -1,25 +1,22 @@
 GetNodeEcc
 '''''''''''
 
-.. function:: GetNodeEcc(Graph, NId, IsDir=False)
+.. function:: GetNodeEcc(NId, IsDir=False)
 
-Returns node eccentricity, the largest shortest-path distance from the node *NId* to any other node in the *Graph*.
+A graph method that returns node eccentricity, the largest shortest-path distance from the node *NId* to any other node.
 
 Parameters:
 
-- *Graph*: graph (input)
-    A Snap.py graph or a network.
+- *NId*: int
+    A node id.
 
-- *NId*: int (output)
-    A node id in *Graph*.
-
-- *IsDir*: bool (input)
+- (optional) *IsDir*: bool
     Indicates whether the edges should be considered directed or undirected.
 
 Return value:
 
 - int
-    The eccentricity of node *NId* within *Graph*.
+    The eccentricity of node *NId*.
 
 The following example shows how to calculate eccentricity for nodes in
 :class:`TNGraph`, :class:`TUNGraph`, and :class:`TNEANet`::
@@ -28,13 +25,13 @@ The following example shows how to calculate eccentricity for nodes in
     
     Graph = snap.GenRndGnm(snap.PNGraph, 10, 30)
     for NI in Graph.Nodes():
-        print(NI.GetId(), snap.GetNodeEcc(Graph, NI.GetId(), True))
+        print(NI.GetId(), Graph.GetNodeEcc(NI.GetId(), True))
     
     UGraph = snap.GenRndGnm(snap.PUNGraph, 10, 30)
     for NI in UGraph.Nodes():
-        print(NI.GetId(), snap.GetNodeEcc(UGraph, NI.GetId(), False))
+        print(NI.GetId(), UGraph.GetNodeEcc(NI.GetId(), False))
 
     Network = snap.GenRndGnm(snap.PNEANet, 10, 30)
     for NI in Network.Nodes():
-        print(NI.GetId(), snap.GetNodeEcc(Network, NI.GetId(), True))
+        print(NI.GetId(), Network.GetNodeEcc(NI.GetId(), True))
 

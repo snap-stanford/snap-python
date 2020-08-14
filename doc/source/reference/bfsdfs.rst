@@ -12,7 +12,7 @@ Breadth and Depth First Search
    GetNodesAtHop
    GetNodesAtHops
    GetShortPath
-   GetShortPath1
+   GetShortPathAll
    GetBfsTree
    GetTreeRootNId
    GetTreeSig

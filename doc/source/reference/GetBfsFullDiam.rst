@@ -1,19 +1,16 @@
 GetBfsFullDiam
 ''''''''''''''
 
-.. function:: GetBfsFullDiam (Graph, NTestNodes, IsDir=false)
+.. function:: GetBfsFullDiam (NTestNodes, IsDir=false)
 
-Computes the diameter, or 'longest shortest path', of a *Graph* by performing a breadth first search over the *Graph*. This diameter is approximate, as it is calculated with an *NTestNodes* number of random starting nodes.
+A graph method that computes the diameter, or 'longest shortest path', of a graph by performing a breadth first search. This diameter is approximate, as it is calculated with an *NTestNodes* number of random starting nodes.
 
 Parameters:
 
-- *Graph*: graph (input)
-    A Snap.py graph or a network.
-
-- *NTestNodes*: int (input)
+- *NTestNodes*: int
     Number of starting test nodes.
 
-- *IsDir*: bool (input)
+- *IsDir*: bool
     Indicates whether the edges should be considered directed or undirected.
 
 Return value:
@@ -30,13 +27,13 @@ The following example shows how to calculate diameters for nodes in
     import snap
 
     Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
-    diam = snap.GetBfsFullDiam(Graph, 100, False)
+    diam = Graph.GetBfsFullDiam(100, False)
     print(diam)
 
     UGraph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
-    diam = snap.GetBfsFullDiam(UGraph, 100, False)
+    diam = UGraph.GetBfsFullDiam(100, False)
     print(diam)
 
     Network = snap.GenRndGnm(snap.PNEANet, 100, 1000)
-    diam = snap.GetBfsFullDiam(Network, 100, False)
+    diam = Network.GetBfsFullDiam(100, False)
     print(diam)
