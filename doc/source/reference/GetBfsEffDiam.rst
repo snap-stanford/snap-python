@@ -1,19 +1,16 @@
 GetBfsEffDiam
 '''''''''''''
 
-.. function:: GetBfsEffDiam(Graph, NTestNodes, IsDir=False) 
+.. function:: GetBfsEffDiam(NTestNodes, IsDir=False) 
 
-Returns the (approximation of the) Effective Diameter (90-th percentile of the distribution of shortest path lengths) of a graph (by performing BFS from NTestNodes random starting nodes).
+A graph method that returns the (approximation of the) Effective Diameter (90-th percentile of the distribution of shortest path lengths) of a graph (by performing BFS from NTestNodes random starting nodes).
 
 Parameters:
 
-- *Graph*: graph (input)
-    A Snap.py graph or a network.
-
-- *NTestNodes*: int (input)
+- *NTestNodes*: int
     The number of random start nodes to use in the BFS used to calculate the graph diameter and effective diameter.
 
-- *IsDir*: bool (input)
+- *IsDir*: bool
     Indicates whether the edges should be considered directed or undirected.
 
 Return value:
@@ -29,17 +26,17 @@ The following example shows how to calculate BfsEffDiam for nodes in
     Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
     NTestNodes = 10
     IsDir = False
-    EffDiam = snap.GetBfsEffDiam(Graph, NTestNodes, IsDir)
+    EffDiam = Graph.GetBfsEffDiam(NTestNodes, IsDir)
     print(EffDiam)
 
     UGraph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
     NTestNodes = 10
     IsDir = False
-    EffDiam = snap.GetBfsEffDiam(UGraph, NTestNodes, IsDir)
+    EffDiam = UGraph.GetBfsEffDiam(NTestNodes, IsDir)
     print(EffDiam)
 
     Network = snap.GenRndGnm(snap.PNEANet, 100, 1000)
     NTestNodes = 10
     IsDir = False
-    EffDiam = snap.GetBfsEffDiam(Network, NTestNodes, IsDir)
+    EffDiam = Network.GetBfsEffDiam(NTestNodes, IsDir)
     print(EffDiam)

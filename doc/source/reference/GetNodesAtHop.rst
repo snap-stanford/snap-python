@@ -1,31 +1,28 @@
 GetNodesAtHop
 '''''''''''''
 
-.. function:: GetNodesAtHop(Graph, StartNId, Hop, NIdV, IsDir)
+.. function:: GetNodesAtHop(StartNId, Hop, IsDir)
 
-Finds the node ids of all the nodes that are at distance *Hop* from node *StartNId* and stores them in *NIdV*. The function returns the number of nodes found.
+A graph method that finds the node ids of all the nodes that are at distance *Hop* from node *StartNId* and stores them in *NIdV*. The function returns the number of nodes found.
 
 Parameters:
 
-- *PGraph*: graph (input)
-    A Snap.py graph or a network.
-
-- *StartNId*: int (input)
+- *StartNId*: int
     Starting node id.
 
-- *Hop*: int (input)
+- *Hop*: int
     Distance from the starting node.
 
-- *NIdV*: :class:`TIntV`, a vector of ints (output)
-    Node ids of nodes *Hop* distance away from *StartNId*.
-
-- *IsDir*: bool (input)
+- *IsDir*: bool
     Indicates whether the edges should be considered directed (True) or undirected (False).
 
 Return value:
 
 - int
     The number of nodes at distance *Hop* from *StartNId*.
+
+- *NIdV*: :class:`TIntV`, a vector of ints 
+    Node ids of nodes *Hop* distance away from *StartNId*.
 
 
 The following example shows how to get a vector of nodes at hop distance
@@ -35,19 +32,16 @@ The following example shows how to get a vector of nodes at hop distance
     import snap
 
     Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
-    NodeVec = snap.TIntV()
-    snap.GetNodesAtHop(Graph, 1, 2, NodeVec, True)
+    NodeNum, NodeVec = Graph.GetNodesAtHop(1, 2, True)
     for item in NodeVec:
         print(item)
 
     UGraph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
-    NodeVec = snap.TIntV()
-    snap.GetNodesAtHop(UGraph, 1, 2, NodeVec, False)
+    NodeNum, NodeVec = UGraph.GetNodesAtHop(1, 2, False)
     for item in NodeVec:
         print(item)
 
     Network = snap.GenRndGnm(snap.PNEANet, 100, 1000)
-    NodeVec = snap.TIntV()
-    snap.GetNodesAtHop(Network, 1, 2, NodeVec, True)
+    NodeNum, NodeVec = Network.GetNodesAtHop(1, 2, True)
     for item in NodeVec:
         print(item)

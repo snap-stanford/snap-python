@@ -1,22 +1,21 @@
 CommunityGirvanNewman
 '''''''''''''''''''''
 
-.. function:: CommunityGirvanNewman(Graph, CmtyV)
+.. function:: CommunityGirvanNewman()
 
-Uses the Girvan-Newman community detection algorithm based on betweenness centrality on *Graph*. Fills *CmtyV* with all the communities detected and returns the modularity of the network.
+A graph method for undirected graphs that uses the Girvan-Newman community detection algorithm based on betweenness centrality to detect communities and returns the modularity of the network and detected communities.
 
 Parameters:
 
-- *Graph*: undirected graph (input)
-    A Snap.py undirected graph.
-
-- *CmtyV*: :class:`TCnComV`, a vector of connected components (output)
-    A vector of all the communities that are detected by the Girvan-Newman method. Each community is represented as a vector of node ids.
+- None
 
 Return value:
 
 - float
     The modularity of the network.
+
+- *CmtyV*: :class:`TCnComV`, a vector of connected components
+    A vector of all the communities that are detected by the Girvan-Newman method. Each community is represented as a vector of node ids.
 
 
 The following example shows how to detect communities using Girvan-Newman algorithm in :class:`TUNGraph`::
@@ -24,8 +23,7 @@ The following example shows how to detect communities using Girvan-Newman algori
     import snap
 
     UGraph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
-    CmtyV = snap.TCnComV()
-    modularity = snap.CommunityGirvanNewman(UGraph, CmtyV)
+    modularity, CmtyV = UGraph.CommunityGirvanNewman()
     for Cmty in CmtyV:
         print("Community: ")
         for NI in Cmty:

@@ -1,25 +1,22 @@
 PlotInvParticipRat
 ''''''''''''''''''
 
-.. function:: PlotInvParticipRat(Graph, MaxEigVecs, TimeLimit, FNmPref, DescStr)
+.. function:: PlotInvParticipRat(MaxEigVecs, TimeLimit, FNmPref, DescStr)
 
-Plots the inverse participation ratio. See the reference below for more details. The function creates three new files: 1) eigIPR.<*FNmPref*>.plt (the commands used to create the plot), 2) eigIPR.<*FNPref*>.png (the plot), and 3) eigIPR.<*FNmPref*>.tab (the plotting data)..
+A graph method for undirected graphs that plots the inverse participation ratio. See the reference below for more details. The function creates three new files: 1) eigIPR.<*FNmPref*>.plt (the commands used to create the plot), 2) eigIPR.<*FNPref*>.png (the plot), and 3) eigIPR.<*FNmPref*>.tab (the plotting data)..
 
 Parameters:
 
-- *Graph*: undirected graph (input)
-    A Snap.py undirected graph.
-
-- *MaxEigVecs*: int (input)
+- *MaxEigVecs*: int
     Maximum number of eigenvectors to return.
     
-- *TimeLimit*: int (input)
+- *TimeLimit*: int
     Maximum number seconds to search.
     
-- *FNmPref*: string (input)
+- *FNmPref*: string
     File name preference for the plotted graph.
 
-- *DescStr*: string (input)
+- *DescStr*: string
     Description of the graph. The string should be non-empty.
   
 Return value:
@@ -35,5 +32,5 @@ an undirected graph of type :class:`TUNGraph`::
     import snap
 
     UGraph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
-    snap.PlotInvParticipRat(UGraph, 50, 10, "example", "PlotInvParticipRat")
+    UGraph.PlotInvParticipRat(50, 10, "example", "PlotInvParticipRat")
 

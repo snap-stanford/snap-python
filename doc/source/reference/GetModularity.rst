@@ -1,20 +1,17 @@
 GetModularity
 '''''''''''''
 
-.. function:: GetModularity(Graph, NIdV, GEdges=-1)
+.. function:: GetModularity(NIdV, GEdges=-1)
 
-Computes the modularity score of a set of node ids *NIdV* in *Graph*. The function runs much faster if the number of edges in Graph is provided in the optional *GEdges* parameter.
+A graph method that computes the modularity score of a set of node ids *NIdV*. The function runs much faster if the number of edges is provided in the optional *GEdges* parameter.
 
 Parameters:
 
-- *Graph*: graph (input)
-    A Snap.py graph or a network.
-
-- *NIdV*: :class:`TIntV`, a vector of ints (input)
+- *NIdV*: Python list or :class:`TIntV`, a vector of ints
     The set of nodes ids from which the modularity score will be computed.
 
-- *GEdges*: int (input)
-    Optional parameter indicating number of edges in the graph which speeds up the function execution if provided. Note: if GEdges is not equal to the number of edges in the graph, then the computed modularity score will be incorrect.
+- (optional) *GEdges*: int
+    A parameter providing the number of edges in the graph which speeds up the function execution if provided. Note: if GEdges must be equal to the number of edges in the graph, otherwise the computed modularity score will be incorrect.
 
 Return value:
 
@@ -27,15 +24,15 @@ The following example shows how to calculate Modularity scores for the first 10 
 
     import snap
 
-    Nodes = snap.TIntV()
+    Nodes = []
     for nodeId in range(10):
-        Nodes.Add(nodeId)
+        Nodes.append(nodeId)
 
     Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
-    print(snap.GetModularity(Graph, Nodes, 1000))
+    print(Graph.GetModularity(Nodes, 1000))
 
     UGraph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
-    print(snap.GetModularity(UGraph, Nodes, 1000))
+    print(UGraph.GetModularity(Nodes, 1000))
 
     Network = snap.GenRndGnm(snap.PNEANet, 100, 1000)
-    print(snap.GetModularity(Network, Nodes, 1000))
+    print(Network.GetModularity(Nodes, 1000))

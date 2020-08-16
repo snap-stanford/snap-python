@@ -1,22 +1,21 @@
 CommunityCNM
 ''''''''''''
 
-.. function:: CommunityCNM (Graph, CmtyV)
+.. function:: CommunityCNM ()
 
-Uses the Clauset-Newman-Moore community detection method for large networks. At every step of the algorithm two communities that contribute maximum positive value to global modularity are merged. Fills *CmtyV* with all the communities detected and returns the modularity of the network.
+A graph method for undirected graphs that uses the Clauset-Newman-Moore community detection method for large networks and returns the modularity of the network and detected communities. At every step of the algorithm two communities that contribute maximum positive value to global modularity are merged.
 
 Parameters:
 
-- *Graph*: undirected graph (input)
-    A Snap.py undirected graph. Make sure that *Graph* has no self-edges. If needed, use :meth:`DelSelfEdges`.
-
-- *CmtyV*: :class:`TCnComV`, a vector of connected components (output)
-    A vector of all the communities that are detected by the CNM method. Each community is represented as a vector of node IDs.
+- None
 
 Return value:
 
 - float
     The modularity of the network.
+
+- *CmtyV*: :class:`TCnComV`, a vector of connected components
+    A vector of all the communities that are detected by the CNM method. Each community is represented as a vector of node ids.
 
 
 The following example shows how to detect communities using CNM algorithm in :class:`TUNGraph`::
@@ -24,8 +23,7 @@ The following example shows how to detect communities using CNM algorithm in :cl
     import snap
 
     UGraph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
-    CmtyV = snap.TCnComV()
-    modularity = snap.CommunityCNM(UGraph, CmtyV)
+    modularity, CmtyV = UGraph.CommunityCNM()
     for Cmty in CmtyV:
         print("Community: ")
         for NI in Cmty:

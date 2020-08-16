@@ -1,28 +1,25 @@
 GetFarnessCentr
 '''''''''''''''
 
-.. function:: GetFarnessCentr(Graph, NId, Normalized=True, IsDir=False)
+.. function:: GetFarnessCentr(NId, Normalized=True, IsDir=False)
 
-Returns farness centrality of a given node *NId* in *Graph*. Farness centrality of a node is the average shortest path length to all other nodes that reside in the same connected component as the given node.
+A graph method that returns farness centrality of a given node *NId*. Farness centrality of a node is the average shortest path length to all other nodes that reside in the same connected component as the given node.
 
 Parameters:
 
-- *Graph*: graph (input)
-    A Snap.py graph or a network.
+- *NId*: int
+    A node id.
 
-- *NId*: int (input)
-    A node id in *Graph*.
-
-- *Normalized*: bool (input)
+- (optional) *Normalized*: bool
     Output should be normalized (*True*) or not (*False*).
 
-- *IsDir*: bool (input)
+- (optional) *IsDir*: bool
     Indicates whether the edges should be considered directed (*True*) or undirected (*False*).
 
 Return value:
 
 - float
-    The farness centrality of the node *NId* in *Graph*.
+    The farness centrality of the node *NId*.
 
 
 The following example shows how to get the farness centrality for nodes in 
@@ -34,16 +31,16 @@ The following example shows how to get the farness centrality for nodes in
 
     Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
     for NI in Graph.Nodes():
-        FarCentr = snap.GetFarnessCentr(Graph, NI.GetId())
+        FarCentr = Graph.GetFarnessCentr(NI.GetId())
         print("node: %d centrality: %f" % (NI.GetId(), FarCentr))
 
     UGraph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
     for NI in UGraph.Nodes():
-        FarCentr = snap.GetFarnessCentr(UGraph, NI.GetId())
+        FarCentr = UGraph.GetFarnessCentr(NI.GetId())
         print("node: %d centrality: %f" % (NI.GetId(), FarCentr))
 
     Network = snap.GenRndGnm(snap.PNEANet, 100, 1000)
     for NI in Network.Nodes():
-        FarCentr = snap.GetFarnessCentr(Network, NI.GetId())
+        FarCentr = Network.GetFarnessCentr(NI.GetId())
         print("node: %d centrality: %f" % (NI.GetId(), FarCentr))
 

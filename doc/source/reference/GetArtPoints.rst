@@ -1,34 +1,29 @@
 GetArtPoints
 ''''''''''''
 
-.. function:: GetArtPoints(InGraph,ArtNIdV)
+.. function:: GetArtPoints()
 
-Returns articulation points of an undirected *InGraph*.
+A graph method for undirected graphs that returns articulation points of a graph.
 
 Parameters:
 
-- *InGraph*: undirected graph (input)
-    A Snap.py undirected graph.
-
-- *ArtNIdV*: :class:`TIntV`, a vector of ints (output)
-    The node ids of the articulation points in the grpah *InGraph*.
+- None
 
 Return value:
 
-- None
+- *ArtNIdV*: :class:`TIntV`, a vector of ints
+    The node ids of the articulation points in the graph.
 
 For more info see: http://www.geeksforgeeks.org/articulation-points-or-cut-vertices-in-a-graph/
 
 
 The following example shows how to find articulation points in a graph of type
-:class:`TNGraph`::
+:class:`TUNGraph`::
 
     import snap 
     
     UGraph = snap.GenRndGnm(snap.PUNGraph, 1000, 10) 
-    ArtNIdV = snap.TIntV() 
-    snap.GetArtPoints(UGraph, ArtNIdV) 
-    
+    ArtNIdV = UGraph.GetArtPoints() 
     print("Articulation points of a random Undirected Graph : ")
     for NI in ArtNIdV:
         print("node: %d" % NI)

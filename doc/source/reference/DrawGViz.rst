@@ -1,51 +1,47 @@
 DrawGViz
-'''''''''''
+''''''''
 
-.. function:: DrawGViz(Graph, Layout, PltFNm, Desc=TStr(), NodeLabels=False, NIdColorH=TIntStrH())
+.. function:: DrawGViz(Layout, PltFNm, Desc, NodeLabelH)
 
-Draws the given *Graph* using a selected GraphViz Layout engine with nodes colored. Useful for drawing small (<100 node) graphs. Creates a file with name *PltFNm*.
+A graph method to draw a given graph using a selected GraphViz Layout engine with nodes labeled. Creates a file with name *PltFNm*.
 
 Parameters:
 
-- *Graph*: graph (input)
-    A Snap.py graph or a network
-
-- *Layout*: TGVizLayout (input)
+- *Layout*: TGVizLayout
     One of gvlDot, gvlNeato, gvlTwopi, gvlCirco, gvlSfdp. The type of layout for the graph.
 
-- *PltFNm*: string (input)
+- *PltFNm*: string
     Output filename (extension .ps, .png, .gif) determines the output format.
 
-- *Desc*: string (input)
+- *Desc*: string
     A string describing the visualization.
-
-- *NodeLabels*: bool (input)
-    Whether or not the nodes in image have labels associated with them.
     
-- *NIdColorH*: :class:`TIntStrH`, a hash table with int keys and string values (input)
-    Maps node ids to node colors (see GraphViz documentation for more details).
+- *NodeLabelH*: Python dictionary or :class:`TIntStrH`, a hash table of int keys and string values
+    Maps node ids to node labels.
 
 Return value:
 
 - None
 
 
-Note that larger graphs (more than a few hundred nodes) may take several minutes to finish generating the image. The following example shows how to make a pretty graph image for nodes in
-:class:`TNGraph`, :class:`TUNGraph`, and :class:`TNEANet`::
-    
+The following example shows how to draw the graph for :class:`TNGraph`, :class:`TUNGraph`, and :class:`TNEANet`::
+
     import snap
+    
+    Graph = snap.GenRndGnm(snap.PNGraph, 10, 50)
+    labels = {}
+    for NI in Graph.Nodes():
+	    labels[NI.GetId()] = str(NI.GetId())
+    Graph.DrawGViz(snap.gvlDot, "output.png", " ", labels)
 
-    Graph = snap.GenRndGnm(snap.PNGraph, 10, 20)
-    snap.DrawGViz(Graph, snap.gvlDot, "graph.png", "graph 1")
+    UGraph = snap.GenRndGnm(snap.PUNGraph, 10, 50)
+    labels = {}
+    for NI in UGraph.Nodes():
+        labels[NI.GetId()] = str(NI.GetId())
+    UGraph.DrawGViz(snap.gvlDot, "output.png", " ", labels)
 
-    UGraph = snap.GenRndGnm(snap.PUNGraph, 10, 40)
-    snap.DrawGViz(UGraph, snap.gvlNeato, "graph_undirected.png", "graph 2", True)
-
-    NIdColorH = snap.TIntStrH()
-    NIdColorH[0] = "green"
-    NIdColorH[1] = "red"
-    NIdColorH[2] = "purple"
-    NIdColorH[3] = "blue"
-    NIdColorH[4] = "yellow"
-    Network = snap.GenRndGnm(snap.PNEANet, 5, 10)
-    snap.DrawGViz(Network, snap.gvlSfdp, "network.png", "graph 3", True, NIdColorH)
+    Network = snap.GenRndGnm(snap.PNEANet, 10, 50)
+    labels = {}
+    for NI in Network.Nodes():
+        labels[NI.GetId()] = str(NI.GetId())
+    Network.DrawGViz(snap.gvlDot, "output.png", " ", labels)

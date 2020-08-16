@@ -1,19 +1,18 @@
 IsWeaklyConn
 ''''''''''''
 
-.. function:: IsWeaklyConn(Graph)
+.. function:: IsWeaklyConn()
 
-Tests whether *Graph* is weakly connected.
+A graph method that tests whether a graph is weakly connected.
 
 Parameters:
 
-- *Graph*: graph (input)
-    A Snap.py graph or a network.
+- None
 
 Return value:
 
 - bool
-    Returns True if the *Graph* is weakly connected, False otherwise.
+    Returns True if the graph is weakly connected, False otherwise.
 
 
 The following example shows how to use :func:`IsWeaklyConn` for nodes in
@@ -22,10 +21,10 @@ The following example shows how to use :func:`IsWeaklyConn` for nodes in
     import snap
 
     Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
-    print(snap.IsWeaklyConn(Graph))
+    print(Graph.IsWeaklyConn())
 
     UGraph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
-    print(snap.IsWeaklyConn(UGraph))
+    print(UGraph.IsWeaklyConn())
 
     Network = snap.GenRndGnm(snap.PNEANet, 100, 1000)
-    print(snap.IsWeaklyConn(Network))
+    print(Network.IsWeaklyConn())

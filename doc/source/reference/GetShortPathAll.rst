@@ -1,31 +1,28 @@
-GetShortPath
-''''''''''''
+GetShortPathAll
+'''''''''''''''
 
-.. function:: GetShortPath(Graph, SrcNId, NIdToDistH, IsDir=false, MaxDist=TInt::Mx)
+.. function:: GetShortPathAll(SrcNId, IsDir=false, MaxDist=TInt::Mx)
 
-Returns the length of the shortest path from node SrcNId to all other nodes in the network.
+A graph method that returns the length of the shortest path from node SrcNId to all other nodes.
 
 Parameters:
 
-- *Graph*: graph (input)
-    A Snap.py graph or a network.
-
-- *SrcNId*: int (input)
+- *SrcNId*: int
     Node id for source node.
 
-- *NIdToDistH*: :class:`TIntH`, a hash table with integer keys and values (output)
-    Maps node id to shortest path distance. Only contains nodes that are reachable from *SrcNId*.
-
-- *IsDir*: bool (input)
+- (optional) *IsDir*: bool
     Indicates whether the edges should be considered directed or undirected.
 
-- *MaxDist*: int (input)
+- (optional) *MaxDist*: int
     Maximum number of hops that BFS expands to. This is helpful for speeding-up the code if one in interested only in nodes less than *MaxDist* away from *SrcNId*.
 
 Return value:
 
 - int
     The length of the shortest path from *SrcNId* to all other nodes.
+
+- *NIdToDistH*: :class:`TIntH`, a hash table with integer keys and values
+    Maps node id to shortest path distance. Only contains nodes that are reachable from *SrcNId*.
 
 
 The following example shows how to calculate the length of the shortest path in
@@ -34,22 +31,19 @@ The following example shows how to calculate the length of the shortest path in
     import snap
 
     Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
-    NIdToDistH = snap.TIntH()
-    shortestPath = snap.GetShortPath(Graph, 10, NIdToDistH)
+    shortestPath, NIdToDistH = Graph.GetShortPathAll(10)
     for item in NIdToDistH:
         print(item, NIdToDistH[item])
     print(shortestPath)
 
     UGraph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
-    NIdToDistH = snap.TIntH()
-    shortestPath = snap.GetShortPath(UGraph, 10, NIdToDistH)
+    shortestPath, NIdToDistH = UGraph.GetShortPathAll(10)
     for item in NIdToDistH:
         print(item, NIdToDistH[item])
     print(shortestPath)
 
     Network = snap.GenRndGnm(snap.PNEANet, 100, 1000)
-    NIdToDistH = snap.TIntH()
-    shortestPath = snap.GetShortPath(Network, 10, NIdToDistH)
+    shortestPath, NIdToDistH = Network.GetShortPathAll(10)
     for item in NIdToDistH:
         print(item, NIdToDistH[item])
     print(shortestPath)

@@ -6,7 +6,7 @@ Plotting and Drawing
    :maxdepth: 2
 
    DrawGViz
-   DrawGViz1
+   DrawGVizColor
    PlotSccDistr
    PlotWccDistr
    PlotClustCf

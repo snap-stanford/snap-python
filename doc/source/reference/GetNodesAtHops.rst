@@ -1,22 +1,16 @@
 GetNodesAtHops
 ''''''''''''''
 
-.. function:: GetNodesAtHops (Graph, StartNId, HopCntV, IsDir=False)
+.. function:: GetNodesAtHops (StartNId, IsDir=False)
 
-Fills *HopCntV* with pairs (hop distance from *StartNId*, number of nodes at that hop distance). The function returns the number of different hop distances reachable from *StartNId*.
+A graph method that computes the number of nodes at different hop distances reachable from *StartNId*. It returns the number of different hops and pairs (hop distance from *StartNId*, number of nodes at that hop distance).
 
 Parameters:
 
-- *Graph*: graph (input)
-    A Snap.py graph or a network.
-
-- *StartNId*: int (input)
+- *StartNId*: int
     Starting node id.
 
-- *HopCntV*: :class:`TIntPrV`, a vector of (int, int) pairs (output)
-    Vector of (hop distance, number of nodes at that distance) pairs.
-
-- *IsDir*: bool (input)
+- *IsDir*: bool
     Indicates whether the edges should be considered directed (True) or undirected (False).
 
 Return value:
@@ -24,25 +18,25 @@ Return value:
 - int
     Number of different hop distances reachable from *StartNId*, including self-loops.
 
+- *HopCntV*: :class:`TIntPrV`, a vector of (int, int) pairs
+    Vector of (hop distance, number of nodes at that distance) pairs.
+
 
 The following example shows how to obtain number of nodes for each hop distance from node 1 in :class:`TNGraph`, :class:`TUNGraph`, and :class:`TNEANet`::
 
     import snap
 
     Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
-    NodeVec = snap.TIntPrV()
-    snap.GetNodesAtHops(Graph, 1, NodeVec, True)
+    NodeNum, NodeVec = Graph.GetNodesAtHops(1, True)
     for item in NodeVec:
         print("%d, %d" % (item.GetVal1(), item.GetVal2()))
 
     UGraph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
-    NodeVec = snap.TIntPrV()
-    snap.GetNodesAtHops(UGraph, 1, NodeVec, False)
+    NodeNum, NodeVec = UGraph.GetNodesAtHops(1, False)
     for item in NodeVec:
         print("%d, %d" % (item.GetVal1(), item.GetVal2()))
 
     Network = snap.GenRndGnm(snap.PNEANet, 100, 1000)
-    NodeVec = snap.TIntPrV()
-    snap.GetNodesAtHops(Network, 1, NodeVec, True)
+    NodeNum, NodeVec = Network.GetNodesAtHops(1, True)
     for item in NodeVec:
         print("%d, %d" % (item.GetVal1(), item.GetVal2()))
