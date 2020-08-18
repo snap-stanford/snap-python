@@ -339,7 +339,7 @@ def GetClustCf(Graph, *args, **kwargs):
     else:
         return _GetClustCf(Graph, SampleNodes)        
 
-def GetTriadsbyNode(Graph, SampleNodes=-1):
+def GetTriadsByNode(Graph, SampleNodes=-1):
     NIdCOTriadV = TIntTrV()
     GetTriads(Graph, NIdCOTriadV, SampleNodes)
     return NIdCOTriadV
