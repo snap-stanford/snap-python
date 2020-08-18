@@ -125,7 +125,7 @@ vector. All of the following methods are available for objects that are classifi
       >>> snap.TIntV()
       >>> snap.TIntV(5)
       >>> v1 = snap.TIntV(8, 5)
-      >>> v1.Add(1)
+      >>> v1.append(1)
       >>> v2 = snap.TIntV(v1)
       >>> for val in v2:
       ...     print(val)
@@ -135,8 +135,7 @@ vector. All of the following methods are available for objects that are classifi
    :class:`TVec` offers iterators of type :class:`TInt` for fast access through the vector.
    The :class:`TInt` returned by any iterator method represents the value at a given index in the vector.
 
-   The following public functions are supported by the :class:`TVec` class:
-
+   The following public functions are Python list functions that are also supported by the :class:`TVec` class:
      .. describe:: V[Index]
 
         Returns the value at index *Index* in vector *v*.
@@ -156,6 +155,61 @@ vector. All of the following methods are available for objects that are classifi
      .. describe:: Val not in V
 
         Equivalent to ``not Val in V``.
+
+     .. describe:: append(Val)
+     	
+	Appends *Val* to the end of the vector.
+
+     .. describe:: len()
+     
+	Returns the length of the vector.
+
+     .. describe:: delitem(Index)
+     
+	Deletes the value at index *Index* from the vector.
+
+     .. describe:: extend(Vec)
+     
+          Appends the contents of another vector, *Vec*, to the end of the vector.
+
+     .. describe:: clear()
+     
+	Clears the contents of the vector.
+	
+     .. describe:: insert(Index, Val)
+
+        Inserts *Val* into the vector at index *Index*.
+
+     .. describe:: remove(Val)
+
+        Deletes the first instance of *Val* from the vector. If the value is not found, an error is thrown.
+
+     .. describe:: index(Val)
+
+        Returns the index of the first instance of *Val* in the vector. If the value is not found, an error is thrown.
+
+     .. describe:: count(Val)
+
+          Returns a count of the number of instances of *Val* in the vector.
+
+     .. describe:: pop(Index)
+
+        Deletes the contents of the vector at index *Index* and returns the value from that index.
+
+     .. describe:: reverse() 
+
+        Reverses the contents of the vector.
+
+     .. describe:: sort(asc=False)
+
+          Sorts the vector. If *Asc* is true, sorts in ascending order; otherwise in descending order.
+
+     .. describe:: copy()
+
+        Returns a copy of the vector.
+
+
+   The following public functions are additional, SNAP-specific functions supported by the :class:`TVec` class:
 
      .. iter(V)
 
