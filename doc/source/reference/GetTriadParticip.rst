@@ -1,21 +1,18 @@
 GetTriadParticip
 ''''''''''''''''
 
-.. function:: GetTriadParticip(Graph, TriadCntV)
+.. function:: GetTriadParticip()
 
 Calculates triangle participation ratio. For each node counts how many triangles it participates in and then returns a vector of pairs (number of triangles, number of such nodes). Considers the graph as undirected.
 
 Parameters:
 
-- *Graph*: graph (input)
-    A Snap.py graph or a network.
-
-- *TriadCntV*: :class:`TIntPrV`, a vector of (int, int) pairs (output)
-    Pairs of (number of triangles, number of nodes).
+- None
 
 Return value:
 
-- None
+- :class:`TIntPrV`, a vector of (int, int) pairs (output)
+    Pairs of (number of triangles, number of nodes).
 
 
 The following example shows how to compute the triangles participation ratio for nodes in
@@ -24,19 +21,16 @@ The following example shows how to compute the triangles participation ratio for
     import snap
 
     Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
-    TriadCntV = snap.TIntPrV()
-    snap.GetTriadParticip(Graph, TriadCntV)
+    TriadCntV = Graph.GetTriadParticip()
     for pair in TriadCntV:
         print(pair.Val1(), pair.Val2())
 
     UGraph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
-    TriadCntV = snap.TIntPrV()
-    snap.GetTriadParticip(UGraph, TriadCntV)
+    TriadCntV = UGraph.GetTriadParticip()
     for pair in TriadCntV:
         print(pair.Val1(), pair.Val2())
 
     Network = snap.GenRndGnm(snap.PNEANet, 100, 1000)
-    TriadCntV = snap.TIntPrV()
-    snap.GetTriadParticip(Network, TriadCntV)
+    TriadCntV = Network.GetTriadParticip()
     for pair in TriadCntV:
         print(pair.Val1(), pair.Val2())

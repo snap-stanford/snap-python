@@ -6,10 +6,10 @@ Eigen and Singular Value Decomposition
    :maxdepth: 2
 
    GetEigVals
-   GetEigVec
-   GetEigVec1
+   GetLeadEigVec
+   GetEigVecs
    GetSngVals
-   GetSngVec
-   GetSngVec1
+   GetLeadSngVec
+   GetSngVecs
    GetInvParticipRat
 

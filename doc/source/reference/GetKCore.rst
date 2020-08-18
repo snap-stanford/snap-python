@@ -1,16 +1,13 @@
 GetKCore
 '''''''''''''''
 
-.. function:: GetKCore(Graph, K)
+.. function:: GetKCore(K)
 
 Returns the K-core of the graph *Graph*. If the core of order *K* does not exist, the function returns an empty graph.
 
 Parameters
 
-- *Graph*: graph (input)
-    A Snap.py graph or a network.   
-
-- *K*: int (input)
+- *K*: int
     Minimum degree needed for a subgraph to be in the core.
 
 Return value:
@@ -26,7 +23,7 @@ for :class:`TNGraph`, :class:`TUNGraph`, and :class:`TNEANet`::
 
     Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
     K = 5
-    KCore = snap.GetKCore(Graph, K)
+    KCore = Graph.GetKCore(K)
     if KCore.Empty():
         print('No Core exists for K=%d' % K)
     else:
@@ -34,7 +31,7 @@ for :class:`TNGraph`, :class:`TUNGraph`, and :class:`TNEANet`::
 
     UGraph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
     K = 10
-    KCore = snap.GetKCore(UGraph, K)
+    KCore = UGraph.GetKCore(K)
     if KCore.Empty():
         print('No Core exists for K=%d' % K)
     else:
@@ -42,7 +39,7 @@ for :class:`TNGraph`, :class:`TUNGraph`, and :class:`TNEANet`::
 
     Network = snap.GenRndGnm(snap.PNEANet, 100, 1000)
     K = 15
-    KCore = snap.GetKCore(Network, K)
+    KCore = Network.GetKCore(K)
     if KCore.Empty():
         print('No Core exists for K=%d' % K)
     else:
