@@ -309,11 +309,11 @@ Traverse all the edges using an edge iterator:
 >>> for EI in G2.Edges():
 >>>     print("edge (%d, %d)" % (EI.GetSrcNId(), EI.GetDstNId()))
 
-Traverse the edges by traversing nodes and getting all their neighbors:
+Traverse the edges by traversing nodes and getting all their out-neighbors:
 
 >>> for NI in G2.Nodes():
->>>     for Id in NI.GetOutEdges():
->>>         print("edge (%d %d)" % (NI.GetId(), Id))
+>>>     for e in range(NI.GetOutDeg()):
+>>>         print("edge (%d %d)" % (NI.GetId(), NI.GetOutNId(e)))
 
 Node iterators provide several useful methods:
 
@@ -322,6 +322,8 @@ Node iterators provide several useful methods:
 * GetInDeg(): returns in-degree of a node
 * GetOutNId(e): returns node id of the endpoint of e-th out-edge
 * GetInNId(e): returns node id of the endpoint of e-th in-edge
+* GetOutEdges(): returns generator of node ids of the endpoints of out-edges
+* GetInEdges(): returns generator of node ids of the endpoints of in-edges
 * IsOutNId(n): tests if there is an out-edge to node n
 * IsInNId(n): tests if there is an in-edge from node n
 * IsNbrNId(n): tests if node n is a neighbor
