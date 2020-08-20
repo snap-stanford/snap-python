@@ -21,18 +21,21 @@ To create a :class:`TTable` object in SNAP, you must first define the:
 
 For this tutorial, let’s assume the table below is a tab-separated file with the following columns and values, called ‘student_grades.tsv’:
 
-==========   ===========    ==========   ==========
-StudentID    Midterm1       Midterm2     Final
-==========   ===========    ==========   ==========
-101          79             86           88
-102          84             80           79
-103          56             76           80
-104          90             92           96
-105          92             85           87
-106          87             95           92
-107          94             90           91
-108          76             88           81
-==========   ===========    ===========  ==========
+
+.. table:: Student Grades
+   :widths: 15 10 10 10
+========== ========== ========== ==========
+StudentID  Midterm1   Midterm2   Final
+========== ========== ========== ==========
+101        79         86         88
+102        84         80         79
+103        56         76         80
+104        90         92         96
+105        92         85         87
+106        87         95         92
+107        94         90         91
+108        76         88         81
+========== ========== ========== ==========
 
 To turn this into a SNAP table, we must create a Context and Schema::
 
@@ -103,27 +106,24 @@ Columnwise :class:`TTable` Operations
 
 Now that we know how to create a :class:`TTable`, let’s investigate different column operations that are supported by :class:`TTable`s. These column operations allow us to take two or more columns and create a new column via some operation. These include addition, subtraction, multiplication, division, modulo division, maximum, minimum, and concatenation. They are united by their function names, which are all of the form .ColFunc(), where Func is the operation name. There is also one more advanced function, AggregateCols(), that allows us to do other operations like count, first, last, mean, and median. 
 
-Let’s do an example by taking our table from above and performing some basic operations. Here is the original for reference::
+Let’s do an example by taking our table from above and performing some basic operations. Here is the original for reference:
 
-==========   ===========    ==========   ==========
-StudentID    Midterm1       Midterm2     Final
-==========   ===========    ==========   ==========
-101          79             86           88
-==========   ===========   ===========   ==========
-102          84            80            79
-==========   ===========   ===========   ==========
-103          56            76            80
-==========   ===========   ===========   ==========
-104          90            92            96
-==========   ===========   ===========   ==========
-105          92            85            87
-==========   ===========   ===========   ==========
-106          87            95            92
-==========   ===========   ===========   ==========
-107          94            90            91
-==========   ===========   ===========   ==========
-108          76            88            81
-==========   ===========   ===========   ==========
+
+.. table:: Student Grades
+   :widths: 15 10 10 10
+========== ========== ========== ==========
+StudentID  Midterm1   Midterm2   Final
+========== ========== ========== ==========
+101        79         86         88
+102        84         80         79
+103        56         76         80
+104        90         92         96
+105        92         85         87
+106        87         95         92
+107        94         90         91
+108        76         88         81
+========== ========== ========== ==========
+
 
 Let’s say we wanted to know the total number of points that each student earned across the two midterms. To do this, we want to use the ColAdd() function, which looks like this:: 
 
@@ -135,25 +135,21 @@ In the ColAdd() function, we provide three parameters: the first two are the col
 
 Which yields: 
 
-==========   ===========    ==========   ==========   ==========
-StudentID    Midterm1       Midterm2     Final	      MidScoreSum
-==========   ===========    ==========   ==========   ==========
-101          79             86           88	      165
-==========   ===========   ===========   ==========   ==========
-102          84            80            79	      164
-==========   ===========   ===========   ==========   ==========
-103          56            76            80	      132
-==========   ===========   ===========   ==========   ==========
-104          90            92            96	      182
-==========   ===========   ===========   ==========   ==========
-105          92            85            87	      177
-==========   ===========   ===========   ==========   ==========
-106          87            95            92	      182	      
-==========   ===========   ===========   ==========   ==========
-107          94            90            91	      184
-==========   ===========   ===========   ==========   ==========
-108          76            88            81	      164
-==========   ===========   ===========   ==========   ==========
+
+.. table:: Student Grades
+   :widths: 15 10 10 10 10
+========== ========== ========== ========== ==========
+StudentID  Midterm1   Midterm2   Final	    MidScoreSum
+========== ========== ========== ========== ==========
+101        79         86         88	    165
+102        84         80         79	    164
+103        56         76         80	    132
+104        90         92         96	    182
+105        92         85         87	    177
+106        87         95         92	    182
+107        94         90         91	    184
+108        76         88         81	    164
+========== ========== ========== ========== ==========
 
 Let’s say now that we wanted a column that gave the average of the midterm scores. In this case, we’d use the AggregateCols() method to create a new column with the mean of the midterm columns, row by row. The AggregateCols() function looks like this:: 
 
@@ -168,27 +164,23 @@ Here is the code for getting the mean over the midterm scores::
 	>>> AggAttrs.Add(“Midterm2”)
 	>>> grade_table.AggregateCols(AggAttrs, snap.aaMean, “MidtermMean”)
 
-With the result:: 
+With the result:
 
-==========   ===========    ==========   ==========   ===========   ===========
-StudentID    Midterm1       Midterm2     Final        MidScoreSum   MidtermMean
-==========   ===========    ==========   ==========   ===========   ===========
-101          79             86           88           165	    82.5
-==========   ===========   ===========   ==========   ===========   ===========
-102          84            80            79           164	    82
-==========   ===========   ===========   ==========   ===========   ===========
-103          56            76            80           132	    66
-==========   ===========   ===========   ==========   ===========   ===========
-104          90            92            96           182	    91
-==========   ===========   ===========   ==========   ===========   ===========
-105          92            85            87           177	    88.5
-==========   ===========   ===========   ==========   ===========   ===========
-106          87            95            92           182	    91
-==========   ===========   ===========   ==========   ===========   ===========
-107          94            90            91           184	    92
-==========   ===========   ===========   ==========   ===========   ===========
-108          76            88            81           164	    82
-==========   ===========   ===========   ==========   ===========   ===========
+
+.. table:: Student Grades
+   :widths: 15 10 10 10	10 10
+========== ========== ========== ========== =========== ==========
+StudentID  Midterm1   Midterm2   Final      MidScoreSum MidtermMean
+========== ========== ========== ========== =========== ==========
+101        79         86         88         165	        82.5
+102        84         80         79         164	        82
+103        56         76         80         132	        66
+104        90         92         96         182	        91
+105        92         85         87         177	        88.5
+106        87         95         92         182	        91
+107        94         90         91         184	        92
+108        76         88         81         164	        82
+========== ========== ========== ========== =========== ==========
 
 A similar methodology can be used for all of the column operation functions for :class:`TTable`s. 
 
@@ -225,25 +217,20 @@ Here, GroupByAttrs are the columns we want to group with respect to, where their
 		   >>> table.Group(groupAttrs, ”MeanGroups”, snap.TBool(True))
 Which yields: 
 
-==========   ===========    ==========   ==========   ===========   ===========   ============
-StudentID    Midterm1       Midterm2     Final        MidScoreSum   MidtermMean	  MeanGroups
-==========   ===========    ==========   ==========   ===========   ===========   ============
-101          79             86           88           165           82.5	  0
-==========   ===========   ===========   ==========   ===========   ===========	  ============
-102          84            80            79           164           82		  1
-==========   ===========   ===========   ==========   ===========   ===========	  ============
-103          56            76            80           132           66		  2
-==========   ===========   ===========   ==========   ===========   ===========   ============
-104          90            92            96           182           91		  3
-==========   ===========   ===========   ==========   ===========   ===========   ============
-105          92            85            87           177           88.5	  4
-==========   ===========   ===========   ==========   ===========   ===========   ============
-106          87            95            92           182           91		  3
-==========   ===========   ===========   ==========   ===========   ===========   ============
-107          94            90            91           184           92		  5
-==========   ===========   ===========   ==========   ===========   ===========   ============
-108          76            88            81           164           82		  1
-==========   ===========   ===========   ==========   ===========   ===========   ============
+.. table:: Student Grades
+   :widths: 15 10 10 10 10 10 10
+========== ========== ========== ========== =========== =========== ==========
+StudentID  Midterm1   Midterm2   Final      MidScoreSum MidtermMean MeanGroups
+========== ========== ========== ========== =========== =========== ==========
+101        79         86         88         165         82.5        0
+102        84         80         79         164         82          1
+103        56         76         80         132         66          2
+104        90         92         96         182         91          3
+105        92         85         87         177         88.5        4
+106        87         95         92         182         91          3
+107        94         90         91         184         92          5
+108        76         88         81         164         82          1
+========== ========== ========== ========== =========== =========== ==========
 
 Another related method is Unique(). Rather than assigning the same labels to rows with similar values, any rows with the same sought-after values will be deleted so there are no remaining duplicates:: 
 
@@ -258,21 +245,17 @@ Let’s try this on the original table, and instead of grouping by the midterm m
 
 Which would instead yield: 
 
-==========   ===========    ==========   ==========   ===========   ===========
-StudentID    Midterm1       Midterm2     Final        MidScoreSum   MidtermMean
-==========   ===========    ==========   ==========   ===========   ===========
-101          79             86           88           165           82.5
-==========   ===========   ===========   ==========   ===========   ===========
-102          84            80            79           164           82
-==========   ===========   ===========   ==========   ===========   ===========
-103          56            76            80           132           66
-==========   ===========   ===========   ==========   ===========   ===========
-104          90            92            96           182           91
-==========   ===========   ===========   ==========   ===========   ===========
-105          92            85            87           177           88.5
-==========   ===========   ===========   ==========   ===========   ===========
-107          94            90            91           184           92
-==========   ===========   ===========   ==========   ===========   ===========
+.. table:: Student Grades
+   :widths: 15 10 10 10 10 10
+========== ========== ========== ========== =========== ==========
+StudentID  Midterm1   Midterm2   Final      MidScoreSum MidtermMean
+========== ========== ========== ========== =========== ==========
+101        79         86         88         165         82.5
+102        84         80         79         164         82
+103        56         76         80         132         66
+104        90         92         96         182         91
+105        92         85         87         177         88.5
+========== ========== ========== ========== =========== ==========
 
 Students 106 and 108 have been removed because they had the same midterm mean score as students before them. Remember that Unique() goes from top to bottom row, so earlier rows will be preserved. 
 
@@ -293,27 +276,23 @@ To make all this more concrete, let’s say we wanted to find the maximum final 
 	>>> GroupBy.Add("MidtermMean")
 	>>> PapAuthT.Aggregate(GroupBy, snap.aaMax, "Final", "MaxFinal", snap.TBool(False))
 
-Here, we use a variable GroupBy to hold a vector of strings representing the columns we want to group with respect to, that is, the MidtermMean column. We then use Aggregate with the snap.aaCount function to count the number of times each mean appears in the dataset, and store the count in a new column called MeanCount. Here is what the result will look like:: 
+Here, we use a variable GroupBy to hold a vector of strings representing the columns we want to group with respect to, that is, the MidtermMean column. We then use Aggregate with the snap.aaCount function to count the number of times each mean appears in the dataset, and store the count in a new column called MeanCount. Here is what the result will look like:
 
-==========   ===========    ==========   ==========   ===========   ===========   ===========
-StudentID    Midterm1       Midterm2     Final        MidScoreSum   MidtermMean	  MaxFinal
-==========   ===========    ==========   ==========   ===========   ===========   ===========
-101          79             86           88           165           82.5	  88
-==========   ===========   ===========   ==========   ===========   ===========   ===========
-102          84            80            79           164           82		  81 
-==========   ===========   ===========   ==========   ===========   ===========   ===========
-103          56            76            80           132           66		  80
-==========   ===========   ===========   ==========   ===========   ===========   ===========
-104          90            92            96           182           91		  96
-==========   ===========   ===========   ==========   ===========   ===========   ===========	
-105          92            85            87           177           88.5	  87
-==========   ===========   ===========   ==========   ===========   ===========	  ===========
-106          87            95            92           182           91		  96
-==========   ===========   ===========   ==========   ===========   ===========   ===========
-107          94            90            91           184           92		  91
-==========   ===========   ===========   ==========   ===========   ===========   ===========
-108          76            88            81           164           82		  81
-==========   ===========   ===========   ==========   ===========   ===========   ===========
+.. table:: Student Grades
+   :widths: 15 10 10 10 10 10 10
+
+========== ========== ========== ========== =========== =========== ===========
+StudentID  Midterm1   Midterm2   Final      MidScoreSum MidtermMean	MaxFinal
+========== ========== ========== ========== =========== =========== ===========
+101        79         86         88         165         82.5	    88
+102        84         80         79         164         82		    81
+103        56         76         80         132         66		    80
+104        90         92         96         182         91		    96
+105        92         85         87         177         88.5	    87
+106        87         95         92         182         91		    96
+107        94         90         91         184         92		    91
+108        76         88         81         164         82		    81
+========== ========== ========== ========== =========== =========== ===========
 
 As you can see, the MaxFinal values indicate the highest final score value for students with the same midterm mean. Notably, we see that students 102 and 108 have the same value, because they have the same midterm score, and their value is the maximum of either of their final scores (81 being higher than 79). The same occurred for students 104 and 106. 
 
@@ -327,27 +306,22 @@ Some SNAP :class:`TTable` operations help us to combine two different tables int
 - Join: a more customizable function, Join equi-joins two tables based on one attribute in the first table. Columns from the second table will be added to the first where the value of the desired attribute in the first table matches the value of the desired attribute in the second. Does not return a new table, but rather updates the original table with columns from the second table. 
 - SimJoin: a function that performs an equi-join if the distance between two rows is less than the specified threshold.
 
-Let’s go back to our original grade table with four columns: StudentID, Midterm1, Midterm2, and Final. Let’s say we have another table that lists the student IDs of these students, plus a column with their names. Call it ‘name_table’::
+Let’s go back to our original grade table with four columns: StudentID, Midterm1, Midterm2, and Final. Let’s say we have another table that lists the student IDs of these students, plus a column with their names:
 
-=========   ==========
-ID	    Name
-=========   ==========
-101	    John
-=========   ==========
-102	    Amira
-=========   ==========
-103	    Todd
-=========   ==========
-104	    Yang
-=========   ==========
-105	    Catherine
-=========   ==========
-106	    Shubash
-=========   ==========
-107	    Nicolo
-=========   ==========
-108	    Maria
-=========   ==========
+.. table:: Student Names
+   :widths: 15 10
+========= ==========
+ID	      Name
+========= ==========
+101	      Will
+102	      Amira
+103	      Todd
+104	      Yang
+105	      Catherine
+106	      Shubash
+107	      Nicolo
+108	      Maria
+========= ==========
 
 Let’s say we want to incorporate the Name column into our original table. We can do this using the Join() function. Here is the prototype for it:: 
 
@@ -359,27 +333,23 @@ To combine our two tables, we would use::
 
    	   >>> combined_table = grade_table.Join(“StudentID”, name_table, “ID”)
 
-Which will create a new table called ‘combined_table’ as so:: 
+Which will create a new table called ‘combined_table’ as so:
 
-==========   ===========    ==========   ==========   ==========
-StudentID    Midterm1       Midterm2     Final	      Name
-==========   ===========    ==========   ==========   ==========
-101          79             86           88	      John
-==========   ===========   ===========   ==========   ==========
-102          84            80            79	      Amira
-==========   ===========   ===========   ==========   ==========
-103          56            76            80	      Todd	
-==========   ===========   ===========   ==========   ==========
-104          90            92            96	      Yang
-==========   ===========   ===========   ==========   ==========
-105          92            85            87	      Catherine
-==========   ===========   ===========   ==========   ==========
-106          87            95            92	      Shubash
-==========   ===========   ===========   ==========   ==========
-107          94            90            91	      Nicolo
-==========   ===========   ===========   ==========   ==========
-108          76            88            81	      Maria
-==========   ===========   ===========   ==========   ==========
+.. table:: Student Grades
+   :widths: 15 10 10 10 10
+
+========== ========== ========== ========== ==========
+StudentID  Midterm1   Midterm2   Final      Name
+========== ========== ========== ========== ==========
+101        79         86         88         Will
+102        84         80         79         Amira
+103        56         76         80         Todd
+104        90         92         96         Yang
+105        92         85         87         Catherine
+106        87         95         92         Shubash
+107        94         90         91         Nicolo
+108        76         88         81         Maria
+========== ========== ========== ========== ==========
 
 Getting Information from Tables
 ===============================
