@@ -67,6 +67,41 @@ def MoveArgToReturn (tspec, args, func, pos, argType):
         else:
             return (oldReturn, returnArg)
 
+_GenFull = GenFull
+def GenFull(GraphType, *args):
+    GraphType = ConvertGraphArg(GraphType)
+    return _GenFull(GraphType, *args)
+
+_GenCircle = GenCircle
+def GenCircle(GraphType, *args):
+    GraphType = ConvertGraphArg(GraphType)
+    return _GenCircle(GraphType, *args)
+
+_GenGrid = GenGrid
+def GenGrid(GraphType, *args):
+    GraphType = ConvertGraphArg(GraphType)
+    return _GenGrid(GraphType, *args)
+
+_GenStar = GenStar
+def GenStar(GraphType, *args):
+    GraphType = ConvertGraphArg(GraphType)
+    return _GenStar(GraphType, *args)
+
+_GenTree = GenTree
+def GenTree(GraphType, *args):
+    GraphType = ConvertGraphArg(GraphType)
+    return _GenTree(GraphType, *args)
+
+_GenRndGnm = GenRndGnm
+def GenRndGnm(GraphType, *args):
+    GraphType = ConvertGraphArg(GraphType)
+    return _GenRndGnm(GraphType, *args)
+
+_GenBaraHierar = GenBaraHierar
+def GenBaraHierar(GraphType, *args):
+    GraphType = ConvertGraphArg(GraphType)
+    return _GenBaraHierar(GraphType, *args)
+
 _LoadEdgeList = LoadEdgeList
 def LoadEdgeList(GraphType, InFNm, SrcColId = 0, DstColId = 1, Separator = " "):
     GraphType = ConvertGraphArg(GraphType)
@@ -452,6 +487,7 @@ def GetSngVecs(Graph, SngVecs):
     RightSV = TFltVFltV()
     GetSngVec(Graph, SngVecs, SngValV, LeftSV, RightSV)
     return (SngValV, LeftSV, RightSV)
+
 
 _GenConfModel = GenConfModel
 def GenConfModel(*args):
