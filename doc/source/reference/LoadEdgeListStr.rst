@@ -37,16 +37,16 @@ The following examples shows how to load a graph from a text file, wiki-vote.txt
 
     import snap
 
-    G = snap.LoadEdgeListStr(snap.PNGraph, "wiki-Vote.txt", 0, 1)
+    G = snap.LoadEdgeListStr(snap.TNGraph, "wiki-Vote.txt", 0, 1)
     print("Number of Nodes: %d" % G.GetNodes())
 
-    G = snap.LoadEdgeListStr(snap.PUNGraph, "wiki-Vote.txt", 0, 1)
+    G = snap.LoadEdgeListStr(snap.TUNGraph, "wiki-Vote.txt", 0, 1)
     print("Number of Nodes: %d" % G.GetNodes())
 
-    G = snap.LoadEdgeListStr(snap.PNEANet, "wiki-Vote.txt", 0, 1)
+    G = snap.LoadEdgeListStr(snap.TNEANet, "wiki-Vote.txt", 0, 1)
     print("Number of Nodes: %d" % G.GetNodes())
 
-    (G, Map) = snap.LoadEdgeListStr(snap.PNGraph, "wiki-Vote.txt", 0, 1, True)
+    (G, Map) = snap.LoadEdgeListStr(snap.TNGraph, "wiki-Vote.txt", 0, 1, True)
     print("Number of Nodes: %d" % G.GetNodes())
     print("Number of Nodes: %d" % Map.Len())
 

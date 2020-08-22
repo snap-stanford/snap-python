@@ -10,7 +10,7 @@ Loads a (directed, undirected or multi) graph from a text file *InFNm* with 1 ed
 Parameters:
 
 - *GraphType*: graph class
-    Class of output graph -- one of :class:`PNGraph`, :class:`PNEANet`, or :class:`PUNGraph`.
+    Class of output graph -- one of :class:`TNGraph`, :class:`TNEANet`, or :class:`TUNGraph`.
 
 - *InFNm*: string
     Filename with the description of the graph edges.
@@ -35,18 +35,18 @@ The following example shows how to load edge lists for
 
     import snap
    
-    Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
-    Graph.SaveEdgeList("PNGraph.edges")
-    LoadedGraph = snap.LoadEdgeList(snap.PNGraph, "PNGraph.edges", 0, 1, '\t')
+    Graph = snap.GenRndGnm(snap.TNGraph, 100, 1000)
+    Graph.SaveEdgeList("TNGraph.edges")
+    LoadedGraph = snap.LoadEdgeList(snap.TNGraph, "TNGraph.edges", 0, 1, '\t')
     LoadedGraph.Dump()
 
-    UGraph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
-    UGraph.SaveEdgeList("PUNGraph.edges")
-    LoadedUGraph = snap.LoadEdgeList(snap.PUNGraph, "PUNGraph.edges", 0, 1, '\t')
+    UGraph = snap.GenRndGnm(snap.TUNGraph, 100, 1000)
+    UGraph.SaveEdgeList("TUNGraph.edges")
+    LoadedUGraph = snap.LoadEdgeList(snap.TUNGraph, "TUNGraph.edges", 0, 1, '\t')
     LoadedUGraph.Dump()
    
-    Network = snap.GenRndGnm(snap.PNEANet, 100, 1000)
-    Network.SaveEdgeList("PNEANet.edges")
-    LoadedNet = snap.LoadEdgeList(snap.PNEANet, "PNEANet.edges", 0, 1, '\t')
+    Network = snap.GenRndGnm(snap.TNEANet, 100, 1000)
+    Network.SaveEdgeList("TNEANet.edges")
+    LoadedNet = snap.LoadEdgeList(snap.TNEANet, "TNEANet.edges", 0, 1, '\t')
     LoadedNet.Dump()
 

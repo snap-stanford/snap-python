@@ -27,15 +27,15 @@ The following example shows how to load a graph using :func:`LoadConnList` from 
 
     import snap
 
-    Graph = snap.LoadConnList(snap.PNGraph, "test.txt")
+    Graph = snap.LoadConnList(snap.TNGraph, "test.txt")
     for EI in Graph.Edges():
         print("edge (%d, %d)" % (EI.GetSrcNId(), EI.GetDstNId()))
 
-    UGraph = snap.LoadConnList(snap.PUNGraph, "test.txt")
+    UGraph = snap.LoadConnList(snap.TUNGraph, "test.txt")
     for EI in UGraph.Edges():
         print("edge (%d, %d)" % (EI.GetSrcNId(), EI.GetDstNId()))
 
-    Network = snap.LoadConnList(snap.PNEANet, "test.txt")
+    Network = snap.LoadConnList(snap.TNEANet, "test.txt")
     for EI in Network.Edges():
         print("edge (%d, %d)" % (EI.GetSrcNId(), EI.GetDstNId()))
 	
