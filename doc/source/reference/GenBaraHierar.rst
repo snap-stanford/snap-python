@@ -36,14 +36,14 @@ The following example shows how to generate a Ravasz-Barabasi deterministic scal
     
     import snap
 
-    Graph = snap.GenBaraHierar(snap.PNGraph, 3, True)
+    Graph = snap.GenBaraHierar(snap.TNGraph, 3, True)
     for EI in Graph.Edges():
         print("edge: (%d, %d)" % (EI.GetSrcNId(), EI.GetDstNId()))
     
-    UGraph = snap.GenBaraHierar(snap.PUNGraph, 3, True)
+    UGraph = snap.GenBaraHierar(snap.TUNGraph, 3, True)
     for EI in UGraph.Edges():
         print("edge: (%d, %d)" % (EI.GetSrcNId(), EI.GetDstNId()))
 
-    Network = snap.GenBaraHierar(snap.PNEANet, 3, True)
+    Network = snap.GenBaraHierar(snap.TNEANet, 3, True)
     for EI in Network.Edges():
         print("edge: (%d, %d)" % (EI.GetSrcNId(), EI.GetDstNId()))

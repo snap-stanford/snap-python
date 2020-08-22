@@ -8,7 +8,7 @@ Generates a tree graph of *Levels* levels with every parent having *Fanout* chil
 Parameters:
 
 - *GraphType*: graph class (input)
-    Class of output graph -- one of :class:`PNGraph`, :class:`PNEANet`, or :class:`PUNGraph`.
+    Class of output graph -- one of :class:`TNGraph`, :class:`TNEANet`, or :class:`TUNGraph`.
 
 - *Fanout*: int (input)
     Number of children of each parent node.
@@ -32,15 +32,15 @@ The following examples shows how to generate a tree graph for classes :class:`TN
 
     import snap
 
-    Graph = snap.GenTree(snap.PNGraph, 3, 3)
+    Graph = snap.GenTree(snap.TNGraph, 3, 3)
     for EI in Graph.Edges():
         print("edge: (%d, %d)" % (EI.GetSrcNId(), EI.GetDstNId()))
     
-    UGraph = snap.GenTree(snap.PUNGraph, 3, 3)
+    UGraph = snap.GenTree(snap.TUNGraph, 3, 3)
     for EI in UGraph.Edges():
         print("edge: (%d, %d)" % (EI.GetSrcNId(), EI.GetDstNId()))
 
-    Network = snap.GenTree(snap.PNEANet, 3, 3)
+    Network = snap.GenTree(snap.TNEANet, 3, 3)
     for EI in Network.Edges():
         print("edge: (%d, %d)" % (EI.GetSrcNId(), EI.GetDstNId()))
 
