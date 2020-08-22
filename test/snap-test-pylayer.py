@@ -2975,12 +2975,70 @@ class SnapPythonTest(unittest.TestCase):
         os.remove(fname)
         self.assertEqual(test_hash_swig, test_hash)
 
+    def test_LoadEdgeList(self):
+        # Directed Graph
+        fname = "mygraph.txt"
+        snap.SaveEdgeList(self.DirGraphFull, fname)
+        self.assertTrue(os.path.isfile(fname))
+        Graph = snap.LoadEdgeList(snap.TNGraph, fname, 0, 1)
+        Graph_swig = snap.LoadEdgeList(snap.PNGraph, fname, 0, 1)
+        self.assertEqual(Graph.GetNodes(), Graph_swig.GetNodes())
+        self.assertEqual(Graph.GetEdges(), Graph_swig.GetEdges())
+        os.remove(fname)
+
+        # Undirected Graph
+        snap.SaveEdgeList(self.UnDirGraphFull, fname)
+        self.assertTrue(os.path.isfile(fname))
+        Graph = snap.LoadEdgeList(snap.TUNGraph, fname, 0, 1)
+        Graph_swig = snap.LoadEdgeList(snap.PUNGraph, fname, 0, 1)
+        self.assertEqual(Graph.GetNodes(), Graph_swig.GetNodes())
+        self.assertEqual(Graph.GetEdges(), Graph_swig.GetEdges())
+        os.remove(fname)
+
+        # Directed Graph
+        snap.SaveEdgeList(self.NetFull, fname)
+        self.assertTrue(os.path.isfile(fname))
+        Graph = snap.LoadEdgeList(snap.TNEANet, fname, 0, 1)
+        Graph_swig = snap.LoadEdgeList(snap.PNEANet, fname, 0, 1)
+        self.assertEqual(Graph.GetNodes(), Graph_swig.GetNodes())
+        self.assertEqual(Graph.GetEdges(), Graph_swig.GetEdges())
+        os.remove(fname)
+
+    def test_LoadEdgeList2(self):
+        # Directed Graph
+        fname = "mygraph.txt"
+        snap.SaveEdgeList(self.DirGraphFull, fname)
+        self.assertTrue(os.path.isfile(fname))
+        Graph = snap.LoadEdgeList(snap.TNGraph, fname, 0, 1, '\t')
+        Graph_swig = snap.LoadEdgeList(snap.PNGraph, fname, 0, 1, '\t')
+        self.assertEqual(Graph.GetNodes(), Graph_swig.GetNodes())
+        self.assertEqual(Graph.GetEdges(), Graph_swig.GetEdges())
+        os.remove(fname)
+
+        # Undirected Graph
+        snap.SaveEdgeList(self.UnDirGraphFull, fname)
+        self.assertTrue(os.path.isfile(fname))
+        Graph = snap.LoadEdgeList(snap.TUNGraph, fname, 0, 1, '\t')
+        Graph_swig = snap.LoadEdgeList(snap.PUNGraph, fname, 0, 1, '\t')
+        self.assertEqual(Graph.GetNodes(), Graph_swig.GetNodes())
+        self.assertEqual(Graph.GetEdges(), Graph_swig.GetEdges())
+        os.remove(fname)
+
+        # Directed Graph
+        snap.SaveEdgeList(self.NetFull, fname)
+        self.assertTrue(os.path.isfile(fname))
+        Graph = snap.LoadEdgeList(snap.TNEANet, fname, 0, 1, '\t')
+        Graph_swig = snap.LoadEdgeList(snap.PNEANet, fname, 0, 1, '\t')
+        self.assertEqual(Graph.GetNodes(), Graph_swig.GetNodes())
+        self.assertEqual(Graph.GetEdges(), Graph_swig.GetEdges())
+        os.remove(fname)
+
     def test_LoadEdgeListStr(self):
         # Directed Graph
         fname = "mygraph.txt"
         snap.SaveEdgeList(self.DirGraphFull, fname)
         self.assertTrue(os.path.isfile(fname))
-        Graph, mapping = snap.LoadEdgeListStr(snap.PNGraph, fname, 0, 1, True)
+        Graph, mapping = snap.LoadEdgeListStr(snap.TNGraph, fname, 0, 1, True)
         mapping_swig = snap.TStrIntSH()
         Graph_swig = snap.LoadEdgeListStr(snap.PNGraph, fname, 0, 1, mapping_swig)
         self.assertEqual(mapping.Len(), mapping_swig.Len())
@@ -2994,7 +3052,7 @@ class SnapPythonTest(unittest.TestCase):
         # Undirected Graph
         snap.SaveEdgeList(self.UnDirGraphFull, fname)
         self.assertTrue(os.path.isfile(fname))
-        Graph, mapping = snap.LoadEdgeListStr(snap.PUNGraph, fname, 0, 1, True)
+        Graph, mapping = snap.LoadEdgeListStr(snap.TUNGraph, fname, 0, 1, True)
         mapping_swig = snap.TStrIntSH()
         Graph_swig = snap.LoadEdgeListStr(snap.PUNGraph, fname, 0, 1, mapping_swig)
         self.assertEqual(mapping.Len(), mapping_swig.Len())
@@ -3008,7 +3066,7 @@ class SnapPythonTest(unittest.TestCase):
         # Directed Graph
         snap.SaveEdgeList(self.NetFull, fname)
         self.assertTrue(os.path.isfile(fname))
-        Graph, mapping = snap.LoadEdgeListStr(snap.PNEANet, fname, 0, 1, True)
+        Graph, mapping = snap.LoadEdgeListStr(snap.TNEANet, fname, 0, 1, True)
         mapping_swig = snap.TStrIntSH()
         Graph_swig = snap.LoadEdgeListStr(snap.PNEANet, fname, 0, 1, mapping_swig)
         self.assertEqual(mapping.Len(), mapping_swig.Len())
@@ -3017,6 +3075,104 @@ class SnapPythonTest(unittest.TestCase):
         for edge,edge_swig in zip(Graph.Edges(), Graph_swig.Edges()):
             self.assertEqual(edge.GetSrcNId(), edge_swig.GetSrcNId())
             self.assertEqual(edge.GetDstNId(), edge_swig.GetDstNId())
+        os.remove(fname)
+
+
+    def test_LoadConnList(self):
+        fname = "mygraph.txt"
+        output = open(fname, "w")
+        output.write('0 1 2\n')
+        output.write('1 2 0\n')
+        output.write('2 0 1\n')
+        output.close()
+
+        # Directed Graph
+        Graph_swig = snap.LoadConnList(snap.PNGraph, fname)
+        Graph = snap.LoadConnList(snap.TNGraph, fname)
+        self.assertEqual(Graph.GetNodes(), Graph_swig.GetNodes())
+        self.assertEqual(Graph.GetEdges(), Graph_swig.GetEdges())
+
+        # Undirected Graph
+        Graph_swig = snap.LoadConnList(snap.PUNGraph, fname)
+        Graph = snap.LoadConnList(snap.TUNGraph, fname)
+        self.assertEqual(Graph.GetNodes(), Graph_swig.GetNodes())
+        self.assertEqual(Graph.GetEdges(), Graph_swig.GetEdges())
+
+        # Network
+        Graph_swig = snap.LoadConnList(snap.PNEANet, fname)
+        Graph = snap.LoadConnList(snap.TNEANet, fname)
+        self.assertEqual(Graph.GetNodes(), Graph_swig.GetNodes())
+        self.assertEqual(Graph.GetEdges(), Graph_swig.GetEdges())
+        os.remove(fname)
+
+    def test_LoadConnListStr(self):
+        fname = "mygraph.txt"
+        output = open(fname, "w")
+        output.write('0 1 2\n')
+        output.write('1 2 0\n')
+        output.write('2 0 1\n')
+        output.close()
+
+        # Directed Graph
+        mapping_swig = snap.TStrIntSH()
+        Graph_swig = snap.LoadConnListStr(snap.PNGraph, fname, mapping_swig)
+        Graph, mapping = snap.LoadConnListStr(snap.TNGraph, fname)
+        self.assertEqual(Graph.GetNodes(), Graph_swig.GetNodes())
+        self.assertEqual(Graph.GetEdges(), Graph_swig.GetEdges())
+        self.assertEqual(mapping.Len(), mapping_swig.Len())
+
+        # Undirected Graph
+        mapping_swig = snap.TStrIntSH()
+        Graph_swig = snap.LoadConnListStr(snap.PUNGraph, fname, mapping_swig)
+        Graph, mapping = snap.LoadConnListStr(snap.TUNGraph, fname)
+        self.assertEqual(Graph.GetNodes(), Graph_swig.GetNodes())
+        self.assertEqual(Graph.GetEdges(), Graph_swig.GetEdges())
+        self.assertEqual(mapping.Len(), mapping_swig.Len())
+
+        # Network
+        mapping_swig = snap.TStrIntSH()
+        Graph_swig = snap.LoadConnListStr(snap.PNEANet, fname, mapping_swig)
+        Graph, mapping = snap.LoadConnListStr(snap.TNEANet, fname)
+        self.assertEqual(Graph.GetNodes(), Graph_swig.GetNodes())
+        self.assertEqual(Graph.GetEdges(), Graph_swig.GetEdges())
+        self.assertEqual(mapping.Len(), mapping_swig.Len())
+        os.remove(fname)
+
+    def test_LoadPajek(self):
+        fname = "example.paj"
+        output = open(fname, "w")
+        output.write('*Vertices      9\n')
+        output.write('1 "1"    0.3034    0.7561\n')
+        output.write('2 "2"    0.4565    0.6039\n')
+        output.write('3 "3"    0.4887    0.8188\n')
+        output.write('*Arcs\n')
+        output.write('*Edges\n')
+        output.write('    1      2       1\n')
+        output.write('    1      3       1\n')
+        output.write('    2      3       1\n')
+        output.close()
+
+        # Directed Graph
+        Graph = snap.LoadPajek(snap.TNGraph, fname)
+        count = 1
+        for node in Graph.Nodes():
+            self.assertEqual(count, node.GetId())
+            count += 1
+
+        # Undirected Graph
+        Graph = snap.LoadPajek(snap.TUNGraph, fname)
+        count = 1
+        for node in Graph.Nodes():
+            self.assertEqual(count, node.GetId())
+            count += 1
+
+        # Network
+        Graph = snap.LoadPajek(snap.TNGraph, fname)
+        count = 1
+        for node in Graph.Nodes():
+            self.assertEqual(count, node.GetId())
+            count += 1
+
         os.remove(fname)
 
     def test_GetSngVec(self):
