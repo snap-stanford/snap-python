@@ -43,28 +43,6 @@ def ego_graph(G, n, radius=1, center=True, undirected=False, distance=None):
 
     Node, edge, and graph attributes are copied to the returned subgraph.
     """
-    # if undirected:
-    #     if distance is not None:
-    #         sp, _ = sx.single_source_dijkstra(
-    #             G.to_undirected(), n, cutoff=radius, weight=distance
-    #         )
-    #     else:
-    #         sp = dict(
-    #             sx.single_source_shortest_path_length(
-    #                 G.to_undirected(), n, cutoff=radius
-    #             )
-    #         )
-    # else:
-    #     if distance is not None:
-    #         sp, _ = sx.single_source_dijkstra(G, n, cutoff=radius, weight=distance)
-    #     else:
-    #         sp = dict(sx.single_source_shortest_path_length(G, n, cutoff=radius))
-
-    # H = G.subgraph(sp).copy()
-    # if not center:
-    #     H.remove_node(n)
-    # return H
-
     if undirected:
         if distance is not None:
             raise NotImplementedError

@@ -85,7 +85,11 @@ class Graph:
         self._node_extra_attr = {}
         self._edge_extra_attr = {}
         if incoming_graph_data is not None:
-            convert.to_snapx_graph(incoming_graph_data, create_using=self)
+            if type(incoming_graph_data) == type(TNEANet.New()):
+                self._graph = incoming_graph_data
+                self._num_edges = self._graph.GetEdges()
+            else:
+                convert.to_snapx_graph(incoming_graph_data, create_using=self)
 
         # Graph attributes
         self.graph = {}
