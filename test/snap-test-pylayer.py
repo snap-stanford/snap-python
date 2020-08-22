@@ -97,7 +97,140 @@ class SnapPythonTest(unittest.TestCase):
                 count += 1
 
     #### Tests ####
-        
+    
+    def test_GenFull(self):
+        # Directed Graph
+        Graph_swig = snap.GenFull(snap.PNGraph, 5)
+        Graph = snap.GenFull(snap.TNGraph, 5)
+        self.assertEqual(Graph_swig.GetNodes(), Graph.GetNodes())
+        self.assertEqual(Graph_swig.GetEdges(), Graph.GetEdges())
+
+        # Undirected Graph
+        Graph_swig = snap.GenFull(snap.PUNGraph, 5)
+        Graph = snap.GenFull(snap.TUNGraph, 5)
+        self.assertEqual(Graph_swig.GetNodes(), Graph.GetNodes())
+        self.assertEqual(Graph_swig.GetEdges(), Graph.GetEdges())
+
+        # Network
+        Graph_swig = snap.GenFull(snap.PNEANet, 5)
+        Graph = snap.GenFull(snap.TNEANet, 5)
+        self.assertEqual(Graph_swig.GetNodes(), Graph.GetNodes())
+        self.assertEqual(Graph_swig.GetEdges(), Graph.GetEdges())
+
+    def test_GenCircle(self):
+        # Directed Graph
+        Graph_swig = snap.GenCircle(snap.PNGraph, 10, 2)
+        Graph = snap.GenCircle(snap.TNGraph, 10, 2)
+        self.assertEqual(Graph_swig.GetNodes(), Graph.GetNodes())
+        self.assertEqual(Graph_swig.GetEdges(), Graph.GetEdges())
+
+        # Undirected Graph
+        Graph_swig = snap.GenCircle(snap.PUNGraph, 10, 2)
+        Graph = snap.GenCircle(snap.TUNGraph, 10, 2)
+        self.assertEqual(Graph_swig.GetNodes(), Graph.GetNodes())
+        self.assertEqual(Graph_swig.GetEdges(), Graph.GetEdges())
+
+        # Network
+        Graph_swig = snap.GenCircle(snap.PNEANet, 10, 2)
+        Graph = snap.GenCircle(snap.TNEANet, 10, 2)
+        self.assertEqual(Graph_swig.GetNodes(), Graph.GetNodes())
+        self.assertEqual(Graph_swig.GetEdges(), Graph.GetEdges())
+
+    def test_GenGrid(self):
+        # Directed Graph
+        Graph_swig = snap.GenGrid(snap.PNGraph, 2, 2)
+        Graph = snap.GenGrid(snap.TNGraph, 2, 2)
+        self.assertEqual(Graph_swig.GetNodes(), Graph.GetNodes())
+        self.assertEqual(Graph_swig.GetEdges(), Graph.GetEdges())
+
+        # Undirected Graph
+        Graph_swig = snap.GenGrid(snap.PUNGraph, 2, 2)
+        Graph = snap.GenGrid(snap.TUNGraph, 2, 2)
+        self.assertEqual(Graph_swig.GetNodes(), Graph.GetNodes())
+        self.assertEqual(Graph_swig.GetEdges(), Graph.GetEdges())
+
+        # Network
+        Graph_swig = snap.GenGrid(snap.PNEANet, 2, 2)
+        Graph = snap.GenGrid(snap.TNEANet, 2, 2)
+        self.assertEqual(Graph_swig.GetNodes(), Graph.GetNodes())
+        self.assertEqual(Graph_swig.GetEdges(), Graph.GetEdges())
+
+    def test_GenStar(self):
+        # Directed Graph
+        Graph_swig = snap.GenStar(snap.PNGraph, 5)
+        Graph = snap.GenStar(snap.TNGraph, 5)
+        self.assertEqual(Graph_swig.GetNodes(), Graph.GetNodes())
+        self.assertEqual(Graph_swig.GetEdges(), Graph.GetEdges())
+
+        # Undirected Graph
+        Graph_swig = snap.GenStar(snap.PUNGraph, 5)
+        Graph = snap.GenStar(snap.TUNGraph, 5)
+        self.assertEqual(Graph_swig.GetNodes(), Graph.GetNodes())
+        self.assertEqual(Graph_swig.GetEdges(), Graph.GetEdges())
+
+        # Network
+        Graph_swig = snap.GenStar(snap.PNEANet, 5)
+        Graph = snap.GenStar(snap.TNEANet, 5)
+        self.assertEqual(Graph_swig.GetNodes(), Graph.GetNodes())
+        self.assertEqual(Graph_swig.GetEdges(), Graph.GetEdges())
+
+    def test_GenTree(self):
+        # Directed Graph
+        Graph_swig = snap.GenTree(snap.PNGraph, 3, 3)
+        Graph = snap.GenTree(snap.TNGraph, 3, 3)
+        self.assertEqual(Graph_swig.GetNodes(), Graph.GetNodes())
+        self.assertEqual(Graph_swig.GetEdges(), Graph.GetEdges())
+
+        # Undirected Graph
+        Graph_swig = snap.GenTree(snap.PUNGraph, 3, 3)
+        Graph = snap.GenTree(snap.TUNGraph, 3, 3)
+        self.assertEqual(Graph_swig.GetNodes(), Graph.GetNodes())
+        self.assertEqual(Graph_swig.GetEdges(), Graph.GetEdges())
+
+        # Network
+        Graph_swig = snap.GenTree(snap.PNEANet, 3, 3)
+        Graph = snap.GenTree(snap.TNEANet, 3, 3)
+        self.assertEqual(Graph_swig.GetNodes(), Graph.GetNodes())
+        self.assertEqual(Graph_swig.GetEdges(), Graph.GetEdges())
+
+    def test_GenRndGnm(self):
+        # Directed Graph
+        Graph_swig = snap.GenRndGnm(snap.PNGraph, 100, 1000)
+        Graph = snap.GenRndGnm(snap.TNGraph, 100, 1000)
+        self.assertEqual(Graph_swig.GetNodes(), Graph.GetNodes())
+        self.assertEqual(Graph_swig.GetEdges(), Graph.GetEdges())
+
+        # Undirected Graph
+        Graph_swig = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
+        Graph = snap.GenRndGnm(snap.TUNGraph, 100, 1000)
+        self.assertEqual(Graph_swig.GetNodes(), Graph.GetNodes())
+        self.assertEqual(Graph_swig.GetEdges(), Graph.GetEdges())
+
+        # Network
+        Graph_swig = snap.GenRndGnm(snap.PNEANet, 100, 1000)
+        Graph = snap.GenRndGnm(snap.TNEANet, 100, 1000)
+        self.assertEqual(Graph_swig.GetNodes(), Graph.GetNodes())
+        self.assertEqual(Graph_swig.GetEdges(), Graph.GetEdges())
+
+    def test_GenBaraHierar(self):
+        # Directed Graph
+        Graph_swig = snap.GenBaraHierar(snap.PNGraph, 3, True)
+        Graph = snap.GenBaraHierar(snap.TNGraph, 3, True)
+        self.assertEqual(Graph_swig.GetNodes(), Graph.GetNodes())
+        self.assertEqual(Graph_swig.GetEdges(), Graph.GetEdges())
+
+        # Undirected Graph
+        Graph_swig = snap.GenBaraHierar(snap.PUNGraph, 3, True)
+        Graph = snap.GenBaraHierar(snap.TUNGraph, 3, True)
+        self.assertEqual(Graph_swig.GetNodes(), Graph.GetNodes())
+        self.assertEqual(Graph_swig.GetEdges(), Graph.GetEdges())
+
+        # Network
+        Graph_swig = snap.GenBaraHierar(snap.PNEANet, 3, True)
+        Graph = snap.GenBaraHierar(snap.TNEANet, 3, True)
+        self.assertEqual(Graph_swig.GetNodes(), Graph.GetNodes())
+        self.assertEqual(Graph_swig.GetEdges(), Graph.GetEdges())
+
     def test_CntInDegNodes(self):
         # Directed graph
         num_nodes = self.DirGraphFull.CntInDegNodes(self.num_nodes-1)
