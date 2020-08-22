@@ -15,7 +15,6 @@
 
 # This function adds compatility to additional datatypes
 # Works for Python types: list, set, and dict (with their corresponding SNAP types)
-
 def ConvertToSnapType(args, pos, SnapType, PyType):
     if len(args) > pos:
         arg = args[pos]
@@ -43,6 +42,16 @@ def ConvertToSnapType(args, pos, SnapType, PyType):
 
     return args
 
+# This function converts TNGraph/TUNGraph/TNEANet to PNGraph/PUNGraph/PNEANet
+def ConvertGraphArg(GraphType):
+    if GraphType == TNGraph:
+        GraphType = PNGraph
+    elif GraphType == TUNGraph:
+        GraphType = PUNGraph
+    elif GraphType == TNEANet:
+        GraphType = PNEANet
+    return GraphType
+
 # This function moves the argument at pos to be returned instead
 def MoveArgToReturn (tspec, args, func, pos, argType):
     if len(args) > pos and type(args[pos]) == argType:
@@ -60,6 +69,7 @@ def MoveArgToReturn (tspec, args, func, pos, argType):
 
 _LoadEdgeList = LoadEdgeList
 def LoadEdgeList(GraphType, InFNm, SrcColId = 0, DstColId = 1, Separator = " "):
+    GraphType = ConvertGraphArg(GraphType)
     if Separator == " ":
         return _LoadEdgeList(GraphType, InFNm, SrcColId, DstColId)
     else:
@@ -67,6 +77,7 @@ def LoadEdgeList(GraphType, InFNm, SrcColId = 0, DstColId = 1, Separator = " "):
 
 _LoadEdgeListStr = LoadEdgeListStr
 def LoadEdgeListStr(GraphType, InFNm, SrcColId = 0, DstColId = 1, Mapping = None):
+    GraphType = ConvertGraphArg(GraphType)
     if Mapping == None  or  Mapping == False:
         return _LoadEdgeListStr(GraphType, InFNm, SrcColId, DstColId)
 
@@ -77,9 +88,20 @@ def LoadEdgeListStr(GraphType, InFNm, SrcColId = 0, DstColId = 1, Mapping = None
 
     return _LoadEdgeListStr(GraphType, InFNm, SrcColId, DstColId, Mapping)
 
+_LoadConnList = LoadConnList
+def LoadConnList(GraphType, *args):
+    GraphType = ConvertGraphArg(GraphType)
+    return _LoadConnList(GraphType, *args)
+
 _LoadConnListStr = LoadConnListStr 
 def LoadConnListStr(GraphType, *args):
+    GraphType = ConvertGraphArg(GraphType)
     return MoveArgToReturn(GraphType, args, _LoadConnListStr, 1, TStrIntSH)
+
+_LoadPajek = LoadPajek
+def LoadPajek(GraphType, *args):
+    GraphType = ConvertGraphArg(GraphType)
+    return _LoadPajek(GraphType, *args)
 
 _SaveGViz = SaveGViz
 def SaveGViz(Graph, *args):
@@ -339,7 +361,7 @@ def GetClustCf(Graph, *args, **kwargs):
     else:
         return _GetClustCf(Graph, SampleNodes)        
 
-def GetTriadsbyNode(Graph, SampleNodes=-1):
+def GetTriadsByNode(Graph, SampleNodes=-1):
     NIdCOTriadV = TIntTrV()
     GetTriads(Graph, NIdCOTriadV, SampleNodes)
     return NIdCOTriadV
