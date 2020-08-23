@@ -195,16 +195,17 @@ Rowwise Table Operations
 
 The operations shown above focused on creating new data from some combination of two pre-existing columns. Now, we’ll look at operations that summarize or elucidate information about the table: namely, the Group(), Aggregate(), AggregateCols(), Select(), and Unique() functions. These methods affect the table in different ways. Here, we will describe the use cases of the most important features. 
 
-First, we will investigate the Select() function family, which consists of select_const(), select_atomic(), and select(). You will usually use the first two, as select() is utilized for complex, layered selecting parameters. 
+First, we will investigate the Select() function family, which consists of SelectAtomicIntConst(), SelectAtomicFltConst(),SelectAtomicStrConst(),  SelectAtomic(), and Aelect(). You will usually use the first four, as Select() is utilized for complex, layered selecting parameters. 
 
-First, let’s look at select_const(), which allows you to select rows based on their value in a single column. For example, perhaps you want to select students who had final scores of 90 or above. Here are the general parameters of select_const():
+First, let’s look at SelectAtomic---Const() functions, which allows you to select rows based on their value in a single column. For example, perhaps you want to select students who had final scores of 90 or above. Here are the general parameters of SelectAtomic---Const() (insert Int, Flt, or Str depending on the type)::
 
-table.select_const(column, val, cmp, selected_table)
+       	     >>> table.SelectAtomicIntConst(column, val, cmp, selected_table)
+
 Column is the column we want to select on. This would be final scores in the example above. Val is the value we want to compare to, which is 90 in the example above. Cmp is the comparator we want to use, with choices of less then (LT), less than or equal to (LTE), equal to (EQ), not equal to (NEQ), greater than or equal to (GTE), greater than (GT), substring of (SUBSTR), or superstring of (SUPERSTR). In the example above, we want to use greater than or equal to (GTE). Finally, we need to provide a selected_table, the table that we want add the selected rows to. Generally, using a new blank table is the right option. 
 
 Here’s the code to select only rows where the final score is greater than or equal to 90. Let’s assume we’ve greater a new blank :class:`TTable` called above_90_table::
 
-       	   >>> grade_table.select_const(“Final”, 90, snap.GTE, above_90_table)
+       	   >>> grade_table.SelectAtomicIntConst(“Final”, 90, snap.GTE, above_90_table)
 
 Let’s now look at the Group() and Unique() functions. The Group() function allows us to create a new column to label each column according to shared attributes: 
 
