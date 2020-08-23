@@ -155,7 +155,7 @@ def _relabel_inplace(G, mapping):
 def _relabel_copy(G, mapping):
     H = G.__class__()
     H.add_nodes_from(mapping.get(n, n) for n in G)
-    H._node.update((mapping.get(n, n), d.copy()) for n, d in G.nodes.items())
+    # H._node.update((mapping.get(n, n), d.copy()) for n, d in G.nodes.items())
     if G.is_multigraph():
         H.add_edges_from(
             (mapping.get(n1, n1), mapping.get(n2, n2), k, d.copy())
