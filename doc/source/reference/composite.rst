@@ -532,7 +532,7 @@ vector. All of the following methods are available for objects that are classifi
       >>> vec1.IsIn(5)
       True
       >>> vec2 = snap.TIntV(vec1)
-      >>> vec2.Add(10)
+      >>> vec2.append(10)
       >>> vec2.Diff(vec1)
       >>> for val in vec2:
       ...     print(val)
@@ -579,6 +579,83 @@ Hash tables contain values of the same type. Each value has a user provided key 
 
    :class:`THash` offers iterators of type :class:`THashKeyDatI` for fast access through
    the hash table.
+
+   The following public functions are Python dictionary functions that are also supported by the :class:`THash` class:
+
+    .. describe:: len(H)
+
+        Returns the number of keys in the hash table.
+
+    .. describe:: H[Key]
+
+        Returns the value associated with the key *Key*.
+
+    .. describe:: clear()
+
+        Clears the contents of the hash table.
+
+    .. describe:: copy()
+
+        Copies the contents of the hash table.
+
+    .. describe:: get[Key]
+
+        Returns the value at the key *Key*.
+
+    .. describe:: items()
+
+        Returns a list of key, value pairs in the hash table.
+
+    .. describe:: keys()
+
+        Returns a list of the keys in the hash table.
+
+    .. describe:: pop(Key)
+
+        Removes *Key* and its value from the hash table and returns its value.
+
+    .. describe:: setdefault(Key, Default)
+
+        If *Key* is present in the hash table, returns its value. Otherwise, creates a new entry *Key* in the hash table with value *Default* and returns *Default*.
+
+    .. describe:: pop(Key)
+
+        Removes *Key* and its value from the hash table and returns its value.
+
+    .. describe:: values()
+
+        Returns a list of the values in the hash table.
+
+
+   The following public functions are Python list functions that are also supported by the :class:`TVec` class:
+   
+     .. describe:: V[Index]
+
+        Returns the value at index *Index* in vector *v*.
+
+     .. describe:: V[Index] = Value
+
+        Set ``V[Index]`` to *Value*.
+
+     .. describe:: del V[Index]
+
+        Removes the value at index *index* from the vector.
+
+     .. describe:: Val in V
+
+        Returns ``True`` if *Val* is a value stored in vector *V*, else ``False``.
+
+     .. describe:: Val not in V
+
+        Equivalent to ``not Val in V``.
+
+     .. describe:: append(Val)
+
+        Appends *Val* to the end of the vector.
+
+     .. describe:: len()
+
+        Returns the length of the vector.
 
    The following public functions are supported by the :class:`THash` class:
 
