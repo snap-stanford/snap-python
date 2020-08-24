@@ -1,4 +1,5 @@
 import snapx as sx
+import snap
 
 __all__ = ["convert_node_labels_to_integers", "relabel_nodes"]
 
@@ -154,8 +155,7 @@ def _relabel_inplace(G, mapping):
 
 def _relabel_copy(G, mapping):
     H = G.__class__()
-    H.add_nodes_from(mapping.get(n, n) for n in G)
-    # H._node.update((mapping.get(n, n), d.copy()) for n, d in G.nodes.items())
+    H.add_nodes_from((mapping.get(n, n), d) for n, d in G.nodes(data=True))
     if G.is_multigraph():
         H.add_edges_from(
             (mapping.get(n1, n1), mapping.get(n2, n2), k, d.copy())
@@ -163,7 +163,7 @@ def _relabel_copy(G, mapping):
         )
     else:
         H.add_edges_from(
-            (mapping.get(n1, n1), mapping.get(n2, n2), d.copy())
+            (mapping.get(n1, n1), mapping.get(n2, n2), d)
             for (n1, n2, d) in G.edges(data=True)
         )
     H.graph.update(G.graph)
