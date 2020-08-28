@@ -32,11 +32,11 @@ The following example shows how to load each of the graph types from a file name
 
     import snap
 
-    (Graph, H) = snap.LoadConnListStr(snap.PNGraph, "test.dat")
+    (Graph, H) = snap.LoadConnListStr(snap.TNGraph, "test.dat")
 
-    (UGraph, H) = snap.LoadConnListStr(snap.PUNGraph, "test.dat")
+    (UGraph, H) = snap.LoadConnListStr(snap.TUNGraph, "test.dat")
 
-    (Network, H) = snap.LoadConnListStr(snap.PNEANet, "test.dat")
+    (Network, H) = snap.LoadConnListStr(snap.TNEANet, "test.dat")
 
     # convert input string to node id
     NodeId = H.GetKeyId("A")
