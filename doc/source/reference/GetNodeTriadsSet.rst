@@ -1,20 +1,17 @@
-GetNodeTriads
+GetNodeTriadsSet
 '''''''''''''''
 
-.. function:: GetNodeTriads(Graph, NId, GroupSet)
+.. function:: GetNodeTriadsSet(NId, GroupSet)
 
 Returns the number of closed triads between a node *NId* and a subset of its neighbors in *GroupSet* as well as the number of triads for cases where neighbors are not in *GroupSet*.
 Considers *Graph* to be undirected.
 
 Parameters:
 
-- *Graph*: graph (input)
-    A Snap.py graph or a network
-
-- *NId*: int (input)
+- *NId*: int
     NId of the node of interest
 
-- *GroupSet*: TIntSet (input)
+- *GroupSet*: Python set or :class:`TIntSet`
     Set of NIds representing a subset of the neighbors of the node of interest
 
 
@@ -29,34 +26,34 @@ The following example shows how to calculate the number of triads a node partici
     import snap
 
     Graph = snap.GenFull(snap.PNGraph, 100)
-    NI = Graph.Nodes().next()
+    NI = Graph.Nodes().__next__()
     NId = NI.GetId()
     GroupSet = snap.TIntSet()
     for NbrIdx in range(4):
         GroupSet.AddKey(NI.GetOutNId(NbrIdx))
-    result = snap.GetNodeTriads(Graph, NId, GroupSet)
+    result = Graph.GetNodeTriadsSet(NId, GroupSet)
     print("number of triads between", NId, " and two set members", result[0])
     print("number of triads between", NId, " and a set member and a set non-member", result[2])
     print("number of triads between", NId, " and two set non-members", result[3])
 
-    Graph = snap.GenFull(snap.PUNGraph, 100)
-    NI = Graph.Nodes().next()
+    UGraph = snap.GenFull(snap.PUNGraph, 100)
+    NI = UGraph.Nodes().__next__()
     NId = NI.GetId()
     GroupSet = snap.TIntSet()
     for NbrIdx in range(4):
         GroupSet.AddKey(NI.GetOutNId(NbrIdx))
-    result = snap.GetNodeTriads(Graph, NId, GroupSet)
+    result = UGraph.GetNodeTriadsSet(NId, GroupSet)
     print("number of triads between", NId, " and two set members", result[0])
     print("number of triads between", NId, " and a set member and a set non-member", result[2])
     print("number of triads between", NId, " and two set non-members", result[3])
 
-    Graph = snap.GenFull(snap.PNEANet, 100)
-    NI = Graph.Nodes().next()
+    Network = snap.GenFull(snap.PNEANet, 100)
+    NI = Network.Nodes().__next__()
     NId = NI.GetId()
     GroupSet = snap.TIntSet()
     for NbrIdx in range(4):
         GroupSet.AddKey(NI.GetOutNId(NbrIdx))
-    result = snap.GetNodeTriads(Graph, NId, GroupSet)
+    result = Network.GetNodeTriadsSet(NId, GroupSet)
     print("number of triads between", NId, " and two set members", result[0])
     print("number of triads between", NId, " and a set member and a set non-member", result[2])
     print("number of triads between", NId, " and two set non-members", result[3])

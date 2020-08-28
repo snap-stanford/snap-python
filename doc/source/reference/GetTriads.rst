@@ -1,16 +1,13 @@
 GetTriads
 '''''''''
 
-.. function:: GetTriads(Graph, SampleNodes=-1)
+.. function:: GetTriads(SampleNodes=-1)
 
 Computes the number of triads in the graph.
 
 Parameters:
 
- - *Graph*: graph (input)
-     A Snap.py graph or a network.
- 
- - *SampleNodes*: int (input)
+ - *SampleNodes*: int
     If !=-1 then compute triads only for a random sample of *SampleNodes* nodes. Useful for approximate but quick computations.
 
 Return value:
@@ -25,15 +22,15 @@ The following code shows an example of GetTriads for nodes in
   import snap
 
   Graph = snap.GenRndGnm(snap.PNGraph, 100, 250)
-  NumTriads = snap.GetTriads(Graph, 50)
+  NumTriads = Graph.GetTriads(50)
   print('Number of triads with 50 sample nodes: %d' % NumTriads)
 
   UGraph = snap.GenRndGnm(snap.PUNGraph, 100, 250)
-  NumTriads = snap.GetTriads(UGraph, 75)
+  NumTriads = UGraph.GetTriads(75)
   print('Number of triads with 75 sample nodes: %d' % NumTriads)
 
   Network = snap.GenRndGnm(snap.PNEANet, 100, 250)
-  NumTriads = snap.GetTriads(Network, 100)
+  NumTriads = Network.GetTriads(100)
   print('Number of triads with 100 sample nodes: %d' % NumTriads)
 
 

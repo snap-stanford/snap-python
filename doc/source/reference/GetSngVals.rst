@@ -1,25 +1,19 @@
 GetSngVals
 '''''''''''
 
-.. function:: GetSngVals(Graph, SngVals, SngValV)
+.. function:: GetSngVals(SngVals)
 
 Computes *SngVals* largest singular values of the adjacency matrix representing the directed graph *Graph*.
 
 Parameters:
 
-- *Graph*: directed graph (input)
-    A Snap.py directed graph.
-
-- *SngVals*: int (input)
+- *SngVals*: int
     The number of singular values to compute.
-
-- *SngValV*: :class:`TFltV`, a vector of floats (output)
-    The vector of singular values.
 
 Return value:
 
-- None
-
+- :class:`TFltV`, a vector of floats
+    The vector of singular values.
 
 The following example shows how to calculate singular values for :class:`TNGraph`::
 
@@ -27,8 +21,7 @@ The following example shows how to calculate singular values for :class:`TNGraph
 
 	Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
 	SngVals = 4
-	SngValV = snap.TFltV() 
-	snap.GetSngVals(Graph, SngVals, SngValV)
+	SngValV = Graph.GetSngVals(SngVals)
 	for item in SngValV:
 	    print(item)
 

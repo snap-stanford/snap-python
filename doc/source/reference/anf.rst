@@ -5,8 +5,8 @@ Approximate Neighborhood
 .. toctree::
    :maxdepth: 2
 
-   GetAnf
-   GetAnf1
+   GetAnfNode
+   GetAnfGraph
    GetAnfEffDiam1
    GetAnfEffDiam
 

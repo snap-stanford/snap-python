@@ -1,22 +1,18 @@
-GetEigVec
+GetLeadEigVec
 '''''''''''
 
-.. function:: GetEigVec(Graph, EigVec)
+.. function:: GetLeadEigVec()
 
 Computes leading eigenvector of the adjacency matrix representing an undirected *Graph*.
 
 Parameters:
 
-- *Graph*: undirected graph (input)
-    A Snap.py undirected graph.
-
-- *EigVec*: :class:`TFltV`, a vector of floats (output)
-    A leading eigenvector of the adjacency matrix representing the given *Graph*.
+- None
 
 Return value:
 
-- None
-
+- :class:`TFltV`, a vector of floats
+    A leading eigenvector of the adjacency matrix representing the given *Graph*.
 
 The following example shows how to get leading eigenvector of the adjacency matrix for 
 :class:`TUNGraph`::
@@ -24,7 +20,6 @@ The following example shows how to get leading eigenvector of the adjacency matr
     import snap
 
     UGraph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
-    EigVec =  snap.TFltV()
-    snap.GetEigVec(UGraph, EigVec)
+    EigVec =  UGraph.GetLeadEigVec()
     for Val in EigVec:
         print(Val)

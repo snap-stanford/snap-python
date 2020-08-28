@@ -1,19 +1,16 @@
 GetAnfEffDiam
 '''''''''''''
 
-.. function:: GetAnfEffDiam(Graph, NRuns=1, NApprox=-1)
+.. function:: GetAnfEffDiam(NRuns=1, NApprox=-1)
 
 Returns a 90th percentile of the shortest path length distribution of a Graph (based on a NRuns runs of Approximate Neighborhood Function of approximation quality NApprox). 
 
 Parameters:
 
-- *Graph*: graph (input)
-    A Snap.py graph or a network.
-
-- *NRuns*: int (input)
+- (Optional) *NRuns*: int
     Number of runs of the Approximate Neighborhood Function (ANF). Default value is 1.
 
-- *NApprox*: int (input)
+- (Optional) *NApprox*: int
     Number of approximations. Default value is -1.
 
 Return value:
@@ -29,10 +26,10 @@ The following example shows how to calculate the ANF Effective Diameter for a gr
     import snap
 
     Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
-    snap.GetAnfEffDiam(Graph)
+    Graph.GetAnfEffDiam()
 
     UGraph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
-    snap.GetAnfEffDiam(UGraph)
+    UGraph.GetAnfEffDiam()
 
     Network = snap.GenRndGnm(snap.PNEANet, 100, 1000)
-    snap.GetAnfEffDiam(Network)
+    Network.GetAnfEffDiam()

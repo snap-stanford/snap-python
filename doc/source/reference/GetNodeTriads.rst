@@ -1,16 +1,13 @@
 GetNodeTriads
 '''''''''''''
 
-.. function:: GetNodeTriads(Graph, NId)
+.. function:: GetNodeTriads(NId)
 
 Returns number of triads a node *NId* participates in. Considers the graph as undirected. 
 
 Parameters:
 
-- *Graph*: graph (input)
-    A Snap.py graph or a network.
-
-- *NId*: int (input)
+- *NId*: int
     A node id in *Graph*.
 
 Return value:
@@ -25,13 +22,13 @@ The following example shows the number of triads for nodes in
 
     Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
     for NI in Graph.Nodes():
-        print('%d %d' % (NI.GetId(), snap.GetNodeTriads(Graph, NI.GetId())))
+        print('%d %d' % (NI.GetId(), Graph.GetNodeTriads(NI.GetId())))
     
     UGraph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
     for NI in UGraph.Nodes():
-        print('%d %d' % (NI.GetId(), snap.GetNodeTriads(UGraph, NI.GetId())))
+        print('%d %d' % (NI.GetId(), UGraph.GetNodeTriads(NI.GetId())))
 
     Network = snap.GenRndGnm(snap.PNEANet, 100, 1000)
     for NI in Network.Nodes():
-        print('%d %d' % (NI.GetId(), snap.GetNodeTriads(Network, NI.GetId())))
+        print('%d %d' % (NI.GetId(), Network.GetNodeTriads(NI.GetId())))
 
