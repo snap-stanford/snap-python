@@ -3,7 +3,7 @@ GetAnfNode
 
 .. function:: GetAnfNode(SrcNId, MxDist, IsDir, NApprox=32)
 
-Approximate neighborhood function of a node. Prints the (approximate) number of nodes reachable from *SrcNId* in less than *MxDist* hops.
+A graph method that returns approximate neighborhood sizes of a node. Prints the (approximate) number of nodes reachable from *SrcNId* in less than *MxDist* hops.
 
 Parameters:
 
@@ -16,13 +16,13 @@ Parameters:
 - *IsDir*: bool
     Indicates whether the edges should be considered directed or undirected.
 
-- (Optional) *Napprox*: int
+- (optional) *Napprox*: int
     Quality of approximation. See the ANF paper. Should be a multiple of 8.
 
 Return value:
 
 - :class:`TIntFltKdV`, a vector of (integer, float) pairs
-    Maps between the distance H (in hops) and the number of nodes reachable in <= H hops.
+    Each pair gives the distance H (in hops) and the number of nodes reachable in <= H hops.
 
 The ANF paper: http://www.cs.cmu.edu/~christos/PUBLICATIONS/kdd02-anf.pdf
 

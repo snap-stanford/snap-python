@@ -3,7 +3,7 @@ GetLeadEigVec
 
 .. function:: GetLeadEigVec()
 
-Computes leading eigenvector of the adjacency matrix representing an undirected *Graph*.
+A graph method that computes the leading eigenvector of the adjacency matrix representing an undirected graph.
 
 Parameters:
 
@@ -12,9 +12,9 @@ Parameters:
 Return value:
 
 - :class:`TFltV`, a vector of floats
-    A leading eigenvector of the adjacency matrix representing the given *Graph*.
+    The leading eigenvector of the adjacency matrix representing the given graph.
 
-The following example shows how to get leading eigenvector of the adjacency matrix for 
+The following example shows how to get the leading eigenvector of the adjacency matrix for 
 :class:`TUNGraph`::
 
     import snap

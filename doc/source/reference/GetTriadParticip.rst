@@ -3,7 +3,7 @@ GetTriadParticip
 
 .. function:: GetTriadParticip()
 
-Calculates triangle participation ratio. For each node counts how many triangles it participates in and then returns a vector of pairs (number of triangles, number of such nodes). Considers the graph as undirected.
+A graph method that calculates triangle participation ratio. It counts for each node how many triangles it participates in and then returns a vector of pairs (number of triangles, number of such nodes). Considers the graph as undirected.
 
 Parameters:
 

@@ -3,12 +3,12 @@ GetTriadsByNode
 
 .. function:: GetTriadsByNode(SampleNodes=-1)
 
-Computes the number of closed and open triads for every node in *Graph*. Considers the graph as undirected.
+A graph method that computes the number of closed and open triads for every node. Considers the graph as undirected.
 
 Parameters:
 
-- *SampleNodes*: integer
-    If !=-1 then compute triads only for a random sample of SampleNodes nodes. Useful for approximate but quick computations.
+- (optional) *SampleNodes*: integer
+    If *SampleNodes* is -1 (default value), then compute triads for all the nodes. Otherwise, compute triads only for a random sample of *SampleNodes* nodes.
 
 Return value:
 

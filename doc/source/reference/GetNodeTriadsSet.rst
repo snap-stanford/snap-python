@@ -3,8 +3,8 @@ GetNodeTriadsSet
 
 .. function:: GetNodeTriadsSet(NId, GroupSet)
 
-Returns the number of closed triads between a node *NId* and a subset of its neighbors in *GroupSet* as well as the number of triads for cases where neighbors are not in *GroupSet*.
-Considers *Graph* to be undirected.
+A graph method that returns the number of closed triads between a node *NId* and a subset of its neighbors in *GroupSet* as well as the number of triads for cases where neighbors are not in *GroupSet*.
+Considers the graph to be undirected.
 
 Parameters:
 
@@ -26,8 +26,8 @@ The following example shows how to calculate the number of triads a node partici
     import snap
 
     Graph = snap.GenFull(snap.PNGraph, 100)
-    NI = Graph.Nodes().__next__()
-    NId = NI.GetId()
+    NId = Graph.GetRndNId()
+    NI = Graph.GetNI(NId)
     GroupSet = snap.TIntSet()
     for NbrIdx in range(4):
         GroupSet.AddKey(NI.GetOutNId(NbrIdx))
@@ -37,8 +37,8 @@ The following example shows how to calculate the number of triads a node partici
     print("number of triads between", NId, " and two set non-members", result[3])
 
     UGraph = snap.GenFull(snap.PUNGraph, 100)
-    NI = UGraph.Nodes().__next__()
-    NId = NI.GetId()
+    NId = UGraph.GetRndNId()
+    NI = UGraph.GetNI(NId)
     GroupSet = snap.TIntSet()
     for NbrIdx in range(4):
         GroupSet.AddKey(NI.GetOutNId(NbrIdx))
@@ -48,8 +48,8 @@ The following example shows how to calculate the number of triads a node partici
     print("number of triads between", NId, " and two set non-members", result[3])
 
     Network = snap.GenFull(snap.PNEANet, 100)
-    NI = Network.Nodes().__next__()
-    NId = NI.GetId()
+    NId = Network.GetRndNId()
+    NI = Network.GetNI(NId)
     GroupSet = snap.TIntSet()
     for NbrIdx in range(4):
         GroupSet.AddKey(NI.GetOutNId(NbrIdx))

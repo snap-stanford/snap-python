@@ -3,7 +3,7 @@ GetAnfEffDiam
 
 .. function:: GetAnfEffDiam(NRuns=1, NApprox=-1)
 
-Returns a 90th percentile of the shortest path length distribution of a Graph (based on a NRuns runs of Approximate Neighborhood Function of approximation quality NApprox). 
+A graph method that returns a 90th percentile of the shortest path length distribution of a Graph (based on a NRuns runs of Approximate Neighborhood Function of approximation quality NApprox). 
 
 Parameters:
 
@@ -20,16 +20,16 @@ Return value:
 
 For more info see: http://www.cs.cmu.edu/~christos/PUBLICATIONS/kdd02-anf.pdf
 
-The following example shows how to calculate the ANF Effective Diameter for a graph
+The following example shows how to calculate the ANF Effective Diameter for
 :class:`TNGraph`, :class:`TUNGraph`, and :class:`TNEANet`::
 
     import snap
 
     Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
-    Graph.GetAnfEffDiam()
+    print(Graph.GetAnfEffDiam())
 
     UGraph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
-    UGraph.GetAnfEffDiam()
+    print(UGraph.GetAnfEffDiam())
 
     Network = snap.GenRndGnm(snap.PNEANet, 100, 1000)
-    Network.GetAnfEffDiam()
+    print(Network.GetAnfEffDiam())

@@ -3,7 +3,7 @@ GetInvParticipRat
 
 .. function:: GetInvParticipRat(MaxEigVecs, TimeLimit)
 
-Computes Inverse participation ratio of a given graph.
+A graph method that computes the inverse participation ratio of an undirected graph.
 
 Parameters:
 
@@ -21,7 +21,7 @@ Return value:
 See Spectra of "real-world" graphs: Beyond the semicircle law by Farkas, Derenyi, Barabasi and Vicsek  URL: http://arxiv.org/abs/cond-mat/0102335
 
 
-The following example computes the inverse participation ratio for :class:`TNGraph`::
+The following example computes the inverse participation ratio for :class:`TUNGraph`::
 
  import snap
  

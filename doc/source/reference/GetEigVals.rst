@@ -3,7 +3,7 @@ GetEigVals
 
 .. function:: GetEigVals(EigVals)
 
-Computes top *EigVals* eigenvalues of the adjacency matrix representing the given undirected graph *Graph*.
+A graph method that computes top *EigVals* eigenvalues of the adjacency matrix representing the given undirected graph.
 
 Parameters:
 

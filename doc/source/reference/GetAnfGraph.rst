@@ -3,7 +3,7 @@ GetAnfGraph
 
 .. function::  GetAnfGraph(MxDist, IsDir, NApprox=32)
 
-Approximate Neighborhood Function of *Graph*. Returns the number of pairs of nodes reachable in less than or equal to H hops.
+A graph method that calculates approximate neighborhoods. Returns the number of pairs of nodes reachable in less than or equal to H hops.
 
 Parameters:
 
@@ -13,13 +13,13 @@ Parameters:
 - *IsDir*: bool
     Indicates whether the edges should be considered directed or undirected.
 
-- (Optional) *NApprox*: int
+- (optional) *NApprox*: int
     Quality of approximation. See the ANF paper (link below). Should be a multiple of 8.
 
 Return value:
 
 - :class:`TIntFltKd`, a vector of (int, float) pairs
-    Maps between the distance H (in hops) and the number of nodes reachable in <= H hops.
+    Each pair gives the distance H (in hops) and the number of nodes reachable in <= H hops.
 
 The ANF paper: http://www.cs.cmu.edu/~christos/PUBLICATIONS/kdd02-anf.pdf
 

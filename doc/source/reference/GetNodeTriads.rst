@@ -3,19 +3,19 @@ GetNodeTriads
 
 .. function:: GetNodeTriads(NId)
 
-Returns number of triads a node *NId* participates in. Considers the graph as undirected. 
+A graph method that returns the number of triads a node *NId* participates in. Considers the graph as undirected. 
 
 Parameters:
 
 - *NId*: int
-    A node id in *Graph*.
+    A node id in the graph.
 
 Return value:
 
 - int
     The number of triads node *NId* participates in.
 
-The following example shows the number of triads for nodes in 
+The following example shows how to calculate the number of triads for nodes in 
 :class:`TNGraph`, :class:`TUNGraph`, and :class:`TNEANet`::
 
     import snap

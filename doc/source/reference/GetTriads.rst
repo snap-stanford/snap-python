@@ -3,12 +3,12 @@ GetTriads
 
 .. function:: GetTriads(SampleNodes=-1)
 
-Computes the number of triads in the graph.
+A graph method that computes the number of triads in the graph.
 
 Parameters:
 
- - *SampleNodes*: int
-    If !=-1 then compute triads only for a random sample of *SampleNodes* nodes. Useful for approximate but quick computations.
+ - (optional) *SampleNodes*: int
+    If *SampleNodes* is -1 (default value), then compute triads over all the nodes. Otherwise, compute triads using only a random sample of *SampleNodes* nodes. This is useful for quick, but approximate computations.
 
 Return value:
 

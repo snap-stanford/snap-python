@@ -3,8 +3,8 @@ GetLeadSngVec
 
 .. function:: GetLeadSngVec()
 
-Computes the leading left and right singular vectors of the adjacency matrix
-representing a directed Graph.
+A graph method that computes the leading left and right singular vectors of the adjacency matrix
+representing a directed graph.
 
 Parameters:
 

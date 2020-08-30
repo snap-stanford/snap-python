@@ -3,7 +3,7 @@ GetNodeClustCf
 
 .. function:: GetNodeClustCf(NId) 
 
-Returns clustering coefficient of a particular node. Considers the graph as undirected.
+A graph method that returns clustering coefficient of a particular node. Considers the graph as undirected.
 
 Parameters:
 

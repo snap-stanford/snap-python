@@ -3,12 +3,12 @@ GetClustCfAll
 
 .. function:: GetClustCfAll (SampleNodes=-1)
 
-Computes the average clustering coefficient, as well as the number of open and closed triads in the graph, as defined in Watts and Strogatz, Collective dynamics of 'small-world' networks. 
+A graph method that computes the average clustering coefficient, as well as the number of open and closed triads in the graph, as defined in Watts and Strogatz, Collective dynamics of 'small-world' networks. 
 
 Parameters:
 
 - (optional) *SampleNodes*: int
-    If !=-1 then compute clustering coefficient only for a random sample of SampleNodes nodes
+    If *SampleNodes* is -1 (default value), then compute the clustering coefficient over all the nodes. Otherwise, compute the clustering coefficient using only a random sample of *SampleNodes* nodes.
 
 Return value:
 

@@ -3,7 +3,7 @@ GetKCoreNodes
 
 .. function:: GetKCoreNodes()
 
-Returns the number of nodes in each core of order K (where K=0, 1, ...).
+A graph method that returns the number of nodes in each core of order K (where K=0, 1, ...).
 
 Parameters:
 

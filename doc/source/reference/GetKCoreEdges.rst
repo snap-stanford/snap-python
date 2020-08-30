@@ -3,7 +3,7 @@ GetKCoreEdges
 
 .. function:: GetKCoreEdges()
 
-Returns the number of edges in each core of order K (where K=0, 1, ...).
+A graph method that returns the number of edges in each core of order K (where K=0, 1, ...).
 
 Parameters:
 

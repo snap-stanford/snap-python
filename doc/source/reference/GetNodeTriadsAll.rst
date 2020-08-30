@@ -3,14 +3,14 @@ GetNodeTriadsAll
 
 .. function:: GetNodeTriadsAll(NId)
 
-Returns the number of closed and open triads that a node *NId* participates in.
+A graph method that returns the number of closed and open triads that a node *NId* participates in.
 
-Considers the *Graph* as undirected.
+Considers the graph as undirected.
 
 Parameters:
 
 - *NId*: int
-	The Id of the node of interest in *Graph*
+	The id of the node of interest.
 
 Return value:
 

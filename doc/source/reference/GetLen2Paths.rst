@@ -3,7 +3,7 @@ GetLen2Paths
 
 .. function:: GetLen2Paths (NId1, NId2, ReturnPaths=False)
 
-Returns the number of length 2 directed paths between a pair of nodes *NId1*, *NId2* (*NId1* --> U --> *NId2*).
+A graph method that returns the number of length 2 directed paths between a pair of nodes *NId1*, *NId2* (*NId1* --> U --> *NId2*).
 
 Parameters:
 
@@ -21,7 +21,7 @@ Return value:
 - int: the number of length 2 paths between *NId1* and *NId2*.
 
 - (optional) *NbrV*: :class:`TIntV`
-    A vector of nodes on each path between node *NId1* and node *NId2*.
+    A vector of nodes on each path between node *NId1* and node *NId2*. It is returned, if *ReturnPaths* is True.
 
 The following example shows how to calculate the number of length 2 directed paths between nodes within a :class:`TNGraph`, :class:`TUNGraph`, and :class:`TNEANet`::
 

@@ -3,7 +3,7 @@ GetKCore
 
 .. function:: GetKCore(K)
 
-Returns the K-core of the graph *Graph*. If the core of order *K* does not exist, the function returns an empty graph.
+A graph method that returns the K-core of a graph. If the core of order *K* does not exist, the function returns an empty graph.
 
 Parameters
 
@@ -13,8 +13,7 @@ Parameters
 Return value:
 
 - graph
-    A Snap.py graph or network where all nodes have degree >= *K*. The graph is empty if no such graph exists.
-
+    A graph or a network where all nodes have degree >= *K*. The graph is empty if no such graph exists.
 
 The following example shows how to check if a K-Core subgraph exists
 for :class:`TNGraph`, :class:`TUNGraph`, and :class:`TNEANet`::

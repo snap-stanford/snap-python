@@ -3,7 +3,7 @@ GetSngVecs
 
 .. function:: GetSngVecs(SngVecs)
 
-Computes the singular values and left and right singular vectors of the adjacency matrix representing a directed Graph.
+A graph method that computes the singular values and left and right singular vectors of the adjacency matrix representing a directed graph.
 
 Parameters:
 
@@ -22,7 +22,7 @@ Return value:
     Computed right singular vectors stored as a vector of vectors of floats
 
 The following example shows how to fetch the in-degrees for nodes in
-:class:`TNGraph`, :class:`TUNGraph`, and :class:`TNEANet`::
+:class:`TNGraph`::
 
     import snap
 

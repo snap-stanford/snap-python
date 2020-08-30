@@ -3,12 +3,12 @@ GetTriadEdges
 
 .. function:: GetTriadEdges(SampleEdges=-1)
 
-Counts the number of edges that participate in at least one triad. Considers the graph as undirected.
+A graph method that counts the number of edges that participate in at least one triad. Considers the graph as undirected.
 
 Parameters:
 
 - (Optional) *SampleEdges*: int
-    If *SampleEdges* is not equal to -1, then compute triads only for a random sample of *SampleEdges* edges. Useful for approximate but quick computations.
+    If *SampleEdges* is -1 (default value), then compute triads for all the edges. Otherwise, compute triads only for a random sample of *SampleEdges* edges, which is useful for approximate but quick computations.
 
 Return value:
 

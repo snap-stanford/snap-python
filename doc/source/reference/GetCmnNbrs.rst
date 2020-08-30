@@ -3,7 +3,7 @@ GetCmnNbrs
 
 .. function:: GetCmnNbrs(NId1, NId2, NbrList = False)
 
-Computes the number of shared neighbors between a pair of nodes *NId1* and *NId2*.
+A graph method that computes the number of shared neighbors between a pair of nodes *NId1* and *NId2*.
 
 Parameters:
 
@@ -22,7 +22,7 @@ Return value:
     The number of common neighbors between the pair of nodes.
 
 - (optional) *NbrV*: :class:`TIntV`, a string hash table with string keys and int values
-    Shared neighbors between the two nodes. Neighbors are node IDs.
+    It provides shared neighbors between the two nodes and is returned if *NbrList* is True. Neighbors are given by their node ids.
 
 
 The following example shows how to calculate number of neighbors for nodes in

@@ -3,7 +3,7 @@ GetNodeClustCfAll
 
 .. function:: GetNodeClustCfAll()
 
-Computes clustering coefficient of each node in *Graph*. Considers the graph as undirected.
+A graph method that computes the clustering coefficient of each node. Considers the graph as undirected.
 
 Parameters:
 
@@ -12,7 +12,7 @@ Parameters:
 Return value:
 
 - :class:`TIntFltH`: a hash table of int keys and float values
-    Clustering Coefficients. Keys are node IDs, values are the node's computed clustering coefficients.
+    Clustering Coefficients. Keys are node ids, values are the node's computed clustering coefficients.
 
 
 The following example shows how to calculate the clustering coefficient for nodes in

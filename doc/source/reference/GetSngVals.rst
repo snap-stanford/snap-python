@@ -3,7 +3,7 @@ GetSngVals
 
 .. function:: GetSngVals(SngVals)
 
-Computes *SngVals* largest singular values of the adjacency matrix representing the directed graph *Graph*.
+A graph method that computes *SngVals* largest singular values of the adjacency matrix representing the directed graph graph.
 
 Parameters:
 

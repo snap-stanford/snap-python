@@ -3,12 +3,9 @@ GetEigVecs
 
 .. function:: GetEigVecs(EigVecs)
 
-Computes top EigVecs eigenvalues and eigenvectors of the adjacency matrix representing a given undirected Graph.
+A graph method that computes top EigVecs eigenvalues and eigenvectors of the adjacency matrix representing a given undirected graph.
 
 Parameters:
-
-- *Graph*: graph
-    A Snap.py undirected Graph.
 
 - *EigVecs*: int
     Rank of eigenvalues and eigenvectors that should be outputted.
@@ -27,8 +24,8 @@ The following example shows how to calculate the top 2 eigenvalues and eigenvect
 
     import snap
 
-    Graph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
-    EigValV, EigVecV = Graph.GetEigVecs(10)
+    UGraph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
+    EigValV, EigVecV = UGraph.GetEigVecs(10)
 
     i = 0
     for item in EigValV:
