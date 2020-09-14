@@ -670,20 +670,23 @@ PUNGraph.MakeUnDir = MakeUnDir_classFn
 PNGraph.MakeUnDir = MakeUnDir_classFn
 PNEANet.MakeUnDir = MakeUnDir_classFn
 
-def ConvertGraph_classFn(self, *args, **kwargs):
-    return ConvertGraph(args[0], self, *(args[1:]), **kwargs)
+def ConvertGraph_classFn(self, GraphType, *args, **kwargs):
+    GraphType = ConvertGraphArg(GraphType)
+    return ConvertGraph(GraphType, self, *args, **kwargs)
 PUNGraph.ConvertGraph = ConvertGraph_classFn
 PNGraph.ConvertGraph = ConvertGraph_classFn
 PNEANet.ConvertGraph = ConvertGraph_classFn
 
-def ConvertSubGraph_classFn(self, *args, **kwargs):
-    return ConvertSubGraph(args[0], self, *args[1:], **kwargs)
+def ConvertSubGraph_classFn(self, GraphType, *args, **kwargs):
+    GraphType = ConvertGraphArg(GraphType)
+    return ConvertSubGraph(GraphType, self, *args, **kwargs)
 PUNGraph.ConvertSubGraph = ConvertSubGraph_classFn
 PNGraph.ConvertSubGraph = ConvertSubGraph_classFn
 PNEANet.ConvertSubGraph = ConvertSubGraph_classFn
 
-def ConvertESubGraph_classFn(self, *args, **kwargs):
-    return ConvertESubGraph(args[0], self, *args[1:], **kwargs)
+def ConvertESubGraph_classFn(self, GraphType, *args, **kwargs):
+    GraphType = ConvertGraphArg(GraphType)
+    return ConvertESubGraph(GraphType, self, *args, **kwargs)
 PUNGraph.ConvertESubGraph = ConvertESubGraph_classFn
 PNGraph.ConvertESubGraph = ConvertESubGraph_classFn
 PNEANet.ConvertESubGraph = ConvertESubGraph_classFn
