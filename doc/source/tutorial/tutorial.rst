@@ -192,10 +192,10 @@ SNAP Types in Snap.py
 
 The following is a list of SNAP types that are used in Snap.py functions:
 
-- :class:`PNGraph`, a directed graph;
-- :class:`PUNGraph`, an undirected graph;
-- :class:`PNEANet`, a directed network;
-- :class:`PGraph`, one of :class:`PNGraph`, :class:`PUNGraph`, or :class:`PNEANet`;
+- :class:`TNGraph`, a directed graph;
+- :class:`TUNGraph`, an undirected graph;
+- :class:`TNEANet`, a directed network;
+- :class:`TGraph`, one of :class:`TNGraph`, :class:`TUNGraph`, or :class:`TNEANet`;
 - :class:`TCnComV`, a vector of connected components;
 - :class:`TFltPrV`, a vector of float pairs;
 - :class:`TFltV`, a vector of floats;
@@ -246,15 +246,8 @@ Network classes in SNAP:
 Snap.py does not directly use instances of the graph and network classes,
 but utilizes smart pointers to those instances instead. The actual
 instances in the Python program are of type :class:`PUNGraph`,
-:class:`PNGraph`, or :class:`PNEAnet` and correspond to :class:`TUNGraph`,
-:class:`TNGraph`, and :class:`TNEAnet`, respectively.
-
-In general, if you need to call a class method, use **T** and
-if you need to specify an instance type, use **P**. For example:
-
->>> G1 = snap.TNGraph.New()
->>> G2 = snap.GenRndGnm(snap.PNGraph, 100, 1000)
-
+:class:`PNGraph`, or :class:`PNEANet` and correspond to :class:`TUNGraph`,
+:class:`TNGraph`, and :class:`TNEANet`, respectively.
 You can read more about smart pointers here:
 http://snap.stanford.edu/snap/doc/snapdev-guide/#Smart_Pointers.
 
@@ -297,7 +290,7 @@ Nodes and edges are traversed with iterators. Some examples of iterator usage in
 
 Create a directed random graph on 100 nodes and 1000 edges:
 
->>> G2 = snap.GenRndGnm(snap.PNGraph, 100, 1000)
+>>> G2 = snap.GenRndGnm(snap.TNGraph, 100, 1000)
 
 Traverse all the nodes using a node iterator:
 
@@ -336,7 +329,7 @@ Snap.py code for saving and loading graphs looks as follows.
 
 Create a directed random graph on 100 nodes and 1000 edges:
 
->>> G2 = snap.GenRndGnm(snap.PNGraph, 100, 1000)
+>>> G2 = snap.GenRndGnm(snap.TNGraph, 100, 1000)
 
 Save the graph in a binary format:
 
@@ -351,11 +344,11 @@ Load the graph in a binary format:
 
 Save the graph to a text file:
 
->>> snap.SaveEdgeList(G4, "test.txt", "Save as tab-separated list of edges")
+>>> G4.SaveEdgeList("test.txt", "Save as tab-separated list of edges")
 
 Load the graph from a text file:
 
->>> G5 = snap.LoadEdgeList(snap.PNGraph, "test.txt", 0, 1)
+>>> G5 = snap.LoadEdgeList(snap.TNGraph, "test.txt", 0, 1)
 
 Graph Manipulation
 ``````````````````
@@ -364,11 +357,11 @@ Snap.py provides rich functionality to efficiently manipulate graphs and network
 
 Generate a random Erdos-Renyi directed graph on 10000 nodes and with 5000 edges:
 
->>> G6 = snap.GenRndGnm(snap.PNGraph, 10000, 5000)
+>>> G6 = snap.GenRndGnm(snap.TNGraph, 10000, 5000)
 
 Convert a directed graph to an undirected graph:
 
->>> G7 = snap.ConvertGraph(snap.PUNGraph, G6)
+>>> G7 = G6.ConvertGraph(snap.TUNGraph)
 
 Get the largest weakly connected component:
 
@@ -380,15 +373,15 @@ Generate a network using Forest Fire model:
 
 Get a subgraph induced on nodes {0,1,2,3,4}:
 
->>> SubG = snap.GetSubGraph(G8, snap.TIntV.GetV(0,1,2,3,4))
+>>> SubG = G8.GetSubGraph([0,1,2,3,4])
 
 Get 3-core of G:
 
->>> Core3 = snap.GetKCore(G8, 3)
+>>> Core3 = G8.GetKCore(3)
 
 Delete nodes of out-degree 3 and in-degree 2:
 
->>> snap.DelDegKNodes(G8, 3, 2)
+>>> G8.DelDegKNodes(3, 2)
 
 Computing Structural Properties
 ```````````````````````````````
@@ -397,18 +390,17 @@ Snap.py provides rich functionality to efficiently compute structural properties
 
 Generate a random Erdos-Renyi directed graph on 10000 nodes and with 1000 edges:
 
->>> G9 = snap.GenRndGnm(snap.PNGraph, 10000, 1000)
+>>> G9 = snap.GenRndGnm(snap.TNGraph, 10000, 1000)
 
 Define a vector of pairs of integers (size, count) and get a distribution of connected components (component size, count):
 
->>> CntV = snap.TIntPrV()
->>> snap.GetWccSzCnt(G9, CntV)
+>>> CntV = G9.GetWccSzCnt()
 >>> for p in CntV:
 >>>     print("size %d: count %d" % (p.GetVal1(), p.GetVal2()))
 
 Get degree distribution pairs (out-degree, count):
 
->>> snap.GetOutDegCnt(G9, CntV)
+>>> CntV = G9.GetOutDegCnt()
 >>> for p in CntV:
 >>>     print("degree %d: count %d" % (p.GetVal1(), p.GetVal2()))
 
@@ -418,8 +410,7 @@ Generate a Preferential Attachment graph on 100 nodes and out-degree of 3:
 
 Define a vector of floats and get first eigenvector of graph adjacency matrix:
 
->>> EigV = snap.TFltV() 
->>> snap.GetEigVec(G10, EigV)
+>>> EigV = G10.GetEigVec()
 >>> nr = 0
 >>> for f in EigV:
 >>>     nr += 1
@@ -427,13 +418,13 @@ Define a vector of floats and get first eigenvector of graph adjacency matrix:
 
 Get an approximation of graph diameter:
 
->>> diam = snap.GetBfsFullDiam(G10, 10)
+>>> diam = G10.GetBfsFullDiam(10)
 
 Count the number of triads:
 
->>> triads = snap.GetTriads(G10)
+>>> triads = G10.GetTriads()
 
 Get the clustering coefficient:
 
->>> cf = snap.GetClustCf(G10)
+>>> cf = G10.GetClustCf()
 
