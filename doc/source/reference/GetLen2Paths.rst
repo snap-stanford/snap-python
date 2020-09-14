@@ -27,21 +27,21 @@ The following example shows how to calculate the number of length 2 directed pat
 
     import snap
 
-    Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
+    Graph = snap.GenRndGnm(snap.TNGraph, 100, 1000)
     NumLen2Paths = Graph.GetLen2Paths(0, 1)
     NumLen2Paths, NbrV = Graph.GetLen2Paths(0, 1, True)
     print("The number of paths between nodes %d and %d is %d" % (0, 1, NumLen2Paths))
     for Nbr in NbrV:
         print("Path: %d %d %d" % (0, Nbr, 1))
 
-    UGraph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
+    UGraph = snap.GenRndGnm(snap.TUNGraph, 100, 1000)
     NumLen2Paths = UGraph.GetLen2Paths(0, 1)
     NumLen2Paths, NbrV = UGraph.GetLen2Paths(0, 1, True)
     print("The number of paths between nodes %d and %d is %d" % (0, 1, NumLen2Paths))
     for Nbr in NbrV:
         print("Path: %d %d %d" % (0, Nbr, 1))
 
-    Network = snap.GenRndGnm(snap.PNEANet, 100, 1000)
+    Network = snap.GenRndGnm(snap.TNEANet, 100, 1000)
     NumLen2Paths = Network.GetLen2Paths(0, 1)
     NumLen2Paths, NbrV = Network.GetLen2Paths(0, 1, True)
     print("The number of paths between nodes %d and %d is %d" % (0, 1, NumLen2Paths))

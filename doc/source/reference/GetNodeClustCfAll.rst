@@ -20,17 +20,17 @@ The following example shows how to calculate the clustering coefficient for node
 
     import snap
 
-    Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
+    Graph = snap.GenRndGnm(snap.TNGraph, 100, 1000)
     NIdCCfH = Graph.GetNodeClustCfAll()
     for item in NIdCCfH:
         print(item, NIdCCfH[item])
 
-    UGraph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
+    UGraph = snap.GenRndGnm(snap.TUNGraph, 100, 1000)
     NIdCCfH = UGraph.GetNodeClustCfAll()
     for item in NIdCCfH:
         print(item, NIdCCfH[item])
 
-    Network = snap.GenRndGnm(snap.PNEANet, 100, 1000)
+    Network = snap.GenRndGnm(snap.TNEANet, 100, 1000)
     NIdCCfH = Network.GetNodeClustCfAll()
     for item in NIdCCfH:
         print(item, NIdCCfH[item])

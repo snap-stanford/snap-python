@@ -2,7 +2,7 @@ Legacy SWIG-based Operations
 ````````````````````````````
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
 
    GenFull-swig
    GenCircle-swig
@@ -179,4 +179,7 @@ Legacy SWIG-based Operations
    GetSngVec-swig
    GetSngVec1-swig
    GetInvParticipRat-swig
+
+   table-swig
+   conv-swig
 

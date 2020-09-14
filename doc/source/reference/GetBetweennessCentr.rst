@@ -31,21 +31,21 @@ The following example shows how to calculate Betweenness Centrality scores for n
 
     import snap
 
-    Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
+    Graph = snap.GenRndGnm(snap.TNGraph, 100, 1000)
     Nodes, Edges = Graph.GetBetweennessCentr(1.0)
     for node in Nodes:
         print("node: %d centrality: %f" % (node, Nodes[node]))
     for edge in Edges:
         print("edge: (%d, %d) centrality: %f" % (edge.GetVal1(), edge.GetVal2(), Edges[edge]))
 
-    UGraph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
+    UGraph = snap.GenRndGnm(snap.TUNGraph, 100, 1000)
     Nodes, Edges = UGraph.GetBetweennessCentr(1.0)
     for node in Nodes:
         print("node: %d centrality: %f" % (node, Nodes[node]))
     for edge in Edges:
         print("edge: (%d, %d) centrality: %f" % (edge.GetVal1(), edge.GetVal2(), Edges[edge]))
 
-    Network = snap.GenRndGnm(snap.PNEANet, 100, 1000)
+    Network = snap.GenRndGnm(snap.TNEANet, 100, 1000)
     Nodes, Edges = Network.GetBetweennessCentr(1.0)
     for node in Nodes:
         print("node: %d centrality: %f" % (node, Nodes[node]))

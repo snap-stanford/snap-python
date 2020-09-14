@@ -33,12 +33,12 @@ The following example shows how to save graphs of types
 
     Colors = { 0: "blue", 1: "blue", 2: "red", 3: "red" }
 
-    Graph = snap.GenRndGnm(snap.PNGraph, 4, 6)
+    Graph = snap.GenRndGnm(snap.TNGraph, 4, 6)
     Graph.SaveGVizColor("Graph1.dot", "Directed Random Graph", True, Colors)
 
-    UGraph = snap.GenRndGnm(snap.PUNGraph, 4, 6)
+    UGraph = snap.GenRndGnm(snap.TUNGraph, 4, 6)
     UGraph.SaveGVizColor("Graph2.dot", "Undirected Random Graph", True, Colors)
 
-    Network = snap.GenRndGnm(snap.PNEANet, 4, 6)
+    Network = snap.GenRndGnm(snap.TNEANet, 4, 6)
     Network.SaveGVizColor("Graph3.dot", "Directed Random Network with Attributes", True, Colors)
 

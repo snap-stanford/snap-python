@@ -20,17 +20,17 @@ The following example shows how to calculate all strongly-connected components i
 
     import snap
 
-    Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
+    Graph = snap.GenRndGnm(snap.TNGraph, 100, 1000)
     Components = Graph.GetSccs()
     for CnCom in Components:
         print("Size of component: %d" % CnCom.Len())
 
-    UGraph = snap.GenRndGnm(snap.PUNGraph, 1000, 50)
+    UGraph = snap.GenRndGnm(snap.TUNGraph, 1000, 50)
     Components =UGraph.GetSccs()
     for CnCom in Components:
         print("Size of component: %d" % CnCom.Len())
 
-    Network = snap.GenRndGnm(snap.PNEANet, 1000, 300)
+    Network = snap.GenRndGnm(snap.TNEANet, 1000, 300)
     Components = Network.GetSccs()
     for CnCom in Components:
         print("Size of component: %d" % CnCom.Len())

@@ -28,7 +28,7 @@ The following example shows how to calculate the average clustering coefficient 
 
     import snap
 
-    Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
+    Graph = snap.GenRndGnm(snap.TNGraph, 100, 1000)
     GraphClustCoeff = Graph.GetClustCf(-1)
     print("Clustering coefficient: %f" % GraphClustCoeff)
     Cf, CfVec = Graph.GetClustCf(True, -1)
@@ -37,7 +37,7 @@ The following example shows how to calculate the average clustering coefficient 
     for pair in CfVec:
         print("degree: %d, clustering coefficient: %f" % (pair.GetVal1(), pair.GetVal2()))
 
-    UGraph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
+    UGraph = snap.GenRndGnm(snap.TUNGraph, 100, 1000)
     GraphClustCoeff = UGraph.GetClustCf(-1)
     print("Clustering coefficient: %f" % GraphClustCoeff)
     Cf, CfVec = UGraph.GetClustCf(True, -1)
@@ -46,7 +46,7 @@ The following example shows how to calculate the average clustering coefficient 
     for pair in CfVec:
         print("degree: %d, clustering coefficient: %f" % (pair.GetVal1(), pair.GetVal2()))
 
-    Network = snap.GenRndGnm(snap.PNEANet, 100, 1000)
+    Network = snap.GenRndGnm(snap.TNEANet, 100, 1000)
     GraphClustCoeff = Network.GetClustCf(-1)
     print("Clustering coefficient: %f" % GraphClustCoeff)
     Cf, CfVec = Network.GetClustCf(True, -1)

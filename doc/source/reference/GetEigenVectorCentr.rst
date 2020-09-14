@@ -23,7 +23,7 @@ The following example shows how to calculate eigenvector centrality values for n
 
     import snap
 
-    UGraph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
+    UGraph = snap.GenRndGnm(snap.TUNGraph, 100, 1000)
     NIdEigenH = UGraph.GetEigenVectorCentr()
     for item in NIdEigenH:
         print("%node: d centrality: %f" % (item, NIdEigenH[item]))

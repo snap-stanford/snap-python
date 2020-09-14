@@ -19,7 +19,7 @@ The following example shows how to calculate singular values for :class:`TNGraph
 
 	import snap
 
-	Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
+	Graph = snap.GenRndGnm(snap.TNGraph, 100, 1000)
 	SngVals = 4
 	SngValV = Graph.GetSngVals(SngVals)
 	for item in SngValV:

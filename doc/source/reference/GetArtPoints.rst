@@ -22,7 +22,7 @@ The following example shows how to find articulation points in a graph of type
 
     import snap 
     
-    UGraph = snap.GenRndGnm(snap.PUNGraph, 1000, 10) 
+    UGraph = snap.GenRndGnm(snap.TUNGraph, 1000, 10) 
     ArtNIdV = UGraph.GetArtPoints() 
     print("Articulation points of a random Undirected Graph : ")
     for NI in ArtNIdV:

@@ -21,7 +21,7 @@ The following example shows how to use :func:`GetESubGraph` with
 
     import snap
 
-    Network = snap.GenRndGnm(snap.PNEANet, 100, 1000)
+    Network = snap.GenRndGnm(snap.TNEANet, 100, 1000)
     EIdV = []
     for EI in Network.Edges():
         EIdV.append(EI.GetId())

@@ -27,17 +27,17 @@ The following examples show how to use :func:`GetBfsTree` with graphs of type
 
     import snap
 
-    Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
+    Graph = snap.GenRndGnm(snap.TNGraph, 100, 1000)
     BfsTree = Graph.GetBfsTree(1, True, False)
     for EI in BfsTree.Edges():
         print("Edge from %d to %d in generated tree." % (EI.GetSrcNId(), EI.GetDstNId()))
 
-    UGraph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
+    UGraph = snap.GenRndGnm(snap.TUNGraph, 100, 1000)
     BfsTree = UGraph.GetBfsTree(1, True, False)
     for EI in BfsTree.Edges():
         print("Edge from %d to %d in generated tree." % (EI.GetSrcNId(), EI.GetDstNId()))
 
-    Network = snap.GenRndGnm(snap.PNEANet, 100, 1000)
+    Network = snap.GenRndGnm(snap.TNEANet, 100, 1000)
     BfsTree = Network.GetBfsTree(1, True, False)
     for EI in BfsTree.Edges():
         print("Edge from %d to %d in generated tree." % (EI.GetSrcNId(), EI.GetDstNId()))

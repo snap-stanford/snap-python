@@ -101,7 +101,7 @@ TUNGraph
      .. code-block:: python
 
         import snap
-        G = snap.GenFull(snap.PNEANet, 100)
+        G = snap.GenFull(snap.TNEANet, 100)
         Rnd = snap.TRnd(42)
         Rnd.Randomize()
         for i in range(0,10):

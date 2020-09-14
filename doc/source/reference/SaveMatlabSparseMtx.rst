@@ -20,11 +20,11 @@ The following example shows how to save a graph of type :class:`TNGraph`, :class
 
     import snap
 
-    Graph = snap.GenRndGnm(snap.PNGraph, 1000, 500)
+    Graph = snap.GenRndGnm(snap.TNGraph, 1000, 500)
     Graph.SaveMatlabSparseMtx("TNGraph.mat")
 
-    UGraph = snap.GenRndGnm(snap.PUNGraph, 1000, 500)
+    UGraph = snap.GenRndGnm(snap.TUNGraph, 1000, 500)
     UGraph.SaveMatlabSparseMtx("TUNGraph.mat")
 
-    Network = snap.GenRndGnm(snap.PNEANet, 1000, 500)
+    Network = snap.GenRndGnm(snap.TNEANet, 1000, 500)
     Network.SaveMatlabSparseMtx("TNEANet.mat")

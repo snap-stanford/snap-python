@@ -29,7 +29,7 @@ The following example shows how to compute the sequence vector for nodes in
 
     import snap
 
-    Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
+    Graph = snap.GenRndGnm(snap.TNGraph, 100, 1000)
     degree = Graph.GetDegSeqV()
     for i in range(0, degree.Len()):
         print("Node %s has degree %s" % (i, degree[i]))
@@ -38,7 +38,7 @@ The following example shows how to compute the sequence vector for nodes in
       print("Node %s has in-degree %s and out-degree %s" % (i, in_degree[i], out_degree[i]))
 
 
-    UGraph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
+    UGraph = snap.GenRndGnm(snap.TUNGraph, 100, 1000)
     degree = UGraph.GetDegSeqV()
     for i in range(0, degree.Len()):
         print("Node %s has degree %s" % (i, degree[i]))
@@ -46,7 +46,7 @@ The following example shows how to compute the sequence vector for nodes in
     for i in range(0, in_degree.Len()):
       print("Node %s has in-degree %s and out-degree %s" % (i, in_degree[i], out_degree[i]))
 
-    Network = snap.GenRndGnm(snap.PNEANet, 100, 1000)
+    Network = snap.GenRndGnm(snap.TNEANet, 100, 1000)
     degree = Network.GetDegSeqV()
     for i in range(0, degree.Len()):
         print("Node %s has degree %s" % (i, degree[i]))

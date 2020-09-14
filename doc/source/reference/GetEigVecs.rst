@@ -24,7 +24,7 @@ The following example shows how to calculate the top 2 eigenvalues and eigenvect
 
     import snap
 
-    UGraph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
+    UGraph = snap.GenRndGnm(snap.TUNGraph, 100, 1000)
     EigValV, EigVecV = UGraph.GetEigVecs(10)
 
     i = 0

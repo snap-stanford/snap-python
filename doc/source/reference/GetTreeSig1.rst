@@ -38,7 +38,7 @@ The following example shows how to compute the tree signature for nodes in
 
     import snap
 
-    Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
+    Graph = snap.GenRndGnm(snap.TNGraph, 100, 1000)
     Sig = snap.TIntV()
     NodeMap = snap.TIntPrV()
     for NI in Graph.Nodes():
@@ -51,7 +51,7 @@ The following example shows how to compute the tree signature for nodes in
       for item in NodeMap:
         print(item.GetVal1(), item.GetVal2())
 
-    Graph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
+    Graph = snap.GenRndGnm(snap.TUNGraph, 100, 1000)
     Sig = snap.TIntV()
     NodeMap = snap.TIntPrV()
     for NI in Graph.Nodes():
@@ -64,7 +64,7 @@ The following example shows how to compute the tree signature for nodes in
       for item in NodeMap:
         print(item.GetVal1(), item.GetVal2())
 
-    Graph = snap.GenRndGnm(snap.PNEANet, 100, 1000)
+    Graph = snap.GenRndGnm(snap.TNEANet, 100, 1000)
     Sig = snap.TIntV()
     NodeMap = snap.TIntPrV()
     for NI in Graph.Nodes():

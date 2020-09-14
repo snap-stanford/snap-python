@@ -22,17 +22,17 @@ The following example shows how to get the number of edges for a given k-core in
 
     import snap
 
-    Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
+    Graph = snap.GenRndGnm(snap.TNGraph, 100, 1000)
     kValue, CoreIDSzV = Graph.GetKCoreEdges()
     for item in CoreIDSzV:
         print("order: %d edges: %d" % (item.GetVal1(), item.GetVal2()))
 
-    UGraph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
+    UGraph = snap.GenRndGnm(snap.TUNGraph, 100, 1000)
     kValue, CoreIDSzV = UGraph.GetKCoreEdges()
     for item in CoreIDSzV:
         print("order: %d edges: %d" % (item.GetVal1(), item.GetVal2()))
 
-    Network = snap.GenRndGnm(snap.PNEANet, 100, 1000)
+    Network = snap.GenRndGnm(snap.TNEANet, 100, 1000)
     kValue, CoreIDSzV = Network.GetKCoreEdges()
     for item in CoreIDSzV:
         print("order: %d edges: %d" % (item.GetVal1(), item.GetVal2()))

@@ -19,17 +19,17 @@ The following example shows usage with graph types
 
     import snap
 
-    Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
+    Graph = snap.GenRndGnm(snap.TNGraph, 100, 1000)
     print(Graph.GetEdges())
     Graph.MakeUnDir()
     print(Graph.GetEdges())
 
-    UGraph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
+    UGraph = snap.GenRndGnm(snap.TUNGraph, 100, 1000)
     print(UGraph.GetEdges())
     UGraph.MakeUnDir()
     print(UGraph.GetEdges())
 
-    Network = snap.GenRndGnm(snap.PNEANet, 100, 1000)
+    Network = snap.GenRndGnm(snap.TNEANet, 100, 1000)
     print(Network.GetEdges())
     Network.MakeUnDir()
     print(Network.GetEdges())

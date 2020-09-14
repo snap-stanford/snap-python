@@ -26,7 +26,7 @@ The following example shows how to fetch the in-degrees for nodes in
 
     import snap
 
-    Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
+    Graph = snap.GenRndGnm(snap.TNGraph, 100, 1000)
     SngVecs = 5
     SngValV, LeftSV, RightSV = Graph.GetSngVecs(SngVecs)
     for value in SngValV:

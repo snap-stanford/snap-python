@@ -19,7 +19,7 @@ The following example shows how to calculate number of bidirectional edges for
 
     import snap
 
-    UGraph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
+    UGraph = snap.GenRndGnm(snap.TUNGraph, 100, 1000)
     EdgeV = UGraph.GetEdgeBridges()
     for edge in EdgeV:
         print("edge: (%d, %d)" % (edge.GetVal1(), edge.GetVal2()))

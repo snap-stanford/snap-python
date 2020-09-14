@@ -32,13 +32,13 @@ Note that larger graphs (more than a few hundred nodes) may take several minutes
     
     import snap
 
-    Graph = snap.GenRndGnm(snap.PNGraph, 10, 20)
+    Graph = snap.GenRndGnm(snap.TNGraph, 10, 20)
     Graph.DrawGVizColor(snap.gvlDot, "graph.png", "graph 1")
 
-    UGraph = snap.GenRndGnm(snap.PUNGraph, 10, 40)
+    UGraph = snap.GenRndGnm(snap.TUNGraph, 10, 40)
     UGraph.DrawGVizColor(snap.gvlNeato, "graph_undirected.png", "graph 2", True)
 
     NIdColorH = { 0 : "green", 1 : "red", 2 : "purple", 3 : "blue", 4 : "yellow" }
-    Network = snap.GenRndGnm(snap.PNEANet, 5, 10)
+    Network = snap.GenRndGnm(snap.TNEANet, 5, 10)
     Network.DrawGVizColor(snap.gvlSfdp, "network.png", "graph 3", True, NIdColorH)
 

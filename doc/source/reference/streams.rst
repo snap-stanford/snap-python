@@ -26,7 +26,7 @@ TFOut
 
    Below is some code demonstrating the use of the :class:`TFOut` type, which creates a file with name 'test.graph' in the working directory:
 
-      >>> Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
+      >>> Graph = snap.GenRndGnm(snap.TNGraph, 100, 1000)
       >>> FOut = snap.TFOut("test.graph")
       >>> Graph.Save(FOut)
       >>> FOut.Flush()

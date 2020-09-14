@@ -10,7 +10,7 @@ Loads a (directed, undirected or multi) graph from a text file *InFNm* with 1 ed
 Parameters:
 
 - *GraphType*: graph class
-    Class of output graph -- one of :class:`PNGraph`, :class:`PNEANet`, or :class:`PUNGraph`.
+    Class of output graph -- one of :class:`TNGraph`, :class:`TNEANet`, or :class:`TUNGraph`.
 
 - *InFNm*: string
     Filename with the description of the graph edges.

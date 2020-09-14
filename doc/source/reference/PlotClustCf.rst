@@ -23,12 +23,12 @@ for nodes in :class:`TNGraph`, :class:`TUNGraph`, and :class:`TNEANet`::
 
     import snap
 
-    Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
+    Graph = snap.GenRndGnm(snap.TNGraph, 100, 1000)
     Graph.PlotClustCf("example", "Directed graph - clustering coefficient")
 
-    UGraph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
+    UGraph = snap.GenRndGnm(snap.TUNGraph, 100, 1000)
     UGraph.PlotClustCf("example", "Directed graph - clustering coefficient")
 
-    Network = snap.GenRndGnm(snap.PNEANet, 100, 1000)
+    Network = snap.GenRndGnm(snap.TNEANet, 100, 1000)
     Network.PlotClustCf("example", "Directed graph - clustering coefficient")
 

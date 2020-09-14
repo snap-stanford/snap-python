@@ -29,17 +29,17 @@ The following example shows how to use :func:`GetAnf` with
 
     import snap
 
-    Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
+    Graph = snap.GenRndGnm(snap.TNGraph, 100, 1000)
     DistNbrsV = Graph.GetAnfGraph(3, False, 32)
     for item in DistNbrsV:
         print(item.Dat())
 
-    UGraph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
+    UGraph = snap.GenRndGnm(snap.TUNGraph, 100, 1000)
     DistNbrsV = UGraph.GetAnfGraph(3, False, 32)
     for item in DistNbrsV:
         print(item.Dat())
 
-    Network = snap.GenRndGnm(snap.PNEANet, 100, 1000)
+    Network = snap.GenRndGnm(snap.TNEANet, 100, 1000)
     DistNbrsV = Network.GetAnfGraph(3, False, 32)
     for item in DistNbrsV:
         print(item.Dat())

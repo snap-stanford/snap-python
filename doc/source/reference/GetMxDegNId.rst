@@ -20,15 +20,15 @@ The following example shows how to use :func:`GetMxDegNId` with
 
     import snap
 
-    Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
+    Graph = snap.GenRndGnm(snap.TNGraph, 100, 1000)
     NId1 = Graph.GetMxDegNId()
     print(NId1)
 
-    UGraph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
+    UGraph = snap.GenRndGnm(snap.TUNGraph, 100, 1000)
     NId2 = UGraph.GetMxDegNId()
     print(NId2)
 
-    Network = snap.GenRndGnm(snap.PNEANet, 100, 1000)
+    Network = snap.GenRndGnm(snap.TNEANet, 100, 1000)
     NId3 = Network.GetMxDegNId()
     print(NId3)
 

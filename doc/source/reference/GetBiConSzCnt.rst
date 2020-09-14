@@ -20,7 +20,7 @@ distribution in :class:`TUNGraph`::
 
     import snap
 
-    UGraph = snap.GenRndGnm(snap.PUNGraph, 100, 100)
+    UGraph = snap.GenRndGnm(snap.TUNGraph, 100, 100)
     SzCntV = UGraph.GetBiConSzCnt()
     for item in SzCntV:
         print("%d, %d" % (item.GetVal1(), item.GetVal2()))

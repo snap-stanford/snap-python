@@ -8,7 +8,7 @@ A graph method that converts a graph to a graph of type *GraphType* with an opti
 Parameters:
 
 - *GraphType*: graph class
-    Class of output graph -- one of PNGraph, PUNGraph or PNEANet.
+    Class of output graph -- one of TNGraph, TUNGraph or TNEANet.
 
 - (optional) *RenumberNodes*: bool
     Determines whether the node ids are preserved or not. If False, then nodes in the resulting graph have the same node ids as nodes in the original graph. If True, then nodes in the resulting graph are renumbered sequentially from 0 to N-1, where N is the number of nodes. By default, the nodes are not renumbered.
@@ -23,14 +23,14 @@ The following example shows how to convert between :class:`TNGraph`, :class:`TUN
 
     import snap
 
-    GIn = snap.GenRndGnm(snap.PNGraph, 100, 1000)
+    GIn = snap.GenRndGnm(snap.TNGraph, 100, 1000)
     # convert directed graph to undirected
-    GOut = GIn.ConvertGraph(snap.PUNGraph)
+    GOut = GIn.ConvertGraph(snap.TUNGraph)
 
-    GIn = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
+    GIn = snap.GenRndGnm(snap.TUNGraph, 100, 1000)
     # convert undirected graph to directed
-    GOut = GIn.ConvertGraph(snap.PNGraph)
+    GOut = GIn.ConvertGraph(snap.TNGraph)
 
-    GIn = snap.GenRndGnm(snap.PNGraph, 100, 1000)
+    GIn = snap.GenRndGnm(snap.TNGraph, 100, 1000)
     # convert directed graph to a network
-    GOut = GIn.ConvertGraph(snap.PNEANet)
+    GOut = GIn.ConvertGraph(snap.TNEANet)

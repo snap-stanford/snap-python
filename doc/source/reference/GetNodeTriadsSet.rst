@@ -25,7 +25,7 @@ The following example shows how to calculate the number of triads a node partici
 
     import snap
 
-    Graph = snap.GenFull(snap.PNGraph, 100)
+    Graph = snap.GenFull(snap.TNGraph, 100)
     NId = Graph.GetRndNId()
     NI = Graph.GetNI(NId)
     GroupSet = snap.TIntSet()
@@ -36,7 +36,7 @@ The following example shows how to calculate the number of triads a node partici
     print("number of triads between", NId, " and a set member and a set non-member", result[2])
     print("number of triads between", NId, " and two set non-members", result[3])
 
-    UGraph = snap.GenFull(snap.PUNGraph, 100)
+    UGraph = snap.GenFull(snap.TUNGraph, 100)
     NId = UGraph.GetRndNId()
     NI = UGraph.GetNI(NId)
     GroupSet = snap.TIntSet()
@@ -47,7 +47,7 @@ The following example shows how to calculate the number of triads a node partici
     print("number of triads between", NId, " and a set member and a set non-member", result[2])
     print("number of triads between", NId, " and two set non-members", result[3])
 
-    Network = snap.GenFull(snap.PNEANet, 100)
+    Network = snap.GenFull(snap.TNEANet, 100)
     NId = Network.GetRndNId()
     NI = Network.GetNI(NId)
     GroupSet = snap.TIntSet()

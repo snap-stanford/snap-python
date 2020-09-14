@@ -18,13 +18,13 @@ Return value:
 For more info, see ORA Network Analysis Data (http://www.casos.cs.cmu.edu/computational_tools/data2.php) 
 
 
-The following example shows how to get PNGraph object for nodes in
+The following example shows how to get TNGraph object for nodes in
 :class:`TNGraph`::
 
     import snap
     import sys
     
-    GOut = snap.GenRndGnm(snap.PNGraph, 100, 1000)
+    GOut = snap.GenRndGnm(snap.TNGraph, 100, 1000)
     
     fname = "test.xml"
     f = open(fname, "w")

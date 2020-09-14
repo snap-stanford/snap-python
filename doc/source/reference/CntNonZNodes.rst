@@ -20,15 +20,15 @@ The following example shows how to calculate the number of non-zero nodes in
 
     import snap
 
-    Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
+    Graph = snap.GenRndGnm(snap.TNGraph, 100, 1000)
     Count = Graph.CntNonZNodes()
     print("Directed Graph: Count of nodes with degree greater than 0 is %d" % Count)
 
-    UGraph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
+    UGraph = snap.GenRndGnm(snap.TUNGraph, 100, 1000)
     Count = UGraph.CntNonZNodes()
     print("Undirected Graph: Count of nodes with degree greater than 0 is %d" % Count)
 
-    Network = snap.GenRndGnm(snap.PNEANet, 100, 1000)
+    Network = snap.GenRndGnm(snap.TNEANet, 100, 1000)
     Count = Network.CntNonZNodes()
     print("Network Graph: Count of nodes with degree greater than 0 is %d" % Count)
 

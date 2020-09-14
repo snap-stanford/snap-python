@@ -19,7 +19,7 @@ The following example shows how to get the leading eigenvector of the adjacency 
 
     import snap
 
-    UGraph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
+    UGraph = snap.GenRndGnm(snap.TUNGraph, 100, 1000)
     EigVec =  UGraph.GetLeadEigVec()
     for Val in EigVec:
         print(Val)

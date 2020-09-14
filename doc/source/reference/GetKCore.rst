@@ -20,7 +20,7 @@ for :class:`TNGraph`, :class:`TUNGraph`, and :class:`TNEANet`::
 
     import snap
 
-    Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
+    Graph = snap.GenRndGnm(snap.TNGraph, 100, 1000)
     K = 5
     KCore = Graph.GetKCore(K)
     if KCore.Empty():
@@ -28,7 +28,7 @@ for :class:`TNGraph`, :class:`TUNGraph`, and :class:`TNEANet`::
     else:
         print('Core exists for K=%d' % K)
 
-    UGraph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
+    UGraph = snap.GenRndGnm(snap.TUNGraph, 100, 1000)
     K = 10
     KCore = UGraph.GetKCore(K)
     if KCore.Empty():
@@ -36,7 +36,7 @@ for :class:`TNGraph`, :class:`TUNGraph`, and :class:`TNEANet`::
     else:
         print('Core exists for K=%d' % K)
 
-    Network = snap.GenRndGnm(snap.PNEANet, 100, 1000)
+    Network = snap.GenRndGnm(snap.TNEANet, 100, 1000)
     K = 15
     KCore = Network.GetKCore(K)
     if KCore.Empty():

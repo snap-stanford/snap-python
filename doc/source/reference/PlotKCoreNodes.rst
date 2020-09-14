@@ -23,11 +23,11 @@ The following example shows how to plot the k-core node-size distribution for
 
     import snap
 
-    Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
+    Graph = snap.GenRndGnm(snap.TNGraph, 100, 1000)
     Graph.PlotKCoreNodes("example", "Directed graph - k-core nodes")
     
-    UGraph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
+    UGraph = snap.GenRndGnm(snap.TUNGraph, 100, 1000)
     UGraph.PlotKCoreNodes("example", "Undirected graph - k-core nodes")
 
-    Network = snap.GenRndGnm(snap.PNEANet, 100, 1000)
+    Network = snap.GenRndGnm(snap.TNEANet, 100, 1000)
     Graph.PlotKCoreNodes("example", "Network - k-core nodes")

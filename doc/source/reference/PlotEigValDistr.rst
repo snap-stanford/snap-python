@@ -26,7 +26,7 @@ an undirected graph of type :class:`TUNGraph`::
 
     import snap
 
-    UGraph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
+    UGraph = snap.GenRndGnm(snap.TUNGraph, 100, 1000)
 
     # Plot the frequencies of the first 10 eigenvalues
     # NOTE: Random graphs are likely to thwart the calculation of eigenvalues

@@ -20,15 +20,15 @@ The following example shows how to calculate the number of triads for nodes in
 
     import snap
 
-    Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
+    Graph = snap.GenRndGnm(snap.TNGraph, 100, 1000)
     for NI in Graph.Nodes():
         print('%d %d' % (NI.GetId(), Graph.GetNodeTriads(NI.GetId())))
     
-    UGraph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
+    UGraph = snap.GenRndGnm(snap.TUNGraph, 100, 1000)
     for NI in UGraph.Nodes():
         print('%d %d' % (NI.GetId(), UGraph.GetNodeTriads(NI.GetId())))
 
-    Network = snap.GenRndGnm(snap.PNEANet, 100, 1000)
+    Network = snap.GenRndGnm(snap.TNEANet, 100, 1000)
     for NI in Network.Nodes():
         print('%d %d' % (NI.GetId(), Network.GetNodeTriads(NI.GetId())))
 

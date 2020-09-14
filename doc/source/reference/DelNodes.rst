@@ -24,19 +24,19 @@ The following example shows how to delete nodes from
     for i in range(10):
         V.append(i)
 
-    Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
+    Graph = snap.GenRndGnm(snap.TNGraph, 100, 1000)
     Network.DelNodes(V)
     for NI in V:
         if Graph.IsNode(NI):
             print("Node %d found in graph." % NI)
 
-    UGraph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
+    UGraph = snap.GenRndGnm(snap.TUNGraph, 100, 1000)
     UGraph.DelNodes(V)
     for NI in V:
         if UGraph.IsNode(NI):
             print("Node %d found in graph." % NI)
 
-    Network = snap.GenRndGnm(snap.PNEANet, 100, 1000)
+    Network = snap.GenRndGnm(snap.TNEANet, 100, 1000)
     Network.DelNodes(V)
     for NI in V:
         if Network.IsNode(NI):

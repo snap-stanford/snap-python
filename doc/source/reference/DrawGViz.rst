@@ -28,19 +28,19 @@ The following example shows how to draw the graph for :class:`TNGraph`, :class:`
 
     import snap
     
-    Graph = snap.GenRndGnm(snap.PNGraph, 10, 50)
+    Graph = snap.GenRndGnm(snap.TNGraph, 10, 50)
     labels = {}
     for NI in Graph.Nodes():
 	    labels[NI.GetId()] = str(NI.GetId())
     Graph.DrawGViz(snap.gvlDot, "output.png", " ", labels)
 
-    UGraph = snap.GenRndGnm(snap.PUNGraph, 10, 50)
+    UGraph = snap.GenRndGnm(snap.TUNGraph, 10, 50)
     labels = {}
     for NI in UGraph.Nodes():
         labels[NI.GetId()] = str(NI.GetId())
     UGraph.DrawGViz(snap.gvlDot, "output.png", " ", labels)
 
-    Network = snap.GenRndGnm(snap.PNEANet, 10, 50)
+    Network = snap.GenRndGnm(snap.TNEANet, 10, 50)
     labels = {}
     for NI in Network.Nodes():
         labels[NI.GetId()] = str(NI.GetId())

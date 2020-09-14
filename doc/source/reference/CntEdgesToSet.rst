@@ -28,14 +28,14 @@ The following example shows how to use :func:`CntEdgesToSet` with :class:`TNGrap
         NodeSet.add(NI)
     NodeId = 65
 
-    Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
+    Graph = snap.GenRndGnm(snap.TNGraph, 100, 1000)
     EdgeCount = Graph.CntEdgesToSet(NodeId, NodeSet)
-    print("Number of edges from %d to NodeSet in PNGraph = %d" % (NodeId, EdgeCount))
+    print("Number of edges from %d to NodeSet in TNGraph = %d" % (NodeId, EdgeCount))
 
-    UGraph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
+    UGraph = snap.GenRndGnm(snap.TUNGraph, 100, 1000)
     EdgeCount = UGraph.CntEdgesToSet(NodeId, NodeSet)
-    print("Number of edges from %d to NodeSet in PUNGraph = %d" % (NodeId, EdgeCount))
+    print("Number of edges from %d to NodeSet in TUNGraph = %d" % (NodeId, EdgeCount))
 
-    Network = snap.GenRndGnm(snap.PNEANet, 100, 1000)
+    Network = snap.GenRndGnm(snap.TNEANet, 100, 1000)
     EdgeCount = Network.CntEdgesToSet(NodeId, NodeSet)
-    print("Number of edges from %d to NodeSet in PNEANet = %d" % (NodeId, EdgeCount))
+    print("Number of edges from %d to NodeSet in TNEANet = %d" % (NodeId, EdgeCount))

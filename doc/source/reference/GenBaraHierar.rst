@@ -16,7 +16,7 @@ Corners of the graph are recursively expanded with miniature copies of the base 
 Parameters:
 
 - *GraphType*: graph class (input)
-    Class of output graph -- one of :class:`PNGraph`, :class:`PNEANet`, or :class:`PUNGraph`.
+    Class of output graph -- one of :class:`TNGraph`, :class:`TNEANet`, or :class:`TUNGraph`.
 
 - *Levels*: int (input)
     The number of expansions of the base graph. 

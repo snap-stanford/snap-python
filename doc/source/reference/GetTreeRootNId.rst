@@ -20,10 +20,10 @@ The following example shows how to get the root node id in
 
     import snap
 
-    Graph = snap.GenTree(snap.PNGraph, 3, 3)
+    Graph = snap.GenTree(snap.TNGraph, 3, 3)
     root_id = Graph.GetTreeRootNId()
     print("The graph has a root id: %d" % root_id)
 
-    Network = snap.GenTree(snap.PNEANet, 3, 3)
+    Network = snap.GenTree(snap.TNEANet, 3, 3)
     root_id = Network.GetTreeRootNId()
     print("The graph has a root id: %d" % root_id)

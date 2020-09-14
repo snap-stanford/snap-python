@@ -21,15 +21,15 @@ The following code shows an example of GetTriads for nodes in
 
   import snap
 
-  Graph = snap.GenRndGnm(snap.PNGraph, 100, 250)
+  Graph = snap.GenRndGnm(snap.TNGraph, 100, 250)
   NumTriads = Graph.GetTriads(50)
   print('Number of triads with 50 sample nodes: %d' % NumTriads)
 
-  UGraph = snap.GenRndGnm(snap.PUNGraph, 100, 250)
+  UGraph = snap.GenRndGnm(snap.TUNGraph, 100, 250)
   NumTriads = UGraph.GetTriads(75)
   print('Number of triads with 75 sample nodes: %d' % NumTriads)
 
-  Network = snap.GenRndGnm(snap.PNEANet, 100, 250)
+  Network = snap.GenRndGnm(snap.TNEANet, 100, 250)
   NumTriads = Network.GetTriads(100)
   print('Number of triads with 100 sample nodes: %d' % NumTriads)
 

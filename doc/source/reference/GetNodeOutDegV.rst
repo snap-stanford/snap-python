@@ -19,17 +19,17 @@ The following example shows how to use :func:`GetNodeOutDegV` with nodes in :cla
 
     import snap
 
-    Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
+    Graph = snap.GenRndGnm(snap.TNGraph, 100, 1000)
     OutDegV = Graph.GetNodeOutDegV()
     for item in OutDegV:
         print("node ID %d: out-degree %d" % (item.GetVal1(), item.GetVal2()))
 
-    UGraph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
+    UGraph = snap.GenRndGnm(snap.TUNGraph, 100, 1000)
     OutDegV = UGraph.GetNodeOutDegV()
     for item in OutDegV:
         print("node ID %d: out-degree %d" % (item.GetVal1(), item.GetVal2()))
 
-    Network = snap.GenRndGnm(snap.PNEANet, 100, 1000)
+    Network = snap.GenRndGnm(snap.TNEANet, 100, 1000)
     OutDegV = Network.GetNodeOutDegV()
     for item in OutDegV:
         print("node ID %d: out-degree %d" % (item.GetVal1(), item.GetVal2()))

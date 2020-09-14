@@ -1303,5 +1303,15 @@ PUNGraph.DrawGViz = DrawGViz_classFn
 PNGraph.DrawGViz = DrawGViz_classFn
 PNEANet.DrawGViz = DrawGViz_classFn
 
+def ToGraph_classFN(self, GraphType, *args, **kwargs):
+    GraphType = ConvertGraphArg(GraphType)
+    return ToGraph(GraphType, self, *args, **kwargs)
+PTable.ToGraph = ToGraph_classFN
+
+def ToNetwork_classFN(self, GraphType, *args, **kwargs):
+    GraphType = ConvertGraphArg(GraphType)
+    return ToNetwork(GraphType, self, *args, **kwargs)
+PTable.ToNetwork = ToNetwork_classFN
+
 %}
 

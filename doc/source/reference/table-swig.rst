@@ -1,4 +1,4 @@
-Tables
+Tables (SWIG)
 `````````````````````
 
 Tables in SNAP are represented by the class :class:`TTable`.
@@ -349,7 +349,7 @@ TTable
 
       .. describe:: GetEdgeTable(Network, Context)
 
-         Extracts edge TTable from the :class:`TNEANet` *Network*, using the :class:`TTableContext`
+         Extracts edge TTable from the :class:`PNEANet` *Network*, using the :class:`TTableContext`
          *Context*. Returns the resulting :class:`PTable`.
 
       .. describe:: GetEdgeTablePN(Network, Context)
@@ -360,7 +360,7 @@ TTable
       .. describe:: GetFltNodePropertyTable(Network, Property, NodeAttrName, NodeAttrType, PropertyAttrName, Context)
 
          Extracts node and and edge property TTables from a THash. *Network* is of type
-         :class:`TNEANet`, *Property* is a :class:`TIntFltH`, *NodeAttrName* and
+         :class:`PNEANet`, *Property* is a :class:`TIntFltH`, *NodeAttrName* and
          *PropertyAttrName* are :class:`TStr`s, *NodeAttrType* is a :class:`TAttrType`, and
          *Context* is a :class:`TTableContext`. Returns a :class:`PTable` object.
 
@@ -398,7 +398,7 @@ TTable
 
       .. describe:: GetNodeTable()
 
-         Extracts node TTable from :class:`TNEANet` *Network*, using :class:`TTableContext` *Context*.
+         Extracts node TTable from :class:`PNEANet` *Network*, using :class:`TTableContext` *Context*.
 
       .. describe:: GetNumRows()
 

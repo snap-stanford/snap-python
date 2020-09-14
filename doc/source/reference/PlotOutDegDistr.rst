@@ -29,11 +29,11 @@ The following example shows how generate a plot of the out-degree distribution f
 
     import snap
 
-    Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
+    Graph = snap.GenRndGnm(snap.TNGraph, 100, 1000)
     Graph.PlotOutDegDistr("example", "Directed graph - out-degree Distribution")
 
-    UGraph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
+    UGraph = snap.GenRndGnm(snap.TUNGraph, 100, 1000)
     UGraph.PlotOutDegDistr("example", "Undirected graph - out-degree Distribution")
 
-    Network = snap.GenRndGnm(snap.PNEANet, 100, 1000)
+    Network = snap.GenRndGnm(snap.TNEANet, 100, 1000)
     Network.PlotOutDegDistr("example", "Network - out-degree Distribution")

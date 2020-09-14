@@ -22,7 +22,7 @@ The following example shows how to detect communities using Girvan-Newman algori
 
     import snap
 
-    UGraph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
+    UGraph = snap.GenRndGnm(snap.TUNGraph, 100, 1000)
     modularity, CmtyV = UGraph.CommunityGirvanNewman()
     for Cmty in CmtyV:
         print("Community: ")

@@ -20,7 +20,7 @@ The following example shows how to calcualte the top *EigVals* eigenvalues for :
 
 	import snap
 
-	UGraph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
+	UGraph = snap.GenRndGnm(snap.TUNGraph, 100, 1000)
 	EigVals = 5
 	PEigV = UGraph.GetEigVals(EigVals)
 	for item in PEigV:

@@ -26,7 +26,7 @@ The following example shows how to compute the in degree for nodes in
 
     import snap
 
-    Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
+    Graph = snap.GenRndGnm(snap.TNGraph, 100, 1000)
     result, DegToCCfV = Graph.GetClustCfAll()
     for item in DegToCCfV:
         print("degree: %d, clustering coefficient: %f" % (item.GetVal1(), item.GetVal2()))
@@ -34,7 +34,7 @@ The following example shows how to compute the in degree for nodes in
     print("closed triads", result[1])
     print("open triads", result[2])
 
-    Graph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
+    Graph = snap.GenRndGnm(snap.TUNGraph, 100, 1000)
     result, DegToCCfV = Graph.GetClustCfAll()
     for item in DegToCCfV:
         print("degree: %d, clustering coefficient: %f" % (item.GetVal1(), item.GetVal2()))
@@ -42,7 +42,7 @@ The following example shows how to compute the in degree for nodes in
     print("closed triads", result[1])
     print("open triads", result[2])
 
-    Graph = snap.GenRndGnm(snap.PNEANet, 100, 1000)
+    Graph = snap.GenRndGnm(snap.TNEANet, 100, 1000)
     result, DegToCCfV = Graph.GetClustCfAll()
     for item in DegToCCfV:
         print("degree: %d, clustering coefficient: %f" % (item.GetVal1(), item.GetVal2()))

@@ -24,15 +24,15 @@ The following example shows how to use :func:`GetEdgesInOut` with
     for nodeId in range(10):
         Nodes.append(nodeId)
 
-    Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
+    Graph = snap.GenRndGnm(snap.TNGraph, 100, 1000)
     results = Graph.GetEdgesInOut(Nodes)
     print("EdgesIn: %s EdgesOut: %s" % (results[0], results[1]))
 
-    UGraph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
+    UGraph = snap.GenRndGnm(snap.TUNGraph, 100, 1000)
     results = UGraph.GetEdgesInOut(Nodes)
     print("EdgesIn: %s EdgesOut: %s" % (results[0], results[1]))
 
-    Network = snap.GenRndGnm(snap.PNEANet, 100, 1000)
+    Network = snap.GenRndGnm(snap.TNEANet, 100, 1000)
     results = Network.GetEdgesInOut(Nodes)
     print("EdgesIn: %s EdgesOut: %s" % (results[0], results[1]))
 

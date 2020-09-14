@@ -25,12 +25,12 @@ The following example shows how to generate plots of the distribution of shortes
 
     import snap
     
-    Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
+    Graph = snap.GenRndGnm(snap.TNGraph, 100, 1000)
     Graph.PlotShortPathDistr("example", "Directed graph - shortest path")
     
-    UGraph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
+    UGraph = snap.GenRndGnm(snap.TUNGraph, 100, 1000)
     UGraph.PlotShortPathDistr("example", "Undirected graph - shortest path")
     
-    Network = snap.GenRndGnm(snap.PNEANet, 100, 1000)
+    Network = snap.GenRndGnm(snap.TNEANet, 100, 1000)
     Network.PlotShortPathDistr("example", "Network - shortest path")
     

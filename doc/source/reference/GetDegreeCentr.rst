@@ -19,7 +19,7 @@ The following example shows how to get the degree centrality for nodes in :class
 
     import snap
 
-    UGraph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
+    UGraph = snap.GenRndGnm(snap.TUNGraph, 100, 1000)
     for NI in UGraph.Nodes():
         DegCentr = UGraph.GetDegreeCentr(NI.GetId())
         print("node: %d centrality: %f" % (NI.GetId(), DegCentr))

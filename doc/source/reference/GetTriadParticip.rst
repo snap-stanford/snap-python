@@ -20,17 +20,17 @@ The following example shows how to compute the triangles participation ratio for
 
     import snap
 
-    Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
+    Graph = snap.GenRndGnm(snap.TNGraph, 100, 1000)
     TriadCntV = Graph.GetTriadParticip()
     for pair in TriadCntV:
         print(pair.Val1(), pair.Val2())
 
-    UGraph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
+    UGraph = snap.GenRndGnm(snap.TUNGraph, 100, 1000)
     TriadCntV = UGraph.GetTriadParticip()
     for pair in TriadCntV:
         print(pair.Val1(), pair.Val2())
 
-    Network = snap.GenRndGnm(snap.PNEANet, 100, 1000)
+    Network = snap.GenRndGnm(snap.TNEANet, 100, 1000)
     TriadCntV = Network.GetTriadParticip()
     for pair in TriadCntV:
         print(pair.Val1(), pair.Val2())

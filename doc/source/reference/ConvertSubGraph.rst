@@ -8,7 +8,7 @@ A graph method that returns an induced subgraph of the original graph with *NIdV
 Parameters:
 
 - *GraphType*: graph class
-    Class of output graph -- one of PNGraph, PUNGraph, or PNEANet.
+    Class of output graph -- one of TNGraph, TUNGraph, or TNEANet.
 
 - *NIdV*: Python list or :class:`TIntV`, a vector of ints
     Node ids that will be included in the subgraph.
@@ -30,18 +30,18 @@ The following example shows how to convert a subgraph between the different type
     for i in range(10):
         V.append(i)
 
-    GIn = snap.GenRndGnm(snap.PNGraph, 100, 1000)
-    GOut = GIn.ConvertSubGraph(snap.PUNGraph, V)
+    GIn = snap.GenRndGnm(snap.TNGraph, 100, 1000)
+    GOut = GIn.ConvertSubGraph(snap.TUNGraph, V)
     for NI in GOut.Nodes():
         print("node: %d" % NI.GetId())
 
-    GIn = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
-    GOut = GInsnap.ConvertSubGraph(snap.PNEANet, V)
+    GIn = snap.GenRndGnm(snap.TUNGraph, 100, 1000)
+    GOut = GInsnap.ConvertSubGraph(snap.TNEANet, V)
     for NI in GOut.Nodes():
         print("node: %d" % NI.GetId())
 
-    GIn = snap.GenRndGnm(snap.PNEANet, 100, 1000)
-    GOut = GInsnap.ConvertSubGraph(snap.PNGraph, V)
+    GIn = snap.GenRndGnm(snap.TNEANet, 100, 1000)
+    GOut = GInsnap.ConvertSubGraph(snap.TNGraph, V)
     for NI in GOut.Nodes():
         print("node: %d" % NI.GetId())
 

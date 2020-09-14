@@ -25,7 +25,7 @@ vectors::
 
     import snap
 
-    Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
+    Graph = snap.GenRndGnm(snap.TNGraph, 100, 1000)
     LeftSV, RightSV = Graph.GetLeadSngVec()
 
     print("Left singular vector:")

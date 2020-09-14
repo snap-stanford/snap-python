@@ -28,11 +28,11 @@ The following example shows how to plot the cumulative distribution of shortest 
 
     import snap
 
-    Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
+    Graph = snap.GenRndGnm(snap.TNGraph, 100, 1000)
     Graph.PlotHops("example", "Directed graph - hops", True, 1024)
 
-    UGraph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
+    UGraph = snap.GenRndGnm(snap.TUNGraph, 100, 1000)
     UGraph.PlotHops("example", "Undirected graph - hops", False, 1024)
 
-    Network = snap.GenRndGnm(snap.PNEANet, 100, 1000)
+    Network = snap.GenRndGnm(snap.TNEANet, 100, 1000)
     Network.PlotHops("example", "Network - hops", True, 1024)

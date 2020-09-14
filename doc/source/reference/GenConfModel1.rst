@@ -21,7 +21,7 @@ The following example shows how to generate a random undirected graph of the sam
 
     import snap
 
-    Graph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
+    Graph = snap.GenRndGnm(snap.TUNGraph, 100, 1000)
     for NI in Graph.Nodes():
         print(NI.GetId(), NI.GetDeg())
 

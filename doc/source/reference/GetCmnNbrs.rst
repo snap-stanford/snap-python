@@ -30,26 +30,26 @@ The following example shows how to calculate number of neighbors for nodes in
 
     import snap
 
-    Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
+    Graph = snap.GenRndGnm(snap.TNGraph, 100, 1000)
     Graph.GetCmnNbrs(1, 10)
 
-    UGraph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
+    UGraph = snap.GenRndGnm(snap.TUNGraph, 100, 1000)
     UGraph.GetCmnNbrs(1, 10)
 
-    Network = snap.GenRndGnm(snap.PNEANet, 100, 1000)
+    Network = snap.GenRndGnm(snap.TNEANet, 100, 1000)
     Network.GetCmnNbrs(1, 10)
 
-    Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
+    Graph = snap.GenRndGnm(snap.TNGraph, 100, 1000)
     numNbrs, Nbrs = Graph.GetCmnNbrs(1, 10, True)
     for NId in Nbrs:
         print("node: %d" % NId)
 
-    UGraph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
+    UGraph = snap.GenRndGnm(snap.TUNGraph, 100, 1000)
     numNbrs, Nbrs = UGraph.GetCmnNbrs(1, 10, True)
     for NId in Nbrs:
         print("node: %d" % NId)
 
-    Network = snap.GenRndGnm(snap.PNEANet, 100, 1000)
+    Network = snap.GenRndGnm(snap.TNEANet, 100, 1000)
     numNbrs, Nbrs = Network.GetCmnNbrs(1, 10, True)
     for NId in Nbrs:
         print("node: %d" % NId)
