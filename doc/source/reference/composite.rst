@@ -135,7 +135,7 @@ vector. All of the following methods are available for objects that are classifi
    :class:`TVec` offers iterators of type :class:`TInt` for fast access through the vector.
    The :class:`TInt` returned by any iterator method represents the value at a given index in the vector.
 
-   The following public functions are Python list functions that are also supported by the :class:`TVec` class:
+   The following public functions are Python list functions that are also supported by the :class:`TVec` classes:
      .. describe:: V[Index]
 
         Returns the value at index *Index* in vector *v*.
@@ -157,16 +157,16 @@ vector. All of the following methods are available for objects that are classifi
         Equivalent to ``not Val in V``.
 
      .. describe:: append(Val)
-     	
-	Appends *Val* to the end of the vector.
+
+        Appends *Val* to the end of the vector.
 
      .. describe:: len()
      
-	Returns the length of the vector.
+        Returns the length of the vector.
 
      .. describe:: delitem(Index)
      
-	Deletes the value at index *Index* from the vector.
+        Deletes the value at index *Index* from the vector.
 
      .. describe:: extend(Vec)
      
@@ -174,8 +174,8 @@ vector. All of the following methods are available for objects that are classifi
 
      .. describe:: clear()
      
-	Clears the contents of the vector.
-	
+        Clears the contents of the vector.
+
      .. describe:: insert(Index, Val)
 
         Inserts *Val* into the vector at index *Index*.
@@ -209,7 +209,7 @@ vector. All of the following methods are available for objects that are classifi
         Returns a copy of the vector.
 
 
-   The following public functions are additional, SNAP-specific functions supported by the :class:`TVec` class:
+   The following public functions are additional, SNAP-specific functions supported by the :class:`TVec` classes:
 
      .. iter(V)
 
@@ -580,25 +580,33 @@ Hash tables contain values of the same type. Each value has a user provided key 
    :class:`THash` offers iterators of type :class:`THashKeyDatI` for fast access through
    the hash table.
 
-   The following public functions are Python dictionary functions that are also supported by the :class:`THash` class:
-
-    .. describe:: len(H)
-
-        Returns the number of keys in the hash table.
+   The following public functions are Python dictionary functions that are also supported by the :class:`THash` classes:
 
     .. describe:: H[Key]
 
         Returns the value associated with the key *Key*.
 
-    .. describe:: clear()
+    .. describe:: H[Key] = Value
 
-        Clears the contents of the hash table.
+        Set ``H[Key]`` to *Value*.
 
-    .. describe:: copy()
+    .. describe:: del H[Key]
 
-        Copies the contents of the hash table.
+        Removes ``H[Key]`` from *H*.
 
-    .. describe:: get[Key]
+    .. describe:: Key in H
+
+        Returns ``True`` if *Key* is a key in hash table *H*, else ``False``.
+
+    .. describe:: Key not in H
+
+        Equivalent to ``not Key in H``.
+
+    .. describe:: len(H)
+
+        Returns the number of keys in the hash table.
+
+    .. describe:: get(Key)
 
         Returns the value at the key *Key*.
 
@@ -610,6 +618,22 @@ Hash tables contain values of the same type. Each value has a user provided key 
 
         Returns a list of the keys in the hash table.
 
+    .. describe:: values()
+
+        Returns a list of the values in the hash table.
+
+    .. describe:: clear()
+
+        Clears the contents of the hash table.
+
+    .. describe:: copy()
+
+        Copies the contents of the hash table.
+
+    .. iter(H)
+
+        Returns an iterator over all the keys in the hash table.
+
     .. describe:: pop(Key)
 
         Removes *Key* and its value from the hash table and returns its value.
@@ -618,70 +642,8 @@ Hash tables contain values of the same type. Each value has a user provided key 
 
         If *Key* is present in the hash table, returns its value. Otherwise, creates a new entry *Key* in the hash table with value *Default* and returns *Default*.
 
-    .. describe:: pop(Key)
 
-        Removes *Key* and its value from the hash table and returns its value.
-
-    .. describe:: values()
-
-        Returns a list of the values in the hash table.
-
-
-   The following public functions are Python list functions that are also supported by the :class:`TVec` class:
-   
-     .. describe:: V[Index]
-
-        Returns the value at index *Index* in vector *v*.
-
-     .. describe:: V[Index] = Value
-
-        Set ``V[Index]`` to *Value*.
-
-     .. describe:: del V[Index]
-
-        Removes the value at index *index* from the vector.
-
-     .. describe:: Val in V
-
-        Returns ``True`` if *Val* is a value stored in vector *V*, else ``False``.
-
-     .. describe:: Val not in V
-
-        Equivalent to ``not Val in V``.
-
-     .. describe:: append(Val)
-
-        Appends *Val* to the end of the vector.
-
-     .. describe:: len()
-
-        Returns the length of the vector.
-
-   The following public functions are supported by the :class:`THash` class:
-
-     .. describe:: H[Key]
-
-        Returns the item of *H* with key *Key*.
-
-     .. describe:: H[Key] = Value
-
-        Set ``H[Key]`` to *Value*.
-
-     .. describe:: del H[Key]
-
-        Removes ``H[Key]`` from *H*.
-
-     .. describe:: Key in H
-
-        Returns ``True`` if *Key* is a key in hash table *H*, else ``False``.
-
-     .. describe:: Key not in H
-
-        Equivalent to ``not Key in H``.
-
-     .. iter(H)
-
-        Returns an iterator over all the keys in the hash table.
+   The following public functions are additional, SNAP-specific functions supported by the :class:`THash` classes:
 
      .. describe:: Load(SIn)
 
