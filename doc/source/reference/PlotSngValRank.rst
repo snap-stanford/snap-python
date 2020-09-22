@@ -25,5 +25,5 @@ The following example shows how to plot the rank distribution of singular values
 
     import snap
 
-    Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
+    Graph = snap.GenRndGnm(snap.TNGraph, 100, 1000)
     Graph.PlotSngValRank(100, "filename", "Singular Value Distribution")

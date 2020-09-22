@@ -26,7 +26,7 @@ an undirected graph of type :class:`TUNGraph`::
 
     import snap
 
-    UGraph = snap.GenRndGnm(snap.PUNGraph, 100, 2000)
+    UGraph = snap.GenRndGnm(snap.TUNGraph, 100, 2000)
 
     # Plot the ranks of the first 10 eigenvalues
     # NOTE: Random graphs are likely to thwart the calculation of eigenvalues

@@ -1,17 +1,14 @@
 GetTriadEdges
 '''''''''''''
 
-.. function:: GetTriadEdges(Graph, SampleEdges=-1)
+.. function:: GetTriadEdges(SampleEdges=-1)
 
-Counts the number of edges that participate in at least one triad. Considers the graph as undirected.
+A graph method that counts the number of edges that participate in at least one triad. Considers the graph as undirected.
 
 Parameters:
 
-- *Graph*: graph (input)
-    A Snap.py graph or a network.
-
-- *SampleEdges*: int (input)
-    If *SampleEdges* is not equal to -1, then compute triads only for a random sample of *SampleEdges* edges. Useful for approximate but quick computations.
+- (Optional) *SampleEdges*: int
+    If *SampleEdges* is -1 (default value), then compute triads for all the edges. Otherwise, compute triads only for a random sample of *SampleEdges* edges, which is useful for approximate but quick computations.
 
 Return value:
 
@@ -23,14 +20,14 @@ The following example shows how to calculate the number of edges in triads for n
 
     import snap
 
-    Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
-    NumTriadEdges = snap.GetTriadEdges(Graph)
+    Graph = snap.GenRndGnm(snap.TNGraph, 100, 1000)
+    NumTriadEdges = Graph.GetTriadEdges()
     print(NumTriadEdges)
 
-    UGraph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
-    NumTriadEdges = snap.GetTriadEdges(UGraph)
+    UGraph = snap.GenRndGnm(snap.TUNGraph, 100, 1000)
+    NumTriadEdges = UGraph.GetTriadEdges()
     print(NumTriadEdges)
 
-    Network = snap.GenRndGnm(snap.PNEANet, 100, 1000)
-    NumTriadEdges = snap.GetTriadEdges(Network)
+    Network = snap.GenRndGnm(snap.TNEANet, 100, 1000)
+    NumTriadEdges = Network.GetTriadEdges()
     print(NumTriadEdges)

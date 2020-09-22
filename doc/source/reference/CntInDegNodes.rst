@@ -21,14 +21,14 @@ The following example shows how to get the number of nodes with in-degrees 10, 2
     
     import snap
 
-    Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
+    Graph = snap.GenRndGnm(snap.TNGraph, 100, 1000)
     Count = Graph.CntInDegNodes(10)
     print("Directed Graph: Count of nodes with in-degree 10 is %d" % Count)
 
-    UGraph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
+    UGraph = snap.GenRndGnm(snap.TUNGraph, 100, 1000)
     Count = UGraph.CntInDegNodes(20)
     print("Undirected Graph: Count of nodes with in-degree 20 is %d" % Count)
 
-    Network = snap.GenRndGnm(snap.PNEANet, 100, 1000)
+    Network = snap.GenRndGnm(snap.TNEANet, 100, 1000)
     Count = Network.CntInDegNodes(5)
     print("Network Graph: Count of nodes with in-degree 5 is %d" % Count)

@@ -23,13 +23,13 @@ The following example shows how to plot the k-core edge-size distribution for
 
     import snap
 
-    Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
+    Graph = snap.GenRndGnm(snap.TNGraph, 100, 1000)
     Graph.PlotKCoreEdges("example", "Directed graph - k-core edges")
     
-    UGraph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
+    UGraph = snap.GenRndGnm(snap.TUNGraph, 100, 1000)
     UGraph.PlotKCoreEdgees("example", "Undirected graph - k-core edges")
 
-    Network = snap.GenRndGnm(snap.PNEANet, 100, 1000)
+    Network = snap.GenRndGnm(snap.TNEANet, 100, 1000)
     Network.PlotKCoreEdges("example", "Network - k-core edges")
 
 

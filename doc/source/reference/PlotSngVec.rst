@@ -22,5 +22,5 @@ The following example shows how to use :func:`PlotSngVec` for :class:`TNGraph`::
 
     import snap
 
-    Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
+    Graph = snap.GenRndGnm(snap.TNGraph, 100, 1000)
     Graph.PlotSngVec("my_filename", "my_chart_title")

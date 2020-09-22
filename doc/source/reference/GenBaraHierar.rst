@@ -16,7 +16,7 @@ Corners of the graph are recursively expanded with miniature copies of the base 
 Parameters:
 
 - *GraphType*: graph class (input)
-    Class of output graph -- one of :class:`PNGraph`, :class:`PNEANet`, or :class:`PUNGraph`.
+    Class of output graph -- one of :class:`TNGraph`, :class:`TNEANet`, or :class:`TUNGraph`.
 
 - *Levels*: int (input)
     The number of expansions of the base graph. 
@@ -36,14 +36,14 @@ The following example shows how to generate a Ravasz-Barabasi deterministic scal
     
     import snap
 
-    Graph = snap.GenBaraHierar(snap.PNGraph, 3, True)
+    Graph = snap.GenBaraHierar(snap.TNGraph, 3, True)
     for EI in Graph.Edges():
         print("edge: (%d, %d)" % (EI.GetSrcNId(), EI.GetDstNId()))
     
-    UGraph = snap.GenBaraHierar(snap.PUNGraph, 3, True)
+    UGraph = snap.GenBaraHierar(snap.TUNGraph, 3, True)
     for EI in UGraph.Edges():
         print("edge: (%d, %d)" % (EI.GetSrcNId(), EI.GetDstNId()))
 
-    Network = snap.GenBaraHierar(snap.PNEANet, 3, True)
+    Network = snap.GenBaraHierar(snap.TNEANet, 3, True)
     for EI in Network.Edges():
         print("edge: (%d, %d)" % (EI.GetSrcNId(), EI.GetDstNId()))

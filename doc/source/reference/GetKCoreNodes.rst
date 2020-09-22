@@ -1,44 +1,39 @@
 GetKCoreNodes
 '''''''''''''''
 
-.. function:: GetKCoreNodes(Graph, CoreIdSzV)
+.. function:: GetKCoreNodes()
 
-Returns the number of nodes in each core of order K (where K=0, 1, ...). Stores pairs (K, number of nodes) in *CoreIdSzV*.
+A graph method that returns the number of nodes in each core of order K (where K=0, 1, ...).
 
 Parameters:
 
-- *Graph*: graph (input)
-    A Snap.py graph or directed graph.
-
-- *CoreIdSzV*: :class:`TIntPrV`, a vector of (int, int) pairs (output)
-    A vector of (order, number of nodes of the given order) pairs. 
+- None
 
 Return value:
 
 - int
     The number of cores.
 
+- :class:`TIntPrV`, a vector of (int, int) pairs
+    A vector of (order K, number of nodes of the given order) pairs. 
 
 The following example shows how to get the number of nodes for a given k-core in
 :class:`TNGraph`, :class:`TUNGraph`, and :class:`TNEANet`::
 
     import snap
 
-    Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
-    CoreIDSzV = snap.TIntPrV()
-    kValue = snap.GetKCoreNodes(Graph, CoreIDSzV)
+    Graph = snap.GenRndGnm(snap.TNGraph, 100, 1000)
+    kValue, CoreIDSzV = Graph.GetKCoreNodes()
     for item in CoreIDSzV:
         print("order: %d nodes: %d" % (item.GetVal1(), item.GetVal2()))
 
-    UGraph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
-    CoreIDSzV = snap.TIntPrV()
-    kValue = snap.GetKCoreNodes(UGraph, CoreIDSzV)
+    UGraph = snap.GenRndGnm(snap.TUNGraph, 100, 1000)
+    kValue, CoreIDSzV = UGraph.GetKCoreNodes()
     for item in CoreIDSzV:
         print("order: %d nodes: %d" % (item.GetVal1(), item.GetVal2()))
 
-    Network = snap.GenRndGnm(snap.PNEANet, 100, 1000)
-    CoreIDSzV = snap.TIntPrV()
-    kValue = snap.GetKCoreNodes(Network, CoreIDSzV)
+    Network = snap.GenRndGnm(snap.TNEANet, 100, 1000)
+    kValue, CoreIDSzV = Network.GetKCoreNodes()
     for item in CoreIDSzV:
         print("order: %d nodes: %d" % (item.GetVal1(), item.GetVal2()))
 

@@ -6,20 +6,17 @@ Triads and Clustering Coefficient
    :maxdepth: 2
 
    GetClustCf
-   GetClustCf1
    GetClustCfAll
    GetTriads
-   GetTriads1
+   GetTriadsByNode
    GetTriadsAll
    GetCmnNbrs
-   GetCmnNbrs1
    GetNodeClustCf
-   GetNodeClustCf1
+   GetNodeClustCfAll
    GetNodeTriads
-   GetNodeTriads1
+   GetNodeTriadsSet
    GetNodeTriadsAll
    GetLen2Paths
-   GetLen2Paths1
    GetTriadEdges
    GetTriadParticip
 

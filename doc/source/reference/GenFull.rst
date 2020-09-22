@@ -8,7 +8,7 @@ Generates a complete graph on *Nodes* nodes. Graph has no self-loops.
 Parameters:
 
 - *GraphType*: graph class (input)
-    Class of output graph -- one of :class:`PNGraph`, :class:`PNEANet`, or :class:`PUNGraph`.
+    Class of output graph -- one of :class:`TNGraph`, :class:`TNEANet`, or :class:`TUNGraph`.
 
 - *Nodes*: int (input)
     The number of nodes used to generate the graph.
@@ -23,14 +23,14 @@ The following example shows how to generate different types of fully connected g
 
     import snap
 
-    Graph = snap.GenFull(snap.PNGraph, 5)
+    Graph = snap.GenFull(snap.TNGraph, 5)
     for EI in Graph.Edges():
         print("edge: (%d, %d)" % (EI.GetSrcNId(), EI.GetDstNId()))
 
-    UGraph = snap.GenFull(snap.PUNGraph, 5)
+    UGraph = snap.GenFull(snap.TUNGraph, 5)
     for EI in UGraph.Edges():
         print("edge: (%d, %d)" % (EI.GetSrcNId(), EI.GetDstNId()))
 
-    Network = snap.GenFull(snap.PNEANet, 5)
+    Network = snap.GenFull(snap.TNEANet, 5)
     for EI in Network.Edges():
         print("edge: (%d, %d)" % (EI.GetSrcNId(), EI.GetDstNId()))

@@ -20,17 +20,17 @@ The following example shows how to get the largest weakly connected component in
 
     import snap
 
-    Graph = snap.GenRndGnm(snap.PNGraph, 100, 500)
+    Graph = snap.GenRndGnm(snap.TNGraph, 100, 500)
     MxWcc = Graph.GetMxWcc()
     for EI in MxWcc.Edges():
         print("edge: (%d, %d)" % (EI.GetSrcNId(), EI.GetDstNId()))
 
-    UGraph = snap.GenRndGnm(snap.PUNGraph, 100, 500)
+    UGraph = snap.GenRndGnm(snap.TUNGraph, 100, 500)
     MxWcc = UGraph.GetMxWcc()
     for EI in MxWcc.Edges():
         print("edge: (%d, %d)" % (EI.GetSrcNId(), EI.GetDstNId()))
 
-    Network = snap.GenRndGnm(snap.PNEANet, 100, 500)
+    Network = snap.GenRndGnm(snap.TNEANet, 100, 500)
     MxWcc = Network.GetMxWcc()
     for EI in MxWcc.Edges():
         print("edge: (%d, %d)" % (EI.GetSrcNId(), EI.GetDstNId()))

@@ -1,32 +1,33 @@
 Tables
-`````````````````````````
-A Table in SNAP is represented by the class :class:`TTable`.
+`````````````````````
 
-Tables in SNAP are designed to provide fast performance at scale, and to effortlessly handle datasets containing hundreds of millions of rows. They can be saved and loaded to disk in a binary format using the provided methods; loading from and saving to binary is orders of magnitude faster than using a text representation of the table.
+Tables in SNAP are represented by the class :class:`TTable`.
 
-A :class:`TTable` can store integers, floats and strings in its entries. For performance reasons, strings are mapped to a unique integer, and the :class:`TTable` stores only the integer which maps to the string. Each :class:`TTable` object has an associated :class:`TTableContext` which stores the mapping from integers to strings, and back, and can be used when the string corresponding to an integer needs to be retrieved. (Note: many :class:`TTable` objects can share the same context; this is often useful, for example, to ensure that equivalent strings in different tables are treated as equivalent in SNAP.)
+:class:`TTable` is designed to provide fast performance at scale, and to effortlessly handle datasets containing hundreds of millions of rows. They can be saved and loaded to disk in a binary format using the provided methods; loading from and saving to binary is orders of magnitude faster than using a text representation of the table.
+
+A :class:`TTable` can store integers, floats and strings in its entries. For performance reasons, strings are mapped to a unique integer, and the :class:`TTable` stores only the integer which maps to the string. Each :class:`TTable` object has an associated :class:`TTableContext` which stores the mapping from integers to strings and back, and can be used when the string corresponding to an integer needs to be retrieved. (Note: many :class:`TTable` objects can share the same context; this is often useful, for example, to ensure that equivalent strings in different tables are treated as equivalent in SNAP.)
 
 A :class:`TTable` object consists of multiple columns, each column being an integer, string or float. This is defined by the table's Schema. A schema is simply a vector of pairs of TStr and TAttrType. (Note: TAttrType represents the type of the column. Currently supported values are snap.atInt, snap.atFlt and snap.atStr.) Each entry in the schema has the name of the column, and the attribute type.
 
-Once the schema is defined, the columns of the table are defined. Now, the data is stored in rows, with each row containing an entry for each column. It is possible to iterate over the data by row, using the :class:`TRowIterator` class (see documentation below for details).
+After the schema and the colums are defined, the data can be stored in rows, with each row containing an entry for each column. It is possible to iterate over the data by row, using the :class:`TRowIterator` class (see documentation below for details).
 
-:class:`TTable` also provides functionality for doing various kinds of joins (using the :meth:`Join` method), groupings (using the :meth:`Aggregate`) method, selection and projection (using the :meth:`Select` and :meth:`Project` methods), as well as sorting (using the :meth:`Order` method). 
+:class:`TTable` also provides functionality for doing joins (using the :meth:`Join` method), groupings (using the :meth:`Aggregate` method), selection and projection (using the :meth:`Select` and :meth:`Project` methods), as well as sorting (using the :meth:`Order` method).
 
-In order to quickly retrieve elements by value, it also allows the user to construct indexes on a column (using :meth:`RequestIndexInt`, :meth:`RequestIndexFlt` and :meth:`RequestIndexStrMap`. Note that unless these functions are explicitly called, the default is to not create any indexes.)
+In order to quickly retrieve elements by value, :class:`TTable` allows the user to construct indexes on a column (using :meth:`RequestIndexInt`, :meth:`RequestIndexFlt` and :meth:`RequestIndexStrMap`. Note that unless these functions are explicitly called, the default is to not create any indexes.)
 
-It is very easy to load a :class:`TTable` from a text-file in spreadsheet (tab-separated or comma-separated) format using the static :meth:`LoadSS` method.
+:class:`TTable` can be loaded from a text-file in spreadsheet (tab-separated or comma-separated) format using the static :meth:`LoadSS` method.
 
-Tables can be easily converted to SNAP graph classes using the provided functionality in the :func:`ToNetwork` functions.
+Tables can be converted to SNAP graph classes using the provided :func:`ToNetwork` functions.
 
-The following code snippets highlight some of the common operations done using :class:`TTable` objects. The methods and functions used are documented in more detail below.
+The tutorial provides extensive documentation on the use of table methods and functions in the section about :doc:`../tutorial/table-tut`. The code snippets below additionally highlight some of the common operations using :class:`TTable` objects. The reference descriptions of methods and functions used are documented in more detail below.
 
-This code snippet shows how to load a :class:`TTable` object from a tab-separated file containing one integer, one float and two string columns, and then save the object to disk in binary format::
+The following code snippet shows how to load a :class:`TTable` object from a tab-separated file containing one integer, one float and two string columns, and then save the object to disk in binary format::
 
     import snap
 
     context = snap.TTableContext()
     filename = "/path/to/input.tsv"
-    
+
     schema = snap.Schema()
     schema.Add(snap.TStrTAttrPr("Col1", snap.atInt))
     schema.Add(snap.TStrTAttrPr("Col2", snap.atFlt))
@@ -52,7 +53,7 @@ The saved table can now be loaded from binary using::
 Note that loading and saving from binary is over ten times faster than loading the raw text file.
 
 Next, we present a slightly more involved example. Let's say we have an authorship table for academic papers, *PapAuthT* where each row has a PaperID and an AuthorID. (Thus, if paper P1 was written by A1, A2 and A3, and paper P2 by authors A2, we would have four rows in our :class:`TTable`, with data (P1, A1), (P1, A2) and (P1, A3), and (P2, A2).) Further, let's say we have the citation count of each paper in a separate table, *PapCitT*, which has columns PaperID and CitCount. Assuming that these tables have already been loaded into :class:`TTable` objects with appropriate schema, the following code shows how to perform various useful operations on these tables::
-    
+
     # Assuming that PapAuthT and PapCitT are already loaded into TTable objects with columns as described above.
 
     # First, let's say we want to count the number of papers written by an author. We use Aggregate
@@ -92,13 +93,11 @@ Next, we present a slightly more involved example. Let's say we have an authorsh
     AuthCitT = PapAuthCitJoinT.Project(ProjectCols)
     AuthCitT.Unique("AuthorID")
 
-
     # We can also sort the authors in decreasing order of total citations.
     OrderBy = snap.TStrV() # The TTable.Order method sorts using the values of
                            # the columns in OrderBy, in lexicographic order.
     OrderBy.Add("TotalAuthCits")
     AuthCitT.Order(OrderBy, "", snap.TBool(False), snap.TBool(False))
-
 
 TTable
 ======
@@ -350,7 +349,7 @@ TTable
 
       .. describe:: GetEdgeTable(Network, Context)
 
-         Extracts edge TTable from the :class:`PNEANet` *Network*, using the :class:`TTableContext`
+         Extracts edge TTable from the :class:`TNEANet` *Network*, using the :class:`TTableContext`
          *Context*. Returns the resulting :class:`PTable`.
 
       .. describe:: GetEdgeTablePN(Network, Context)
@@ -361,7 +360,7 @@ TTable
       .. describe:: GetFltNodePropertyTable(Network, Property, NodeAttrName, NodeAttrType, PropertyAttrName, Context)
 
          Extracts node and and edge property TTables from a THash. *Network* is of type
-         :class:`PNEANet`, *Property* is a :class:`TIntFltH`, *NodeAttrName* and
+         :class:`TNEANet`, *Property* is a :class:`TIntFltH`, *NodeAttrName* and
          *PropertyAttrName* are :class:`TStr`s, *NodeAttrType* is a :class:`TAttrType`, and
          *Context* is a :class:`TTableContext`. Returns a :class:`PTable` object.
 
@@ -399,7 +398,7 @@ TTable
 
       .. describe:: GetNodeTable()
 
-         Extracts node TTable from :class:`PNEANet` *Network*, using :class:`TTableContext` *Context*.
+         Extracts node TTable from :class:`TNEANet` *Network*, using :class:`TTableContext` *Context*.
 
       .. describe:: GetNumRows()
 

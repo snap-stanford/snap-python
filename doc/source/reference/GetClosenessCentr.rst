@@ -30,17 +30,17 @@ The following example shows how to get the closeness centrality for nodes in
 
     import snap
 
-    Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
+    Graph = snap.GenRndGnm(snap.TNGraph, 100, 1000)
     for NI in Graph.Nodes():
         CloseCentr = Graph.GetClosenessCentr(NI.GetId())
         print("node: %d centrality: %f" % (NI.GetId(), CloseCentr))
 
-    UGraph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
+    UGraph = snap.GenRndGnm(snap.TUNGraph, 100, 1000)
     for NI in UGraph.Nodes():
         CloseCentr = UGraph.GetClosenessCentr(NI.GetId())
         print("node: %d centrality: %f" % (NI.GetId(), CloseCentr))
 
-    Network = snap.GenRndGnm(snap.PNEANet, 100, 1000)
+    Network = snap.GenRndGnm(snap.TNEANet, 100, 1000)
     for NI in Network.Nodes():
         CloseCentr = Network.GetClosenessCentr(NI.GetId())
         print("node: %d centrality: %f" % (NI.GetId(), CloseCentr))

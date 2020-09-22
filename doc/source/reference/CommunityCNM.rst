@@ -22,7 +22,7 @@ The following example shows how to detect communities using CNM algorithm in :cl
 
     import snap
 
-    UGraph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
+    UGraph = snap.GenRndGnm(snap.TUNGraph, 100, 1000)
     modularity, CmtyV = UGraph.CommunityCNM()
     for Cmty in CmtyV:
         print("Community: ")

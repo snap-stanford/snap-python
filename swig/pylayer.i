@@ -15,7 +15,6 @@
 
 # This function adds compatility to additional datatypes
 # Works for Python types: list, set, and dict (with their corresponding SNAP types)
-
 def ConvertToSnapType(args, pos, SnapType, PyType):
     if len(args) > pos:
         arg = args[pos]
@@ -43,6 +42,16 @@ def ConvertToSnapType(args, pos, SnapType, PyType):
 
     return args
 
+# This function converts TNGraph/TUNGraph/TNEANet to PNGraph/PUNGraph/PNEANet
+def ConvertGraphArg(GraphType):
+    if GraphType == TNGraph:
+        GraphType = PNGraph
+    elif GraphType == TUNGraph:
+        GraphType = PUNGraph
+    elif GraphType == TNEANet:
+        GraphType = PNEANet
+    return GraphType
+
 # This function moves the argument at pos to be returned instead
 def MoveArgToReturn (tspec, args, func, pos, argType):
     if len(args) > pos and type(args[pos]) == argType:
@@ -58,8 +67,44 @@ def MoveArgToReturn (tspec, args, func, pos, argType):
         else:
             return (oldReturn, returnArg)
 
+_GenFull = GenFull
+def GenFull(GraphType, *args):
+    GraphType = ConvertGraphArg(GraphType)
+    return _GenFull(GraphType, *args)
+
+_GenCircle = GenCircle
+def GenCircle(GraphType, *args):
+    GraphType = ConvertGraphArg(GraphType)
+    return _GenCircle(GraphType, *args)
+
+_GenGrid = GenGrid
+def GenGrid(GraphType, *args):
+    GraphType = ConvertGraphArg(GraphType)
+    return _GenGrid(GraphType, *args)
+
+_GenStar = GenStar
+def GenStar(GraphType, *args):
+    GraphType = ConvertGraphArg(GraphType)
+    return _GenStar(GraphType, *args)
+
+_GenTree = GenTree
+def GenTree(GraphType, *args):
+    GraphType = ConvertGraphArg(GraphType)
+    return _GenTree(GraphType, *args)
+
+_GenRndGnm = GenRndGnm
+def GenRndGnm(GraphType, *args):
+    GraphType = ConvertGraphArg(GraphType)
+    return _GenRndGnm(GraphType, *args)
+
+_GenBaraHierar = GenBaraHierar
+def GenBaraHierar(GraphType, *args):
+    GraphType = ConvertGraphArg(GraphType)
+    return _GenBaraHierar(GraphType, *args)
+
 _LoadEdgeList = LoadEdgeList
 def LoadEdgeList(GraphType, InFNm, SrcColId = 0, DstColId = 1, Separator = " "):
+    GraphType = ConvertGraphArg(GraphType)
     if Separator == " ":
         return _LoadEdgeList(GraphType, InFNm, SrcColId, DstColId)
     else:
@@ -67,6 +112,7 @@ def LoadEdgeList(GraphType, InFNm, SrcColId = 0, DstColId = 1, Separator = " "):
 
 _LoadEdgeListStr = LoadEdgeListStr
 def LoadEdgeListStr(GraphType, InFNm, SrcColId = 0, DstColId = 1, Mapping = None):
+    GraphType = ConvertGraphArg(GraphType)
     if Mapping == None  or  Mapping == False:
         return _LoadEdgeListStr(GraphType, InFNm, SrcColId, DstColId)
 
@@ -77,9 +123,20 @@ def LoadEdgeListStr(GraphType, InFNm, SrcColId = 0, DstColId = 1, Mapping = None
 
     return _LoadEdgeListStr(GraphType, InFNm, SrcColId, DstColId, Mapping)
 
+_LoadConnList = LoadConnList
+def LoadConnList(GraphType, *args):
+    GraphType = ConvertGraphArg(GraphType)
+    return _LoadConnList(GraphType, *args)
+
 _LoadConnListStr = LoadConnListStr 
 def LoadConnListStr(GraphType, *args):
+    GraphType = ConvertGraphArg(GraphType)
     return MoveArgToReturn(GraphType, args, _LoadConnListStr, 1, TStrIntSH)
+
+_LoadPajek = LoadPajek
+def LoadPajek(GraphType, *args):
+    GraphType = ConvertGraphArg(GraphType)
+    return _LoadPajek(GraphType, *args)
 
 _SaveGViz = SaveGViz
 def SaveGViz(Graph, *args):
@@ -339,7 +396,7 @@ def GetClustCf(Graph, *args, **kwargs):
     else:
         return _GetClustCf(Graph, SampleNodes)        
 
-def GetTriadsbyNode(Graph, SampleNodes=-1):
+def GetTriadsByNode(Graph, SampleNodes=-1):
     NIdCOTriadV = TIntTrV()
     GetTriads(Graph, NIdCOTriadV, SampleNodes)
     return NIdCOTriadV
@@ -430,6 +487,7 @@ def GetSngVecs(Graph, SngVecs):
     RightSV = TFltVFltV()
     GetSngVec(Graph, SngVecs, SngValV, LeftSV, RightSV)
     return (SngValV, LeftSV, RightSV)
+
 
 _GenConfModel = GenConfModel
 def GenConfModel(*args):
@@ -612,20 +670,23 @@ PUNGraph.MakeUnDir = MakeUnDir_classFn
 PNGraph.MakeUnDir = MakeUnDir_classFn
 PNEANet.MakeUnDir = MakeUnDir_classFn
 
-def ConvertGraph_classFn(self, *args, **kwargs):
-    return ConvertGraph(args[0], self, *(args[1:]), **kwargs)
+def ConvertGraph_classFn(self, GraphType, *args, **kwargs):
+    GraphType = ConvertGraphArg(GraphType)
+    return ConvertGraph(GraphType, self, *args, **kwargs)
 PUNGraph.ConvertGraph = ConvertGraph_classFn
 PNGraph.ConvertGraph = ConvertGraph_classFn
 PNEANet.ConvertGraph = ConvertGraph_classFn
 
-def ConvertSubGraph_classFn(self, *args, **kwargs):
-    return ConvertSubGraph(args[0], self, *args[1:], **kwargs)
+def ConvertSubGraph_classFn(self, GraphType, *args, **kwargs):
+    GraphType = ConvertGraphArg(GraphType)
+    return ConvertSubGraph(GraphType, self, *args, **kwargs)
 PUNGraph.ConvertSubGraph = ConvertSubGraph_classFn
 PNGraph.ConvertSubGraph = ConvertSubGraph_classFn
 PNEANet.ConvertSubGraph = ConvertSubGraph_classFn
 
-def ConvertESubGraph_classFn(self, *args, **kwargs):
-    return ConvertESubGraph(args[0], self, *args[1:], **kwargs)
+def ConvertESubGraph_classFn(self, GraphType, *args, **kwargs):
+    GraphType = ConvertGraphArg(GraphType)
+    return ConvertESubGraph(GraphType, self, *args, **kwargs)
 PUNGraph.ConvertESubGraph = ConvertESubGraph_classFn
 PNGraph.ConvertESubGraph = ConvertESubGraph_classFn
 PNEANet.ConvertESubGraph = ConvertESubGraph_classFn
@@ -1241,6 +1302,16 @@ def DrawGViz_classFn(self, *args, **kwargs):
 PUNGraph.DrawGViz = DrawGViz_classFn
 PNGraph.DrawGViz = DrawGViz_classFn
 PNEANet.DrawGViz = DrawGViz_classFn
+
+def ToGraph_classFN(self, GraphType, *args, **kwargs):
+    GraphType = ConvertGraphArg(GraphType)
+    return ToGraph(GraphType, self, *args, **kwargs)
+PTable.ToGraph = ToGraph_classFN
+
+def ToNetwork_classFN(self, GraphType, *args, **kwargs):
+    GraphType = ConvertGraphArg(GraphType)
+    return ToNetwork(GraphType, self, *args, **kwargs)
+PTable.ToNetwork = ToNetwork_classFN
 
 %}
 

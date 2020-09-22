@@ -19,7 +19,7 @@ The following example shows how to get distribution of sizes of 1-components in 
 
     import snap
 
-    UGraph = snap.GenRndGnm(snap.PUNGraph, 100, 100)
+    UGraph = snap.GenRndGnm(snap.TUNGraph, 100, 100)
     szCntV = UGraph.Get1CnComSzCnt()
     for item in szCntV:
         print("%d, %d" % (item.GetVal1(), item.GetVal2()))

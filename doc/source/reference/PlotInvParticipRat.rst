@@ -31,6 +31,6 @@ an undirected graph of type :class:`TUNGraph`::
 
     import snap
 
-    UGraph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
+    UGraph = snap.GenRndGnm(snap.TUNGraph, 100, 1000)
     UGraph.PlotInvParticipRat(50, 10, "example", "PlotInvParticipRat")
 

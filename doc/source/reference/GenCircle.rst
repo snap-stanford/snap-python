@@ -8,7 +8,7 @@ Generate a circular graph of type *GraphType* with *Nodes* nodes.  The generated
 Parameters:
 
 - *GraphType*: graph class (input)
-    Class of output graph -- one of :class:`PNGraph`, :class:`PNEANet`, or :class:`PUNGraph`.
+    Class of output graph -- one of :class:`TNGraph`, :class:`TNEANet`, or :class:`TUNGraph`.
 
 - *Nodes*: int (input)
     Number of nodes in the generated graph.
@@ -29,14 +29,14 @@ The following example shows how to generate circular graphs for classes :class:`
 
     import snap
 
-    Graph = snap.GenCircle(snap.PNGraph, 100, 10)
+    Graph = snap.GenCircle(snap.TNGraph, 100, 10)
     for EI in Graph.Edges():
         print("edge: (%d, %d)" % (EI.GetSrcNId(), EI.GetDstNId()))
 
-    UGraph = snap.GenCircle(snap.PUNGraph, 100, 10)
+    UGraph = snap.GenCircle(snap.TUNGraph, 100, 10)
     for EI in UGraph.Edges():
         print("edge: (%d, %d)" % (EI.GetSrcNId(), EI.GetDstNId()))
 
-    Network = snap.GenCircle(snap.PNEANet, 100, 10)
+    Network = snap.GenCircle(snap.TNEANet, 100, 10)
     for EI in Network.Edges():
         print("edge: (%d, %d)" % (EI.GetSrcNId(), EI.GetDstNId()))

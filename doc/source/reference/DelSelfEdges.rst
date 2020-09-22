@@ -19,7 +19,7 @@ The following example shows how to delete self-edges in
 
     import snap
 
-    Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
+    Graph = snap.GenRndGnm(snap.TNGraph, 100, 1000)
     Graph.AddSelfEdges()
     for NI in Graph.Nodes():
         if Graph.IsEdge(NI.GetId(),NI.GetId()): 
@@ -29,7 +29,7 @@ The following example shows how to delete self-edges in
         if Graph.IsEdge(NI.GetId(),NI.GetId()): 
             print("Self-edge on node %d" % NI.GetId())
 
-    UGraph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
+    UGraph = snap.GenRndGnm(snap.TNGraph, 100, 1000)
     UGraph.AddSelfEdges()
     for NI in UGraph.Nodes():
         if UGraph.IsEdge(NI.GetId(),NI.GetId()): 
@@ -39,7 +39,7 @@ The following example shows how to delete self-edges in
         if UGraph.IsEdge(NI.GetId(),NI.GetId()): 
             print("Self-edge on node %d" % NI.GetId())
 
-    Network = snap.GenRndGnm(snap.PNGraph, 100, 1000)
+    Network = snap.GenRndGnm(snap.TNGraph, 100, 1000)
     Network.AddSelfEdges()
     for NI in Network.Nodes():
         if Network.IsEdge(NI.GetId(),NI.GetId()): 

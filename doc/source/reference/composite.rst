@@ -125,7 +125,7 @@ vector. All of the following methods are available for objects that are classifi
       >>> snap.TIntV()
       >>> snap.TIntV(5)
       >>> v1 = snap.TIntV(8, 5)
-      >>> v1.Add(1)
+      >>> v1.append(1)
       >>> v2 = snap.TIntV(v1)
       >>> for val in v2:
       ...     print(val)
@@ -135,8 +135,7 @@ vector. All of the following methods are available for objects that are classifi
    :class:`TVec` offers iterators of type :class:`TInt` for fast access through the vector.
    The :class:`TInt` returned by any iterator method represents the value at a given index in the vector.
 
-   The following public functions are supported by the :class:`TVec` class:
-
+   The following public functions are Python list functions that are also supported by the :class:`TVec` classes:
      .. describe:: V[Index]
 
         Returns the value at index *Index* in vector *v*.
@@ -156,6 +155,61 @@ vector. All of the following methods are available for objects that are classifi
      .. describe:: Val not in V
 
         Equivalent to ``not Val in V``.
+
+     .. describe:: append(Val)
+
+        Appends *Val* to the end of the vector.
+
+     .. describe:: len()
+     
+        Returns the length of the vector.
+
+     .. describe:: delitem(Index)
+     
+        Deletes the value at index *Index* from the vector.
+
+     .. describe:: extend(Vec)
+     
+          Appends the contents of another vector, *Vec*, to the end of the vector.
+
+     .. describe:: clear()
+     
+        Clears the contents of the vector.
+
+     .. describe:: insert(Index, Val)
+
+        Inserts *Val* into the vector at index *Index*.
+
+     .. describe:: remove(Val)
+
+        Deletes the first instance of *Val* from the vector. If the value is not found, an error is thrown.
+
+     .. describe:: index(Val)
+
+        Returns the index of the first instance of *Val* in the vector. If the value is not found, an error is thrown.
+
+     .. describe:: count(Val)
+
+          Returns a count of the number of instances of *Val* in the vector.
+
+     .. describe:: pop(Index)
+
+        Deletes the contents of the vector at index *Index* and returns the value from that index.
+
+     .. describe:: reverse() 
+
+        Reverses the contents of the vector.
+
+     .. describe:: sort(asc=False)
+
+          Sorts the vector. If *Asc* is true, sorts in ascending order; otherwise in descending order.
+
+     .. describe:: copy()
+
+        Returns a copy of the vector.
+
+
+   The following public functions are additional, SNAP-specific functions supported by the :class:`TVec` classes:
 
      .. iter(V)
 
@@ -478,7 +532,7 @@ vector. All of the following methods are available for objects that are classifi
       >>> vec1.IsIn(5)
       True
       >>> vec2 = snap.TIntV(vec1)
-      >>> vec2.Add(10)
+      >>> vec2.append(10)
       >>> vec2.Diff(vec1)
       >>> for val in vec2:
       ...     print(val)
@@ -526,31 +580,70 @@ Hash tables contain values of the same type. Each value has a user provided key 
    :class:`THash` offers iterators of type :class:`THashKeyDatI` for fast access through
    the hash table.
 
-   The following public functions are supported by the :class:`THash` class:
+   The following public functions are Python dictionary functions that are also supported by the :class:`THash` classes:
 
-     .. describe:: H[Key]
+    .. describe:: H[Key]
 
-        Returns the item of *H* with key *Key*.
+        Returns the value associated with the key *Key*.
 
-     .. describe:: H[Key] = Value
+    .. describe:: H[Key] = Value
 
         Set ``H[Key]`` to *Value*.
 
-     .. describe:: del H[Key]
+    .. describe:: del H[Key]
 
         Removes ``H[Key]`` from *H*.
 
-     .. describe:: Key in H
+    .. describe:: Key in H
 
         Returns ``True`` if *Key* is a key in hash table *H*, else ``False``.
 
-     .. describe:: Key not in H
+    .. describe:: Key not in H
 
         Equivalent to ``not Key in H``.
 
-     .. iter(H)
+    .. describe:: len(H)
+
+        Returns the number of keys in the hash table.
+
+    .. describe:: get(Key)
+
+        Returns the value at the key *Key*.
+
+    .. describe:: items()
+
+        Returns a list of key, value pairs in the hash table.
+
+    .. describe:: keys()
+
+        Returns a list of the keys in the hash table.
+
+    .. describe:: values()
+
+        Returns a list of the values in the hash table.
+
+    .. describe:: clear()
+
+        Clears the contents of the hash table.
+
+    .. describe:: copy()
+
+        Copies the contents of the hash table.
+
+    .. iter(H)
 
         Returns an iterator over all the keys in the hash table.
+
+    .. describe:: pop(Key)
+
+        Removes *Key* and its value from the hash table and returns its value.
+
+    .. describe:: setdefault(Key, Default)
+
+        If *Key* is present in the hash table, returns its value. Otherwise, creates a new entry *Key* in the hash table with value *Default* and returns *Default*.
+
+
+   The following public functions are additional, SNAP-specific functions supported by the :class:`THash` classes:
 
      .. describe:: Load(SIn)
 

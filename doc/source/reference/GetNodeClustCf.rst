@@ -1,16 +1,13 @@
 GetNodeClustCf
 ''''''''''''''
 
-.. function:: GetNodeClustCf(Graph, NId) 
+.. function:: GetNodeClustCf(NId) 
 
-Returns clustering coefficient of a particular node. Considers the graph as undirected.
+A graph method that returns clustering coefficient of a particular node. Considers the graph as undirected.
 
 Parameters:
 
-- *Graph*: graph (input)
-    A Snap.py graph or a network.
-
-- *NId*: int (input)
+- *NId*: int
     A node id in the *Graph*.
 
 Return value:
@@ -24,11 +21,11 @@ The following example shows how to calculate clustering coefficient of a particu
 
     import snap
 
-    Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
-    snap.GetNodeClustCf(Graph, 50)
+    Graph = snap.GenRndGnm(snap.TNGraph, 100, 1000)
+    Graph.GetNodeClustCf(50)
 
-    UGraph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
-    snap.GetNodeClustCf(UGraph, 50)
+    UGraph = snap.GenRndGnm(snap.TUNGraph, 100, 1000)
+    UGraph.GetNodeClustCf(50)
 
-    Network = snap.GenRndGnm(snap.PNEANet, 100, 1000)
-    snap.GetNodeClustCf(Network, 50)
+    Network = snap.GenRndGnm(snap.TNEANet, 100, 1000)
+    Network.GetNodeClustCf(50)

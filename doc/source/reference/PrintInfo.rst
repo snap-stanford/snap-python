@@ -27,14 +27,14 @@ for random graphs of type :class:`TNGraph`, :class:`TUNGraph`, and :class:`TNEAN
     import snap
 
     # print extended statistics to file 'info-pngraph.txt'
-    Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
-    Graph.PrintInfo("Python type PNGraph", "info-pngraph.txt", False)
+    Graph = snap.GenRndGnm(snap.TNGraph, 100, 1000)
+    Graph.PrintInfo("Python type TNGraph", "info-pngraph.txt", False)
 
     # print basic statistics to file 'info-pungraph.txt'
-    UGraph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
-    UGraph.PrintInfo("Python type PUNGraph", "info-pungraph.txt")
+    UGraph = snap.GenRndGnm(snap.TUNGraph, 100, 1000)
+    UGraph.PrintInfo("Python type TUNGraph", "info-pungraph.txt")
 
     # print basic statistics to standard output
-    Network = snap.GenRndGnm(snap.PNEANet, 100, 1000)
-    Network.PrintInfo("Python type PNEANet")
+    Network = snap.GenRndGnm(snap.TNEANet, 100, 1000)
+    Network.PrintInfo("Python type TNEANet")
 

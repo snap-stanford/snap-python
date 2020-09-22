@@ -25,17 +25,17 @@ The following example shows how to return get a subgraph of
     for i in range(1, 10):
         NIdV.append(i)
 
-    Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
+    Graph = snap.GenRndGnm(snap.TNGraph, 100, 1000)
     SubGraph = Graph.GetSubGraph(NIdV)
     for EI in SubGraph.Edges():
         print("edge (%d %d)" % (EI.GetSrcNId(), EI.GetDstNId()))
 
-    UGraph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
+    UGraph = snap.GenRndGnm(snap.TUNGraph, 100, 1000)
     SubGraph = UGraph.GetSubGraph(NIdV)
     for EI in SubGraph.Edges():
         print("edge (%d %d)" % (EI.GetSrcNId(), EI.GetDstNId()))
 
-    Network = snap.GenRndGnm(snap.PNEANet, 100, 1000)
+    Network = snap.GenRndGnm(snap.TNEANet, 100, 1000)
     SubGraph = Network.GetSubGraph(NIdV)
     for EI in SubGraph.Edges():
         print("edge (%d %d)" % (EI.GetSrcNId(), EI.GetDstNId()))

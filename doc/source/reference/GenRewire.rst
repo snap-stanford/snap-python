@@ -27,11 +27,11 @@ The following example shows how to use :func:`GenRewire` with nodes in
 
     import snap
 
-    GIn = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
+    GIn = snap.GenRndGnm(snap.TUNGraph, 100, 1000)
     for EI in GIn.Edges():
         print("edge: (%d, %d)" % (EI.GetSrcNId(), EI.GetDstNId()))
 
     Rnd = snap.TRnd()
-    GOut = snap.GenRewire(Graph, 100, Rnd)
+    GOut = snap.GenRewire(GIn, 100, Rnd)
     for EI in GOut.Edges():
         print("edge: (%d, %d)" % (EI.GetSrcNId(), EI.GetDstNId()))

@@ -23,7 +23,7 @@ The following example shows how to remove nodes with out-degree *OutDegK* or in-
 
     import snap
 
-    Graph = snap.GenRndGnm(snap.PNGraph, 100, 10)
+    Graph = snap.GenRndGnm(snap.TNGraph, 100, 10)
     Graph.DelDegKNodes(1, 1)
     for NI in Graph.Nodes():
         if NI.GetOutDeg() == 1:
@@ -31,7 +31,7 @@ The following example shows how to remove nodes with out-degree *OutDegK* or in-
         if NI.GetInDeg() == 1:
             print("Node %d has in-degree 1." % NI.GetId())
     
-    UGraph = snap.GenRndGnm(snap.PUNGraph, 100, 10)
+    UGraph = snap.GenRndGnm(snap.TUNGraph, 100, 10)
     UGraph.DelDegKNodes(1, 1)
     for NI in UGraph.Nodes():
         if NI.GetOutDeg() == 1:
@@ -39,7 +39,7 @@ The following example shows how to remove nodes with out-degree *OutDegK* or in-
         if NI.GetInDeg() == 1:
             print("Node %d has in-degree 1." % NI.GetId())
 
-    Network = snap.GenRndGnm(snap.PNEANet, 100, 10)
+    Network = snap.GenRndGnm(snap.TNEANet, 100, 10)
     Network.DelDegKNodes(1, 1)
     for NI in Network.Nodes():
         if NI.GetOutDeg() == 1:

@@ -28,11 +28,11 @@ The following example shows how to calculate Modularity scores for the first 10 
     for nodeId in range(10):
         Nodes.append(nodeId)
 
-    Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
+    Graph = snap.GenRndGnm(snap.TNGraph, 100, 1000)
     print(Graph.GetModularity(Nodes, 1000))
 
-    UGraph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
+    UGraph = snap.GenRndGnm(snap.TUNGraph, 100, 1000)
     print(UGraph.GetModularity(Nodes, 1000))
 
-    Network = snap.GenRndGnm(snap.PNEANet, 100, 1000)
+    Network = snap.GenRndGnm(snap.TNEANet, 100, 1000)
     print(Network.GetModularity(Nodes, 1000))

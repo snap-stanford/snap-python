@@ -1,11 +1,11 @@
-Table to Graph Conversion Functions
+Table to Graph Conversion Methods
 ```````````````````````````````````
 
-One of the most common operations when processing large datasets in SNAP is to load the dataset into :class:`TTable` objects, and then construct graphs out of the tables to run SNAP's graph algorithms. The conversion functions, defined in namespace TSnap, provide the functionality to do this.
+One of the most common operations when processing large datasets in SNAP is to load the dataset into :class:`TTable` objects, and then construct graphs out of the tables to run SNAP's graph algorithms. The conversion methods, defined for :class:`TTable`, provide the functionality to do this.
 
 Note that all the functions discussed below have both sequential and parallel implementations. The example code uses the sequential implementations; to use the parallelized functions (on a system which supports OpenMP), simply add MP to the function name (example, ToGraphMP and ToNetworkMP).
 
-.. function:: ToNetwork(GraphType, PTable Table, const TStr& SrcCol, const TStr& DstCol, TStrV& EdgeAttrV, PTable NodeTable, const TStr& NodeCol, TStrV& NodeAttrV, TAttrAggr AggrPolicy)
+.. function:: ToNetwork(GraphType, const TStr& SrcCol, const TStr& DstCol, TStrV& EdgeAttrV, PTable NodeTable, const TStr& NodeCol, TStrV& NodeAttrV, TAttrAggr AggrPolicy)
 
 Converts the edge and node tables to a network in SNAP, by looking at columns *SrcCol* and *DstCol* of *Table*, and at *NodeCol* of *NodeTable*
 *EdgeAttrV* specifies a list of columns in *Table* which contain edge attributes. *NodeAttrV* specifies a list of columns in *NodeTable* which correspond to node attributes.
@@ -13,36 +13,33 @@ It is recommended to have a separate, explicit, node table, and to use this meth
 
 Parameters:
 
-- *GraphType*: module name (input)
-    The class of network we want to create (usually snap.PNEANet)
+- *GraphType*: module name
+    The class of network we want to create (usually snap.TNEANet)
 
-- *Table*: :class:`TTable` (input)
-    An instance of :class:`TTable` which contains the edges from which we want to construct a graph.
-
-- *SrcCol*: string (input)
+- *SrcCol*: string
     The name of the column in the edge table which contains the source nodes.
 
-- *DstCol*: string (input)
+- *DstCol*: string
     The name of the column in the edge table which contains the destination nodes.
 
-- *EdgeAttrV*: TStrV (vector of strings) (input)
+- *EdgeAttrV*: TStrV (vector of strings)
     A list of names of columns in the edge table which correspond to edge attributes.
 
-- *NodeTable*: :class:`TTable` (input)
+- *NodeTable*: :class:`TTable`
     An instance of :class:`TTable` which contains the nodes of our graph.
 
-- *NodeCol*: string (input)
+- *NodeCol*: string
     The name of the column in the node table which contains the node ids.
 
-- *NodeAttrV*: TStrV (vector of strings) (input)
+- *NodeAttrV*: TStrV (vector of strings)
      A list of names of columns in the node table which correspond to node attributes.
 
-- *AggrPolicy*: :class:`TAttrAggr` (input)
+- *AggrPolicy*: :class:`TAttrAggr`
     The aggregation policy for attributes. It is not usually relevant for graphs (as opposed to networks), and can be safely set to snap.aaFirst by default.
 
 Return value:
 
-- *Net*: The constructed network.
+- *Net*: The constructed network, most commonly of type :class:`TNEANet`
 
 The following code shows example usage::
     
@@ -81,11 +78,10 @@ The following code shows example usage::
     nodeattrv = snap.TStrV()
     nodeattrv.Add("nodeattr1")
 
-    # net will be an object of type snap.PNEANet
-    net = snap.ToNetwork(snap.PNEANet, edge_table, "srcID", "dstID", edgeattrv, node_table, "nodeID", nodeattrv, snap.aaFirst)
+    net = edge_table.ToNetwork(snap.TNEANet, edge_table, "srcID", "dstID", edgeattrv, node_table, "nodeID", nodeattrv, snap.aaFirst)
 
 
-.. function:: ToNetwork(GraphType, PTable Table, const TStr& SrcCol, const TStr& DstCol, TStrv& SrcAttrv, TStrV& DstAttrV, TStrV& EdgeAttrV, TAttrAggr AggrPolicy)
+.. function:: ToNetwork(GraphType, const TStr& SrcCol, const TStr& DstCol, TStrv& SrcAttrv, TStrV& DstAttrV, TStrV& EdgeAttrV, TAttrAggr AggrPolicy)
 
 Converts the edge table to a network in SNAP, by looking at columns *SrcCol* and *DstCol* of *Table*.
 *EdgeAttrV* specifies a list of columns in *Table* which contain edge attributes. *SrcAttrV* and *DstAttrV* specifies the attributes of the source and destination columns.
@@ -93,33 +89,30 @@ Note: it is NOT recommended to use this method if there are node attributes to b
 
 Parameters:
 
-- *GraphType*: module name (input)
-    The class of network we want to create (usually snap.PNEANet)
+- *GraphType*: module name
+    The class of network we want to create (usually snap.TNEANet)
 
-- *Table*: :class:`TTable` (input)
-    An instance of :class:`TTable` which contains the edges from which we want to construct a graph.
-
-- *SrcCol*: string (input)
+- *SrcCol*: string
     The name of the column in the edge table which contains the source nodes.
 
-- *DstCol*: string (input)
+- *DstCol*: string
     The name of the column in the edge table which contains the destination nodes.
 
-- *SrcAttrV*: TStrV (vector of strings) (input)
+- *SrcAttrV*: TStrV (vector of strings)
     A list of names of columns in the edge table which correspond to attributes of the source node.
 
-- *DstAttrV*: TStrV (vector of strings) (input)
+- *DstAttrV*: TStrV (vector of strings)
     A list of names of columns in the edge table which correspond to attributes of the destination node.
 
-- *EdgeAttrV*: TStrV (vector of strings) (input)
+- *EdgeAttrV*: TStrV (vector of strings)
     A list of names of columns in the edge table which correspond to edge attributes.
 
-- *AggrPolicy*: :class:`TAttrAggr` (input)
+- *AggrPolicy*: :class:`TAttrAggr`
     The aggregation policy for attributes. Can be safely set to snap.aaFirst by default.
 
 Return value:
 
-- *Net*: The constructed network.
+- *Net*: The constructed network, most commonly of type :class:`TNEANet`
 
 The following code shows example usage::
     
@@ -157,34 +150,31 @@ The following code shows example usage::
 
     dstnodeattrv = snap.TStrV()
 
-    # net will be an object of type snap.PNEANet
-    net = snap.ToNetwork(snap.PNEANet, table, "srcID", "dstID", srcnodeattrv, dstnodeattrv, edgeattrv, snap.aaFirst)
+    # net will be an object of type snap.TNEANet
+    net = table.ToNetwork(snap.TNEANet, "srcID", "dstID", srcnodeattrv, dstnodeattrv, edgeattrv, snap.aaFirst)
 
 
-.. function:: ToGraph(GraphType, PTable Table, const TStr& SrcCol, const TStr& DstCol, TAttrAggr AggrPolicy)
+.. function:: ToGraph(GraphType, const TStr& SrcCol, const TStr& DstCol, TAttrAggr AggrPolicy)
 
 Converts the table to a graph in SNAP, by looking at columns *SrcCol* and *DstCol* of *Table*. Whenever a new node is seen, it is implicitly added to the graph automatically.
 
 Parameters:
 
-- *GraphType*: module name (input)
-    The class of graph we want to create (usually snap.PNGraph)
+- *GraphType*: module name
+    The class of graph we want to create (usually snap.TNGraph)
 
-- *Table*: :class:`TTable` (input)
-    An instance of :class:`TTable` from which we want to construct a graph.
-
-- *SrcCol*: string (input)
+- *SrcCol*: string
     The name of the column in the table which contains the source nodes.
 
-- *DstCol*: string (input)
+- *DstCol*: string
     The name of the column in the table which contains the destination nodes.
 
-- *AggrPolicy*: :class:`TAttrAggr` (input)
+- *AggrPolicy*: :class:`TAttrAggr`
     The aggregation policy for attributes. It is not usually relevant for graphs (as opposed to networks), and can be safely set to snap.aaFirst by default.
 
 Return value:
 
-- *Graph*: The constructed graph.
+- *Graph*: The constructed graph, most commonly of type :class:`TNGraph`
 
 The following code shows example usage::
     
@@ -199,8 +189,8 @@ The following code shows example usage::
     schema.Add(snap.TStrTAttrPr("dstID", snap.atStr))
     sample_table = snap.TTable.LoadSS(schema, graphfilename, context, "\t", snap.TBool(False))
 
-    # graph will be an object of type snap.PNGraph
-    graph = snap.ToGraph(snap.PNGraph, sample_table, "srcID", "dstID", snap.aaFirst)
+    # graph will be an object of type snap.TNGraph
+    graph = sample_table.ToGraph(snap.TNGraph, "srcID", "dstID", snap.aaFirst)
 
 .. function:: LoadModeNetToNet(PMMNet Graph, const TStr& Name, PTable Table, const TStr& NCol, TStrV& NodeAttrV)
 

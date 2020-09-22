@@ -21,11 +21,11 @@ The following example shows how to get a random subgraph with 10 edges from a gr
 
     import snap
 
-    Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
+    Graph = snap.GenRndGnm(snap.TNGraph, 100, 1000)
     SubGraph = Graph.GetRndESubGraph(10)
 
-    UGraph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
+    UGraph = snap.GenRndGnm(snap.TUNGraph, 100, 1000)
     SubUGraph = UGraph.GetRndESubGraph(10)
 
-    Network = snap.GenRndGnm(snap.PNEANet, 100, 1000)
+    Network = snap.GenRndGnm(snap.TNEANet, 100, 1000)
     SubNetwork = Network.GetRndESubGraph(10)

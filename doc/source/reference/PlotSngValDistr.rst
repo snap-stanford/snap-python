@@ -25,5 +25,5 @@ The following example shows how to use :func:`PlotSngValDistr` for :class:`TNGra
 
         import snap
 
-        Graph = snap.GenRndGnm(snap.PNGraph, 100, 5000)
+        Graph = snap.GenRndGnm(snap.TNGraph, 100, 5000)
         Graph.PlotSngValDistr(50, "title", "SngVal Distribution")

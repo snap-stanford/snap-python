@@ -29,17 +29,17 @@ The following example shows how to get the farness centrality for nodes in
 
     import snap
 
-    Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
+    Graph = snap.GenRndGnm(snap.TNGraph, 100, 1000)
     for NI in Graph.Nodes():
         FarCentr = Graph.GetFarnessCentr(NI.GetId())
         print("node: %d centrality: %f" % (NI.GetId(), FarCentr))
 
-    UGraph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
+    UGraph = snap.GenRndGnm(snap.TUNGraph, 100, 1000)
     for NI in UGraph.Nodes():
         FarCentr = UGraph.GetFarnessCentr(NI.GetId())
         print("node: %d centrality: %f" % (NI.GetId(), FarCentr))
 
-    Network = snap.GenRndGnm(snap.PNEANet, 100, 1000)
+    Network = snap.GenRndGnm(snap.TNEANet, 100, 1000)
     for NI in Network.Nodes():
         FarCentr = Network.GetFarnessCentr(NI.GetId())
         print("node: %d centrality: %f" % (NI.GetId(), FarCentr))

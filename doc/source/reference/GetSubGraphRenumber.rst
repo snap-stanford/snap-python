@@ -22,14 +22,14 @@ The following example shows how to get subgraphs for
 
     import snap
     
-    Graph = snap.GenRndGnm(snap.PNGraph, 50, 500)
+    Graph = snap.GenRndGnm(snap.TNGraph, 50, 500)
     Nodes = []
     for N in Graph.GetNI(0).GetOutEdges():
         Nodes.append(N)
     # Get subgraph induced by the neighbors of Node 0
     SubGraph = Graph.GetSubGraphRenumber(Nodes)
     
-    UGraph = snap.GenCircle(snap.PUNGraph, 100, 2, False)
+    UGraph = snap.GenCircle(snap.TUNGraph, 100, 2, False)
     Nodes = []
     for N in UGraph.GetNI(50).GetOutEdges():
         Nodes.append(N)

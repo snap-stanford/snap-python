@@ -29,11 +29,11 @@ The following example shows how generate a plot of the in-degree distribution fo
 
     import snap
 
-    Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
+    Graph = snap.GenRndGnm(snap.TNGraph, 100, 1000)
     Graph.PlotInDegDistr("example", "Directed graph - in-degree Distribution")
 
-    UGraph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
+    UGraph = snap.GenRndGnm(snap.TUNGraph, 100, 1000)
     UGraph.PlotInDegDistr("example", "Undirected graph - in-degree Distribution")
 
-    Network = snap.GenRndGnm(snap.PNEANet, 100, 1000)
+    Network = snap.GenRndGnm(snap.TNEANet, 100, 1000)
     Network.PlotInDegDistr("example", "Network - in-degree Distribution")

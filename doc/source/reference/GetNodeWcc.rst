@@ -20,21 +20,21 @@ The following example shows how to get the nodes in the same connected component
 
     import snap
     
-    Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
+    Graph = snap.GenRndGnm(snap.TNGraph, 100, 1000)
     CnCom = Graph.GetNodeWcc(0)
     print("Nodes in the same connected component as node 0:")
     for node in CnCom:
         print(node)
 
 
-    UGraph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
+    UGraph = snap.GenRndGnm(snap.TUNGraph, 100, 1000)
     CnCom = UGraph.GetNodeWcc(0)
     print("Nodes in the same connected component as node 0:")
     for node in CnCom:
         print(node)
 
 
-    Network = snap.GenRndGnm(snap.PNEANet, 100, 1000)
+    Network = snap.GenRndGnm(snap.TNEANet, 100, 1000)
     CnCom = Network.GetNodeWcc(0)
     print("Nodes in the same connected component as node 0:")
     for node in CnCom:

@@ -25,7 +25,7 @@ Return value:
     A Snap.py undirected, random, scale-free graph.
 
 
-The following example shows how to create :class:`PUNGraph` with this function::
+The following example shows how to create :class:`TUNGraph` with this function::
 
     import snap
 

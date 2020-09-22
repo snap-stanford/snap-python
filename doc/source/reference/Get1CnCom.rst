@@ -20,7 +20,7 @@ The following example shows how to get the 1-components with
 
     import snap
 
-    UGraph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
+    UGraph = snap.GenRndGnm(snap.TUNGraph, 100, 1000)
     CnComs = UGraph.Get1CnCom()
     for CnCom in CnComs:
         for NI in CnCom:

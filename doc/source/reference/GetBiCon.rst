@@ -19,7 +19,7 @@ The following example shows how to print out representations of the bi-connected
 
     import snap
 
-    UGraph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
+    UGraph = snap.GenRndGnm(snap.TUNGraph, 100, 1000)
     V = UGraph.GetBiCon()
     for CnCom in V:
       for NI in CnCom:

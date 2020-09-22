@@ -20,12 +20,12 @@ The following example shows how to detect trees in
 
     import snap
 
-    Graph = snap.GenTree(snap.PNGraph, 3, 3)
+    Graph = snap.GenTree(snap.TNGraph, 3, 3)
     [is_tree, root_id] = Graph.IsTree()
     print("The graph is a tree: %s " % is_tree)
     print("The graph has a root id: %d" % root_id)
 
-    Network = snap.GenTree(snap.PNEANet, 3, 3)
+    Network = snap.GenTree(snap.TNEANet, 3, 3)
     [is_tree, root_id] = Network.IsTree()
     print("The graph is a tree: %s " % is_tree)
     print("The graph has a root id: %d" % root_id)

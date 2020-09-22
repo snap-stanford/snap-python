@@ -11,7 +11,7 @@ the filename in *InFNm*. Function supports both the 1 edge per line (<source>
 Parameters:
 
 - *GraphType*: graph class
-    Class of output graph -- one of :class:`PNGraph`, :class:`PNEANet`, or :class:`PUNGraph`.
+    Class of output graph -- one of :class:`TNGraph`, :class:`TNEANet`, or :class:`TUNGraph`.
 
 - *InFNm*: string
     Filename with the description of the graph edges.
@@ -40,15 +40,15 @@ The following example shows how to load a Pajek file::
    """)
    output.close()
 
-   Graph = snap.LoadPajek(snap.PNGraph, 'example.paj')
+   Graph = snap.LoadPajek(snap.TNGraph, 'example.paj')
    for NI in Graph.Nodes():
        print(NI.GetId())
 
-   UGraph = snap.LoadPajek(snap.PUNGraph, 'example.paj')
+   UGraph = snap.LoadPajek(snap.TUNGraph, 'example.paj')
    for NI in UGraph.Nodes():
        print(NI.GetId())
 
-   Network = snap.LoadPajek(snap.PNEANet, 'example.paj')
+   Network = snap.LoadPajek(snap.TNEANet, 'example.paj')
    for NI in Network.Nodes():
        print(NI.GetId())
 

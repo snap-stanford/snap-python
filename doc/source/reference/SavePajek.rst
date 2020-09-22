@@ -47,11 +47,11 @@ The following example saves the graph in the Pajek format in:
     for i in range(1000):
         EIdColorH[i] = "red"
 
-    Graph = snap.GenRndGnm(snap.PNGraph, 100, 1000)
+    Graph = snap.GenRndGnm(snap.TNGraph, 100, 1000)
     Graph.SavePajek("Pajek_Graph1.out", NIdColorH, NIdLabelH, EIdColorH)
         
-    UGraph = snap.GenRndGnm(snap.PUNGraph, 100, 1000)
+    UGraph = snap.GenRndGnm(snap.TUNGraph, 100, 1000)
     UGraph.SavePajek("Pajek_Graph2.out", NIdColorH, NIdLabelH, EIdColorH)
     
-    Network = snap.GenRndGnm(snap.PNEANet, 100, 1000)
+    Network = snap.GenRndGnm(snap.TNEANet, 100, 1000)
     Network.SavePajek("Pajek_Graph3.out", NIdColorH, NIdLabelH, EIdColorH)

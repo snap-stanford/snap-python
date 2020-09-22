@@ -30,11 +30,11 @@ The following example shows how to save graphs of types
 
     Labels = { 0: "zero", 1: "one", 2: "two", 3: "three" }
 
-    Graph = snap.GenRndGnm(snap.PNGraph, 4, 6)
+    Graph = snap.GenRndGnm(snap.TNGraph, 4, 6)
     Graph.SaveGViz("graph1.dot", "Graph file", Labels)
 
-    UGraph = snap.GenRndGnm(snap.PUNGraph, 4, 6)
+    UGraph = snap.GenRndGnm(snap.TUNGraph, 4, 6)
     UGraph.SaveGViz("graph2.dot", "Graph file", Labels)
 
-    Network = snap.GenRndGnm(snap.PNEANet, 4, 6)
+    Network = snap.GenRndGnm(snap.TNEANet, 4, 6)
     Network.SaveGViz("graph3.dot", "Graph file", Labels)
