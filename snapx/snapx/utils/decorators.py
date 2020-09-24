@@ -1,4 +1,5 @@
 from .decorator import decorator
+import snapx as sx
 
 def nodes_or_number(which_args):
     """PORTED FROM NETWORKX
@@ -51,3 +52,64 @@ def nodes_or_number(which_args):
         return func_to_be_decorated(*new_args, **kw)
     return _nodes_or_number
 
+def not_implemented_for(*graph_types):
+    """PORTED FROM NETWORKX
+    Decorator to mark algorithms as not implemented
+
+    Parameters
+    ----------
+    graph_types : container of strings
+        Entries must be one of 'directed','undirected', 'multigraph', 'graph'.
+
+    Returns
+    -------
+    _require : function
+        The decorated function.
+
+    Raises
+    ------
+    NetworkXNotImplemented
+    If any of the packages cannot be imported
+
+    Notes
+    -----
+    Multiple types are joined logically with "and".
+    For "or" use multiple @not_implemented_for() lines.
+
+    Examples
+    --------
+    Decorate functions like this::
+
+       @not_implemnted_for('directed')
+       def sp_function(G):
+           pass
+
+       @not_implemnted_for('directed','multigraph')
+       def sp_np_function(G):
+           pass
+    """
+
+    @decorator
+    def _not_implemented_for(not_implement_for_func, *args, **kwargs):
+        graph = args[0]
+        terms = {
+            "directed": graph.is_directed(),
+            "undirected": not graph.is_directed(),
+            "multigraph": graph.is_multigraph(),
+            "graph": not graph.is_multigraph(),
+        }
+        match = True
+        try:
+            for t in graph_types:
+                match = match and terms[t]
+        except KeyError as e:
+            raise KeyError(
+                "use one or more of " "directed, undirected, multigraph, graph"
+            ) from e
+        if match:
+            msg = f"not implemented for {' '.join(graph_types)} type"
+            raise sx.SnapXNotImplemented(msg)
+        else:
+            return not_implement_for_func(*args, **kwargs)
+
+    return _not_implemented_for

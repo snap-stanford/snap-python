@@ -11,6 +11,7 @@ import snapx.convert as convert
 from snapx.exception import SnapXTypeError, SnapXError
 from ._nodeiter import _GraphNodeIterator, _GraphEdgeIterator, _TNEANetEdgeIter
 
+
 class Graph:
     """
     Base class for undirected graphs, much like the "Graph" class in NetworkX.
@@ -84,7 +85,11 @@ class Graph:
         self._node_extra_attr = {}
         self._edge_extra_attr = {}
         if incoming_graph_data is not None:
-            convert.to_snapx_graph(incoming_graph_data, create_using=self)
+            if type(incoming_graph_data) == type(TNEANet.New()):
+                self._graph = incoming_graph_data
+                self._num_edges = self._graph.GetEdges()
+            else:
+                convert.to_snapx_graph(incoming_graph_data, create_using=self)
 
         # Graph attributes
         self.graph = {}
@@ -114,11 +119,11 @@ class Graph:
         keyed by the string `"name"`. as well as an attribute (technically
         a property) `G.name`. This is entirely user controlled.
         """
-        return self.graph.get('name', '')
+        return self.graph.get("name", "")
 
     @name.setter
     def name(self, s):
-        self.graph['name'] = s
+        self.graph["name"] = s
 
     def __str__(self):
         """PORTED FROM NETWORKX
@@ -386,7 +391,7 @@ class Graph:
         # Lazy View creation: overload the (class) property on the instance
         # Then future G.nodes use the existing View
         # setattr doesn't work because attribute already exists
-        self.__dict__['nodes'] = nodes
+        self.__dict__["nodes"] = nodes
         return nodes
 
     def number_of_nodes(self):
@@ -495,7 +500,7 @@ class Graph:
 
         # Emulate (non-multi) graph by checking if the edge
         # already exists.
-        if self.has_edge(u,v):
+        if self.has_edge(u, v):
             return
         try:
             self._graph.AddEdge(u, v)
@@ -559,7 +564,7 @@ class Graph:
             except (TypeError, RuntimeError) as e:
                 pass
 
-    def add_weighted_edges_from(self, ebunch_to_add, weight='weight', **attr):
+    def add_weighted_edges_from(self, ebunch_to_add, weight="weight", **attr):
         """PORTED FROM NETWORKX
         Add weighted edges in `ebunch_to_add` with specified weight attr
         Parameters
@@ -586,8 +591,7 @@ class Graph:
         >>> G = nx.Graph()   # or DiGraph, MultiGraph, MultiDiGraph, etc
         >>> G.add_weighted_edges_from([(0, 1, 3.0), (1, 2, 7.5)])
         """
-        self.add_edges_from(((u, v, {weight: d}) for u, v, d in ebunch_to_add),
-                            **attr)
+        self.add_edges_from(((u, v, {weight: d}) for u, v, d in ebunch_to_add), **attr)
 
     def remove_edge(self, u, v):
         raise NotImplementedError("TODO")
@@ -968,14 +972,16 @@ class Graph:
         """
         if as_view is True:
             raise NotImplementedError("TODO")
-            #return nx.graphviews.generic_graph_view(self)
+            # return nx.graphviews.generic_graph_view(self)
         G = self.__class__()
         G.graph.update(self.graph)
         # Copy snap graph
         G.add_nodes_from((n, d) for n, d in self.nodes(data=True))
-        G.add_edges_from((u, v, datadict)
-                         for u, nbrs in self.adj.items()
-                         for v, datadict in nbrs.items())
+        G.add_edges_from(
+            (u, v, datadict)
+            for u, nbrs in self.adj.items()
+            for v, datadict in nbrs.items()
+        )
         return G
 
     def to_directed(self, as_view=False):
@@ -985,10 +991,91 @@ class Graph:
         raise NotImplementedError("TODO")
 
     def subgraph(self, nodes):
-        raise NotImplementedError("TODO")
+        """PORTED FROM NETWORKX
+        Returns a SubGraph view of the subgraph induced on `nodes`.
+        The induced subgraph of the graph contains the nodes in `nodes`
+        and the edges between those nodes.
+        Parameters
+        ----------
+        nodes : list, iterable
+            A container of nodes which will be iterated through once.
+        Returns
+        -------
+        G : SubGraph View
+            A subgraph view of the graph. The graph structure cannot be
+            changed but node/edge attributes can and are shared with the
+            original graph.
+        Notes
+        -----
+        The graph, edge and node attributes are shared with the original graph.
+        Changes to the graph structure is ruled out by the view, but changes
+        to attributes are reflected in the original graph.
+        To create a subgraph with its own copy of the edge/node attributes use:
+        G.subgraph(nodes).copy()
+        For an inplace reduction of a graph to a subgraph you can remove nodes:
+        G.remove_nodes_from([n for n in G if n not in set(nodes)])
+        Subgraph views are sometimes NOT what you want. In most cases where
+        you want to do more than simply look at the induced edges, it makes
+        more sense to just create the subgraph as its own graph with code like:
+        ::
+            # Create a subgraph SG based on a (possibly multigraph) G
+            SG = G.__class__()
+            SG.add_nodes_from((n, G.nodes[n]) for n in largest_wcc)
+            if SG.is_multigraph():
+                SG.add_edges_from((n, nbr, key, d)
+                    for n, nbrs in G.adj.items() if n in largest_wcc
+                    for nbr, keydict in nbrs.items() if nbr in largest_wcc
+                    for key, d in keydict.items())
+            else:
+                SG.add_edges_from((n, nbr, d)
+                    for n, nbrs in G.adj.items() if n in largest_wcc
+                    for nbr, d in nbrs.items() if nbr in largest_wcc)
+            SG.graph.update(G.graph)
+        Examples
+        --------
+        >>> G = nx.path_graph(4)  # or DiGraph, MultiGraph, MultiDiGraph, etc
+        >>> H = G.subgraph([0, 1, 2])
+        >>> list(H.edges)
+        [(0, 1), (1, 2)]
+        """
+        induced_nodes = sx.filters.show_nodes(self.nbunch_iter(nodes))
+        # if already a subgraph, don't make a chain
+        subgraph = sx.graphviews.subgraph_view
+        if hasattr(self, "_NODE_OK"):
+            return subgraph(self._graph, induced_nodes, self._EDGE_OK)
+        return subgraph(self, induced_nodes)
 
-    def edge_subgraph(self, edges):
-        raise NotImplementedError("TODO")
+    # def edge_subgraph(self, edges):
+    #     """Returns the subgraph induced by the specified edges.
+    #     The induced subgraph contains each edge in `edges` and each
+    #     node incident to any one of those edges.
+    #     Parameters
+    #     ----------
+    #     edges : iterable
+    #         An iterable of edges in this graph.
+    #     Returns
+    #     -------
+    #     G : Graph
+    #         An edge-induced subgraph of this graph with the same edge
+    #         attributes.
+    #     Notes
+    #     -----
+    #     The graph, edge, and node attributes in the returned subgraph
+    #     view are references to the corresponding attributes in the original
+    #     graph. The view is read-only.
+    #     To create a full graph version of the subgraph with its own copy
+    #     of the edge or node attributes, use::
+    #         >>> G.edge_subgraph(edges).copy()  # doctest: +SKIP
+    #     Examples
+    #     --------
+    #     >>> G = nx.path_graph(5)
+    #     >>> H = G.edge_subgraph([(0, 1), (3, 4)])
+    #     >>> list(H.nodes)
+    #     [0, 1, 3, 4]
+    #     >>> list(H.edges)
+    #     [(0, 1), (3, 4)]
+    #     """
+    #     return nx.edge_subgraph(self, edges)
 
     def size(self, weight=None):
         """PORTED FROM NETWORKX
@@ -1106,6 +1193,7 @@ class Graph:
         elif nbunch in self:
             bunch = iter([nbunch])
         else:
+
             def bunch_iter(nlist, adj):
                 try:
                     for n in nlist:
@@ -1114,7 +1202,7 @@ class Graph:
                 except TypeError as e:
                     message = e.args[0]
                     # capture error for non-sequence/iterator nbunch.
-                    if 'iter' in message:
+                    if "iter" in message:
                         msg = "nbunch is not a node or a sequence of nodes."
                         raise SnapXError(msg)
                     else:

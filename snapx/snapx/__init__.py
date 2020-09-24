@@ -11,3 +11,5 @@ import snapx.convert
 from snapx.convert import *
 
 from snapx.exception import *
+
+from snapx.relabel import *
