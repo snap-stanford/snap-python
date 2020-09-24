@@ -53,10 +53,31 @@ class SnapPythonTest(unittest.TestCase):
         self.UnDirRand = snap.GenRndGnm(snap.PUNGraph, 10, 20)
         self.NetRand = snap.GenRndGnm(snap.PNEANet, 10, 20)
 
+        # Petersen graph
+        Graph = snap.TUNGraph.New()
+        for i in range(10):
+            Graph.AddNode(i)
+        for i in range(5):
+            Graph.AddEdge(i,(i+1) % 5)
+        for i in range(5):
+            Graph.AddEdge(i + 5,(i+2) % 5 + 5)
+        for i in range(5):
+            Graph.AddEdge(i,i + 5)
+        self.UPetersen = Graph
+        #snap.DrawGViz(Graph, snap.gvlDot, "upetersen.png", "petersen 1")
 
-
-
-
+        # directed Petersen graph
+        Graph = snap.TNGraph.New()
+        for i in range(10):
+            Graph.AddNode(i)
+        for i in range(5):
+            Graph.AddEdge(i,(i+1) % 5)
+        for i in range(5):
+            Graph.AddEdge(i + 5,(i+2) % 5 + 5)
+        for i in range(5):
+            Graph.AddEdge(i,i + 5)
+        self.DPetersen = Graph
+        #snap.DrawGViz(Graph, snap.gvlDot, "dpetersen.png", "petersen 2")
 
     #### Helper Functions for Tests ####
 
@@ -3570,6 +3591,27 @@ class SnapPythonTest(unittest.TestCase):
         # Network
         SubGraph = snap.ConvertESubGraph(snap.PNEANet, self.NetFull, V)
         self.assertEqual(SubGraph.GetEdges(), V.Len())
+
+    def test_GetEgonet(self):
+
+        # Undirected Graph
+        for i in range(10):
+            Egonet, edges = snap.GetEgonet(self.UPetersen, i)
+            self.assertEqual(Egonet.GetNodes(), 4)
+            self.assertEqual(Egonet.GetEdges(), 3)
+            self.assertEqual(edges, 6)
+
+        # Directed Graph
+        for i in range(10):
+            Egonet, ein, eout = snap.GetEgonet(self.DPetersen, i)
+            self.assertEqual(Egonet.GetNodes(), 4)
+            self.assertEqual(Egonet.GetEdges(), 3)
+            if i < 5:
+                self.assertEqual(ein, 2)
+                self.assertEqual(eout, 4)
+            else:
+                self.assertEqual(ein, 4)
+                self.assertEqual(eout, 2)
 
 if __name__ == '__main__':
   unittest.main()

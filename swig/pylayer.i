@@ -727,6 +727,11 @@ PUNGraph.GetRndESubGraph = GetRndESubGraph_classFn
 PNGraph.GetRndESubGraph = GetRndESubGraph_classFn
 PNEANet.GetRndESubGraph = GetRndESubGraph_classFn
 
+def GetEgonet_classFn(self, *args, **kwargs):
+    return GetEgonet(self, *args, **kwargs)
+PUNGraph.GetEgonet = GetEgonet_classFn
+PNGraph.GetEgonet = GetEgonet_classFn
+
 def IsTree_classFn(self, *args, **kwargs):
     return IsTree(self, *args, **kwargs)
 PUNGraph.IsTree = IsTree_classFn
@@ -738,18 +743,6 @@ def PrintInfo_classFn(self, *args, **kwargs):
 PUNGraph.PrintInfo = PrintInfo_classFn
 PNGraph.PrintInfo = PrintInfo_classFn
 PNEANet.PrintInfo = PrintInfo_classFn
-
-def DrawGViz_classFn(self, *args, **kwargs):
-    return DrawGViz(self, *args, **kwargs)
-PUNGraph.DrawGViz = DrawGViz_classFn
-PNGraph.DrawGViz = DrawGViz_classFn
-PNEANet.DrawGViz = DrawGViz_classFn
-
-def DrawGVizColor_classFn(self, *args, **kwargs):
-    return DrawGVizColor(self, *args, **kwargs)
-PUNGraph.DrawGVizColor = DrawGVizColor_classFn
-PNGraph.DrawGVizColor = DrawGVizColor_classFn
-PNEANet.DrawGVizColor = DrawGVizColor_classFn
 
 def PlotSccDistr_classFn(self, *args, **kwargs):
     return PlotSccDistr(self, *args, **kwargs)
@@ -1302,6 +1295,12 @@ def DrawGViz_classFn(self, *args, **kwargs):
 PUNGraph.DrawGViz = DrawGViz_classFn
 PNGraph.DrawGViz = DrawGViz_classFn
 PNEANet.DrawGViz = DrawGViz_classFn
+
+def DrawGVizColor_classFn(self, *args, **kwargs):
+    return DrawGVizColor(self, *args, **kwargs)
+PUNGraph.DrawGVizColor = DrawGVizColor_classFn
+PNGraph.DrawGVizColor = DrawGVizColor_classFn
+PNEANet.DrawGVizColor = DrawGVizColor_classFn
 
 def ToGraph_classFN(self, GraphType, *args, **kwargs):
     GraphType = ConvertGraphArg(GraphType)

@@ -19,6 +19,9 @@
 %apply int &OUTPUT { int& InGroupEdgesX};
 %apply int &OUTPUT { int& InOutGroupEdgesX};
 %apply int &OUTPUT { int& OutGroupEdgesX};
+%apply int &OUTPUT { int& ArndEdgesX};
+%apply int &OUTPUT { int& InEgoEdgesX};
+%apply int &OUTPUT { int& OutEgoEdgesX};
 
 //
 // TInt

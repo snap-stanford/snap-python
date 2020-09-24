@@ -58,6 +58,32 @@ class SnapPythonTest(unittest.TestCase):
         self.UnDirGrid = snap.GenGrid(snap.TUNGraph, 3, 3)
         self.NetGrid = snap.GenGrid(snap.TNEANet, 3, 3, False)
 
+        # Petersen graph
+        Graph = snap.TUNGraph.New()
+        for i in range(10):
+            Graph.AddNode(i)
+        for i in range(5):
+            Graph.AddEdge(i,(i+1) % 5)
+        for i in range(5):
+            Graph.AddEdge(i + 5,(i+2) % 5 + 5)
+        for i in range(5):
+            Graph.AddEdge(i,i + 5)
+        self.UPetersen = Graph
+        #snap.DrawGViz(Graph, snap.gvlDot, "upetersen.png", "petersen 1")
+
+        # directed Petersen graph
+        Graph = snap.TNGraph.New()
+        for i in range(10):
+            Graph.AddNode(i)
+        for i in range(5):
+            Graph.AddEdge(i,(i+1) % 5)
+        for i in range(5):
+            Graph.AddEdge(i + 5,(i+2) % 5 + 5)
+        for i in range(5):
+            Graph.AddEdge(i,i + 5)
+        self.DPetersen = Graph
+        #snap.DrawGViz(Graph, snap.gvlDot, "dpetersen.png", "petersen 2")
+
     #### Helper Functions for Tests ####
 
     def checkPlotHash(self, gen_file, exp_hash):
@@ -3552,6 +3578,24 @@ class SnapPythonTest(unittest.TestCase):
             self.assertEqual(edge.GetSrcNId(), edge_swig.GetSrcNId())
             self.assertEqual(edge.GetDstNId(), edge_swig.GetDstNId())
 
+    def test_GetEgonet(self):
+
+        # Undirected Graph
+        for i in range(10):
+            Egonet, edges = self.UPetersen.GetEgonet(i)
+            Egonet_swig, edges_swig = snap.GetEgonet(self.UPetersen, i)
+            self.assertEqual(Egonet.GetNodes(), Egonet_swig.GetNodes())
+            self.assertEqual(Egonet.GetEdges(), Egonet_swig.GetEdges())
+            self.assertEqual(edges, edges_swig)
+
+        # Directed Graph
+        for i in range(10):
+            Egonet, ein, eout = self.DPetersen.GetEgonet(i)
+            Egonet_swig, ein_swig, eout_swig = snap.GetEgonet(self.DPetersen, i)
+            self.assertEqual(Egonet.GetNodes(), Egonet_swig.GetNodes())
+            self.assertEqual(Egonet.GetEdges(), Egonet_swig.GetEdges())
+            self.assertEqual(ein, ein_swig)
+            self.assertEqual(eout, eout_swig)
 
 if __name__ == '__main__':
   unittest.main()
