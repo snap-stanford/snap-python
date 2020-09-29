@@ -64,7 +64,7 @@ class SnapPythonTest(unittest.TestCase):
         for i in range(5):
             Graph.AddEdge(i,i + 5)
         self.UPetersen = Graph
-        #snap.DrawGViz(Graph, snap.gvlDot, "upetersen.png", "petersen 1")
+        snap.DrawGViz(self.UPetersen, snap.gvlDot, "upetersen.png", "petersen 1")
 
         # directed Petersen graph
         Graph = snap.TNGraph.New()
@@ -77,7 +77,11 @@ class SnapPythonTest(unittest.TestCase):
         for i in range(5):
             Graph.AddEdge(i,i + 5)
         self.DPetersen = Graph
-        #snap.DrawGViz(Graph, snap.gvlDot, "dpetersen.png", "petersen 2")
+        snap.DrawGViz(self.DPetersen, snap.gvlDot, "dpetersen.png", "petersen 2")
+
+        # directed Petersen network
+        self.NPetersen = self.DPetersen.ConvertGraph(snap.TNEANet)
+        snap.DrawGViz(self.NPetersen, snap.gvlDot, "npetersen.png", "petersen 3")
 
     #### Helper Functions for Tests ####
 
@@ -3612,6 +3616,134 @@ class SnapPythonTest(unittest.TestCase):
             else:
                 self.assertEqual(ein, 4)
                 self.assertEqual(eout, 2)
+
+    def test_GetEgonetHop(self):
+
+        # Undirected Graph
+        for i in range(1,3):
+            Egonet = snap.GetEgonetHop(self.UPetersen, 0, i)
+            if i == 1:
+                self.assertEqual(Egonet.GetNodes(), 4)
+                self.assertEqual(Egonet.GetEdges(), 3)
+            else:
+                self.assertEqual(Egonet.GetNodes(), 10)
+                self.assertEqual(Egonet.GetEdges(), 15)
+
+        # Directed Graph
+        for i in range(1,3):
+            Egonet = snap.GetEgonetHop(self.DPetersen, 1, i)
+            if i == 1:
+                self.assertEqual(Egonet.GetNodes(), 4)
+                self.assertEqual(Egonet.GetEdges(), 3)
+            else:
+                self.assertEqual(Egonet.GetNodes(), 10)
+                self.assertEqual(Egonet.GetEdges(), 15)
+
+        # Directed Network
+        for i in range(1,3):
+            Egonet = snap.GetEgonetHop(self.NPetersen, 2, i)
+            if i == 1:
+                self.assertEqual(Egonet.GetNodes(), 4)
+                self.assertEqual(Egonet.GetEdges(), 3)
+            else:
+                self.assertEqual(Egonet.GetNodes(), 10)
+                self.assertEqual(Egonet.GetEdges(), 15)
+
+    def test_GetInEgonetHop(self):
+
+        # Undirected Graph
+        for i in range(1,3):
+            Egonet = snap.GetInEgonetHop(self.UPetersen, 3, i)
+            if i == 1:
+                self.assertEqual(Egonet.GetNodes(), 4)
+                self.assertEqual(Egonet.GetEdges(), 3)
+            else:
+                self.assertEqual(Egonet.GetNodes(), 10)
+                self.assertEqual(Egonet.GetEdges(), 15)
+
+        # Directed Graph
+        for i in range(1,3):
+            Egonet = snap.GetInEgonetHop(self.DPetersen, 4, i)
+            if i == 1:
+                self.assertEqual(Egonet.GetNodes(), 2)
+                self.assertEqual(Egonet.GetEdges(), 1)
+            else:
+                self.assertEqual(Egonet.GetNodes(), 3)
+                self.assertEqual(Egonet.GetEdges(), 2)
+
+        # Directed Network
+        for i in range(1,3):
+            Egonet = snap.GetInEgonetHop(self.NPetersen, 5, i)
+            if i == 1:
+                self.assertEqual(Egonet.GetNodes(), 3)
+                self.assertEqual(Egonet.GetEdges(), 2)
+            else:
+                self.assertEqual(Egonet.GetNodes(), 6)
+                self.assertEqual(Egonet.GetEdges(), 6)
+
+    def test_GetOutEgonetHop(self):
+
+        # Undirected Graph
+        for i in range(1,3):
+            Egonet = snap.GetOutEgonetHop(self.UPetersen, 6, i)
+            if i == 1:
+                self.assertEqual(Egonet.GetNodes(), 4)
+                self.assertEqual(Egonet.GetEdges(), 3)
+            else:
+                self.assertEqual(Egonet.GetNodes(), 10)
+                self.assertEqual(Egonet.GetEdges(), 15)
+
+        # Directed Graph
+        for i in range(1,3):
+            Egonet = snap.GetOutEgonetHop(self.DPetersen, 7, i)
+            if i == 1:
+                self.assertEqual(Egonet.GetNodes(), 2)
+                self.assertEqual(Egonet.GetEdges(), 1)
+            else:
+                self.assertEqual(Egonet.GetNodes(), 3)
+                self.assertEqual(Egonet.GetEdges(), 2)
+
+        # Directed Network
+        for i in range(1,3):
+            Egonet = snap.GetOutEgonetHop(self.NPetersen, 8, i)
+            if i == 1:
+                self.assertEqual(Egonet.GetNodes(), 2)
+                self.assertEqual(Egonet.GetEdges(), 1)
+            else:
+                self.assertEqual(Egonet.GetNodes(), 3)
+                self.assertEqual(Egonet.GetEdges(), 2)
+
+    def test_GetInEgonetSub(self):
+
+        # Undirected Graph
+        for i in range(1,3):
+            Egonet = snap.GetInEgonetSub(self.UPetersen, 9, i, 2)
+            if i == 1:
+                self.assertEqual(Egonet.GetNodes(), 3)
+                self.assertEqual(Egonet.GetEdges(), 2)
+            else:
+                self.assertEqual(Egonet.GetNodes(), 7)
+                self.assertEqual(Egonet.GetEdges(), 8)
+
+        # Directed Graph
+        for i in range(1,3):
+            Egonet = snap.GetInEgonetSub(self.DPetersen, 0, i, 2)
+            if i == 1:
+                self.assertEqual(Egonet.GetNodes(), 2)
+                self.assertEqual(Egonet.GetEdges(), 1)
+            else:
+                self.assertEqual(Egonet.GetNodes(), 3)
+                self.assertEqual(Egonet.GetEdges(), 2)
+
+        # Directed Network
+        for i in range(1,3):
+            Egonet = snap.GetInEgonetSub(self.NPetersen, 1, i, 2)
+            if i == 1:
+                self.assertEqual(Egonet.GetNodes(), 2)
+                self.assertEqual(Egonet.GetEdges(), 1)
+            else:
+                self.assertEqual(Egonet.GetNodes(), 3)
+                self.assertEqual(Egonet.GetEdges(), 2)
 
 if __name__ == '__main__':
   unittest.main()

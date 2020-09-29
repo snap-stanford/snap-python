@@ -119,4 +119,7 @@ __func__	GetTriangleCnt
 __func__	GetBetweennessCentr
 __func__	GetClosenessCentr
 __func__	GetFarnessCentr
-
+__func__	GetEgonetHop
+__func__	GetInEgonetHop
+__func__	GetOutEgonetHop
+__func__	GetInEgonetSub

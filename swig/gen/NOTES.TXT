@@ -21,6 +21,7 @@ python gendispatch.py types.txt dispatch.txt > out-20130807.txt
 
 # include output out-20130807.txt in ../pgraph.i
 # include custom dispatch table disp-custom.py in ../pgraph.i
+# also add new template calls to pungraph.i, pngraph.i, pneanet.i, ...
 
 #
 # generate the SWIG type templates for TVec, THash, ...

@@ -1061,6 +1061,26 @@ def GetTriadsAll(tspec, *args):
     if type(tspec) == PNGraphMP: return GetTriadsAll_PNGraphMP(tspec, *args)
     if type(tspec) == PNEANetMP : return GetTriadsAll_PNEANetMP(tspec, *args)
     raise TypeError('First argument has invalid type')
+def GetEgonetHop(tspec, *args):
+    if type(tspec) == PUNGraph: return GetEgonetHop_PUNGraph(tspec, *args)
+    if type(tspec) == PNGraph : return GetEgonetHop_PNGraph(tspec, *args)
+    if type(tspec) == PNEANet : return GetEgonetHop_PNEANet(tspec, *args)
+    raise TypeError('First argument has invalid type')
+def GetInEgonetHop(tspec, *args):
+    if type(tspec) == PUNGraph: return GetInEgonetHop_PUNGraph(tspec, *args)
+    if type(tspec) == PNGraph : return GetInEgonetHop_PNGraph(tspec, *args)
+    if type(tspec) == PNEANet : return GetInEgonetHop_PNEANet(tspec, *args)
+    raise TypeError('First argument has invalid type')
+def GetOutEgonetHop(tspec, *args):
+    if type(tspec) == PUNGraph: return GetOutEgonetHop_PUNGraph(tspec, *args)
+    if type(tspec) == PNGraph : return GetOutEgonetHop_PNGraph(tspec, *args)
+    if type(tspec) == PNEANet : return GetOutEgonetHop_PNEANet(tspec, *args)
+    raise TypeError('First argument has invalid type')
+def GetInEgonetSub(tspec, *args):
+    if type(tspec) == PUNGraph: return GetInEgonetSub_PUNGraph(tspec, *args)
+    if type(tspec) == PNGraph : return GetInEgonetSub_PNGraph(tspec, *args)
+    if type(tspec) == PNEANet : return GetInEgonetSub_PNEANet(tspec, *args)
+    raise TypeError('First argument has invalid type')
 
 #
 # BELOW INCLUDE disp-custom.py

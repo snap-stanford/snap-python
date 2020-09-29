@@ -298,6 +298,11 @@
 %template(GetESubGraph_PNEANet) TSnap::GetESubGraph<PNEANet>;
 %template(GetRndSubGraph_PNEANet) TSnap::GetRndSubGraph<PNEANet>;
 %template(GetRndESubGraph_PNEANet) TSnap::GetRndESubGraph<PNEANet>;
+%template(GetEgonetHop_PNEANet) TSnap::GetEgonetHop<PNEANet>;
+%template(GetInEgonetHop_PNEANet) TSnap::GetInEgonetHop<PNEANet>;
+%template(GetOutEgonetHop_PNEANet) TSnap::GetOutEgonetHop<PNEANet>;
+%template(GetInEgonetSub_PNEANet) TSnap::GetInEgonetSub<PNEANet>;
+
 
 
 // triad.h - PNEANet
