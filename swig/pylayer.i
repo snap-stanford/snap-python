@@ -732,6 +732,30 @@ def GetEgonet_classFn(self, *args, **kwargs):
 PUNGraph.GetEgonet = GetEgonet_classFn
 PNGraph.GetEgonet = GetEgonet_classFn
 
+def GetEgonetHop_classFn(self, *args, **kwargs):
+    return GetEgonetHop(self, *args, **kwargs)
+PUNGraph.GetEgonetHop = GetEgonetHop_classFn
+PNGraph.GetEgonetHop = GetEgonetHop_classFn
+PNEANet.GetEgonetHop = GetEgonetHop_classFn
+
+def GetInEgonetHop_classFn(self, *args, **kwargs):
+    return GetInEgonetHop(self, *args, **kwargs)
+PUNGraph.GetInEgonetHop = GetInEgonetHop_classFn
+PNGraph.GetInEgonetHop = GetInEgonetHop_classFn
+PNEANet.GetInEgonetHop = GetInEgonetHop_classFn
+
+def GetOutEgonetHop_classFn(self, *args, **kwargs):
+    return GetOutEgonetHop(self, *args, **kwargs)
+PUNGraph.GetOutEgonetHop = GetOutEgonetHop_classFn
+PNGraph.GetOutEgonetHop = GetOutEgonetHop_classFn
+PNEANet.GetOutEgonetHop = GetOutEgonetHop_classFn
+
+def GetInEgonetSub_classFn(self, *args, **kwargs):
+    return GetInEgonetSub(self, *args, **kwargs)
+PUNGraph.GetInEgonetSub = GetInEgonetSub_classFn
+PNGraph.GetInEgonetSub = GetInEgonetSub_classFn
+PNEANet.GetInEgonetSub = GetInEgonetSub_classFn
+
 def IsTree_classFn(self, *args, **kwargs):
     return IsTree(self, *args, **kwargs)
 PUNGraph.IsTree = IsTree_classFn

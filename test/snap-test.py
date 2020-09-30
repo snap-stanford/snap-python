@@ -64,7 +64,7 @@ class SnapPythonTest(unittest.TestCase):
         for i in range(5):
             Graph.AddEdge(i,i + 5)
         self.UPetersen = Graph
-        snap.DrawGViz(self.UPetersen, snap.gvlDot, "upetersen.png", "petersen 1")
+        #snap.DrawGViz(self.UPetersen, snap.gvlDot, "upetersen.png", "undir")
 
         # directed Petersen graph
         Graph = snap.TNGraph.New()
@@ -77,11 +77,11 @@ class SnapPythonTest(unittest.TestCase):
         for i in range(5):
             Graph.AddEdge(i,i + 5)
         self.DPetersen = Graph
-        snap.DrawGViz(self.DPetersen, snap.gvlDot, "dpetersen.png", "petersen 2")
+        #snap.DrawGViz(self.DPetersen, snap.gvlDot, "dpetersen.png", "dir")
 
         # directed Petersen network
         self.NPetersen = self.DPetersen.ConvertGraph(snap.TNEANet)
-        snap.DrawGViz(self.NPetersen, snap.gvlDot, "npetersen.png", "petersen 3")
+        #snap.DrawGViz(self.NPetersen, snap.gvlDot, "npetersen.png", "multi")
 
     #### Helper Functions for Tests ####
 

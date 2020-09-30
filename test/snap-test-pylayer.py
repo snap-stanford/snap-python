@@ -84,6 +84,12 @@ class SnapPythonTest(unittest.TestCase):
         self.DPetersen = Graph
         #snap.DrawGViz(Graph, snap.gvlDot, "dpetersen.png", "petersen 2")
 
+        # directed Petersen network
+        self.NPetersen = self.DPetersen.ConvertGraph(snap.TNEANet)
+        #snap.DrawGViz(self.NPetersen, snap.gvlDot, "npetersen.png", "petersen 3")
+
+        self.PetersenGraphs = [ self.UPetersen, self.DPetersen, self.NPetersen ]
+
     #### Helper Functions for Tests ####
 
     def checkPlotHash(self, gen_file, exp_hash):
@@ -3596,6 +3602,50 @@ class SnapPythonTest(unittest.TestCase):
             self.assertEqual(Egonet.GetEdges(), Egonet_swig.GetEdges())
             self.assertEqual(ein, ein_swig)
             self.assertEqual(eout, eout_swig)
+
+    def test_GetEgonetHop(self):
+
+        n = 0
+        for Graph in self.PetersenGraphs:
+            for i in range(1,3):
+                n = (n + 1) % 10
+                Egonet = Graph.GetEgonetHop(n, i)
+                Egonet_swig = snap.GetEgonetHop(Graph, n, i)
+                self.assertEqual(Egonet.GetNodes(), Egonet_swig.GetNodes())
+                self.assertEqual(Egonet.GetEdges(), Egonet_swig.GetEdges())
+
+    def test_GetInEgonetHop(self):
+
+        n = 2
+        for Graph in self.PetersenGraphs:
+            for i in range(1,3):
+                n = (n + 1) % 10
+                Egonet = Graph.GetInEgonetHop(n, i)
+                Egonet_swig = snap.GetInEgonetHop(Graph, n, i)
+                self.assertEqual(Egonet.GetNodes(), Egonet_swig.GetNodes())
+                self.assertEqual(Egonet.GetEdges(), Egonet_swig.GetEdges())
+
+    def test_GetOutEgonetHop(self):
+
+        n = 5
+        for Graph in self.PetersenGraphs:
+            for i in range(1,3):
+                n = (n + 1) % 10
+                Egonet = Graph.GetOutEgonetHop(n, i)
+                Egonet_swig = snap.GetOutEgonetHop(Graph, n, i)
+                self.assertEqual(Egonet.GetNodes(), Egonet_swig.GetNodes())
+                self.assertEqual(Egonet.GetEdges(), Egonet_swig.GetEdges())
+
+    def test_GetInEgonetSub(self):
+
+        n = 8
+        for Graph in self.PetersenGraphs:
+            for i in range(1,3):
+                n = (n + 1) % 10
+                Egonet = Graph.GetInEgonetSub(n, i, 2)
+                Egonet_swig = snap.GetInEgonetSub(Graph, n, i, 2)
+                self.assertEqual(Egonet.GetNodes(), Egonet_swig.GetNodes())
+                self.assertEqual(Egonet.GetEdges(), Egonet_swig.GetEdges())
 
 if __name__ == '__main__':
   unittest.main()
