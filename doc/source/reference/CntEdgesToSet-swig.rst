@@ -2,6 +2,7 @@ CntEdgesToSet (SWIG)
 ''''''''''''''''''''
 
 .. function:: CntEdgesToSet(Graph, NId, NodeSet)
+   :noindex:
 
 Counts the number of edges between the given node with node id *NId* and the given set of nodes *NodeSet* in the provided graph *Graph*. If *Graph* is a directed graph, this function will return edges occurring in both directions between the given *NId* and *NodeSet*.
 

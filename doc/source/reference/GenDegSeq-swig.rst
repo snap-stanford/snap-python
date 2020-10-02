@@ -2,6 +2,7 @@ GenDegSeq (SWIG)
 ''''''''''''''''
 
 .. function:: GenDegSeq(DegSeqV, Rnd=TRnd)
+   :noindex:
 
 Generates an undirected random graph with the exact degree sequence given by *DegSeqV*.
 

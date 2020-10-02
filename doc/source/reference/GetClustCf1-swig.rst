@@ -2,6 +2,7 @@ GetClustCf (SWIG)
 ''''''''''''''''''
 
 .. function:: GetClustCf(Graph, DegToCCfV, SampleNodes=-1)
+   :noindex:
 
 Computes the distribution of average clustering coefficient. Considers the graph as undirected.
 

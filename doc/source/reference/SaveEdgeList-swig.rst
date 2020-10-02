@@ -2,6 +2,7 @@ SaveEdgeList (SWIG)
 '''''''''''''''''''
 
 .. function:: SaveEdgeList(Graph, Filename, Description="")
+   :noindex:
 
 Saves lists of edges from a given graph into a file.  Each line contains two columns and encodes a single edge. Creates a file named *Filename*.
 

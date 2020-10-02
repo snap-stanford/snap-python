@@ -2,6 +2,7 @@ GenRewire (SWIG)
 ''''''''''''''''''
 
 .. function:: GenRewire (Graph, NSwitch, Rnd=TRnd)
+   :noindex:
 
 Rewires an undirected *Graph* by randomly rewiring its edges while keeping the degrees the same.
 

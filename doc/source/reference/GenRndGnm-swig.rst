@@ -2,6 +2,7 @@ GenRndGnm (SWIG)
 ''''''''''''''''
 
 .. function:: GenRndGnm(GraphType, Nodes, Edges, IsDir=True, Rnd=TRnd)
+   :noindex:
 
 Generates an Erdos-Renyi random graph of the specified *GraphType*.
 

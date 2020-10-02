@@ -2,6 +2,7 @@ GetDegreeCentr (SWIG)
 '''''''''''''''''''''
 
 .. function:: GetDegreeCentr(Graph, NId)
+   :noindex:
 
 Returns degree centrality of a given node *NId* in *Graph*. Degree centrality of a node is defined as its degree/(N-1), where N is the number of nodes in the network.
 

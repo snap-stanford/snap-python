@@ -2,6 +2,7 @@ GetShortPath (SWIG)
 '''''''''''''''''''
 
 .. function:: GetShortPath(Graph, SrcNId, DstNId, IsDir=False)
+   :noindex:
 
 Returns the length of the shortest path from node *SrcNId* to node *DstNId*.
 

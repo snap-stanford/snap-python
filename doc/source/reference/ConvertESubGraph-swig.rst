@@ -2,6 +2,7 @@ ConvertESubGraph (SWIG)
 '''''''''''''''''''''''
 
 .. function:: ConvertESubGraph(GraphType, InGraph, EIdV, RenumberNodes=False)
+   :noindex:
 
 Returns a subgraph of graph *InGraph* with *EIdV* edges with an optional node renumbering. The resulting subgraph will have type *GraphType*. Node and edge data is not copied, but it is shared by input and output graphs.
 

@@ -2,6 +2,7 @@ GetMxScc (SWIG)
 '''''''''''''''
 
 .. function:: GetMxScc(Graph)
+   :noindex:
 
 Returns a graph representing the largest strongly connected component in *Graph*.
 

@@ -2,6 +2,7 @@ GetMxInDegNId (SWIG)
 ''''''''''''''''''''
 
 .. function:: GetMxInDegNId(Graph)
+   :noindex:
 
 Returns the node id of a randomly chosen node from all the nodes in *Graph* with the maximum in-degree.
 

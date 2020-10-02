@@ -2,6 +2,7 @@ GetRndESubGraph (SWIG)
 ''''''''''''''''''''''
 
 .. function:: GetRndESubGraph(Graph, numEdges)
+   :noindex:
 
 Randomly selects *numEdges* edges from the input graph *Graph* and returns a subgraph on those edges.
 

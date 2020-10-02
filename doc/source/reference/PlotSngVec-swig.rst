@@ -2,6 +2,7 @@ PlotSngVec (SWIG)
 '''''''''''''''''
 
 .. function:: PlotSngVec(Graph, FNmPref, DescStr)
+   :noindex:
 
 Ranks the values of the leading left singular vector of the graph adjacency matrix plots the first *SngVals* on a log-log chart. The function creates three new files: 1) sngVecL.<*FNmPref*>.plt (the plot), 2) sngVecL.<*FNPref*>.eps (the plotting description), and 3) sngVecL.<*FNmPref*>.tab (the tab separated plotting data).
 

@@ -1,5 +1,5 @@
 GenConfModel
-'''''''''''''''
+''''''''''''
 
 .. function:: GenConfModel(DegSeqV, Rnd=TRnd)
 

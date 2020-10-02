@@ -2,6 +2,7 @@ GetArtPoints (SWIG)
 '''''''''''''''''''
 
 .. function:: GetArtPoints(InGraph,ArtNIdV)
+   :noindex:
 
 Returns articulation points of an undirected *InGraph*.
 

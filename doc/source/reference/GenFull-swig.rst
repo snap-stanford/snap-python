@@ -2,6 +2,7 @@ GenFull (SWIG)
 ''''''''''''''
 
 .. function:: GenFull(GraphType, Nodes)
+   :noindex:
 
 Generates a complete graph on *Nodes* nodes. Graph has no self-loops.
 

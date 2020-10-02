@@ -1,5 +1,5 @@
 GetLeadSngVec
-'''''''''
+'''''''''''''
 
 .. function:: GetLeadSngVec()
 

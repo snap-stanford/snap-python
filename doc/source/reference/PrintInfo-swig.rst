@@ -2,6 +2,7 @@ PrintInfo (SWIG)
 ''''''''''''''''''
 
 .. function:: PrintInfo(Graph, Desc, OutFNm="", Fast=True)
+   :noindex:
 
 Prints basic *Graph* statistics to standard output or to a file named *OutFNm*. Additional extensive statistics which is computationally more expensive is computed when *Fast* is False.
 

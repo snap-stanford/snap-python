@@ -2,6 +2,7 @@ SaveGViz (SWIG)
 ''''''''''''''''''
 
 .. function:: SaveGViz(Graph, OutFNm, Desc, NIdLabelH)
+   :noindex:
 
 Saves *Graph* to the .DOT file format used by GraphViz. Use ".dot" as file extension for *OutFNm*.
 

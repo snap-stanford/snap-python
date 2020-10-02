@@ -1,7 +1,8 @@
 GenConfModel (SWIG)
-''''''''''''''''''''''
+'''''''''''''''''''
 
 .. function:: GenConfModel(DegSeqV, Rnd=TRnd)
+   :noindex:
 
 Generates a random undirected graph with the given degree sequence *DegSeqV* using the configuration model.
 

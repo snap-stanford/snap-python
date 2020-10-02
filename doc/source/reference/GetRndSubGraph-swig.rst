@@ -2,6 +2,7 @@ GetRndSubGraph (SWIG)
 '''''''''''''''''''''
 
 .. function:: GetRndSubGraph(Graph, numNodes)
+   :noindex:
 
 Randomly selects *numNodes* nodes from the input graph and returns an induced graph on those nodes.
 

@@ -1,5 +1,5 @@
 GetLeadEigVec
-'''''''''''
+'''''''''''''
 
 .. function:: GetLeadEigVec()
 

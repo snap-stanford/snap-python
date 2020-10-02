@@ -2,6 +2,7 @@ CntUniqBiDirEdges (SWIG)
 ''''''''''''''''''''''''
 
 .. function:: CntUniqBiDirEdges(Graph)
+   :noindex:
 
 Returns the number of unique bidirectional edges in the graph *Graph*.
 

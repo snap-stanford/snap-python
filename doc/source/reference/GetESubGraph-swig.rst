@@ -2,6 +2,7 @@ GetESubGraph (SWIG)
 '''''''''''''''''''
 
 .. function:: GetESubGraph(Graph, EIdV)
+   :noindex:
 
 Returns a subgraph of graph *Graph*. The resulting subgraph contains all the edges from *Graph* with edge IDs in *EIdV* and all the nodes that are connected by at least one edge in *EIdV*. Nodes and edges in the resulting subgraph have the same IDs as in *Graph*.
 

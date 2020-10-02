@@ -2,6 +2,7 @@ PlotOutDegDistr (SWIG)
 ''''''''''''''''''''''
 
 .. function:: PlotOutDegDistr(Graph, FNmPref, DescStr, PlotCCdf=False, PowerFit=False)
+   :noindex:
 
 Plots the out-degree distribution of *Graph*. The function creates three new files: 1) outDeg.<*FNmPref*>.plt (the plot), 2) outDeg.<*FNPref*>.png (the plotting description), and 3) outDeg.<*FNmPref*>.tab (the tab separated plotting data).
 

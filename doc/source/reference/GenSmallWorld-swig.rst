@@ -2,6 +2,7 @@ GenSmallWorld (SWIG)
 ''''''''''''''''''''
 
 .. function:: GenSmallWorld(Nodes, NodeOutDeg, RewireProb, Rnd=TRnd)
+   :noindex:
 
 Generates and returns a random small-world graph using the Watts-Strogatz model. We assume a circle where each node creates links to *NodeOutDeg* other nodes.
 

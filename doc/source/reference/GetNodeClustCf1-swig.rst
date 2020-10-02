@@ -2,6 +2,7 @@ GetNodeClustCf (SWIG)
 '''''''''''''''''''''
 
 .. function:: GetNodeClustCf(Graph, NIdCCfH)
+   :noindex:
 
 Computes clustering coefficient of each node in *Graph*. Considers the graph as undirected.
 

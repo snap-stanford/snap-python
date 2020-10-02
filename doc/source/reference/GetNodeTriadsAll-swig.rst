@@ -2,6 +2,7 @@ GetNodeTriadsAll (SWIG)
 '''''''''''''''''''''''
 
 .. function:: GetNodeTriadsAll(Graph, NId)
+   :noindex:
 
 Returns the number of closed and open triads that a node *NId* participates in.
 

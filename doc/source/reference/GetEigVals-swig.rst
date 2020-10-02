@@ -2,6 +2,7 @@ GetEigVals (SWIG)
 '''''''''''''''''
 
 .. function:: GetEigVals(Graph, EigVals, PEigV)
+   :noindex:
 
 Computes top *EigVals* eigenvalues of the adjacency matrix representing the given undirected graph *Graph*.
 

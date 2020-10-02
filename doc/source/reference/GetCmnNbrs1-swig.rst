@@ -2,6 +2,7 @@ GetCmnNbrs (SWIG)
 '''''''''''''''''
 
 .. function:: GetCmnNbrs(Graph, NId1, NId2, NbrV)
+   :noindex:
 
 Computes the number of shared neighbors between a pair of nodes *NId1* and *NId2*. The node ids of the neighbors are stored in *NbrV*.
 

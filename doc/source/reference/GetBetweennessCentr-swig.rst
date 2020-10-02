@@ -2,6 +2,7 @@ GetBetweennessCentr (SWIG)
 ''''''''''''''''''''''''''
 
 .. function:: GetBetweennessCentr(Graph, NIdBtwH, EdgeBtwH, NodeFrac=1.0, IsDir=False)
+   :noindex:
 
 Computes (approximate) Node and Edge Betweenness Centrality based on a sample of *NodeFrac* nodes.
 

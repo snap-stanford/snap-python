@@ -2,6 +2,7 @@ GenStar (SWIG)
 ''''''''''''''''''
 
 .. function:: GenStar (GraphType, Nodes, IsDir=True)
+   :noindex:
 
 Generates a graph with star topology. Node id 0 is in the center and then links to all other nodes.
 

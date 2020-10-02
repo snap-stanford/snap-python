@@ -2,6 +2,7 @@ DelDegKNodes (SWIG)
 '''''''''''''''''''
 
 .. function:: DelDegKNodes(Graph, OutDegK, InDegK)
+   :noindex:
 
 Removes all nodes of out-degree *OutDegK* and all nodes of in-degree *InDegK* from *Graph*. 
 

@@ -2,6 +2,7 @@ GetHits (SWIG)
 ''''''''''''''''''''''
 
 .. function:: GetHits (Graph, NIdHubH, NIdAuthH, MaxIter = 20)
+   :noindex:
 
 Computes the Hubs and Authorities score of every node in *Graph*. The scores are stored in *NIdHubH* and *NIdAuthH*.
 

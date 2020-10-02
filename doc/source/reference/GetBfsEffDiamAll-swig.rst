@@ -1,7 +1,8 @@
 GetBfsEffDiamAll (SWIG)
-````````````````'''''''
+'''''''''''''''''''''''
 
 .. function:: GetBfsEffDiamAll(Graph, NTestNode, IsDir)
+   :noindex:
 
 Returns the approximation of the effective diameter, the diameter, and
 the average shortest path length in a graph. Does this by performing

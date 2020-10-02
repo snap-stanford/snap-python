@@ -6,6 +6,7 @@ One of the most common operations when processing large datasets in SNAP is to l
 Note that all the functions discussed below have both sequential and parallel implementations. The example code uses the sequential implementations; to use the parallelized functions (on a system which supports OpenMP), simply add MP to the function name (example, ToGraphMP and ToNetworkMP).
 
 .. function:: ToNetwork(GraphType, PTable Table, const TStr& SrcCol, const TStr& DstCol, TStrV& EdgeAttrV, PTable NodeTable, const TStr& NodeCol, TStrV& NodeAttrV, TAttrAggr AggrPolicy)
+   :noindex:
 
 Converts the edge and node tables to a network in SNAP, by looking at columns *SrcCol* and *DstCol* of *Table*, and at *NodeCol* of *NodeTable*
 *EdgeAttrV* specifies a list of columns in *Table* which contain edge attributes. *NodeAttrV* specifies a list of columns in *NodeTable* which correspond to node attributes.
@@ -86,6 +87,7 @@ The following code shows example usage::
 
 
 .. function:: ToNetwork(GraphType, PTable Table, const TStr& SrcCol, const TStr& DstCol, TStrv& SrcAttrv, TStrV& DstAttrV, TStrV& EdgeAttrV, TAttrAggr AggrPolicy)
+   :noindex:
 
 Converts the edge table to a network in SNAP, by looking at columns *SrcCol* and *DstCol* of *Table*.
 *EdgeAttrV* specifies a list of columns in *Table* which contain edge attributes. *SrcAttrV* and *DstAttrV* specifies the attributes of the source and destination columns.
@@ -162,6 +164,7 @@ The following code shows example usage::
 
 
 .. function:: ToGraph(GraphType, PTable Table, const TStr& SrcCol, const TStr& DstCol, TAttrAggr AggrPolicy)
+   :noindex:
 
 Converts the table to a graph in SNAP, by looking at columns *SrcCol* and *DstCol* of *Table*. Whenever a new node is seen, it is implicitly added to the graph automatically.
 
@@ -203,6 +206,7 @@ The following code shows example usage::
     graph = snap.ToGraph(snap.PNGraph, sample_table, "srcID", "dstID", snap.aaFirst)
 
 .. function:: LoadModeNetToNet(PMMNet Graph, const TStr& Name, PTable Table, const TStr& NCol, TStrV& NodeAttrV)
+   :noindex:
 
 Loads a mode, with name Name, into the PMMNet from the TTable. NCol specifies the node id column and NodeAttrV the node attributes.
 
@@ -251,6 +255,7 @@ The following code shows example usage::
     snap.LoadModeNetToNet(mmnet, "Mode1", node_table, "nodeID", nodeattrv)
 
 .. function:: LoadCrossNetToNet(PMMNet Graph, const TStr& Mode1, const TStr& Mode2, const TStr& CrossName, PTable Table, const TStr& SrcCol, const TStr& DstCol, TStrV& EdgeAttrV)
+   :noindex:
 
 Loads a crossnet from Mode1 to Mode2, with name CrossName, into the PMMNet from the given TTable. SrcCol and DstCol specify the source and destination node id columns, and EdgeAttrV specifies the columns with edge attributs.
 

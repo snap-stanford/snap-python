@@ -2,6 +2,7 @@ GetNodeEcc (SWIG)
 ''''''''''''''''''
 
 .. function:: GetNodeEcc(Graph, NId, IsDir=False)
+   :noindex:
 
 Returns node eccentricity, the largest shortest-path distance from the node *NId* to any other node in the *Graph*.
 

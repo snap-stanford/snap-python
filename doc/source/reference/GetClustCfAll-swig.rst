@@ -2,6 +2,7 @@ GetClustCfAll (SWIG)
 ''''''''''''''''''''
 
 .. function:: GetClustCfAll (Graph, DegToCCfV, SampleNodes=-1)
+   :noindex:
 
 Computes the average clustering coefficient, as well as the number of open and closed triads in the graph, as defined in Watts and Strogatz, Collective dynamics of 'small-world' networks. 
 

@@ -2,6 +2,7 @@ GetTriads (SWIG)
 ''''''''''''''''
 
 .. function:: GetTriads(Graph, SampleNodes=-1)
+   :noindex:
 
 Computes the number of triads in the graph.
 

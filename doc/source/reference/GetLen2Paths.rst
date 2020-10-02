@@ -1,5 +1,5 @@
 GetLen2Paths
-'''''''''''
+''''''''''''
 
 .. function:: GetLen2Paths (NId1, NId2, ReturnPaths=False)
 

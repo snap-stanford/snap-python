@@ -2,6 +2,7 @@ GetMxWcc (SWIG)
 ''''''''''''''''''
 
 .. function:: GetMxWcc(Graph)
+   :noindex:
 
 Returns a graph representing the largest weakly connected component in *Graph*.
 

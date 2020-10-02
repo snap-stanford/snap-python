@@ -2,6 +2,7 @@ GetKCoreNodes (SWIG)
 ''''''''''''''''''''''
 
 .. function:: GetKCoreNodes(Graph, CoreIdSzV)
+   :noindex:
 
 Returns the number of nodes in each core of order K (where K=0, 1, ...). Stores pairs (K, number of nodes) in *CoreIdSzV*.
 

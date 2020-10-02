@@ -2,6 +2,7 @@ GetEdgesInOut (SWIG)
 ''''''''''''''''''''
 
 .. function:: GetEdgesInOut (Graph, NIdV)
+   :noindex:
 
 Returns the number of reciprocal edges between the nodes in *NIdV* and the number of edges between the nodes in *NIdV* and the rest of the graph.
 

@@ -2,6 +2,7 @@ GetNodeOutDegV (SWIG)
 '''''''''''''''''''''''
 
 .. function:: GetNodeOutDegV(Graph, NIdOutDegV)
+   :noindex:
 
 Computes the out-degree for every node in *Graph*. 
 The result is stored in *NIdOutDegV*, a vector of pairs (node id, node out degree).

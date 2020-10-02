@@ -2,6 +2,7 @@ GenGeoPrefAttach (SWIG)
 '''''''''''''''''''''''
 
 .. function:: GenGeoPrefAttach(NumNodes, NumEdges, Beta, Rnd=TRnd)
+   :noindex:
 
 Generate a random scale-free, undirected graph using the Geometric Preferential Attachment model by Flexman, Frieze and Vera.
 

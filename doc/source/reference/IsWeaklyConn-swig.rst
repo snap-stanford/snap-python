@@ -2,6 +2,7 @@ IsWeaklyConn (SWIG)
 '''''''''''''''''''
 
 .. function:: IsWeaklyConn(Graph)
+   :noindex:
 
 Tests whether *Graph* is weakly connected.
 

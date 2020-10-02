@@ -2,6 +2,7 @@ PlotInDegDistr (SWIG)
 '''''''''''''''''''''
 
 .. function:: PlotInDegDistr(Graph, FNmPref, DescStr, PlotCCdf=False, PowerFit=False)
+   :noindex:
 
 Plots the in-degree distribution of *Graph*. The function creates three new files: 1) inDeg.<*FNmPref*>.plt (the plot), 2) inDeg.<*FNPref*>.png (the plotting description), and 3) inDeg.<*FNmPref*>.tab (the tab separated plotting data).
 

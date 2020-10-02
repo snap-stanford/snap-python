@@ -2,6 +2,7 @@ GetSngVec (SWIG)
 ''''''''''''''''
 
 .. function:: GetSngVec(Graph, LeftSV, RightSV)
+   :noindex:
 
 Computes the leading left and right singular vectors of the adjacency matrix
 representing a directed Graph.

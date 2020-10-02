@@ -2,6 +2,7 @@ Get1CnComSzCnt (SWIG)
 '''''''''''''''''''''
 
 .. function:: Get1CnComSzCnt (Graph, SzCntV)
+   :noindex:
 
 Returns a distribution of sizes of 1-components: maximal connected components of that can be disconnected from the *Graph* by removing a single edge.
 

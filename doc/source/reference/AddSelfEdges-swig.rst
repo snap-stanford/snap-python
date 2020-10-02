@@ -2,6 +2,7 @@ AddSelfEdges (SWIG)
 '''''''''''''''''''
 
 .. function:: AddSelfEdges(Graph)
+   :noindex:
 
 Adds a self-edge for every node in *Graph*.
 

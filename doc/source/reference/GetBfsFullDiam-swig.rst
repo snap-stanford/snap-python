@@ -2,6 +2,7 @@ GetBfsFullDiam (SWIG)
 '''''''''''''''''''''
 
 .. function:: GetBfsFullDiam (Graph, NTestNodes, IsDir=false)
+   :noindex:
 
 Computes the diameter, or 'longest shortest path', of a *Graph* by performing a breadth first search over the *Graph*. This diameter is approximate, as it is calculated with an *NTestNodes* number of random starting nodes.
 

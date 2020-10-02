@@ -2,6 +2,7 @@ GetClustCf (SWIG)
 '''''''''''''''''
 
 .. function:: GetClustCf (Graph, SampleNodes=-1) 
+   :noindex:
 
 Computes the average clustering coefficient as defined in Watts and Strogatz, Collective dynamics of 'small-world' networks
 

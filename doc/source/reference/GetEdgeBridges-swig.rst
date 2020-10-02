@@ -2,6 +2,7 @@ GetEdgeBridges (SWIG)
 '''''''''''''''''''''
 
 .. function:: GetEdgeBridges(Graph, EdgeV)
+   :noindex:
 
     Returns the edge bridges in *Graph* in the vector *EdgeV*. An edge is a bridge if, when removed, increases the number of connected components.
 

@@ -2,6 +2,7 @@ GetNodeInDegV (SWIG)
 ''''''''''''''''''''''
 
 .. function:: GetNodeInDegV(Graph, NIdInDegV)
+   :noindex:
 
 Computes the in-degree for every node in *Graph*. 
 The result is stored in *NIdInDegV*, a vector of pairs (node id, node in degree).

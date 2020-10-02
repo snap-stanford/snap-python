@@ -2,6 +2,7 @@ SaveMatlabSparseMtx (SWIG)
 ''''''''''''''''''''''''''
 
 .. function:: SaveMatlabSparseMtx(Graph, OutFNm)
+   :noindex:
 
 Saves a graph in a MATLAB sparse matrix format.
 

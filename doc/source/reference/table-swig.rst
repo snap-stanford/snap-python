@@ -109,6 +109,7 @@ TTable
            TTable(H, Col1, Col2, Context, IsStrKeys=False)
            TTable(Table, const TIntV& RowIds)
            TTable(Table)
+   :noindex:
 
    Returns a new table. If no parameters are provided, an empty table is returned. If
    *S* and *Context* are provided, the table is initialized with the provided Schema and
@@ -736,6 +737,7 @@ TAtomicPredicate
 .. class:: TAtomicPredicate()
            TAtomicPredicate(Typ, IsCnst, Cmp, L, R)
            TAtomicPredicate(Typ, IsCnst, Cmp, L, R, ICnst, FCnst, SCnst)
+   :noindex:
 
    Returns a new atomic predicate, for encapsulating common operations. *Typ* provides the type
    of the predicate variables, *IsCnst* is a flag indicating if this atomic node represents
@@ -751,6 +753,7 @@ TPredicateNode
            TPredicateNode(A)
            TPredicateNode(Opr)
            TPredicateNode(P)
+   :noindex:
 
    Returns a new predicate node, which represents a binary predicate operation on 
    two predicate nodes. Specify *A*, a :class:`TAtomicPredicate`, if this is a leaf node,
@@ -780,6 +783,7 @@ TPredicate
 .. class:: TPredicate()
            TPredicate(R)
            TPredicate(Pred)
+   :noindex:
 
    Returns a new predicate, for encapsulating comparison operations. If *R*, a pointer to a
    :class:`TPredicateNode`, is provided, it constructs a predicate with the given root node.
@@ -816,6 +820,7 @@ TTableContext
 
 .. class:: TTableContext()
            TTableContext(SIn)
+   :noindex:
 
    Returns an context object. A :class:`TTableContext` provides the execution context for a
    :class:`TTable`. The context is loaded in binary from *SIn*, if it is provided.
@@ -850,6 +855,7 @@ TPrimitive
 .. class:: TPrimitive()
            TPrimitive(Val)
            TPrimitive(Prim)
+   :noindex:
 
    Returns a new primitive, a wrapper around primitive types. If provided, initialized with
    primitive type *Val*, which can be an int, float, or string. Providing *Prim*, another
@@ -880,6 +886,7 @@ TTableRow
 ==========
 
 .. class:: TTableRow()
+   :noindex:
 
    Returns a row object for a :class:`TTable`.
 
@@ -913,6 +920,7 @@ TRowIterator
 ============
 
 .. class:: TRowIterator()
+   :noindex:
 
    Returns a new row iterator for :class:`TTable`. Normally, these objects are
    not created directly, but obtained via a call to the table class :class:`TTable`
@@ -982,6 +990,7 @@ TRowIteratorWithRemove
 ======================
 
 .. class:: TRowIteratorWithRemove()
+   :noindex:
 
    Returns a new row iterator that allows for logical row removal while iterating 
    for :class:`TTable`. Normally, these objects are not created directly, but obtained
@@ -1049,6 +1058,7 @@ TTableIterator
 ==============
 
 .. class:: TTableIterator()
+   :noindex:
 
    Returns a new iterator over vector of :class:`PTable`. Normally, these objects are
    not created directly, but obtained via a call to the table class :class:`TTable` 

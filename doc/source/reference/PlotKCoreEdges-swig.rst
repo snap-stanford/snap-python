@@ -2,6 +2,7 @@ PlotKCoreEdges (SWIG)
 '''''''''''''''''''''
 
 .. function:: PlotKCoreEdges(Graph, FNmPref, DescStr)
+   :noindex:
 
 Plots the k-core edge-size distribution: core k vs. number of edges in k-core. The function creates three new files: 1) coreEdges.<*FNmPref*>.plt (the commands used to create the plot), 2) coreEdges.<*FNPref*>.png (the plot), and 3) coreEdges.<*FNmPref*>.tab (the plotting data).
 

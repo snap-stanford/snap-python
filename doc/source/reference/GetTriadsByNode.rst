@@ -1,5 +1,5 @@
 GetTriadsByNode
-''''''''''
+'''''''''''''''
 
 .. function:: GetTriadsByNode(SampleNodes=-1)
 

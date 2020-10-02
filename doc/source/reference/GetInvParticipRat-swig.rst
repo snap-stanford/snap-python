@@ -2,6 +2,7 @@ GetInvParticipRat (SWIG)
 ''''''''''''''''''''''''
 
 .. function:: GetInvParticipRat(Graph, MaxEigVecs, TimeLimit, EigValIprV)
+   :noindex:
 
 Computes Inverse participation ratio of a given graph.
 

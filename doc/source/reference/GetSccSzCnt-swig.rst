@@ -2,6 +2,7 @@ GetSccSzCnt (SWIG)
 ''''''''''''''''''
 
 .. function:: GetSccSzCnt(Graph, SccSzCnt)
+   :noindex:
 
 Returns a distribution of strongly connected component sizes.
 

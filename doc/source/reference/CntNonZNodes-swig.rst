@@ -1,7 +1,8 @@
 CntNonZNodes  (SWIG)
-'''''''''''''''''''
+''''''''''''''''''''
 
 .. function:: CntNonZNodes (Graph) 
+   :noindex:
 
 Returns the number of nodes in *Graph* with degree greater than 0.
 

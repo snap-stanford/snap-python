@@ -2,6 +2,7 @@ GetAnf (SWIG)
 '''''''''''''
 
 .. function::  GetAnf(Graph, DistNbrsV, MxDist, IsDir, NApprox=32)
+   :noindex:
 
 Approximate Neighborhood Function of *Graph*. Returns the number of pairs of nodes reachable in less than or equal to H hops.
 

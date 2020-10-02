@@ -2,6 +2,7 @@ GetMxWccSz (SWIG)
 '''''''''''''''''
 
 .. function:: GetMxWccSz(Graph)
+   :noindex:
 
 Returns the fraction of nodes in the largest weakly connected component of a Graph.
 

@@ -82,6 +82,7 @@ The following code shows example usage::
 
 
 .. function:: ToNetwork(GraphType, const TStr& SrcCol, const TStr& DstCol, TStrv& SrcAttrv, TStrV& DstAttrV, TStrV& EdgeAttrV, TAttrAggr AggrPolicy)
+   :noindex:
 
 Converts the edge table to a network in SNAP, by looking at columns *SrcCol* and *DstCol* of *Table*.
 *EdgeAttrV* specifies a list of columns in *Table* which contain edge attributes. *SrcAttrV* and *DstAttrV* specifies the attributes of the source and destination columns.

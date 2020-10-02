@@ -2,6 +2,7 @@ GetAnfEffDiam (SWIG)
 ''''''''''''''''''''
 
 .. function:: GetAnfEffDiam(Graph, IsDir, Percentile, NApprox)
+   :noindex:
 
 Returns a given *Percentile* of the shortest path length distribution of a *Graph* (based on a single run of ANF of approximation quality *NApprox*).
 

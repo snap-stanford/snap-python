@@ -2,6 +2,7 @@ GetClosenessCentr (SWIG)
 ''''''''''''''''''''''''
 
 .. function:: GetClosenessCentr(Graph, NId, Normalized=True, IsDir=False)
+   :noindex:
 
 Returns closeness centrality of a given node *NId* in *Graph*. Closeness centrality is equal to 1/farness centrality.
 

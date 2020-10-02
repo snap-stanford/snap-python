@@ -2,6 +2,7 @@ PlotHops (SWIG)
 '''''''''''''''
 
 .. function:: PlotHops(Graph, FNmPref, DescStr, IsDir=False, NApprox=32)
+   :noindex:
 
 Plots the cumulative distribution of the shortest path lengths of *Graph*. The implementation is based on ANF (Approximate Neighborhood Function). The function creates three new files: 1) hop.<*FNmPref*>.plt (the commands used to create the plot), 2) hop.<*FNPref*>.png (the plot), and 3) hop.<*FNmPref*>.tab (the plotting data).
 

@@ -2,6 +2,7 @@ GenRndPowerLaw (SWIG)
 '''''''''''''''''''''
 
 .. function:: GenRndPowerLaw (Nodes, PowerExp, ConfModel=True, Rnd=TRnd)
+   :noindex:
 
 Generates a random scale-free graph with power-law degree distribution with exponent *PowerExp*. The method uses either the Configuration model (fast but the result is approximate) or the Edge Rewiring method (slow but exact).
 

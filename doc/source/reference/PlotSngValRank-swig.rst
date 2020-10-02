@@ -2,6 +2,7 @@ PlotSngValRank (SWIG)
 '''''''''''''''''''''
 
 .. function:: PlotSngValRank(Graph, SngVals, FNmPref, DescStr)
+   :noindex:
 
 Plots the rank distribution of singular values of the Graph adjacency matrix. Plots first *SngVals* values. The function creates three new files: 1) sngVal.<*FNmPref*>.plt (the commands used to create the plot), 2) sngVal.<*FNPref*>.png (the plot), and 3) sngVal.<*FNmPref*>.tab (the plotting data).
 

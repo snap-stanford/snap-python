@@ -2,6 +2,7 @@ GenRndDegK (SWIG)
 '''''''''''''''''
 
 .. function:: GenRndDegK(Nodes, NodeDeg, NSwitch=100, Rnd=TRnd)
+   :noindex:
 
 Generates a random graph with *Nodes* nodes, which each have a degree of exactly *NodeDeg*.
 

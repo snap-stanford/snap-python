@@ -2,6 +2,7 @@ DelNodes (SWIG)
 '''''''''''''''
 
 .. function:: DelNodes(Graph, NIdV)
+   :noindex:
 
 Removes the nodes contained in the vector *NIdV* from *Graph*.
 

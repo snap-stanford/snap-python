@@ -2,6 +2,7 @@ IsTree (SWIG)
 '''''''''''''
 
 .. function:: IsTree(Graph)
+   :noindex:
 
 Determines if *Graph* is a connected tree. The function returns a list of [bool, int], where the bool indicates whether *Graph* is a tree and the int is the node id for the root of the tree.
 

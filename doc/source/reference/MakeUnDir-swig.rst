@@ -2,6 +2,7 @@ MakeUnDir (SWIG)
 ''''''''''''''''
 
 .. function:: MakeUnDir(Graph)
+   :noindex:
 
 Makes the graph undirected. For every edge (u,v) an edge (v,u) is added (if it does not yet exist). The function has no effect on undirected graphs.
 

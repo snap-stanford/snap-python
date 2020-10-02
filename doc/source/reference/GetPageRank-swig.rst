@@ -2,6 +2,7 @@ GetPageRank (SWIG)
 ''''''''''''''''''
 
 .. function:: GetPageRank(Graph, PRankH, C=0.85, Eps=1e-4, MaxIter=100)
+   :noindex:
 
 Computes the PageRank score of every node in *Graph*. The scores are stored in *PRankH*.
 

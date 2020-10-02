@@ -2,6 +2,7 @@ PlotWccDistr (SWIG)
 '''''''''''''''''''
 
 .. function:: PlotWccDistr(Graph, FNmPref, DescStr)
+   :noindex:
 
 Plots the distribution of sizes of weakly connected components of *Graph*. The function creates three new files: 1) wcc.<*FNmPref*>.plt (the plot), 2) wcc.<*FNPref*>.png (the plotting description), and 3) wcc.<*FNmPref*>.tab (the tab separated plotting data).
 

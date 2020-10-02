@@ -14,4 +14,9 @@ Subgraphs and Graph Type Conversions
    GetESubGraph
    GetRndSubGraph
    GetRndESubGraph
+   GetEgonet
+   GetEgonetHop
+   GetInEgonetHop
+   GetOutEgonetHop
+   GetInEgonetSub
 

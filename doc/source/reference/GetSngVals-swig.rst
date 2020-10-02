@@ -2,6 +2,7 @@ GetSngVals (SWIG)
 ''''''''''''''''''
 
 .. function:: GetSngVals(Graph, SngVals, SngValV)
+   :noindex:
 
 Computes *SngVals* largest singular values of the adjacency matrix representing the directed graph *Graph*.
 

@@ -2,6 +2,7 @@ GetMxBiCon (SWIG)
 ''''''''''''''''''
 
 .. function:: GetMxBiCon(Graph)
+   :noindex:
 
 Returns a graph representing the largest bi-connected component in *Graph*. 
 

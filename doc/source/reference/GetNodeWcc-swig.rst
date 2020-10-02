@@ -2,6 +2,7 @@ GetNodeWcc (SWIG)
 '''''''''''''''''
 
 .. function:: GetNodeWcc(Graph, NId, CnCom)
+   :noindex:
 
 Returns (via output parameter *CnCom*) all nodes that are in the same connected component as node *NId*.
 

@@ -2,6 +2,7 @@ GetBiCon (SWIG)
 '''''''''''''''
 
 .. function:: GetBiCon(Graph, BiCnComV)
+   :noindex:
 
 Returns all bi-connected components of a Graph.
 

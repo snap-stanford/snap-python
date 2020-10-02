@@ -2,6 +2,7 @@ GenRMatEpinions (SWIG)
 ''''''''''''''''''''''
 
 .. function:: GenRMatEpinions()
+   :noindex:
 
 Generates an R-Mat directed graph, with a synthetic copy of the Epinions social network.
 

@@ -2,6 +2,7 @@ GetKCore (SWIG)
 ''''''''''''''''''''''
 
 .. function:: GetKCore(Graph, K)
+   :noindex:
 
 Returns the K-core of the graph *Graph*. If the core of order *K* does not exist, the function returns an empty graph.
 

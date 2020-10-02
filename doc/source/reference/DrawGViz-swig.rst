@@ -2,6 +2,7 @@ DrawGViz (SWIG)
 ''''''''''''''''''
 
 .. function:: DrawGViz(Graph, Layout, PltFNm, Desc=TStr(), NodeLabels=False, NIdColorH=TIntStrH())
+   :noindex:
 
 Draws the given *Graph* using a selected GraphViz Layout engine with nodes colored. Useful for drawing small (<100 node) graphs. Creates a file with name *PltFNm*.
 

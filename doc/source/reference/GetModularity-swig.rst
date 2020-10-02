@@ -2,6 +2,7 @@ GetModularity (SWIG)
 ''''''''''''''''''''
 
 .. function:: GetModularity(Graph, NIdV, GEdges=-1)
+   :noindex:
 
 Computes the modularity score of a set of node ids *NIdV* in *Graph*. The function runs much faster if the number of edges in Graph is provided in the optional *GEdges* parameter.
 

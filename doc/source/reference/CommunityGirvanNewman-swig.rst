@@ -2,6 +2,7 @@ CommunityGirvanNewman (SWIG)
 ''''''''''''''''''''''''''''
 
 .. function:: CommunityGirvanNewman(Graph, CmtyV)
+   :noindex:
 
 Uses the Girvan-Newman community detection algorithm based on betweenness centrality on *Graph*. Fills *CmtyV* with all the communities detected and returns the modularity of the network.
 

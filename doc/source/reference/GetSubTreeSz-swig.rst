@@ -2,6 +2,7 @@ GetSubTreeSz (SWIG)
 '''''''''''''''''''
 
 .. function:: GetSubTreeSz(Graph, StartNId, FollowOut, FollowIn)
+   :noindex:
 
 Returns the BFS tree size (number of nodes) and depth (number of
 levels) by following in-links and/or out-links of node *StartNId*.

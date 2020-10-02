@@ -2,6 +2,7 @@ GetBfsEffDiam (SWIG)
 ''''''''''''''''''''
 
 .. function:: GetBfsEffDiam(Graph, NTestNodes, SubGraphNIdV, IsDir)
+   :noindex:
 
 Uses the entire graph (all edges) to measure the shortest path lengths but reports only the path lengths between nodes in SubGraphNIdV.
 

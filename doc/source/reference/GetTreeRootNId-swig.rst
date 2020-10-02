@@ -2,6 +2,7 @@ GetTreeRootNId (SWIG)
 ''''''''''''''''''''''
 
 .. function:: GetTreeRootNId(Graph)
+   :noindex:
 
 If *Graph* is a tree, the function returns the root id of the tree. Otherwise, it returns -1.
 

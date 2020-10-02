@@ -2,6 +2,7 @@ GetNodesAtHop (SWIG)
 ''''''''''''''''''''
 
 .. function:: GetNodesAtHop(Graph, StartNId, Hop, NIdV, IsDir)
+   :noindex:
 
 Finds the node ids of all the nodes that are at distance *Hop* from node *StartNId* and stores them in *NIdV*. The function returns the number of nodes found.
 

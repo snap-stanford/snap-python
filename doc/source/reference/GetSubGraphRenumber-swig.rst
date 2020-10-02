@@ -2,6 +2,7 @@ GetSubGraphRenumber (SWIG)
 ''''''''''''''''''''''''''
 
 .. function:: GetSubGraphRenumber(Graph, NIdV)
+   :noindex:
 
 Returns the subgraph of *Graph* induced by the nodes in *NIdV* with renumbered node ids from 0 to N-1. This function is implemented for :class:`TNGraph` and :class:`TUNGraph`.
 

@@ -2,6 +2,7 @@ PlotClustCf (SWIG)
 ''''''''''''''''''
 
 .. function:: PlotClustCf(Graph, FNmPref, DescStr)
+   :noindex:
 
 Plots the distribution of clustering coefficient of *Graph*. The function creates three new files: 1) ccf.<*FNmPref*>.plt (the commands used to create the plot), 2) ccf.<*FNPref*>.png (the plot), and 3) ccf.<*FNmPref*>.tab (the plotting data).
 

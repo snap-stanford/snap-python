@@ -2,6 +2,7 @@ PlotInvParticipRat (SWIG)
 '''''''''''''''''''''''''
 
 .. function:: PlotInvParticipRat(Graph, MaxEigVecs, TimeLimit, FNmPref, DescStr)
+   :noindex:
 
 Plots the inverse participation ratio. See the reference below for more details. The function creates three new files: 1) eigIPR.<*FNmPref*>.plt (the commands used to create the plot), 2) eigIPR.<*FNPref*>.png (the plot), and 3) eigIPR.<*FNmPref*>.tab (the plotting data)..
 

@@ -1,5 +1,5 @@
 GetNodeTriadsSet
-'''''''''''''''
+''''''''''''''''
 
 .. function:: GetNodeTriadsSet(NId, GroupSet)
 

@@ -2,6 +2,7 @@ GetBiConSzCnt (SWIG)
 ''''''''''''''''''''
 
 .. function:: GetBiConSzCnt(Graph, SzCntV)
+   :noindex:
 
 Returns a distribution of bi-connected component sizes.  A bi-connected component is a maximal subgraph with no articulation points.
 

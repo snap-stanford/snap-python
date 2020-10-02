@@ -2,6 +2,7 @@ GetBfsTree (SWIG)
 ''''''''''''''''''
 
 .. function:: GetBfsTree(Graph, StartNId, FollowOut, FollowIn)
+   :noindex:
 
 Returns a directed Breadth-First-Search tree rooted at *StartNId*. The nodes in the tree correspond to those of *Graph*, and the edges represent the edges traversed by the breadth-first search on *Graph* starting from *StartNId*. The tree is created by traversing along out-links (parameter *FollowOut* = True) and/or in-links (parameter *FollowIn* = True). 
 

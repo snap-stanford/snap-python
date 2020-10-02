@@ -2,6 +2,7 @@ GenRMat (SWIG)
 ''''''''''''''
 
 .. function:: GenRMat(Nodes, Edges, A, B, C, Rnd=TRnd)
+   :noindex:
 
 Generates an R-MAT directed graph using recursive descent into a 2x2 matrix [A,B; C, 1-(A+B+C)].
 

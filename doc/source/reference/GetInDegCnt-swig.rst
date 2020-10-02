@@ -2,6 +2,7 @@ GetInDegCnt (SWIG)
 ''''''''''''''''''
 
 .. function:: GetInDegCnt(Graph, DegToCntV)
+   :noindex:
 
 Computes an in-degree histogram: a vector of pairs (in-degree, number of nodes of such in-degree). The results are stored in *DegToCntV*.
 

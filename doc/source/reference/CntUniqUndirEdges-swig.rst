@@ -2,6 +2,7 @@ CntUniqUndirEdges (SWIG)
 ''''''''''''''''''''''''
 
 .. function:: CntUniqUndirEdges(Graph)
+   :noindex:
 
 Returns the number of unique undirected edges in the graph *Graph*. 
 

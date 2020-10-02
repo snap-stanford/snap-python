@@ -2,6 +2,7 @@ CntOutDegNodes (SWIG)
 ''''''''''''''''''''''''''
 
 .. function:: CntOutDegNodes(Graph, NodeOutDeg)
+   :noindex:
 
 Returns the number of nodes in *Graph* with out-degree *NodeOutDeg*.
 

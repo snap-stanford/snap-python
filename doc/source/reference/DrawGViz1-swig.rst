@@ -2,6 +2,7 @@ DrawGViz (SWIG)
 ''''''''''''''''''
 
 .. function:: DrawGViz(Graph, Layout, PltFNm, Desc, NodeLabelH)
+   :noindex:
 
 Draws a given *Graph* using a selected GraphViz Layout engine with nodes labeled. Creates a file with name *PltFNm*.
 

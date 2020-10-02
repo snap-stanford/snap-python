@@ -2,6 +2,7 @@ GenCircle (SWIG)
 ''''''''''''''''
 
 .. function:: GenCircle(GraphType, Nodes, OutDegree, IsDir=True)
+   :noindex:
 
 Generate a circular graph of type *GraphType* with *Nodes* nodes.  The generated graph will have an edge from each node to the subsequent *OutDegree* nodes.
 

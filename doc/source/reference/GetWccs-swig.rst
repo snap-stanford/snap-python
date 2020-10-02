@@ -2,6 +2,7 @@ GetWccs (SWIG)
 ''''''''''''''
 
 .. function:: GetWccs (Graph, CnComV)
+   :noindex:
 
 Returns all weakly connected components in *Graph*.
 

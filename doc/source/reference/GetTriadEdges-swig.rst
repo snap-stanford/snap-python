@@ -2,6 +2,7 @@ GetTriadEdges (SWIG)
 ''''''''''''''''''''
 
 .. function:: GetTriadEdges(Graph, SampleEdges=-1)
+   :noindex:
 
 Counts the number of edges that participate in at least one triad. Considers the graph as undirected.
 

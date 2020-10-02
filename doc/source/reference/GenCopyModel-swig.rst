@@ -2,6 +2,7 @@ GenCopyModel (SWIG)
 '''''''''''''''''''
 
 .. function:: GenCopyModel (Nodes, Beta, Rnd=TRnd)
+   :noindex:
 
 Generates a random scale-free network with *Nodes* nodes using the Copying Model. The generating process operates as follows: Node u is added to a graph, it selects a random 
 node v, and with probability *Beta* it links to v, with 1 - *Beta* links u links to 

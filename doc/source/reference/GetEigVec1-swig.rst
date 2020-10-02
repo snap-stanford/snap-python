@@ -2,6 +2,7 @@ GetEigVec (SWIG)
 ''''''''''''''''''
 
 .. function:: GetEigVec(Graph, EigVecs, EigVal, EigVecV)
+   :noindex:
 
 Computes top EigVecs eigenvalues and eigenvectors of the adjacency matrix representing a given undirected Graph.
 

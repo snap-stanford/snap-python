@@ -2,6 +2,7 @@ GetEigenVectorCentr (SWIG)
 ''''''''''''''''''''''''''
 
 .. function:: GetEigenVectorCentr(Graph, NIdEigenH, Eps = 1e-4, MaxIter = 100)
+   :noindex:
 
 Computes eigenvector centrality of all nodes in *Graph* and stores it in *NIdEigenH*. Eigenvector Centrality of a node N is defined recursively as the average of centrality values of N's neighbors in the network.
 

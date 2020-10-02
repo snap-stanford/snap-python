@@ -2,6 +2,7 @@ GetLen2Path (SWIG)
 ''''''''''''''''''
 
 .. function:: GetLen2Paths (Graph, NId1, NId2)
+   :noindex:
 
 Returns the number of length 2 directed paths between a pair of nodes *NId1*, *NId2* (*NId1* --> U --> *NId2*).
 

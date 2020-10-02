@@ -1,7 +1,8 @@
 DelZeroDegNodes  (SWIG)
-''''''''''''''''''''''
+'''''''''''''''''''''''
 
 .. function:: DelZeroDegNodes(Graph)
+   :noindex:
 
 Removes all the zero-degree nodes from *Graph*.
 

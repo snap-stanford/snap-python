@@ -2,6 +2,7 @@ GetMxSccSz (SWIG)
 '''''''''''''''''
 
 .. function:: GetMxSccSz(Graph)
+   :noindex:
 
 Returns the fraction of nodes in the largest strongly connected component of a *Graph*.
 

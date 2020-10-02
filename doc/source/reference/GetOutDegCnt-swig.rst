@@ -2,6 +2,7 @@ GetOutDegCnt (SWIG)
 '''''''''''''''''''
 
 .. function:: GetOutDegCnt(Graph, DegToCntV)
+   :noindex:
 
 Computes an out-degree histogram: a vector of pairs (out-degree, number of nodes of such out-degree). The results are stored in *DegToCntV*.
 

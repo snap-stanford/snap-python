@@ -2,6 +2,7 @@ GetFarnessCentr (SWIG)
 ''''''''''''''''''''''
 
 .. function:: GetFarnessCentr(Graph, NId, Normalized=True, IsDir=False)
+   :noindex:
 
 Returns farness centrality of a given node *NId* in *Graph*. Farness centrality of a node is the average shortest path length to all other nodes that reside in the same connected component as the given node.
 

@@ -6,6 +6,7 @@ GetTreeSig (SWIG)
 
 
 .. function:: GetTreeSig (Graph, RootNId, Sig, NodeMap)
+   :noindex:
 
 .. note::
 

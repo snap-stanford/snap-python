@@ -2,6 +2,7 @@ GetDegSeqV (SWIG)
 '''''''''''''''''
 
 .. function:: GetDegSeqV(Graph, DegV)
+   :noindex:
 
 Computes the degree sequence vector for nodes in *Graph*. The degree sequence vector is stored in *DegV*.
 

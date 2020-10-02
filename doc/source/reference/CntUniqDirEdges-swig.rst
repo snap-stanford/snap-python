@@ -2,6 +2,7 @@ CntUniqDirEdges (SWIG)
 ''''''''''''''''''''''
 
 .. function:: CntUniqDirEdges(Graph)
+   :noindex:
 
 Returns the number of unique directed edges in the graph *Graph*.
 

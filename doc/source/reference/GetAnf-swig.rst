@@ -2,6 +2,7 @@ GetAnf (SWIG)
 ''''''''''''''''''
 
 .. function:: GetAnf(Graph, SrcNId, DistNbrsV, MxDist, IsDir, NApprox=32)
+   :noindex:
 
 Approximate neighborhood function of a node. Prints the (approximate) number of nodes reachable from *SrcNId* in less than *MxDist* hops.
 

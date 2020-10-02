@@ -2,6 +2,7 @@ GetUnDir (SWIG)
 '''''''''''''''
 
 .. function:: GetUnDir(Graph)
+   :noindex:
 
 Returns an undirected version of the graph. For every edge (u,v) an edge (v,u) is added (if it does not yet exist).
 

@@ -2,6 +2,7 @@ LoadConnListStr (SWIG)
 ''''''''''''''''''''''
 
 .. function:: LoadConnListStr(GraphType, InFNm, StrToNIdH)
+   :noindex:
 
 Loads a (directed, undirected, or multi) graph from a text file, *InFNm*, with 1 node and all its edges in a single line.
 

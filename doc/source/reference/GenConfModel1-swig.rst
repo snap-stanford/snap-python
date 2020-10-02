@@ -1,7 +1,8 @@
 GenConfModel  (SWIG)
-'''''''''''''''''''
+''''''''''''''''''''
 
 .. function:: GenConfModel (Graph)
+   :noindex:
 
 Generate a random undirected graph using (approximately) the same node degrees as in *Graph* using the configuration model.
 

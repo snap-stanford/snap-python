@@ -2,6 +2,7 @@ CntSelfEdges (SWIG)
 '''''''''''''''''''
 
 .. function:: CntSelfEdges (Graph)
+   :noindex:
 
 Returns the number of self edges in the graph *Graph*. 
 

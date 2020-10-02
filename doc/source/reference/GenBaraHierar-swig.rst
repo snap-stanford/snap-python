@@ -2,6 +2,7 @@ GenBaraHierar (SWIG)
 ''''''''''''''''''''
 
 .. function:: GenBaraHierar(GraphType, Levels, IsDir=True)
+   :noindex:
 
 Generates a Ravasz-Barabasi deterministic scale-free graph.
 

@@ -2,6 +2,7 @@ GetEigVec (SWIG)
 ''''''''''''''''''
 
 .. function:: GetEigVec(Graph, EigVec)
+   :noindex:
 
 Computes leading eigenvector of the adjacency matrix representing an undirected *Graph*.
 

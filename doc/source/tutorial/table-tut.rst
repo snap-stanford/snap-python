@@ -23,33 +23,32 @@ To create a :class:`TTable` object in SNAP, you must first define the:
 
 For this tutorial, let’s assume the table below is a tab-separated file with the following columns and values, called ‘student_grades.tsv’:
 
-
 .. table:: Student Grades
    :widths: 15 10 10 10
-========== ========== ========== ==========
-StudentID  Midterm1   Midterm2   Final
-========== ========== ========== ==========
-101        79         86         88
-102        84         80         79
-103        56         76         80
-104        90         92         96
-105        92         85         87
-106        87         95         92
-107        94         90         91
-108        76         88         81
-========== ========== ========== ==========
+
+   ========== ========== ========== ==========
+   StudentID  Midterm1   Midterm2   Final
+   ========== ========== ========== ==========
+   101        79         86         88
+   102        84         80         79
+   103        56         76         80
+   104        90         92         96
+   105        92         85         87
+   106        87         95         92
+   107        94         90         91
+   108        76         88         81
+   ========== ========== ========== ==========
 
 To turn this into a SNAP table, we must create a Context and Schema::
 
-   	>>> import snap
-   
-	>>> context = snap.TTableContext()
+    	>>> import snap
 
-	>>> schema = snap.Schema()
-	>>> schema.Add(snap.TStrTAttrPr("StudentID", snap.atInt))
-	>>> schema.Add(snap.TStrTAttrPr("Midterm1", snap.atInt))
-	>>> schema.Add(snap.TStrTAttrPr("Midterm2", snap.atInt))
-	>>> schema.Add(snap.TStrTAttrPr("Final", snap.atInt))
+    	>>> context = snap.TTableContext()
+    	>>> schema = snap.Schema()
+    	>>> schema.Add(snap.TStrTAttrPr("StudentID", snap.atInt))
+    	>>> schema.Add(snap.TStrTAttrPr("Midterm1", snap.atInt))
+    	>>> schema.Add(snap.TStrTAttrPr("Midterm2", snap.atInt))
+    	>>> schema.Add(snap.TStrTAttrPr("Final", snap.atInt))
 
 As you can see, defining the Context simply requires initializing an object of type *TTableContext*. That’s all you have to do for the Context!
 
@@ -75,10 +74,10 @@ Saving and Loading a :class:`TTable` with Binary Format
 
 Next, we’ll demonstrate how to save a :class:`TTable` and load one from binary. :class:`TTable` objects can be saved in binary format because this saves space (in fact, it’s orders of magnitude more efficient than saving it as text). To save a :class:`TTable` to binary format, you use the following:
 
-      	>>> outfile = "/path/to/grade_table.bin"
-	    >>> FOut = snap.TFOut(outfile)
-	    >>> table.Save(FOut)
-	    >>> FOut.Flush()
+	>>> outfile = "/path/to/grade_table.bin"
+	>>> FOut = snap.TFOut(outfile)
+	>>> table.Save(FOut)
+	>>> FOut.Flush()
 
 The four steps are:
 
@@ -89,11 +88,10 @@ The four steps are:
 
 Once we’ve saved a :class:`TTable` object to binary format, we can also load :class:`TTable` objects from their binary format as follows: 
 
-       >>> context = snap.TTableContext()
-
-	   >>> outfile = "/path/to/grade_table.bin"
-	   >>> FIn = snap.TFIn(outfile)
-	   >>> table = snap.TTable.Load(FIn, context)
+	>>> context = snap.TTableContext()
+	>>> outfile = "/path/to/grade_table.bin"
+	>>> FIn = snap.TFIn(outfile)
+	>>> table = snap.TTable.Load(FIn, context)
 
 Again, the four steps of loading a :class:`TTable` from binary format are:
 
@@ -114,76 +112,79 @@ Let’s do an example by taking our table from above and performing some basic o
 
 .. table:: Student Grades
    :widths: 15 10 10 10
-========== ========== ========== ==========
-StudentID  Midterm1   Midterm2   Final
-========== ========== ========== ==========
-101        79         86         88
-102        84         80         79
-103        56         76         80
-104        90         92         96
-105        92         85         87
-106        87         95         92
-107        94         90         91
-108        76         88         81
-========== ========== ========== ==========
+
+   ========== ========== ========== ==========
+   StudentID  Midterm1   Midterm2   Final
+   ========== ========== ========== ==========
+   101        79         86         88
+   102        84         80         79
+   103        56         76         80
+   104        90         92         96
+   105        92         85         87
+   106        87         95         92
+   107        94         90         91
+   108        76         88         81
+   ========== ========== ========== ==========
 
 
 Let’s say we wanted to know the total number of points that each student earned across the two midterms. To do this, we want to use the :meth:`ColAdd()` function, which looks like `table.ColAdd(Attr1, Attr2, NewColName`.
 
 In the :meth:`ColAdd()` function, we provide three parameters: the first two are the columns we want to add together, using their string names, and the third is the name of the column we want to create that will hold the sums of the first two columns. This is true for all ColFunc() functions. Since we want to get the sum over the midterm scores, we will add together Midterm1 and Midterm2::
 
-       >>> grade_table.ColAdd(“Midterm1”, “Midterm2”, “MidScoreSum”)
+       >>> grade_table.ColAdd("Midterm1", "Midterm2", "MidScoreSum")
 
 Which yields: 
 
 
 .. table:: Student Grades
    :widths: 15 10 10 10 10
-========== ========== ========== ========== ==========
-StudentID  Midterm1   Midterm2   Final	    MidScoreSum
-========== ========== ========== ========== ==========
-101        79         86         88	    165
-102        84         80         79	    164
-103        56         76         80	    132
-104        90         92         96	    182
-105        92         85         87	    177
-106        87         95         92	    182
-107        94         90         91	    184
-108        76         88         81	    164
-========== ========== ========== ========== ==========
+
+   ========== ========== ========== ========== ==========
+   StudentID  Midterm1   Midterm2   Final      MidScoreSum
+   ========== ========== ========== ========== ==========
+   101        79         86         88         165
+   102        84         80         79         164
+   103        56         76         80         132
+   104        90         92         96         182
+   105        92         85         87         177
+   106        87         95         92         182
+   107        94         90         91         184
+   108        76         88         81         164
+   ========== ========== ========== ========== ==========
 
 Let’s say now that we wanted a column that gave the average of the midterm scores. In this case, we’d use the :meth:`AggregateCols()` method to create a new column with the mean of the midterm columns, row by row. The :meth:`AggregateCols()` has parameters `table.AggregateCols(AggAttrs, AggOp, NewColName` where *AggAttrs* is the list of columns you’re working with (it can be more than two), and *AggOp* is the operation you want to perform from the options: aaSum, aaCount, aaMin, aaMax, aaFirst, aaLast, aaMean, aaMedian. We’ll choose aaMean for our purposes here. Last, you’ll again provide the string name of the new column you’d like to create!
 
 Here is the code for getting the mean over the midterm scores:: 
 
-     	>>> AggAttrs = snap.TStrV()
-	>>> AggAttrs.Add(“Midterm1”)
-	>>> AggAttrs.Add(“Midterm2”)
-	>>> grade_table.AggregateCols(AggAttrs, snap.aaMean, “MidtermMean”)
+	>>> AggAttrs = snap.TStrV()
+	>>> AggAttrs.Add("Midterm1")
+	>>> AggAttrs.Add("Midterm2")
+	>>> grade_table.AggregateCols(AggAttrs, snap.aaMean, "MidtermMean")
 
 With the result:
 
 
 .. table:: Student Grades
    :widths: 15 10 10 10	10 10
-========== ========== ========== ========== =========== ==========
-StudentID  Midterm1   Midterm2   Final      MidScoreSum MidtermMean
-========== ========== ========== ========== =========== ==========
-101        79         86         88         165	        82.5
-102        84         80         79         164	        82
-103        56         76         80         132	        66
-104        90         92         96         182	        91
-105        92         85         87         177	        88.5
-106        87         95         92         182	        91
-107        94         90         91         184	        92
-108        76         88         81         164	        82
-========== ========== ========== ========== =========== ==========
+
+   ========== ========== ========== ========== =========== ==========
+   StudentID  Midterm1   Midterm2   Final      MidScoreSum MidtermMean
+   ========== ========== ========== ========== =========== ==========
+   101        79         86         88         165         82.5
+   102        84         80         79         164         82
+   103        56         76         80         132         66
+   104        90         92         96         182         91
+   105        92         85         87         177         88.5
+   106        87         95         92         182         91
+   107        94         90         91         184         92
+   108        76         88         81         164         82
+   ========== ========== ========== ========== =========== ==========
 
 A similar methodology can be used for all of the column operation functions for :class:`TTable` objects.
 
 One important feature of this function group is: If the third parameter passed is an empty string, i.e.:: 
 
-    	      >>> table.ColDiv(“Col1”, “Col2”, “”)
+	>>> table.ColDiv("Col1", "Col2", "")
 
 then the results will overwrite the values in the column of the first parameter. In this case, the results of dividing *Col1* values by *Col2* values would replace the values in Col1.
 
@@ -200,32 +201,34 @@ First, let’s look at :meth:`SelectAtomic***Const()` functions, which allows yo
 
 Here’s the code to select only rows where the final score is greater than or equal to 90. Let’s assume we’ve greater a new blank :class:`TTable` called 'above_90_table'::
 
-       	   >>> grade_table.SelectAtomicIntConst(“Final”, 90, snap.GTE, above_90_table)
+       	   >>> grade_table.SelectAtomicIntConst("Final", 90, snap.GTE, above_90_table)
 
 Let’s now look at the :meth:`Group()` and :meth:`Unique()` functions. The :meth:`Group()` function allows us to create a new column to label each column according to shared attributes by using `Group(GroupByAttrs, GroupAttrName, Ordered=True`.
 Let’s now look at the :meth:`Group()` and :meth:`Unique()` functions. The :meth:`Group()` function allows us to create a new column to label each column according to shared attributes by using `Group(GroupByAttrs, GroupAttrName, Ordered=True`.
 
 Here, *GroupByAttrs* are the columns we want to group with respect to, where their values are the same. *GroupAttrName* will be the name of the new column with the labels. Let’s say we wanted to group students by their midterm mean score. As we can see above, two students scored an average 91, and two students scored an average 82, so we will see some groups developed. Let’s write the code for this operation:
 
-      		   >>> groupAttrs = snap.TStrV()
-		   >>> groupAttrs.Add(“MidtermMean”)
-		   >>> table.Group(groupAttrs, ”MeanGroups”, snap.TBool(True))
+	   >>> groupAttrs = snap.TStrV()
+	   >>> groupAttrs.Add("MidtermMean")
+	   >>> table.Group(groupAttrs, "MeanGroups", snap.TBool(True))
+
 Which yields: 
 
 .. table:: Student Grades
    :widths: 15 10 10 10 10 10 10
-========== ========== ========== ========== =========== =========== ==========
-StudentID  Midterm1   Midterm2   Final      MidScoreSum MidtermMean MeanGroups
-========== ========== ========== ========== =========== =========== ==========
-101        79         86         88         165         82.5        0
-102        84         80         79         164         82          1
-103        56         76         80         132         66          2
-104        90         92         96         182         91          3
-105        92         85         87         177         88.5        4
-106        87         95         92         182         91          3
-107        94         90         91         184         92          5
-108        76         88         81         164         82          1
-========== ========== ========== ========== =========== =========== ==========
+
+   ========== ========== ========== ========== =========== =========== ==========
+   StudentID  Midterm1   Midterm2   Final      MidScoreSum MidtermMean MeanGroups
+   ========== ========== ========== ========== =========== =========== ==========
+   101        79         86         88         165         82.5        0
+   102        84         80         79         164         82          1
+   103        56         76         80         132         66          2
+   104        90         92         96         182         91          3
+   105        92         85         87         177         88.5        4
+   106        87         95         92         182         91          3
+   107        94         90         91         184         92          5
+   108        76         88         81         164         82          1
+   ========== ========== ========== ========== =========== =========== ==========
 
 Another related method is :meth:`Unique()`. Rather than assigning the same labels to rows with similar values, any rows with the same sought-after values will be deleted so there are no remaining duplicates, using the paramaters :meth:`Unique(Attrs, Ordered=True)`.
 Here, Attrs is simply the attributes that need to be equal in order for us to consider them duplicates. 
@@ -233,22 +236,23 @@ Here, Attrs is simply the attributes that need to be equal in order for us to co
 Let’s try this on the original table, and instead of grouping by the midterm mean, we’ll use :meth:`Unique()` to keep only students with a unique midterm mean score::
 
       	  >>> attrs = snap.TStrV()
-	  >>> attrs.Add(“MidtermMean”, snap.TBool(True))
+	  >>> attrs.Add("MidtermMean", snap.TBool(True))
 	  >>> table.Unique(attrs)
 
 Which would instead yield: 
 
 .. table:: Student Grades
    :widths: 15 10 10 10 10 10
-========== ========== ========== ========== =========== ==========
-StudentID  Midterm1   Midterm2   Final      MidScoreSum MidtermMean
-========== ========== ========== ========== =========== ==========
-101        79         86         88         165         82.5
-102        84         80         79         164         82
-103        56         76         80         132         66
-104        90         92         96         182         91
-105        92         85         87         177         88.5
-========== ========== ========== ========== =========== ==========
+
+   ========== ========== ========== ========== =========== ==========
+   StudentID  Midterm1   Midterm2   Final      MidScoreSum MidtermMean
+   ========== ========== ========== ========== =========== ==========
+   101        79         86         88         165         82.5
+   102        84         80         79         164         82
+   103        56         76         80         132         66
+   104        90         92         96         182         91
+   105        92         85         87         177         88.5
+   ========== ========== ========== ========== =========== ==========
 
 Students 106 and 108 have been removed because they had the same midterm mean score as students before them. Remember that Unique() goes from top to bottom row, so earlier rows will be preserved. 
 
@@ -273,18 +277,18 @@ Here, we use a variable *GroupBy* to hold a vector of strings representing the c
 .. table:: Student Grades
    :widths: 15 10 10 10 10 10 10
 
-========== ========== ========== ========== =========== =========== ===========
-StudentID  Midterm1   Midterm2   Final      MidScoreSum MidtermMean	MaxFinal
-========== ========== ========== ========== =========== =========== ===========
-101        79         86         88         165         82.5	    88
-102        84         80         79         164         82		    81
-103        56         76         80         132         66		    80
-104        90         92         96         182         91		    96
-105        92         85         87         177         88.5	    87
-106        87         95         92         182         91		    96
-107        94         90         91         184         92		    91
-108        76         88         81         164         82		    81
-========== ========== ========== ========== =========== =========== ===========
+   ========== ========== ========== ========== =========== =========== ===========
+   StudentID  Midterm1   Midterm2   Final      MidScoreSum MidtermMean	MaxFinal
+   ========== ========== ========== ========== =========== =========== ===========
+   101        79         86         88         165         82.5	    88
+   102        84         80         79         164         82		    81
+   103        56         76         80         132         66		    80
+   104        90         92         96         182         91		    96
+   105        92         85         87         177         88.5	    87
+   106        87         95         92         182         91		    96
+   107        94         90         91         184         92		    91
+   108        76         88         81         164         82		    81
+   ========== ========== ========== ========== =========== =========== ===========
 
 As you can see, the MaxFinal values indicate the highest final score value for students with the same midterm mean. Notably, we see that students 102 and 108 have the same value, because they have the same midterm score, and their value is the maximum of either of their final scores (81 being higher than 79). The same occurred for students 104 and 106. 
 
@@ -294,7 +298,7 @@ Two Table Operations
 Some SNAP :class:`TTable` operations help us to combine two different tables into a single table according to various rules. These functions include Intersection, Union, Join, and Minus. They work as follows:
 
 * :meth:`Intersection()`: creates a new table from all rows that appear in both original tables. Returns a new table.
-* :meth:`Union()`: creates a new table from all rows that appear in either original table. Returns a new table. *UnionAll has a similar function, but retains duplicates of rows across the tables.
+* :meth:`Union()`: creates a new table from all rows that appear in either original table. Returns a new table. *UnionAll* has a similar function, but retains duplicates of rows across the tables.
 * :meth:`Minus()`: creates a new table from all rows in the first table not present in the second table. Returns a new table.
 * :meth:`Join()`: a more customizable function, Join equi-joins two tables based on one attribute in the first table. Columns from the second table will be added to the first where the value of the desired attribute in the first table matches the value of the desired attribute in the second. Does not return a new table, but rather updates the original table with columns from the second table.
 * :meth:`SimJoin()`: a function that performs an equi-join if the distance between two rows is less than the specified threshold.
@@ -303,18 +307,19 @@ Let’s go back to our original grade table with four columns: StudentID, Midter
 
 .. table:: Student Names
    :widths: 15 40
-========= ==========
-ID	  Name
-========= ==========
-101	  Will
-102	  Amira
-103	  Todd
-104	  Yang
-105	  Cathy
-106	  Shubash
-107	  Nicolo
-108	  Maria
-========= ==========
+
+   ========= ==========
+   ID        Name
+   ========= ==========
+   101       Will
+   102       Amira
+   103       Todd
+   104       Yang
+   105       Cathy
+   106       Shubash
+   107       Nicolo
+   108       Maria
+   ========= ==========
 
 Let’s say we want to incorporate the Name column into our original table. We can do this using the :meth:`Join()` function, with parameters `Join(Attr1, PTable, Attr2`.
 
@@ -322,25 +327,25 @@ Here, *Attr1* is the column we want to join on from the first table, *PTable* is
 
 To combine our two tables, we would use:: 
 
-   	   >>> combined_table = grade_table.Join(“StudentID”, name_table, “ID”)
+   	   >>> combined_table = grade_table.Join("StudentID", name_table, "ID")
 
 Which will create a new table called ‘combined_table’ as so:
 
 .. table:: Student Grades
    :widths: 15 10 10 10 10
 
-========== ========== ========== ========== ==========
-StudentID  Midterm1   Midterm2   Final      Name
-========== ========== ========== ========== ==========
-101        79         86         88         Will
-102        84         80         79         Amira
-103        56         76         80         Todd
-104        90         92         96         Yang
-105        92         85         87         Cathy
-106        87         95         92         Shubash
-107        94         90         91         Nicolo
-108        76         88         81         Maria
-========== ========== ========== ========== ==========
+   ========== ========== ========== ========== ==========
+   StudentID  Midterm1   Midterm2   Final      Name
+   ========== ========== ========== ========== ==========
+   101        79         86         88         Will
+   102        84         80         79         Amira
+   103        56         76         80         Todd
+   104        90         92         96         Yang
+   105        92         85         87         Cathy
+   106        87         95         92         Shubash
+   107        94         90         91         Nicolo
+   108        76         88         81         Maria
+   ========== ========== ========== ========== ==========
 
 Getting Information from Tables
 ===============================

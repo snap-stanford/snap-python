@@ -2,6 +2,7 @@ GetKCoreEdges (SWIG)
 ''''''''''''''''''''
 
 .. function:: GetKCoreEdges(Graph, CoreIdSzV)
+   :noindex:
 
 Returns the number of edges in each core of order K (where K=0, 1, ...). Stores pairs (K, number of edges) in *CoreIdSzV*.
 

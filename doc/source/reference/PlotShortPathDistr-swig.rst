@@ -2,6 +2,7 @@ PlotShortPathDistr (SWIG)
 '''''''''''''''''''''''''
 
 .. function:: PlotShortPathDistr(Graph, FNmPref, DescStr, TestNodes=TInt.Mx)
+   :noindex:
 
 Plots the distribution of the shortest path lengths in *Graph*. The implementation is based on BFS. The function creates three new files: 1) diam.<*FNmPref*>.plt (the commands used to create the plot), 2) diam.<*FNPref*>.png (the plot), and 3) diam.<*FNmPref*>.tab (the plotting data).
 

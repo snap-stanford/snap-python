@@ -2,6 +2,7 @@ GenGrid (SWIG)
 ''''''''''''''''''
 
 .. function:: GenGrid(GraphType, Rows, Cols, IsDir=True)
+   :noindex:
 
 Generates a two-dimensional graph of rows and columns specified by *Rows* and *Cols* parameters.
 

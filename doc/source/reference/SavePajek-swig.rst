@@ -2,6 +2,7 @@ SavePajek (SWIG)
 ''''''''''''''''''
 
 .. function:: SavePajek(Graph, OutFNm)
+   :noindex:
 
 Saves a graph in Pajek .NET format.
 

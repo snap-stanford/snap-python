@@ -2,6 +2,7 @@ PlotEigValRank (SWIG)
 '''''''''''''''''''''
 
 .. function:: PlotEigValRank(Graph, NumEigenvalues, FNmPref, DescStr)
+   :noindex:
 
 Plots the distribution of the ranks of the first *NumEigenvalues* eigenvalues of the undirected graph *Graph*.  The function creates three new files: 1) eigVal.<*FNmPref*>.plt (the commands used to create the plot), 2) eigVal.<*FNPref*>.png (the plot), and 3) eigVal.<*FNmPref*>.tab (the plotting data).
 

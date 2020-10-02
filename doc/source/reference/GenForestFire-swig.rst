@@ -2,6 +2,7 @@ GenForestFire (SWIG)
 ''''''''''''''''''''
 
 .. function:: GenForestFire(Nodes, FwdProb, BckProb)
+   :noindex:
 
 Generates a random Forest Fire, directed graph with given probabilities.
 

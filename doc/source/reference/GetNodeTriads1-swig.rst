@@ -2,6 +2,7 @@ GetNodeTriads (SWIG)
 ''''''''''''''''''''''
 
 .. function:: GetNodeTriads(Graph, NId, GroupSet)
+   :noindex:
 
 Returns the number of closed triads between a node *NId* and a subset of its neighbors in *GroupSet* as well as the number of triads for cases where neighbors are not in *GroupSet*.
 Considers *Graph* to be undirected.

@@ -2,6 +2,7 @@ GetNodeTriads (SWIG)
 ''''''''''''''''''''
 
 .. function:: GetNodeTriads(Graph, NId)
+   :noindex:
 
 Returns number of triads a node *NId* participates in. Considers the graph as undirected. 
 

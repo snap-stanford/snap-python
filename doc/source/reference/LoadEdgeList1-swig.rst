@@ -2,6 +2,7 @@ LoadEdgeList (SWIG)
 '''''''''''''''''''
 
 .. function:: LoadEdgeList(PGraph, InFNm, SrcColId, DstColId, Separator)
+   :noindex:
 
 Loads a (directed, undirected or multi) graph from a text file *InFNm* with 1 edge per line (columns separated by *Separator*, int node ids).
 

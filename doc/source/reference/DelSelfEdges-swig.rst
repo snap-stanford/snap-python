@@ -2,6 +2,7 @@ DelSelfEdges (SWIG)
 '''''''''''''''''''
 
 .. function:: DelSelfEdges (Graph)
+   :noindex:
 
 Removes all the self-edges from *Graph*.
 

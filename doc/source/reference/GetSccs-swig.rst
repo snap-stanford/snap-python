@@ -2,6 +2,7 @@ GetSccs (SWIG)
 ''''''''''''''
 
 .. function:: GetSccs (Graph, CnComV)
+   :noindex:
 
 Returns all strongly connected components in *Graph*.
 

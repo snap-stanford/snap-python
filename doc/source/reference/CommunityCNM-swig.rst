@@ -2,6 +2,7 @@ CommunityCNM (SWIG)
 '''''''''''''''''''
 
 .. function:: CommunityCNM (Graph, CmtyV)
+   :noindex:
 
 Uses the Clauset-Newman-Moore community detection method for large networks. At every step of the algorithm two communities that contribute maximum positive value to global modularity are merged. Fills *CmtyV* with all the communities detected and returns the modularity of the network.
 

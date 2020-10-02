@@ -2,6 +2,7 @@ GenTree (SWIG)
 ''''''''''''''''
 
 .. function:: GenTree(GraphType, Fanout, Levels, IsDir=True, ChildPointsToParent=True)
+   :noindex:
 
 Generates a tree graph of *Levels* levels with every parent having *Fanout* children.
 

@@ -2,6 +2,7 @@ GetTriadsAll (SWIG)
 '''''''''''''''''''
 
 .. function:: GetTriadsAll (Graph, SampleNodes=-1)
+   :noindex:
 
 Computes the number of closed and open triads for every node in *Graph*. Considers the graph as undirected.
 

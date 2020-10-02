@@ -2,6 +2,7 @@ GetSubGraph (SWIG)
 ''''''''''''''''''
 
 .. function:: GetSubGraph(Graph, NIdV)
+   :noindex:
 
 Returns an induced subgraph of an undirected graph *Graph* with *NIdV* nodes.
 

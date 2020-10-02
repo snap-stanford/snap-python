@@ -2,6 +2,7 @@ GenPrefAttach (SWIG)
 ''''''''''''''''''''
 
 .. function:: GenPrefAttach(Nodes, NodesOutDeg, Rnd=TRnd)
+   :noindex:
 
 Generates an undirected graph with a power-law degree distribution using Barabasi-Albert model of scale-free graphs.
 
