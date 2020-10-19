@@ -16,7 +16,8 @@ TInt
            TInt(SIn)
 
    Returns a new :class:`TInt` initialized with the value specified by optional parameter
-   *val*. If no value is given, the :class:`TInt` object is initialized with the default value 0. If *SIn* is provided, the value is loaded from the binary stream *SIn*.
+   *val*. If no value is given, the :class:`TInt` object is initialized with the default value 0. 
+   If *SIn* is provided, the value is loaded from the binary stream *SIn* (of type :class:`TFIn`).
    In Snap.py, :class:`TInt` is automatically converted to Python type :class:`int`.
 
    Below is a list of functions supported by the :class:`TInt` class:
@@ -24,11 +25,11 @@ TInt
 
      .. describe:: Load(SIn)
 
-        Loads the int from a binary stream *SIn*. 
+        Loads the int from a binary stream *SIn* of type :class:`TFIn`. 
 
      .. describe:: Save(SOut)
 
-        Saves the int to a binary stream *SOut*. 
+        Saves the int to a binary stream *SOut* of type :class:`TFOut`. 
 
      .. describe::  Abs(val)
 
@@ -154,18 +155,19 @@ TFlt
            TFlt(SIn)
 
    Returns a new :class:`TFlt` initialized with the value specified by optional parameter
-   val. If no value is given, the :class:`TFlt` object is initialized with the default value 0. If *SIn* is provided, the value is loaded from the binary stream *SIn*.
+   val. If no value is given, the :class:`TFlt` object is initialized with the default value 0. 
+   If *SIn* is provided, the value is loaded from the binary stream *SIn* (of type :class:`TFIn`).
    In Snap.py, :class:`TFlt` is automatically converted to Python type :class:`float`.
 
    Below is a list of functions supported by the :class:`TFlt` class:
 
      .. describe:: Load(SIn)
 
-        Loads the float from a binary stream *SIn*. 
+        Loads the float from a binary stream *SIn* of type :class:`TFIn`. 
 
      .. describe:: Save(SOut)
 
-        Saves the float to a binary stream *SOut*. 
+        Saves the float to a binary stream *SOut* of type :class:`TFOut`. 
 
      .. describe::  Abs(val)
 
@@ -310,18 +312,19 @@ TStr
            TStr(SIn)
 
    Returns a new :class:`TStr` initialized with the value specified by optional parameter
-   *str*. If no value is given, the :class:`TStr` object is initialized with the empty string. If *SIn* is provided, the value is loaded from the binary stream *SIn*.
+   *str*. If no value is given, the :class:`TStr` object is initialized with the empty string. 
+   If *SIn* is provided, the value is loaded from the binary stream *SIn* (of type :class:`TFIn`).
    In Snap.py, :class:`TStr` is automatically converted to Python type :class:`str`.
 
    Below is a list of functions supported by the :class:`TStr` class:
 
      .. describe:: Load(SIn)
 
-        Loads the string from a binary stream *SIn*. 
+        Loads the string from a binary stream *SIn* of type :class:`TFIn`. 
 
      .. describe:: Save(SOut)
 
-        Saves the string to a binary stream *SOut*. 
+        Saves the string to a binary stream *SOut* of type :class:`TFOut`. 
 
      .. describe:: ChangeCh(orig, repl, start)
 

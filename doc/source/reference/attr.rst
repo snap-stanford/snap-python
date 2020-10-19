@@ -17,9 +17,9 @@ TAttr
            TAttr(Attrs)
 
    Returns a data structure for tracking sparse attributes, where the keys are integers.
-   If *SIn* is specified, the data structure is loaded from the binary stream. If *Attrs*
-   is specified, the contents of *Attrs* are copied into the new sparse attribute data
-   structure.
+   If *SIn* is specified, the data structure is loaded from the binary stream 
+   (of type :class:`TFIn`). If *Attrs* is specified, the contents of *Attrs* are copied 
+   into the new sparse attribute data structure.
 
    All the attribute related functions return an integer indicating whether there were 
    any errors during execution. Below is a list of functions supported by the 
@@ -27,7 +27,7 @@ TAttr
 
      .. describe:: Save()
 
-        Saves the attributes to a (binary) stream SOut.
+        Saves the attributes to a (binary) stream SOut of type :class:`TFOut`.
 
      .. describe:: Clr()
 
@@ -87,8 +87,8 @@ TAttrPair
            TAttrPair(Attrs)
 
    Returns a data structure for tracking sparse attributes, where the keys are integer pairs.
-   If *SIn* is specified, the data structure is loaded from the binary stream. If *Attrs*
-   is specified, the contents of *Attrs* are copied into the new sparse attribute data
+   If *SIn* is specified, the data structure is loaded from the binary stream (of type :class:`TFIn`). 
+   If *Attrs* is specified, the contents of *Attrs* are copied into the new sparse attribute data
    structure.
 
    All the attribute related functions return an integer indicating whether there were 
@@ -97,7 +97,7 @@ TAttrPair
 
      .. describe:: Save()
 
-        Saves the attributes to a (binary) stream SOut.
+        Saves the attributes to a (binary) stream SOut of type :class:`TFOut`.
 
      .. describe:: Clr()
 

@@ -16,7 +16,7 @@ The name :class:`TPair` refers to a general data structure that consists of two 
    
    Creates a :class:`TPair` object consisting of the two values, if provided. If *Val1* and
    *Val2* are not given, the default value for each of their respective types is used.
-   If *SIn* is provided, the pair of values are loaded from the binary stream *SIn*.
+   If *SIn* is provided, the pair of values are loaded from the binary stream *SIn* (of type :class:`TFIn`).
 
    The :class:`TPair` constructor cannot be directly called. To create a :class:`TPair` object, the correct
    constructor must be chosen, which indicates the types of both the values in the pair.
@@ -44,11 +44,11 @@ The name :class:`TPair` refers to a general data structure that consists of two 
 
      .. describe:: Load(SIn)
 
-        Loads the pair from a binary stream *SIn*. 
+        Loads the pair from a binary stream *SIn* of type :class:`TFIn`. 
 
      .. describe:: Save(SOut)
 
-        Saves the pair to a binary stream *SOut*. 
+        Saves the pair to a binary stream *SOut* of type :class:`TFOut`. 
 
      .. describe:: GetMemUsed()
 
@@ -110,7 +110,8 @@ vector. All of the following methods are available for objects that are classifi
    Creates a :class:`TVec` object of size *NumVals*, if specified. It *MxVals* is given, enough
    memory to store *MxVals* will be reserved. MxVals must be larger than *NumVals*. If
    *Vec* - a :class:`TVec` of the same type - is given, the values from *Vec* are copied into the
-   new :class:`TVec`. It *SIn* is provided, the contents of the vector are loaded from the binary stream *SIn*.
+   new :class:`TVec`. 
+   If *SIn* is provided, the contents of the vector are loaded from the binary stream *SIn* of type :class:`TFIn`.
 
    The :class:`TVec` constructor cannot be directly called. To create a :class:`TVec` object, the correct
    constructor must be chosen, which indicates the type stored in the :class:`TVec`.
@@ -229,11 +230,11 @@ vector. All of the following methods are available for objects that are classifi
 
      .. describe:: Load(SIn)
 
-        Loads a graph from a binary stream *SIn* and returns a pointer to it. 
+        Loads a graph from a binary stream *SIn* (of type :class:`TFIn`) and returns a pointer to it. 
 
      .. describe:: Save(SOut)
 
-        Saves the graph to a binary stream *SOut*. 
+        Saves the graph to a binary stream *SOut* of type :class:`TFOut`. 
 
      .. describe:: GetMemUsed()
 
@@ -553,7 +554,8 @@ Hash tables contain values of the same type. Each value has a user provided key 
    
    Creates a :class:`THash` object with a capacity of *ExpectVals*, if specified.  If *Hash* - a
    :class:`THash` of the same type - is given, the values from *Hash* are copied into the
-   new :class:`THash`. If *SIn* is provided, the contents of the hash table are loaded from the binary stream *SIn*.
+   new :class:`THash`. 
+   If *SIn* is provided, the contents of the hash table are loaded from the binary stream *SIn* of type :class:`TFIn`.
 
    The :class:`THash` constructor cannot be directly called. To create a :class:`THash` object, the correct
    constructor must be chosen, which indicates the types of the key and value in the :class:`THash`. Hash table types in Snap.py and SNAP use a naming convention of being named
@@ -647,11 +649,11 @@ Hash tables contain values of the same type. Each value has a user provided key 
 
      .. describe:: Load(SIn)
 
-        Loads the hash table from a binary stream *SIn*. 
+        Loads the hash table from a binary stream *SIn* of type :class:`TFIn`. 
 
      .. describe:: Save(SOut)
 
-        Saves the hash table to a binary stream *SOut*. 
+        Saves the hash table to a binary stream *SOut* of type :class:`TFOut`. 
 
      .. describe:: GetMemUsed()
 
@@ -838,7 +840,7 @@ Object used to represent the key-value pairs in a :class:`THash` object.
            TKeyDat(SIn)
 
 
-   Creates a :class:`TKeyDat` object. If *KeyDat* is provided, which is of type :class:`TKeyDat`, its contents will be copied into the newly created object. If *Key* and/or *Dat* are provided, the key for :class:`TKeyDat` will be set to *Key* and the value will be set to *Dat*. If *SIn* is provided, the contents of the :class:`TKeyDat` will be read from the stream.
+   Creates a :class:`TKeyDat` object. If *KeyDat* is provided, which is of type :class:`TKeyDat`, its contents will be copied into the newly created object. If *Key* and/or *Dat* are provided, the key for :class:`TKeyDat` will be set to *Key* and the value will be set to *Dat*. If *SIn* is provided, the contents of the :class:`TKeyDat` will be read from the stream of type :class:`TFIn`.
 
 
    The :class:`TKeyDat` constructor cannot be directly called. To create a :class:`TKeyDat` object, the correct
@@ -854,7 +856,7 @@ Object used to represent the key-value pairs in a :class:`THash` object.
 
      .. describe:: Save(SOut)
 
-        Saves the contents to the binary stream *SOut*
+        Saves the contents to the binary stream *SOut* of type :class:`TFOut`.
 
      .. describe:: GetPrimHashCd()
 
@@ -946,7 +948,9 @@ Hash sets contain keys are of the same type. Specific keys can be accessed throu
            THashSet(SIn)
 
    
-   Creates a :class:`THashSet` object with a capacity of *ExpectVals*, if specified.  If *KeyV* is provided, which should hold the same type of object the hash set holds, a hash set with the unique values in the vector is created. If *SIn* is provided, the contents of the hash set are loaded from the binary stream *SIn*.
+   Creates a :class:`THashSet` object with a capacity of *ExpectVals*, if specified.  
+   If *KeyV* is provided, which should hold the same type of object the hash set holds, a hash set with the unique values in the vector is created. 
+   If *SIn* is provided, the contents of the hash set are loaded from the binary stream *SIn* of type :class:`TFIn`.
 
    The :class:`THashSet` constructor cannot be directly called. To create a :class:`THashSet` object, the correct constructor must be chosen, which indicates the type of the key in the hash set. Hash set types in Snap.py and SNAP use a naming convention of being named
    as `<key_type_name>`, followed by `Set`. For example, a hash set 
@@ -1005,11 +1009,11 @@ Hash sets contain keys are of the same type. Specific keys can be accessed throu
 
      .. describe:: Load(SIn)
 
-        Loads the hash set from a binary stream *SIn*. 
+        Loads the hash set from a binary stream *SIn* of type :class:`TFIn`. 
 
      .. describe:: Save(SOut)
 
-        Saves the hash set to a binary stream *SOut*. 
+        Saves the hash set to a binary stream *SOut* of type :class:`TFOut`. 
 
      .. describe:: GetMemUsed()
 
