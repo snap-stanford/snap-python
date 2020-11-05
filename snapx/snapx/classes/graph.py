@@ -44,10 +44,22 @@ class Graph:
     """
 
     def to_directed_class(self):
-        raise NotImplementedError("TODO")
+        """PORTED FROM NETWORKX
+        Returns the class to use for empty directed copies.
+
+        If you subclass the base classes, use this to designate
+        what directed class to use for `to_directed()` copies.
+        """
+        return sx.DiGraph
 
     def to_undirected_class(self):
-        raise NotImplementedError("TODO")
+        """PORTED FROM NETWORKX
+        Returns the class to use for empty undirected copies.
+
+        If you subclass the base classes, use this to designate
+        what directed class to use for `to_directed()` copies.
+        """
+        return Graph
 
     def __init__(self, incoming_graph_data=None, **attr):
         """PORTED FROM NETWORKX
@@ -306,10 +318,71 @@ class Graph:
                 self.nodes[nn].update(ndict)
 
     def remove_node(self, n):
-        raise NotImplementedError("TODO")
+        """PORTED FROM NETWORKX
+        Remove node n.
+
+        Removes the node n and all adjacent edges.
+        Attempting to remove a non-existent node will raise an exception.
+
+        Parameters
+        ----------
+        n : node
+           A node in the graph
+
+        Raises
+        -------
+        NetworkXError
+           If n is not in the graph.
+
+        See Also
+        --------
+        remove_nodes_from
+
+        Examples
+        --------
+        >>> G = nx.path_graph(3)  # or DiGraph, MultiGraph, MultiDiGraph, etc
+        >>> list(G.edges)
+        [(0, 1), (1, 2)]
+        >>> G.remove_node(1)
+        >>> list(G.edges)
+        []
+        """
+        try:
+            if n in self:
+                self._graph.DelNode(n)
+        except TypeError:
+            raise SnapXTypeError("The node ID must be int.")
 
     def remove_nodes_from(self, nodes):
-        raise NotImplementedError("TODO")
+        """PORTED FROM NETWORKX        
+        Remove multiple nodes.
+
+        Parameters
+        ----------
+        nodes : iterable container
+            A container of nodes (list, dict, set, etc.).  If a node
+            in the container is not in the graph it is silently
+            ignored.
+
+        See Also
+        --------
+        remove_node
+
+        Examples
+        --------
+        >>> G = nx.path_graph(3)  # or DiGraph, MultiGraph, MultiDiGraph, etc
+        >>> e = list(G.nodes)
+        >>> e
+        [0, 1, 2]
+        >>> G.remove_nodes_from(e)
+        >>> list(G.nodes)
+        []
+        """
+        for n in nodes:
+            try:
+                self.remove_node(n)
+            except SnapXTypeError:
+                pass
 
     @property
     def nodes(self):
@@ -594,10 +667,83 @@ class Graph:
         self.add_edges_from(((u, v, {weight: d}) for u, v, d in ebunch_to_add), **attr)
 
     def remove_edge(self, u, v):
-        raise NotImplementedError("TODO")
+        """PORTED FROM NETWORKX
+        Remove the edge between u and v.
+
+        Parameters
+        ----------
+        u, v : nodes
+            Remove the edge between nodes u and v.
+
+        Raises
+        ------
+        NetworkXError
+            If there is not an edge between u and v.
+
+        See Also
+        --------
+        remove_edges_from : remove a collection of edges
+
+        Examples
+        --------
+        >>> G = nx.path_graph(4)  # or DiGraph, etc
+        >>> G.remove_edge(0, 1)
+        >>> e = (1, 2)
+        >>> G.remove_edge(*e)  # unpacks e from an edge tuple
+        >>> e = (2, 3, {"weight": 7})  # an edge with attribute data
+        >>> G.remove_edge(*e[:2])  # select first part of edge tuple
+        """
+        if not self.has_edge(u, v):
+            return
+        
+        try:
+            self._graph.DelEdge(u, v)
+            if u != v:
+                self._graph.DelEdge(v, u)
+            self._num_edges -= 1
+        except TypeError:
+            raise SnapXTypeError("SNAP only supports int as edge keys.")
 
     def remove_edges_from(self, ebunch):
-        raise NotImplementedError("TODO")
+        """PORTED FROM NETWORKX
+        Remove all edges specified in ebunch.
+
+        Parameters
+        ----------
+        ebunch: list or container of edge tuples
+            Each edge given in the list or container will be removed
+            from the graph. The edges can be:
+
+                - 2-tuples (u, v) edge between u and v.
+                - 3-tuples (u, v, k) where k is ignored.
+
+        See Also
+        --------
+        remove_edge : remove a single edge
+
+        Notes
+        -----
+        Will fail silently if an edge in ebunch is not in the graph.
+
+        Examples
+        --------
+        >>> G = nx.path_graph(4)  # or DiGraph, MultiGraph, MultiDiGraph, etc
+        >>> ebunch = [(1, 2), (2, 3)]
+        >>> G.remove_edges_from(ebunch)
+        """
+        for e in ebunch_to_add:
+            ne = len(e)
+            if ne == 3:
+                u, v, _ = e
+            elif ne == 2:
+                u, v = e
+            else:
+                raise SnapXError("The edge must be a 2-tuple or 3-tuple.")
+
+            try:
+                self.remove_edge(u, v)
+            except (TypeError, RuntimeError) as e:
+                pass
 
     def update(self, edges=None, nodes=None):
         """PORTED FROM NETWORKX
