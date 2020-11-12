@@ -83,6 +83,74 @@ class SnapPythonTest(unittest.TestCase):
         self.NPetersen = self.DPetersen.ConvertGraph(snap.TNEANet)
         #snap.DrawGViz(self.NPetersen, snap.gvlDot, "npetersen.png", "multi")
 
+
+        #pair of undirected graphs
+        Graph = snap.TUNGraph.New()
+        Graph0 = snap.TUNGraph.New()
+        for i in range(5):
+            Graph.AddNode(i)
+        for i in range(5):
+            Graph.AddEdge(i,(i+1) % 5)
+            Graph.AddEdge(i,(i+2) % 5)
+
+        for i in range(3,8):
+            Graph0.AddNode(i)
+        for i in range(5):
+            Graph0.AddEdge(i + 3,((i+1) % 5) + 3)
+        self.TUNGraph = Graph
+        self.TUNGraph0 = Graph0
+
+        #pair of directed graphs
+        Graph1 = snap.TNGraph.New()
+        Graph2 = snap.TNGraph.New()
+        for i in range(4):
+            Graph1.AddNode(i)
+        for i in range(1,5):
+            Graph2.AddNode(i)
+
+        Graph1.AddEdge(0, 1)
+        Graph1.AddEdge(1, 2)
+        Graph2.AddEdge(1, 2)
+        Graph2.AddEdge(2, 1)
+        Graph1.AddEdge(2, 3)
+        Graph2.AddEdge(2, 3)
+        Graph1.AddEdge(3, 2)
+        Graph2.AddEdge(3, 4)
+        Graph2.AddEdge(1, 4)
+        self.TNGraph = Graph1
+        self.TNGraph0 = Graph2
+
+        #pair of directed networks
+        Graph3 = snap.TNEANet.New()
+        Graph4 = snap.TNEANet.New()
+        EId = 0
+        for i in range(4):
+            Graph3.AddNode(i)
+        for i in range(1,5):
+            Graph4.AddNode(i)
+
+        Graph3.AddEdge(0, 1, EId)
+        EId += 1
+        Graph3.AddEdge(1, 2, EId)
+        EId += 1
+        Graph4.AddEdge(1, 2, EId)
+        EId += 1
+        Graph4.AddEdge(2, 1, EId)
+        EId += 1
+        Graph3.AddEdge(2, 3, EId)
+        EId += 1
+        Graph4.AddEdge(2, 3, EId)
+        Graph3.AddEdge(3, 2, EId)
+        EId += 1
+        Graph4.AddEdge(3, 4, EId)
+        EId += 1
+        Graph4.AddEdge(1, 4, EId)
+        EId += 1
+        self.TNEANet = Graph3
+        self.TNEANet0 = Graph4
+
+
+
     #### Helper Functions for Tests ####
 
     def checkPlotHash(self, gen_file, exp_hash):
