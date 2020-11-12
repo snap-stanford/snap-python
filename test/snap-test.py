@@ -3746,6 +3746,7 @@ class SnapPythonTest(unittest.TestCase):
                 self.assertEqual(Egonet.GetEdges(), 2)
 
     def test_GetGraphUnion(self):
+        
         #Undirected Graph
         Graph = snap.TUNGraph.New()
         Graph0 = snap.TUNGraph.New()
