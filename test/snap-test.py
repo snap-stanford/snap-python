@@ -3818,7 +3818,7 @@ class SnapPythonTest(unittest.TestCase):
         self.assertEqual(Graph3.GetNodes(), 5)
         self.assertEqual(Graph3.GetEdges(), 8)
 
-def test_GetGraphUnion(self):
+def test_GetGraphUnionAttr(self):
     Graph = snap.TNEANet.New()
     Graph0 = snap.TNEANet.New()
 
@@ -3836,17 +3836,16 @@ def test_GetGraphUnion(self):
         Graph.AddIntAttrDatE(EId, (i + 2) % 6, s)
         EId = Graph.AddEdge(i, (i + 5) % 6)
         Graph.AddIntAttrDatE(EId, (i + 5) % 6, s)
-
+        
     for i in range(6):
         EId = Graph0.AddEdge(i + 3, ((i + 3) % 6) + 3)
         Graph0.AddIntAttrDatE(EId, ((i + 3) % 6) + 3, s)
         EId = Graph0.AddEdge(i + 3, ((i + 4) % 6) + 3)
         Graph0.AddIntAttrDatE(EId, ((i + 4) % 6) + 3, s)
 
-    snap.GetGraphUnionAttr(Graph3, Graph4)
+    snap.GetGraphUnionAttr(Graph, Graph0)
     self.assertEqual(Graph.GetNodes(), 9)
     self.assertEqual(Graph.GetEdges(), 24)
 
 if __name__ == '__main__':
   unittest.main()
-
