@@ -3745,6 +3745,107 @@ class SnapPythonTest(unittest.TestCase):
                 self.assertEqual(Egonet.GetNodes(), 3)
                 self.assertEqual(Egonet.GetEdges(), 2)
 
+    def test_GetGraphUnion(self):
+        
+        #Undirected Graph
+        Graph = snap.TUNGraph.New()
+        Graph0 = snap.TUNGraph.New()
+        for i in range(5):
+            Graph.AddNode(i)
+        for i in range(5):
+            Graph.AddEdge(i,(i+1) % 5)
+            Graph.AddEdge(i,(i+2) % 5)
+
+        for i in range(3,8):
+            Graph0.AddNode(i)
+        for i in range(5):
+            Graph0.AddEdge(i + 3,((i+1) % 5) + 3)
+
+        snap.GetGraphUnion(Graph, Graph0)
+        self.assertEqual(Graph.GetNodes(), 8)
+        self.assertEqual(Graph.GetEdges(), 14)
+
+        # Directed Graph
+        Graph1 = snap.TNGraph.New()
+        Graph2 = snap.TNGraph.New()
+        for i in range(4):
+            Graph1.AddNode(i)
+        for i in range(1,5):
+            Graph2.AddNode(i)
+
+        Graph1.AddEdge(0, 1)
+        Graph1.AddEdge(1, 2)
+        Graph2.AddEdge(1, 2)
+        Graph2.AddEdge(2, 1)
+        Graph1.AddEdge(2, 3)
+        Graph2.AddEdge(2, 3)
+        Graph1.AddEdge(3, 2)
+        Graph2.AddEdge(3, 4)
+        Graph2.AddEdge(1, 4)
+        
+        snap.GetGraphUnion(Graph1, Graph2)
+        self.assertEqual(Graph1.GetNodes(), 5)
+        self.assertEqual(Graph1.GetEdges(), 7)
+
+        # Directed Network
+        Graph3 = snap.TNEANet.New()
+        Graph4 = snap.TNEANet.New()
+        EId = 0
+        for i in range(4):
+            Graph3.AddNode(i)
+        for i in range(1,5):
+            Graph4.AddNode(i)
+
+        Graph3.AddEdge(0, 1, EId)
+        EId += 1
+        Graph3.AddEdge(1, 2, EId)
+        EId += 1
+        Graph4.AddEdge(1, 2, EId)
+        EId += 1
+        Graph4.AddEdge(2, 1, EId)
+        EId += 1
+        Graph3.AddEdge(2, 3, EId)
+        EId += 1
+        Graph4.AddEdge(2, 3, EId)
+        Graph3.AddEdge(3, 2, EId)
+        EId += 1
+        Graph4.AddEdge(3, 4, EId)
+        EId += 1
+        Graph4.AddEdge(1, 4, EId)
+        EId += 1
+
+        snap.GetGraphUnion(Graph3, Graph4)
+        self.assertEqual(Graph3.GetNodes(), 5)
+        self.assertEqual(Graph3.GetEdges(), 8)
+
+def test_GetGraphUnionAttr(self):
+    Graph = snap.TNEANet.New()
+    Graph0 = snap.TNEANet.New()
+
+    s = "id"
+    for i in range(6):
+        Graph.AddNode(i)
+        Graph.AddIntAttrDatN(i, i, s)
+
+    for i in range(3,9):
+        Graph0.AddNode(i)
+        Graph0.AddIntAttrDatN(i, i, s)
+
+    for i in range(6):
+        EId = Graph.AddEdge(i, (i + 2) % 6)
+        Graph.AddIntAttrDatE(EId, (i + 2) % 6, s)
+        EId = Graph.AddEdge(i, (i + 5) % 6)
+        Graph.AddIntAttrDatE(EId, (i + 5) % 6, s)
+        
+    for i in range(6):
+        EId = Graph0.AddEdge(i + 3, ((i + 3) % 6) + 3)
+        Graph0.AddIntAttrDatE(EId, ((i + 3) % 6) + 3, s)
+        EId = Graph0.AddEdge(i + 3, ((i + 4) % 6) + 3)
+        Graph0.AddIntAttrDatE(EId, ((i + 4) % 6) + 3, s)
+
+    snap.GetGraphUnionAttr(Graph, Graph0)
+    self.assertEqual(Graph.GetNodes(), 9)
+    self.assertEqual(Graph.GetEdges(), 24)
+
 if __name__ == '__main__':
   unittest.main()
-
