@@ -19,4 +19,6 @@ Subgraphs and Graph Type Conversions
    GetInEgonetHop
    GetOutEgonetHop
    GetInEgonetSub
+   GetGraphUnion
+   GetGraphUnionAttr
 
