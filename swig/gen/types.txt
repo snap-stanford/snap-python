@@ -123,3 +123,4 @@ __func__	GetEgonetHop
 __func__	GetInEgonetHop
 __func__	GetOutEgonetHop
 __func__	GetInEgonetSub
+__func__	GetGraphUnion

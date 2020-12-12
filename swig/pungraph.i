@@ -155,7 +155,6 @@ TUNGraphEdgeI.GetId = GetId
 %template(GetKCoreNodes_PUNGraph) TSnap::GetKCoreNodes<PUNGraph>;
 
 
-
 // subgraph.h
 %template(ConvertGraph_PUNGraph_PUNGraph) TSnap::ConvertGraph <PUNGraph, PUNGraph>;
 %template(ConvertGraph_PUNGraph_PNGraph) TSnap::ConvertGraph <PUNGraph, PNGraph>;
@@ -172,6 +171,7 @@ TUNGraphEdgeI.GetId = GetId
 %template(GetInEgonetHop_PUNGraph) TSnap::GetInEgonetHop<PUNGraph>;
 %template(GetOutEgonetHop_PUNGraph) TSnap::GetOutEgonetHop<PUNGraph>;
 %template(GetInEgonetSub_PUNGraph) TSnap::GetInEgonetSub<PUNGraph>;
+%template(GetGraphUnion_PUNGraph) TSnap::GetGraphUnion<PUNGraph>;
 
 
 // triad.h - PUNGraph

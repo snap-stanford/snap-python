@@ -365,7 +365,7 @@ Convert a directed graph to an undirected graph:
 
 Get the largest weakly connected component:
 
->>> WccG = snap.GetMxWcc(G6)
+>>> WccG = G6.GetMxWcc()
 
 Generate a network using Forest Fire model:
 

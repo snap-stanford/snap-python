@@ -3805,8 +3805,8 @@ class SnapPythonTest(unittest.TestCase):
         Graph4.AddEdge(2, 1, EId)
         EId += 1
         Graph3.AddEdge(2, 3, EId)
-        EId += 1
         Graph4.AddEdge(2, 3, EId)
+        EId += 1
         Graph3.AddEdge(3, 2, EId)
         EId += 1
         Graph4.AddEdge(3, 4, EId)
@@ -3816,36 +3816,36 @@ class SnapPythonTest(unittest.TestCase):
 
         snap.GetGraphUnion(Graph3, Graph4)
         self.assertEqual(Graph3.GetNodes(), 5)
-        self.assertEqual(Graph3.GetEdges(), 8)
+        self.assertEqual(Graph3.GetEdges(), 7)
 
-def test_GetGraphUnionAttr(self):
-    Graph = snap.TNEANet.New()
-    Graph0 = snap.TNEANet.New()
+    def test_GetGraphUnionAttr(self):
+        Graph = snap.TNEANet.New()
+        Graph0 = snap.TNEANet.New()
 
-    s = "id"
-    for i in range(6):
-        Graph.AddNode(i)
-        Graph.AddIntAttrDatN(i, i, s)
+        s = "id"
+        for i in range(6):
+            Graph.AddNode(i)
+            Graph.AddIntAttrDatN(i, i, s)
 
-    for i in range(3,9):
-        Graph0.AddNode(i)
-        Graph0.AddIntAttrDatN(i, i, s)
+        for i in range(3,9):
+            Graph0.AddNode(i)
+            Graph0.AddIntAttrDatN(i, i, s)
 
-    for i in range(6):
-        EId = Graph.AddEdge(i, (i + 2) % 6)
-        Graph.AddIntAttrDatE(EId, (i + 2) % 6, s)
-        EId = Graph.AddEdge(i, (i + 5) % 6)
-        Graph.AddIntAttrDatE(EId, (i + 5) % 6, s)
+        for i in range(6):
+            EId = Graph.AddEdge(i, (i + 2) % 6)
+            Graph.AddIntAttrDatE(EId, (i + 2) % 6, s)
+            EId = Graph.AddEdge(i, (i + 5) % 6)
+            Graph.AddIntAttrDatE(EId, (i + 5) % 6, s)
         
-    for i in range(6):
-        EId = Graph0.AddEdge(i + 3, ((i + 3) % 6) + 3)
-        Graph0.AddIntAttrDatE(EId, ((i + 3) % 6) + 3, s)
-        EId = Graph0.AddEdge(i + 3, ((i + 4) % 6) + 3)
-        Graph0.AddIntAttrDatE(EId, ((i + 4) % 6) + 3, s)
+        for i in range(6):
+            EId = Graph0.AddEdge(i + 3, ((i + 3) % 6) + 3)
+            Graph0.AddIntAttrDatE(EId, ((i + 3) % 6) + 3, s)
+            EId = Graph0.AddEdge(i + 3, ((i + 4) % 6) + 3)
+            Graph0.AddIntAttrDatE(EId, ((i + 4) % 6) + 3, s)
 
-    snap.GetGraphUnionAttr(Graph, Graph0)
-    self.assertEqual(Graph.GetNodes(), 9)
-    self.assertEqual(Graph.GetEdges(), 24)
+        snap.GetGraphUnionAttr(Graph, Graph0)
+        self.assertEqual(Graph.GetNodes(), 9)
+        self.assertEqual(Graph.GetEdges(), 24)
 
 if __name__ == '__main__':
   unittest.main()

@@ -62,6 +62,11 @@ def CntEdgesToSet(tspec, *args):
     if type(tspec) == PNGraphMP: return CntEdgesToSet_PNGraphMP(tspec, *args)
     if type(tspec) == PNEANetMP : return CntEdgesToSet_PNEANetMP(tspec, *args)
     raise TypeError('First argument has invalid type')
+def GetGraphUnion(tspec, *args):
+    if type(tspec) == PUNGraph: return GetGraphUnion_PUNGraph(tspec, *args)
+    if type(tspec) == PNGraph : return GetGraphUnion_PNGraph(tspec, *args)
+    if type(tspec) == PNEANet : return GetGraphUnion_PNEANet(tspec, *args)
+    raise TypeError('First argument has invalid type')
 def GetModularity(tspec, *args):
     if type(tspec) == PUNGraph: return GetModularity_PUNGraph(tspec, *args)
     if type(tspec) == PUndirNet: return GetModularity_PUndirNet(tspec, *args)

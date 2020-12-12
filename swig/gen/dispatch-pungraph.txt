@@ -57,6 +57,7 @@ PUNGraph	GetNodesAtHops
 PUNGraph	GetShortPath
 PUNGraph	GetBfsFullDiam
 PUNGraph	GetBfsEffDiam
+PUNGraph	GetBfsEffDiamAll
 PUNGraph	DrawGViz
 PUNGraph	GenGrid
 PUNGraph	GenStar
@@ -66,10 +67,13 @@ PUNGraph	GenTree
 PUNGraph	GenBaraHierar
 PUNGraph	GenRndGnm
 PUNGraph	GetClustCf
+PUNGraph	GetClustCfAll
 PUNGraph	GetNodeClustCf
 PUNGraph	GetTriads
+PUNGraph	GetTriadsAll
 PUNGraph	GetTriadEdges
 PUNGraph	GetNodeTriads
+PUNGraph	GetNodeTriadsAll
 PUNGraph	GetTriadParticip
 PUNGraph	GetCmnNbrs
 PUNGraph	GetLen2Paths
@@ -89,10 +93,7 @@ PUNGraph	GetKCoreEdges
 PUNGraph	PrintInfo
 PUNGraph	GetNodeEcc
 PUNGraph	GetPageRank
-PUNGraph	GetPageRank_v1
-PUNGraph	GetPageRankMP
 PUNGraph	GetHits
-PUNGraph	GetHitsMP
 PUNGraph	PlotInDegDistr
 PUNGraph	PlotOutDegDistr
 PUNGraph	PlotWccDistr
@@ -103,6 +104,7 @@ PUNGraph	PlotShortPathDistr
 PUNGraph	PlotKCoreNodes
 PUNGraph	PlotKCoreEdges
 PUNGraph	GetSubGraph
+PUNGraph	GetSubGraphRenumber
 PUNGraph	GetESubGraph
 PUNGraph	GetRndSubGraph
 PUNGraph	GetRndESubGraph
@@ -110,3 +112,8 @@ PUNGraph	GetTriangleCnt
 PUNGraph	GetBetweennessCentr
 PUNGraph	GetClosenessCentr
 PUNGraph	GetFarnessCentr
+PUNGraph	GetEgonetHop
+PUNGraph	GetInEgonetHop
+PUNGraph	GetOutEgonetHop
+PUNGraph	GetInEgonetSub
+PUNGraph	GetGraphUnion

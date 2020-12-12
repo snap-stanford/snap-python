@@ -172,6 +172,7 @@ TNGraphEdgeI.GetId = GetId
 %template(GetInEgonetHop_PNGraph) TSnap::GetInEgonetHop<PNGraph>;
 %template(GetOutEgonetHop_PNGraph) TSnap::GetOutEgonetHop<PNGraph>;
 %template(GetInEgonetSub_PNGraph) TSnap::GetInEgonetSub<PNGraph>;
+%template(GetGraphUnion_PNGraph) TSnap::GetGraphUnion<PNGraph>;
 
 
 // triad.h - PNGraph
