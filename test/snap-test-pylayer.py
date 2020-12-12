@@ -3647,6 +3647,124 @@ class SnapPythonTest(unittest.TestCase):
                 self.assertEqual(Egonet.GetNodes(), Egonet_swig.GetNodes())
                 self.assertEqual(Egonet.GetEdges(), Egonet_swig.GetEdges())
 
+    def test_GetGraphUnion(self):
+
+        #Undirected Graph
+        Graph = snap.TUNGraph.New()
+        Graph0 = snap.TUNGraph.New()
+        for i in range(5):
+            Graph.AddNode(i)
+        for i in range(5):
+            Graph.AddEdge(i,(i+1) % 5)
+            Graph.AddEdge(i,(i+2) % 5)
+
+        for i in range(3,8):
+            Graph0.AddNode(i)
+        for i in range(5):
+            Graph0.AddEdge(i + 3,((i+1) % 5) + 3)
+
+        Graph_swig = Graph.ConvertGraph(snap.TUNGraph)
+        Graph0_swig = Graph0.ConvertGraph(snap.TUNGraph)
+
+        Graph.GetGraphUnion(Graph0)
+        snap.GetGraphUnion(Graph_swig, Graph0_swig)
+        self.assertEqual(Graph.GetNodes(), Graph_swig.GetNodes())
+        self.assertEqual(Graph.GetEdges(), Graph_swig.GetEdges())
+
+        # Directed Graph
+        Graph1 = snap.TNGraph.New()
+        Graph2 = snap.TNGraph.New()
+        for i in range(4):
+            Graph1.AddNode(i)
+        for i in range(1,5):
+            Graph2.AddNode(i)
+
+        Graph1.AddEdge(0, 1)
+        Graph1.AddEdge(1, 2)
+        Graph2.AddEdge(1, 2)
+        Graph2.AddEdge(2, 1)
+        Graph1.AddEdge(2, 3)
+        Graph2.AddEdge(2, 3)
+        Graph1.AddEdge(3, 2)
+        Graph2.AddEdge(3, 4)
+        Graph2.AddEdge(1, 4)
+
+        Graph1_swig = Graph1.ConvertGraph(snap.TNGraph)
+        Graph2_swig = Graph2.ConvertGraph(snap.TNGraph)
+
+        Graph1.GetGraphUnion(Graph2)
+        snap.GetGraphUnion(Graph1_swig, Graph2_swig)
+        self.assertEqual(Graph1.GetNodes(), Graph1_swig.GetNodes())
+        self.assertEqual(Graph1.GetEdges(), Graph1_swig.GetEdges())
+
+        # Directed Network
+        Graph3 = snap.TNEANet.New()
+        Graph4 = snap.TNEANet.New()
+        EId = 0
+        for i in range(4):
+            Graph3.AddNode(i)
+        for i in range(1,5):
+            Graph4.AddNode(i)
+
+        Graph3.AddEdge(0, 1, EId)
+        EId += 1
+        Graph3.AddEdge(1, 2, EId)
+        EId += 1
+        Graph4.AddEdge(1, 2, EId)
+        EId += 1
+        Graph4.AddEdge(2, 1, EId)
+        EId += 1
+        Graph3.AddEdge(2, 3, EId)
+        Graph4.AddEdge(2, 3, EId)
+        EId += 1
+        Graph3.AddEdge(3, 2, EId)
+        EId += 1
+        Graph4.AddEdge(3, 4, EId)
+        EId += 1
+        Graph4.AddEdge(1, 4, EId)
+        EId += 1
+
+        Graph3_swig = Graph3.ConvertGraph(snap.TNEANet)
+        Graph4_swig = Graph4.ConvertGraph(snap.TNEANet)
+
+        Graph3.GetGraphUnion(Graph4)
+        snap.GetGraphUnion(Graph3_swig, Graph4_swig)
+        self.assertEqual(Graph3.GetNodes(), Graph3_swig.GetNodes())
+        self.assertEqual(Graph3.GetEdges(), Graph3_swig.GetEdges())
+
+    def test_GetGraphUnionAttr(self):
+        Graph = snap.TNEANet.New()
+        Graph0 = snap.TNEANet.New()
+
+        s = "id"
+        for i in range(6):
+            Graph.AddNode(i)
+            Graph.AddIntAttrDatN(i, i, s)
+
+        for i in range(3,9):
+            Graph0.AddNode(i)
+            Graph0.AddIntAttrDatN(i, i, s)
+
+        for i in range(6):
+            EId = Graph.AddEdge(i, (i + 2) % 6)
+            Graph.AddIntAttrDatE(EId, (i + 2) % 6, s)
+            EId = Graph.AddEdge(i, (i + 5) % 6)
+            Graph.AddIntAttrDatE(EId, (i + 5) % 6, s)
+
+        for i in range(6):
+            EId = Graph0.AddEdge(i + 3, ((i + 3) % 6) + 3)
+            Graph0.AddIntAttrDatE(EId, ((i + 3) % 6) + 3, s)
+            EId = Graph0.AddEdge(i + 3, ((i + 4) % 6) + 3)
+            Graph0.AddIntAttrDatE(EId, ((i + 4) % 6) + 3, s)
+
+        Graph_swig = Graph.ConvertGraph(snap.TNEANet)
+        Graph0_swig = Graph0.ConvertGraph(snap.TNEANet)
+
+        Graph.GetGraphUnionAttr(Graph0)
+        snap.GetGraphUnionAttr(Graph_swig, Graph0_swig)
+        self.assertEqual(Graph.GetNodes(), Graph_swig.GetNodes())
+        self.assertEqual(Graph.GetEdges(), Graph_swig.GetEdges())
+
 if __name__ == '__main__':
   unittest.main()
 

@@ -756,6 +756,16 @@ PUNGraph.GetInEgonetSub = GetInEgonetSub_classFn
 PNGraph.GetInEgonetSub = GetInEgonetSub_classFn
 PNEANet.GetInEgonetSub = GetInEgonetSub_classFn
 
+def GetGraphUnion_classFn(self, *args, **kwargs):
+    return GetGraphUnion(self, *args, **kwargs)
+PUNGraph.GetGraphUnion = GetGraphUnion_classFn
+PNGraph.GetGraphUnion = GetGraphUnion_classFn
+PNEANet.GetGraphUnion = GetGraphUnion_classFn
+
+def GetGraphUnionAttr_classFn(self, *args, **kwargs):
+    return GetGraphUnionAttr(self, *args, **kwargs)
+PNEANet.GetGraphUnionAttr = GetGraphUnionAttr_classFn
+
 def IsTree_classFn(self, *args, **kwargs):
     return IsTree(self, *args, **kwargs)
 PUNGraph.IsTree = IsTree_classFn
