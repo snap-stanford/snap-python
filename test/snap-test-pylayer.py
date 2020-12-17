@@ -995,6 +995,31 @@ class SnapPythonTest(unittest.TestCase):
         node_ecc_swig = snap.GetNodeEcc(self.NetStar, 0, True)
         self.assertEqual(node_ecc, node_ecc_swig)
 
+    def test_GetPageRank(self):
+        # Directed Graph
+        PRankH = self.DPetersen.GetPageRank()
+        PRankH_swig = snap.TIntFltH()
+        snap.GetPageRank(self.DPetersen, PRankH_swig)
+        self.assertEqual(len(PRankH), len(PRankH_swig))
+        for item in PRankH_swig:
+            self.assertAlmostEqual(PRankH[item], PRankH_swig[item])
+
+        # Undirected Graph
+        PRankH = self.UPetersen.GetPageRank()
+        PRankH_swig = snap.TIntFltH()
+        snap.GetPageRank(self.UPetersen, PRankH_swig)
+        self.assertEqual(len(PRankH), len(PRankH_swig))
+        for item in PRankH_swig:
+            self.assertAlmostEqual(PRankH[item], PRankH_swig[item])
+
+        # Network
+        PRankH = self.NPetersen.GetPageRank()
+        PRankH_swig = snap.TIntFltH()
+        snap.GetPageRank(self.NPetersen, PRankH_swig)
+        self.assertEqual(len(PRankH), len(PRankH_swig))
+        for item in PRankH_swig:
+            self.assertAlmostEqual(PRankH[item], PRankH_swig[item])
+
     def test_GetHits(self):
         # Directed Graph
         NIdHubH, NIdAuthH = self.DirGraphFull.GetHits()

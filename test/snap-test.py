@@ -926,6 +926,53 @@ class SnapPythonTest(unittest.TestCase):
         node_ecc = snap.GetNodeEcc(self.NetStar, 0, True)
         self.assertEqual(1, node_ecc)
 
+    def test_GetPageRank(self):
+        DirRank = {
+            0 : 0.0260929959985197,
+            1 : 0.0260929959985197,
+            2 : 0.0260929959985197,
+            3 : 0.0260929959985197,
+            4 : 0.0260929959985197,
+            5 : 0.17390700400148032,
+            6 : 0.17390700400148032,
+            7 : 0.17390700400148032,
+            8 : 0.17390700400148032,
+            9 : 0.17390700400148032,
+            }
+        UnDirRank = {
+            0 : 0.10000000000000002,
+            1 : 0.10000000000000002,
+            2 : 0.10000000000000002,
+            3 : 0.10000000000000002,
+            4 : 0.10000000000000002,
+            5 : 0.10000000000000002,
+            6 : 0.10000000000000002,
+            7 : 0.10000000000000002,
+            8 : 0.10000000000000002,
+            9 : 0.10000000000000002,
+            }
+
+        # Directed Graph
+        PRankH = snap.TIntFltH()
+        snap.GetPageRank(self.DPetersen, PRankH)
+        self.assertEqual(len(PRankH), len(DirRank))
+        for item in DirRank:
+            self.assertAlmostEqual(PRankH[item], DirRank[item])
+
+        # Undirected Graph
+        PRankH = snap.TIntFltH()
+        snap.GetPageRank(self.UPetersen, PRankH)
+        self.assertEqual(len(PRankH), len(UnDirRank))
+        for item in UnDirRank:
+            self.assertAlmostEqual(PRankH[item], UnDirRank[item])
+
+        # Network
+        PRankH = snap.TIntFltH()
+        snap.GetPageRank(self.NPetersen, PRankH)
+        self.assertEqual(len(PRankH), len(DirRank))
+        for item in DirRank:
+            self.assertAlmostEqual(PRankH[item], DirRank[item])
+
     def test_GetHits(self):
         # Directed Graph
         NIdHubH = snap.TIntFltH()
