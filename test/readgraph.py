@@ -51,10 +51,10 @@ if __name__ == '__main__':
     print("G1 edges", G1.GetEdges())
 
     t = printtime(t, "saving the graph to edge list")
-    snap.SaveEdgeList(G1, txtname, "Save as tab-separated list of edges")
+    G1.SaveEdgeList(txtname, "Save as tab-separated list of edges")
 
     t = printtime(t, "reading the graph from edge list")
-    G2 = snap.LoadEdgeList(snap.PUNGraph, txtname, 0, 1)
+    G2 = snap.LoadEdgeList(snap.TUNGraph, txtname, 0, 1)
     print("G2 nodes", G2.GetNodes())
     print("G2 edges", G2.GetEdges())
 
@@ -62,7 +62,7 @@ if __name__ == '__main__':
     SaveConnList(G1, adjname)
 
     t = printtime(t, "reading the graph from adjacency list")
-    G3 = snap.LoadConnList(snap.PUNGraph, adjname)
+    G3 = snap.LoadConnList(snap.TUNGraph, adjname)
     print("G3 nodes", G3.GetNodes())
     print("G3 edges", G3.GetEdges())
 

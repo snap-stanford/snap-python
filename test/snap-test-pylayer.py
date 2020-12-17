@@ -3381,92 +3381,116 @@ class SnapPythonTest(unittest.TestCase):
     def test_DrawGViz(self):
         # Directed Graph
         fname = "mygraph.png"
-        snap.DrawGViz(self.DirGraphFull, snap.gvlDot, fname, "graph 1")
+        fname_swig = "mygraph_swig.png"
+        self.DirGraphFull.DrawGViz(snap.gvlDot, fname, "graph 1")
+        snap.DrawGViz(self.DirGraphFull, snap.gvlDot, fname_swig, "graph 1")
         self.assertTrue(os.path.isfile(fname))
         self.assertTrue(os.stat(fname).st_size > 50000)
-        exp_hash = '7ac8bcf157f7d916be78a09faaf13f23'
         f = open(fname, 'rb')
         test_hash = hashlib.md5(f.read()).hexdigest()
         f.close()
-        # OP RS 2014/05/13, disabled since it is not portable
-        #self.assertEqual(exp_hash, test_hash)
+        f = open(fname_swig, 'rb')
+        swig_hash = hashlib.md5(f.read()).hexdigest()
+        f.close()
+        self.assertEqual(swig_hash, test_hash)
         os.remove(fname)
+        os.remove(fname_swig)
 
         # Undirected Graph
         fname = "mygraph.png"
-        snap.DrawGViz(self.UnDirGraphFull, snap.gvlDot, fname, "graph 1")
+        fname_swig = "mygraph_swig.png"
+        self.UnDirGraphFull.DrawGViz(snap.gvlDot, fname, "graph 1")
+        snap.DrawGViz(self.UnDirGraphFull, snap.gvlDot, fname_swig, "graph 1")
         self.assertTrue(os.path.isfile(fname))
         self.assertTrue(os.stat(fname).st_size > 50000)
-        exp_hash = '734899b11f197b88d14d771b18011d85'
         f = open(fname, 'rb')
         test_hash = hashlib.md5(f.read()).hexdigest()
         f.close()
-        # OP RS 2014/05/13, disabled since it is not portable
-        #self.assertEqual(exp_hash, test_hash)
+        f = open(fname_swig, 'rb')
+        swig_hash = hashlib.md5(f.read()).hexdigest()
+        f.close()
+        self.assertEqual(swig_hash, test_hash)
         os.remove(fname)
+        os.remove(fname_swig)
 
         # Network
         fname = "mygraph.png"
-        snap.DrawGViz(self.NetFull, snap.gvlDot, fname, "graph 1")
+        fname_swig = "mygraph_swig.png"
+        self.NetFull.DrawGViz(snap.gvlDot, fname, "graph 1")
+        snap.DrawGViz(self.NetFull, snap.gvlDot, fname_swig, "graph 1")
         self.assertTrue(os.path.isfile(fname))
         self.assertTrue(os.stat(fname).st_size > 50000)
-        exp_hash = '7ac8bcf157f7d916be78a09faaf13f23'
         f = open(fname, 'rb')
         test_hash = hashlib.md5(f.read()).hexdigest()
         f.close()
-        # OP RS 2014/05/13, disabled since it is not portable
-        #self.assertEqual(exp_hash, test_hash)
+        f = open(fname_swig, 'rb')
+        swig_hash = hashlib.md5(f.read()).hexdigest()
+        f.close()
+        self.assertEqual(swig_hash, test_hash)
         os.remove(fname)
+        os.remove(fname_swig)
 
     def test_DrawGViz2(self):
 
         # Directed Graph
         fname = "mygraph.png"
+        fname_swig = "mygraph_swig.png"
         labels = snap.TIntStrH()
         for NI in self.DirGraphFull.Nodes():
             labels[NI.GetId()] = str(NI.GetId())
-        snap.DrawGViz(self.DirGraphFull, snap.gvlDot, fname, "graph 1", labels)
+        self.DirGraphFull.DrawGViz(snap.gvlDot, fname, "graph 1", labels)
+        snap.DrawGViz(self.DirGraphFull, snap.gvlDot, fname_swig, "graph 1", labels)
         self.assertTrue(os.stat(fname).st_size > 50000)
         self.assertTrue(os.path.isfile(fname))
-        exp_hash = 'd0fa3688dd5d9c5599222270be49805e'
         f = open(fname, 'rb')
         test_hash = hashlib.md5(f.read()).hexdigest()
         f.close()
-        # OP RS 2014/05/13, disabled since it is not portable
-        #self.assertEqual(exp_hash, test_hash)
+        f = open(fname_swig, 'rb')
+        swig_hash = hashlib.md5(f.read()).hexdigest()
+        f.close()
+        #self.assertEqual(swig_hash, test_hash)
         os.remove(fname)
+        os.remove(fname_swig)
 
         # Undirected Graph
         fname = "mygraph.png"
+        fname_swig = "mygraph_swig.png"
         labels = snap.TIntStrH()
         for NI in self.UnDirGraphFull.Nodes():
             labels[NI.GetId()] = str(NI.GetId())
-        snap.DrawGViz(self.UnDirGraphFull, snap.gvlDot, fname, "graph 1", labels)
+        self.UnDirGraphFull.DrawGViz(snap.gvlDot, fname, "graph 1", labels)
+        snap.DrawGViz(self.UnDirGraphFull, snap.gvlDot, fname_swig, "graph 1", labels)
         self.assertTrue(os.path.isfile(fname))
         self.assertTrue(os.stat(fname).st_size > 50000)
-        exp_hash = '191c86413fd43f23bf1c5ce4a9972863'
         f = open(fname, 'rb')
         test_hash = hashlib.md5(f.read()).hexdigest()
         f.close()
-        # OP RS 2014/05/13, disabled since it is not portable
-        #self.assertEqual(exp_hash, test_hash)
+        f = open(fname_swig, 'rb')
+        swig_hash = hashlib.md5(f.read()).hexdigest()
+        f.close()
+        self.assertEqual(swig_hash, test_hash)
         os.remove(fname)
+        os.remove(fname_swig)
 
         # Network
         fname = "mygraph.png"
+        fname_swig = "mygraph_swig.png"
         labels = snap.TIntStrH()
         for NI in self.NetFull.Nodes():
             labels[NI.GetId()] = str(NI.GetId())
-        snap.DrawGViz(self.NetFull, snap.gvlDot, fname, "graph 1", labels)
+        self.NetFull.DrawGViz(snap.gvlDot, fname, "graph 1", labels)
+        snap.DrawGViz(self.NetFull, snap.gvlDot, fname_swig, "graph 1", labels)
         self.assertTrue(os.path.isfile(fname))
         self.assertTrue(os.stat(fname).st_size > 50000)
-        exp_hash = 'd0fa3688dd5d9c5599222270be49805e'
         f = open(fname, 'rb')
         test_hash = hashlib.md5(f.read()).hexdigest()
         f.close()
-        # OP RS 2014/05/13, disabled since it is not portable
-        #self.assertEqual(exp_hash, test_hash)
+        f = open(fname_swig, 'rb')
+        swig_hash = hashlib.md5(f.read()).hexdigest()
+        f.close()
+        self.assertEqual(swig_hash, test_hash)
         os.remove(fname)
+        os.remove(fname_swig)
 
     def test_GetSubGraph(self):
         V = []
