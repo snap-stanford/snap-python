@@ -3939,7 +3939,7 @@ class SnapPythonTest(unittest.TestCase):
             EId = Graph0.AddEdge(i + 2, ((i + 3) % 7) + 2)
             Graph0.AddIntAttrDatE(EId, ((i + 3) % 7) + 2, s)
 
-        IntersectionGraph = snap.GetGraphIntersection(Graph, Graph0)
+        IntersectionGraph = snap.GetGraphIntersectionAttr(Graph, Graph0)
         self.assertEqual(IntersectionGraph.GetNodes(), 5)
         self.assertEqual(IntersectionGraph.GetEdges(), 3)
 
