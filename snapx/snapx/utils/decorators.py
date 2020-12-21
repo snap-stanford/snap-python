@@ -107,7 +107,7 @@ def not_implemented_for(*graph_types):
                 "use one or more of " "directed, undirected, multigraph, graph"
             ) from e
         if match:
-            msg = f"not implemented for {' '.join(graph_types)} type"
+            msg = "not implemented for {} type".format(' '.join(graph_types))
             raise sx.SnapXNotImplemented(msg)
         else:
             return not_implement_for_func(*args, **kwargs)

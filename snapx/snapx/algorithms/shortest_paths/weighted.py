@@ -232,7 +232,7 @@ def dijkstra_path_length(G, source, target, weight="weight"):
     try:
         return length[target]
     except KeyError as e:
-        raise sx.SnapXNoPath(f"Node {target} not reachable from {source}") from e
+        raise sx.SnapXNoPath("Node {} not reachable from {}".format(target, source)) from e
 
 
 def single_source_dijkstra_path(G, source, cutoff=None, weight="weight"):
@@ -344,7 +344,7 @@ def single_source_dijkstra_path_length(G, source, cutoff=None, weight="weight"):
     >>> length[4]
     4
     >>> for node in [0, 1, 2, 3, 4]:
-    ...     print(f"{node}: {length[node]}")
+    ...     print("{}: {}".format(node, length[node]))
     0: 0
     1: 1
     2: 2
@@ -426,7 +426,7 @@ def single_source_dijkstra(G, source, target=None, cutoff=None, weight="weight")
     >>> print(length[4])
     4
     >>> for node in [0, 1, 2, 3, 4]:
-    ...     print(f"{node}: {length[node]}")
+    ...     print("{}: {}".format(node, length[node]))
     0: 0
     1: 1
     2: 2
@@ -582,7 +582,7 @@ def multi_source_dijkstra_path_length(G, sources, cutoff=None, weight="weight"):
     >>> G = nx.path_graph(5)
     >>> length = nx.multi_source_dijkstra_path_length(G, {0, 4})
     >>> for node in [0, 1, 2, 3, 4]:
-    ...     print(f"{node}: {length[node]}")
+    ...     print("{}: {}".format(node, length[node]))
     0: 0
     1: 1
     2: 2
@@ -668,7 +668,7 @@ def multi_source_dijkstra(G, sources, target=None, cutoff=None, weight="weight")
     >>> G = nx.path_graph(5)
     >>> length, path = nx.multi_source_dijkstra(G, {0, 4})
     >>> for node in [0, 1, 2, 3, 4]:
-    ...     print(f"{node}: {length[node]}")
+    ...     print("{}: {}".format(node, length[node]))
     0: 0
     1: 1
     2: 2
@@ -728,7 +728,7 @@ def multi_source_dijkstra(G, sources, target=None, cutoff=None, weight="weight")
     try:
         return (dist[target], paths[target])
     except KeyError as e:
-        raise sx.NetworkXNoPath(f"No path to {target}.") from e
+        raise sx.NetworkXNoPath("No path to {}.".format(target)) from e
 
 
 def _dijkstra(G, source, weight, pred=None, paths=None, cutoff=None, target=None):
@@ -808,7 +808,7 @@ def _dijkstra_multisource(
     fringe = []
     for source in sources:
         if source not in G:
-            raise sx.NodeNotFound(f"Source {source} not in G")
+            raise sx.NodeNotFound("Source {} not in G".format(source))
         seen[source] = 0
         push(fringe, (0, next(c), source))
     while fringe:
@@ -960,7 +960,7 @@ def all_pairs_dijkstra(G, cutoff=None, weight="weight"):
     >>> print(len_path[3][0][1])
     2
     >>> for node in [0, 1, 2, 3, 4]:
-    ...     print(f"3 - {node}: {len_path[3][0][node]}")
+    ...     print("3 - {}: {}".format(node, len_path[3][0][node])
     3 - 0: 3
     3 - 1: 2
     3 - 2: 1
@@ -1022,7 +1022,7 @@ def all_pairs_dijkstra_path_length(G, cutoff=None, weight="weight"):
     >>> G = nx.path_graph(5)
     >>> length = dict(nx.all_pairs_dijkstra_path_length(G))
     >>> for node in [0, 1, 2, 3, 4]:
-    ...     print(f"1 - {node}: {length[1][node]}")
+    ...     print("1 - {}: {}".format(node, length[1][node]))
     1 - 0: 1
     1 - 1: 0
     1 - 2: 1
@@ -1187,7 +1187,7 @@ def all_pairs_dijkstra_path(G, cutoff=None, weight="weight"):
     #     In NetworkX v2.2 this changed to the source node having predecessor `[]`
     #     """
     #     if source not in G:
-    #         raise nx.NodeNotFound(f"Node {source} is not found in the graph")
+    #         raise nx.NodeNotFound("Node {} is not found in the graph".format(source))
     #     weight = _weight_function(G, weight)
     #     if any(weight(u, v, d) < 0 for u, v, d in nx.selfloop_edges(G, data=True)):
     #         raise nx.NetworkXUnbounded("Negative cost cycle detected.")
@@ -1266,7 +1266,7 @@ def all_pairs_dijkstra_path(G, cutoff=None, weight="weight"):
     #     """
     #     for s in source:
     #         if s not in G:
-    #             raise nx.NodeNotFound(f"Source {s} not in G")
+    #             raise nx.NodeNotFound("Source {s} not in G".format(s))
 
     #     if pred is None:
     #         pred = {v: [] for v in source}
@@ -1440,7 +1440,7 @@ def all_pairs_dijkstra_path(G, cutoff=None, weight="weight"):
     #     try:
     #         return length[target]
     #     except KeyError as e:
-    #         raise nx.NetworkXNoPath(f"node {target} not reachable from {source}") from e
+    #         raise nx.NetworkXNoPath("node {} not reachable from {}".format(target, source)) from e
 
     # def single_source_bellman_ford_path(G, source, weight="weight"):
     #     """Compute shortest path between source and all other reachable
@@ -1517,7 +1517,7 @@ def all_pairs_dijkstra_path(G, cutoff=None, weight="weight"):
     #     >>> length[4]
     #     4
     #     >>> for node in [0, 1, 2, 3, 4]:
-    #     ...     print(f"{node}: {length[node]}")
+    #     ...     print("{}: {}".format(node, length[node]))
     #     0: 0
     #     1: 1
     #     2: 2
@@ -1574,7 +1574,7 @@ def all_pairs_dijkstra_path(G, cutoff=None, weight="weight"):
     #     >>> print(length[4])
     #     4
     #     >>> for node in [0, 1, 2, 3, 4]:
-    #     ...     print(f"{node}: {length[node]}")
+    #     ...     print("{node}: {length[node]}".format(node, length[node]))
     #     0: 0
     #     1: 1
     #     2: 2
@@ -1611,7 +1611,7 @@ def all_pairs_dijkstra_path(G, cutoff=None, weight="weight"):
     #     try:
     #         return (dist[target], paths[target])
     #     except KeyError as e:
-    #         msg = f"Node {target} not reachable from {source}"
+    #         msg = "Node {} not reachable from {}".format(target, source)
     #         raise nx.NetworkXNoPath(msg) from e
 
     # def all_pairs_bellman_ford_path_length(G, weight="weight"):
@@ -1635,7 +1635,7 @@ def all_pairs_dijkstra_path(G, cutoff=None, weight="weight"):
     #     >>> G = nx.path_graph(5)
     #     >>> length = dict(nx.all_pairs_bellman_ford_path_length(G))
     #     >>> for node in [0, 1, 2, 3, 4]:
-    #     ...     print(f"1 - {node}: {length[1][node]}")
+    #     ...     print("1 - {node}: {length[1][node]}".format(node, length[1][node]))
     #     1 - 0: 1
     #     1 - 1: 0
     #     1 - 2: 1
@@ -1772,7 +1772,7 @@ def all_pairs_dijkstra_path(G, cutoff=None, weight="weight"):
 
     #     """
     #     if source not in G:
-    #         raise nx.NodeNotFound(f"Node {source} is not found in the graph")
+    #         raise nx.NodeNotFound("Node {} is not found in the graph".format(source))
     #     weight = _weight_function(G, weight)
     #     if any(weight(u, v, d) < 0 for u, v, d in nx.selfloop_edges(G, data=True)):
     #         raise nx.NetworkXUnbounded("Negative cost cycle detected.")
@@ -2010,7 +2010,7 @@ def bidirectional_dijkstra(G, source, target, weight="weight"):
     shortest_path_length
     """
     if source not in G or target not in G:
-        msg = f"Either source {source} or target {target} is not in G"
+        msg = "Either source {} or target {} is not in G".format(source, target)
         raise nx.NodeNotFound(msg)
 
     if source == target:
@@ -2075,7 +2075,7 @@ def bidirectional_dijkstra(G, source, target, weight="weight"):
                         revpath = paths[1][w][:]
                         revpath.reverse()
                         finalpath = paths[0][w] + revpath[1:]
-    raise nx.NetworkXNoPath(f"No path between {source} and {target}.")
+    raise nx.NetworkXNoPath("No path between {} and {}.".format(source, target))
 
 
 def johnson(G, weight="weight"):
