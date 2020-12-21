@@ -113,13 +113,18 @@ def LoadEdgeList(GraphType, InFNm, SrcColId = 0, DstColId = 1, Separator = " "):
 _LoadEdgeListStr = LoadEdgeListStr
 def LoadEdgeListStr(GraphType, InFNm, SrcColId = 0, DstColId = 1, Mapping = None):
     GraphType = ConvertGraphArg(GraphType)
-    if Mapping == None  or  Mapping == False:
-        return _LoadEdgeListStr(GraphType, InFNm, SrcColId, DstColId)
+    # we need exception handling, since some snap.py types cannot be
+    # compared to None or booleans
+    try:
+        if Mapping == None  or  Mapping == False:
+            return _LoadEdgeListStr(GraphType, InFNm, SrcColId, DstColId)
 
-    if Mapping == True:
-        StrToNIdH = TStrIntSH()
-        graph = _LoadEdgeListStr(GraphType, InFNm, SrcColId, DstColId, StrToNIdH)
-        return (graph, StrToNIdH)
+        if Mapping == True:
+            StrToNIdH = TStrIntSH()
+            graph = _LoadEdgeListStr(GraphType, InFNm, SrcColId, DstColId, StrToNIdH)
+            return (graph, StrToNIdH)
+    except:
+        pass
 
     return _LoadEdgeListStr(GraphType, InFNm, SrcColId, DstColId, Mapping)
 
@@ -148,12 +153,17 @@ def SaveGVizColor(Graph, OutFNm, Desc, NodeLabels, NIdColorH):
 
 _SavePajek = SavePajek
 def SavePajek(Graph, OutFNm, NIdColorH = None, NIdLabelH = None, EIdColorH = None):
-    if NIdColorH is None:
-        NIdColorH = TIntStrH()
-    if NIdLabelH is None:
-        NIdLabelH = TIntStrH()
-    if EIdColorH is None:
-        EIdColorH = TIntStrH()
+    # we need exception handling, since some snap.py types cannot be
+    # compared to None or booleans
+    try:
+        if NIdColorH is None:
+            NIdColorH = TIntStrH()
+        if NIdLabelH is None:
+            NIdLabelH = TIntStrH()
+        if EIdColorH is None:
+            EIdColorH = TIntStrH()
+    except:
+        pass
     args = (OutFNm, NIdColorH, NIdLabelH, EIdColorH)
     args = ConvertToSnapType(args, 1, TIntStrH, dict)
     args = ConvertToSnapType(args, 2, TIntStrH, dict)
@@ -407,12 +417,17 @@ def GetClustCfAll(Graph, *args):
 
 _GetCmnNbrs = GetCmnNbrs
 def GetCmnNbrs(Graph, NId1, NId2, NbrList = False):
-    if NbrList == None  or  NbrList == False:
-        return _GetCmnNbrs(Graph, NId1, NId2)
-    elif NbrList == True:
-        NbrV = TIntV()
-        PrevReturn = _GetCmnNbrs(Graph, NId1, NId2, NbrV)
-        return (PrevReturn, NbrV)
+    # we need exception handling, since some snap.py types cannot be
+    # compared to None or booleans
+    try:
+        if NbrList == None  or  NbrList == False:
+            return _GetCmnNbrs(Graph, NId1, NId2)
+        elif NbrList == True:
+            NbrV = TIntV()
+            PrevReturn = _GetCmnNbrs(Graph, NId1, NId2, NbrV)
+            return (PrevReturn, NbrV)
+    except:
+        pass
 
     return _GetCmnNbrs(Graph, NId1, NId2, NbrList)
 
