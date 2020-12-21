@@ -142,29 +142,29 @@ n2v.o:
 install: setup.py snap.py _snap.so
 	sudo $(PYTHON) setup.py install
 
-srcdist: setup.py snap.py _snap.so
+srcdist: $(SETUP) snap.py _snap.so
 	cp $(MANIFEST) MANIFEST
 	cp $(MANIFEST_IN) MANIFEST.in
-	$(PYTHON) setup.py sdist
+	$(PYTHON) $(SETUP) sdist
 
-whldist: setup.py snap.py _snap.so
+whldist: $(SETUP) snap.py _snap.so
 	cp $(MANIFEST) MANIFEST
 	cp $(MANIFEST_IN) MANIFEST.in
-	$(PYTHON) setup.py bdist_wheel
+	$(PYTHON) $(SETUP) bdist_wheel
 ifeq ($(UNAME), Linux)
 	# change name '-linux_' to '-linuxmany1_' as required by pip
 	mv dist/*-linux_* `ls dist/*-linux_* | sed -e "s/-linux_/-manylinux1_/g"`
 endif
 
-srcdist3: setup.py snap3.py _snap3.so snap.py
+srcdist3: $(SETUP) snap3.py _snap3.so snap.py
 	cp $(MANIFEST) MANIFEST
 	cp $(MANIFEST_IN) MANIFEST.in
-	python3 setup.py sdist
+	$(PYTHON3) $(SETUP) sdist
 
-whldist3: setup.py snap3.py _snap3.so snap.py
+whldist3: $(SETUP) snap3.py _snap3.so snap.py
 	cp $(MANIFEST) MANIFEST
 	cp $(MANIFEST_IN) MANIFEST.in
-	python3 setup.py bdist_wheel
+	$(PYTHON3) $(SETUP) bdist_wheel
 ifeq ($(UNAME), Linux)
 	# change name '-linux_' to '-linuxmany1_' as required by pip
 	mv dist/*-linux_* `ls dist/*-linux_* | sed -e "s/-linux_/-manylinux1_/g"`
@@ -201,6 +201,9 @@ whldist3-win: setup.py snap.py _snap.pyd
 
 clean:
 	rm -f *.o *_wrap*.cxx _*.so *.pyc snap*.py _snap*.*
+
+clean-obj:
+	rm -f snap_*.o _snap.so
 
 pip-test: dist/*
 	@echo TESTING uploading test file ${WHLFILE}
