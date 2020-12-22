@@ -5,31 +5,30 @@ setup.py file for SNAP (Stanford Network Analysis Platform) Python
     Linux version, generated on CentOS, tested on Ubuntu as well
 """
 
-import re
 import inspect
 import os
 import platform
+import re
 import sys
 
-#from distutils.core import setup, Extension
-#from setuptools import setup, Extension
-
-import setuptools
+from setuptools import setup
 
 #
 #   Snap.py version
 #
 snappy_version = "5.0.0"
+
+
 def getdynpath():
     '''
     get the path for the Python dynamic library
     '''
- 
+
     s = inspect.getfile(inspect)
 
     newpath = None
     if "conda" in s:
-        pattern = re.compile('[\w\d]+conda[\s\S]+\/lib\/')
+        pattern = re.compile(r'[\w\d]+conda[\s\S]+\/lib\/')
         found = pattern.search(s)
         if found:
             newpath = s[:found.end()] + "libpython2.7.dylib"
@@ -40,34 +39,36 @@ def getdynpath():
         newpath = "/".join(dirs)
 
     return newpath
-    
+
+
 # is this a dry run
 narg = 1
 dryrun = False
-if len(sys.argv) > narg  and  sys.argv[narg] == "-n":
+if len(sys.argv) > narg and sys.argv[narg] == "-n":
     dryrun = True
     narg += 1
 
 # is this a distribution package build
 swsdist = False
-if len(sys.argv) > narg  and  sys.argv[narg] == "sdist":
+if len(sys.argv) > narg and sys.argv[narg] == "sdist":
     swsdist = True
 
 # is this a wheel build
 swwheel = False
-if len(sys.argv) > narg  and  sys.argv[narg] == "bdist_wheel":
+if len(sys.argv) > narg and sys.argv[narg] == "bdist_wheel":
     swwheel = True
 
 # is this an install
 swinstall = False
-if len(sys.argv) > narg  and  sys.argv[narg] == "install":
+if len(sys.argv) > narg and sys.argv[narg] == "install":
     swinstall = True
-    
+
 # added OS specific wheeling
 bdist_wheel = None
 if swwheel:
     try:
         from wheel.bdist_wheel import bdist_wheel as _bdist_wheel
+
         class bdist_wheel(_bdist_wheel):
             def finalize_options(self):
                 _bdist_wheel.finalize_options(self)
@@ -83,7 +84,7 @@ if swwheel:
 # snap version
 snap_version = "dev"
 try:
-    f = open("Version","r")
+    f = open("Version", "r")
     content = f.read()
     f.close()
     w = content.split("-")
@@ -102,15 +103,15 @@ os_version = "unknown-x.x"
 swubuntu = False
 if uname[0] == "Linux":
     try:
-        f = open("/etc/centos-release","r")
+        f = open("/etc/centos-release", "r")
         versionpos = 2
     except:
         try:
-            f = open("/etc/redhat-release","r")
+            f = open("/etc/redhat-release", "r")
             versionpos = 2
         except:
             try:
-                f = open("/etc/issue","r")
+                f = open("/etc/issue", "r")
                 versionpos = 1
             except:
                 pass
@@ -124,54 +125,49 @@ if uname[0] == "Linux":
             swubuntu = True
     except:
         pass
-    user_os="POSIX :: Linux"
+    user_os = "POSIX :: Linux"
 
     obj_name = "_snap.so"
 
 elif uname[0] == "Darwin":
     os.system("sw_vers -productVersion > OSX-Release")
     try:
-        f = open("OSX-Release","r")
+        f = open("OSX-Release", "r")
         content = f.read()
         f.close()
         os_version = "macosx" + content.strip()
     except:
         pass
-    user_os="MacOS"
+    user_os = "MacOS"
     obj_name = "_snap.so"
 
 elif uname[0].find("CYGWIN") == 0:
-    w = uname[0].rsplit("-",1)
+    w = uname[0].rsplit("-", 1)
     os_version = w[0].lower()
-    obj_name   = "_snap.so"
-    user_os    = "Microsoft :: Windows"
+    obj_name = "_snap.so"
+    user_os = "Microsoft :: Windows"
 
 elif uname[0].find("Windows") == 0:
     os_version = "Win"
-    obj_name   = "_snap.pyd"
-    user_os    = "Microsoft :: Windows"
+    obj_name = "_snap.pyd"
+    user_os = "Microsoft :: Windows"
 
-# architecture
-arch = "i386"
 # x86_64 on Linux, Mac OS X, i686 on Cygwin
-if uname[4] == "x86_64"  or  uname[4] == "i686"  or  uname[4] == "AMD64":
-    arch = "x64"
+arch = "x64" if uname[4] in {"x86_64", "i686", "AMD64"} else "i386"
 
 # the tarball package name
 pkg_version = "-".join([snappy_version, snap_version,
-		os_version, arch, python_version])
+                        os_version, arch, python_version])
 if swwheel:
-   # pip requires that package names on different platforms are the same
-   pkg_version = snappy_version
+    # pip requires that package names on different platforms are the same
+    pkg_version = snappy_version
 
 #
 #   get the installation directory
 #
 
 # get the system Python directory
-sys_install = os.path.join(
-            os.path.dirname(inspect.getfile(inspect)),
-            "site-packages")
+sys_install = os.path.join(os.path.dirname(inspect.getfile(inspect)), "site-packages")
 
 instdir = "site-packages"
 if swubuntu:
@@ -190,14 +186,14 @@ user_install = sys_install
 for p in sys.path:
     n = p.find(instdir)
     if n > 0:
-        user_install = os.path.join(p[:n],instdir)
+        user_install = os.path.join(p[:n], instdir)
         break
 
 # if Mac OS X, get a path for the Python dynamic library
 dynlib_path = None
 if uname[0] == "Darwin":
     dynlib_path = getdynpath()
-    
+
 # for wheel build, switch to pip directory
 if swwheel:
     #user_install = pip_install
@@ -205,7 +201,7 @@ if swwheel:
 
 # specify additional files for Mac OS X
 script_files = []
-if uname[0] == "Darwin"  and  swsdist:
+if uname[0] == "Darwin" and swsdist:
     script_files = ["install_name_tool", "update_dynlib.sh"]
 
 if dryrun:
@@ -230,32 +226,31 @@ if dryrun:
 #
 #   update the dynamic library path during installation
 #
-if swinstall  and  dynlib_path:
+if swinstall and dynlib_path:
     cmd = "./update_dynlib.sh " + dynlib_path + " " + sysinfo[0]
     os.system(cmd)
-    
+
 with open("README.txt", "r") as fh:
     long_description = fh.read()
 
 #
 #   setup configuration
 #
-setuptools.setup(
-    name = 'snap-stanford',
-    py_modules  = [ "snap" ],
-    data_files  = [(user_install, [ obj_name ])],
-    scripts     = script_files,
-    version     = pkg_version,
-    author      = "snap.stanford.edu",
-    description = '""SNAP (Stanford Network Analysis Platform) Python""',
+setup(
+    name='snap-stanford',
+    py_modules=["snap"],
+    data_files=[(user_install, [obj_name])],
+    scripts=script_files,
+    version=pkg_version,
+    author="snap.stanford.edu",
+    description='""SNAP (Stanford Network Analysis Platform) Python""',
     #long_description = long_description,
     #long_description_content_type = "text/plain",
-    url = "http://snap.stanford.edu",
-    classifiers = [
+    url="http://snap.stanford.edu",
+    classifiers=[
         "Programming Language :: Python :: " + str(sys.version_info[0]),
         "Operating System :: " + user_os,
     ],
-    cmdclass = {'bdist_wheel': bdist_wheel},
-    zip_safe = False,
-    )
-
+    cmdclass={'bdist_wheel': bdist_wheel},
+    zip_safe=False,
+)
