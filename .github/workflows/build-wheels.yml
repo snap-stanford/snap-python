@@ -1,0 +1,49 @@
+name: Publish sdist and wheels macos-manylinux
+
+on:
+  push:
+    tags:
+      - 'v[0-9]+.[0-9]+.[0-9]+'
+
+env:
+  CIBW_MANYLINUX_X86_64_IMAGE: manylinux2014
+  MACOSX_DEPLOYMENT_TARGET: '10.13'
+  CIBW_BUILD_VERBOSITY: 2
+  # Only build on Python 3.x
+  CIBW_BUILD: 'cp37-*'
+  CIBW_SKIP: 'cp35-* cp39-* *-manylinux_i686'
+  CIBW_BEFORE_TEST: pip install nose mock
+  CIBW_TEST_COMMAND: nosetests -s -v -P {project}/python/tests
+
+jobs:
+  build_wheels:
+    name: Build wheels on ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-18.04]
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: 'true'
+
+      - uses: actions/setup-python@v2
+        name: Install Python
+        with:
+          python-version: '3.7'
+
+      - name: Install cibuildwheel
+        run: |
+          python -m pip install cibuildwheel==1.6.4
+      - name: Build wheels on Linux
+        if: runner.os == 'Linux'
+        env:
+          CIBW_BEFORE_BUILD: 'yum update -y; yum -y install swig'
+        run: |
+          python -m cibuildwheel --output-dir dist
+      - name: Store wheel as artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: dist
+          path: dist
