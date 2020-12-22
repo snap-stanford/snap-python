@@ -1,14 +1,14 @@
 #
 # Makefile for SWIG processing of SNAP
-# 
+#
 
 # set the path to your SNAP directory here
-GITDIR = ../../../snap
+SNAPROOT = ../../../snap
 
-include $(GITDIR)/Makefile.config
+include $(SNAPROOT)/Makefile.config
 
-SNAPDIR = $(GITDIR)/$(SNAP)
-GLIBDIR = $(GITDIR)/$(GLIB)
+SNAPDIR = $(SNAPROOT)/$(SNAP)
+GLIBDIR = $(SNAPROOT)/$(GLIB)
 
 UNAME := $(shell uname)
 
@@ -36,8 +36,7 @@ python: Snap.o snap.i
 	g++ $(CXXFLAGS) $(SWIGFLAGS) -c snap_wrap.cxx $(SWIGFILES) -I$(SNAPDIR) -I$(GLIBDIR) -I/usr/include/python2.6 -I/usr/include/python2.7
 	g++ $(LDFLAGS) $(CXXFLAGS) snap_wrap.o Snap.o -o _snap.so
 
-Snap.o: 
+Snap.o:
 	$(CC) $(CXXFLAGS) $(SWIGFLAGS) -c $(SNAPDIR)/Snap.cpp -I$(SNAPDIR) -I$(GLIBDIR)
 clean:
 	rm -f *.o *_wrap.cxx _*.so *.pyc
-
