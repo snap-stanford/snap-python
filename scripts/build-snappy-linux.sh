@@ -24,5 +24,5 @@ cd $WORKDIR/snap-python/swig
 make snap_wrap3.cxx
 
 # compile the extensions and build all the wheels
-docker run -it -v $WORKDIR:/src --user "$(id -u):$(id -g)" quay.io/pypa/manylinux1_x86_64 /src/build-packages-linux.sh
+docker run -it -v $WORKDIR:/src --user "$(id -u):$(id -g)" quay.io/pypa/manylinux1_x86_64 /src/snap-python/scripts/build-packages-linux.sh
 
