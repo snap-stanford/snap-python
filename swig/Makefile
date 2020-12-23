@@ -146,8 +146,6 @@ srcdist: $(SETUP) snap.py _snap.so
 	$(PYTHON) $(SETUP) sdist
 
 whldist: $(SETUP) snap.py _snap.so
-	cp $(MANIFEST) MANIFEST
-	cp $(MANIFEST_IN) MANIFEST.in
 	$(PYTHON) $(SETUP) bdist_wheel
 ifeq ($(UNAME), Linux)
 	# change name '-linux_' to '-linuxmany1_' as required by pip
@@ -160,8 +158,6 @@ srcdist3: $(SETUP) snap3.py _snap3.so snap.py
 	$(PYTHON3) $(SETUP) sdist
 
 whldist3: $(SETUP) snap3.py _snap3.so snap.py
-	cp $(MANIFEST) MANIFEST
-	cp $(MANIFEST_IN) MANIFEST.in
 	$(PYTHON3) $(SETUP) bdist_wheel
 ifeq ($(UNAME), Linux)
 	# change name '-linux_' to '-linuxmany1_' as required by pip
@@ -182,8 +178,6 @@ srcdist-win: setup.py snap.py _snap.pyd
 	chmod 0644 dist/*.zip
 
 srcdist3-win: setup.py snap.py _snap.pyd
-	cp $(MANIFEST) MANIFEST
-	cp $(MANIFEST_IN) MANIFEST.in
 	"$(PYTHON3)" setup.py sdist --formats=zip
 	chmod 0644 dist/*.zip
 
@@ -193,15 +187,13 @@ whldist-win: setup.py snap.py _snap.pyd
 	$(PYTHON) setup.py bdist_wheel
 
 whldist3-win: setup.py snap.py _snap.pyd
-	cp $(MANIFEST) MANIFEST
-	cp $(MANIFEST_IN) MANIFEST.in
 	"$(PYTHON3)" setup.py bdist_wheel
 
 clean:
 	rm -f *.o *_wrap*.cxx _*.so *.pyc snap*.py _snap*.*
 
 clean-obj:
-	rm -f snap_*.o _snap.so
+	rm -f snap_*.o _snap.so 
 
 pip-test: dist/*
 	@echo TESTING uploading test file ${WHLFILE}
