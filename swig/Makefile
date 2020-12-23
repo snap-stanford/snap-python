@@ -177,17 +177,17 @@ srcdist-win: setup.py snap.py _snap.pyd
 	$(PYTHON) setup.py sdist --formats=zip
 	chmod 0644 dist/*.zip
 
-srcdist3-win: setup.py snap.py _snap.pyd
-	"$(PYTHON3)" setup.py sdist --formats=zip
-	chmod 0644 dist/*.zip
-
 whldist-win: setup.py snap.py _snap.pyd
-	cp $(MANIFEST) MANIFEST
-	cp $(MANIFEST_IN) MANIFEST.in
 	$(PYTHON) setup.py bdist_wheel
 
+srcdist3-win: setup.py snap.py _snap.pyd
+	cp $(MANIFEST) MANIFEST
+	cp $(MANIFEST_IN) MANIFEST.in
+	$(PYTHON3) setup.py sdist --formats=zip
+	chmod 0644 dist/*.zip
+
 whldist3-win: setup.py snap.py _snap.pyd
-	"$(PYTHON3)" setup.py bdist_wheel
+	$(PYTHON3) setup.py bdist_wheel
 
 clean:
 	rm -f *.o *_wrap*.cxx _*.so *.pyc snap*.py _snap*.*
