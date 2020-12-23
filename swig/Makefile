@@ -93,8 +93,8 @@ snap3.py: snap_wrap3.cxx
 _snap.so: snap_wrap.o Snap.o cliques.o agm.o agmfast.o agmfit.o biasedrandomwalk.o word2vec.o n2v.o
 	$(CC) $(LDFLAGS) $(LIBS) snap_wrap.o Snap.o cliques.o agm.o agmfast.o agmfit.o biasedrandomwalk.o word2vec.o n2v.o -o _snap.so
 
-_snap3.so: snap_wrap3.o Snap.o
-	$(CC) $(LDFLAGS3) $(LIBS) snap_wrap3.o Snap.o -o _snap.so
+_snap3.so: snap_wrap3.o Snap.o cliques.o agm.o agmfast.o agmfit.o biasedrandomwalk.o word2vec.o n2v.o
+	$(CC) $(LDFLAGS3) $(LIBS) snap_wrap3.o Snap.o -o cliques.o agm.o agmfast.o agmfit.o biasedrandomwalk.o word2vec.o n2v.o -o _snap.so
 	ln -f _snap.so _snap3.so
 
 snap_wrap.cxx: snap.i snap_types.i tvec.i pneanet.i tmodenet.i tcrossnet.i pungraph.i pngraph.i pgraph.i pngraphmp.i pneanetmp.i pylayer.i\
@@ -201,7 +201,7 @@ pip-test: dist/*
 
 pip3-test: dist/*
 	@echo TESTING uploading test file ${WHLFILE}
-	"$(PYTHON3)" -m twine upload --repository-url https://test.pypi.org/legacy/ ${WHLFILE}
+	$(PYTHON3) -m twine upload --repository-url https://test.pypi.org/legacy/ ${WHLFILE}
 
 pip-public: dist/*
 	@echo PUBLIC RELEASE uploading file ${WHLFILE}
@@ -209,4 +209,5 @@ pip-public: dist/*
 
 pip3-public: dist/*
 	@echo PUBLIC RELEASE uploading file ${WHLFILE}
-	"$(PYTHON3)" -m twine upload ${WHLFILE}
+	$(PYTHON3) -m twine upload ${WHLFILE}
+
