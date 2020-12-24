@@ -10,7 +10,7 @@ from setuptools.command.build_ext import build_ext
 
 import distutils.dir_util
 
-SNAPPY_VERSION = '5.9.0'
+SNAPPY_VERSION = '6.0.0'
 
 class SwigExtension(Extension):
     def __init__(self, name, sourcedir=''):

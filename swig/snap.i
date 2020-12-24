@@ -5,10 +5,10 @@
 
 // set to 1 for release to include all the functions (long compile)
 // set to 0 for development to include limited functions (shorter compile)
-#define SNAP_ALL 0
+#define SNAP_ALL 1
 
 %pythoncode %{
-Version = "5.9.0"
+Version = "6.0.0"
 %}
 
 %module snap
