@@ -1,5 +1,5 @@
 GenRewire (SWIG)
-''''''''''''''''''
+''''''''''''''''
 
 .. function:: GenRewire (Graph, NSwitch, Rnd=TRnd)
    :noindex:

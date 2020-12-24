@@ -1,5 +1,5 @@
 GetBfsTree
-'''''''''''
+''''''''''
 
 .. function:: GetBfsTree(StartNId, FollowOut, FollowIn)
 

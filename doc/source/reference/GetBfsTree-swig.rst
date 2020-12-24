@@ -1,5 +1,5 @@
 GetBfsTree (SWIG)
-''''''''''''''''''
+'''''''''''''''''
 
 .. function:: GetBfsTree(Graph, StartNId, FollowOut, FollowIn)
    :noindex:

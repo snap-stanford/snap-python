@@ -1,5 +1,5 @@
 PrintInfo (SWIG)
-''''''''''''''''''
+''''''''''''''''
 
 .. function:: PrintInfo(Graph, Desc, OutFNm="", Fast=True)
    :noindex:

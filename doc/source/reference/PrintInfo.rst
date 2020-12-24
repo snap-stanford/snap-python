@@ -1,5 +1,5 @@
 PrintInfo
-'''''''''''
+'''''''''
 
 .. function:: PrintInfo(Desc, OutFNm="", Fast=True)
 

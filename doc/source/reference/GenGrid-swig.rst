@@ -1,5 +1,5 @@
 GenGrid (SWIG)
-''''''''''''''''''
+''''''''''''''
 
 .. function:: GenGrid(GraphType, Rows, Cols, IsDir=True)
    :noindex:

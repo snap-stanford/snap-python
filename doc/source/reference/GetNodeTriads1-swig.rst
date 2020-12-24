@@ -1,5 +1,5 @@
 GetNodeTriads (SWIG)
-''''''''''''''''''''''
+''''''''''''''''''''
 
 .. function:: GetNodeTriads(Graph, NId, GroupSet)
    :noindex:

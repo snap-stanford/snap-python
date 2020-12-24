@@ -1,5 +1,5 @@
 GenTree
-'''''''''
+'''''''
 
 .. function:: GenTree(GraphType, Fanout, Levels, IsDir=True, ChildPointsToParent=True)
 

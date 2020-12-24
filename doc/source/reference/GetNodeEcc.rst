@@ -1,5 +1,5 @@
 GetNodeEcc
-'''''''''''
+''''''''''
 
 .. function:: GetNodeEcc(NId, IsDir=False)
 

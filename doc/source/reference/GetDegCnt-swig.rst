@@ -1,5 +1,5 @@
 GetDegCnt (SWIG)
-''''''''''''''''''''''
+''''''''''''''''
 
 .. function:: GetDegCnt(Graph, DegToCntV)
    :noindex:

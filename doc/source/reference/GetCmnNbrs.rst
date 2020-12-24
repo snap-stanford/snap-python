@@ -1,5 +1,5 @@
 GetCmnNbrs
-'''''''''''
+''''''''''
 
 .. function:: GetCmnNbrs(NId1, NId2, NbrList = False)
 

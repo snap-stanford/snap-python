@@ -1,5 +1,5 @@
 GenGrid
-'''''''''''
+'''''''
 
 .. function:: GenGrid(GraphType, Rows, Cols, IsDir=True)
 

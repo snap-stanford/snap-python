@@ -1,5 +1,5 @@
 GetCmnNbrs (SWIG)
-''''''''''''''''''
+'''''''''''''''''
 
 .. function:: GetCmnNbrs(Graph, NId1, NId2)
    :noindex:

@@ -1,5 +1,5 @@
 GetMxBiCon (SWIG)
-''''''''''''''''''
+'''''''''''''''''
 
 .. function:: GetMxBiCon(Graph)
    :noindex:

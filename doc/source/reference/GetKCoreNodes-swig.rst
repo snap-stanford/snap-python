@@ -1,5 +1,5 @@
 GetKCoreNodes (SWIG)
-''''''''''''''''''''''
+''''''''''''''''''''
 
 .. function:: GetKCoreNodes(Graph, CoreIdSzV)
    :noindex:

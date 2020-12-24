@@ -1,5 +1,5 @@
 GenStar
-'''''''''''
+'''''''
 
 .. function:: GenStar (GraphType, Nodes, IsDir=True)
 

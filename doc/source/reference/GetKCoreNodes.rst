@@ -1,5 +1,5 @@
 GetKCoreNodes
-'''''''''''''''
+'''''''''''''
 
 .. function:: GetKCoreNodes()
 

@@ -1,5 +1,5 @@
 CntInDegNodes
-'''''''''''''''''''
+'''''''''''''
 
 .. function:: CntInDegNodes(NodeInDeg)
 

@@ -1,5 +1,5 @@
 GetBfsEffDiamAll
-````````````````
+''''''''''''''''
 
 .. function:: GetBfsEffDiamAll(NTestNode, IsDir)
 

@@ -1,5 +1,5 @@
 GetNodeInDegV (SWIG)
-''''''''''''''''''''''
+''''''''''''''''''''
 
 .. function:: GetNodeInDegV(Graph, NIdInDegV)
    :noindex:
