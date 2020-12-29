@@ -13,8 +13,9 @@ Snap.py 6.0 is a major release with a large number of new features, most
 notably a significantly improved way to call Snap.py functions in Python, a
 NetworkX compatibility layer, standard Python functions to handle SNAP vector
 and hash types, new functions for egonets and graph union, and a completely
-revised package building infrastructure. These enhancements are backward
-compatible, so existing Snap.py based programs should continue to work.
+revised package building infrastructure with a better support for various
+versions of Python. These enhancements are backward compatible, so existing
+Snap.py based programs should continue to work.
 
 A high-level description of changes in Snap.py releases is provided below.
 
