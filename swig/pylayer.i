@@ -521,7 +521,7 @@ def GetLen2Paths(Graph, *args):
         return _GetLen2Paths(Graph, *args)
     elif args[-1]:
         NbrV = TIntV()
-        paths = _GetLen2Paths(Graph, *args[:-1], NbrV)
+        paths = _GetLen2Paths(Graph, *(list(args[:-1]) + [NbrV]))
         return paths, NbrV
     else:
         return _GetLen2Paths(Graph, *args[:-1])
