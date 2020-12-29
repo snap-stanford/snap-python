@@ -55,20 +55,15 @@ Below are the most commonly used vector operations:
 
 - add a value at the end of a vector. 5 values are added below in positions 0..4:
 
-  >>> v.Add(1)
-  0
-  >>> v.Add(2)
-  1
-  >>> v.Add(3)
-  2
-  >>> v.Add(4)
-  3
-  >>> v.Add(5)
-  4
+  >>> v.append(1)
+  >>> v.append(2)
+  >>> v.append(3)
+  >>> v.append(4)
+  >>> v.append(5)
 
 - get the number of values in the vector:
 
-  >>> print(v.Len())
+  >>> print(len(v))
   5
 
 - get a value at a specific vector location
@@ -78,7 +73,7 @@ Below are the most commonly used vector operations:
 
 - change a value at a specific vector location
 
-  >>> v.SetVal(2,6)
+  >>> v[2] = 6
   >>> print("v[2] =", v[2])
   v[2] = 6
 
@@ -94,7 +89,7 @@ Below are the most commonly used vector operations:
 
 - print all values in a vector using an index
 
-  >>> for i in range(0, v.Len()):
+  >>> for i in range(0, len(v)):
   >>>     print(i, v[i])
   0 1
   1 2
@@ -124,37 +119,37 @@ Below are the most commonly used hash table operations:
 
 - add a value to the table. 5 values are added below:
 
-  >>> h[5] = "five"
-  >>> h[3] = "three"
-  >>> h[9] = "nine"
-  >>> h[6] = "six"
-  >>> h[1] = "one"
+  >>> h[5] = "apple"
+  >>> h[3] = "orange"
+  >>> h[9] = "plum"
+  >>> h[6] = "mango"
+  >>> h[1] = "banana"
 
 - get the number of values in the table:
 
-  >>> print(h.Len())
+  >>> print(len(h))
   5
 
 - get a value for a specific key
 
   >>> print("h[3] =", h[3])
-  h[3] = three
+  h[3] = orange
 
 - change a value at a specific key
 
-  >>> h[3] = "four"
+  >>> h[3] = "apricot"
   >>> print("h[3] =", h[3])
-  h[3] = four
+  h[3] = apricot
 
 - print all values in a table using an iterator
 
   >>> for key in h:
   >>>     print(key, h[key])
-  5 five
-  3 four
-  9 nine
-  6 six
-  1 one
+  5 apple
+  3 apricot
+  9 plum
+  6 mango
+  1 banana
 
 .. seealso::
 
