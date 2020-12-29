@@ -14,6 +14,7 @@ mkdir -p $WORKDIR
 cd $WORKDIR
 
 # get a fresh copy of SNAP repositories, rename any existing repositories
+rm -rf snap.bak snap-python.bak
 mv -f snap snap.bak
 mv -f snap-python snap-python.bak
 git clone git@github.com:snap-stanford/snap.git
