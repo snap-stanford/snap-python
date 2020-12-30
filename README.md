@@ -77,9 +77,9 @@ This dependency is needed for configure to complete. Either:
 	- Download the PCRE source tarball, build and install on your system
 	as you would for any package built from source distribution.
 	- Use the `Tools/pcre-build.sh` script to build PCRE just for SWIG to statically
-	link against. Run `Tools/pcre-build.sh –help` for instructions.
+	link against. Run `Tools/pcre-build.sh -help` for instructions.
 	(quite easy and does not require privileges to install PCRE on your system)
-	- Configure using the `–without-pcre` option to disable regular expressions support in SWIG
+	- Configure using the `-without-pcre` option to disable regular expressions support in SWIG
 	(not recommended).
 	See `config.log` for more details.
 		
@@ -96,7 +96,7 @@ This dependency is needed for configure to complete. Either:
 		make
 		sudo make install
 
-5. Once this has completed test that SWIG has installed correctly, type `swig` into the terminal and hopefully you’ll get the response:
+5. Once this has completed test that SWIG has installed correctly, type `swig` into the terminal and hopefully you'll get the response:
   Must specify an input file. Use `-help` for available options.
 
 SWIG Benchmarks
