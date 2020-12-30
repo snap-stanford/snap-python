@@ -405,7 +405,7 @@ Generate a Preferential Attachment graph on 100 nodes and out-degree of 3:
 
 Define a vector of floats and get first eigenvector of graph adjacency matrix:
 
->>> EigV = G10.GetEigVec()
+>>> EigV = G10.GetLeadEigVec()
 >>> nr = 0
 >>> for f in EigV:
 >>>     nr += 1
