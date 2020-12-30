@@ -52,6 +52,7 @@ setup(
     author="snap.stanford.edu",
     description="SNAP (Stanford Network Analysis Platform) Python",
     long_description=LONG_DESCRIPTION,
+    long_description_content_type='text/markdown'
     url="http://snap.stanford.edu",
     classifiers=[
         "Programming Language :: Python :: 2",
