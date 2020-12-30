@@ -54,12 +54,15 @@ setup(
     long_description=LONG_DESCRIPTION,
     long_description_content_type="text/markdown",
     url="http://snap.stanford.edu",
+    license="3-clause BSD, http://snap.stanford.edu/snap/license.html",
     classifiers=[
         "Programming Language :: Python :: 2",
         "Programming Language :: Python :: 3",
+        "License :: OSI Approved :: BSD License",
         "Operating System :: MacOS",
         "Operating System :: Microsoft :: Windows",
-        "Operating System :: POSIX :: Linux"
+        "Operating System :: POSIX :: Linux",
+        "Topic :: Scientific/Engineering"
     ],
     zip_safe=False,
     cmdclass=dict(build_ext=PkgBuild),
