@@ -1,5 +1,5 @@
 GetNodeEcc (SWIG)
-''''''''''''''''''
+'''''''''''''''''
 
 .. function:: GetNodeEcc(Graph, NId, IsDir=False)
    :noindex:

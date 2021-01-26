@@ -1,5 +1,5 @@
 GetDegCnt
-'''''''''''''''
+'''''''''
 
 .. function:: GetDegCnt()
 

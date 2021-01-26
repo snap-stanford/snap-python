@@ -23,7 +23,7 @@
 # NOTE: python3 build on macOS
 #	- use brew python for all the steps
 #	- the final packages requires brew
-# 
+#
 # Build instructions for py2 on Windows:
 #	- run swig in Cygwin to generate snap_wrap.cxx and snap.py
 #		make swig-win
@@ -70,16 +70,14 @@
 #				      # EXECUTE MANUALLY FROM COMMAND PROMPT
 
 # set the path to your SNAP directory here
-GITDIR = ../../snap
-SNAPDIR = $(GITDIR)/$(SNAP)
-GLIBDIR = $(GITDIR)/$(GLIB)
-SNAPADVDIR = $(GITDIR)/$(SNAPADV)
-SNAPEXPDIR = $(GITDIR)/$(SNAPEXP)
-
-WHLFILE := $(shell ls -rt dist/*.whl | tail -1)
+SNAPROOT ?= ../../snap
+SNAPDIR = $(SNAPROOT)/$(SNAP)
+GLIBDIR = $(SNAPROOT)/$(GLIB)
+SNAPADVDIR = $(SNAPROOT)/$(SNAPADV)
+SNAPEXPDIR = $(SNAPROOT)/$(SNAPEXP)
 
 # include compilation parameters
-include $(GITDIR)/Makefile.config
+include $(SNAPROOT)/Makefile.config
 include ../Makefile.config
 
 all: all3
@@ -95,8 +93,8 @@ snap3.py: snap_wrap3.cxx
 _snap.so: snap_wrap.o Snap.o cliques.o agm.o agmfast.o agmfit.o biasedrandomwalk.o word2vec.o n2v.o
 	$(CC) $(LDFLAGS) $(LIBS) snap_wrap.o Snap.o cliques.o agm.o agmfast.o agmfit.o biasedrandomwalk.o word2vec.o n2v.o -o _snap.so
 
-_snap3.so: snap_wrap3.o Snap.o 
-	$(CC) $(LDFLAGS3) $(LIBS) snap_wrap3.o Snap.o -o _snap.so
+_snap3.so: snap_wrap3.o Snap.o cliques.o agm.o agmfast.o agmfit.o biasedrandomwalk.o word2vec.o n2v.o
+	$(CC) $(LDFLAGS3) $(LIBS) snap_wrap3.o Snap.o -o cliques.o agm.o agmfast.o agmfit.o biasedrandomwalk.o word2vec.o n2v.o -o _snap.so
 	ln -f _snap.so _snap3.so
 
 snap_wrap.cxx: snap.i snap_types.i tvec.i pneanet.i tmodenet.i tcrossnet.i pungraph.i pngraph.i pgraph.i pngraphmp.i pneanetmp.i pylayer.i\
@@ -115,56 +113,52 @@ snap_wrap3.o: snap_wrap3.cxx
 	$(CC) $(CXXFLAGS) -I$(SNAPDIR) -I$(GLIBDIR) $(IFLAGS3) -c snap_wrap3.cxx -o snap_wrap.o
 	ln -f snap_wrap.o snap_wrap3.o
 
-Snap.o: 
+Snap.o:
 	$(CC) $(CXXFLAGS) -I$(SNAPDIR) -I$(GLIBDIR) -c $(SNAPDIR)/Snap.cpp
 
-cliques.o: 
+cliques.o:
 	$(CC) $(CXXFLAGS) -I$(SNAPDIR) -I$(SNAPADVDIR) -I$(GLIBDIR) -c $(SNAPADVDIR)/cliques.cpp
 
-agm.o: 
+agm.o:
 	$(CC) $(CXXFLAGS) -I$(SNAPDIR) -I$(SNAPADVDIR) -I$(GLIBDIR) -c $(SNAPADVDIR)/agm.cpp
 
-agmfast.o: 
+agmfast.o:
 	$(CC) $(CXXFLAGS) -I$(SNAPDIR) -I$(SNAPADVDIR) -I$(GLIBDIR) -c $(SNAPADVDIR)/agmfast.cpp
 
-agmfit.o: 
+agmfit.o:
 	$(CC) $(CXXFLAGS) -I$(SNAPDIR) -I$(SNAPADVDIR) -I$(GLIBDIR) -c $(SNAPADVDIR)/agmfit.cpp
 
-biasedrandomwalk.o: 
+biasedrandomwalk.o:
 	$(CC) $(CXXFLAGS) -I$(SNAPDIR) -I$(SNAPADVDIR) -I$(GLIBDIR) -c $(SNAPADVDIR)/biasedrandomwalk.cpp
 
-word2vec.o: 
+word2vec.o:
 	$(CC) $(CXXFLAGS) -I$(SNAPDIR) -I$(SNAPADVDIR) -I$(GLIBDIR) -c $(SNAPADVDIR)/word2vec.cpp
 
-n2v.o: 
+n2v.o:
 	$(CC) $(CXXFLAGS) -I$(SNAPDIR) -I$(SNAPADVDIR) -I$(GLIBDIR) -c $(SNAPADVDIR)/n2v.cpp
 
 install: setup.py snap.py _snap.so
 	sudo $(PYTHON) setup.py install
 
-srcdist: setup.py snap.py _snap.so
+srcdist: $(SETUP) snap.py _snap.so
 	cp $(MANIFEST) MANIFEST
 	cp $(MANIFEST_IN) MANIFEST.in
-	$(PYTHON) setup.py sdist
+	$(PYTHON) $(SETUP) sdist
 
-whldist: setup.py snap.py _snap.so
-	cp $(MANIFEST) MANIFEST
-	cp $(MANIFEST_IN) MANIFEST.in
-	$(PYTHON) setup.py bdist_wheel
+whldist: $(SETUP) snap.py _snap.so
+	$(PYTHON) $(SETUP) bdist_wheel
 ifeq ($(UNAME), Linux)
 	# change name '-linux_' to '-linuxmany1_' as required by pip
 	mv dist/*-linux_* `ls dist/*-linux_* | sed -e "s/-linux_/-manylinux1_/g"`
 endif
 
-srcdist3: setup.py snap3.py _snap3.so snap.py
+srcdist3: $(SETUP) snap3.py _snap3.so snap.py
 	cp $(MANIFEST) MANIFEST
 	cp $(MANIFEST_IN) MANIFEST.in
-	python3 setup.py sdist
+	$(PYTHON3) $(SETUP) sdist
 
-whldist3: setup.py snap3.py _snap3.so snap.py
-	cp $(MANIFEST) MANIFEST
-	cp $(MANIFEST_IN) MANIFEST.in
-	python3 setup.py bdist_wheel
+whldist3: $(SETUP) snap3.py _snap3.so snap.py
+	$(PYTHON3) $(SETUP) bdist_wheel
 ifeq ($(UNAME), Linux)
 	# change name '-linux_' to '-linuxmany1_' as required by pip
 	mv dist/*-linux_* `ls dist/*-linux_* | sed -e "s/-linux_/-manylinux1_/g"`
@@ -183,24 +177,23 @@ srcdist-win: setup.py snap.py _snap.pyd
 	$(PYTHON) setup.py sdist --formats=zip
 	chmod 0644 dist/*.zip
 
+whldist-win: setup.py snap.py _snap.pyd
+	$(PYTHON) setup.py bdist_wheel
+
 srcdist3-win: setup.py snap.py _snap.pyd
 	cp $(MANIFEST) MANIFEST
 	cp $(MANIFEST_IN) MANIFEST.in
-	"$(PYTHON3)" setup.py sdist --formats=zip
+	$(PYTHON3) setup.py sdist --formats=zip
 	chmod 0644 dist/*.zip
 
-whldist-win: setup.py snap.py _snap.pyd
-	cp $(MANIFEST) MANIFEST
-	cp $(MANIFEST_IN) MANIFEST.in
-	$(PYTHON) setup.py bdist_wheel
-
 whldist3-win: setup.py snap.py _snap.pyd
-	cp $(MANIFEST) MANIFEST
-	cp $(MANIFEST_IN) MANIFEST.in
-	"$(PYTHON3)" setup.py bdist_wheel
+	$(PYTHON3) setup.py bdist_wheel
 
 clean:
 	rm -f *.o *_wrap*.cxx _*.so *.pyc snap*.py _snap*.*
+
+clean-obj:
+	rm -f snap_*.o _snap.so 
 
 pip-test: dist/*
 	@echo TESTING uploading test file ${WHLFILE}
@@ -208,7 +201,7 @@ pip-test: dist/*
 
 pip3-test: dist/*
 	@echo TESTING uploading test file ${WHLFILE}
-	"$(PYTHON3)" -m twine upload --repository-url https://test.pypi.org/legacy/ ${WHLFILE}
+	$(PYTHON3) -m twine upload --repository-url https://test.pypi.org/legacy/ ${WHLFILE}
 
 pip-public: dist/*
 	@echo PUBLIC RELEASE uploading file ${WHLFILE}
@@ -216,5 +209,5 @@ pip-public: dist/*
 
 pip3-public: dist/*
 	@echo PUBLIC RELEASE uploading file ${WHLFILE}
-	"$(PYTHON3)" -m twine upload ${WHLFILE}
+	$(PYTHON3) -m twine upload ${WHLFILE}
 

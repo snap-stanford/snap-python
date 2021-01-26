@@ -1,5 +1,5 @@
 GetKCore
-'''''''''''''''
+''''''''
 
 .. function:: GetKCore(K)
 

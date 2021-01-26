@@ -1,5 +1,5 @@
 GetMxWcc (SWIG)
-''''''''''''''''''
+'''''''''''''''
 
 .. function:: GetMxWcc(Graph)
    :noindex:

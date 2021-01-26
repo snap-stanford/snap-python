@@ -1,5 +1,5 @@
 GetHits (SWIG)
-''''''''''''''''''''''
+''''''''''''''
 
 .. function:: GetHits (Graph, NIdHubH, NIdAuthH, MaxIter = 20)
    :noindex:

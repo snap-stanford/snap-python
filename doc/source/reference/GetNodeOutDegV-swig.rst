@@ -1,5 +1,5 @@
 GetNodeOutDegV (SWIG)
-'''''''''''''''''''''''
+'''''''''''''''''''''
 
 .. function:: GetNodeOutDegV(Graph, NIdOutDegV)
    :noindex:

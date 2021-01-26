@@ -1,5 +1,5 @@
 GetMxBiCon
-'''''''''''
+''''''''''
 
 .. function:: GetMxBiCon()
 

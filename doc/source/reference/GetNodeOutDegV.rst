@@ -1,5 +1,5 @@
 GetNodeOutDegV
-''''''''''''''''
+''''''''''''''
 
 .. function:: GetNodeOutDegV()
 

@@ -1,5 +1,5 @@
 Tables
-`````````````````````
+``````
 
 Tables in SNAP are represented by the class :class:`TTable`.
 

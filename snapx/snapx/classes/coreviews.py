@@ -112,7 +112,7 @@ class FilterAtlas(Mapping):  # nodedict, nbrdict, keydict
     def __getitem__(self, key):
         if key in self._atlas and self.NODE_OK(key):
             return self._atlas[key]
-        raise KeyError(f"Key {key} not found")
+        raise KeyError("Key {} not found".format(key))
 
     def copy(self):
         try:  # check that NODE_OK has attr 'nodes'
@@ -127,8 +127,7 @@ class FilterAtlas(Mapping):  # nodedict, nbrdict, keydict
         return str({nbr: self[nbr] for nbr in self})
 
     def __repr__(self):
-        return f"{self.__class__.__name__}({self._atlas!r}, {self.NODE_OK!r})"
-
+        return "{}({}, {})".format(self.__class__.__name__, self._atlas.__repr__(), self.NODE_OK._repr__())
 
 class FilterAdjacency(Mapping):  # edgedict
     def __init__(self, d, NODE_OK, EDGE_OK):
@@ -155,7 +154,7 @@ class FilterAdjacency(Mapping):  # edgedict
                 return self.NODE_OK(nbr) and self.EDGE_OK(node, nbr)
 
             return FilterAtlas(self._atlas[node], new_node_ok)
-        raise KeyError(f"Key {node} not found")
+        raise KeyError("Key {} not found".format(key))
 
     def copy(self):
         try:  # check that NODE_OK has attr 'nodes'
@@ -183,8 +182,7 @@ class FilterAdjacency(Mapping):  # edgedict
         return str({nbr: self[nbr] for nbr in self})
 
     def __repr__(self):
-        name = self.__class__.__name__
-        return f"{name}({self._atlas!r}, {self.NODE_OK!r}, {self.EDGE_OK!r})"
+        return "{}({}, {}, {})".format(self.__class__.__name__, self._atlas.__repr__(), self.NODE_OK__repr__(), self.EDGE_OK.__repr__())
 
 
 class FilterMultiAdjacency(FilterAdjacency):  # multiedgedict
@@ -195,7 +193,7 @@ class FilterMultiAdjacency(FilterAdjacency):  # multiedgedict
                 return self.NODE_OK(nbr) and self.EDGE_OK(node, nbr, key)
 
             return FilterMultiInner(self._atlas[node], self.NODE_OK, edge_ok)
-        raise KeyError(f"Key {node} not found")
+        raise KeyError("Key {} not found".format(node))
 
     def copy(self):
         try:  # check that NODE_OK has attr 'nodes'

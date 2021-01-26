@@ -1,5 +1,5 @@
 CntOutDegNodes
-'''''''''''''''''''
+''''''''''''''
 
 .. function:: CntOutDegNodes(NodeOutDeg)
 

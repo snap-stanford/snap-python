@@ -1,5 +1,5 @@
 SavePajek (SWIG)
-''''''''''''''''''
+''''''''''''''''
 
 .. function:: SavePajek(Graph, OutFNm)
    :noindex:

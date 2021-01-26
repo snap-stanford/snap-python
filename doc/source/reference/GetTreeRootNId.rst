@@ -1,5 +1,5 @@
 GetTreeRootNId
-'''''''''''''''
+''''''''''''''
 
 .. function:: GetTreeRootNId()
 

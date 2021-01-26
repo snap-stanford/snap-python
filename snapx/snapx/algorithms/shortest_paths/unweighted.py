@@ -40,7 +40,7 @@ def single_source_shortest_path_length(G, source, cutoff=None):
     >>> length[4]
     4
     >>> for node in length:
-    ...     print(f"{node}: {length[node]}")
+    ...     print("{}: {}".format(node, length[node]))
     0: 0
     1: 1
     2: 2
@@ -52,7 +52,7 @@ def single_source_shortest_path_length(G, source, cutoff=None):
     shortest_path_length
     """
     if source not in G:
-        raise sx.NodeNotFound(f"Source {source} is not in G")
+        raise sx.NodeNotFound("Source {} is not in G".format(source))
     if cutoff is None:
         cutoff = float("inf")
     nextlevel = {source: 1}
@@ -118,7 +118,7 @@ def single_target_shortest_path_length(G, target, cutoff=None):
     >>> length[0]
     4
     >>> for node in range(5):
-    ...     print(f"{node}: {length[node]}")
+    ...     print("{}: {}".format(node, length[node]))
     0: 4
     1: 3
     2: 2
@@ -130,7 +130,7 @@ def single_target_shortest_path_length(G, target, cutoff=None):
     single_source_shortest_path_length, shortest_path_length
     """
     if target not in G:
-        raise sx.NodeNotFound(f"Target {target} is not in G")
+        raise sx.NodeNotFound("Target {} is not in G".format(target))
 
     if cutoff is None:
         cutoff = float("inf")
@@ -166,7 +166,7 @@ def all_pairs_shortest_path_length(G, cutoff=None):
     >>> G = nx.path_graph(5)
     >>> length = dict(nx.all_pairs_shortest_path_length(G))
     >>> for node in [0, 1, 2, 3, 4]:
-    ...     print(f"1 - {node}: {length[1][node]}")
+    ...     print("1 - {}: {}".format(node, length[1][node])
     1 - 0: 1
     1 - 1: 0
     1 - 2: 1
@@ -217,7 +217,7 @@ def bidirectional_shortest_path(G, source, target):
     """
 
     if source not in G or target not in G:
-        msg = f"Either source {source} or target {target} is not in G"
+        msg = "Either source {} or target {} is not in G".format(source, target)
         raise sx.NodeNotFound(msg)
 
     # call helper to do the real work
@@ -289,7 +289,7 @@ def _bidirectional_pred_succ(G, source, target):
                     if w in pred:  # found path
                         return pred, succ, w
 
-    raise sx.SnapXNoPath(f"No path between {source} and {target}.")
+    raise sx.SnapXNoPath("No path between {} and {}.".format(source, target))
 
 
 def single_source_shortest_path(G, source, cutoff=None):
@@ -330,7 +330,7 @@ def single_source_shortest_path(G, source, cutoff=None):
     shortest_path
     """
     if source not in G:
-        raise sx.NodeNotFound(f"Source {source} not in G")
+        raise sx.NodeNotFound("Source {} is not in G".format(source))
 
     def join(p1, p2):
         return p1 + p2
@@ -412,7 +412,7 @@ def single_target_shortest_path(G, target, cutoff=None):
     shortest_path, single_source_shortest_path
     """
     if target not in G:
-        raise sx.NodeNotFound(f"Target {target} not in G")
+        raise sx.NodeNotFound("Target {} is not in G".format(target))
 
     def join(p1, p2):
         return p2 + p1
@@ -493,7 +493,8 @@ def single_target_shortest_path(G, target, cutoff=None):
 
 #     """
 #     if source not in G:
-#         raise nx.NodeNotFound(f"Source {source} not in G")
+#         raise sx.NodeNotFound("Source {} is not in G".format(source))
+
 
 #     level = 0  # the current level
 #     nextlevel = [source]  # list of nodes to check at next level

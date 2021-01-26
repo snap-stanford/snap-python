@@ -1,5 +1,5 @@
 GetClustCf (SWIG)
-''''''''''''''''''
+'''''''''''''''''
 
 .. function:: GetClustCf(Graph, DegToCCfV, SampleNodes=-1)
    :noindex:

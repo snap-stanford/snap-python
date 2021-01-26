@@ -1,5 +1,5 @@
 Get1CnCom
-'''''''''''
+'''''''''
 
 .. function:: Get1CnCom()
 

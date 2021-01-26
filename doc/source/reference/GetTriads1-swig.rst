@@ -1,5 +1,5 @@
 GetTriads (SWIG)
-'''''''''''''''''
+''''''''''''''''
 
 .. function:: GetTriads(Graph, NIdCOTriadV, SampleNodes=-1)
    :noindex:

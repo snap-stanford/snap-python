@@ -1,5 +1,5 @@
 GenRewire
-'''''''''''
+'''''''''
 
 .. function:: GenRewire (Graph, NSwitch, Rnd=TRnd)
 

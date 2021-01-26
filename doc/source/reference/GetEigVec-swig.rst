@@ -1,5 +1,5 @@
 GetEigVec (SWIG)
-''''''''''''''''''
+''''''''''''''''
 
 .. function:: GetEigVec(Graph, EigVec)
    :noindex:

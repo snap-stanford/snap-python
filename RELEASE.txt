@@ -1,5 +1,5 @@
-Snap.py 5.0 Release Notes
-August 2019
+Snap.py 6.0 Release Notes
+December 2020
 
 Snap.py is a Python interface for SNAP (Stanford Network Analysis Platform).
 SNAP is a general purpose, high performance system for analysis and
@@ -9,7 +9,41 @@ to massive networks with hundreds of millions of nodes, and billions of edges.
 Snap.py provides performance benefits of SNAP, combined with flexibility
 of Python. Most of the SNAP functionality is available via Snap.py in Python.
 
-This file contains a high-level description of changes in Snap.py releases.
+Snap.py 6.0 is a major release with a large number of new features, most
+notably a significantly improved way to call Snap.py functions in Python, a
+NetworkX compatibility layer, standard Python functions to handle SNAP vector
+and hash types, new functions for egonets and graph union, and a completely
+revised package building infrastructure with a better support for various
+versions of Python. These enhancements are backward compatible, so existing
+Snap.py based programs should continue to work.
+
+A high-level description of changes in Snap.py releases is provided below.
+
+Release 6.0.0, Dec 28, 2020
+
+- implemented pylayer, a significantly improved way to call SNAP C++ functions
+  - standalone functions are available as class methods
+  - built-in Python classes (lists, dictionaries) can be provided as parameters
+  - results are available as return values rather than as reference parameters
+  - support for optional parameters has been enhanced
+- implemented SnapX, a NetworkX compatible graph manipulation layer, as a
+  module within Snap.py
+- implemented standard Python interface functions for SNAP vector and hash
+  types to be compatible with Python lists and dictionaries
+- implemented new functions to calculate egonets, GetEgonet, GetEgonetHop,
+  GetInEgonetHop, GetOutEgonetHop, GetInEgonetSub
+- implemented new functions to perform graph union, GetGraphUnion,
+  GetGraphUnionAttr
+- added Dockerfile to containerize a release
+- replaced setup.py with a completely new implementation
+- added scripts for building wheel packages on macOS, Linux and Windows
+- performed a large number of updates in Makefiles
+- performed a major rewrite and extensions of the Snap.py documentation
+- expanded functionality tests
+- added a program to test the speed of various methods for writing and
+  reading a graph
+- fixed formatting problems in creating the documentation with Sphinx
+- added hellotest, a simple module to test the building of Python C/C++
 
 Release 5.0.0, Aug 30, 2019
 

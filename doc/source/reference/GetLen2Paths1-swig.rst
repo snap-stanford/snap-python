@@ -1,5 +1,5 @@
 GetLen2Paths (SWIG)
-'''''''''''''''''''''
+'''''''''''''''''''
 
 .. function:: GetLen2Paths (Graph, NId1, NId2, NbrV)
    :noindex:

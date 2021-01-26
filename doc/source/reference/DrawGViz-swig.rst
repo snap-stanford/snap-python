@@ -1,5 +1,5 @@
 DrawGViz (SWIG)
-''''''''''''''''''
+'''''''''''''''
 
 .. function:: DrawGViz(Graph, Layout, PltFNm, Desc=TStr(), NodeLabels=False, NIdColorH=TIntStrH())
    :noindex:

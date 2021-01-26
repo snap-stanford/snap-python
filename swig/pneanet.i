@@ -302,7 +302,7 @@
 %template(GetInEgonetHop_PNEANet) TSnap::GetInEgonetHop<PNEANet>;
 %template(GetOutEgonetHop_PNEANet) TSnap::GetOutEgonetHop<PNEANet>;
 %template(GetInEgonetSub_PNEANet) TSnap::GetInEgonetSub<PNEANet>;
-
+%template(GetGraphUnion_PNEANet) TSnap::GetGraphUnion<PNEANet>;
 
 
 // triad.h - PNEANet

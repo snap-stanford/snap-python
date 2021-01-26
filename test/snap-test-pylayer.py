@@ -128,6 +128,20 @@ class SnapPythonTest(unittest.TestCase):
                     self.assertEqual(params[count], result[0])
                 count += 1
 
+    def checkGraphs(self, G1, G2):
+        nodes1 = [item.GetId() for item in G1.Nodes()]
+        nodes1.sort()
+        nodes2 = [item.GetId() for item in G2.Nodes()]
+        nodes2.sort()
+        for node1,node2 in zip(nodes1, nodes2):
+            self.assertEqual(node1, node2)
+        edges1 = [(item.GetSrcNId(), item.GetDstNId()) for item in G1.Edges()]
+        edges1.sort()
+        edges2 = [(item.GetSrcNId(), item.GetDstNId()) for item in G2.Edges()]
+        edges2.sort()
+        for edge1,edge2 in zip(edges1, edges2):
+            self.assertEqual(edge1, edge2)
+
     #### Tests ####
     
     def test_GenFull(self):
@@ -584,29 +598,17 @@ class SnapPythonTest(unittest.TestCase):
         # Directed Graph
         New_Graph = self.DirGraphStar.GetUnDir()
         New_Graph_swig = snap.GetUnDir(self.DirGraphStar)
-        for node,node_swig in zip(New_Graph.Nodes(), New_Graph_swig.Nodes()):
-            self.assertEqual(node.GetId(), node_swig.GetId())
-        for edge,edge_swig in zip(New_Graph.Edges(), New_Graph_swig.Edges()):
-            self.assertEqual(edge.GetSrcNId(), edge_swig.GetSrcNId())
-            self.assertEqual(edge.GetDstNId(), edge_swig.GetDstNId())
+        self.checkGraphs(New_Graph, New_Graph_swig)
 
         # Undirected Graph
         New_Graph = self.UnDirGraphStar.GetUnDir()
         New_Graph_swig = snap.GetUnDir(self.UnDirGraphStar)
-        for node,node_swig in zip(New_Graph.Nodes(), New_Graph_swig.Nodes()):
-            self.assertEqual(node.GetId(), node_swig.GetId())
-        for edge,edge_swig in zip(New_Graph.Edges(), New_Graph_swig.Edges()):
-            self.assertEqual(edge.GetSrcNId(), edge_swig.GetSrcNId())
-            self.assertEqual(edge.GetDstNId(), edge_swig.GetDstNId())
+        self.checkGraphs(New_Graph, New_Graph_swig)
 
         # Network
         New_Graph = self.NetStar.GetUnDir()
         New_Graph_swig = snap.GetUnDir(self.NetStar)
-        for node,node_swig in zip(New_Graph.Nodes(), New_Graph_swig.Nodes()):
-            self.assertEqual(node.GetId(), node_swig.GetId())
-        for edge,edge_swig in zip(New_Graph.Edges(), New_Graph_swig.Edges()):
-            self.assertEqual(edge.GetSrcNId(), edge_swig.GetSrcNId())
-            self.assertEqual(edge.GetDstNId(), edge_swig.GetDstNId())
+        self.checkGraphs(New_Graph, New_Graph_swig)
 
     def test_MakeUnDir(self):
         # Directed Graph
@@ -614,33 +616,21 @@ class SnapPythonTest(unittest.TestCase):
         New_Graph.MakeUnDir()
         New_Graph_swig = snap.ConvertGraph(snap.PNGraph, self.DirGraphStar)
         snap.MakeUnDir(New_Graph_swig)
-        for node,node_swig in zip(New_Graph.Nodes(), New_Graph_swig.Nodes()):
-            self.assertEqual(node.GetId(), node_swig.GetId())
-        for edge,edge_swig in zip(New_Graph.Edges(), New_Graph_swig.Edges()):
-            self.assertEqual(edge.GetSrcNId(), edge_swig.GetSrcNId())
-            self.assertEqual(edge.GetDstNId(), edge_swig.GetDstNId())
+        self.checkGraphs(New_Graph, New_Graph_swig)
 
         # Undirected Graph
         New_Graph = self.UnDirGraphStar.ConvertGraph(snap.TUNGraph)
         New_Graph.MakeUnDir()
         New_Graph_swig = snap.ConvertGraph(snap.PUNGraph, self.UnDirGraphStar)
         snap.MakeUnDir(New_Graph_swig)
-        for node,node_swig in zip(New_Graph.Nodes(), New_Graph_swig.Nodes()):
-            self.assertEqual(node.GetId(), node_swig.GetId())
-        for edge,edge_swig in zip(New_Graph.Edges(), New_Graph_swig.Edges()):
-            self.assertEqual(edge.GetSrcNId(), edge_swig.GetSrcNId())
-            self.assertEqual(edge.GetDstNId(), edge_swig.GetDstNId())
+        self.checkGraphs(New_Graph, New_Graph_swig)
 
         # Network
         New_Graph = self.NetStar.ConvertGraph(snap.TNEANet)
         New_Graph.MakeUnDir()
         New_Graph_swig = snap.ConvertGraph(snap.PNEANet, self.NetStar)
         snap.MakeUnDir(New_Graph_swig)
-        for node,node_swig in zip(New_Graph.Nodes(), New_Graph_swig.Nodes()):
-            self.assertEqual(node.GetId(), node_swig.GetId())
-        for edge,edge_swig in zip(New_Graph.Edges(), New_Graph_swig.Edges()):
-            self.assertEqual(edge.GetSrcNId(), edge_swig.GetSrcNId())
-            self.assertEqual(edge.GetDstNId(), edge_swig.GetDstNId())
+        self.checkGraphs(New_Graph, New_Graph_swig)
 
     def test_AddSelfEdges(self):
         # Directed Graph
@@ -648,33 +638,21 @@ class SnapPythonTest(unittest.TestCase):
         New_Graph.AddSelfEdges()
         New_Graph_swig = snap.ConvertGraph(snap.PNGraph, self.DirGraphFull)
         snap.AddSelfEdges(New_Graph_swig)
-        for node,node_swig in zip(New_Graph.Nodes(), New_Graph_swig.Nodes()):
-            self.assertEqual(node.GetId(), node_swig.GetId())
-        for edge,edge_swig in zip(New_Graph.Edges(), New_Graph_swig.Edges()):
-            self.assertEqual(edge.GetSrcNId(), edge_swig.GetSrcNId())
-            self.assertEqual(edge.GetDstNId(), edge_swig.GetDstNId())
+        self.checkGraphs(New_Graph, New_Graph_swig)
 
         # Undirected Graph
         New_Graph = self.UnDirGraphFull.ConvertGraph(snap.TUNGraph)
         New_Graph.AddSelfEdges()
         New_Graph_swig = snap.ConvertGraph(snap.PUNGraph, self.UnDirGraphFull)
         snap.AddSelfEdges(New_Graph_swig)
-        for node,node_swig in zip(New_Graph.Nodes(), New_Graph_swig.Nodes()):
-            self.assertEqual(node.GetId(), node_swig.GetId())
-        for edge,edge_swig in zip(New_Graph.Edges(), New_Graph_swig.Edges()):
-            self.assertEqual(edge.GetSrcNId(), edge_swig.GetSrcNId())
-            self.assertEqual(edge.GetDstNId(), edge_swig.GetDstNId())
+        self.checkGraphs(New_Graph, New_Graph_swig)
 
         # Network
         New_Graph = self.NetFull.ConvertGraph(snap.TNEANet)
         New_Graph.AddSelfEdges()
         New_Graph_swig = snap.ConvertGraph(snap.PNEANet, self.NetFull)
         snap.AddSelfEdges(New_Graph_swig)
-        for node,node_swig in zip(New_Graph.Nodes(), New_Graph_swig.Nodes()):
-            self.assertEqual(node.GetId(), node_swig.GetId())
-        for edge,edge_swig in zip(New_Graph.Edges(), New_Graph_swig.Edges()):
-            self.assertEqual(edge.GetSrcNId(), edge_swig.GetSrcNId())
-            self.assertEqual(edge.GetDstNId(), edge_swig.GetDstNId())
+        self.checkGraphs(New_Graph, New_Graph_swig)
 
     def test_DelSelfEdges(self):
         # Directed Graph
@@ -682,33 +660,21 @@ class SnapPythonTest(unittest.TestCase):
         New_Graph.DelSelfEdges()
         New_Graph_swig = snap.ConvertGraph(snap.PNGraph, self.DirGraphSelfEdge)
         snap.DelSelfEdges(New_Graph_swig)
-        for node,node_swig in zip(New_Graph.Nodes(), New_Graph_swig.Nodes()):
-            self.assertEqual(node.GetId(), node_swig.GetId())
-        for edge,edge_swig in zip(New_Graph.Edges(), New_Graph_swig.Edges()):
-            self.assertEqual(edge.GetSrcNId(), edge_swig.GetSrcNId())
-            self.assertEqual(edge.GetDstNId(), edge_swig.GetDstNId())
+        self.checkGraphs(New_Graph, New_Graph_swig)
 
         # Undirected Graph
         New_Graph = self.UnDirGraphSelfEdge.ConvertGraph(snap.TUNGraph)
         New_Graph.DelSelfEdges()
         New_Graph_swig = snap.ConvertGraph(snap.PUNGraph, self.UnDirGraphSelfEdge)
         snap.DelSelfEdges(New_Graph_swig)
-        for node,node_swig in zip(New_Graph.Nodes(), New_Graph_swig.Nodes()):
-            self.assertEqual(node.GetId(), node_swig.GetId())
-        for edge,edge_swig in zip(New_Graph.Edges(), New_Graph_swig.Edges()):
-            self.assertEqual(edge.GetSrcNId(), edge_swig.GetSrcNId())
-            self.assertEqual(edge.GetDstNId(), edge_swig.GetDstNId())
+        self.checkGraphs(New_Graph, New_Graph_swig)
 
         # Network
         New_Graph = self.NetSelfEdge.ConvertGraph(snap.TNEANet)
         New_Graph.DelSelfEdges()
         New_Graph_swig = snap.ConvertGraph(snap.PNEANet, self.NetSelfEdge)
         snap.DelSelfEdges(New_Graph_swig)
-        for node,node_swig in zip(New_Graph.Nodes(), New_Graph_swig.Nodes()):
-            self.assertEqual(node.GetId(), node_swig.GetId())
-        for edge,edge_swig in zip(New_Graph.Edges(), New_Graph_swig.Edges()):
-            self.assertEqual(edge.GetSrcNId(), edge_swig.GetSrcNId())
-            self.assertEqual(edge.GetDstNId(), edge_swig.GetDstNId())
+        self.checkGraphs(New_Graph, New_Graph_swig)
 
     def test_DelNodes(self):
         # Directed Graph
@@ -719,11 +685,7 @@ class SnapPythonTest(unittest.TestCase):
         DelNodes_swig = snap.TIntV()
         DelNodes_swig.Add(0)
         snap.DelNodes(New_Graph_swig, DelNodes_swig)
-        for node,node_swig in zip(New_Graph.Nodes(), New_Graph_swig.Nodes()):
-            self.assertEqual(node.GetId(), node_swig.GetId())
-        for edge,edge_swig in zip(New_Graph.Edges(), New_Graph_swig.Edges()):
-            self.assertEqual(edge.GetSrcNId(), edge_swig.GetSrcNId())
-            self.assertEqual(edge.GetDstNId(), edge_swig.GetDstNId())
+        self.checkGraphs(New_Graph, New_Graph_swig)
 
         # Undirected Graph
         New_Graph = self.UnDirGraphFull.ConvertGraph(snap.TUNGraph)
@@ -733,11 +695,7 @@ class SnapPythonTest(unittest.TestCase):
         DelNodes_swig = snap.TIntV()
         DelNodes_swig.Add(0)
         snap.DelNodes(New_Graph_swig, DelNodes_swig)
-        for node,node_swig in zip(New_Graph.Nodes(), New_Graph_swig.Nodes()):
-            self.assertEqual(node.GetId(), node_swig.GetId())
-        for edge,edge_swig in zip(New_Graph.Edges(), New_Graph_swig.Edges()):
-            self.assertEqual(edge.GetSrcNId(), edge_swig.GetSrcNId())
-            self.assertEqual(edge.GetDstNId(), edge_swig.GetDstNId())
+        self.checkGraphs(New_Graph, New_Graph_swig)
 
         # Network
         New_Graph = self.NetFull.ConvertGraph(snap.TNEANet)
@@ -747,11 +705,7 @@ class SnapPythonTest(unittest.TestCase):
         DelNodes_swig = snap.TIntV()
         DelNodes_swig.Add(0)
         snap.DelNodes(New_Graph_swig, DelNodes_swig)
-        for node,node_swig in zip(New_Graph.Nodes(), New_Graph_swig.Nodes()):
-            self.assertEqual(node.GetId(), node_swig.GetId())
-        for edge,edge_swig in zip(New_Graph.Edges(), New_Graph_swig.Edges()):
-            self.assertEqual(edge.GetSrcNId(), edge_swig.GetSrcNId())
-            self.assertEqual(edge.GetDstNId(), edge_swig.GetDstNId())
+        self.checkGraphs(New_Graph, New_Graph_swig)
 
     def test_DelZeroDegNodes(self):
         # Directed Graph
@@ -759,33 +713,21 @@ class SnapPythonTest(unittest.TestCase):
         New_Graph.DelZeroDegNodes()
         New_Graph_swig = snap.ConvertGraph(snap.PNGraph, self.DirGraphZeroDegree)
         snap.DelZeroDegNodes(New_Graph_swig)
-        for node,node_swig in zip(New_Graph.Nodes(), New_Graph_swig.Nodes()):
-            self.assertEqual(node.GetId(), node_swig.GetId())
-        for edge,edge_swig in zip(New_Graph.Edges(), New_Graph_swig.Edges()):
-            self.assertEqual(edge.GetSrcNId(), edge_swig.GetSrcNId())
-            self.assertEqual(edge.GetDstNId(), edge_swig.GetDstNId())
+        self.checkGraphs(New_Graph, New_Graph_swig)
 
         # Undirected Graph
         New_Graph = self.UnDirGraphZeroDegree.ConvertGraph(snap.TUNGraph)
         New_Graph.DelZeroDegNodes()
         New_Graph_swig = snap.ConvertGraph(snap.PUNGraph, self.UnDirGraphZeroDegree)
         New_Graph_swig.DelZeroDegNodes()
-        for node,node_swig in zip(New_Graph.Nodes(), New_Graph_swig.Nodes()):
-            self.assertEqual(node.GetId(), node_swig.GetId())
-        for edge,edge_swig in zip(New_Graph.Edges(), New_Graph_swig.Edges()):
-            self.assertEqual(edge.GetSrcNId(), edge_swig.GetSrcNId())
-            self.assertEqual(edge.GetDstNId(), edge_swig.GetDstNId())
+        self.checkGraphs(New_Graph, New_Graph_swig)
 
         # Network
         New_Graph = self.NetZeroDegree.ConvertGraph(snap.TNEANet)
         New_Graph.DelZeroDegNodes()
         New_Graph_swig = snap.ConvertGraph(snap.PNEANet, self.NetZeroDegree)
         New_Graph_swig.DelZeroDegNodes()
-        for node,node_swig in zip(New_Graph.Nodes(), New_Graph_swig.Nodes()):
-            self.assertEqual(node.GetId(), node_swig.GetId())
-        for edge,edge_swig in zip(New_Graph.Edges(), New_Graph_swig.Edges()):
-            self.assertEqual(edge.GetSrcNId(), edge_swig.GetSrcNId())
-            self.assertEqual(edge.GetDstNId(), edge_swig.GetDstNId())
+        self.checkGraphs(New_Graph, New_Graph_swig)
 
     def test_DelDegKNodes(self):
         # Directed Graph
@@ -793,32 +735,20 @@ class SnapPythonTest(unittest.TestCase):
         New_Graph.DelDegKNodes(0,0)
         New_Graph_swig = snap.ConvertGraph(snap.PNGraph, self.DirGraphZeroDegree)
         snap.DelDegKNodes(New_Graph_swig,0,0)
-        for node,node_swig in zip(New_Graph.Nodes(), New_Graph_swig.Nodes()):
-            self.assertEqual(node.GetId(), node_swig.GetId())
-        for edge,edge_swig in zip(New_Graph.Edges(), New_Graph_swig.Edges()):
-            self.assertEqual(edge.GetSrcNId(), edge_swig.GetSrcNId())
-            self.assertEqual(edge.GetDstNId(), edge_swig.GetDstNId())
+        self.checkGraphs(New_Graph, New_Graph_swig)
 
         New_Graph = self.UnDirGraphZeroDegree.ConvertGraph(snap.TUNGraph)
         New_Graph.DelDegKNodes(0,0)
 
         New_Graph_swig = snap.ConvertGraph(snap.PUNGraph, self.UnDirGraphZeroDegree)
         snap.DelDegKNodes(New_Graph_swig,0,0)
-        for node,node_swig in zip(New_Graph.Nodes(), New_Graph_swig.Nodes()):
-            self.assertEqual(node.GetId(), node_swig.GetId())
-        for edge,edge_swig in zip(New_Graph.Edges(), New_Graph_swig.Edges()):
-            self.assertEqual(edge.GetSrcNId(), edge_swig.GetSrcNId())
-            self.assertEqual(edge.GetDstNId(), edge_swig.GetDstNId())
+        self.checkGraphs(New_Graph, New_Graph_swig)
 
         New_Graph = self.NetZeroDegree.ConvertGraph(snap.TNEANet)
         New_Graph.DelDegKNodes(0,0)
         New_Graph_swig = snap.ConvertGraph(snap.PNEANet, self.NetZeroDegree)
         snap.DelDegKNodes(New_Graph_swig,0,0)
-        for node,node_swig in zip(New_Graph.Nodes(), New_Graph_swig.Nodes()):
-            self.assertEqual(node.GetId(), node_swig.GetId())
-        for edge,edge_swig in zip(New_Graph.Edges(), New_Graph_swig.Edges()):
-            self.assertEqual(edge.GetSrcNId(), edge_swig.GetSrcNId())
-            self.assertEqual(edge.GetDstNId(), edge_swig.GetDstNId())
+        self.checkGraphs(New_Graph, New_Graph_swig)
 
     def test_IsTree(self):
         # Directed Graph
@@ -850,29 +780,17 @@ class SnapPythonTest(unittest.TestCase):
         # Directed Graph
         BfsTree = self.DirGraphFull.GetBfsTree(start_node, follow_out, follow_in)
         BfsTree_swig = snap.GetBfsTree(self.DirGraphFull, start_node, follow_out, follow_in)
-        for node,node_swig in zip(BfsTree.Nodes(), BfsTree_swig.Nodes()):
-            self.assertEqual(node.GetId(), node_swig.GetId())
-        for edge,edge_swig in zip(BfsTree.Edges(), BfsTree_swig.Edges()):
-            self.assertEqual(edge.GetSrcNId(), edge_swig.GetSrcNId())
-            self.assertEqual(edge.GetDstNId(), edge_swig.GetDstNId())
+        self.checkGraphs(BfsTree, BfsTree_swig)
 
         # Undirected Graph
         BfsTree = self.UnDirGraphFull.GetBfsTree(start_node, follow_out, follow_in)
         BfsTree_swig = snap.GetBfsTree(self.UnDirGraphFull, start_node, follow_out, follow_in)
-        for node,node_swig in zip(BfsTree.Nodes(), BfsTree_swig.Nodes()):
-            self.assertEqual(node.GetId(), node_swig.GetId())
-        for edge,edge_swig in zip(BfsTree.Edges(), BfsTree_swig.Edges()):
-            self.assertEqual(edge.GetSrcNId(), edge_swig.GetSrcNId())
-            self.assertEqual(edge.GetDstNId(), edge_swig.GetDstNId())
+        self.checkGraphs(BfsTree, BfsTree_swig)
 
         # Network
         BfsTree = self.NetFull.GetBfsTree(start_node, follow_out, follow_in)
         BfsTree_swig = snap.GetBfsTree(self.NetFull, start_node, follow_out, follow_in)
-        for node,node_swig in zip(BfsTree.Nodes(), BfsTree_swig.Nodes()):
-            self.assertEqual(node.GetId(), node_swig.GetId())
-        for edge,edge_swig in zip(BfsTree.Edges(), BfsTree_swig.Edges()):
-            self.assertEqual(edge.GetSrcNId(), edge_swig.GetSrcNId())
-            self.assertEqual(edge.GetDstNId(), edge_swig.GetDstNId())
+        self.checkGraphs(BfsTree, BfsTree_swig)
 
     def test_GetSubTreeSz(self):
         # Directed Graph
@@ -995,6 +913,31 @@ class SnapPythonTest(unittest.TestCase):
         node_ecc_swig = snap.GetNodeEcc(self.NetStar, 0, True)
         self.assertEqual(node_ecc, node_ecc_swig)
 
+    def test_GetPageRank(self):
+        # Directed Graph
+        PRankH = self.DPetersen.GetPageRank()
+        PRankH_swig = snap.TIntFltH()
+        snap.GetPageRank(self.DPetersen, PRankH_swig)
+        self.assertEqual(len(PRankH), len(PRankH_swig))
+        for item in PRankH_swig:
+            self.assertAlmostEqual(PRankH[item], PRankH_swig[item])
+
+        # Undirected Graph
+        PRankH = self.UPetersen.GetPageRank()
+        PRankH_swig = snap.TIntFltH()
+        snap.GetPageRank(self.UPetersen, PRankH_swig)
+        self.assertEqual(len(PRankH), len(PRankH_swig))
+        for item in PRankH_swig:
+            self.assertAlmostEqual(PRankH[item], PRankH_swig[item])
+
+        # Network
+        PRankH = self.NPetersen.GetPageRank()
+        PRankH_swig = snap.TIntFltH()
+        snap.GetPageRank(self.NPetersen, PRankH_swig)
+        self.assertEqual(len(PRankH), len(PRankH_swig))
+        for item in PRankH_swig:
+            self.assertAlmostEqual(PRankH[item], PRankH_swig[item])
+
     def test_GetHits(self):
         # Directed Graph
         NIdHubH, NIdAuthH = self.DirGraphFull.GetHits()
@@ -1109,29 +1052,17 @@ class SnapPythonTest(unittest.TestCase):
         # Directed Graph
         Graph = self.DirGraphFull.GetMxBiCon()
         Graph_swig = snap.GetMxBiCon(self.DirGraphFull)
-        for node,node_swig in zip(Graph.Nodes(), Graph_swig.Nodes()):
-            self.assertEqual(node.GetId(), node_swig.GetId())
-        for edge,edge_swig in zip(Graph.Edges(), Graph_swig.Edges()):
-            self.assertEqual(edge.GetSrcNId(), edge_swig.GetSrcNId())
-            self.assertEqual(edge.GetDstNId(), edge_swig.GetDstNId())
+        self.checkGraphs(Graph, Graph_swig)
 
         # Undirected Graph
         Graph = self.UnDirGraphFull.GetMxBiCon()
         Graph_swig = snap.GetMxBiCon(self.UnDirGraphFull)
-        for node,node_swig in zip(Graph.Nodes(), Graph_swig.Nodes()):
-            self.assertEqual(node.GetId(), node_swig.GetId())
-        for edge,edge_swig in zip(Graph.Edges(), Graph_swig.Edges()):
-            self.assertEqual(edge.GetSrcNId(), edge_swig.GetSrcNId())
-            self.assertEqual(edge.GetDstNId(), edge_swig.GetDstNId())
+        self.checkGraphs(Graph, Graph_swig)
 
         # Network
         Graph = self.NetFull.GetMxBiCon()
         Graph_swig = snap.GetMxBiCon(self.NetFull)
-        for node,node_swig in zip(Graph.Nodes(), Graph_swig.Nodes()):
-            self.assertEqual(node.GetId(), node_swig.GetId())
-        for edge,edge_swig in zip(Graph.Edges(), Graph_swig.Edges()):
-            self.assertEqual(edge.GetSrcNId(), edge_swig.GetSrcNId())
-            self.assertEqual(edge.GetDstNId(), edge_swig.GetDstNId())
+        self.checkGraphs(Graph, Graph_swig)
 
     def test_GetNodeWcc(self):
         # Directed Graph
@@ -1296,85 +1227,49 @@ class SnapPythonTest(unittest.TestCase):
         # Directed Graph
         Graph = self.DirGraphStar.GetMxWcc()
         Graph_swig = snap.GetMxWcc(self.DirGraphStar)
-        for node,node_swig in zip(Graph.Nodes(), Graph_swig.Nodes()):
-            self.assertEqual(node.GetId(), node_swig.GetId())
-        for edge,edge_swig in zip(Graph.Edges(), Graph_swig.Edges()):
-            self.assertEqual(edge.GetSrcNId(), edge_swig.GetSrcNId())
-            self.assertEqual(edge.GetDstNId(), edge_swig.GetDstNId())
+        self.checkGraphs(Graph, Graph_swig)
 
         # Undirected Graph
         Graph = self.UnDirGraphStar.GetMxWcc()
         Graph_swig = snap.GetMxWcc(self.UnDirGraphStar)
-        for node,node_swig in zip(Graph.Nodes(), Graph_swig.Nodes()):
-            self.assertEqual(node.GetId(), node_swig.GetId())
-        for edge,edge_swig in zip(Graph.Edges(), Graph_swig.Edges()):
-            self.assertEqual(edge.GetSrcNId(), edge_swig.GetSrcNId())
-            self.assertEqual(edge.GetDstNId(), edge_swig.GetDstNId())
+        self.checkGraphs(Graph, Graph_swig)
 
         # Network
         Graph = self.NetStar.GetMxWcc()
         Graph_swig = snap.GetMxWcc(self.NetStar)
-        for node,node_swig in zip(Graph.Nodes(), Graph_swig.Nodes()):
-            self.assertEqual(node.GetId(), node_swig.GetId())
-        for edge,edge_swig in zip(Graph.Edges(), Graph_swig.Edges()):
-            self.assertEqual(edge.GetSrcNId(), edge_swig.GetSrcNId())
-            self.assertEqual(edge.GetDstNId(), edge_swig.GetDstNId())
+        self.checkGraphs(Graph, Graph_swig)
 
     def test_GetMxScc(self):
         # Directed Graph
         Graph = self.DirGraphFull.GetMxScc()
         Graph_swig = snap.GetMxScc(self.DirGraphFull)
-        for node,node_swig in zip(Graph.Nodes(), Graph_swig.Nodes()):
-            self.assertEqual(node.GetId(), node_swig.GetId())
-        for edge,edge_swig in zip(Graph.Edges(), Graph_swig.Edges()):
-            self.assertEqual(edge.GetSrcNId(), edge_swig.GetSrcNId())
-            self.assertEqual(edge.GetDstNId(), edge_swig.GetDstNId())
+        self.checkGraphs(Graph, Graph_swig)
 
         # Undirected Graph
         Graph = self.UnDirGraphFull.GetMxScc()
         Graph_swig = snap.GetMxScc(self.UnDirGraphFull)
-        for node,node_swig in zip(Graph.Nodes(), Graph_swig.Nodes()):
-            self.assertEqual(node.GetId(), node_swig.GetId())
-        for edge,edge_swig in zip(Graph.Edges(), Graph_swig.Edges()):
-            self.assertEqual(edge.GetSrcNId(), edge_swig.GetSrcNId())
-            self.assertEqual(edge.GetDstNId(), edge_swig.GetDstNId())
+        self.checkGraphs(Graph, Graph_swig)
 
         # Network
         Graph = self.NetFull.GetMxScc()
         Graph_swig = snap.GetMxScc(self.NetFull)
-        for node,node_swig in zip(Graph.Nodes(), Graph_swig.Nodes()):
-            self.assertEqual(node.GetId(), node_swig.GetId())
-        for edge,edge_swig in zip(Graph.Edges(), Graph_swig.Edges()):
-            self.assertEqual(edge.GetSrcNId(), edge_swig.GetSrcNId())
-            self.assertEqual(edge.GetDstNId(), edge_swig.GetDstNId())
+        self.checkGraphs(Graph, Graph_swig)
 
     def test_GetMxBiCon(self):
         # Directed Graph
         Graph = self.DirGraphFull.GetMxBiCon()
         Graph_swig = snap.GetMxBiCon(self.DirGraphFull)
-        for node,node_swig in zip(Graph.Nodes(), Graph_swig.Nodes()):
-            self.assertEqual(node.GetId(), node_swig.GetId())
-        for edge,edge_swig in zip(Graph.Edges(), Graph_swig.Edges()):
-            self.assertEqual(edge.GetSrcNId(), edge_swig.GetSrcNId())
-            self.assertEqual(edge.GetDstNId(), edge_swig.GetDstNId())
+        self.checkGraphs(Graph, Graph_swig)
 
         # Undirected Graph
         Graph = self.UnDirGraphFull.GetMxBiCon()
         Graph_swig = snap.GetMxBiCon(self.UnDirGraphFull)
-        for node,node_swig in zip(Graph.Nodes(), Graph_swig.Nodes()):
-            self.assertEqual(node.GetId(), node_swig.GetId())
-        for edge,edge_swig in zip(Graph.Edges(), Graph_swig.Edges()):
-            self.assertEqual(edge.GetSrcNId(), edge_swig.GetSrcNId())
-            self.assertEqual(edge.GetDstNId(), edge_swig.GetDstNId())
+        self.checkGraphs(Graph, Graph_swig)
 
         # Network
         Graph = self.NetFull.GetMxBiCon()
         Graph_swig = snap.GetMxBiCon(self.NetFull)
-        for node,node_swig in zip(Graph.Nodes(), Graph_swig.Nodes()):
-            self.assertEqual(node.GetId(), node_swig.GetId())
-        for edge,edge_swig in zip(Graph.Edges(), Graph_swig.Edges()):
-            self.assertEqual(edge.GetSrcNId(), edge_swig.GetSrcNId())
-            self.assertEqual(edge.GetDstNId(), edge_swig.GetDstNId())
+        self.checkGraphs(Graph, Graph_swig)
 
     def test_PrintInfo(self):
         self.DirGraphFull.PrintInfo("description", "test.txt")
@@ -1542,31 +1437,19 @@ class SnapPythonTest(unittest.TestCase):
         k = self.num_nodes - 1
         KCore = self.DirGraphFull.GetKCore(k)
         KCore_swig = snap.GetKCore(self.DirGraphFull, k)
-        for node,node_swig in zip(KCore.Nodes(), KCore_swig.Nodes()):
-            self.assertEqual(node.GetId(), node_swig.GetId())
-        for edge,edge_swig in zip(KCore.Edges(), KCore_swig.Edges()):
-            self.assertEqual(edge.GetSrcNId(), edge_swig.GetSrcNId())
-            self.assertEqual(edge.GetDstNId(), edge_swig.GetDstNId())
+        self.checkGraphs(KCore, KCore_swig)
 
         # Undirected Graph
         k = self.num_nodes - 1
         KCore = self.UnDirGraphFull.GetKCore(k)
         KCore_swig = snap.GetKCore(self.UnDirGraphFull, k)
-        for node,node_swig in zip(KCore.Nodes(), KCore_swig.Nodes()):
-            self.assertEqual(node.GetId(), node_swig.GetId())
-        for edge,edge_swig in zip(KCore.Edges(), KCore_swig.Edges()):
-            self.assertEqual(edge.GetSrcNId(), edge_swig.GetSrcNId())
-            self.assertEqual(edge.GetDstNId(), edge_swig.GetDstNId())
+        self.checkGraphs(KCore, KCore_swig)
 
         # Network
         k = self.num_nodes - 1
         KCore = self.NetFull.GetKCore(k)
         KCore_swig = snap.GetKCore(self.NetFull, k)
-        for node,node_swig in zip(KCore.Nodes(), KCore_swig.Nodes()):
-            self.assertEqual(node.GetId(), node_swig.GetId())
-        for edge,edge_swig in zip(KCore.Edges(), KCore_swig.Edges()):
-            self.assertEqual(edge.GetSrcNId(), edge_swig.GetSrcNId())
-            self.assertEqual(edge.GetDstNId(), edge_swig.GetDstNId())
+        self.checkGraphs(KCore, KCore_swig)
 
     def test_PlotEigValRank(self):
         Graph = snap.GenStar(snap.TUNGraph, 20)
@@ -2027,66 +1910,38 @@ class SnapPythonTest(unittest.TestCase):
         for edge in self.NetStar.Edges():
             EIdV_swig.Add(edge.GetId())
         ESubGraph_swig = snap.GetESubGraph(self.NetStar, EIdV_swig)
-        for node,node_swig in zip(ESubGraph.Nodes(), ESubGraph_swig.Nodes()):
-            self.assertEqual(node.GetId(), node_swig.GetId())
-        for edge,edge_swig in zip(ESubGraph.Edges(), ESubGraph_swig.Edges()):
-            self.assertEqual(edge.GetSrcNId(), edge_swig.GetSrcNId())
-            self.assertEqual(edge.GetDstNId(), edge_swig.GetDstNId())
+        self.checkGraphs(ESubGraph, ESubGraph_swig)
 
     def test_ConvertGraph(self):
         # Directed to Undirected
         UnDirStar = self.DirGraphStar.ConvertGraph(snap.TUNGraph)
         UnDirStar_swig = snap.ConvertGraph(snap.PUNGraph, self.DirGraphStar)
-        for node,node_swig in zip(UnDirStar.Nodes(), UnDirStar_swig.Nodes()):
-            self.assertEqual(node.GetId(), node_swig.GetId())
-        for edge,edge_swig in zip(UnDirStar.Edges(), UnDirStar_swig.Edges()):
-            self.assertEqual(edge.GetSrcNId(), edge_swig.GetSrcNId())
-            self.assertEqual(edge.GetDstNId(), edge_swig.GetDstNId())
+        self.checkGraphs(UnDirStar, UnDirStar_swig)
 
         # Directed to Network
         NetStar = self.DirGraphStar.ConvertGraph(snap.TNEANet)
         NetStar_swig = snap.ConvertGraph(snap.PNEANet, self.DirGraphStar)
-        for node,node_swig in zip(NetStar.Nodes(), NetStar_swig.Nodes()):
-            self.assertEqual(node.GetId(), node_swig.GetId())
-        for edge,edge_swig in zip(NetStar.Edges(), NetStar_swig.Edges()):
-            self.assertEqual(edge.GetSrcNId(), edge_swig.GetSrcNId())
-            self.assertEqual(edge.GetDstNId(), edge_swig.GetDstNId())
+        self.checkGraphs(NetStar, NetStar_swig)
 
         # Undirected to Directed
         DirStar = self.UnDirGraphStar.ConvertGraph(snap.TNGraph)
         DirStar_swig = snap.ConvertGraph(snap.PNGraph, self.UnDirGraphStar)
-        for node,node_swig in zip(DirStar.Nodes(), DirStar_swig.Nodes()):
-            self.assertEqual(node.GetId(), node_swig.GetId())
-        for edge,edge_swig in zip(DirStar.Edges(), DirStar_swig.Edges()):
-            self.assertEqual(edge.GetSrcNId(), edge_swig.GetSrcNId())
-            self.assertEqual(edge.GetDstNId(), edge_swig.GetDstNId())
+        self.checkGraphs(DirStar, DirStar_swig)
 
         # Undirected to Network
         NetStar = self.UnDirGraphStar.ConvertGraph(snap.TNEANet)
         NetStar_swig = snap.ConvertGraph(snap.PNEANet, self.UnDirGraphStar)
-        for node,node_swig in zip(NetStar.Nodes(), NetStar_swig.Nodes()):
-            self.assertEqual(node.GetId(), node_swig.GetId())
-        for edge,edge_swig in zip(NetStar.Edges(), NetStar_swig.Edges()):
-            self.assertEqual(edge.GetSrcNId(), edge_swig.GetSrcNId())
-            self.assertEqual(edge.GetDstNId(), edge_swig.GetDstNId())
+        self.checkGraphs(NetStar, NetStar_swig)
 
         # Network to Undirected
         UnDirStar = self.NetStar.ConvertGraph(snap.TUNGraph)
         UnDirStar_swig = snap.ConvertGraph(snap.PUNGraph, self.NetStar)
-        for node,node_swig in zip(UnDirStar.Nodes(), UnDirStar_swig.Nodes()):
-            self.assertEqual(node.GetId(), node_swig.GetId())
-        for edge,edge_swig in zip(UnDirStar.Edges(), UnDirStar_swig.Edges()):
-            self.assertEqual(edge.GetSrcNId(), edge_swig.GetSrcNId())
-            self.assertEqual(edge.GetDstNId(), edge_swig.GetDstNId())
+        self.checkGraphs(UnDirStar, UnDirStar_swig)
 
         # Network to Directed
         DirStar = self.NetStar.ConvertGraph(snap.TNGraph)
         DirStar_swig = snap.ConvertGraph(snap.PNGraph, self.NetStar)
-        for node,node_swig in zip(DirStar.Nodes(), DirStar_swig.Nodes()):
-            self.assertEqual(node.GetId(), node_swig.GetId())
-        for edge,edge_swig in zip(DirStar.Edges(), DirStar_swig.Edges()):
-            self.assertEqual(edge.GetSrcNId(), edge_swig.GetSrcNId())
-            self.assertEqual(edge.GetDstNId(), edge_swig.GetDstNId())
+        self.checkGraphs(DirStar, DirStar_swig)
 
     def test_ConvertSubGraph(self):
         ListNodes = []
@@ -2099,56 +1954,32 @@ class SnapPythonTest(unittest.TestCase):
         # Directed to Undirected
         UnDirStar = self.DirGraphStar.ConvertSubGraph(snap.TUNGraph, ListNodes)
         UnDirStar_swig = snap.ConvertSubGraph(snap.PUNGraph, self.DirGraphStar, ListNodes_swig)
-        for node,node_swig in zip(UnDirStar.Nodes(), UnDirStar_swig.Nodes()):
-            self.assertEqual(node.GetId(), node_swig.GetId())
-        for edge,edge_swig in zip(UnDirStar.Edges(), UnDirStar_swig.Edges()):
-            self.assertEqual(edge.GetSrcNId(), edge_swig.GetSrcNId())
-            self.assertEqual(edge.GetDstNId(), edge_swig.GetDstNId())
+        self.checkGraphs(UnDirStar, UnDirStar_swig)
 
         # Directed to Network
         NetStar = self.DirGraphStar.ConvertSubGraph(snap.TNEANet, ListNodes)
         NetStar_swig = snap.ConvertSubGraph(snap.PNEANet, self.DirGraphStar, ListNodes_swig)
-        for node,node_swig in zip(NetStar.Nodes(), NetStar_swig.Nodes()):
-            self.assertEqual(node.GetId(), node_swig.GetId())
-        for edge,edge_swig in zip(NetStar.Edges(), NetStar_swig.Edges()):
-            self.assertEqual(edge.GetSrcNId(), edge_swig.GetSrcNId())
-            self.assertEqual(edge.GetDstNId(), edge_swig.GetDstNId())
+        self.checkGraphs(NetStar, NetStar_swig)
 
         # Undirected to Directed
         DirStar = self.UnDirGraphStar.ConvertSubGraph(snap.TNGraph, ListNodes)
         DirStar_swig = snap.ConvertSubGraph(snap.PNGraph, self.UnDirGraphStar, ListNodes_swig)
-        for node,node_swig in zip(DirStar.Nodes(), DirStar_swig.Nodes()):
-            self.assertEqual(node.GetId(), node_swig.GetId())
-        for edge,edge_swig in zip(DirStar.Edges(), DirStar_swig.Edges()):
-            self.assertEqual(edge.GetSrcNId(), edge_swig.GetSrcNId())
-            self.assertEqual(edge.GetDstNId(), edge_swig.GetDstNId())
+        self.checkGraphs(DirStar, DirStar_swig)
 
         # Undirected to Network
         NetStar = self.UnDirGraphStar.ConvertSubGraph(snap.TNEANet, ListNodes)
         NetStar_swig = snap.ConvertSubGraph(snap.PNEANet, self.UnDirGraphStar, ListNodes_swig)
-        for node,node_swig in zip(NetStar.Nodes(), NetStar_swig.Nodes()):
-            self.assertEqual(node.GetId(), node_swig.GetId())
-        for edge,edge_swig in zip(NetStar.Edges(), NetStar_swig.Edges()):
-            self.assertEqual(edge.GetSrcNId(), edge_swig.GetSrcNId())
-            self.assertEqual(edge.GetDstNId(), edge_swig.GetDstNId())
+        self.checkGraphs(NetStar, NetStar_swig)
 
         # Network to Undirected
         UnDirStar = self.NetStar.ConvertSubGraph(snap.TUNGraph, ListNodes)
         UnDirStar_swig = snap.ConvertSubGraph(snap.PUNGraph, self.NetStar, ListNodes_swig)
-        for node,node_swig in zip(UnDirStar.Nodes(), UnDirStar_swig.Nodes()):
-            self.assertEqual(node.GetId(), node_swig.GetId())
-        for edge,edge_swig in zip(UnDirStar.Edges(), UnDirStar_swig.Edges()):
-            self.assertEqual(edge.GetSrcNId(), edge_swig.GetSrcNId())
-            self.assertEqual(edge.GetDstNId(), edge_swig.GetDstNId())
+        self.checkGraphs(UnDirStar, UnDirStar_swig)
 
         # Network to Directed
         DirStar = self.NetStar.ConvertSubGraph(snap.TNGraph, ListNodes)
         DirStar_swig = snap.ConvertSubGraph(snap.PNGraph, self.NetStar, ListNodes_swig)
-        for node,node_swig in zip(DirStar.Nodes(), DirStar_swig.Nodes()):
-            self.assertEqual(node.GetId(), node_swig.GetId())
-        for edge,edge_swig in zip(DirStar.Edges(), DirStar_swig.Edges()):
-            self.assertEqual(edge.GetSrcNId(), edge_swig.GetSrcNId())
-            self.assertEqual(edge.GetDstNId(), edge_swig.GetDstNId())
+        self.checkGraphs(DirStar, DirStar_swig)
 
     def test_GetRndSubGraph(self):
         exp_nodes = 10
@@ -3207,11 +3038,7 @@ class SnapPythonTest(unittest.TestCase):
         mapping_swig = snap.TStrIntSH()
         Graph_swig = snap.LoadEdgeListStr(snap.PNGraph, fname, 0, 1, mapping_swig)
         self.assertEqual(mapping.Len(), mapping_swig.Len())
-        for node,node_swig in zip(Graph.Nodes(), Graph_swig.Nodes()):
-            self.assertEqual(node.GetId(), node_swig.GetId())
-        for edge,edge_swig in zip(Graph.Edges(), Graph_swig.Edges()):
-            self.assertEqual(edge.GetSrcNId(), edge_swig.GetSrcNId())
-            self.assertEqual(edge.GetDstNId(), edge_swig.GetDstNId())
+        self.checkGraphs(Graph, Graph_swig)
         os.remove(fname)
 
         # Undirected Graph
@@ -3221,11 +3048,7 @@ class SnapPythonTest(unittest.TestCase):
         mapping_swig = snap.TStrIntSH()
         Graph_swig = snap.LoadEdgeListStr(snap.PUNGraph, fname, 0, 1, mapping_swig)
         self.assertEqual(mapping.Len(), mapping_swig.Len())
-        for node,node_swig in zip(Graph.Nodes(), Graph_swig.Nodes()):
-            self.assertEqual(node.GetId(), node_swig.GetId())
-        for edge,edge_swig in zip(Graph.Edges(), Graph_swig.Edges()):
-            self.assertEqual(edge.GetSrcNId(), edge_swig.GetSrcNId())
-            self.assertEqual(edge.GetDstNId(), edge_swig.GetDstNId())
+        self.checkGraphs(Graph, Graph_swig)
         os.remove(fname)
 
         # Directed Graph
@@ -3235,11 +3058,7 @@ class SnapPythonTest(unittest.TestCase):
         mapping_swig = snap.TStrIntSH()
         Graph_swig = snap.LoadEdgeListStr(snap.PNEANet, fname, 0, 1, mapping_swig)
         self.assertEqual(mapping.Len(), mapping_swig.Len())
-        for node,node_swig in zip(Graph.Nodes(), Graph_swig.Nodes()):
-            self.assertEqual(node.GetId(), node_swig.GetId())
-        for edge,edge_swig in zip(Graph.Edges(), Graph_swig.Edges()):
-            self.assertEqual(edge.GetSrcNId(), edge_swig.GetSrcNId())
-            self.assertEqual(edge.GetDstNId(), edge_swig.GetDstNId())
+        self.checkGraphs(Graph, Graph_swig)
         os.remove(fname)
 
 
@@ -3381,92 +3200,116 @@ class SnapPythonTest(unittest.TestCase):
     def test_DrawGViz(self):
         # Directed Graph
         fname = "mygraph.png"
-        snap.DrawGViz(self.DirGraphFull, snap.gvlDot, fname, "graph 1")
+        fname_swig = "mygraph_swig.png"
+        self.DirGraphFull.DrawGViz(snap.gvlDot, fname, "graph 1")
+        snap.DrawGViz(self.DirGraphFull, snap.gvlDot, fname_swig, "graph 1")
         self.assertTrue(os.path.isfile(fname))
         self.assertTrue(os.stat(fname).st_size > 50000)
-        exp_hash = '7ac8bcf157f7d916be78a09faaf13f23'
         f = open(fname, 'rb')
         test_hash = hashlib.md5(f.read()).hexdigest()
         f.close()
-        # OP RS 2014/05/13, disabled since it is not portable
-        #self.assertEqual(exp_hash, test_hash)
+        f = open(fname_swig, 'rb')
+        swig_hash = hashlib.md5(f.read()).hexdigest()
+        f.close()
+        self.assertEqual(swig_hash, test_hash)
         os.remove(fname)
+        os.remove(fname_swig)
 
         # Undirected Graph
         fname = "mygraph.png"
-        snap.DrawGViz(self.UnDirGraphFull, snap.gvlDot, fname, "graph 1")
+        fname_swig = "mygraph_swig.png"
+        self.UnDirGraphFull.DrawGViz(snap.gvlDot, fname, "graph 1")
+        snap.DrawGViz(self.UnDirGraphFull, snap.gvlDot, fname_swig, "graph 1")
         self.assertTrue(os.path.isfile(fname))
         self.assertTrue(os.stat(fname).st_size > 50000)
-        exp_hash = '734899b11f197b88d14d771b18011d85'
         f = open(fname, 'rb')
         test_hash = hashlib.md5(f.read()).hexdigest()
         f.close()
-        # OP RS 2014/05/13, disabled since it is not portable
-        #self.assertEqual(exp_hash, test_hash)
+        f = open(fname_swig, 'rb')
+        swig_hash = hashlib.md5(f.read()).hexdigest()
+        f.close()
+        self.assertEqual(swig_hash, test_hash)
         os.remove(fname)
+        os.remove(fname_swig)
 
         # Network
         fname = "mygraph.png"
-        snap.DrawGViz(self.NetFull, snap.gvlDot, fname, "graph 1")
+        fname_swig = "mygraph_swig.png"
+        self.NetFull.DrawGViz(snap.gvlDot, fname, "graph 1")
+        snap.DrawGViz(self.NetFull, snap.gvlDot, fname_swig, "graph 1")
         self.assertTrue(os.path.isfile(fname))
         self.assertTrue(os.stat(fname).st_size > 50000)
-        exp_hash = '7ac8bcf157f7d916be78a09faaf13f23'
         f = open(fname, 'rb')
         test_hash = hashlib.md5(f.read()).hexdigest()
         f.close()
-        # OP RS 2014/05/13, disabled since it is not portable
-        #self.assertEqual(exp_hash, test_hash)
+        f = open(fname_swig, 'rb')
+        swig_hash = hashlib.md5(f.read()).hexdigest()
+        f.close()
+        self.assertEqual(swig_hash, test_hash)
         os.remove(fname)
+        os.remove(fname_swig)
 
     def test_DrawGViz2(self):
 
         # Directed Graph
         fname = "mygraph.png"
+        fname_swig = "mygraph_swig.png"
         labels = snap.TIntStrH()
         for NI in self.DirGraphFull.Nodes():
             labels[NI.GetId()] = str(NI.GetId())
-        snap.DrawGViz(self.DirGraphFull, snap.gvlDot, fname, "graph 1", labels)
+        self.DirGraphFull.DrawGViz(snap.gvlDot, fname, "graph 1", labels)
+        snap.DrawGViz(self.DirGraphFull, snap.gvlDot, fname_swig, "graph 1", labels)
         self.assertTrue(os.stat(fname).st_size > 50000)
         self.assertTrue(os.path.isfile(fname))
-        exp_hash = 'd0fa3688dd5d9c5599222270be49805e'
         f = open(fname, 'rb')
         test_hash = hashlib.md5(f.read()).hexdigest()
         f.close()
-        # OP RS 2014/05/13, disabled since it is not portable
-        #self.assertEqual(exp_hash, test_hash)
+        f = open(fname_swig, 'rb')
+        swig_hash = hashlib.md5(f.read()).hexdigest()
+        f.close()
+        #self.assertEqual(swig_hash, test_hash)
         os.remove(fname)
+        os.remove(fname_swig)
 
         # Undirected Graph
         fname = "mygraph.png"
+        fname_swig = "mygraph_swig.png"
         labels = snap.TIntStrH()
         for NI in self.UnDirGraphFull.Nodes():
             labels[NI.GetId()] = str(NI.GetId())
-        snap.DrawGViz(self.UnDirGraphFull, snap.gvlDot, fname, "graph 1", labels)
+        self.UnDirGraphFull.DrawGViz(snap.gvlDot, fname, "graph 1", labels)
+        snap.DrawGViz(self.UnDirGraphFull, snap.gvlDot, fname_swig, "graph 1", labels)
         self.assertTrue(os.path.isfile(fname))
         self.assertTrue(os.stat(fname).st_size > 50000)
-        exp_hash = '191c86413fd43f23bf1c5ce4a9972863'
         f = open(fname, 'rb')
         test_hash = hashlib.md5(f.read()).hexdigest()
         f.close()
-        # OP RS 2014/05/13, disabled since it is not portable
-        #self.assertEqual(exp_hash, test_hash)
+        f = open(fname_swig, 'rb')
+        swig_hash = hashlib.md5(f.read()).hexdigest()
+        f.close()
+        self.assertEqual(swig_hash, test_hash)
         os.remove(fname)
+        os.remove(fname_swig)
 
         # Network
         fname = "mygraph.png"
+        fname_swig = "mygraph_swig.png"
         labels = snap.TIntStrH()
         for NI in self.NetFull.Nodes():
             labels[NI.GetId()] = str(NI.GetId())
-        snap.DrawGViz(self.NetFull, snap.gvlDot, fname, "graph 1", labels)
+        self.NetFull.DrawGViz(snap.gvlDot, fname, "graph 1", labels)
+        snap.DrawGViz(self.NetFull, snap.gvlDot, fname_swig, "graph 1", labels)
         self.assertTrue(os.path.isfile(fname))
         self.assertTrue(os.stat(fname).st_size > 50000)
-        exp_hash = 'd0fa3688dd5d9c5599222270be49805e'
         f = open(fname, 'rb')
         test_hash = hashlib.md5(f.read()).hexdigest()
         f.close()
-        # OP RS 2014/05/13, disabled since it is not portable
-        #self.assertEqual(exp_hash, test_hash)
+        f = open(fname_swig, 'rb')
+        swig_hash = hashlib.md5(f.read()).hexdigest()
+        f.close()
+        self.assertEqual(swig_hash, test_hash)
         os.remove(fname)
+        os.remove(fname_swig)
 
     def test_GetSubGraph(self):
         V = []
@@ -3480,19 +3323,11 @@ class SnapPythonTest(unittest.TestCase):
         Graph = snap.GenFull(snap.TNGraph, 10)
         SubGraph = Graph.GetSubGraph(V)
         SubGraph_swig = snap.GetSubGraph(Graph, V_swig)
-        for node,node_swig in zip(SubGraph.Nodes(), SubGraph_swig.Nodes()):
-            self.assertEqual(node.GetId(), node_swig.GetId())
-        for edge,edge_swig in zip(SubGraph.Edges(), SubGraph_swig.Edges()):
-            self.assertEqual(edge.GetSrcNId(), edge_swig.GetSrcNId())
-            self.assertEqual(edge.GetDstNId(), edge_swig.GetDstNId())
+        self.checkGraphs(SubGraph, SubGraph_swig)
 
         SubGraph = Graph.GetSubGraphRenumber(V)
         SubGraph_swig = snap.GetSubGraphRenumber(Graph, V_swig)
-        for node,node_swig in zip(SubGraph.Nodes(), SubGraph_swig.Nodes()):
-            self.assertEqual(node.GetId(), node_swig.GetId())
-        for edge,edge_swig in zip(SubGraph.Edges(), SubGraph_swig.Edges()):
-            self.assertEqual(edge.GetSrcNId(), edge_swig.GetSrcNId())
-            self.assertEqual(edge.GetDstNId(), edge_swig.GetDstNId())
+        self.checkGraphs(SubGraph, SubGraph_swig)
 
         # verify that NIds are in 0..N-1
         for NI in SubGraph.Nodes():
@@ -3502,19 +3337,11 @@ class SnapPythonTest(unittest.TestCase):
         Graph = snap.GenFull(snap.TUNGraph, 10)
         SubGraph = Graph.GetSubGraph(V)
         SubGraph_swig = snap.GetSubGraph(Graph, V_swig)
-        for node,node_swig in zip(SubGraph.Nodes(), SubGraph_swig.Nodes()):
-            self.assertEqual(node.GetId(), node_swig.GetId())
-        for edge,edge_swig in zip(SubGraph.Edges(), SubGraph_swig.Edges()):
-            self.assertEqual(edge.GetSrcNId(), edge_swig.GetSrcNId())
-            self.assertEqual(edge.GetDstNId(), edge_swig.GetDstNId())
+        self.checkGraphs(SubGraph, SubGraph_swig)
 
         SubGraph = Graph.GetSubGraphRenumber(V)
         SubGraph_swig = snap.GetSubGraphRenumber(Graph, V_swig)
-        for node,node_swig in zip(SubGraph.Nodes(), SubGraph_swig.Nodes()):
-            self.assertEqual(node.GetId(), node_swig.GetId())
-        for edge,edge_swig in zip(SubGraph.Edges(), SubGraph_swig.Edges()):
-            self.assertEqual(edge.GetSrcNId(), edge_swig.GetSrcNId())
-            self.assertEqual(edge.GetDstNId(), edge_swig.GetDstNId())
+        self.checkGraphs(SubGraph, SubGraph_swig)
 
         # verify that NIds are in 0..N-1
         for NI in SubGraph.Nodes():
@@ -3524,11 +3351,7 @@ class SnapPythonTest(unittest.TestCase):
         Graph = snap.GenFull(snap.TNEANet, 10)
         SubGraph = Graph.GetSubGraph(V)
         SubGraph_swig = snap.GetSubGraph(Graph, V_swig)
-        for node,node_swig in zip(SubGraph.Nodes(), SubGraph_swig.Nodes()):
-            self.assertEqual(node.GetId(), node_swig.GetId())
-        for edge,edge_swig in zip(SubGraph.Edges(), SubGraph_swig.Edges()):
-            self.assertEqual(edge.GetSrcNId(), edge_swig.GetSrcNId())
-            self.assertEqual(edge.GetDstNId(), edge_swig.GetDstNId())
+        self.checkGraphs(SubGraph, SubGraph_swig)
 
     def test_GetNodeClustCf(self):
         # Directed Graph
@@ -3560,29 +3383,17 @@ class SnapPythonTest(unittest.TestCase):
         # Directed Graph
         SubGraph = self.NetFull.ConvertESubGraph(snap.TNGraph, V)
         SubGraph_swig = snap.ConvertESubGraph(snap.PNGraph, self.NetFull, V_swig)
-        for node,node_swig in zip(SubGraph.Nodes(), SubGraph_swig.Nodes()):
-            self.assertEqual(node.GetId(), node_swig.GetId())
-        for edge,edge_swig in zip(SubGraph.Edges(), SubGraph_swig.Edges()):
-            self.assertEqual(edge.GetSrcNId(), edge_swig.GetSrcNId())
-            self.assertEqual(edge.GetDstNId(), edge_swig.GetDstNId())
+        self.checkGraphs(SubGraph, SubGraph_swig)
 
         # Undirected Graph
         SubGraph = self.NetFull.ConvertESubGraph(snap.TUNGraph, V)
         SubGraph_swig = snap.ConvertESubGraph(snap.PUNGraph, self.NetFull, V_swig)
-        for node,node_swig in zip(SubGraph.Nodes(), SubGraph_swig.Nodes()):
-            self.assertEqual(node.GetId(), node_swig.GetId())
-        for edge,edge_swig in zip(SubGraph.Edges(), SubGraph_swig.Edges()):
-            self.assertEqual(edge.GetSrcNId(), edge_swig.GetSrcNId())
-            self.assertEqual(edge.GetDstNId(), edge_swig.GetDstNId())
+        self.checkGraphs(SubGraph, SubGraph_swig)
 
         # Network
         SubGraph = self.NetFull.ConvertESubGraph(snap.TNEANet, V)
         SubGraph_swig = snap.ConvertESubGraph(snap.PNEANet, self.NetFull, V_swig)
-        for node,node_swig in zip(SubGraph.Nodes(), SubGraph_swig.Nodes()):
-            self.assertEqual(node.GetId(), node_swig.GetId())
-        for edge,edge_swig in zip(SubGraph.Edges(), SubGraph_swig.Edges()):
-            self.assertEqual(edge.GetSrcNId(), edge_swig.GetSrcNId())
-            self.assertEqual(edge.GetDstNId(), edge_swig.GetDstNId())
+        self.checkGraphs(SubGraph, SubGraph_swig)
 
     def test_GetEgonet(self):
 
@@ -3646,6 +3457,124 @@ class SnapPythonTest(unittest.TestCase):
                 Egonet_swig = snap.GetInEgonetSub(Graph, n, i, 2)
                 self.assertEqual(Egonet.GetNodes(), Egonet_swig.GetNodes())
                 self.assertEqual(Egonet.GetEdges(), Egonet_swig.GetEdges())
+
+    def test_GetGraphUnion(self):
+
+        #Undirected Graph
+        Graph = snap.TUNGraph.New()
+        Graph0 = snap.TUNGraph.New()
+        for i in range(5):
+            Graph.AddNode(i)
+        for i in range(5):
+            Graph.AddEdge(i,(i+1) % 5)
+            Graph.AddEdge(i,(i+2) % 5)
+
+        for i in range(3,8):
+            Graph0.AddNode(i)
+        for i in range(5):
+            Graph0.AddEdge(i + 3,((i+1) % 5) + 3)
+
+        Graph_swig = Graph.ConvertGraph(snap.TUNGraph)
+        Graph0_swig = Graph0.ConvertGraph(snap.TUNGraph)
+
+        Graph.GetGraphUnion(Graph0)
+        snap.GetGraphUnion(Graph_swig, Graph0_swig)
+        self.assertEqual(Graph.GetNodes(), Graph_swig.GetNodes())
+        self.assertEqual(Graph.GetEdges(), Graph_swig.GetEdges())
+
+        # Directed Graph
+        Graph1 = snap.TNGraph.New()
+        Graph2 = snap.TNGraph.New()
+        for i in range(4):
+            Graph1.AddNode(i)
+        for i in range(1,5):
+            Graph2.AddNode(i)
+
+        Graph1.AddEdge(0, 1)
+        Graph1.AddEdge(1, 2)
+        Graph2.AddEdge(1, 2)
+        Graph2.AddEdge(2, 1)
+        Graph1.AddEdge(2, 3)
+        Graph2.AddEdge(2, 3)
+        Graph1.AddEdge(3, 2)
+        Graph2.AddEdge(3, 4)
+        Graph2.AddEdge(1, 4)
+
+        Graph1_swig = Graph1.ConvertGraph(snap.TNGraph)
+        Graph2_swig = Graph2.ConvertGraph(snap.TNGraph)
+
+        Graph1.GetGraphUnion(Graph2)
+        snap.GetGraphUnion(Graph1_swig, Graph2_swig)
+        self.assertEqual(Graph1.GetNodes(), Graph1_swig.GetNodes())
+        self.assertEqual(Graph1.GetEdges(), Graph1_swig.GetEdges())
+
+        # Directed Network
+        Graph3 = snap.TNEANet.New()
+        Graph4 = snap.TNEANet.New()
+        EId = 0
+        for i in range(4):
+            Graph3.AddNode(i)
+        for i in range(1,5):
+            Graph4.AddNode(i)
+
+        Graph3.AddEdge(0, 1, EId)
+        EId += 1
+        Graph3.AddEdge(1, 2, EId)
+        EId += 1
+        Graph4.AddEdge(1, 2, EId)
+        EId += 1
+        Graph4.AddEdge(2, 1, EId)
+        EId += 1
+        Graph3.AddEdge(2, 3, EId)
+        Graph4.AddEdge(2, 3, EId)
+        EId += 1
+        Graph3.AddEdge(3, 2, EId)
+        EId += 1
+        Graph4.AddEdge(3, 4, EId)
+        EId += 1
+        Graph4.AddEdge(1, 4, EId)
+        EId += 1
+
+        Graph3_swig = Graph3.ConvertGraph(snap.TNEANet)
+        Graph4_swig = Graph4.ConvertGraph(snap.TNEANet)
+
+        Graph3.GetGraphUnion(Graph4)
+        snap.GetGraphUnion(Graph3_swig, Graph4_swig)
+        self.assertEqual(Graph3.GetNodes(), Graph3_swig.GetNodes())
+        self.assertEqual(Graph3.GetEdges(), Graph3_swig.GetEdges())
+
+    def test_GetGraphUnionAttr(self):
+        Graph = snap.TNEANet.New()
+        Graph0 = snap.TNEANet.New()
+
+        s = "id"
+        for i in range(6):
+            Graph.AddNode(i)
+            Graph.AddIntAttrDatN(i, i, s)
+
+        for i in range(3,9):
+            Graph0.AddNode(i)
+            Graph0.AddIntAttrDatN(i, i, s)
+
+        for i in range(6):
+            EId = Graph.AddEdge(i, (i + 2) % 6)
+            Graph.AddIntAttrDatE(EId, (i + 2) % 6, s)
+            EId = Graph.AddEdge(i, (i + 5) % 6)
+            Graph.AddIntAttrDatE(EId, (i + 5) % 6, s)
+
+        for i in range(6):
+            EId = Graph0.AddEdge(i + 3, ((i + 3) % 6) + 3)
+            Graph0.AddIntAttrDatE(EId, ((i + 3) % 6) + 3, s)
+            EId = Graph0.AddEdge(i + 3, ((i + 4) % 6) + 3)
+            Graph0.AddIntAttrDatE(EId, ((i + 4) % 6) + 3, s)
+
+        Graph_swig = Graph.ConvertGraph(snap.TNEANet)
+        Graph0_swig = Graph0.ConvertGraph(snap.TNEANet)
+
+        Graph.GetGraphUnionAttr(Graph0)
+        snap.GetGraphUnionAttr(Graph_swig, Graph0_swig)
+        self.assertEqual(Graph.GetNodes(), Graph_swig.GetNodes())
+        self.assertEqual(Graph.GetEdges(), Graph_swig.GetEdges())
 
 if __name__ == '__main__':
   unittest.main()

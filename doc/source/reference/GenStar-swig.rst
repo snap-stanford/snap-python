@@ -1,5 +1,5 @@
 GenStar (SWIG)
-''''''''''''''''''
+''''''''''''''
 
 .. function:: GenStar (GraphType, Nodes, IsDir=True)
    :noindex:

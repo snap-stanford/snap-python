@@ -1,5 +1,5 @@
 GetSngVecs
-'''''''''''
+''''''''''
 
 .. function:: GetSngVecs(SngVecs)
 

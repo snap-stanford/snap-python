@@ -28,17 +28,17 @@ The following example shows how to calculate PageRank scores for nodes in
     import snap
 
     Graph = snap.GenRndGnm(snap.TNGraph, 100, 1000)
-    PRankH = Graph.GetPageRank(PRankH)
+    PRankH = Graph.GetPageRank()
     for item in PRankH:
         print(item, PRankH[item])
 
     UGraph = snap.GenRndGnm(snap.TUNGraph, 100, 1000)
-    PRankH = UGraph.GetPageRank(PRankH)
+    PRankH = UGraph.GetPageRank()
     for item in PRankH:
         print(item, PRankH[item])
 
     Network = snap.GenRndGnm(snap.TNEANet, 100, 1000)
-    PRankH = Network.GetPageRank(PRankH)
+    PRankH = Network.GetPageRank()
     for item in PRankH:
         print(item, PRankH[item])
 

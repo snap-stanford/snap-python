@@ -1,5 +1,5 @@
 Get1CnCom (SWIG)
-''''''''''''''''''
+''''''''''''''''
 
 .. function:: Get1CnCom(Graph, Cn1ComV)
    :noindex:

@@ -1,5 +1,5 @@
 GenTree (SWIG)
-''''''''''''''''
+''''''''''''''
 
 .. function:: GenTree(GraphType, Fanout, Levels, IsDir=True, ChildPointsToParent=True)
    :noindex:

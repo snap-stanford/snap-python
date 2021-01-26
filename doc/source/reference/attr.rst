@@ -1,5 +1,5 @@
 Sparse Attributes
-``````````````````
+`````````````````
 
 SNAP offers the following classes for handling sparse attributes: :class:`TAttr` for
 when keys are integers and :class:`TAttrPair` for when keys are a pair of integers.
@@ -10,7 +10,7 @@ attributes.
 
 
 TAttr
-=========
+=====
 
 .. class:: TAttr()
            TAttr(SIn)

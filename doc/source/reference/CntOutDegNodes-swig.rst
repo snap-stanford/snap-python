@@ -1,5 +1,5 @@
 CntOutDegNodes (SWIG)
-''''''''''''''''''''''''''
+'''''''''''''''''''''
 
 .. function:: CntOutDegNodes(Graph, NodeOutDeg)
    :noindex:

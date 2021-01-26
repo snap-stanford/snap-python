@@ -9,17 +9,25 @@ of Python. Most of the SNAP functionality is available via Snap.py in Python.
 
 The following people contributed to the development of Snap.py (in
 alphabetical order):
+Ruth-Ann Armstrong
 Roger Chen
+Benoît Coste
 Carlos Hernandez
+Jihun Hong
 Farzaan Kaiyom
+Viswesh Krishna
+Daiki Kumazawa
 Jure Leskovec
 Stephen Macke
 Ben Pastel
 Karthik Ramachandran
 Sheila Ramaswamy
+Avery Rogers
 Nicholas Shelly
 Rok Sosic
 Ming Han Teh
+Cameron Tew
+Albert Zheng
 
 Special thanks go to the students in the 2013 class of CS224W at Stanford
 University, who helped with the initial version of the manuals and the beta

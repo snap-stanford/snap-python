@@ -1,5 +1,5 @@
 GetSngVals (SWIG)
-''''''''''''''''''
+'''''''''''''''''
 
 .. function:: GetSngVals(Graph, SngVals, SngValV)
    :noindex:

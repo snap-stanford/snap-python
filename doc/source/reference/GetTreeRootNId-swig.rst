@@ -1,5 +1,5 @@
 GetTreeRootNId (SWIG)
-''''''''''''''''''''''
+'''''''''''''''''''''
 
 .. function:: GetTreeRootNId(Graph)
    :noindex:

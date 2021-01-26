@@ -1,5 +1,5 @@
 GetKCore (SWIG)
-''''''''''''''''''''''
+'''''''''''''''
 
 .. function:: GetKCore(Graph, K)
    :noindex:

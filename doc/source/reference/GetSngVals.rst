@@ -1,5 +1,5 @@
 GetSngVals
-'''''''''''
+''''''''''
 
 .. function:: GetSngVals(SngVals)
 

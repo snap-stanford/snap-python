@@ -1,5 +1,5 @@
 GetNodeInDegV
-'''''''''''''''
+'''''''''''''
 
 .. function:: GetNodeInDegV()
 

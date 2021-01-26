@@ -1,5 +1,5 @@
 GetHits
-'''''''''''''''
+'''''''
 
 .. function:: GetHits (MaxIter = 20)
 

@@ -57,6 +57,7 @@ PUNGraph	GetNodesAtHops
 PUNGraph	GetShortPath
 PUNGraph	GetBfsFullDiam
 PUNGraph	GetBfsEffDiam
+PUNGraph	GetBfsEffDiamAll
 PUNGraph	DrawGViz
 PUNGraph	GenGrid
 PUNGraph	GenStar
@@ -66,10 +67,13 @@ PUNGraph	GenTree
 PUNGraph	GenBaraHierar
 PUNGraph	GenRndGnm
 PUNGraph	GetClustCf
+PUNGraph	GetClustCfAll
 PUNGraph	GetNodeClustCf
 PUNGraph	GetTriads
+PUNGraph	GetTriadsAll
 PUNGraph	GetTriadEdges
 PUNGraph	GetNodeTriads
+PUNGraph	GetNodeTriadsAll
 PUNGraph	GetTriadParticip
 PUNGraph	GetCmnNbrs
 PUNGraph	GetLen2Paths
@@ -100,6 +104,7 @@ PUNGraph	PlotShortPathDistr
 PUNGraph	PlotKCoreNodes
 PUNGraph	PlotKCoreEdges
 PUNGraph	GetSubGraph
+PUNGraph	GetSubGraphRenumber
 PUNGraph	GetESubGraph
 PUNGraph	GetRndSubGraph
 PUNGraph	GetRndESubGraph
@@ -107,6 +112,11 @@ PUNGraph	GetTriangleCnt
 PUNGraph	GetBetweennessCentr
 PUNGraph	GetClosenessCentr
 PUNGraph	GetFarnessCentr
+PUNGraph	GetEgonetHop
+PUNGraph	GetInEgonetHop
+PUNGraph	GetOutEgonetHop
+PUNGraph	GetInEgonetSub
+PUNGraph	GetGraphUnion
 PNGraph	LoadEdgeList
 PNGraph	LoadEdgeListStr
 PNGraph	LoadConnList
@@ -166,6 +176,7 @@ PNGraph	GetNodesAtHops
 PNGraph	GetShortPath
 PNGraph	GetBfsFullDiam
 PNGraph	GetBfsEffDiam
+PNGraph	GetBfsEffDiamAll
 PNGraph	DrawGViz
 PNGraph	GenGrid
 PNGraph	GenStar
@@ -175,10 +186,13 @@ PNGraph	GenTree
 PNGraph	GenBaraHierar
 PNGraph	GenRndGnm
 PNGraph	GetClustCf
+PNGraph	GetClustCfAll
 PNGraph	GetNodeClustCf
 PNGraph	GetTriads
+PNGraph	GetTriadsAll
 PNGraph	GetTriadEdges
 PNGraph	GetNodeTriads
+PNGraph	GetNodeTriadsAll
 PNGraph	GetTriadParticip
 PNGraph	GetCmnNbrs
 PNGraph	GetLen2Paths
@@ -198,10 +212,7 @@ PNGraph	GetKCoreEdges
 PNGraph	PrintInfo
 PNGraph	GetNodeEcc
 PNGraph	GetPageRank
-PNGraph	GetPageRank_v1
-PNGraph	GetPageRankMP
 PNGraph	GetHits
-PNGraph	GetHitsMP
 PNGraph	PlotInDegDistr
 PNGraph	PlotOutDegDistr
 PNGraph	PlotWccDistr
@@ -212,6 +223,7 @@ PNGraph	PlotShortPathDistr
 PNGraph	PlotKCoreNodes
 PNGraph	PlotKCoreEdges
 PNGraph	GetSubGraph
+PNGraph	GetSubGraphRenumber
 PNGraph	GetESubGraph
 PNGraph	GetRndSubGraph
 PNGraph	GetRndESubGraph
@@ -219,6 +231,11 @@ PNGraph	GetTriangleCnt
 PNGraph	GetBetweennessCentr
 PNGraph	GetClosenessCentr
 PNGraph	GetFarnessCentr
+PNGraph	GetEgonetHop
+PNGraph	GetInEgonetHop
+PNGraph	GetOutEgonetHop
+PNGraph	GetInEgonetSub
+PNGraph	GetGraphUnion
 PNEANet	LoadEdgeList
 PNEANet	LoadEdgeListStr
 PNEANet	LoadConnList
@@ -278,6 +295,7 @@ PNEANet	GetNodesAtHops
 PNEANet	GetShortPath
 PNEANet	GetBfsFullDiam
 PNEANet	GetBfsEffDiam
+PNEANet	GetBfsEffDiamAll
 PNEANet	DrawGViz
 PNEANet	GenGrid
 PNEANet	GenStar
@@ -287,10 +305,13 @@ PNEANet	GenTree
 PNEANet	GenBaraHierar
 PNEANet	GenRndGnm
 PNEANet	GetClustCf
+PNEANet	GetClustCfAll
 PNEANet	GetNodeClustCf
 PNEANet	GetTriads
+PNEANet	GetTriadsAll
 PNEANet	GetTriadEdges
 PNEANet	GetNodeTriads
+PNEANet	GetNodeTriadsAll
 PNEANet	GetTriadParticip
 PNEANet	GetCmnNbrs
 PNEANet	GetLen2Paths
@@ -310,10 +331,7 @@ PNEANet	GetKCoreEdges
 PNEANet	PrintInfo
 PNEANet	GetNodeEcc
 PNEANet	GetPageRank
-PNEANet	GetPageRank_v1
-PNEANet	GetPageRankMP
 PNEANet	GetHits
-PNEANet	GetHitsMP
 PNEANet	PlotInDegDistr
 PNEANet	PlotOutDegDistr
 PNEANet	PlotWccDistr
@@ -324,6 +342,7 @@ PNEANet	PlotShortPathDistr
 PNEANet	PlotKCoreNodes
 PNEANet	PlotKCoreEdges
 PNEANet	GetSubGraph
+PNEANet	GetSubGraphRenumber
 PNEANet	GetESubGraph
 PNEANet	GetRndSubGraph
 PNEANet	GetRndESubGraph
@@ -331,6 +350,11 @@ PNEANet	GetTriangleCnt
 PNEANet	GetBetweennessCentr
 PNEANet	GetClosenessCentr
 PNEANet	GetFarnessCentr
+PNEANet	GetEgonetHop
+PNEANet	GetInEgonetHop
+PNEANet	GetOutEgonetHop
+PNEANet	GetInEgonetSub
+PNEANet	GetGraphUnion
 PNGraphMP	LoadEdgeList
 PNGraphMP	LoadEdgeListStr
 PNGraphMP	LoadConnList
@@ -440,6 +464,7 @@ PNGraphMP	GetESubGraph
 PNGraphMP	GetRndSubGraph
 PNGraphMP	GetRndESubGraph
 PNGraphMP	GetTriangleCnt
-PNGraphMP       GetBetweennessCentr
-PNGraphMP       GetClosenessCentr
-PNGraphMP       GetFarnessCentr
+PNGraphMP	GetBetweennessCentr
+PNGraphMP	GetClosenessCentr
+PNGraphMP	GetFarnessCentr
+

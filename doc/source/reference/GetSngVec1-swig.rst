@@ -1,5 +1,5 @@
 GetSngVec (SWIG)
-''''''''''''''''''
+''''''''''''''''
 
 .. function:: GetSngVec(Graph, SngVecs, SngValV, LeftSV, RightSV)
    :noindex:

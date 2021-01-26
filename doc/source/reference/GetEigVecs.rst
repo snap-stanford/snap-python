@@ -1,5 +1,5 @@
 GetEigVecs
-'''''''''''
+''''''''''
 
 .. function:: GetEigVecs(EigVecs)
 

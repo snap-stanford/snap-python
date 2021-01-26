@@ -1,5 +1,5 @@
 GetAnfNode
-'''''''''''
+''''''''''
 
 .. function:: GetAnfNode(SrcNId, MxDist, IsDir, NApprox=32)
 

@@ -1,5 +1,5 @@
 GetAnf (SWIG)
-''''''''''''''''''
+'''''''''''''
 
 .. function:: GetAnf(Graph, SrcNId, DistNbrsV, MxDist, IsDir, NApprox=32)
    :noindex:
