@@ -23,7 +23,7 @@ The following example shows how to plot the distribution of sizes of weakly conn
     import snap
 
     Graph = snap.GenRndGnm(snap.TNGraph, 100, 1000)
-    Graph.PlotWccDistr("example", "Directed graph - wcc distributaion")
+    Graph.PlotWccDistr("example", "Directed graph - wcc distribution")
 
     UGraph = snap.GenRndGnm(snap.TUNGraph, 100, 1000)
     UGraph.PlotWccDistr("example", "Undirected graph - wcc distribution")

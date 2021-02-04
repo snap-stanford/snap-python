@@ -491,12 +491,12 @@ TTable
 
       .. describe:: ReadIntCol(Attr, Result)
 
-         Reads values of an entire int column given by *Attr* into the :class:`TFltV`
+         Reads values of an entire int column given by *Attr* into the :class:`TIntV`
          *Result*.
 
       .. describe:: ReadStrCol(Attr, Result)
 
-         Reads values of an entire string column given by *Attr* into the :class:`TFltV`
+         Reads values of an entire string column given by *Attr* into the :class:`TStrV`
          *Result*.
 
       .. describe:: Rename(Attr, NewAttr)
