@@ -18,7 +18,7 @@ Basic operating system requirements for running the Docker Engine - Community. S
 * **Fedora**
   * To install Docker Engine - Community, you need the 64-bit version of one of these Fedora versions:
       * 28
-      * 29 
+      * 29
 * **Ubuntu**
   * To install Docker Engine - Community, you need the 64-bit version of one of these Ubuntu versions:
       * Disco 19.04
@@ -85,25 +85,25 @@ Note that installation steps outlined below for Linux are purposefully only defi
 	```
 	$ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 	```
-	
+
 5. Verify that you have the key with the fingerprint `9DC8 5822 9FC7 DD38 854A E2D8 8D81 803C 0EBF CD88` by searching for the last 8 characters of the fingerprint:
-  
+
 	```
   	$ sudo apt-key fingerprint 0EBFCD88
-    
+
 	pub   rsa4096 2017-02-22 [SCEA]
       		9DC8 5822 9FC7 DD38 854A  E2D8 8D81 803C 0EBF CD88
 	uid           [ unknown] Docker Release (CE deb) <docker@docker.com>
 	sub   rsa4096 2017-02-22 [S]
-  ```
+  	```
 
 6. Use the following command to setup the **stable** repository:
 
 	```
 	$ sudo add-apt-repository \
-   		"deb [arch=amd64] https://download.docker.com/linux/ubuntu \
-	   $(lsb_release -cs) \
-   		stable"
+		"deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+		$(lsb_release -cs) \
+		stable"
 	```
 
 7. Install the latest version of Docker Engine - Community and containerd:
@@ -169,7 +169,7 @@ Now that the image is built, all we need to do is run a snap-python container:
 
 ```
 $ docker run -it cam2337/snap-python
-Python 3.7.5 (default, Nov 23 2019, 05:59:34) 
+Python 3.7.5 (default, Nov 23 2019, 05:59:34)
 [GCC 8.3.0] on linux
 Type "help", "copyright", "credits" or "license" for more information.
 >>> import snap
@@ -214,11 +214,11 @@ We can then run the container and verify that importing `pandas` behaves as expe
 
 ```
 $ ctew-macbookpro:docker ctew$ docker run -it my-custom-snap-python
-Python 3.7.5 (default, Nov 23 2019, 05:59:34) 
+Python 3.7.5 (default, Nov 23 2019, 05:59:34)
 [GCC 8.3.0] on linux
 Type "help", "copyright", "credits" or "license" for more information.
 >>> import pandas
->>> 
+>>>
 ```
 
 ### Q: How can I leverage the snap-python Docker compute stack from the comfort of my favorite editor?
