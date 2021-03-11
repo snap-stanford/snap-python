@@ -3793,7 +3793,7 @@ class SnapPythonTest(unittest.TestCase):
                 self.assertEqual(Egonet.GetEdges(), 2)
 
     def test_GetGraphUnion(self):
-        
+
         #Undirected Graph
         Graph = snap.TUNGraph.New()
         Graph0 = snap.TUNGraph.New()
@@ -3829,7 +3829,7 @@ class SnapPythonTest(unittest.TestCase):
         Graph1.AddEdge(3, 2)
         Graph2.AddEdge(3, 4)
         Graph2.AddEdge(1, 4)
-        
+
         snap.GetGraphUnion(Graph1, Graph2)
         self.assertEqual(Graph1.GetNodes(), 5)
         self.assertEqual(Graph1.GetEdges(), 7)
@@ -3883,7 +3883,7 @@ class SnapPythonTest(unittest.TestCase):
             Graph.AddIntAttrDatE(EId, (i + 2) % 6, s)
             EId = Graph.AddEdge(i, (i + 5) % 6)
             Graph.AddIntAttrDatE(EId, (i + 5) % 6, s)
-        
+
         for i in range(6):
             EId = Graph0.AddEdge(i + 3, ((i + 3) % 6) + 3)
             Graph0.AddIntAttrDatE(EId, ((i + 3) % 6) + 3, s)
@@ -3893,6 +3893,701 @@ class SnapPythonTest(unittest.TestCase):
         snap.GetGraphUnionAttr(Graph, Graph0)
         self.assertEqual(Graph.GetNodes(), 9)
         self.assertEqual(Graph.GetEdges(), 24)
+
+    def test_IntVAttr(self):
+        Graph = snap.TNEANet.New()
+        numNodes = 10
+        Graph.AddNode(0)
+        for i in range(1, numNodes):
+            Graph.AddNode(i)
+            Graph.AddEdge(i-1, i)
+
+        TestAttr = 'Test1'
+        Graph.AddIntVAttrN(TestAttr)
+        for i in range(numNodes):
+            test = Graph.GetIntVAttrDatN(i, TestAttr)
+            self.assertEqual(0, len(test))
+
+        testV = snap.TIntV()
+        for i in range(numNodes):
+            testV.Add(i)
+        Graph.AddIntVAttrDatN(0, testV, TestAttr)
+        test = Graph.GetIntVAttrDatN(0, TestAttr)
+        self.assertEqual(numNodes, len(test))
+
+        for i in range(numNodes):
+            self.assertEqual(test[i], i)
+
+        Graph.AppendIntVAttrDatN(0, numNodes, TestAttr)
+        test = Graph.GetIntVAttrDatN(0, TestAttr)
+        self.assertEqual(numNodes+1, len(test))
+
+        for i in range(numNodes+1):
+            self.assertEqual(test[i], i)
+
+        Graph.DelAttrDatN(0, TestAttr)
+        for i in range(numNodes):
+            test = Graph.GetIntVAttrDatN(i, TestAttr)
+            self.assertEqual(0, len(test))
+
+    def test_IntVAttr2(self):
+        Graph = snap.TNEANet.New()
+        numNodes = 10
+        Graph.AddIntVAttrN('size')
+        Graph.AddIntVAttrN('single')
+
+        for i in range(numNodes):
+            Graph.AddNode(i)
+            size = snap.TIntV(i) # creates zero vector of length i
+            Graph.AddIntVAttrDatN(i, size, 'size')
+
+            single = snap.TIntV()
+            single.Add(i)
+            Graph.AddIntVAttrDatN(i, single, 'single')
+
+        for i in range(numNodes):
+            size_check = Graph.GetIntVAttrDatN(i, 'size')
+            single_check = Graph.GetIntVAttrDatN(i, 'single')
+
+            size = snap.TIntV(i)
+            single = snap.TIntV()
+            single.Add(i)
+
+            self.assertEqual(size, size_check)
+            self.assertEqual(single, single_check)
+
+            Graph.AppendIntVAttrDatN(i, -i, 'single')
+            single.Add(-i)
+
+            single_check = Graph.GetIntVAttrDatN(i, 'single')
+            self.assertEqual(single, single_check)
+
+        Graph.AddIntVAttrE('cost')
+        Graph.AddIntVAttrE('reward')
+
+        for i in range(numNodes):
+            for j in range(i+1, numNodes):
+                self.assertEqual(Graph.IsEdge(i, j), False)
+                edgeID = Graph.AddEdge(i, j)
+                self.assertEqual(Graph.IsEdge(i, j), True)
+
+                costs = snap.TIntV()
+                costs.Add(i+j)
+
+                Graph.AddIntVAttrDatE(edgeID, costs, 'cost')
+                Graph.AppendIntVAttrDatE(edgeID, i+j, 'cost')
+                costs.Add(i+j)
+                Graph.AddIntVAttrDatE(edgeID, costs, 'reward')
+
+                cost_val = Graph.GetIntVAttrDatE(edgeID, 'cost')
+                reward_val = Graph.GetIntVAttrDatE(edgeID, 'reward')
+
+                self.assertEqual(len(cost_val), 2)
+                self.assertEqual(len(reward_val), 2)
+
+                for d in range(2):
+                    self.assertEqual(cost_val[d], i+j)
+                    self.assertEqual(reward_val[d], i+j)
+
+        for i in range(numNodes):
+            for j in range(i+1, numNodes):
+                edgeID = Graph.GetEId(i, j)
+                self.assertEqual(Graph.IsEdge(edgeID), True)
+
+                cost_val = Graph.GetIntVAttrDatE(edgeID, 'cost')
+                reward_val = Graph.GetIntVAttrDatE(edgeID, 'reward')
+
+                self.assertEqual(len(cost_val), 2)
+                self.assertEqual(len(reward_val), 2)
+
+                for d in range(2):
+                    self.assertEqual(cost_val[d], i+j)
+                    self.assertEqual(reward_val[d], i+j)
+
+    def test_FltVAttr(self):
+        Graph = snap.TNEANet.New()
+        numNodes = 10
+        Graph.AddNode(0)
+
+        for i in range(1, numNodes):
+            Graph.AddNode(i)
+            Graph.AddEdge(i-1, i)
+
+        TestAttr = 'Test1'
+        Graph.AddFltVAttrN(TestAttr)
+
+        for i in range(numNodes):
+            test = Graph.GetFltVAttrDatN(i, TestAttr)
+            self.assertEqual(0, len(test))
+
+        testV = snap.TFltV()
+        for i in range(numNodes):
+            testV.Add(i)
+
+        Graph.AddFltVAttrDatN(0, testV, TestAttr)
+        test = Graph.GetFltVAttrDatN(0, TestAttr)
+        self.assertEqual(numNodes, len(test))
+
+        for i in range(numNodes):
+            self.assertEqual(test[i], i + 0.0)
+
+        Graph.AppendFltVAttrDatN(0, numNodes, TestAttr)
+        test = Graph.GetFltVAttrDatN(0, TestAttr)
+        self.assertEqual(numNodes+1, len(test))
+        for i in range(numNodes+1):
+            self.assertEqual(test[i], i + 0.0)
+
+        Graph.DelAttrDatN(0, TestAttr)
+        for i in range(numNodes):
+            test = Graph.GetFltVAttrDatN(i, TestAttr)
+            self.assertEqual(0, len(test))
+
+    def test_FltVAttr2(self):
+        Graph = snap.TNEANet.New()
+        numNodes = 10
+        Graph.AddFltVAttrN('size')
+        Graph.AddFltVAttrN('single')
+
+        for i in range(numNodes):
+            Graph.AddNode(i)
+            size = snap.TFltV(i)
+            Graph.AddFltVAttrDatN(i, size, 'size')
+
+            single = snap.TFltV()
+            single.Add(i + 0.5)
+            Graph.AddFltVAttrDatN(i, single, 'single')
+
+        for i in range(numNodes):
+            size_check = Graph.GetFltVAttrDatN(i, 'size')
+            single_check = Graph.GetFltVAttrDatN(i, 'single')
+
+            size = snap.TFltV(i)
+            single = snap.TFltV()
+            single.Add(i + 0.5)
+
+            self.assertEqual(size, size_check)
+            self.assertEqual(single, single_check)
+
+            Graph.AppendFltVAttrDatN(i, -i + 0.5, 'single')
+            single.Add(-i + 0.5)
+
+            single_check = Graph.GetFltVAttrDatN(i, 'single')
+            self.assertEqual(single, single_check)
+
+        Graph.AddFltVAttrE('cost')
+        Graph.AddFltVAttrE('reward')
+
+        for i in range(numNodes):
+            for j in range(i+1, numNodes):
+                self.assertEqual(Graph.IsEdge(i, j), False)
+                edgeID = Graph.AddEdge(i, j)
+                self.assertEqual(Graph.IsEdge(i, j), True)
+
+                costs = snap.TFltV()
+                costs.Add(i + j + 0.5)
+
+                Graph.AddFltVAttrDatE(edgeID, costs, 'cost')
+                Graph.AppendFltVAttrDatE(edgeID, i+j+0.5, 'cost')
+                costs.Add(i + j + 0.5)
+                Graph.AddFltVAttrDatE(edgeID, costs, 'reward')
+
+                cost_val = Graph.GetFltVAttrDatE(edgeID, 'cost')
+                reward_val = Graph.GetFltVAttrDatE(edgeID, 'reward')
+
+                self.assertEqual(len(cost_val), 2)
+                self.assertEqual(len(reward_val), 2)
+
+                for d in range(2):
+                    self.assertEqual(cost_val[d], i + j + 0.5)
+                    self.assertEqual(reward_val[d], i + j + 0.5)
+
+        for i in range(numNodes):
+            for j in range(i + 1, numNodes):
+                edgeID = Graph.GetEId(i, j)
+                self.assertEqual(Graph.IsEdge(edgeID), True)
+
+                cost_val = Graph.GetFltVAttrDatE(edgeID, 'cost')
+                reward_val = Graph.GetFltVAttrDatE(edgeID, 'reward')
+
+                self.assertEqual(len(cost_val), 2)
+                self.assertEqual(len(reward_val), 2)
+
+                for d in range(2):
+                    self.assertEqual(cost_val[d], i + j + 0.5)
+                    self.assertEqual(reward_val[d], i + j + 0.5)
+
+    def test_IntVDelAttr(self):
+        Graph = snap.TNEANet.New()
+        numNodes = 10
+        Graph.AddIntVAttrN('nodeAttrEmpty')
+        Graph.AddIntVAttrN('nodeAttrOne')
+        Graph.AddIntVAttrE('edgeAttrEmpty')
+        Graph.AddIntVAttrE('edgeAttrOne')
+
+        for i in range(numNodes):
+            Graph.AddNode(i)
+
+            single = snap.TIntV()
+            single.Add(i)
+            single.Add(i + 1)
+            Graph.AddIntVAttrDatN(i, single, 'nodeAttrOne')
+
+            if i > 0:
+                edgeID = Graph.AddEdge(i - 1, i)
+                single.Add(i - 1)
+                Graph.AddIntVAttrDatE(edgeID, single, 'edgeAttrOne')
+
+        # node attributes
+        for i in range(numNodes):
+            self.assertEqual(Graph.DelFromIntVAttrDatN(i, i, 'nodeAttrOne'), 0)
+            self.assertEqual(Graph.DelFromIntVAttrDatN(i, i, 'nodeAttrEmpty'), -1)
+            self.assertEqual(Graph.DelFromIntVAttrDatN(i, i, 'nodeAttrOne'), -1)
+
+            vec = Graph.GetIntVAttrDatN(i, 'nodeAttrOne')
+            self.assertEqual(len(vec), 1)
+            self.assertEqual(vec[0], i + 1)
+
+        for i in range(numNodes):
+            self.assertEqual(Graph.IsAttrDeletedN(i, 'nodeAttrOne'), False)
+            self.assertEqual(Graph.IsIntVAttrDeletedN(i, 'nodeAttrOne'), False)
+            Graph.DelAttrDatN(i, 'nodeAttrOne')
+            self.assertEqual(Graph.IsAttrDeletedN(i, 'nodeAttrOne'), True)
+            self.assertEqual(Graph.IsIntVAttrDeletedN(i, 'nodeAttrOne'), True)
+
+            vec = Graph.GetIntVAttrDatN(i, 'nodeAttrOne')
+            self.assertEqual(len(vec), 0)
+
+        # edge attributes
+        for i in range(1, numNodes):
+            edgeID = Graph.GetEId(i - 1, i)
+
+            # there is no DelFromIntVAttrDatE function
+            # self.assertEqual(Graph.DelFromIntVAttrDatE(edgeID, i, 'edgeAttrOne'), 0)
+
+            self.assertEqual(Graph.IsAttrDeletedE(edgeID, 'edgeAttrOne'), False)
+            self.assertEqual(Graph.IsIntVAttrDeletedE(edgeID, 'edgeAttrOne'), False)
+            Graph.DelAttrDatE(edgeID, 'edgeAttrOne')
+            self.assertEqual(Graph.IsAttrDeletedE(edgeID, 'edgeAttrOne'), True)
+            self.assertEqual(Graph.IsIntVAttrDeletedE(edgeID, 'edgeAttrOne'), True)
+
+            vec = Graph.GetIntVAttrDatE(edgeID, 'edgeAttrOne')
+            self.assertEqual(len(vec), 0)
+
+    def testFltVDelAttr(self):
+        Graph = snap.TNEANet.New()
+        numNodes = 10
+        Graph.AddFltVAttrN('nodeAttrEmpty')
+        Graph.AddFltVAttrN('nodeAttrOne')
+        Graph.AddFltVAttrE('edgeAttrEmpty')
+        Graph.AddFltVAttrE('edgeAttrOne')
+
+        for i in range(numNodes):
+            Graph.AddNode(i)
+
+            single = snap.TFltV()
+            single.Add(i - 1.5)
+            single.Add(i + 1.5)
+            Graph.AddFltVAttrDatN(i, single, 'nodeAttrOne')
+
+            if i > 0:
+                edgeID = Graph.AddEdge(i - 1, i)
+                single.Add(i - 1)
+                Graph.AddFltVAttrDatE(edgeID, single, 'edgeAttrOne')
+
+        # node attributes
+        for i in range(numNodes):
+            self.assertEqual(Graph.DelFromFltVAttrDatN(i, i - 1.5, 'nodeAttrOne'), 0)
+            self.assertEqual(Graph.DelFromFltVAttrDatN(i, i - 1.5, 'nodeAttrEmpty'), -1)
+            self.assertEqual(Graph.DelFromFltVAttrDatN(i, i - 1.5, 'nodeAttrOne'), -1)
+
+            vec = Graph.GetFltVAttrDatN(i, 'nodeAttrOne')
+            self.assertEqual(len(vec), 1)
+            self.assertEqual(vec[0], i + 1.5)
+
+        for i in range(numNodes):
+            self.assertEqual(Graph.IsAttrDeletedN(i, 'nodeAttrOne'), False)
+            self.assertEqual(Graph.IsFltVAttrDeletedN(i, 'nodeAttrOne'), False)
+            Graph.DelAttrDatN(i, 'nodeAttrOne')
+            self.assertEqual(Graph.IsAttrDeletedN(i, 'nodeAttrOne'), True)
+            self.assertEqual(Graph.IsFltVAttrDeletedN(i, 'nodeAttrOne'), True)
+
+            vec = Graph.GetFltVAttrDatN(i, 'nodeAttrOne')
+            self.assertEqual(len(vec), 0)
+
+        # edge attributes
+        for i in range(1, numNodes):
+            edgeID = Graph.GetEId(i - 1, i)
+            self.assertEqual(Graph.IsAttrDeletedE(edgeID, 'edgeAttrOne'), False)
+            self.assertEqual(Graph.IsFltVAttrDeletedE(edgeID, 'edgeAttrOne'), False)
+            Graph.DelAttrDatE(edgeID, 'edgeAttrOne')
+            self.assertEqual(Graph.IsAttrDeletedE(edgeID, 'edgeAttrOne'), True)
+            self.assertEqual(Graph.IsFltVAttrDeletedE(edgeID, 'edgeAttrOne'), True)
+
+            vec = Graph.GetFltVAttrDatE(edgeID, 'edgeAttrOne')
+            self.assertEqual(len(vec), 0)
+
+    def test_IntVIterator(self):
+        Graph = snap.TNEANet.New()
+        numNodes = 10
+        TestAttrNodes = 'path'
+        TestAttrEdges = 'line'
+        TestAttrNodesSparse = 'path_sparse'
+        TestAttrEdgesSparse = 'line_sparse'
+        Graph.AddIntVAttrN(TestAttrNodes)
+        Graph.AddIntVAttrE(TestAttrEdges)
+        Graph.AddIntVAttrN(TestAttrNodesSparse, snap.TBool(False)) # False means sparse
+        Graph.AddIntVAttrE(TestAttrEdgesSparse, snap.TBool(False))
+
+        Graph.AddNode(0)
+        for i in range(1, numNodes):
+            Graph.AddNode(i)
+            Graph.AddEdge(i - 1, i)
+
+        for i in range(numNodes):
+            testVB = snap.TIntV()
+            testVB.Add(i)
+            Graph.AddIntVAttrDatN(i, testVB, TestAttrNodes)
+            Graph.AddIntVAttrDatN(i, testVB, TestAttrNodesSparse, snap.TBool(False))
+
+            if i > 0:
+                edgeID = Graph.GetEId(i - 1, i)
+                Graph.AddIntVAttrDatE(edgeID, testVB, TestAttrEdges)
+                Graph.AddIntVAttrDatE(edgeID, testVB, TestAttrEdgesSparse, snap.TBool(False))
+
+        count = 0
+        nodeAttrs = snap.TIntIntVV()
+        edgeAttrs = snap.TIntIntVV()
+        nodeAttrsSparse = snap.TIntIntVV()
+        edgeAttrsSparse = snap.TIntIntVV()
+
+        ## NOTE (Daniel): Unable to iterate through IntV attribute
+        ## TypeError: '<' not supported between instances of 'SwigPyObject' and 'SwigPyObject'
+        # NI = Graph.BegNAIntVI(TestAttrNodes)
+        # while NI < Graph.EndNAIntVI(TestAttrNodes):
+        #     nodeAttrs.Add(NI.GetDat());
+        #     NI.Next()
+
+    def test_FltVIterator(self):
+        Graph = snap.TNEANet.New()
+        numNodes = 10
+        TestAttrNodes = 'path'
+        TestAttrEdges = 'line'
+        TestAttrNodesSparse = 'path_sparse'
+        TestAttrEdgesSparse = 'line_sparse'
+        Graph.AddFltVAttrN(TestAttrNodes)
+        Graph.AddFltVAttrE(TestAttrEdges)
+        Graph.AddFltVAttrN(TestAttrNodesSparse, snap.TBool(False)) # False means sparse vector
+        Graph.AddFltVAttrE(TestAttrEdgesSparse, snap.TBool(False))
+
+        Graph.AddNode(0)
+        for i in range(1, numNodes):
+            Graph.AddNode(i)
+            Graph.AddEdge(i - 1, i)
+
+        for i in range(numNodes):
+            testVB = snap.TFltV()
+            testVB.Add(i + 0.5)
+            Graph.AddFltVAttrDatN(i, testVB, TestAttrNodes)
+            Graph.AddFltVAttrDatN(i, testVB, TestAttrNodesSparse, snap.TBool(False))
+
+            if i > 0:
+                edgeID = Graph.GetEId(i - 1, i)
+                Graph.AddFltVAttrDatE(edgeID, testVB, TestAttrEdges)
+                Graph.AddFltVAttrDatE(edgeID, testVB, TestAttrEdgesSparse, snap.TBool(False))
+
+        count = 0
+        ## NOTE (Daniel)
+        ## AttributeError: module 'snap' has no attribute 'TFltFltVV'
+        # nodeAttrs = snap.TFltFltVV()
+        # edgeAttrs = snap.TFltFltVV()
+        # nodeAttrsSparse = snap.TFltFltVV()
+        # edgeAttrsSparse = snap.TFltFltVV()
+
+        ## NOTE (Daniel): Unable to iterate through FltV attribute
+        ## TypeError: '<' not supported between instances of 'SwigPyObject' and 'SwigPyObject'
+        # NI = Graph.BegNAFltVI(TestAttrNodes)
+        # while NI < Graph.EndNAFltVI(TestAttrNodes):
+        #     nodeAttrs.Add(NI.GetDat());
+        #     NI.Next()
+
+    def test_SparseIntVAttr(self):
+        Graph = snap.TNEANet.New()
+        numNodes = 10
+        TestAttrNodes = 'path_sparse'
+        TestAttrEdges = 'line_sparse'
+        Graph.AddIntVAttrN(TestAttrNodes, snap.TBool(False)) # False means sparse vector
+        Graph.AddIntVAttrE(TestAttrEdges, snap.TBool(False))
+
+        for i in range(numNodes):
+            Graph.AddNode(i)
+            testV = snap.TIntV(i)
+            testV.Add(i)
+            Graph.AddIntVAttrDatN(i, testV, TestAttrNodes, snap.TBool(False))
+
+            testV_check = Graph.GetIntVAttrDatN(i, TestAttrNodes)
+            self.assertEqual(len(testV_check), i + 1)
+            self.assertEqual(testV, testV_check)
+
+        for i in range(numNodes):
+            for j in range(i + 1, numNodes):
+                edgeID = Graph.AddEdge(i, j)
+                testV = snap.TIntV()
+                testV.Add(i + j)
+                Graph.AddIntVAttrDatE(edgeID, testV, TestAttrEdges, snap.TBool(False))
+
+                testV_check = Graph.GetIntVAttrDatE(edgeID, TestAttrEdges)
+                self.assertEqual(len(testV_check), 1)
+                self.assertEqual(testV, testV_check)
+
+        for i in range(numNodes):
+            self.assertEqual(Graph.DelFromIntVAttrDatN(i, i, TestAttrNodes), 0)
+            self.assertEqual(Graph.DelFromIntVAttrDatN(i, i, TestAttrNodes), -1)
+
+            vec = Graph.GetIntVAttrDatN(i, TestAttrNodes)
+            self.assertEqual(len(vec), i)
+            self.assertEqual(vec, snap.TIntV(i))
+
+            Graph.DelAttrDatN(i, TestAttrNodes)
+
+            ## NOTE (Daniel): For some reason this line gives an out of bounds error
+            ## RuntimeError: Execution stopped: (0<=ValN)&&(ValN<Vals) [Reason:'Index:0 Vals:0 MxVals:0 Type:4TVecIS_IS_I4TIntiEiEiE'], file ../../snap/glib-core/ds.h, line 487
+            # self.assertEqual(Graph.IsIntVAttrDeletedN(i, TestAttrNodes), True)
+
+            vec = Graph.GetIntVAttrDatN(i, TestAttrNodes)
+            self.assertEqual(len(vec), 0)
+
+        for i in range(numNodes):
+            for j in range(i + 1, numNodes):
+                edgeID = Graph.GetEId(i, j)
+
+                Graph.DelAttrDatE(edgeID, TestAttrEdges)
+
+                ## NOTE (Daniel): Like with IsIntVAttrDeletedN, this line gives an error
+                # self.assertEqual(Graph.IsIntVAttrDeletedE(i, TestAttrEdges), True)
+
+                vec = Graph.GetIntVAttrDatE(edgeID, TestAttrEdges)
+                self.assertEqual(len(vec), 0)
+
+    # Exactly like test_SparseIntVAttr but with dense vectors.
+    # Runs without error, unlike test_SparseIntVAttr with all lines uncommented.
+    def test_DenseIntVAttr(self):
+        Graph = snap.TNEANet.New()
+        numNodes = 10
+        TestAttrNodes = 'path_sparse'
+        TestAttrEdges = 'line_sparse'
+        Graph.AddIntVAttrN(TestAttrNodes, snap.TBool(True)) # False means sparse vector
+        Graph.AddIntVAttrE(TestAttrEdges, snap.TBool(True))
+
+        for i in range(numNodes):
+            Graph.AddNode(i)
+            testV = snap.TIntV(i)
+            testV.Add(i)
+            Graph.AddIntVAttrDatN(i, testV, TestAttrNodes, snap.TBool(True))
+
+            testV_check = Graph.GetIntVAttrDatN(i, TestAttrNodes)
+            self.assertEqual(len(testV_check), i + 1)
+            self.assertEqual(testV, testV_check)
+
+        for i in range(numNodes):
+            for j in range(i + 1, numNodes):
+                edgeID = Graph.AddEdge(i, j)
+                testV = snap.TIntV()
+                testV.Add(i + j)
+                Graph.AddIntVAttrDatE(edgeID, testV, TestAttrEdges, snap.TBool(True))
+
+                testV_check = Graph.GetIntVAttrDatE(edgeID, TestAttrEdges)
+                self.assertEqual(len(testV_check), 1)
+                self.assertEqual(testV, testV_check)
+
+        for i in range(numNodes):
+            self.assertEqual(Graph.DelFromIntVAttrDatN(i, i, TestAttrNodes), 0)
+            self.assertEqual(Graph.DelFromIntVAttrDatN(i, i, TestAttrNodes), -1)
+
+            vec = Graph.GetIntVAttrDatN(i, TestAttrNodes)
+            self.assertEqual(len(vec), i)
+            self.assertEqual(vec, snap.TIntV(i))
+
+            Graph.DelAttrDatN(i, TestAttrNodes)
+            self.assertEqual(Graph.IsIntVAttrDeletedN(i, TestAttrNodes), True)
+
+            vec = Graph.GetIntVAttrDatN(i, TestAttrNodes)
+            self.assertEqual(len(vec), 0)
+
+        for i in range(numNodes):
+            for j in range(i + 1, numNodes):
+                edgeID = Graph.GetEId(i, j)
+
+                Graph.DelAttrDatE(edgeID, TestAttrEdges)
+                self.assertEqual(Graph.IsIntVAttrDeletedE(i, TestAttrEdges), True)
+
+                vec = Graph.GetIntVAttrDatE(edgeID, TestAttrEdges)
+                self.assertEqual(len(vec), 0)
+
+    def test_SparseFltVAttr(self):
+        Graph = snap.TNEANet.New()
+        numNodes = 10
+        TestAttrNodes = 'path_sparse'
+        TestAttrEdges = 'line_sparse'
+        Graph.AddFltVAttrN(TestAttrNodes, snap.TBool(False)) # False means sparse vector
+        Graph.AddFltVAttrE(TestAttrEdges, snap.TBool(False))
+
+        for i in range(numNodes):
+            Graph.AddNode(i)
+            testV = snap.TFltV(i)
+            testV.Add(i + 0.5)
+            Graph.AddFltVAttrDatN(i, testV, TestAttrNodes, snap.TBool(False))
+
+            testV_check = Graph.GetFltVAttrDatN(i, TestAttrNodes)
+            self.assertEqual(len(testV_check), i + 1)
+            self.assertEqual(testV, testV_check)
+
+        for i in range(numNodes):
+            for j in range(i + 1, numNodes):
+                edgeID = Graph.AddEdge(i, j)
+                testV = snap.TFltV()
+                testV.Add(i + j + 0.5)
+                Graph.AddFltVAttrDatE(edgeID, testV, TestAttrEdges, snap.TBool(False))
+
+                testV_check = Graph.GetFltVAttrDatE(edgeID, TestAttrEdges)
+                self.assertEqual(len(testV_check), 1)
+                self.assertEqual(testV, testV_check)
+
+        for i in range(numNodes):
+            self.assertEqual(Graph.DelFromFltVAttrDatN(i, i + 0.5, TestAttrNodes), 0)
+            self.assertEqual(Graph.DelFromFltVAttrDatN(i, i + 0.5, TestAttrNodes), -1)
+
+            vec = Graph.GetFltVAttrDatN(i, TestAttrNodes)
+            self.assertEqual(len(vec), i)
+            self.assertEqual(vec, snap.TFltV(i))
+
+            Graph.DelAttrDatN(i, TestAttrNodes)
+
+            ## NOTE (Daniel): For some reason this line gives an out of bounds error
+            ## RuntimeError: Execution stopped: (0<=ValN)&&(ValN<Vals) [Reason:'Index:0 Vals:0 MxVals:0 Type:4TVecIS_IS_I4TFltiEiEiE'], file ../../snap/glib-core/ds.h, line 487
+            # self.assertEqual(Graph.IsFltVAttrDeletedN(i, TestAttrNodes), True)
+
+            vec = Graph.GetFltVAttrDatN(i, TestAttrNodes)
+            self.assertEqual(len(vec), 0)
+
+        for i in range(numNodes):
+            for j in range(i + 1, numNodes):
+                edgeID = Graph.GetEId(i, j)
+
+                Graph.DelAttrDatE(edgeID, TestAttrEdges)
+
+                ## NOTE (Daniel): Like with IsFltVAttrDeletedN, this line gives an error
+                # self.assertEqual(Graph.IsFltVAttrDeletedE(i, TestAttrEdges), True)
+
+                vec = Graph.GetFltVAttrDatE(edgeID, TestAttrEdges)
+                self.assertEqual(len(vec), 0)
+
+
+    # Exactly like test_SparseFltVAttr but with dense vectors.
+    # Runs without error, unlike test_SparseFltVAttr with all lines uncommented.
+    def test_DenseFltVAttr(self):
+        Graph = snap.TNEANet.New()
+        numNodes = 10
+        TestAttrNodes = 'path_sparse'
+        TestAttrEdges = 'line_sparse'
+        Graph.AddFltVAttrN(TestAttrNodes, snap.TBool(True))
+        Graph.AddFltVAttrE(TestAttrEdges, snap.TBool(True))
+
+        for i in range(numNodes):
+            Graph.AddNode(i)
+            testV = snap.TFltV(i)
+            testV.Add(i + 0.5)
+            Graph.AddFltVAttrDatN(i, testV, TestAttrNodes, snap.TBool(True))
+
+            testV_check = Graph.GetFltVAttrDatN(i, TestAttrNodes)
+            self.assertEqual(len(testV_check), i + 1)
+            self.assertEqual(testV, testV_check)
+
+        for i in range(numNodes):
+            for j in range(i + 1, numNodes):
+                edgeID = Graph.AddEdge(i, j)
+                testV = snap.TFltV()
+                testV.Add(i + j + 0.5)
+                Graph.AddFltVAttrDatE(edgeID, testV, TestAttrEdges, snap.TBool(True))
+
+                testV_check = Graph.GetFltVAttrDatE(edgeID, TestAttrEdges)
+                self.assertEqual(len(testV_check), 1)
+                self.assertEqual(testV, testV_check)
+
+        for i in range(numNodes):
+            self.assertEqual(Graph.DelFromFltVAttrDatN(i, i + 0.5, TestAttrNodes), 0)
+            self.assertEqual(Graph.DelFromFltVAttrDatN(i, i + 0.5, TestAttrNodes), -1)
+
+            vec = Graph.GetFltVAttrDatN(i, TestAttrNodes)
+            self.assertEqual(len(vec), i)
+            self.assertEqual(vec, snap.TFltV(i))
+
+            Graph.DelAttrDatN(i, TestAttrNodes)
+            self.assertEqual(Graph.IsFltVAttrDeletedN(i, TestAttrNodes), True)
+
+            vec = Graph.GetFltVAttrDatN(i, TestAttrNodes)
+            self.assertEqual(len(vec), 0)
+
+        for i in range(numNodes):
+            for j in range(i + 1, numNodes):
+                edgeID = Graph.GetEId(i, j)
+
+                Graph.DelAttrDatE(edgeID, TestAttrEdges)
+                self.assertEqual(Graph.IsFltVAttrDeletedE(i, TestAttrEdges), True)
+
+                vec = Graph.GetFltVAttrDatE(edgeID, TestAttrEdges)
+                self.assertEqual(len(vec), 0)
+
+    # Test Int and Flt sparse attributes
+    def test_SparseAttr(self):
+        Graph = snap.TNEANet.New()
+        numNodes = 10
+        TestAttrNodes = 'path_sparse'
+        TestAttrNodesID = 20
+        TestAttrEdges = 'line_sparse'
+        TestAttrEdgesID = 30
+        Graph.AddSAttrN(TestAttrNodes, snap.atInt, TestAttrNodesID)
+        Graph.AddSAttrE(TestAttrEdges, snap.atFlt, TestAttrEdgesID)
+
+        for i in range(numNodes):
+            Graph.AddNode(i)
+            test = 10 * i
+            Graph.AddSAttrDatN(i, TestAttrNodes, test)
+
+            test_check = -1
+            result = Graph.GetSAttrDatN(i, TestAttrNodes, test_check)
+            self.assertEqual(result, 0) # result == 0 means sparse attribute found
+            ## NOTE (Daniel): Since Python passes arguments by value, cannot save
+            ## the value of sparse attributes into test_check.
+            # self.assertEqual(test, test_check)
+
+        for i in range(numNodes):
+            for j in range(i + 1, numNodes):
+                edgeID = Graph.AddEdge(i, j)
+                test = i + j + 0.5
+                Graph.AddSAttrDatE(edgeID, TestAttrEdges, test)
+
+                test_check = -1.0
+                result = Graph.GetSAttrDatE(edgeID, TestAttrEdges, test_check)
+                self.assertEqual(result, 0) # result == 0 means sparse attribute found
+                ## NOTE (Daniel): Since Python passes arguments by value, cannot save
+                ## the value of sparse attributes into test_check.
+                # self.assertEqual(test, test_check)
+
+        for i in range(numNodes):
+            Graph.DelSAttrDatN(i, TestAttrNodes)
+            test_check = -1
+            result = Graph.GetSAttrDatN(i, TestAttrNodes, test_check)
+            self.assertEqual(result, -1)  # should be -1 since attribute deleted
+
+        for i in range(numNodes):
+            for j in range(i + 1, numNodes):
+                edgeID = Graph.GetEId(i, j)
+
+                Graph.DelSAttrDatE(edgeID, TestAttrEdges)
+                test_check = -1.0
+                result = Graph.GetSAttrDatE(edgeID, TestAttrEdges, test_check)
+                self.assertEqual(result, -1)  # should be -1 since attribute deleted
+
 
 if __name__ == '__main__':
   unittest.main()
