@@ -93,4 +93,5 @@ if __name__ == '__main__':
     print("G5 edges", G5.GetEdges())
 
     printtime(t, "done")
+    t = printtime(t, "reading the graph as table")
 
