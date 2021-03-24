@@ -8,4 +8,4 @@ Contents:
 
    tutorial
    table-tut
-
+   attr-tut
