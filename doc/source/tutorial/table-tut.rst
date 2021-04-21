@@ -50,7 +50,8 @@ To turn this into a SNAP table, we must create a Context and Schema::
     	>>> schema.Add(snap.TStrTAttrPr("Midterm2", snap.atInt))
     	>>> schema.Add(snap.TStrTAttrPr("Final", snap.atInt))
 
-As you can see, defining the Context simply requires initializing an object of type *TTableContext*. That’s all you have to do for the Context!
+As you can see, defining the Context simply requires initializing an object of type *TTableContext*. That’s all you have to do for the Context! There is one another important aspect of Context. Context should not be garbage collected by Python, which means that if it is defined within a function which returns TTable or Context, then the variable must be declared as global within the function:
+    	>>>     global context
 
 For the Schema, you must first initialize an object of the SNAP Schema type, and then use the :meth:`Add()` method to create column types for the :class:`TTable` you want to build.  The Add() method takes one parameter, a SNAP *TStrTAttrPr*, which is a pair consisting of a string and an attribute. An attribute in SNAP is used to represent different data types using an integer key; you don’t have to worry about this, but just remember that the Schema requires this data type for the columns. There are always 2 components of a *TStrTAttrPr*: the name of the column, which is a string, and the type of data that the column with that name will hold. The options are atInt (integer attribute), atFlt (float attribute), and atStr (string attribute). Since our columns are type integer, we will use atInt for all of them.
 
