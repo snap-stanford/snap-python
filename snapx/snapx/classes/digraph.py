@@ -3,6 +3,8 @@ Base class for directed graphs."""
 from copy import deepcopy
 
 import snapx as sx
+import snap
+
 from snapx.classes.graph import Graph
 from snapx.classes.coreviews import AdjacencyView
 from snapx.classes.reportviews import (
@@ -323,11 +325,12 @@ class DiGraph(Graph):
         {'day': 'Friday'}
 
         """
-        self._graph = TNEANet.New()
+        self._graph = snap.TNEANet.New()
 
         # Because we are emulating an directed graph using multigraph,
         # we need a counter to keep track of edges
         self._num_edges = 0
+
         # Supplementary dicts to keep data not supported by snap graph
         self._node_extra_attr = {}
         self._edge_extra_attr = {}
@@ -435,7 +438,7 @@ class DiGraph(Graph):
         NetworkX Graphs, though one should be careful that the hash
         doesn't change on mutables.
         """
-        super.add_node(node_for_adding, **attr)
+        super().add_node(node_for_adding, **attr)
 
     def add_nodes_from(self, nodes_for_adding, **attr):
         """Add multiple nodes.
@@ -481,7 +484,7 @@ class DiGraph(Graph):
         11
 
         """
-        super.add_nodes_from(nodes_for_adding, **attr)
+        super().add_nodes_from(nodes_for_adding, **attr)
 
     def remove_node(self, n):
         """Remove node n.
@@ -513,7 +516,7 @@ class DiGraph(Graph):
         []
 
         """
-        super.remove_node(n)
+        super().remove_node(n)
 
     def remove_nodes_from(self, nodes):
         """Remove multiple nodes.
@@ -539,7 +542,7 @@ class DiGraph(Graph):
         []
 
         """
-        super.remove_nodes_from(nodes)
+        super().remove_nodes_from(nodes)
 
     def add_edge(self, u_of_edge, v_of_edge, **attr):
         """Add an edge between u and v.
@@ -651,7 +654,7 @@ class DiGraph(Graph):
         >>> G.add_edges_from([(1, 2), (2, 3)], weight=3)
         >>> G.add_edges_from([(3, 4), (1, 4)], label='WN2898')
         """
-        super.add_edges_from(ebunch_to_add, **attr)
+        super().add_edges_from(ebunch_to_add, **attr)
 
     def remove_edge(self, u, v):
         """Remove the edge between u and v.
@@ -680,11 +683,14 @@ class DiGraph(Graph):
         >>> e = (2, 3, {'weight':7}) # an edge with attribute data
         >>> G.remove_edge(*e[:2]) # select first part of edge tuple
         """
+        if not self.has_edge(u, v):
+            return
+        
         try:
-            del self._succ[u][v]
-            del self._pred[v][u]
-        except KeyError as e:
-            raise NetworkXError("The edge {u}-{v} not in graph.".format(u, v)) from e
+            self._graph.DelEdge(u, v)
+            self._num_edges -= 1
+        except TypeError:
+            raise SnapXTypeError("SNAP only supports int as edge keys.")
 
     def remove_edges_from(self, ebunch):
         """Remove all edges specified in ebunch.
@@ -712,7 +718,46 @@ class DiGraph(Graph):
         >>> ebunch = [(1, 2), (2, 3)]
         >>> G.remove_edges_from(ebunch)
         """
-        raise NotImplementedError("TODO")
+        super().remove_edges_from(ebunch)
+
+    def has_edge(self, u, v):
+        """PORTED FROM NETWORKX
+        Returns True if the edge (u, v) is in the graph.
+        This is the same as `v in G[u]` without KeyError exceptions.
+        Parameters
+        ----------
+        u, v : nodes
+            Nodes can be, for example, strings or numbers.
+            Nodes must be hashable (and not None) Python objects.
+        Returns
+        -------
+        edge_ind : bool
+            True if edge is in the graph, False otherwise.
+        Examples
+        --------
+        >>> G = nx.path_graph(4)  # or DiGraph, MultiGraph, MultiDiGraph, etc
+        >>> G.has_edge(0, 1)  # using two nodes
+        True
+        >>> e = (0, 1)
+        >>> G.has_edge(*e)  #  e is a 2-tuple (u, v)
+        True
+        >>> e = (0, 1, {'weight':7})
+        >>> G.has_edge(*e[:2])  # e is a 3-tuple (u, v, data_dictionary)
+        True
+        The following syntax are equivalent:
+        >>> G.has_edge(0, 1)
+        True
+        >>> 1 in G[0]  # though this gives KeyError if 0 not in G
+        True
+        """
+        # Avoid snap runtime error by first checking
+        # if the nodes exist
+        if u not in self or v not in self:
+            return False
+        try:
+            return self._graph.IsEdge(u, v)
+        except TypeError:
+            return False
 
     def has_successor(self, u, v):
         """Returns True if node u has successor v.
@@ -758,7 +803,10 @@ class DiGraph(Graph):
         #     return iter(self._succ[n])
         # except KeyError as e:
         #     raise NetworkXError(f"The node {n} is not in the digraph.") from e
-        raise NotImplementedError("TODO")
+        try:
+            return iter(self.adj[n])
+        except KeyError:
+            raise SnapXError("The node {} is not in the graph.".format(n))
 
     # digraph definitions
     neighbors = successors
@@ -1042,7 +1090,7 @@ class DiGraph(Graph):
         []
 
         """
-        super.clear()
+        super().clear()
 
     def clear_edges(self):
         """Remove all edges from the graph without altering nodes.
@@ -1057,10 +1105,11 @@ class DiGraph(Graph):
         []
 
         """
-        for predecessor_dict in self._pred.values():
-            predecessor_dict.clear()
-        for successor_dict in self._succ.values():
-            successor_dict.clear()
+        # for predecessor_dict in self._pred.values():
+        #     predecessor_dict.clear()
+        # for successor_dict in self._succ.values():
+        #     successor_dict.clear()
+        raise NotImplementedError("TODO")
 
     def is_multigraph(self):
         """Returns True if graph is a multigraph, False otherwise."""
