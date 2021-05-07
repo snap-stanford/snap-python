@@ -172,6 +172,7 @@ TUNGraphEdgeI.GetId = GetId
 %template(GetOutEgonetHop_PUNGraph) TSnap::GetOutEgonetHop<PUNGraph>;
 %template(GetInEgonetSub_PUNGraph) TSnap::GetInEgonetSub<PUNGraph>;
 %template(GetGraphUnion_PUNGraph) TSnap::GetGraphUnion<PUNGraph>;
+%template(GetGraphIntersection_PUNGraph) TSnap::GetGraphIntersection<PUNGraph>;
 
 
 // triad.h - PUNGraph

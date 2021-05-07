@@ -3576,6 +3576,118 @@ class SnapPythonTest(unittest.TestCase):
         self.assertEqual(Graph.GetNodes(), Graph_swig.GetNodes())
         self.assertEqual(Graph.GetEdges(), Graph_swig.GetEdges())
 
+    def test_GetGraphIntersection(self):
+        #Undirected Graph
+        Graph = snap.TUNGraph.New()
+        Graph0 = snap.TUNGraph.New()
+
+        for i in range(5):
+            Graph.AddNode(i)
+        for i in range(5):
+            Graph.AddEdge(i,(i + 1) % 5)
+            Graph.AddEdge(i,(i + 2) % 5)
+
+        for i in range(2,6):
+            Graph0.AddNode(i)
+        for i in range(4):
+            Graph0.AddEdge(i + 2, ((i + 1) % 4) + 2)
+            Graph0.AddEdge(i + 2, ((i + 2) % 4) + 2)
+
+        Graph_swig = Graph.ConvertGraph(snap.TUNGraph)
+        Graph0_swig = Graph0.ConvertGraph(snap.TUNGraph)
+
+        IntersectionGraph = Graph.GetGraphIntersection(Graph0)
+        IntersectionGraph_swig = snap.GetGraphIntersection(Graph_swig, Graph0_swig)
+        self.assertEqual(IntersectionGraph.GetNodes(), IntersectionGraph_swig.GetNodes())
+        self.assertEqual(IntersectionGraph.GetEdges(), IntersectionGraph_swig.GetEdges())
+
+        # Directed Graph
+        Graph1 = snap.TNGraph.New()
+        Graph2 = snap.TNGraph.New()
+
+        for i in range(8):
+            Graph1.AddNode(i)
+        for i in range(8):
+            Graph1.AddEdge(i, (i + 1) % 8)
+            Graph1.AddEdge((i + 1) % 8, i)
+
+        for i in range(2,6):
+            Graph2.AddNode(i)
+        for i in range(4):
+            Graph2.AddEdge(i + 2, ((i + 1) % 4) + 2)
+            Graph2.AddEdge(i + 2, ((i + 2) % 4) + 2)
+
+        Graph1_swig = Graph1.ConvertGraph(snap.TNGraph)
+        Graph2_swig = Graph2.ConvertGraph(snap.TNGraph)
+
+        IntersectionGraph0 = Graph1.GetGraphIntersection(Graph2)
+        IntersectionGraph0_swig = snap.GetGraphIntersection(Graph1_swig, Graph2_swig)
+        self.assertEqual(IntersectionGraph0.GetNodes(), IntersectionGraph0_swig.GetNodes())
+        self.assertEqual(IntersectionGraph0.GetEdges(), IntersectionGraph0_swig.GetEdges())
+
+        # Directed Network
+        Graph3 = snap.TNEANet.New()
+        Graph4 = snap.TNEANet.New()
+        EId3 = 0
+        EId4 = 1
+        for i in range(4):
+            Graph3.AddNode(i)
+        for i in range(3):
+            Graph3.AddEdge(i, i + 1, EId3)
+            EId3 += 1
+        Graph3.AddEdge(1, 0, EId3)
+        EId3 += 1
+        Graph3.AddEdge(1, 2, EId3)
+        EId3 += 1
+        Graph3.AddEdge(3, 2, EId3)
+        EId3 += 1
+
+        for i in range(1,5):
+            Graph4.AddNode(i)
+        for i in range(1,4):
+            Graph4.AddEdge(i + 1, i, EId4 + 3)
+            Graph4.AddEdge(i, i + 1, EId4)
+            EId4 += 1
+
+        Graph3_swig = Graph3.ConvertGraph(snap.TNEANet)
+        Graph4_swig = Graph4.ConvertGraph(snap.TNEANet)
+
+        IntersectionGraph1 = Graph3.GetGraphIntersection(Graph4)
+        IntersectionGraph1_swig = snap.GetGraphIntersection(Graph3_swig, Graph4_swig)
+        self.assertEqual(IntersectionGraph1.GetNodes(), IntersectionGraph1_swig.GetNodes())
+        self.assertEqual(IntersectionGraph1.GetEdges(), IntersectionGraph1_swig.GetEdges())
+
+    def test_GetGraphIntersectionAttr(self):
+        Graph = snap.TNEANet.New()
+        Graph0 = snap.TNEANet.New()
+
+        s = "id"
+        for i in range(7):
+            Graph.AddNode(i)
+            Graph.AddIntAttrDatN(i, i, s)
+
+        for i in range(2,9):
+            Graph0.AddNode(i)
+            Graph0.AddIntAttrDatN(i, i, s)
+
+        for i in range(7):
+            EId = Graph.AddEdge(i, (i + 2) % 7)
+            Graph.AddIntAttrDatE(EId, (i + 2) % 7, s)
+            EId = Graph.AddEdge(i, (i + 3) % 7)
+            Graph.AddIntAttrDatE(EId, (i + 3) % 7, s)
+
+        for i in range(7):
+            EId = Graph0.AddEdge(i + 2, ((i + 3) % 7) + 2)
+            Graph0.AddIntAttrDatE(EId, ((i + 3) % 7) + 2, s)
+
+        Graph_swig = Graph.ConvertGraph(snap.TNEANet)
+        Graph0_swig = Graph0.ConvertGraph(snap.TNEANet)
+
+        IntersectionGraph = snap.GetGraphIntersectionAttr(Graph, Graph0)
+        IntersectionGraph_swig = snap.GetGraphIntersectionAttr(Graph_swig, Graph0_swig)
+        self.assertEqual(IntersectionGraph.GetNodes(), IntersectionGraph_swig.GetNodes())
+        self.assertEqual(IntersectionGraph.GetEdges(), IntersectionGraph_swig.GetEdges())
+
 if __name__ == '__main__':
   unittest.main()
 

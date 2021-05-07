@@ -67,6 +67,11 @@ def GetGraphUnion(tspec, *args):
     if type(tspec) == PNGraph : return GetGraphUnion_PNGraph(tspec, *args)
     if type(tspec) == PNEANet : return GetGraphUnion_PNEANet(tspec, *args)
     raise TypeError('First argument has invalid type')
+def GetGraphIntersection(tspec, *args):
+    if type(tspec) == PUNGraph: return GetGraphIntersection_PUNGraph(tspec, *args)
+    if type(tspec) == PNGraph : return GetGraphIntersection_PNGraph(tspec, *args)
+    if type(tspec) == PNEANet : return GetGraphIntersection_PNEANet(tspec, *args)
+    raise TypeError('First argument has invalid type')
 def GetModularity(tspec, *args):
     if type(tspec) == PUNGraph: return GetModularity_PUNGraph(tspec, *args)
     if type(tspec) == PUndirNet: return GetModularity_PUndirNet(tspec, *args)

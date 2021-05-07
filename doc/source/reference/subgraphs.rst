@@ -21,4 +21,6 @@ Subgraphs and Graph Type Conversions
    GetInEgonetSub
    GetGraphUnion
    GetGraphUnionAttr
+   GetGraphIntersection
+   GetGraphIntersectionAttr
 

@@ -781,6 +781,16 @@ def GetGraphUnionAttr_classFn(self, *args, **kwargs):
     return GetGraphUnionAttr(self, *args, **kwargs)
 PNEANet.GetGraphUnionAttr = GetGraphUnionAttr_classFn
 
+def GetGraphIntersection_classFn(self, *args, **kwargs):
+    return GetGraphIntersection(self, *args, **kwargs)
+PUNGraph.GetGraphIntersection = GetGraphIntersection_classFn
+PNGraph.GetGraphIntersection = GetGraphIntersection_classFn
+PNEANet.GetGraphIntersection = GetGraphIntersection_classFn
+
+def GetGraphIntersectionAttr_classFn(self, *args, **kwargs):
+    return GetGraphIntersectionAttr(self, *args, **kwargs)
+PNEANet.GetGraphIntersectionAttr = GetGraphIntersectionAttr_classFn
+
 def IsTree_classFn(self, *args, **kwargs):
     return IsTree(self, *args, **kwargs)
 PUNGraph.IsTree = IsTree_classFn
