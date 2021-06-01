@@ -1,6 +1,6 @@
 import snapx as sx
 import snap
-
+#import time
 __all__ = ["convert_node_labels_to_integers", "relabel_nodes"]
 
 
@@ -85,13 +85,18 @@ def relabel_nodes(G, mapping, copy=True):
     """
     # you can pass a function f(old_label)->new_label
     # but we'll just make a dictionary here regardless
+#    print("ENTERED")
     if not hasattr(mapping, "__getitem__"):
+#        print("NOT HAS ATTR")
         m = {n: mapping(n) for n in G}
     else:
+ #       print("HAS ATTR")
         m = mapping
     if copy:
+  #      print("copy")
         return _relabel_copy(G, m)
     else:
+   #     print("not copy")
         return _relabel_inplace(G, m)
 
 
@@ -154,19 +159,36 @@ def _relabel_inplace(G, mapping):
 
 
 def _relabel_copy(G, mapping):
+ #   print("IN relabel copy")
+ #   time_1 = time.time()
+  #  time_2 = time.time()
+   # time_3 = time.time()
     H = G.__class__()
     H.add_nodes_from((mapping.get(n, n), d) for n, d in G.nodes(data=True))
     if G.is_multigraph():
+    #    time_2 = time.time()
+    #    print("IS MULTIGRAPH")
         H.add_edges_from(
             (mapping.get(n1, n1), mapping.get(n2, n2), k, d.copy())
             for (n1, n2, k, d) in G.edges(keys=True, data=True)
         )
+     #   time_3 = time.time()
     else:
+      #  time_2 = time.time()
+     #   print("IS NOT MULTIGRAPH")
         H.add_edges_from(
             (mapping.get(n1, n1), mapping.get(n2, n2), d)
             for (n1, n2, d) in G.edges(data=True)
         )
+       # time_3 = time.time()
+    #time_3 = time.time()
+ #   print("Netlib 2: ", time_2 - time_1)
+#    print("Netlib 3: ", time_3 - time_2)
     H.graph.update(G.graph)
+   # time_4 = time.time()
+   # print("Netlib 2: ", time_2 - time_1)
+   # print("Netlib 3: ", time_3 - time_2)
+   # print("Netlib 4: ", time_4 - time_3)
     return H
 
 

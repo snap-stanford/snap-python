@@ -22,7 +22,9 @@ class NodeView(Mapping, Set):
         return iter(self._graph)
 
     def __getitem__(self, n):
+       
         if n not in self._graph:
+            print("error raised")
             raise KeyError(str(n))
         return AttributeDict(self._graph, n)
 

@@ -2,6 +2,8 @@ from collections.abc import MutableMapping
 
 from snap import TStrV
 from snapx.exception import SnapXKeyError, SnapXTypeError
+#from pyinstrument import Profiler
+#import time
 
 class AttributeDict(MutableMapping):
     """Wraps snap's attributes representations and presents them
@@ -30,21 +32,35 @@ class AttributeDict(MutableMapping):
     look at the internal storage for (1, 4)
     """
     def __init__(self, graph, key):
+        #profiler = Profiler()
+        #profiler.start()
+  #      print("PROFILING")
+   #     time_1 = time.time()
+    ##    time_2 = time.time()
+      #  time_3 = time.time()        
+       # time_4 = time.time()
+        #time_5 = time.time()
+       # time_6 = time.time()
         self._graph = graph
         if isinstance(key, int):
             self._is_node = True
+#            print("is instance int")
         elif isinstance(key, tuple) and len(key) == 2 \
             and isinstance(key[0], int) and isinstance(key[1], int):
+ #           print("is instance two tuple")
             self._is_node = False
         else:
+#            print("error")
             raise SnapXTypeError("Argument 2 must be either node (int) or edge (2-tuple).")
 
         # Need to convert a (src, dst) pair to the EI in the case of edge.
         try:
             if self._is_node:
+  #              print("try is node")
                 self._key = key
                 self._extra_attr = self._graph._node_extra_attr
             else:
+   #             print("try  else branch")
                 # IMPORTANT NOTE: src and dst gets reordered for UNDIRECTED graphs.
                 src, dst = key if graph.is_directed() else graph._order_edge(*key)
                 self._key = key if self._is_node else self._graph.snap_graph.GetEI(src, dst).GetId()
@@ -52,8 +68,9 @@ class AttributeDict(MutableMapping):
                 self._extra_attr = self._graph._edge_extra_attr
 
         except:
+ #           print("try  else branch")
             raise SnapXKeyError("Failed to get the edge ID for {}".format(str(key)))
-
+ #       time_7 = time.time() 
         # TODO: Support floats and strs
         # For iteration over Snap's attribute stores
         self._snap_attr_names = self._graph.snap_graph.IntAttrNameNI if self._is_node else \
@@ -70,6 +87,12 @@ class AttributeDict(MutableMapping):
         # For deleting values from snap's attr stores
         self._snap_attr_del = self._graph.snap_graph.DelAttrDatN if self._is_node else \
                              self._graph.snap_graph.DelAttrDatE
+        #time_8 = time.time()
+       # print("First section: ", time_7 - time_6)
+        #print("Second section: ", time_8 - time_7)  
+        #profiler.stop()
+
+       # print(profiler.output_text(unicode=True, color=True))
 
     def __yield_snap_attrs(self):
         _attr_names = TStrV()

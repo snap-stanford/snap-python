@@ -11,6 +11,9 @@ import snapx.convert as convert
 from snapx.exception import SnapXTypeError, SnapXError
 from ._nodeiter import _GraphNodeIterator, _GraphEdgeIterator, _TNEANetEdgeIter
 
+count_i = 0
+count_j = 0
+count_k = 0
 
 class Graph:
     """
@@ -179,7 +182,13 @@ class Graph:
         >>> 1 in G
         True
         """
+        #if: 
+        #     return self._graph.IsNode(n)
+        #else:
+         #    return False
         try:
+            if not isinstance(n, int):
+                return False
             return self._graph.IsNode(n)
         except TypeError:
             return False
@@ -306,17 +315,42 @@ class Graph:
         >>> H.nodes[1]['size']
         11
         """
+ #       global count_i
+#        global count_j
+ #       global count_k
+      
+#        print("UPDATED")      
         for n in nodes_for_adding:
-            try:
-                self.add_node(n)
-                self.nodes[n].update(attr)
-            except SnapXTypeError:
-                nn, ndict = n
-                if nn not in self.nodes:
-                    self.add_node(nn)
-                self.nodes[nn].update(attr)
-                self.nodes[nn].update(ndict)
-
+#             j = 1
+             if isinstance(n, int):
+                 self.add_node(n)
+                 self.nodes[n].update(attr)
+             else:
+                 nn, ndict = n
+                 if nn not in self.nodes:
+ #                    i = 1
+                      self.add_node(nn)
+                 self.nodes[nn].update(attr)
+                 self.nodes[nn].update(ndict)
+        
+          #return
+           # try:
+                #count_i += 1
+                #self.add_node(n)
+           #     self.nodes[n].update(attr)
+           #     count_i += 1
+           # except SnapXTypeError:
+           #     count_j += 1
+           #     nn, ndict = n
+           #     if nn not in self.nodes:
+           #         self.add_node(nn)
+           #     self.nodes[nn].update(attr)
+           #     self.nodes[nn].update(ndict)
+          #  count_k += 1
+       # print("I:", count_i)
+       # print("J:", count_j)
+       # print("K:", count_k)     
+       
     def remove_node(self, n):
         """PORTED FROM NETWORKX
         Remove node n.
@@ -628,6 +662,8 @@ class Graph:
                 dd = {}
             else:
                 raise SnapXError("The edge must be a 2-tuple or 3-tuple.")
+            
+
             try:
                 self.add_edge(u, v)
                 # FIXME: Faster way than simply walking over the dict?
