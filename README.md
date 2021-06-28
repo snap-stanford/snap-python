@@ -8,10 +8,12 @@ snap-python
 		git clone git@github.com:snap-stanford/snap-python.git
 		git clone git@github.com:snap-stanford/snap.git
 
-2. Then, run `make` from the top-level of `snap-python`. This will make the SNAP code into a Python module, using SWIG.  Finally, it will run some Python tests in the `test` directory.
+2. Then, run `make` from the top-level of `snap-python`. This will make the SNAP code into a Python module, using SWIG and run some Python tests in the `test` directory. Finally, it installs SNAP in Python's user libraries directory.
 
 		cd snap-python
 		make
+		cd swig
+		python setup.py install --user
 
 	From a Python interpreter, you should be able to import `snap` module:
 
