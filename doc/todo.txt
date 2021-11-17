@@ -1,5 +1,7 @@
 Proposed Features
-Apr 20, 2016
+Nov 17, 2021
+
+- Provide support for centrality calculations for weighted graphs in Python
 
 - Remove AddNode(NodeI) from the reference text
 
