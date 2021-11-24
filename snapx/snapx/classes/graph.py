@@ -2,8 +2,7 @@
 """
 
 import snapx as sx
-
-from snap import TNEANet, TNEANetNodeI, Nodes, Edges, TSIn
+import snap
 
 from snapx.classes.reportviews import NodeView, EdgeView
 from snapx.classes.coreviews import AdjacencyView
@@ -88,7 +87,7 @@ class Graph:
         >>> G.graph
         {'day': 'Friday'}
         """
-        self._graph = TNEANet.New()
+        self._graph = snap.TNEANet.New()
 
         # Because we are emulating an undirected graph using multigraph,
         # we need a counter to keep track of edges
@@ -97,7 +96,7 @@ class Graph:
         self._node_extra_attr = {}
         self._edge_extra_attr = {}
         if incoming_graph_data is not None:
-            if type(incoming_graph_data) == type(TNEANet.New()):
+            if type(incoming_graph_data) == type(snap.TNEANet.New()):
                 self._graph = incoming_graph_data
                 self._num_edges = self._graph.GetEdges()
             else:
@@ -731,7 +730,7 @@ class Graph:
         >>> ebunch = [(1, 2), (2, 3)]
         >>> G.remove_edges_from(ebunch)
         """
-        for e in ebunch_to_add:
+        for e in ebunch:
             ne = len(e)
             if ne == 3:
                 u, v, _ = e
