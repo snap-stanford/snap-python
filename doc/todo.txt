@@ -17,3 +17,6 @@ Nov 17, 2021
 
 - Implement a method in TNEANet to return a list of edges between two nodes
 
+- Implement a method in all graph types to return the graph adjacency matrix as a sparse matrix
+
+- Implement a method in all graph types to return the graph incidence matrix as a sparse matrix
